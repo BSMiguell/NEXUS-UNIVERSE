@@ -651,7 +651,7 @@ const charactersData = [
     id: 37,
     name: "Feitan Portor",
     category: "HXH",
-    image: "img/HXH/Feitan-1.png",
+    image: "img/hxh/Feitan-1.png",
     description:
       "Membro da Tropa Fantasma, especialista em interrogatório e usuário da habilidade Pain Packer que converte dor em poder.",
     details: {
@@ -3208,7 +3208,7 @@ const charactersData = [
     id: 178,
     name: "VEGETA",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/Vegeta-1.png",
+    image: "img/Dragon-Ball/vegeta-1.png",
     description:
       "Orgulhoso príncipe dos Saiyajins, Vegeta é um guerreiro extremamente poderoso que evolui constantemente, movido por rivalidade, honra e o desejo de superar seus próprios limites.",
     details: {
@@ -4333,7 +4333,7 @@ const charactersData = [
     id: 240, // Continuando a sequência
     name: "KITE",
     category: "HXH",
-    image: "img/hxh/Kite-1.png",
+    image: "img/hxh/kite-1.png",
     description:
       "Hunter profissional e ex-aluno de Ging Freecss, que se torna mentor de Gon. Portador de uma habilidade de Nen única com sua arma 'Crazy Slots' que gira aleatoriamente para diferentes armas. Conhecido por seu senso de responsabilidade e ética como hunter.",
     details: {
