@@ -1,0 +1,4515 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>🌌 NEXUS UNIVERSE 13/10 | Experiência Quântica Definitiva</title>
+    <meta
+      name="description"
+      content="Experiência visual quântica 13/10 - Explore personagens em uma galeria que redefine o conceito de design premium com realidade 3D, comandos de voz e conquistas."
+    />
+    <meta name="author" content="Nexus Quantum" />
+
+    <!-- Preconnect para recursos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Fontes otimizadas -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700;800&family=Bebas+Neue&family=Audiowide&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- CSS Crítico Inline -->
+    <style>
+      /* ===== CSS CRÍTICO ===== */
+      :root {
+        --quantum-primary: #00ffea;
+        --quantum-secondary: #ff00ff;
+        --quantum-accent: #ffff00;
+        --quantum-danger: #ff2a6d;
+        --quantum-success: #00ff9d;
+        --quantum-warning: #ffaa00;
+        --quantum-gradient: linear-gradient(
+          135deg,
+          #00ffea 0%,
+          #00b3ff 25%,
+          #ff00ff 50%,
+          #ff2a6d 75%,
+          #ffff00 100%
+        );
+        --dark-gradient: linear-gradient(
+          135deg,
+          #0a0a0f 0%,
+          #0f0f1a 25%,
+          #141425 50%,
+          #1a1a30 75%,
+          #1f1f3a 100%
+        );
+        --card-gradient: linear-gradient(
+          145deg,
+          rgba(20, 20, 40, 0.95) 0%,
+          rgba(30, 30, 60, 0.9) 50%,
+          rgba(40, 40, 80, 0.85) 100%
+        );
+        --quantum-glow:
+          0 0 40px rgba(0, 255, 234, 0.7), 0 0 80px rgba(255, 0, 255, 0.5),
+          0 0 120px rgba(255, 42, 109, 0.3);
+        --glass-bg: rgba(15, 15, 30, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-blur: blur(25px);
+        --text-primary: #ffffff;
+        --text-secondary: #b8b8ff;
+        --text-accent: #00ffea;
+        --background-primary: #0a0a0f;
+        --background-secondary: #141425;
+        --border-radius-sm: 16px;
+        --border-radius-md: 24px;
+        --border-radius-lg: 32px;
+        --border-radius-xl: 48px;
+        --border-radius-full: 100px;
+        --transition-quantum: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-fast: all 0.3s ease;
+        --z-background: -10;
+        --z-particles: -5;
+        --z-content: 1;
+        --z-modal: 1000;
+        --z-toast: 2000;
+        --z-loader: 3000;
+        --z-controls: 100;
+        --z-theme: 999;
+        --z-favorites-page: 10;
+      }
+
+      /* Variáveis para modo claro */
+      [data-theme="light"] {
+        --text-primary: #0a0a0f;
+        --text-secondary: #333333;
+        --text-accent: #0077b6;
+        --background-primary: #f8f9fa;
+        --background-secondary: #ffffff;
+        --glass-bg: rgba(255, 255, 255, 0.9);
+        --glass-border: rgba(0, 0, 0, 0.1);
+        --card-gradient: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(245, 245, 255, 0.9) 50%,
+          rgba(235, 235, 245, 0.85) 100%
+        );
+        --dark-gradient: linear-gradient(
+          135deg,
+          #f8f9fa 0%,
+          #e9ecef 25%,
+          #dee2e6 50%,
+          #ced4da 75%,
+          #adb5bd 100%
+        );
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 120px;
+        overflow-x: hidden;
+      }
+
+      body {
+        background: var(--background-primary);
+        color: var(--text-primary);
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          sans-serif;
+        min-height: 100vh;
+        line-height: 1.8;
+        overflow-x: hidden;
+        position: relative;
+        cursor: default;
+        transition:
+          background-color 0.5s ease,
+          color 0.5s ease;
+      }
+
+      /* Layout básico para evitar CLS */
+      .quantum-universe {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease;
+      }
+
+      .quantum-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--background-primary);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: var(--z-loader);
+        transition: opacity 1s ease;
+      }
+
+      /* Acessibilidade */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      :focus-visible {
+        outline: 4px solid var(--quantum-primary);
+        outline-offset: 6px;
+        border-radius: 8px;
+        box-shadow: 0 0 40px var(--quantum-primary);
+      }
+
+      /* Otimizações de performance */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* Remover rolagem quando modal estiver aberto */
+      body.modal-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Estilos para manter a posição de rolagem */
+      body.modal-open::before {
+        content: "";
+        position: fixed;
+        top: var(--scroll-top, 0);
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        pointer-events: none;
+      }
+
+      /* Remover scroll desnecessário em modais */
+      .modal-quantum {
+        overflow: hidden !important;
+      }
+
+      .modal-content-scroll {
+        overflow-y: auto;
+        max-height: calc(95vh - 40px);
+        padding-right: 5px;
+      }
+
+      /* Custom Scrollbar para modais */
+      .modal-content-scroll::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .modal-content-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .modal-content-scroll::-webkit-scrollbar-thumb {
+        background: var(--quantum-primary);
+        border-radius: 4px;
+      }
+
+      /* Correção do bug dos filtros */
+      .filter-quantum {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      .filter-quantum.hidden-filter {
+        display: none !important;
+      }
+    </style>
+
+    <!-- CSS Não Crítico -->
+    <style>
+      /* ===== CSS NÃO CRÍTICO ===== */
+      /* Canvas 3D Background */
+      #three-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: var(--z-background);
+        pointer-events: none;
+      }
+
+      /* Particles Container */
+      .particles-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: var(--z-particles);
+        pointer-events: none;
+      }
+
+      /* Preloader */
+      .loader-content {
+        text-align: center;
+        position: relative;
+      }
+
+      .wormhole {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        margin-bottom: 50px;
+      }
+
+      .wormhole-ring {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 3px solid transparent;
+        border-radius: 50%;
+        border-top-color: var(--quantum-primary);
+        animation: wormholeSpin 3s linear infinite;
+      }
+
+      .wormhole-ring:nth-child(2) {
+        border-top-color: var(--quantum-secondary);
+        animation-delay: 0.5s;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+      }
+
+      .wormhole-ring:nth-child(3) {
+        border-top-color: var(--quantum-accent);
+        animation-delay: 1s;
+        width: 60%;
+        height: 60%;
+        top: 20%;
+        left: 20%;
+      }
+
+      .loader-text {
+        font-family: "Orbitron", monospace;
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .loader-progress {
+        width: 300px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0%;
+        background: var(--quantum-gradient);
+        transition: width 0.3s ease;
+        box-shadow: 0 0 20px var(--quantum-primary);
+      }
+
+      .progress-text {
+        font-family: "Orbitron", monospace;
+        font-size: 1rem;
+        color: var(--text-secondary);
+        margin-top: 15px;
+      }
+
+      /* Main Container */
+      .quantum-universe {
+        max-width: 2000px;
+        margin: 0 auto;
+        padding: 60px 40px;
+        position: relative;
+        z-index: var(--z-content);
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      /* Quantum Header */
+      .quantum-header {
+        text-align: center;
+        margin-bottom: 100px;
+        position: relative;
+        padding: 80px 40px;
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--border-radius-xl);
+        overflow: hidden;
+        isolation: isolate;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .header-nebula {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background:
+          radial-gradient(
+            circle at 30% 20%,
+            rgba(0, 255, 234, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 80%,
+            rgba(255, 0, 255, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 0, 0.1) 0%,
+            transparent 60%
+          );
+        z-index: -1;
+        animation: nebulaFloat 20s ease-in-out infinite alternate;
+        transform: translateZ(-50px);
+      }
+
+      .quantum-title {
+        font-family: "Audiowide", cursive;
+        font-size: clamp(5rem, 12vw, 8rem);
+        font-weight: 900;
+        letter-spacing: 6px;
+        margin-bottom: 30px;
+        position: relative;
+        transform-style: preserve-3d;
+      }
+
+      .title-text {
+        background: var(--quantum-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-size: 300% 100%;
+        animation: quantumFlow 8s linear infinite;
+        text-shadow: 0 5px 30px rgba(0, 255, 234, 0.3);
+        position: relative;
+        display: inline-block;
+        transform: translateZ(50px);
+      }
+
+      .title-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .title-particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--quantum-primary);
+        border-radius: 50%;
+        filter: blur(1px);
+        animation: particleFloat 4s ease-in-out infinite;
+        transform: translateZ(var(--particle-z, 0px));
+      }
+
+      .quantum-subtitle {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        color: var(--text-secondary);
+        max-width: 1000px;
+        margin: 0 auto 50px;
+        font-weight: 300;
+        line-height: 1.6;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        transform: translateZ(30px);
+      }
+
+      .rating-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(20px);
+        padding: 20px 40px;
+        border-radius: var(--border-radius-full);
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transform: translateZ(40px);
+      }
+
+      .rating-badge::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 2px;
+        background: var(--quantum-gradient);
+        border-radius: var(--border-radius-full);
+        mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        animation: borderRotate 4s linear infinite;
+      }
+
+      .rating-stars {
+        color: var(--quantum-accent);
+        font-size: 2rem;
+        animation: starPulse 2s ease-in-out infinite;
+        transform: translateZ(20px);
+      }
+
+      .rating-text {
+        font-family: "Orbitron", monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: var(--quantum-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: 3px;
+        transform: translateZ(20px);
+      }
+
+      /* Quantum Controls */
+      .quantum-controls {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 60px;
+        margin-bottom: 100px;
+        position: relative;
+      }
+
+      @media (max-width: 1200px) {
+        .quantum-controls {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Quantum Filters */
+      .quantum-filters {
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--border-radius-lg);
+        padding: 50px;
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        perspective: 800px;
+      }
+
+      .filter-matrix {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 35px;
+        margin-bottom: 35px;
+      }
+
+      .filter-quantum {
+        position: relative;
+        background: rgba(10, 10, 20, 0.8);
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        color: var(--text-secondary);
+        padding: 25px 20px;
+        border-radius: var(--border-radius-md);
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+      }
+
+      [data-theme="light"] .filter-quantum {
+        background: rgba(255, 255, 255, 0.9);
+        color: #333333;
+      }
+
+      [data-theme="light"] .filter-quantum:hover,
+      [data-theme="light"] .filter-quantum.active {
+        background: rgba(255, 255, 255, 1);
+        color: #000000;
+      }
+
+      .filter-quantum::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 2px;
+        background: var(--quantum-gradient);
+        border-radius: var(--border-radius-md);
+        mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        opacity: 0;
+        transition: var(--transition-smooth);
+        transform: translateZ(-1px);
+      }
+
+      .filter-quantum:hover::before,
+      .filter-quantum.active::before {
+        opacity: 1;
+      }
+
+      .filter-quantum:hover,
+      .filter-quantum.active {
+        transform: translateY(-15px) scale(1.05) rotateX(5deg);
+        background: rgba(20, 20, 40, 0.95);
+        color: var(--text-primary);
+        box-shadow: var(--quantum-glow);
+      }
+
+      .filter-badge {
+        display: inline-block;
+        background: rgba(0, 255, 234, 0.1);
+        color: var(--quantum-primary);
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 1rem;
+        margin-left: 15px;
+        font-weight: 700;
+        transition: var(--transition-fast);
+        margin-bottom: 25px;
+        margin-top: 10px;
+        transform: translateZ(10px);
+      }
+
+      .filter-quantum.active .filter-badge {
+        background: var(--quantum-primary);
+        color: #000;
+        box-shadow: 0 0 30px rgba(0, 255, 234, 0.5);
+      }
+
+      /* Botão para mostrar mais filtros */
+      .show-more-filters {
+        grid-column: 1 / -1;
+        background: rgba(0, 255, 234, 0.1);
+        border: 2px solid rgba(0, 255, 234, 0.3);
+        color: var(--text-primary);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        cursor: pointer;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: var(--transition-smooth);
+        margin-top: 20px;
+        margin: auto;
+        text-align: center;
+      }
+
+      .show-more-filters:hover {
+        background: rgba(0, 255, 234, 0.2);
+        border-color: var(--quantum-primary);
+        transform: translateY(-5px);
+      }
+
+      /* Esconder filtros extras inicialmente */
+      .filter-quantum.hidden-filter {
+        display: none;
+      }
+
+      /* Quantum Terminal */
+      .quantum-terminal {
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--border-radius-lg);
+        padding: 50px;
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        perspective: 800px;
+      }
+
+      .terminal-header {
+        font-family: "Orbitron", monospace;
+        color: var(--quantum-primary);
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transform: translateZ(30px);
+      }
+
+      .terminal-grid {
+        display: grid;
+        gap: 25px;
+      }
+
+      .terminal-control {
+        background: rgba(0, 20, 40, 0.8);
+        border: 2px solid rgba(0, 255, 234, 0.2);
+        border-radius: var(--border-radius-md);
+        padding: 25px;
+        transition: var(--transition-fast);
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+      }
+
+      [data-theme="light"] .terminal-control {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(0, 119, 182, 0.2);
+      }
+
+      .terminal-control:hover {
+        border-color: var(--quantum-primary);
+        box-shadow: 0 0 30px rgba(0, 255, 234, 0.2);
+        transform: translateZ(20px) rotateX(2deg);
+      }
+
+      .sort-quantum {
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-family: "Orbitron", monospace;
+        font-size: 1.2rem;
+        padding: 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transform-style: preserve-3d;
+      }
+
+      .sort-options-quantum {
+        display: none;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 255, 234, 0.2);
+        transform-style: preserve-3d;
+      }
+
+      .sort-option-quantum {
+        padding: 15px;
+        margin: 10px 0;
+        background: rgba(0, 30, 60, 0.5);
+        border-radius: var(--border-radius-sm);
+        cursor: pointer;
+        transition: var(--transition-fast);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+      }
+
+      [data-theme="light"] .sort-option-quantum {
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .sort-option-quantum:hover {
+        background: rgba(0, 255, 234, 0.1);
+        transform: translateX(10px) translateZ(10px);
+      }
+
+      .reset-quantum {
+        width: 100%;
+        background: rgba(255, 42, 109, 0.1);
+        border: 2px solid rgba(255, 42, 109, 0.3);
+        color: var(--text-primary);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        cursor: pointer;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: var(--transition-smooth);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+      }
+
+      .reset-quantum:hover {
+        background: rgba(255, 42, 109, 0.2);
+        border-color: var(--quantum-danger);
+        transform: translateY(-5px) translateZ(20px) rotateX(5deg);
+        box-shadow: 0 10px 40px rgba(255, 42, 109, 0.3);
+      }
+
+      /* Quantum Dashboard */
+      .quantum-dashboard {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 100px;
+      }
+
+      .dashboard-node {
+        background: var(--card-gradient);
+        border: 1px solid rgba(0, 255, 234, 0.2);
+        border-radius: var(--border-radius-lg);
+        padding: 40px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition-smooth);
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+      }
+
+      .dashboard-node::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--quantum-gradient);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .dashboard-node:hover::before {
+        transform: scaleX(1);
+      }
+
+      .dashboard-node:hover {
+        transform: translateY(-20px) scale(1.05) rotateX(5deg) translateZ(30px);
+        box-shadow: var(--quantum-glow);
+        border-color: rgba(0, 255, 234, 0.4);
+      }
+
+      .node-icon {
+        font-size: 3.5rem;
+        margin-bottom: 25px;
+        background: var(--quantum-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0 15px currentColor);
+        transform: translateZ(20px);
+      }
+
+      .node-value {
+        font-size: 4.5rem;
+        font-weight: 900;
+        font-family: "Orbitron", monospace;
+        background: var(--quantum-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 15px;
+        text-shadow: 0 0 30px rgba(0, 255, 234, 0.5);
+        animation: counterPulse 3s ease-in-out infinite;
+        transform: translateZ(30px);
+      }
+
+      .node-label {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 500;
+        transform: translateZ(15px);
+      }
+
+      /* Quantum Grid */
+
+      /* Loading States */
+      .quantum-loading {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 200px 20px;
+        text-align: center;
+      }
+
+      .loading-wormhole {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        margin-bottom: 50px;
+      }
+
+      .loading-ring {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 4px solid transparent;
+        border-radius: 50%;
+        border-top-color: var(--quantum-primary);
+        animation: quantumSpin 3s linear infinite;
+      }
+
+      .loading-ring:nth-child(2) {
+        border-top-color: var(--quantum-secondary);
+        animation-delay: 0.5s;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+      }
+
+      .loading-ring:nth-child(3) {
+        border-top-color: var(--quantum-accent);
+        animation-delay: 1s;
+        width: 60%;
+        height: 60%;
+        top: 20%;
+        left: 20%;
+      }
+
+      /* Skeleton Loading */
+      .quantum-skeleton {
+        position: relative;
+        overflow: hidden;
+        background: rgba(30, 30, 60, 0.8);
+      }
+
+      [data-theme="light"] .quantum-skeleton {
+        background: rgba(200, 200, 220, 0.8);
+      }
+
+      .quantum-skeleton::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 234, 0.1),
+          transparent
+        );
+        animation: skeletonShimmer 2s infinite;
+      }
+
+      @keyframes skeletonShimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(200%);
+        }
+      }
+
+      /* Empty State */
+      .quantum-empty {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 200px 20px;
+        display: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quantum-empty.show {
+        display: block;
+        animation: quantumFadeIn 1s ease-out;
+      }
+
+      .empty-blackhole {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto 60px;
+        position: relative;
+      }
+
+      .empty-blackhole-core {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 255, 234, 0.2) 0%,
+          rgba(255, 0, 255, 0.15) 30%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: blackholeSpin 10s linear infinite;
+      }
+
+      .empty-blackhole-ring {
+        position: absolute;
+        width: 120%;
+        height: 120%;
+        top: -10%;
+        left: -10%;
+        border: 3px solid transparent;
+        border-radius: 50%;
+        border-top-color: var(--quantum-primary);
+        animation: blackholeOrbit 8s linear infinite;
+      }
+
+      /* Quantum Pagination */
+      .quantum-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-top: 120px;
+        flex-wrap: wrap;
+        transform-style: preserve-3d;
+      }
+
+      .pagination-quantum {
+        background: var(--card-gradient);
+        border: 2px solid rgba(0, 255, 234, 0.3);
+        color: var(--text-primary);
+        padding: 22px 45px;
+        border-radius: var(--border-radius-xl);
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 1.3rem;
+        transition: var(--transition-smooth);
+        min-width: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        backdrop-filter: blur(20px);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+      }
+
+      [data-theme="light"] .pagination-quantum {
+        color: #333333;
+        border: 2px solid rgba(0, 119, 182, 0.3);
+      }
+
+      .pagination-quantum::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 234, 0.2),
+          transparent
+        );
+        transition: var(--transition-smooth);
+      }
+
+      [data-theme="light"] .pagination-quantum::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 119, 182, 0.2),
+          transparent
+        );
+      }
+
+      .pagination-quantum:hover::before {
+        left: 100%;
+      }
+
+      .pagination-quantum:hover:not(:disabled) {
+        background: var(--quantum-gradient);
+        color: #000;
+        border-color: transparent;
+        transform: translateY(-8px) scale(1.08) translateZ(30px) rotateX(5deg);
+        box-shadow: var(--quantum-glow);
+      }
+
+      .pagination-quantum:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: none !important;
+      }
+
+      .pagination-terminal {
+        background: rgba(0, 20, 40, 0.9);
+        border: 2px solid rgba(0, 255, 234, 0.3);
+        border-radius: var(--border-radius-lg);
+        padding: 25px 50px;
+        font-family: "Orbitron", monospace;
+        min-width: 350px;
+        text-align: center;
+        transform-style: preserve-3d;
+        transform: translateZ(20px);
+      }
+
+      [data-theme="light"] .pagination-terminal {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(0, 119, 182, 0.3);
+      }
+
+      .quantum-input {
+        background: transparent;
+        border: none;
+        color: var(--quantum-primary);
+        padding: 12px;
+        font-size: 1.8rem;
+        font-family: "Orbitron", monospace;
+        text-align: center;
+        width: 80px;
+        border-bottom: 3px solid var(--quantum-primary);
+        transition: var(--transition-fast);
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+
+      .quantum-input::-webkit-outer-spin-button,
+      .quantum-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      [data-theme="light"] .quantum-input {
+        color: #0077b6;
+        border-bottom: 3px solid #0077b6;
+      }
+
+      .quantum-input:focus {
+        outline: none;
+        border-bottom-color: var(--quantum-secondary);
+        box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+      }
+
+      [data-theme="light"] .quantum-input:focus {
+        border-bottom-color: #ff00ff;
+        box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+      }
+
+      /* Botões de Controle 13/10 */
+      .quantum-control-btn {
+        position: fixed;
+        width: 80px;
+        height: 80px;
+        background: var(--quantum-gradient);
+        color: #000;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: var(--z-controls);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        box-shadow: var(--quantum-glow);
+        backdrop-filter: blur(30px);
+        transition: var(--transition-smooth);
+        right: 60px;
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+        z-index: 1000;
+      }
+
+      .quantum-control-btn:hover {
+        transform: translateY(-15px) scale(1.15) translateZ(40px) rotateY(10deg);
+        animation: none;
+        box-shadow:
+          0 0 80px rgba(0, 255, 234, 0.9),
+          0 0 160px rgba(255, 0, 255, 0.7);
+      }
+
+      /* Botão Salto Quântico */
+      .quantum-jump {
+        bottom: 60px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(50px) scale(0.7);
+        animation: quantumPulse 4s ease-in-out infinite;
+      }
+
+      .quantum-jump.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1) translateZ(20px);
+      }
+
+      /* Botão Sons */
+      .sound-toggle {
+        bottom: 155px;
+        background: linear-gradient(135deg, #ff00ff, #ff2a6d);
+      }
+
+      /* Botão Favoritos */
+      .favorites-toggle {
+        bottom: 245px;
+        background: linear-gradient(135deg, #ffff00, #ffaa00);
+      }
+
+      /* Botão Temas */
+      .theme-toggle {
+        bottom: 335px;
+        background: linear-gradient(135deg, #ff2a6d, #9d00ff);
+      }
+
+      /* Efeito de Cursor Magnético */
+      .cursor-magnetic {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Quantum Modal */
+
+      /* Botão na terminal para acessar favoritos */
+      #viewFavoritesBtn {
+        width: 100%;
+        background: linear-gradient(135deg, #ffff00, #ffaa00);
+        border: 2px solid rgba(255, 255, 0, 0.3);
+        color: #000;
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        cursor: pointer;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: var(--transition-smooth);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+        margin-top: 20px;
+      }
+
+      #viewFavoritesBtn:hover {
+        background: linear-gradient(135deg, #ffaa00, #ffff00);
+        transform: translateY(-5px) translateZ(20px) rotateX(5deg);
+        box-shadow: 0 10px 40px rgba(255, 255, 0, 0.3);
+      }
+
+      /* Animações Novas */
+      @keyframes quantumFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 300% 50%;
+        }
+      }
+
+      @keyframes borderRotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes particleFloat {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-20px) translateX(10px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes nebulaFloat {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(50px, -30px) scale(1.1);
+        }
+      }
+
+      @keyframes quantumSpin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes starPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.7;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+      }
+
+      @keyframes counterPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      @keyframes quantumPulse {
+        0%,
+        100% {
+          box-shadow: var(--quantum-glow);
+        }
+        50% {
+          box-shadow:
+            0 0 100px rgba(0, 255, 234, 0.9),
+            0 0 200px rgba(255, 0, 255, 0.7);
+        }
+      }
+
+      @keyframes quantumAppear {
+        from {
+          opacity: 0;
+          transform: scale(0.6) translateY(150px) rotateX(60deg) rotateY(20deg);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0) rotateX(0deg) rotateY(0deg);
+        }
+      }
+
+      @keyframes quantumFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes blackholeSpin {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        to {
+          transform: rotate(360deg) scale(1.1);
+        }
+      }
+
+      @keyframes blackholeOrbit {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      @keyframes quantumScan {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      @keyframes wormholeSpin {
+        0% {
+          transform: rotate(0deg) scale(0.8);
+          opacity: 0.5;
+        }
+        50% {
+          transform: rotate(180deg) scale(1.2);
+          opacity: 1;
+        }
+        100% {
+          transform: rotate(360deg) scale(0.8);
+          opacity: 0.5;
+        }
+      }
+
+      @keyframes borderFlow {
+        0% {
+          background-position: 0% 0%;
+        }
+        100% {
+          background-position: 400% 400%;
+        }
+      }
+
+      /* Responsividade */
+      @media (max-width: 1800px) {
+        .quantum-grid {
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+        .quantum-card {
+          height: 500px;
+        }
+        .quantum-control-btn {
+          right: 40px;
+        }
+      }
+
+      @media (max-width: 1400px) {
+        .quantum-controls {
+          grid-template-columns: 1fr;
+        }
+        .filter-matrix {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+        .quantum-grid {
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+        .favorites-grid {
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 25px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .quantum-universe {
+          padding: 40px 20px;
+        }
+        .quantum-favorites-page {
+          padding: 40px 20px;
+        }
+        .quantum-header {
+          padding: 60px 20px;
+          margin-bottom: 80px;
+        }
+        .quantum-title {
+          font-size: clamp(4rem, 10vw, 6rem);
+        }
+        .quantum-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 40px;
+        }
+        .quantum-card {
+          height: 450px;
+        }
+        .quantum-dashboard {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .quantum-pagination {
+          flex-direction: column;
+          gap: 25px;
+        }
+        .pagination-quantum {
+          width: 100%;
+          max-width: 350px;
+        }
+        .quantum-control-btn {
+          width: 70px;
+          height: 70px;
+          font-size: 1.5rem;
+          right: 30px;
+        }
+        .quantum-jump {
+          bottom: 40px;
+          right: 30px;
+        }
+        .sound-toggle {
+          bottom: 110px;
+        }
+        .favorites-toggle {
+          bottom: 178px;
+        }
+        .theme-toggle {
+          bottom: 245px;
+        }
+        .quantum-toast {
+          min-width: 350px;
+          padding: 20px 40px;
+          font-size: 1.2rem;
+        }
+        .favorites-header {
+          padding: 40px 30px;
+        }
+        .favorites-header h2 {
+          font-size: 2.5rem;
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+        }
+        .favorites-stats {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+        }
+        .favorites-stats-info {
+          text-align: center;
+        }
+        .favorites-footer {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+        }
+        .favorites-footer-tip {
+          min-width: 100%;
+          justify-content: center;
+        }
+        .favorites-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .quantum-grid {
+          grid-template-columns: 1fr;
+        }
+        .quantum-card {
+          height: 500px;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+        .filter-matrix {
+          grid-template-columns: 1fr;
+        }
+        .quantum-title {
+          font-size: 3.5rem;
+          letter-spacing: 3px;
+        }
+        .quantum-dashboard {
+          grid-template-columns: 1fr;
+        }
+        .rating-badge {
+          flex-direction: column;
+          gap: 15px;
+          padding: 15px 30px;
+        }
+        .modal-quantum {
+          max-width: 95%;
+          padding: 20px;
+        }
+        .quantum-control-btn {
+          width: 60px;
+          height: 60px;
+          font-size: 1.3rem;
+          right: 20px;
+        }
+        .favorites-header h2 {
+          font-size: 2rem;
+        }
+        .favorites-header p {
+          font-size: 1rem;
+        }
+        .favorites-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+        #favoritesContainer {
+          max-height: 50vh;
+        }
+        .favorites-footer-actions {
+          width: 100%;
+          justify-content: center;
+        }
+        #backToGallery,
+        .share-favorites-btn {
+          flex: 1;
+          max-width: 200px;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .quantum-header {
+          padding: 40px 20px;
+        }
+        .quantum-title {
+          font-size: 2.8rem;
+        }
+        .quantum-subtitle {
+          font-size: 1.3rem;
+        }
+        .quantum-card {
+          height: 450px;
+        }
+        .card-quantum-title {
+          font-size: 2rem;
+        }
+        .quantum-toast {
+          min-width: 280px;
+          padding: 15px 25px;
+          font-size: 1rem;
+          letter-spacing: 2px;
+        }
+        .footer-quantum {
+          font-size: 2.5rem;
+        }
+        .favorites-header {
+          padding: 30px 20px;
+        }
+        .favorites-header h2 {
+          font-size: 1.8rem;
+        }
+        .favorites-header h2 .star-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 1.2rem;
+        }
+        .favorites-card-content {
+          padding: 20px;
+        }
+        .favorites-card-title {
+          font-size: 1.3rem;
+        }
+        #emptyFavorites h3 {
+          font-size: 1.8rem;
+        }
+        #emptyFavorites p {
+          font-size: 1rem;
+        }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 16px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(10, 10, 20, 0.8);
+        border-radius: 10px;
+      }
+      [data-theme="light"] ::-webkit-scrollbar-track {
+        background: rgba(240, 240, 240, 0.8);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--quantum-gradient);
+        border-radius: 10px;
+        border: 4px solid rgba(10, 10, 20, 0.8);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+      [data-theme="light"] ::-webkit-scrollbar-thumb {
+        border: 4px solid rgba(240, 240, 240, 0.8);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          135deg,
+          var(--quantum-secondary) 0%,
+          var(--quantum-primary) 50%,
+          var(--quantum-accent) 100%
+        );
+      }
+
+      /* Acessibilidade para Motion */
+      @media (prefers-reduced-motion: reduce) {
+        .quantum-card,
+        .dashboard-node,
+        .filter-quantum,
+        .quantum-button,
+        .pagination-quantum,
+        .quantum-control-btn {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="style/Card.css" />
+    <link rel="stylesheet" href="style/modal-character.css" />
+    <link rel="stylesheet" href="style/favorite.css" />
+    <link rel="stylesheet" href="style/footer.css" />
+  </head>
+
+  <body>
+    <main>
+      <!-- Canvas 3D Background -->
+      <canvas id="three-canvas" aria-hidden="true"></canvas>
+
+      <!-- Container de Partículas -->
+      <div
+        class="particles-container"
+        id="particles-container"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Preloader Quântico -->
+      <div
+        class="quantum-loader"
+        id="quantumLoader"
+        role="status"
+        aria-live="polite"
+      >
+        <div class="loader-content">
+          <div class="wormhole" aria-hidden="true">
+            <div class="wormhole-ring"></div>
+            <div class="wormhole-ring"></div>
+            <div class="wormhole-ring"></div>
+          </div>
+          <div class="loader-text">
+            INICIALIZANDO REALIDADE QUÂNTICA 13/10...
+          </div>
+          <div class="loader-progress">
+            <div
+              class="progress-bar"
+              id="progressBar"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            ></div>
+          </div>
+          <div class="progress-text" id="progressText">
+            CARREGANDO NEXUS UNIVERSE... 0%
+          </div>
+          <span class="sr-only">Carregando, por favor aguarde...</span>
+        </div>
+      </div>
+
+      <!-- Página Principal (Galeria) -->
+      <div class="quantum-universe" id="quantumUniverse" role="main">
+        <!-- Header Quântico -->
+        <header class="quantum-header" role="banner">
+          <div class="header-nebula" aria-hidden="true"></div>
+          <h1 class="quantum-title">
+            <span class="title-text">NEXUS<br />UNIVERSE 13/10</span>
+            <div class="title-particles" aria-hidden="true"></div>
+            <span class="sr-only"
+              >Nexus Universe 13/10 - Experiência Quântica Definitiva</span
+            >
+          </h1>
+          <p class="quantum-subtitle">
+            A EXPERIÊNCIA VISUAL DEFINITIVA • IMERSÃO TOTAL COM COMANDOS DE VOZ,
+            REALIDADE 3D, CONQUISTAS E INTELIGÊNCIA ARTIFICIAL
+          </p>
+          <div class="rating-badge" aria-label="Avaliação: Design 13 de 10">
+            <div class="rating-stars" aria-hidden="true">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <div class="rating-text">DESIGN 13/10</div>
+          </div>
+        </header>
+
+        <!-- Painel de Controle Quântico -->
+        <nav class="quantum-controls" aria-label="Filtros de navegação">
+          <!-- Filtros Quânticos -->
+          <section class="quantum-filters" aria-labelledby="filters-title">
+            <h2 id="filters-title" class="sr-only">Filtros Quânticos</h2>
+            <div class="filter-header">
+              <h2 class="filter-header-title">
+                <i class="fas fa-atom" aria-hidden="true"></i>
+                FILTROS QUÂNTICOS
+              </h2>
+              <div class="filter-header-badge">
+                <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                SISTEMA ATIVO
+              </div>
+            </div>
+            <div
+              class="filter-matrix"
+              id="filterMatrix"
+              role="listbox"
+              aria-label="Categorias disponíveis"
+            ></div>
+            <!-- Botão para mostrar mais filtros -->
+            <button
+              class="show-more-filters"
+              id="showMoreFilters"
+              aria-label="Mostrar mais categorias"
+            >
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              MOSTRAR MAIS CATEGORIAS
+            </button>
+          </section>
+
+          <!-- Terminal Quântico -->
+          <section class="quantum-terminal" aria-labelledby="terminal-title">
+            <h2 id="terminal-title" class="terminal-header">
+              <i class="fas fa-terminal" aria-hidden="true"></i>
+              TERMINAL DE CONTROLE QUÂNTICO
+            </h2>
+            <div class="terminal-grid">
+              <div class="terminal-control">
+                <div class="terminal-label">ORDENAÇÃO QUÂNTICA</div>
+                <button
+                  class="sort-quantum"
+                  id="sortQuantum"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span>
+                    <i class="fas fa-sort-amount-down" aria-hidden="true"></i>
+                    <span class="sort-text">ORDEM ORIGINAL</span>
+                  </span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div
+                  class="sort-options-quantum"
+                  id="sortOptionsQuantum"
+                  role="listbox"
+                  aria-label="Opções de ordenação"
+                ></div>
+              </div>
+              <button
+                class="reset-quantum"
+                id="resetQuantum"
+                aria-label="Reiniciar todos os filtros"
+              >
+                <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                REINICIAR REALIDADE
+              </button>
+
+              <!-- Botão para acessar Favoritos -->
+              <button
+                class="quantum-button"
+                id="viewFavoritesBtn"
+                aria-label="Ver página de favoritos"
+              >
+                <i class="fas fa-heart" aria-hidden="true"></i>
+                VER FAVORITOS 13/10
+              </button>
+
+              <div class="terminal-control">
+                <div class="terminal-status">
+                  <div>
+                    > STATUS:
+                    <span class="status-active">OTIMIZADO 13/10</span>
+                  </div>
+                  <div>> ENERGIA: <span class="status-active">100%</span></div>
+                  <div>> 3D: <span class="status-active">PRONTO</span></div>
+                  <div>> SOM: <span class="status-active">ATIVO</span></div>
+                  <div>
+                    > TEMA:
+                    <span id="themeStatus" class="status-active">QUÂNTICO</span>
+                  </div>
+                  <div>
+                    > FAVORITOS:
+                    <span id="favoritesCountTerminal" class="status-active"
+                      >0</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </nav>
+
+        <!-- Dashboard Quântico -->
+        <section
+          class="quantum-dashboard"
+          aria-label="Estatísticas do universo"
+        >
+          <article class="dashboard-node" aria-labelledby="total-characters">
+            <div class="node-icon" aria-hidden="true">
+              <i class="fas fa-user-astronaut"></i>
+            </div>
+            <div class="node-value" id="totalCharacters">0</div>
+            <div id="total-characters" class="node-label">
+              ENTIDADES QUÂNTICAS
+            </div>
+          </article>
+          <article class="dashboard-node" aria-labelledby="visible-characters">
+            <div class="node-icon" aria-hidden="true">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="node-value" id="visibleCharacters">0</div>
+            <div id="visible-characters" class="node-label">
+              OBSERVANDO AGORA
+            </div>
+          </article>
+          <article class="dashboard-node" aria-labelledby="total-categories">
+            <div class="node-icon" aria-hidden="true">
+              <i class="fas fa-layer-group"></i>
+            </div>
+            <div class="node-value" id="totalCategories">0</div>
+            <div id="total-categories" class="node-label">DIMENSÕES</div>
+          </article>
+          <article class="dashboard-node" aria-labelledby="current-page">
+            <div class="node-icon" aria-hidden="true">
+              <i class="fas fa-satellite"></i>
+            </div>
+            <div class="node-value" id="currentPageDisplay">1</div>
+            <div id="current-page" class="node-label">FREQUÊNCIA ATUAL</div>
+          </article>
+        </section>
+
+        <!-- Grid Quântico -->
+        <section
+          class="quantum-grid-section"
+          aria-labelledby="characters-title"
+        >
+          <h2 id="characters-title" class="sr-only">Personagens Quânticos</h2>
+          <div
+            class="quantum-grid"
+            id="quantumGrid"
+            role="list"
+            aria-label="Lista de personagens"
+          >
+            <div
+              class="quantum-loading"
+              id="loadingState"
+              role="status"
+              aria-live="polite"
+            >
+              <div class="loading-wormhole" aria-hidden="true">
+                <div class="loading-ring"></div>
+                <div class="loading-ring"></div>
+                <div class="loading-ring"></div>
+              </div>
+              <h3 class="loading-text">ESTABILIZANDO REALIDADE...</h3>
+              <p class="loading-subtext">
+                Preparando experiência visual quântica 13/10
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Estado Vazio Quântico -->
+        <div
+          class="quantum-empty"
+          id="emptyState"
+          role="alert"
+          aria-live="assertive"
+          hidden
+        >
+          <div class="empty-blackhole" aria-hidden="true">
+            <div class="empty-blackhole-core"></div>
+            <div class="empty-blackhole-ring"></div>
+          </div>
+          <h3 class="empty-title">REALIDADE NÃO DETECTADA</h3>
+          <p class="empty-text">
+            Nenhuma entidade quântica detectada nesta frequência. Ajuste seus
+            filtros ou explore outras realidades do universo Nexus.
+          </p>
+          <button
+            class="quantum-button reset-empty-btn"
+            id="resetEmptyFilters"
+            aria-label="Remover filtros e mostrar todos os personagens"
+          >
+            <i class="fas fa-universe" aria-hidden="true"></i>
+            EXPLORAR TODO O MULTIVERSO
+          </button>
+        </div>
+
+        <!-- Paginação Quântica -->
+        <nav class="quantum-pagination" aria-label="Navegação de páginas">
+          <button
+            class="pagination-quantum"
+            id="firstBtn"
+            disabled
+            aria-label="Primeira página"
+          >
+            <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+            REALIDADE ZERO
+          </button>
+          <button
+            class="pagination-quantum"
+            id="prevBtn"
+            disabled
+            aria-label="Página anterior"
+          >
+            <i class="fas fa-angle-left" aria-hidden="true"></i>
+            ANTERIOR
+          </button>
+          <div class="pagination-terminal" role="status" aria-live="polite">
+            <div class="pagination-label">NAVEGAÇÃO QUÂNTICA</div>
+            <div class="pagination-display">
+              FREQUÊNCIA
+              <input
+                type="number"
+                class="quantum-input"
+                id="quantumInput"
+                min="1"
+                value="1"
+                aria-label="Número da página"
+                inputmode="numeric"
+              />
+              DE
+              <span id="totalPages" aria-live="polite">1</span>
+            </div>
+          </div>
+          <button
+            class="pagination-quantum"
+            id="nextBtn"
+            aria-label="Próxima página"
+          >
+            PRÓXIMA
+            <i class="fas fa-angle-right" aria-hidden="true"></i>
+          </button>
+          <button
+            class="pagination-quantum"
+            id="lastBtn"
+            aria-label="Última página"
+          >
+            LIMITE QUÂNTICO
+            <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Página de Favoritos 13/10 -->
+      <div
+        class="quantum-favorites-page"
+        id="quantumFavoritesPage"
+        role="main"
+        hidden
+      >
+        <div class="favorites-container">
+          <!-- Header -->
+          <div class="favorites-header">
+            <h2>
+              <div class="star-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              MEUS FAVORITOS 13/10
+            </h2>
+            <p>
+              Gerencie sua coleção pessoal de personagens. Arraste para
+              reordenar ou clique para editar. Sistema de favoritos premium com
+              visualização 3D e efeitos quânticos.
+            </p>
+          </div>
+
+          <!-- Stats -->
+          <div class="favorites-stats">
+            <div class="favorites-count" id="favoritesCount">0</div>
+            <div class="favorites-stats-info">
+              <h3>Coleção Pessoal Premium</h3>
+              <p id="favoritesStats">Nenhum favorito adicionado</p>
+            </div>
+            <button class="quantum-button" id="clearAllFavorites">
+              <i class="fas fa-trash-alt"></i>
+              LIMPAR COLEÇÃO
+            </button>
+          </div>
+
+          <!-- Favorites Grid Container -->
+          <div id="favoritesContainer">
+            <div id="favoritesGrid" class="favorites-grid"></div>
+
+            <!-- Empty State -->
+            <div id="emptyFavorites">
+              <div class="heart-icon">
+                <i class="far fa-heart"></i>
+              </div>
+              <h3>COLEÇÃO VAZIA</h3>
+              <p>
+                Sua coleção de favoritos está vazia. Clique no ícone de coração
+                nos personagens para adicioná-los aqui e criar sua coleção
+                personalizada 13/10.
+              </p>
+              <button class="quantum-button" id="browseCharacters">
+                <i class="fas fa-compass"></i>
+                EXPLORAR PERSONAGENS
+              </button>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="favorites-footer">
+            <div class="favorites-footer-tip">
+              <i class="fas fa-info-circle"></i>
+              Dica: Arraste os cartões para reorganizar sua coleção
+            </div>
+            <div class="favorites-footer-actions">
+              <button class="quantum-button" id="backToGallery">
+                VOLTAR À GALERIA
+              </button>
+              <button class="share-favorites-btn" id="shareFavoritesBtn">
+                <i class="fas fa-share-alt"></i>
+                COMPARTILHAR
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Quântico -->
+      <footer class="quantum-footer" role="contentinfo">
+        <div class="footer-quantum">NEXUS QUANTUM 13/10</div>
+        <p class="footer-description footer-description-class">
+          Uma experiência visual quântica 13/10 com comandos de voz, realidade
+          3D, sistema de conquistas, efeitos magnéticos e inteligência
+          artificial. Explore realidades alternativas como nunca antes
+          imaginado.
+        </p>
+        <div class="footer-stats-grid">
+          <div class="footer-stat">
+            <div class="footer-stat-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="footer-stat-label">FAVORITOS 13/10</div>
+          </div>
+          <div class="footer-stat">
+            <div class="footer-stat-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="footer-stat-label">INTELIGÊNCIA</div>
+          </div>
+          <div class="footer-stat">
+            <div class="footer-stat-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <div class="footer-stat-label">MODO 3D</div>
+          </div>
+        </div>
+        <p class="copyright">
+          © <span id="currentYear">2024</span> NEXUS QUANTUM UNIVERSE 13/10 •
+          TODAS AS REALIDADES RESERVADAS
+        </p>
+      </footer>
+
+      <!-- Botões de Controle 13/10 -->
+      <button
+        class="quantum-control-btn quantum-jump"
+        id="quantumJump"
+        aria-label="Voltar ao topo da página"
+      >
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+      </button>
+      <button
+        class="quantum-control-btn sound-toggle"
+        id="soundToggle"
+        aria-label="Alternar sons"
+      >
+        <i class="fas fa-volume-up" id="soundIcon" aria-hidden="true"></i>
+      </button>
+      <button
+        class="quantum-control-btn favorites-toggle"
+        id="favoritesToggle"
+        aria-label="Alternar entre galeria e favoritos"
+      >
+        <i class="fas fa-heart" id="favoritesIcon" aria-hidden="true"></i>
+      </button>
+      <button
+        class="quantum-control-btn theme-toggle"
+        id="themeToggle"
+        aria-label="Mudar tema/cores"
+      >
+        <i class="fas fa-palette" aria-hidden="true"></i>
+      </button>
+
+      <!-- Modal Quântico -->
+      <div
+        class="quantum-modal"
+        id="quantumModal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        tabindex="-1"
+        hidden
+      >
+        <div class="modal-quantum">
+          <button
+            class="modal-quantum-close"
+            id="modalClose"
+            aria-label="Fechar modal"
+          >
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+          <div id="modalContent" class="modal-content-scroll"></div>
+        </div>
+      </div>
+
+      <!-- Modal de Temas -->
+      <div
+        class="quantum-modal"
+        id="themeModal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        tabindex="-1"
+        hidden
+      >
+        <div class="modal-quantum modal-theme">
+          <button
+            class="modal-quantum-close"
+            id="themeClose"
+            aria-label="Fechar"
+          >
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+          <div class="modal-theme-content modal-content-scroll">
+            <h2 class="modal-theme-title">
+              <i class="fas fa-palette"></i>
+              PERSONALIZADOR QUÂNTICO
+            </h2>
+
+            <!-- Preview do Tema -->
+            <div class="theme-preview-container">
+              <div class="color-preview-box" id="themePreview"></div>
+              <div class="theme-preview-label">PRÉVIA DO TEMA ATUAL</div>
+            </div>
+
+            <!-- Temas Pré-definidos -->
+            <div class="theme-section">
+              <h3 class="theme-section-title">
+                <i class="fas fa-star"></i>
+                TEMAS PRÉ-DEFINIDOS
+              </h3>
+              <div id="themePresets" class="theme-presets-grid"></div>
+            </div>
+
+            <!-- Personalizador Avançado -->
+            <div class="theme-section">
+              <h3 class="theme-section-title">
+                <i class="fas fa-sliders-h"></i>
+                PERSONALIZAÇÃO AVANÇADA
+              </h3>
+
+              <div class="color-pickers-grid">
+                <!-- Cor Primária -->
+                <div class="color-picker-group">
+                  <label class="color-picker-label"> COR PRIMÁRIA </label>
+                  <input
+                    type="color"
+                    class="color-picker"
+                    id="colorPrimary"
+                    value="#00ffea"
+                  />
+                  <div class="color-swatches">
+                    <div
+                      class="color-swatch"
+                      style="background: #00ffea"
+                      data-color="#00ffea"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #ff00ff"
+                      data-color="#ff00ff"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #00ff9d"
+                      data-color="#00ff9d"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #ffaa00"
+                      data-color="#ffaa00"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #b8b8ff"
+                      data-color="#b8b8ff"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Cor Secundária -->
+                <div class="color-picker-group">
+                  <label class="color-picker-label"> COR SECUNDÁRIA </label>
+                  <input
+                    type="color"
+                    class="color-picker"
+                    id="colorSecondary"
+                    value="#ff00ff"
+                  />
+                  <div class="color-swatches">
+                    <div
+                      class="color-swatch"
+                      style="background: #ff00ff"
+                      data-color="#ff00ff"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #ff2a6d"
+                      data-color="#ff2a6d"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #8a2be2"
+                      data-color="#8a2be2"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #1e90ff"
+                      data-color="#1e90ff"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #ff4500"
+                      data-color="#ff4500"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Cor de Realce -->
+                <div class="color-picker-group">
+                  <label class="color-picker-label"> COR DE REALCE </label>
+                  <input
+                    type="color"
+                    class="color-picker"
+                    id="colorAccent"
+                    value="#ffff00"
+                  />
+                  <div class="color-swatches">
+                    <div
+                      class="color-swatch"
+                      style="background: #ffff00"
+                      data-color="#ffff00"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #00ffea"
+                      data-color="#00ffea"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #ffaa00"
+                      data-color="#ffaa00"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #00ff9d"
+                      data-color="#00ff9d"
+                    ></div>
+                    <div
+                      class="color-swatch"
+                      style="background: #ff00ff"
+                      data-color="#ff00ff"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modo Escuro/Claro -->
+              <div class="theme-mode-buttons">
+                <button
+                  id="toggleDarkMode"
+                  class="quantum-button theme-mode-btn"
+                >
+                  <i class="fas fa-moon"></i>
+                  MODO ESCURO
+                </button>
+                <button
+                  id="toggleLightMode"
+                  class="quantum-button theme-mode-btn light"
+                >
+                  <i class="fas fa-sun"></i>
+                  MODO CLARO
+                </button>
+              </div>
+            </div>
+
+            <!-- Botões de Controle -->
+            <div class="theme-control-buttons">
+              <button
+                id="applyTheme"
+                class="quantum-button theme-control-btn apply"
+              >
+                <i class="fas fa-check"></i>
+                APLICAR TEMA
+              </button>
+              <button
+                id="resetTheme"
+                class="quantum-button theme-control-btn reset"
+              >
+                <i class="fas fa-undo"></i>
+                TEMA PADRÃO
+              </button>
+              <button
+                id="saveTheme"
+                class="quantum-button theme-control-btn save"
+              >
+                <i class="fas fa-save"></i>
+                SALVAR TEMA
+              </button>
+            </div>
+
+            <!-- Informações -->
+            <div class="theme-info">
+              <div class="theme-info-title">
+                <i class="fas fa-info-circle"></i>
+                INFORMAÇÕES DO TEMA
+              </div>
+              <div class="theme-info-content">
+                • Seus temas são salvos automaticamente no navegador<br />
+                • Você pode criar até 10 temas personalizados<br />
+                • Clique em "Salvar Tema" para guardar suas configurações<br />
+                • Use "Tema Padrão" para restaurar as cores originais
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Quântico -->
+      <div
+        class="quantum-toast"
+        id="quantumToast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        hidden
+      ></div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="Js/Temas.js"></script>
+    <script src="Js/Favoritos.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <!-- Script Principal -->
+    <script>
+      // ===== CONFIGURAÇÕES DE PERFORMANCE =====
+      const CONFIG = {
+        USE_THREE_JS: true,
+        USE_PARTICLES: true,
+        REDUCE_MOTION: window.matchMedia("(prefers-reduced-motion: reduce)")
+          .matches,
+        IS_MOBILE: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent),
+        IMAGE_LOAD_TIMEOUT: 10000,
+        LAZY_LOAD_THRESHOLD: 100,
+        USE_VOICE_COMMANDS: false,
+      };
+
+      // ===== SISTEMA DE TEMAS =====
+
+      // ===== SISTEMA DE FAVORITOS 13/10 =====
+
+      const categoryNames = {
+        all: "TODO O MULTIVERSO",
+        "One-Piece": "ONE PIECE",
+        "Dragon-Ball": "DRAGON BALL",
+        Naruto: "NARUTO",
+        HXH: "HUNTER X HUNTER",
+        kimetsu: "DEMON SLAYER",
+        Berserk: "BERSERK",
+        castlevania: "CASTLEVANIA",
+        lol: "LEAGUE OF LEGENDS",
+        Fullmetal: "FULLMETAL ALCHEMIST",
+        Boku: "MY HERO ACADEMIA",
+      };
+
+      // ===== SISTEMA DE CACHE OTIMIZADO =====
+      class QuantumCache {
+        constructor() {
+          this.imageCache = new Map();
+          this.assetCache = new Map();
+          this.maxCacheSize = 100;
+          this.failedImages = new Set();
+          this.loadingImages = new Set();
+        }
+
+        async cacheImage(src) {
+          const normalizedSrc = this.normalizePath(src);
+
+          if (this.failedImages.has(normalizedSrc)) {
+            console.warn(
+              `Ignorando imagem previamente falhou: ${normalizedSrc}`,
+            );
+            return null;
+          }
+
+          if (this.imageCache.has(normalizedSrc)) {
+            return this.imageCache.get(normalizedSrc);
+          }
+
+          if (this.loadingImages.has(normalizedSrc)) {
+            console.log(`Imagem já está sendo carregada: ${normalizedSrc}`);
+            return null;
+          }
+
+          if (this.imageCache.size >= this.maxCacheSize) {
+            const firstKey = this.imageCache.keys().next().value;
+            this.imageCache.delete(firstKey);
+          }
+
+          this.loadingImages.add(normalizedSrc);
+
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            const cleanSrc = normalizedSrc.split("?")[0].split("#")[0];
+            img.src = cleanSrc;
+
+            const timestamp = Math.floor(Date.now() / 60000);
+            const cacheBusterSrc = `${cleanSrc}${cleanSrc.includes("?") ? "&" : "?"}_=${timestamp}`;
+
+            let attempts = 0;
+            const maxAttempts = 2;
+
+            const tryLoad = (source, isRetry = false) => {
+              attempts++;
+              const tempImg = new Image();
+
+              if (isRetry) {
+                console.log(`🔄 Tentativa ${attempts} para: ${source}`);
+              }
+
+              tempImg.src = source;
+
+              tempImg.onload = () => {
+                console.log(`✅ Imagem carregada: ${source}`);
+                this.imageCache.set(normalizedSrc, tempImg);
+                this.loadingImages.delete(normalizedSrc);
+                resolve(tempImg);
+              };
+
+              tempImg.onerror = () => {
+                if (attempts < maxAttempts) {
+                  setTimeout(() => {
+                    tryLoad(cacheBusterSrc, true);
+                  }, 500);
+                } else {
+                  console.error(
+                    `❌ Falha ao carregar após ${maxAttempts} tentativas: ${normalizedSrc}`,
+                  );
+                  this.failedImages.add(normalizedSrc);
+                  this.loadingImages.delete(normalizedSrc);
+                  const fallbackImg = this.createFallbackImage(normalizedSrc);
+                  this.imageCache.set(normalizedSrc, fallbackImg);
+                  resolve(fallbackImg);
+                }
+              };
+            };
+
+            tryLoad(cleanSrc);
+          });
+        }
+
+        normalizePath(path) {
+          let normalized = path.replace(/\\/g, "/").replace(/\/+/g, "/").trim();
+          if (normalized.includes("img/img/")) {
+            normalized = normalized.replace("img/img/", "img/");
+          }
+          if (
+            !normalized.startsWith("img/") &&
+            !normalized.startsWith("http")
+          ) {
+            normalized = "img/" + normalized;
+          }
+          return normalized;
+        }
+
+        createFallbackImage(src) {
+          const canvas = document.createElement("canvas");
+          canvas.width = 400;
+          canvas.height = 600;
+          const ctx = canvas.getContext("2d");
+
+          const gradient = ctx.createLinearGradient(0, 0, 400, 600);
+          gradient.addColorStop(0, "#0a0a0f");
+          gradient.addColorStop(0.5, "#1a1a30");
+          gradient.addColorStop(1, "#0a0a0f");
+          ctx.fillStyle = gradient;
+          ctx.fillRect(0, 0, 400, 600);
+
+          ctx.fillStyle = "rgba(0, 255, 234, 0.1)";
+          for (let i = 0; i < 50; i++) {
+            ctx.beginPath();
+            ctx.arc(
+              Math.random() * 400,
+              Math.random() * 600,
+              Math.random() * 3,
+              0,
+              Math.PI * 2,
+            );
+            ctx.fill();
+          }
+
+          ctx.fillStyle = "#00ffea";
+          ctx.font = "bold 24px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("QUANTUM", 200, 250);
+          ctx.fillText("IMAGE", 200, 280);
+
+          ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+          ctx.font = "12px Arial";
+          ctx.fillText("Nexus Universe", 200, 320);
+
+          const img = new Image();
+          img.src = canvas.toDataURL();
+          return img;
+        }
+
+        async preloadCriticalImages(imageUrls) {
+          console.log("🚀 Pré-carregando imagens críticas...");
+          const criticalUrls = imageUrls.slice(0, 4);
+          const promises = criticalUrls.map((url) =>
+            this.cacheImage(url).catch((err) => {
+              console.warn(`Pré-carregamento falhou para: ${url}`, err);
+              return null;
+            }),
+          );
+          await Promise.allSettled(promises);
+          console.log("✅ Pré-carregamento completo");
+        }
+      }
+
+      // ===== SISTEMA DE HISTÓRIA E ESTADO =====
+      class QuantumHistory {
+        constructor(gallery) {
+          this.gallery = gallery;
+          this.init();
+        }
+
+        init() {
+          this.applyInitialState();
+        }
+
+        applyInitialState() {
+          const initialState = {
+            category: "all",
+            sort: "original",
+            page: 1,
+          };
+
+          this.applyState(initialState);
+        }
+
+        applyState(state) {
+          if (state.category !== this.gallery.state.currentCategory) {
+            this.gallery.setCategory(state.category, true);
+          }
+
+          if (state.sort !== this.gallery.state.currentSort) {
+            this.gallery.setSort(state.sort, true);
+          }
+
+          if (state.page !== this.gallery.state.currentPage) {
+            this.gallery.goToPage(state.page, true);
+          }
+        }
+      }
+
+      // ===== SISTEMA DE EFEITOS ESPECIAIS =====
+      class QuantumEffects {
+        constructor() {
+          this.particles = [];
+          this.init();
+        }
+
+        init() {
+          this.createInteractiveParticles();
+          this.setupMagneticEffect();
+        }
+
+        createInteractiveParticles() {
+          const container = document.querySelector(".particles-container");
+          if (!container) return;
+
+          for (let i = 0; i < 30; i++) {
+            const particle = document.createElement("div");
+            particle.className = "particle-interactive";
+
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+
+            const colors = [
+              "var(--quantum-primary)",
+              "var(--quantum-secondary)",
+              "var(--quantum-accent)",
+              "var(--quantum-danger)",
+              "var(--quantum-success)",
+            ];
+            particle.style.background =
+              colors[Math.floor(Math.random() * colors.length)];
+
+            container.appendChild(particle);
+            this.particles.push(particle);
+          }
+        }
+
+        setupMagneticEffect() {
+          const magneticElements = document.querySelectorAll(
+            ".quantum-button, .filter-quantum, .quantum-card",
+          );
+
+          magneticElements.forEach((element) => {
+            element.classList.add("cursor-magnetic");
+
+            element.addEventListener("mousemove", (e) => {
+              if (CONFIG.REDUCE_MOTION) return;
+
+              const rect = element.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+
+              const distanceX = x - centerX;
+              const distanceY = y - centerY;
+
+              const strength = 10;
+              const moveX = (distanceX / centerX) * strength;
+              const moveY = (distanceY / centerY) * strength;
+
+              element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
+              this.activateParticles(e.clientX, e.clientY);
+            });
+
+            element.addEventListener("mouseleave", () => {
+              element.style.transform = "translate(0, 0)";
+            });
+          });
+        }
+
+        activateParticles(x, y) {
+          this.particles.forEach((particle) => {
+            const rect = particle.getBoundingClientRect();
+            const particleX = rect.left + rect.width / 2;
+            const particleY = rect.top + rect.height / 2;
+
+            const distance = Math.sqrt(
+              Math.pow(x - particleX, 2) + Math.pow(y - particleY, 2),
+            );
+
+            if (distance < 200) {
+              const force = 1 - distance / 200;
+              particle.style.opacity = force.toString();
+              particle.style.transform = `scale(${1 + force * 0.5})`;
+
+              const moveX = (x - particleX) * 0.01;
+              const moveY = (y - particleY) * 0.01;
+
+              particle.style.left = `calc(${particle.style.left} + ${moveX}px)`;
+              particle.style.top = `calc(${particle.style.top} + ${moveY}px)`;
+            }
+          });
+        }
+      }
+
+      // ===== SISTEMA DE SONS =====
+      class QuantumAudio {
+        constructor() {
+          this.sounds = new Map();
+          this.enabled = true;
+          this.context = null;
+          this.init();
+        }
+
+        async init() {
+          try {
+            this.context = new (
+              window.AudioContext || window.webkitAudioContext
+            )();
+            await this.loadSound("hover", this.generateTone(523.25, 0.05));
+            await this.loadSound("click", this.generateTone(659.25, 0.1));
+            await this.loadSound("favorite", this.generateTone(1046.5, 0.3));
+
+            this.setupEventListeners();
+          } catch (error) {
+            console.warn("Áudio não disponível:", error);
+            this.enabled = false;
+          }
+        }
+
+        generateTone(frequency, duration) {
+          return new Promise((resolve) => {
+            try {
+              const context = new (
+                window.AudioContext || window.webkitAudioContext
+              )();
+              const oscillator = context.createOscillator();
+              const gainNode = context.createGain();
+
+              oscillator.connect(gainNode);
+              gainNode.connect(context.destination);
+
+              oscillator.frequency.setValueAtTime(
+                frequency,
+                context.currentTime,
+              );
+              gainNode.gain.setValueAtTime(0.3, context.currentTime);
+              gainNode.gain.exponentialRampToValueAtTime(
+                0.01,
+                context.currentTime + duration,
+              );
+
+              oscillator.start(context.currentTime);
+              oscillator.stop(context.currentTime + duration);
+
+              resolve({ oscillator, gainNode, frequency, duration });
+            } catch (error) {
+              resolve(null);
+            }
+          });
+        }
+
+        async loadSound(name, soundPromise) {
+          try {
+            const sound = await soundPromise;
+            if (sound) {
+              this.sounds.set(name, sound);
+            }
+          } catch (error) {
+            console.warn(`Som ${name} não carregado:`, error);
+          }
+        }
+
+        play(name, volume = 0.3) {
+          if (!this.enabled || !this.sounds.has(name)) return;
+
+          try {
+            const sound = this.sounds.get(name);
+            if (sound && this.context) {
+              const oscillator = this.context.createOscillator();
+              const gainNode = this.context.createGain();
+
+              oscillator.connect(gainNode);
+              gainNode.connect(this.context.destination);
+
+              oscillator.frequency.setValueAtTime(
+                sound.frequency,
+                this.context.currentTime,
+              );
+              gainNode.gain.setValueAtTime(volume, this.context.currentTime);
+              gainNode.gain.exponentialRampToValueAtTime(
+                0.01,
+                this.context.currentTime + sound.duration,
+              );
+
+              oscillator.start(this.context.currentTime);
+              oscillator.stop(this.context.currentTime + sound.duration);
+            }
+          } catch (error) {
+            console.warn("Erro ao tocar som:", error);
+          }
+        }
+
+        setupEventListeners() {
+          document.addEventListener(
+            "mouseover",
+            (e) => {
+              if (
+                e.target.closest(
+                  ".quantum-button, .filter-quantum, .quantum-card",
+                )
+              ) {
+                this.play("hover", 0.1);
+              }
+            },
+            true,
+          );
+
+          document.addEventListener(
+            "click",
+            (e) => {
+              if (
+                e.target.closest(
+                  ".quantum-button, .filter-quantum, .pagination-quantum",
+                )
+              ) {
+                this.play("click", 0.2);
+              }
+              if (e.target.closest(".quantum-favorite")) {
+                this.play("favorite", 0.3);
+              }
+            },
+            true,
+          );
+        }
+
+        toggle() {
+          this.enabled = !this.enabled;
+          return this.enabled;
+        }
+      }
+
+      // ===== GALERIA QUÂNTICA OTIMIZADA =====
+      class QuantumGallery {
+        constructor(cache) {
+          this.cache = cache;
+          this.charactersData = charactersData;
+
+          this.config = {
+            itemsPerPage: 60,
+            intersectionObserver: null,
+            scrollDebounce: null,
+          };
+
+          this.state = {
+            currentPage: 1,
+            currentCategory: "all",
+            currentSort: "original",
+            filteredCharacters: [...charactersData],
+            isModalOpen: false,
+            showFavoritesPage: false,
+            // Nova propriedade para controlar de onde o modal foi aberto
+            modalOpenedFromFavorites: false,
+            // Variável para armazenar a posição de rolagem antes de abrir o modal
+            scrollPositionBeforeModal: 0,
+          };
+
+          this.viewedCharacters = new Set();
+          this.history = new QuantumHistory(this);
+          this.effects = new QuantumEffects();
+          this.audio = new QuantumAudio();
+          this.themeSystem = new QuantumThemeSystem();
+          this.favorites = new QuantumFavoritesSystem(this);
+
+          this.elements = {};
+          this.init();
+        }
+
+        async init() {
+          console.log("🚀 Inicializando Nexus Universe 13/10...");
+
+          await this.preloadFirstFourImages();
+
+          this.cacheElements();
+          this.setupEventListeners();
+          this.renderFilters();
+          this.renderAllCharacters();
+          this.updateStats();
+          this.setCurrentYear();
+          this.setupSortOptions();
+          this.initScrollAnimations();
+          this.setupIntersectionObserver();
+
+          this.handlePageRefresh();
+
+          console.log("✅ Nexus Universe 13/10 inicializado!");
+        }
+
+        handlePageRefresh() {
+          window.scrollTo(0, 0);
+
+          window.addEventListener("beforeunload", () => {
+            window.scrollTo(0, 0);
+          });
+        }
+
+        async preloadFirstFourImages() {
+          console.log("🔥 Pré-carregando as primeiras 4 imagens...");
+          const firstFour = charactersData.slice(0, 4);
+          const promises = firstFour.map(async (character) => {
+            try {
+              const startTime = performance.now();
+              await this.cache.cacheImage(character.image);
+              const loadTime = performance.now() - startTime;
+              console.log(`✅ ${character.name}: ${loadTime.toFixed(0)}ms`);
+              return true;
+            } catch (error) {
+              console.warn(
+                `⚠️ Falha ao pré-carregar ${character.name}: ${character.image}`,
+              );
+              return false;
+            }
+          });
+
+          const results = await Promise.allSettled(promises);
+          const successCount = results.filter(
+            (r) => r.status === "fulfilled" && r.value,
+          ).length;
+          console.log(
+            `📊 ${successCount}/4 imagens pré-carregadas com sucesso`,
+          );
+        }
+
+        cacheElements() {
+          this.elements = {
+            filterMatrix: document.getElementById("filterMatrix"),
+            showMoreFilters: document.getElementById("showMoreFilters"),
+            sortQuantum: document.getElementById("sortQuantum"),
+            sortOptionsQuantum: document.getElementById("sortOptionsQuantum"),
+            sortText: document.querySelector(".sort-text"),
+            resetQuantum: document.getElementById("resetQuantum"),
+            resetEmptyFilters: document.getElementById("resetEmptyFilters"),
+            loadingState: document.getElementById("loadingState"),
+            emptyState: document.getElementById("emptyState"),
+            quantumGrid: document.getElementById("quantumGrid"),
+            firstBtn: document.getElementById("firstBtn"),
+            prevBtn: document.getElementById("prevBtn"),
+            nextBtn: document.getElementById("nextBtn"),
+            lastBtn: document.getElementById("lastBtn"),
+            quantumInput: document.getElementById("quantumInput"),
+            totalPages: document.getElementById("totalPages"),
+            totalCharacters: document.getElementById("totalCharacters"),
+            visibleCharacters: document.getElementById("visibleCharacters"),
+            totalCategories: document.getElementById("totalCategories"),
+            currentPageDisplay: document.getElementById("currentPageDisplay"),
+            quantumModal: document.getElementById("quantumModal"),
+            modalClose: document.getElementById("modalClose"),
+            modalContent: document.getElementById("modalContent"),
+            quantumToast: document.getElementById("quantumToast"),
+            quantumJump: document.getElementById("quantumJump"),
+            soundToggle: document.getElementById("soundToggle"),
+            soundIcon: document.getElementById("soundIcon"),
+            favoritesToggle: document.getElementById("favoritesToggle"),
+            quantumUniverse: document.getElementById("quantumUniverse"),
+            quantumFavoritesPage: document.getElementById(
+              "quantumFavoritesPage",
+            ),
+            viewFavoritesBtn: document.getElementById("viewFavoritesBtn"),
+            backToGallery: document.getElementById("backToGallery"),
+            favoritesCountTerminal: document.getElementById(
+              "favoritesCountTerminal",
+            ),
+          };
+        }
+
+        setupEventListeners() {
+          const debounce = (func, wait) => {
+            return (...args) => {
+              clearTimeout(this.config.scrollDebounce);
+              this.config.scrollDebounce = setTimeout(
+                () => func.apply(this, args),
+                wait,
+              );
+            };
+          };
+
+          if (this.elements.filterMatrix) {
+            this.elements.filterMatrix.addEventListener("click", (e) => {
+              const filter = e.target.closest(".filter-quantum");
+              if (filter && filter.dataset.category) {
+                const category = filter.dataset.category;
+                this.setCategory(category);
+                this.audio.play("click");
+                this.closeExtraFilters();
+                this.scrollToCardsSection();
+              }
+            });
+          }
+
+          if (this.elements.showMoreFilters) {
+            this.elements.showMoreFilters.addEventListener("click", () => {
+              this.toggleMoreFilters();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.sortQuantum) {
+            this.elements.sortQuantum.addEventListener("click", () => {
+              const isShowing =
+                this.elements.sortOptionsQuantum.style.display === "block";
+              this.elements.sortOptionsQuantum.style.display = isShowing
+                ? "none"
+                : "block";
+              this.elements.sortQuantum.setAttribute(
+                "aria-expanded",
+                !isShowing,
+              );
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.resetQuantum) {
+            this.elements.resetQuantum.addEventListener("click", () => {
+              this.resetFilters();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.resetEmptyFilters) {
+            this.elements.resetEmptyFilters.addEventListener("click", () => {
+              this.resetFilters();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.firstBtn) {
+            this.elements.firstBtn.addEventListener("click", () => {
+              this.goToPage(1);
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.prevBtn) {
+            this.elements.prevBtn.addEventListener("click", () => {
+              this.goToPage(this.state.currentPage - 1);
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.nextBtn) {
+            this.elements.nextBtn.addEventListener("click", () => {
+              this.goToPage(this.state.currentPage + 1);
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.lastBtn) {
+            this.elements.lastBtn.addEventListener("click", () => {
+              this.goToPage(this.getTotalPages());
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.quantumInput) {
+            this.elements.quantumInput.addEventListener("change", (e) => {
+              const page = parseInt(e.target.value);
+              if (page >= 1 && page <= this.getTotalPages()) {
+                this.goToPage(page);
+              } else {
+                this.elements.quantumInput.value = this.state.currentPage;
+                this.showToast("FREQUÊNCIA INVÁLIDA");
+              }
+            });
+          }
+
+          if (this.elements.modalClose) {
+            this.elements.modalClose.addEventListener("click", () => {
+              this.closeModal();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.soundToggle) {
+            this.elements.soundToggle.addEventListener("click", () => {
+              const enabled = this.audio.toggle();
+              const icon = this.elements.soundIcon;
+              icon.className = enabled
+                ? "fas fa-volume-up"
+                : "fas fa-volume-mute";
+              this.showToast(
+                enabled ? "🔊 SONS ATIVADOS" : "🔇 SONS DESATIVADOS",
+              );
+              if (enabled) this.audio.play("click");
+            });
+          }
+
+          if (this.elements.favoritesToggle) {
+            this.elements.favoritesToggle.addEventListener("click", () => {
+              this.showFavoritesPage();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.viewFavoritesBtn) {
+            this.elements.viewFavoritesBtn.addEventListener("click", () => {
+              this.showFavoritesPage();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.backToGallery) {
+            this.elements.backToGallery.addEventListener("click", () => {
+              this.showGalleryPage();
+              this.audio.play("click");
+            });
+          }
+
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+              if (this.state.isModalOpen) this.closeModal();
+              if (
+                document.getElementById("themeModal").classList.contains("show")
+              ) {
+                this.themeSystem.closeThemeModal();
+              }
+            }
+          });
+
+          document.addEventListener("click", (e) => {
+            if (
+              this.state.isModalOpen &&
+              e.target === this.elements.quantumModal
+            ) {
+              this.closeModal();
+            }
+          });
+
+          if (this.elements.quantumJump) {
+            this.elements.quantumJump.addEventListener("click", () => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              this.audio.play("click");
+            });
+          }
+
+          window.addEventListener(
+            "scroll",
+            debounce(() => {
+              this.toggleQuantumJump();
+              this.animateOnScroll();
+            }, 50),
+          );
+
+          document.addEventListener("click", (e) => {
+            if (this.elements.sortQuantum && this.elements.sortOptionsQuantum) {
+              if (
+                !e.target.closest(".sort-quantum") &&
+                !e.target.closest("#sortOptionsQuantum")
+              ) {
+                this.elements.sortOptionsQuantum.style.display = "none";
+                this.elements.sortQuantum.setAttribute(
+                  "aria-expanded",
+                  "false",
+                );
+              }
+            }
+          });
+        }
+
+        closeExtraFilters() {
+          const hiddenFilters = document.querySelectorAll(
+            ".filter-quantum.hidden-filter",
+          );
+          const showMoreBtn = this.elements.showMoreFilters;
+
+          if (hiddenFilters.length === 0 && showMoreBtn) {
+            this.toggleMoreFilters();
+          }
+        }
+
+        setupIntersectionObserver() {
+          if ("IntersectionObserver" in window) {
+            this.config.intersectionObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    const img = entry.target.querySelector("img");
+                    if (img && img.dataset.src) {
+                      this.loadImage(img);
+                      this.config.intersectionObserver.unobserve(entry.target);
+                    }
+                  }
+                });
+              },
+              {
+                rootMargin: "200px",
+                threshold: 0.01,
+              },
+            );
+          }
+        }
+
+        async loadImage(imgElement) {
+          const src = imgElement.dataset.src;
+          if (!src) return;
+
+          try {
+            const img = await this.cache.cacheImage(src);
+            if (img) {
+              imgElement.src = img.src;
+              imgElement.removeAttribute("data-src");
+              imgElement.classList.add("loaded");
+            }
+          } catch (error) {
+            console.warn(`Não foi possível carregar: ${src}`);
+            imgElement.classList.add("error");
+          }
+        }
+
+        renderFilters() {
+          if (!this.elements.filterMatrix) return;
+
+          const categories = [
+            ...new Set(charactersData.map((char) => char.category)),
+          ];
+          categories.sort();
+
+          const allButton = this.createFilterButton(
+            "all",
+            "TODO O MULTIVERSO",
+            charactersData.length,
+            true,
+          );
+          this.elements.filterMatrix.appendChild(allButton);
+
+          const maxVisibleFilters = 8;
+          const maxCategories = maxVisibleFilters - 1;
+
+          categories.forEach((category, index) => {
+            const count = charactersData.filter(
+              (char) => char.category === category,
+            ).length;
+            const button = this.createFilterButton(
+              category,
+              categoryNames[category] || category,
+              count,
+              false,
+            );
+
+            if (index >= maxCategories) {
+              button.classList.add("hidden-filter");
+            }
+
+            this.elements.filterMatrix.appendChild(button);
+          });
+
+          if (
+            categories.length > maxCategories &&
+            this.elements.showMoreFilters
+          ) {
+            this.elements.showMoreFilters.style.display = "block";
+          }
+
+          if (this.elements.totalCategories) {
+            this.elements.totalCategories.textContent = categories.length + 1;
+          }
+        }
+
+        createFilterButton(category, label, count, isActive) {
+          const button = document.createElement("button");
+          button.className = `filter-quantum ${isActive ? "active" : ""}`;
+          button.dataset.category = category;
+          button.setAttribute("role", "option");
+          button.setAttribute("aria-selected", isActive);
+          button.setAttribute("aria-label", `Filtrar por ${label}`);
+          button.innerHTML = `
+                      <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 15px;">${label}</div>
+                      <span class="filter-badge">${count}</span>
+                  `;
+          return button;
+        }
+
+        toggleMoreFilters() {
+          const allFilters = document.querySelectorAll(".filter-quantum");
+          const showMoreBtn = this.elements.showMoreFilters;
+
+          const hasHidden = Array.from(allFilters).some((filter) =>
+            filter.classList.contains("hidden-filter"),
+          );
+
+          if (hasHidden) {
+            allFilters.forEach((filter) => {
+              filter.classList.remove("hidden-filter");
+            });
+            showMoreBtn.innerHTML =
+              '<i class="fas fa-chevron-up" aria-hidden="true"></i> MOSTRAR MENOS CATEGORIAS';
+            showMoreBtn.setAttribute("aria-label", "Mostrar menos categorias");
+          } else {
+            allFilters.forEach((filter, index) => {
+              if (index >= 8) {
+                filter.classList.add("hidden-filter");
+              }
+            });
+            showMoreBtn.innerHTML =
+              '<i class="fas fa-chevron-down" aria-hidden="true"></i> MOSTRAR MAIS CATEGORIAS';
+            showMoreBtn.setAttribute("aria-label", "Mostrar mais categorias");
+          }
+        }
+
+        async renderAllCharacters() {
+          if (this.elements.loadingState) {
+            this.elements.loadingState.style.display = "flex";
+            this.elements.loadingState.removeAttribute("hidden");
+          }
+
+          if (this.elements.emptyState) {
+            this.elements.emptyState.classList.remove("show");
+            this.elements.emptyState.setAttribute("hidden", "");
+          }
+
+          await new Promise((resolve) => setTimeout(resolve, 500));
+
+          this.filterAndSort();
+
+          if (this.elements.loadingState) {
+            this.elements.loadingState.style.display = "none";
+            this.elements.loadingState.setAttribute("hidden", "");
+          }
+        }
+
+        filterAndSort() {
+          if (this.state.currentCategory === "all") {
+            this.state.filteredCharacters = [...charactersData];
+          } else {
+            this.state.filteredCharacters = charactersData.filter(
+              (char) => char.category === this.state.currentCategory,
+            );
+          }
+
+          this.sortCharacters();
+          this.renderCharacters();
+
+          if (this.elements.emptyState) {
+            if (this.state.filteredCharacters.length === 0) {
+              this.elements.emptyState.classList.add("show");
+              this.elements.emptyState.removeAttribute("hidden");
+            } else {
+              this.elements.emptyState.classList.remove("show");
+              this.elements.emptyState.setAttribute("hidden", "");
+            }
+          }
+        }
+
+        sortCharacters() {
+          switch (this.state.currentSort) {
+            case "original":
+              this.state.filteredCharacters.sort((a, b) => a.id - b.id);
+              break;
+            case "name-asc":
+              this.state.filteredCharacters.sort((a, b) =>
+                a.name.localeCompare(b.name),
+              );
+              break;
+            case "name-desc":
+              this.state.filteredCharacters.sort((a, b) =>
+                b.name.localeCompare(a.name),
+              );
+              break;
+            case "category-asc":
+              this.state.filteredCharacters.sort((a, b) =>
+                (categoryNames[a.category] || a.category).localeCompare(
+                  categoryNames[b.category] || b.category,
+                ),
+              );
+              break;
+            case "category-desc":
+              this.state.filteredCharacters.sort((a, b) =>
+                (categoryNames[b.category] || b.category).localeCompare(
+                  categoryNames[a.category] || a.category,
+                ),
+              );
+              break;
+            case "random":
+              this.state.filteredCharacters.sort(() => Math.random() - 0.5);
+              break;
+          }
+        }
+
+        async renderCharacters() {
+          if (!this.elements.quantumGrid) return;
+
+          const totalPages = this.getTotalPages();
+          const startIndex =
+            (this.state.currentPage - 1) * this.config.itemsPerPage;
+          const endIndex = Math.min(
+            startIndex + this.config.itemsPerPage,
+            this.state.filteredCharacters.length,
+          );
+          const charactersToShow = this.state.filteredCharacters.slice(
+            startIndex,
+            endIndex,
+          );
+
+          this.elements.quantumGrid.innerHTML = "";
+
+          charactersToShow.forEach((character, index) => {
+            const card = this.createCharacterCard(character, index);
+            this.elements.quantumGrid.appendChild(card);
+
+            setTimeout(() => {
+              card.classList.add("entering");
+
+              if (!this.viewedCharacters.has(character.id)) {
+                this.viewedCharacters.add(character.id);
+              }
+            }, index * 50);
+
+            if (this.config.intersectionObserver && index >= 4) {
+              this.config.intersectionObserver.observe(card);
+            }
+          });
+
+          this.updatePagination(totalPages);
+          this.updateStats();
+
+          setTimeout(() => this.initScrollAnimations(), 100);
+        }
+
+        createCharacterCard(character, index) {
+          const card = document.createElement("article");
+          card.className = "quantum-card";
+          card.dataset.id = character.id;
+          card.dataset.category = character.category;
+          card.tabIndex = 0;
+          card.setAttribute("role", "article");
+          card.setAttribute("aria-labelledby", `card-title-${character.id}`);
+          card.setAttribute("aria-describedby", `card-desc-${character.id}`);
+
+          const normalizedPath = this.cache.normalizePath(character.image);
+          const isPreloaded = this.cache.imageCache.has(normalizedPath);
+          const hasFailed = this.cache.failedImages.has(normalizedPath);
+          const isFavorite = this.favorites.isFavorite(character.id);
+
+          const placeholderSVG = this.generatePlaceholderSVG(
+            character,
+            hasFailed,
+          );
+
+          card.innerHTML = `
+                      <div class="card-quantum-effect" aria-hidden="true"></div>
+                      <div class="card-quantum-frame" aria-hidden="true"></div>
+                      <button class="quantum-favorite ${isFavorite ? "active" : ""}" data-id="${character.id}" aria-label="${isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}">
+                          <i class="${isFavorite ? "fas" : "far"} fa-heart" aria-hidden="true"></i>
+                      </button>
+                      <div class="quantum-badge" aria-hidden="true">
+                          ${categoryNames[character.category] || character.category}
+                      </div>
+                      <img src="${isPreloaded && !hasFailed ? this.cache.imageCache.get(normalizedPath).src : placeholderSVG}"
+                          ${!isPreloaded && !hasFailed ? `data-src="${character.image}"` : ""}
+                          alt="${character.name}"
+                          class="quantum-image ${isPreloaded ? "preloaded" : ""}"
+                          ${index < 4 ? 'loading="eager"' : 'loading="lazy"'}
+                          decoding="async">
+                      <div class="card-quantum-overlay">
+                          <h3 id="card-title-${character.id}" class="card-quantum-title">${character.name}</h3>
+                          <p id="card-desc-${character.id}" class="card-quantum-description">${character.description}</p>
+                          <div class="quantum-actions">
+                              <button class="quantum-button view-quantum" data-id="${character.id}"
+                                      aria-label="Analisar ${character.name}">
+                                  <i class="fas fa-expand" aria-hidden="true"></i> ANALISAR
+                              </button>
+                              <button class="quantum-button explore-quantum" data-category="${character.category}"
+                                      aria-label="Explorar categoria ${categoryNames[character.category]}">
+                                  <i class="fas fa-layer-group" aria-hidden="true"></i> EXPLORAR
+                              </button>
+                          </div>
+                      </div>
+                  `;
+
+          if (!isPreloaded && !hasFailed) {
+            const img = card.querySelector("img");
+            this.loadImage(img);
+          }
+
+          const viewBtn = card.querySelector(".view-quantum");
+          const exploreBtn = card.querySelector(".explore-quantum");
+          const favoriteBtn = card.querySelector(".quantum-favorite");
+
+          viewBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            this.openModal(character);
+            this.audio.play("click");
+          });
+
+          exploreBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const category =
+              e.target.closest(".quantum-button").dataset.category;
+            this.setCategory(category);
+            this.scrollToCardsSection();
+            this.audio.play("click");
+          });
+
+          favoriteBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const id = parseInt(e.currentTarget.dataset.id);
+            this.favorites.toggleFavorite(id);
+            const icon = favoriteBtn.querySelector("i");
+            if (this.favorites.isFavorite(id)) {
+              icon.className = "fas fa-heart";
+              favoriteBtn.classList.add("active");
+              this.audio.play("favorite");
+            } else {
+              icon.className = "far fa-heart";
+              favoriteBtn.classList.remove("active");
+              this.audio.play("click");
+            }
+          });
+
+          if (typeof gsap !== "undefined" && !CONFIG.REDUCE_MOTION) {
+            gsap.fromTo(
+              card,
+              { opacity: 0, y: 100, rotationX: 15, scale: 0.9 },
+              {
+                opacity: 1,
+                y: 0,
+                rotationX: 0,
+                scale: 1,
+                duration: 1,
+                ease: "power3.out",
+                delay: index * 0.1,
+              },
+            );
+          }
+
+          return card;
+        }
+
+        generatePlaceholderSVG(character, hasFailed = false) {
+          const colors = {
+            "One-Piece": "var(--quantum-primary)",
+            "Dragon-Ball": "var(--quantum-warning)",
+            Berserk: "var(--quantum-danger)",
+            Naruto: "var(--quantum-secondary)",
+            HXH: "var(--quantum-accent)",
+            kimetsu: "var(--quantum-success)",
+            Boku: "#b8b8ff",
+            castlevania: "#8a2be2",
+            lol: "#ff4500",
+            Fullmetal: "#1e90ff",
+          };
+
+          const color = colors[character.category] || "var(--quantum-primary)";
+          const initials = character.name
+            .split(" ")
+            .map((w) => w[0])
+            .join("")
+            .substring(0, 2);
+
+          return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(`
+                      <svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600">
+                          <defs>
+                              <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                  <stop offset="0%" stop-color="var(--background-primary)" stop-opacity="1"/>
+                                  <stop offset="100%" stop-color="var(--background-secondary)" stop-opacity="1"/>
+                              </linearGradient>
+                              <radialGradient id="glow">
+                                  <stop offset="0%" stop-color="${color}" stop-opacity="0.3"/>
+                                  <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+                              </radialGradient>
+                          </defs>
+
+                          <rect width="100%" height="100%" fill="url(#bg)"/>
+
+                          <circle cx="200" cy="250" r="100" fill="url(#glow)"/>
+
+                          <g transform="translate(200, 250)">
+                              <circle r="80" fill="${color}" opacity="0.1"/>
+                              <text y="10" text-anchor="middle" fill="${color}" font-family="Arial" font-size="36" font-weight="bold">
+                                  ${initials}
+                              </text>
+                          </g>
+
+                          <text x="200" y="380" text-anchor="middle" fill="var(--text-secondary)" font-family="Arial" font-size="14" opacity="0.7">
+                              ${hasFailed ? "IMAGEM NÃO ENCONTRADA" : "CARREGANDO..."}
+                          </text>
+
+                          ${
+                            !hasFailed
+                              ? `
+                                  <g transform="translate(200, 250)">
+                                      <circle r="85" fill="none" stroke="${color}" stroke-width="2" opacity="0.5" stroke-dasharray="4,4">
+                                          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+                                      </circle>
+                                  </g>
+                                  `
+                              : ""
+                          }
+                      </svg>
+                  `)}`;
+        }
+
+        openModal(character) {
+          this.state.modalOpenedFromFavorites = false;
+          this.openModalInternal(character);
+        }
+
+        // SEGUNDA ALTERAÇÃO: Nova função para abrir modal a partir da página de favoritos
+        openModalFromFavorites(character) {
+          this.state.modalOpenedFromFavorites = true;
+          this.openModalInternal(character);
+        }
+
+        openModalInternal(character) {
+          if (
+            this.state.isModalOpen ||
+            !this.elements.modalContent ||
+            !this.elements.quantumModal
+          )
+            return;
+
+          this.state.isModalOpen = true;
+
+          // ===== ALTERAÇÃO TERCEIRA: Salvar a posição de rolagem antes de abrir o modal =====
+          this.state.scrollPositionBeforeModal = window.pageYOffset;
+
+          // Salvar a posição como CSS custom property para uso no pseudo-elemento
+          document.documentElement.style.setProperty(
+            "--scroll-top",
+            `${this.state.scrollPositionBeforeModal}px`,
+          );
+
+          const normalizedPath = this.cache.normalizePath(character.image);
+          const cachedImg = this.cache.imageCache.get(normalizedPath);
+          const imgSrc = cachedImg ? cachedImg.src : character.image;
+          const isFavorite = this.favorites.isFavorite(character.id);
+
+          this.elements.modalContent.innerHTML = `
+      <div class="modal-character-details">
+          <div class="modal-character-grid">
+              <div class="modal-character-image-container">
+                  <img src="${imgSrc}"
+                      alt="${character.name}"
+                      class="modal-character-image"
+                      onerror="this.onerror=null; this.src='${this.generatePlaceholderSVG(character, true)}';">
+                  <div class="modal-image-tags">
+                      <span class="modal-category-tag">
+                          ${categoryNames[character.category] || character.category}
+                      </span>
+                      <button class="modal-favorite-btn ${isFavorite ? "active" : ""}" 
+                              data-id="${character.id}"
+                              aria-label="${isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}">
+                          <i class="${isFavorite ? "fas" : "far"} fa-heart"></i>
+                      </button>
+                  </div>
+              </div>
+              <div class="modal-character-info">
+                  <h2 class="modal-character-title">${character.name}</h2>
+                  <p class="modal-character-description">${character.description}</p>
+
+                  <div class="modal-character-specs">
+                      <h3 class="modal-specs-title">
+                          <i class="fas fa-chart-network"></i>
+                          ESPECIFICAÇÕES QUÂNTICAS
+                      </h3>
+                      <div class="modal-specs-grid">
+                          ${Object.entries(character.details || {})
+                            .map(
+                              ([key, value]) => `
+                                  <div class="modal-spec-item">
+                                      <div class="modal-spec-label">${key}</div>
+                                      <div class="modal-spec-value">${value}</div>
+                                  </div>
+                              `,
+                            )
+                            .join("")}
+                      </div>
+                  </div>
+
+                  <div class="modal-character-actions">
+                      <button class="modal-explore-btn" onclick="window.gallery.setCategory('${character.category}')">
+                          <i class="fas fa-filter"></i>
+                          EXPLORAR ${categoryNames[character.category]}
+                      </button>
+                      <button class="modal-close-btn" onclick="window.gallery.closeModal()">
+                          <i class="fas fa-times"></i>
+                          FECHAR ANÁLISE
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    `;
+
+          const favoriteBtn = this.elements.modalContent.querySelector(
+            ".modal-favorite-btn",
+          );
+          if (favoriteBtn) {
+            favoriteBtn.addEventListener("click", () => {
+              const id = parseInt(favoriteBtn.dataset.id);
+              this.favorites.toggleFavorite(id);
+              const icon = favoriteBtn.querySelector("i");
+              if (this.favorites.isFavorite(id)) {
+                icon.className = "fas fa-heart";
+                favoriteBtn.classList.add("active");
+                this.audio.play("favorite");
+              } else {
+                icon.className = "far fa-heart";
+                favoriteBtn.classList.remove("active");
+                this.audio.play("click");
+              }
+            });
+          }
+
+          this.elements.quantumModal.classList.add("show");
+          this.elements.quantumModal.removeAttribute("hidden");
+          this.elements.quantumModal.setAttribute("aria-hidden", "false");
+
+          // ===== ALTERAÇÃO TERCEIRA: Adicionar classe para ocultar scroll =====
+          document.body.classList.add("modal-open");
+
+          this.elements.modalContent.scrollTop = 0;
+
+          setTimeout(() => {
+            this.elements.modalClose.focus();
+          }, 100);
+        }
+
+        closeModal() {
+          if (!this.state.isModalOpen || !this.elements.quantumModal) return;
+
+          this.elements.quantumModal.classList.remove("show");
+          this.elements.quantumModal.setAttribute("hidden", "");
+          this.elements.quantumModal.setAttribute("aria-hidden", "true");
+
+          // ===== ALTERAÇÃO TERCEIRA: Remover classe para restaurar scroll =====
+          document.body.classList.remove("modal-open");
+
+          // Remover a propriedade CSS personalizada
+          document.documentElement.style.removeProperty("--scroll-top");
+
+          this.state.isModalOpen = false;
+
+          // Restaurar a posição de rolagem
+          window.scrollTo(0, this.state.scrollPositionBeforeModal);
+
+          // SEGUNDA ALTERAÇÃO: Se o modal foi aberto da página de favoritos, manter o usuário lá
+          if (
+            this.state.modalOpenedFromFavorites &&
+            this.state.showFavoritesPage
+          ) {
+            // Já estamos na página de favoritos, não fazer nada
+            this.state.modalOpenedFromFavorites = false;
+          }
+        }
+
+        setCategory(category, silent = false) {
+          this.state.currentCategory = category;
+          this.state.currentPage = 1;
+
+          document
+            .querySelectorAll(".filter-quantum[data-category]")
+            .forEach((btn) => {
+              const isActive = btn.dataset.category === category;
+              btn.classList.toggle("active", isActive);
+              btn.setAttribute("aria-selected", isActive);
+            });
+
+          this.filterAndSort();
+          this.showToast(
+            category === "all"
+              ? "🌌 EXPLORANDO TODO O MULTIVERSO NEXUS 13/10!"
+              : `🔍 FILTRO QUÂNTICO: ${categoryNames[category] || category}`,
+          );
+
+          this.closeModal();
+
+          if (!silent) {
+            localStorage.setItem("nexus_last_category_13", category);
+            localStorage.setItem("nexus_last_page_13", "1");
+          }
+        }
+
+        setSort(sortType, silent = false) {
+          this.state.currentSort = sortType;
+          const labels = {
+            original: "ORDEM QUÂNTICA",
+            "name-asc": "NOME (A-Z)",
+            "name-desc": "NOME (Z-A)",
+            "category-asc": "CATEGORIA (A-Z)",
+            "category-desc": "CATEGORIA (Z-A)",
+            random: "ALEATÓRIO QUÂNTICO",
+          };
+
+          if (this.elements.sortText) {
+            this.elements.sortText.textContent = labels[sortType];
+          }
+
+          if (this.elements.sortOptionsQuantum) {
+            this.elements.sortOptionsQuantum.style.display = "none";
+          }
+
+          if (this.elements.sortQuantum) {
+            this.elements.sortQuantum.setAttribute("aria-expanded", "false");
+          }
+
+          document
+            .querySelectorAll(".sort-option-quantum")
+            .forEach((option) => {
+              option.setAttribute(
+                "aria-selected",
+                option.dataset.sort === sortType,
+              );
+            });
+
+          this.filterAndSort();
+          this.showToast(`📊 ORDENAÇÃO: ${labels[sortType]}`);
+
+          if (!silent) {
+            localStorage.setItem("nexus_last_sort_13", sortType);
+          }
+        }
+
+        resetFilters() {
+          this.state.currentCategory = "all";
+          this.state.currentSort = "original";
+          this.state.currentPage = 1;
+
+          if (this.elements.sortText) {
+            this.elements.sortText.textContent = "ORDEM QUÂNTICA";
+          }
+
+          if (this.elements.sortOptionsQuantum) {
+            this.elements.sortOptionsQuantum.style.display = "none";
+          }
+
+          document
+            .querySelectorAll(".filter-quantum[data-category]")
+            .forEach((btn) => {
+              const isActive = btn.dataset.category === "all";
+              btn.classList.toggle("active", isActive);
+              btn.setAttribute("aria-selected", isActive);
+            });
+
+          document
+            .querySelectorAll(".sort-option-quantum")
+            .forEach((option) => {
+              option.setAttribute(
+                "aria-selected",
+                option.dataset.sort === "original",
+              );
+            });
+
+          this.filterAndSort();
+          this.showToast(
+            "🔄 REALIDADE REINICIADA • FILTROS QUÂNTICOS RESETADOS 13/10",
+          );
+          this.closeModal();
+
+          localStorage.setItem("nexus_last_category_13", "all");
+          localStorage.setItem("nexus_last_page_13", "1");
+          localStorage.setItem("nexus_last_sort_13", "original");
+        }
+
+        getTotalPages() {
+          return (
+            Math.ceil(
+              this.state.filteredCharacters.length / this.config.itemsPerPage,
+            ) || 1
+          );
+        }
+
+        goToPage(page, silent = false) {
+          const totalPages = this.getTotalPages();
+          if (page < 1) page = 1;
+          if (page > totalPages) page = totalPages;
+
+          this.state.currentPage = page;
+          this.renderCharacters();
+          this.scrollToCardsSection();
+
+          this.showToast(
+            `🚀 SALTO QUÂNTICO: FREQUÊNCIA ${page} DE ${totalPages}`,
+          );
+
+          if (!silent) {
+            localStorage.setItem("nexus_last_page_13", page.toString());
+          }
+        }
+
+        scrollToCardsSection() {
+          const cardsSection = document.querySelector(".quantum-grid-section");
+          if (cardsSection) {
+            const cardsSectionTop =
+              cardsSection.getBoundingClientRect().top + window.pageYOffset;
+
+            window.scrollTo({
+              top: cardsSectionTop - 100,
+              behavior: "smooth",
+            });
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }
+
+        updatePagination(totalPages) {
+          if (this.elements.totalPages) {
+            this.elements.totalPages.textContent = totalPages;
+          }
+
+          if (this.elements.quantumInput) {
+            this.elements.quantumInput.value = this.state.currentPage;
+            this.elements.quantumInput.max = totalPages;
+          }
+
+          if (this.elements.firstBtn) {
+            this.elements.firstBtn.disabled = this.state.currentPage === 1;
+          }
+
+          if (this.elements.prevBtn) {
+            this.elements.prevBtn.disabled = this.state.currentPage === 1;
+          }
+
+          if (this.elements.nextBtn) {
+            this.elements.nextBtn.disabled =
+              this.state.currentPage === totalPages;
+          }
+
+          if (this.elements.lastBtn) {
+            this.elements.lastBtn.disabled =
+              this.state.currentPage === totalPages;
+          }
+        }
+
+        updateStats() {
+          if (this.elements.totalCharacters) {
+            this.elements.totalCharacters.textContent = charactersData.length;
+          }
+
+          if (this.elements.visibleCharacters) {
+            this.elements.visibleCharacters.textContent =
+              this.state.filteredCharacters.length;
+          }
+          if (this.elements.currentPageDisplay) {
+            this.elements.currentPageDisplay.textContent =
+              this.state.currentPage;
+          }
+
+          document.querySelectorAll(".filter-badge").forEach((span) => {
+            const filterBtn = span.closest(".filter-quantum");
+            if (filterBtn) {
+              const category = filterBtn.dataset.category;
+              if (category === "all") {
+                span.textContent = charactersData.length;
+              } else {
+                const count = charactersData.filter(
+                  (char) => char.category === category,
+                ).length;
+                span.textContent = count;
+              }
+            }
+          });
+
+          this.favorites.updateFavoritesCount();
+          this.favorites.updateTerminalCount();
+        }
+
+        setupSortOptions() {
+          if (!this.elements.sortOptionsQuantum) return;
+
+          const sortOptions = [
+            {
+              value: "original",
+              label: "ORDEM QUÂNTICA ORIGINAL",
+              icon: "fa-atom",
+            },
+            {
+              value: "name-asc",
+              label: "NOME (A → Z)",
+              icon: "fa-sort-alpha-down",
+            },
+            {
+              value: "name-desc",
+              label: "NOME (Z → A)",
+              icon: "fa-sort-alpha-up",
+            },
+            {
+              value: "category-asc",
+              label: "CATEGORIA (A → Z)",
+              icon: "fa-layer-group",
+            },
+            {
+              value: "category-desc",
+              label: "CATEGORIA (Z → A)",
+              icon: "fa-layer-group fa-rotate-180",
+            },
+            { value: "random", label: "ALEATÓRIO QUÂNTICO", icon: "fa-random" },
+          ];
+
+          this.elements.sortOptionsQuantum.innerHTML = sortOptions
+            .map(
+              (option) => `
+                              <div class="sort-option-quantum" data-sort="${option.value}"
+                                  onclick="window.gallery.setSort('${option.value}')"
+                                  role="option"
+                                  aria-selected="${this.state.currentSort === option.value}">
+                                  <i class="fas ${option.icon}" style="color: var(--quantum-primary); font-size: 1.2rem;"></i>
+                                  <span>${option.label}</span>
+                              </div>
+                          `,
+            )
+            .join("");
+        }
+
+        initScrollAnimations() {
+          if (
+            typeof gsap !== "undefined" &&
+            typeof ScrollTrigger !== "undefined" &&
+            !CONFIG.REDUCE_MOTION
+          ) {
+            gsap.registerPlugin(ScrollTrigger);
+
+            ScrollTrigger.batch(".quantum-card", {
+              onEnter: (elements) => {
+                gsap.fromTo(
+                  elements,
+                  { opacity: 0, y: 50 },
+                  {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: "power3.out",
+                  },
+                );
+              },
+              once: true,
+            });
+          }
+        }
+
+        animateOnScroll() {
+          const cards = document.querySelectorAll(".quantum-card");
+          cards.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const isInView =
+              rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+            if (isInView) {
+              card.classList.add("animated");
+            }
+          });
+        }
+
+        scrollToTop() {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        toggleQuantumJump() {
+          if (!this.elements.quantumJump) return;
+          if (window.scrollY > 1200) {
+            this.elements.quantumJump.classList.add("show");
+          } else {
+            this.elements.quantumJump.classList.remove("show");
+          }
+        }
+
+        showToast(message) {
+          const toast = document.getElementById("quantumToast");
+          if (!toast) return;
+
+          toast.textContent = message;
+          toast.classList.add("show");
+          toast.removeAttribute("hidden");
+
+          if (typeof gsap !== "undefined" && !CONFIG.REDUCE_MOTION) {
+            gsap.fromTo(
+              toast,
+              { y: 100, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.6, ease: "back.out(1.7)" },
+            );
+          }
+
+          setTimeout(() => {
+            if (typeof gsap !== "undefined" && !CONFIG.REDUCE_Motion) {
+              gsap.to(toast, {
+                y: 100,
+                opacity: 0,
+                duration: 0.6,
+                ease: "power2.in",
+                onComplete: () => {
+                  toast.classList.remove("show");
+                  toast.setAttribute("hidden", "");
+                },
+              });
+            } else {
+              toast.classList.remove("show");
+              toast.setAttribute("hidden", "");
+            }
+          }, 3000);
+        }
+
+        setCurrentYear() {
+          const yearElement = document.getElementById("currentYear");
+          if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+          }
+        }
+
+        // ===== SISTEMA DE PÁGINAS (GALERIA/FAVORITOS) =====
+        toggleFavoritesPage() {
+          if (this.state.showFavoritesPage) {
+            this.showGalleryPage();
+          } else {
+            this.showFavoritesPage();
+          }
+        }
+
+        showFavoritesPage() {
+          this.state.showFavoritesPage = true;
+
+          // Ocultar galeria
+          if (this.elements.quantumUniverse) {
+            this.elements.quantumUniverse.style.display = "none";
+          }
+
+          // Mostrar página de favoritos
+          if (this.elements.quantumFavoritesPage) {
+            this.elements.quantumFavoritesPage.style.display = "block";
+            this.elements.quantumFavoritesPage.classList.add("active");
+            this.elements.quantumFavoritesPage.removeAttribute("hidden");
+          }
+
+          // Atualizar ícone do botão
+          const favoritesIcon = document.getElementById("favoritesIcon");
+          if (favoritesIcon) {
+            favoritesIcon.className = "fas fa-images";
+          }
+
+          // Atualizar título da página
+          document.title = "⭐ FAVORITOS 13/10 | NEXUS UNIVERSE";
+
+          // Renderizar favoritos
+          this.favorites.renderFavoritesPage();
+
+          // Rolar para o topo
+          window.scrollTo({ top: 0, behavior: "smooth" });
+
+          // Tocar som
+          this.audio.play("click");
+
+          this.showToast("⭐ ACESSANDO COLEÇÃO PESSOAL 13/10");
+        }
+
+        showGalleryPage() {
+          this.state.showFavoritesPage = false;
+
+          // Mostrar galeria
+          if (this.elements.quantumUniverse) {
+            this.elements.quantumUniverse.style.display = "block";
+          }
+
+          // Ocultar página de favoritos
+          if (this.elements.quantumFavoritesPage) {
+            this.elements.quantumFavoritesPage.style.display = "none";
+            this.elements.quantumFavoritesPage.classList.remove("active");
+            this.elements.quantumFavoritesPage.setAttribute("hidden", "");
+          }
+
+          // Atualizar ícone do botão
+          const favoritesIcon = document.getElementById("favoritesIcon");
+          if (favoritesIcon) {
+            favoritesIcon.className = "fas fa-heart";
+          }
+
+          // Atualizar título da página
+          document.title =
+            "🌌 NEXUS UNIVERSE 13/10 | Experiência Quântica Definitiva";
+
+          // Rolar para o topo
+          window.scrollTo({ top: 0, behavior: "smooth" });
+
+          // Tocar som
+          this.audio.play("click");
+
+          this.showToast("🌌 RETORNANDO À GALERIA PRINCIPAL");
+        }
+
+        cleanup() {
+          if (this.config.intersectionObserver) {
+            this.config.intersectionObserver.disconnect();
+          }
+          clearTimeout(this.config.scrollDebounce);
+        }
+      }
+
+      // ===== PRÉ-LOADER OTIMIZADO =====
+      class QuantumPreloader {
+        constructor() {
+          this.progress = 0;
+          this.cache = new QuantumCache();
+          this.init();
+        }
+
+        async init() {
+          this.setupElements();
+          await this.loadCriticalResources();
+          this.startLoading();
+        }
+
+        setupElements() {
+          this.elements = {
+            loader: document.getElementById("quantumLoader"),
+            progressBar: document.getElementById("progressBar"),
+            progressText: document.getElementById("progressText"),
+            universe: document.getElementById("quantumUniverse"),
+          };
+        }
+
+        async loadCriticalResources() {
+          if ("fonts" in document) {
+            await document.fonts.ready;
+          }
+        }
+
+        startLoading() {
+          const steps = [
+            { text: "Inicializando sistema quântico 13/10...", progress: 10 },
+            { text: "Carregando dados quânticos...", progress: 25 },
+            { text: "Estabilizando realidades...", progress: 40 },
+            { text: "Ativando filtros...", progress: 55 },
+            { text: "Renderizando entidades...", progress: 70 },
+            { text: "Otimizando performance...", progress: 85 },
+            { text: "Calibrando efeitos 13/10...", progress: 95 },
+            { text: "Pronto para explorar!", progress: 100 },
+          ];
+
+          let currentStep = 0;
+
+          const loadStep = () => {
+            if (currentStep < steps.length) {
+              const step = steps[currentStep];
+              this.progress = step.progress;
+              this.updateProgress(step.text);
+
+              setTimeout(() => {
+                currentStep++;
+                loadStep();
+              }, 300);
+            } else {
+              this.completeLoading();
+            }
+          };
+
+          loadStep();
+        }
+
+        updateProgress(message) {
+          if (this.elements.progressBar) {
+            this.elements.progressBar.style.width = `${this.progress}%`;
+          }
+          if (this.elements.progressText) {
+            this.elements.progressText.textContent = `${message} ${this.progress}%`;
+          }
+        }
+
+        completeLoading() {
+          requestAnimationFrame(() => {
+            if (this.elements.loader) {
+              this.elements.loader.style.opacity = "0";
+              setTimeout(() => {
+                this.elements.loader.style.display = "none";
+                this.showContent();
+              }, 500);
+            }
+          });
+        }
+
+        showContent() {
+          if (this.elements.universe) {
+            this.elements.universe.style.opacity = "1";
+            this.elements.universe.style.visibility = "visible";
+
+            if (typeof gsap !== "undefined" && !CONFIG.REDUCE_MOTION) {
+              gsap.fromTo(
+                this.elements.universe,
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+              );
+            }
+
+            this.initSystems();
+          }
+        }
+
+        initSystems() {
+          window.gallery = new QuantumGallery(this.cache);
+          this.lazyLoadHeavySystems();
+        }
+
+        lazyLoadHeavySystems() {
+          if (CONFIG.USE_THREE_JS && typeof THREE !== "undefined") {
+            requestIdleCallback(
+              () => {
+                this.initThreeJS();
+              },
+              { timeout: 5000 },
+            );
+          }
+
+          if (CONFIG.USE_PARTICLES && !CONFIG.IS_MOBILE) {
+            requestIdleCallback(
+              () => {
+                this.initParticles();
+              },
+              { timeout: 3000 },
+            );
+          }
+        }
+
+        initThreeJS() {
+          const canvas = document.getElementById("three-canvas");
+          if (!canvas) return;
+
+          try {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(
+              75,
+              window.innerWidth / window.innerHeight,
+              0.1,
+              1000,
+            );
+            const renderer = new THREE.WebGLRenderer({
+              canvas,
+              alpha: true,
+              antialias: !CONFIG.IS_MOBILE,
+              powerPreference: "high-performance",
+            });
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+            camera.position.z = 15;
+
+            const particlesCount = CONFIG.IS_MOBILE ? 500 : 1500;
+            const particlesGeometry = new THREE.BufferGeometry();
+            const posArray = new Float32Array(particlesCount * 3);
+
+            for (let i = 0; i < particlesCount * 3; i++) {
+              posArray[i] = (Math.random() - 0.5) * 40;
+            }
+
+            particlesGeometry.setAttribute(
+              "position",
+              new THREE.BufferAttribute(posArray, 3),
+            );
+
+            const particlesMaterial = new THREE.PointsMaterial({
+              size: 0.08,
+              color: 0x00ffea,
+              transparent: true,
+              opacity: 0.4,
+            });
+
+            const particlesMesh = new THREE.Points(
+              particlesGeometry,
+              particlesMaterial,
+            );
+            scene.add(particlesMesh);
+
+            function animate() {
+              requestAnimationFrame(animate);
+              particlesMesh.rotation.x += 0.0003;
+              particlesMesh.rotation.y += 0.0007;
+              renderer.render(scene, camera);
+            }
+
+            let resizeTimeout;
+            window.addEventListener("resize", () => {
+              clearTimeout(resizeTimeout);
+              resizeTimeout = setTimeout(() => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+              }, 250);
+            });
+
+            animate();
+          } catch (error) {
+            console.warn("Three.js não pôde ser inicializado:", error);
+          }
+        }
+
+        initParticles() {
+          const container = document.getElementById("particles-container");
+          if (!container) return;
+
+          const particleCount = CONFIG.IS_MOBILE ? 60 : 120;
+
+          for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement("div");
+            particle.className = "title-particle";
+
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 4 + 1;
+            const duration = Math.random() * 4 + 2;
+            const delay = Math.random() * 5;
+
+            particle.style.left = `${x}%`;
+            particle.style.top = `${y}%`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+
+            const colors = [
+              "var(--quantum-primary)",
+              "var(--quantum-secondary)",
+              "var(--quantum-accent)",
+              "var(--quantum-danger)",
+              "var(--quantum-success)",
+            ];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = color;
+            particle.style.opacity = "0.3";
+
+            container.appendChild(particle);
+          }
+        }
+      }
+
+      // ===== INICIALIZAÇÃO =====
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("🚀 DOM Carregado - Iniciando Nexus Universe 13/10");
+
+        new QuantumPreloader();
+
+        const yearElement = document.getElementById("currentYear");
+        if (yearElement) {
+          yearElement.textContent = new Date().getFullYear();
+        }
+
+        document.documentElement.classList.add("js-enabled");
+
+        console.log("✅ Sistema 13/10 inicializado com sucesso");
+      });
+
+      if (
+        "serviceWorker" in navigator &&
+        window.location.protocol === "https:"
+      ) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js").catch(() => {});
+        });
+      }
+
+      window.addEventListener("beforeunload", () => {
+        if (window.gallery) {
+          window.gallery.cleanup();
+        }
+      });
+
+      window.gallery = null;
+      window.CONFIG = CONFIG;
+
+      window.debugImages = function () {
+        console.log("🔄 Verificando status das imagens...");
+        charactersData.forEach((char) => {
+          console.log(`${char.id}. ${char.name}: ${char.image}`);
+        });
+
+        if (window.gallery && window.gallery.cache) {
+          console.log(
+            `📊 Cache: ${window.gallery.cache.imageCache.size} imagens em cache`,
+          );
+          console.log(
+            `❌ Falhas: ${window.gallery.cache.failedImages.size} imagens falharam`,
+          );
+        }
+      };
+    </script>
+  </body>
+</html>
