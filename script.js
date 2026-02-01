@@ -993,7 +993,7 @@ const charactersData = [
     id: 56,
     name: "Gon Freecss",
     category: "HXH",
-    image: "img/HXH/Gon-1.png",
+    image: "img/hxh/Gon-1.png",
     description:
       "Protagonista de Hunter x Hunter, um jovem determinado a se tornar um Hunter como seu pai e descobrir os segredos do mundo.",
     details: {
@@ -1461,7 +1461,7 @@ const charactersData = [
     id: 82,
     name: "Hisoka Morow",
     category: "HXH",
-    image: "img/HXH/Hisoka-1.png",
+    image: "img/hxh/Hisoka-1.png",
     description:
       "Mago e Hunter que vive para encontrar oponentes dignos, usuário das habilidades Bungee Gum e Texture Surprise.",
     details: {
@@ -1677,7 +1677,7 @@ const charactersData = [
     id: 94,
     name: "Meruem",
     category: "HXH",
-    image: "img/HXH/Meruem-1.png",
+    image: "img/hxh/Meruem-1.png",
     description:
       "Rei das Formigas Quimera, criatura com inteligência e poder incomparáveis que evolui rapidamente ao absorver habilidades de outros.",
     details: {
@@ -1983,7 +1983,7 @@ const charactersData = [
     id: 111,
     name: "Neferpitou",
     category: "HXH",
-    image: "img/HXH/Neferpitou-2.png",
+    image: "img/hxh/Neferpitou-2.png",
     description:
       "Guarda Real das Formigas Quimera especializada em habilidades de médico e combate, possuindo o Nen mais refinado entre os Guardas.",
     details: {
@@ -3208,7 +3208,7 @@ const charactersData = [
     id: 178,
     name: "VEGETA",
     category: "Dragon-Ball",
-    image: "Dragon-Ball/Vegeta-1.png",
+    image: "img/Dragon-Ball/Vegeta-1.png",
     description:
       "Orgulhoso príncipe dos Saiyajins, Vegeta é um guerreiro extremamente poderoso que evolui constantemente, movido por rivalidade, honra e o desejo de superar seus próprios limites.",
     details: {
@@ -3370,7 +3370,7 @@ const charactersData = [
     id: 188, // Continuando a sequência
     name: "RYUEN KAKERU",
     category: "Classroom-of-the-Elite",
-    image: "img/Classroom-of-the-Elite/ryuen-kakeru-1.png",
+    image: "img/classroom-of-the-elite/ryuen-kakeru-1.png",
     description:
       "Líder agressivo e impiedoso da Classe C da Advanced Nurturing High School. Conhecido por sua abordagem violenta para resolver problemas e táticas de intimidação para alcançar objetivos.",
     details: {
@@ -3535,7 +3535,7 @@ const charactersData = [
     id: 197,
     name: "MAJIN BOO",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/Majin-Boo-1.png",
+    image: "img/Dragon-Ball/majin-boo-1.png",
     description:
       "Entidade mágica criada pelo mago Bibidi há milhões de anos. Possui múltiplas formas com diferentes personalidades e poderes, incluindo habilidades de regeneração, absorção e transformação.",
     details: {
@@ -3837,7 +3837,7 @@ const charactersData = [
     id: 213, // Continuando a sequência
     name: "KURAPIKA",
     category: "HXH",
-    image: "img/HXH/Kurapika-1.png",
+    image: "img/hxh/Kurapika-1.png",
     description:
       "Último sobrevivente do clã Kurta, caçador especializado em recuperar os olhos escarlates de seu povo. Desenvolveu habilidades de Nen específicas para combater a Tropa Fantasma.",
     details: {
@@ -3930,7 +3930,7 @@ const charactersData = [
     id: 218, // Continuando a sequência
     name: "GOWTHER ORIGINAL",
     category: "Nanatsu",
-    image: "img/Taizai/Gowther-Original-1.png",
+    image: "img/Taizai/gowther-Original-1.png",
     description:
       "O grande mago que criou o autômato Gowther, mestre supremo da magia mental e emocional. Um dos magos mais poderosos da era dos deuses, responsável por pesquisas proibidas sobre emoções e alma.",
     details: {
@@ -4041,7 +4041,7 @@ const charactersData = [
     id: 224,
     name: "ILLAOI",
     category: "League of Legend",
-    image: "img/lol/Illaoi-1.png",
+    image: "img/lol/illaoi-1.png",
     description:
       "Sacerdotisa do Grande Kraken de Bilgewater, que testa o espírito dos mortais para determinar se são dignos. Utiliza um ídolo divino que invoca tentáculos espirituais para atacar seus inimigos.",
     details: {
@@ -4060,7 +4060,7 @@ const charactersData = [
     id: 225,
     name: "GRUNBELD",
     category: "Berserk",
-    image: "img/Berserk/Grunbeld-1.png",
+    image: "img/Berserk/grunbeld-1.png",
     description:
       "Um dos apóstolos mais poderosos, comandante da nova Tropa do Falcão sob Griffith. Em sua forma apóstolo, transforma-se em um dragão de cristal praticamente indestrutível.",
     details: {
@@ -4079,7 +4079,7 @@ const charactersData = [
     id: 226, // Continuando a sequência
     name: "SILVA ZOLDYCK",
     category: "HXH",
-    image: "img/hxh/Silva-Zoldyck-1.png",
+    image: "img/hxh/silva-zoldyck-1.png",
     description:
       "Chefe da Família Zoldyck, uma das famílias de assassinos mais temidas do mundo. Pai de Killua Zoldyck e mestre em técnicas de assassinato usando Nen. Conhecido por sua força implacável e ética profissional rigorosa.",
     details: {
@@ -4259,7 +4259,7 @@ const charactersData = [
     id: 236, // Continuando a sequência (considerando Hashirama como 235)
     name: "KEI KARUIZAWA",
     category: "Classroom-of-the-Elite",
-    image: "img/Classroom-of-the-Elite/Kei-Karuizawa-1.png",
+    image: "img/classroom-of-the-elite/Kei-Karuizawa-1.png",
     description:
       "Estudante popular da Classe D da Advanced Nurturing High School, conhecida por seu estilo fashion e influência social. Por trás da fachada confiante, esconde traumas de bullying e desenvolve uma complexa relação com Kiyotaka Ayanokōji.",
     details: {
@@ -4333,7 +4333,7 @@ const charactersData = [
     id: 240, // Continuando a sequência
     name: "KITE",
     category: "HXH",
-    image: "img/HXH/Kite-1.png",
+    image: "img/hxh/Kite-1.png",
     description:
       "Hunter profissional e ex-aluno de Ging Freecss, que se torna mentor de Gon. Portador de uma habilidade de Nen única com sua arma 'Crazy Slots' que gira aleatoriamente para diferentes armas. Conhecido por seu senso de responsabilidade e ética como hunter.",
     details: {
