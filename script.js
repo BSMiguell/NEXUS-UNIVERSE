@@ -3706,7 +3706,7 @@ const charactersData = [
     id: 206,
     name: "KUSHINA UZUMAKI",
     category: "Naruto",
-    image: "img/Naruto/Kushina-Uzumaki-1.png",
+    image: "img/Naruto/Kushina.png",
     description:
       "Mãe de Naruto Uzumaki e ex-jinchūriki do Nove-Caudas. Membro do clã Uzumaki conhecida por seu cabelo vermelho vibrante, personalidade forte e habilidades de selamento excepcionais.",
     details: {
@@ -3875,7 +3875,7 @@ const charactersData = [
     id: 215,
     name: "ROB LUCCI",
     category: "One-Piece",
-    image: "img/One-Piece/Rob-Lucci-2.png",
+    image: "img/One-Piece/Rob.png",
     description:
       "Agente do CP9 e posteriormente CP0, considerado o assassino mais letal do Governo Mundial. Usuário da Neko Neko no Mi, Modelo: Leopardo e mestre do Rokushiki.",
     details: {
@@ -4426,7 +4426,7 @@ const charactersData = [
     id: 245, // Continuando a sequência
     name: "OZAI",
     category: "Avatar",
-    image: "img/Avatar/Ozai-1.png",
+    image: "img/Avatar/Ozai.png",
     description:
       "Senhor do Fogo da Nação do Fogo durante a Guerra dos Cem Anos e principal antagonista da série. Pai de Zuko e Azula, conhecido por sua crueldade, ambição desmedida e desejo de dominar o mundo. Considerado um dos dobradores de fogo mais poderosos da história.",
     details: {
