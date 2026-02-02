@@ -4517,4 +4517,42 @@ const charactersData = [
       nível: "S", // Nível alto com domínio malevolente único
     },
   },
+
+  // HARIMAU (Ashita no Joe)
+  {
+    id: 250, // Continuando a sequência (Diego 248, Higuruma 249)
+    name: "HARIMAU",
+    category: "Ashita-no-Joe",
+    image: "img/Ashita-no-Joe/Harimau-1.png",
+    description:
+      "Boxeador indonésio que enfrenta Joe Yabuki em uma luta internacional, conhecido por seu apelido que significa 'Tigre' em indonésio/malaio. Representa o desafio dos boxeadores do sudeste asiático na carreira internacional de Joe.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Estilo de Boxe Agressivo, Força Física",
+      status: "Boxeador Profissional - Internacional",
+      estreia: 1971, // Ashita no Joe Parte 2
+      técnica: "Boxe Ofensivo",
+      nível: "B+", // Nível médio para boxeador internacional
+    },
+  },
+
+  // KING (One Piece)
+  {
+    id: 251,
+    name: "KING",
+    category: "One-Piece",
+    image: "img/One-Piece/king-1.png",
+    description:
+      "Calamidade mais forte dos Piratas das Feras e braço direito de Kaido. Último sobrevivente da raça Lunarian, possui habilidades únicas como geração de fogo, durabilidade extrema e capacidade de voo. Conhecido por sua lealdade absoluta a Kaido.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Habilidades Lunarian, Geração de Fogo, Forma de Pteranodon, Haki Avançado",
+      status: "Calamidade - Braço Direito de Kaido",
+      estreia: 2018, // One Piece Capítulo 925
+      recompensa: "฿1,390,000,000",
+      afinidade: "Fogo/Lunarian",
+      nível: "S+", // Nível muito alto como Calamidade mais forte
+    },
+  },
 ];
