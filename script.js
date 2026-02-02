@@ -4672,4 +4672,42 @@ const charactersData = [
       nível: "B+", // Nível médio-alto como estudante competente
     },
   },
+
+  // AANG (Avatar) - NOVO
+  {
+    id: 258, // Continuando a sequência
+    name: "AANG",
+    category: "Avatar",
+    image: "img/Avatar/Aang-1.png",
+    description:
+      "O Avatar e último mestre do ar sobrevivente do genocídio dos Nômades do Ar. Descoberto após 100 anos congelado em um iceberg, embarca em uma jornada para dominar os quatro elementos e restaurar o equilíbrio ao mundo, terminando a Guerra dos Cem Anos.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra dos Quatro Elementos, Estado Avatar, Energia",
+      status: "Avatar - O Último Mestre do Ar",
+      estreia: 2005, // Avatar: The Last Airbender
+      recompensa: "N/A",
+      afinidade: "Ar (elemento nativo)",
+      nível: "SS", // Nível muito alto como Avatar completo
+    },
+  },
+
+  {
+    id: 259, // Continuando a sequência
+    name: "JOSUKE HIGASHIKATA (JOJOLION)",
+    category: "jojo",
+    image: "img/Jojo/josuke-higashikata-part-8.png",
+    description:
+      "Protagonista de JoJo's Bizarre Adventure Part 8: JoJolion. Um amnésico encontrado enterrado em Morioh com o nome 'Josuke Higashikata', na verdade uma fusão de Josefumi Kujo e Yoshikage Kira (universo alternativo). Usuário do Stand Soft & Wet.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      parte: "JoJolion (Part 8)",
+      poder: "Stand Soft & Wet, Roubo de Propriedades, Bolhas Explosivas",
+      status: "Protagonista - Amnésico / Fusão",
+      estreia: 2011, // JoJolion Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Fusão/Bolhas",
+      nível: "S+", // Nível alto como protagonista com Stand único
+    },
+  },
 ];
