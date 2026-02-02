@@ -4477,4 +4477,44 @@ const charactersData = [
       nível: "S", // Nível alto como apóstolo especializado
     },
   },
+
+  // DIEGO BRANDO (Jojo - Steel Ball Run) - NOVO
+  {
+    id: 248, // Continuando a sequência
+    name: "DIEGO BRANDO",
+    category: "jojo",
+    image: "img/Jojo/Diego-Brando-1.png",
+    description:
+      "Cavaleiro britânico que participa da Steel Ball Run, versão alternativa de Dio Brando em um universo paralelo. Extremamente competitivo e ambicioso, inicialmente sem Stand, mas posteriormente adquire o Stand Scary Monsters que lhe permite transformar-se em dinossauro.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder:
+        "Stand Scary Monsters, Transformação em Dinossauro, Habilidades de Cavalaria",
+      status: "Cavaleiro - Competidor da Steel Ball Run",
+      estreia: 2004, // Steel Ball Run Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Competição/Dinossauros",
+      nível: "A+", // Nível médio-alto, abaixo de Funny Valentine
+    },
+  },
+
+  // HIROMI HIGURUMA (Jujutsu Kaisen) - NOVO
+  {
+    id: 249,
+    name: "HIROMI HIGURUMA",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Hiromi-Higuruma-1.png",
+    description:
+      "Ex-advogado que se tornou um usuário de maldição após a morte de um cliente. Conhecido como 'Juiz Amaldiçoado', possui a técnica amaldiçoada 'Deadly Sentencing' que cria um domínio de tribunal onde julga e penaliza seus oponentes baseado em suas infrações.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Técnica Amaldiçoada: Deadly Sentencing, Domínio Malevolente, Manipulação Judicial",
+      status: "Usuário de Maldição - Ex-Advogado",
+      estreia: 2021, // Jujutsu Kaisen Capítulo 158
+      recompensa: "N/A",
+      afinidade: "Justiça/Julgamento",
+      nível: "S", // Nível alto com domínio malevolente único
+    },
+  },
 ];
