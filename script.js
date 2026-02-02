@@ -4555,4 +4555,44 @@ const charactersData = [
       nível: "S+", // Nível muito alto como Calamidade mais forte
     },
   },
+
+  // POWER (Chainsaw Man)
+  {
+    id: 252, // Continuando a sequência
+    name: "POWER",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Power-1.png",
+    description:
+      "Demônio do Sangue que faz um contrato com Denji para se tornar uma humana-demoníaca. Conhecida por sua personalidade egoísta, preguiçosa e obsessão por gatos, mas desenvolve um vínculo genuíno com Denji e Aki. Capaz de manipular sangue para criar armas.",
+    details: {
+      universo: "Chainsaw Man",
+      poder:
+        "Manipulação de Sangue, Transformação de Sangue em Armas, Contrato Demoníaco",
+      status: "Demônio do Sangue - Ex-Membro da Divisão de Demônios Especiais",
+      estreia: 2019, // Chainsaw Man Capítulo 6
+      recompensa: "N/A",
+      afinidade: "Sangue/Egoísmo",
+      nível: "A+", // Nível médio-alto como demônio do sangue
+    },
+  },
+
+  // JULIUS NOVACHRONO (Black Clover)
+  {
+    id: 253,
+    name: "JULIUS NOVACHRONO",
+    category: "Black Clover",
+    image: "img/Black Clover/Julius-Novachrono-1.png",
+    description:
+      "28º Mago Imperador do Reino do Trifolium, conhecido como o mago mais forte do reino. Usuário da rara magia do tempo, capaz de manipular, acelerar, desacelerar e parar o tempo. Excêntrico e colecionador de magias únicas.",
+    details: {
+      universo: "Black Clover",
+      poder:
+        "Magia do Tempo, Aceleração/Desaceleração Temporal, Parada do Tempo",
+      status: "Mago Imperador - Líder do Reino do Trifolium",
+      estreia: 2015, // Black Clover Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Tempo",
+      nível: "SSS", // Nível máximo como Mago Imperador e usuário de magia do tempo
+    },
+  },
 ];
