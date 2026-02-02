@@ -4439,4 +4439,42 @@ const charactersData = [
       nível: "S+", // Nível muito alto como vilão final e mestre de fogo
     },
   },
+
+  // YRUL (Black Clover)
+  {
+    id: 246, // Continuando a sequência
+    name: "YRUL",
+    category: "Black Clover",
+    image: "img/Black Clover/yrul-1.png",
+    description:
+      "Personagem do universo de Black Clover, envolvido nas batalhas mágicas do Reino do Trifolium. Utiliza magia única dentro do sistema de magia do mundo, participando dos conflitos entre os reinos mágicos.",
+    details: {
+      universo: "Black Clover",
+      poder: "Magia Específica de Yrul",
+      status: "Ativo - Usuário de Magia",
+      estreia: 2015, // Black Clover início
+      recompensa: "N/A",
+      afinidade: "Magia",
+      nível: "A", // Nível médio-alto para personagem de Black Clover
+    },
+  },
+
+  // IRVINE (Berserk)
+  {
+    id: 247,
+    name: "IRVINE",
+    category: "Berserk",
+    image: "img/Berserk/Irvine-1.png",
+    description:
+      "Apóstolo que serve a Griffith na nova Tropa do Falcão, conhecido como o 'Arqueiro Silencioso'. Em sua forma apóstolo, transforma-se em um centauro com habilidades de arqueiro excepcionais, capaz de atirar flechas a distâncias extremas com precisão mortal.",
+    details: {
+      universo: "Berserk",
+      poder: "Arqueiro Supremo, Transformação em Centauro, Sentidos Aguçados",
+      status: "Apóstolo - Arqueiro da Tropa do Falcão",
+      estreia: 1999, // Berserk Volume 27
+      recompensa: "N/A",
+      afinidade: "Arco/Flecha",
+      nível: "S", // Nível alto como apóstolo especializado
+    },
+  },
 ];
