@@ -4634,4 +4634,42 @@ const charactersData = [
       nível: "S+", // Nível muito alto como "soldado mais forte"
     },
   },
+
+  // KHAL DROGO (Game of Thrones)
+  {
+    id: 256, // Continuando a sequência
+    name: "KHAL DROGO",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Khal-Drogo-1.png",
+    description:
+      "Khal (líder) dos Dothraki, considerado o guerreiro mais forte entre seu povo. Marido de Daenerys Targaryen, conhecido por sua força física impressionante, habilidades de combate excepcionais e liderança incontestável sobre o maior khalasar.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Força Física Extrema, Habilidades de Combate Dothraki, Liderança",
+      status: "Khal dos Dothraki - Falecido",
+      estreia: 1996, // A Game of Thrones (livro)
+      recompensa: "N/A",
+      afinidade: "Força/Honra Dothraki",
+      nível: "A+", // Nível alto como guerreiro mais forte dos Dothraki
+    },
+  },
+
+  // SUZUNE HORIKITA (Classroom of the Elite)
+  {
+    id: 257,
+    name: "SUZUNE HORIKITA",
+    category: "Classroom-of-the-Elite",
+    image: "img/classroom-of-the-elite/Suzune-Horikita-1.png",
+    description:
+      "Estudante da Classe D conhecida por sua personalidade fria, independente e altas habilidades acadêmicas. Irmã mais nova de Manabu Horikita, inicialmente desinteressada em socializar mas gradualmente se abre ao trabalhar com outros estudantes.",
+    details: {
+      universo: "Classroom of the Elite",
+      poder: "Inteligência Acadêmica, Independência, Habilidades Analíticas",
+      status: "Estudante - Classe D",
+      estreia: 2015, // Classroom of the Elite Light Novel Volume 1
+      recompensa: "N/A",
+      afinidade: "Independência",
+      nível: "B+", // Nível médio-alto como estudante competente
+    },
+  },
 ];
