@@ -4595,4 +4595,43 @@ const charactersData = [
       nível: "SSS", // Nível máximo como Mago Imperador e usuário de magia do tempo
     },
   },
+
+  // RICHTER BELMONT (Castlevania)
+  {
+    id: 254, // Continuando a sequência
+    name: "RICHTER BELMONT",
+    category: "Castlevania",
+    image: "img/castlevania/Richter-Belmont-1.png",
+    description:
+      "Descendente da família Belmont e um dos caçadores de vampiros mais famosos da linhagem. Protagonista de Castlevania: Rondo of Blood e Symphony of the Night. Conhecido por sua agilidade excepcional e domínio do chicote Vampire Killer.",
+    details: {
+      universo: "Castlevania",
+      poder: "Chicote Vampire Killer, Artes Marciais Belmont, Magias Sagradas",
+      status: "Caçador de Vampiros - Descendente de Belmont",
+      estreia: 1993, // Castlevania: Rondo of Blood
+      recompensa: "N/A",
+      afinidade: "Caça a Vampiros",
+      nível: "S", // Nível alto como Belmont experiente
+    },
+  },
+
+  // LEVI ACKERMAN (Shingeki no Kyojin)
+  {
+    id: 255,
+    name: "LEVI ACKERMAN",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/Levi-Ackerman-1.png",
+    description:
+      "Capitão do Esquadrão de Operações Especiais e considerado o soldado mais forte da humanidade. Membro da família Ackerman com habilidades sobre-humanas, especialista em combate com equipamento de manobra tridimensional e eliminação de titãs.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      poder:
+        "Habilidades Ackerman, Agilidade Sobrenatural, Combate com Equipamento Tridimensional",
+      status: "Capitão - Esquadrão de Operações Especiais",
+      estreia: 2009, // Shingeki no Kyojin Capítulo 3
+      recompensa: "N/A",
+      afinidade: "Combate/Limpeza",
+      nível: "S+", // Nível muito alto como "soldado mais forte"
+    },
+  },
 ];
