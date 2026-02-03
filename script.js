@@ -3629,7 +3629,7 @@ const charactersData = [
     id: 202,
     name: "ROCKS D. XEBEC",
     category: "One-Piece",
-    image: "img/One-Piece/Rocks-D-Xebec-1.png",
+    image: "img/One-Piece/Rocks-D-Xebec-2.png",
     description:
       "Lendário capitão pirata da era anterior a Roger, líder dos Piratas Rocks. Tinha em sua tripulação futuros Yonko como Big Mom, Kaido e Barba Branca.",
     details: {
@@ -4708,6 +4708,63 @@ const charactersData = [
       recompensa: "N/A",
       afinidade: "Fusão/Bolhas",
       nível: "S+", // Nível alto como protagonista com Stand único
+    },
+  },
+
+  // UVOGIN (Hunter x Hunter)
+  {
+    id: 260, // Continuando a sequência
+    name: "UVOGIN",
+    category: "HXH",
+    image: "img/hxh/Uvogin-1.png",
+    description:
+      "Membro número 11 da Tropa Fantasma e especialista em Nen de Reforço. Conhecido por sua força física monstruosa e personalidade agressiva. Considerado o membro mais forte fisicamente da Tropa, capaz de destruir edifícios com seus punhos.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Nen - Reforço Extremo, Força Física Colossal, Big Bang Impact",
+      status: "Membro da Tropa Fantasma - Falecido",
+      estreia: 1999, // Hunter x Hunter Capítulo 70
+      recompensa: "N/A",
+      afinidade: "Força Bruta",
+      nível: "S", // Nível alto como especialista em reforço
+    },
+  },
+
+  // SOSUKE AIZEN (Bleach)
+  {
+    id: 261,
+    name: "SOSUKE AIZEN",
+    category: "Bleach",
+    image: "img/Bleach/Sosuke-Aizen-1.png",
+    description:
+      "Antagonista principal de Bleach, ex-capitão da 5ª Divisão que planejou todos os eventos da série. Usuário da Zanpakutō Kyōka Suigetsu com habilidade de ilusão perfeita, e posteriormente alcança um estado evolutivo além de Shinigami e Hollow.",
+    details: {
+      universo: "Bleach",
+      poder:
+        "Kyōka Suigetsu (Ilusão Completa), Reiatsu Monstruoso, Evolução Transcendente",
+      status: "Antagonista - Prisioneiro da Sociedade de Almas",
+      estreia: 2002, // Bleach Capítulo 50
+      recompensa: "N/A",
+      afinidade: "Ilusão/Evolução",
+      nível: "SSS", // Nível máximo como vilão principal transcendente
+    },
+  },
+
+  // JOSE MENDOZA (Ashita no Joe)
+  {
+    id: 262,
+    name: "JOSE MENDOZA",
+    category: "Ashita-no-Joe",
+    image: "img/Ashita-no-Joe/Jose-Mendosa-1.png",
+    description:
+      "Campeão mundial de boxe dos pesos-médios e oponente final de Joe Yabuki. Conhecido como 'O Imperador', representa o auge do boxe mundial e o maior desafio na carreira de Joe. Luta com estilo técnico e experiência incomparável.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Técnica de Boxe Perfeita, Experiência Mundial, Estratégia",
+      status: "Campeão Mundial de Boxe",
+      estreia: 1972, // Ashita no Joe Parte 2 (final)
+      técnica: "Boxe Técnico Perfeito",
+      nível: "S", // Nível alto como campeão mundial
     },
   },
 ];
