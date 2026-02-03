@@ -4826,4 +4826,62 @@ const charactersData = [
       nível: "SS+", // Nível muito alto como maldição de grau especial
     },
   },
+
+  {
+    id: 266, // Continuando a sequência
+    name: "BOA HANCOCK",
+    category: "One-Piece",
+    image: "img/One-Piece/Boa-Hancock-1.png",
+    description:
+      "Imperatriz das Amazonas Kuja, Shichibukai (ex), e conhecida como a 'Mulher Mais Bela do Mundo'. Usuária da Mero Mero no Mi (Fruta do Amor) que permite petrificar quem a deseje. Apaixonada por Monkey D. Luffy e líder das Kuja Pirates.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Mero Mero no Mi (Fruta do Amor), Haki dos Três Tipos, Combate com Chutes",
+      status: "Imperatriz - Líder das Amazonas Kuja",
+      estreia: 2008, // One Piece Capítulo 516
+      recompensa: "฿1,659,000,000 (pós-dissolução Shichibukai)",
+      afinidade: "Amor/Beleza",
+      nível: "S+", // Nível muito alto como ex-Shichibukai e usuária de Haki avançado
+    },
+  },
+
+  // HIMENO (Chainsaw Man)
+  {
+    id: 267, // Continuando a sequência
+    name: "HIMENO",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Himeno-1.png",
+    description:
+      "Caçadora de demônios da Divisão de Demônios Especiais e parceira de Aki Hayakawa. Possui um contrato com o Demônio do Fantasma que lhe concede um olho fantasma e a habilidade de usar o poder do fantasma. Conhecida por seu comportamento descontraído e relação próxima com Aki.",
+    details: {
+      universo: "Chainsaw Man",
+      poder:
+        "Contrato com Demônio do Fantasma, Olho Fantasma, Experiência em Combate",
+      status: "Caçadora de Demônios - Divisão Especial",
+      estreia: 2019, // Chainsaw Man Capítulo 12
+      recompensa: "N/A",
+      afinidade: "Fantasma/Lealdade",
+      nível: "B+", // Nível médio-alto como caçadora experiente
+    },
+  },
+
+  // JESTER GARANDROS (Black Clover) - NOVO
+  {
+    id: 268,
+    name: "JESTER GARANDROS",
+    category: "Black Clover",
+    image: "img/Black Clover/Jester-Garandros-1.png",
+    description:
+      "Mago do Reino do Trifolium com habilidades mágicas únicas no universo de Black Clover. Participa das batalhas mágicas e eventos do reino, utilizando magia especializada dentro do sistema de magia do mundo.",
+    details: {
+      universo: "Black Clover",
+      poder: "Magia Específica de Jester Garandros",
+      status: "Mago - Reino do Trifolium",
+      estreia: 2015, // Black Clover início
+      recompensa: "N/A",
+      afinidade: "Magia",
+      nível: "A", // Nível médio-alto para mago de Black Clover
+    },
+  },
 ];
