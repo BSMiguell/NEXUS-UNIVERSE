@@ -4884,4 +4884,81 @@ const charactersData = [
       nível: "A", // Nível médio-alto para mago de Black Clover
     },
   },
+
+  // BANG (One Punch Man)
+  {
+    id: 269, // Continuando a sequência
+    name: "BANG",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Bang-1.png",
+    description:
+      "Herói profissional Classe S Rank 3, conhecido como 'Silver Fang'. Mestre das artes marciais e fundador do dojo de artes marciais 'Bang dojo'. Considerado um dos heróis mais fortes mesmo entre os Classe S, especialista no estilo de luta 'Flowing Water Crushing Rock'.",
+    details: {
+      universo: "One Punch Man",
+      poder:
+        "Artes Marciais de Nível Divino, Velocidade Extrema, Técnica 'Abandonment'",
+      status: "Herói Classe S Rank 3 - Mestre de Artes Marciais",
+      estreia: 2012, // One Punch Man Webcomic Capítulo 15
+      recompensa: "N/A",
+      afinidade: "Artes Marciais",
+      nível: "SS+", // Nível muito alto como top 3 Classe S
+    },
+  },
+
+  // JAIME LANNISTER (Game of Thrones)
+  {
+    id: 270,
+    name: "JAIME LANNISTER",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Jaime-Lannister-1.png",
+    description:
+      "Membro da Casa Lannister, conhecido como 'O Matador de Reis' por assassinar o Rei Louco Aerys II Targaryen. Considerado um dos melhores espadachins de Westeros antes de perder a mão direita. Irmão gêmeo de Cersei Lannister com quem tem um relacionamento incestuoso.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Espadachim Excepcional, Estratégia Militar, Coragem",
+      status: "Lord Comandante da Guarda Real - Falecido",
+      estreia: 1996, // A Game of Thrones (livro)
+      recompensa: "N/A",
+      afinidade: "Espada/Honra",
+      nível: "A+", // Nível alto como um dos melhores espadachins
+    },
+  },
+
+  // M. BISON (Street Fighter)
+  {
+    id: 271, // Continuando a sequência
+    name: "M. BISON",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/M-Bison-1.png",
+    description:
+      "Ditador e líder da organização criminosa Shadaloo, principal antagonista da série Street Fighter. Utiliza o poder psico (Psycho Power) que lhe concede habilidades sobre-humanas como telecinese, voo e projeção de energia. Busca dominar o mundo através de seu exército.",
+    details: {
+      universo: "Street Fighter",
+      poder: "Psycho Power, Telecinese, Voo, Projeção de Energia",
+      status: "Antagonista - Líder da Shadaloo",
+      estreia: 1991, // Street Fighter II
+      técnica: "Psycho Crusher, Head Press, Devil Reverse",
+      nível: "SS", // Nível muito alto como vilão principal com poderes psíquicos
+    },
+  },
+
+  // MIKASA ACKERMAN (Shingeki no Kyojin)
+  {
+    id: 272,
+    name: "MIKASA ACKERMAN",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/Mikasa-Ackerman-1.png",
+    description:
+      "Membro do Esquadrão de Operações Especiais e considerada a soldada mais forte da humanidade após Levi. Última descendente do clã Ackerman asiático, possui habilidades de combate instintivas e força sobre-humana quando ativada. Protege Eren Yeager desde a infância.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      poder:
+        "Habilidades Ackerman, Agilidade Sobrenatural, Combate com Equipamento Tridimensional, Instinto de Batalha",
+      status: "Soldada - Esquadrão de Operações Especiais",
+      estreia: 2009, // Shingeki no Kyojin Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Proteção/Lealdade",
+      nível: "S", // Nível alto como Ackerman, abaixo de Levi
+    },
+  },
 ];
