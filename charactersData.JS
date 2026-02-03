@@ -4961,4 +4961,61 @@ const charactersData = [
       nível: "S", // Nível alto como Ackerman, abaixo de Levi
     },
   },
+
+  // CASCA (Berserk)
+  {
+    id: 273, // Continuando a sequência
+    name: "CASCA",
+    category: "Berserk",
+    image: "img/Berserk/Casca-1.png",
+    description:
+      "Única mulher no Bando do Falcão original e uma das melhores espadachins do grupo. Noiva de Guts e segunda em comando após Griffith. Sofre traumas profundos após o Eclipse, regredindo a um estado infantil, mas gradualmente recupera suas memórias.",
+    details: {
+      universo: "Berserk",
+      poder: "Habilidades de Espada Excepcionais, Liderança, Resistência",
+      status: "Ex-Membro do Bando do Falcão - Em Recuperação",
+      estreia: 1990, // Berserk Volume 3
+      recompensa: "N/A",
+      afinidade: "Lealdade/Sobrevivência",
+      nível: "A+", // Nível alto como guerreira experiente, abaixo de Guts
+    },
+  },
+
+  // KANICHI NISHI (Ashita no Joe)
+  {
+    id: 274,
+    name: "KANICHI NISHI",
+    category: "Ashita-no-Joe",
+    image: "img/Ashita-no-Joe/Kanichi-Nishi-1.png",
+    description:
+      "Boxeador que faz parte do universo de Ashita no Joe, participando das competições e desafios do mundo do boxe da série. Contribui para o desenvolvimento do cenário boxístico que Joe Yabuki navega.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Habilidades de Boxe",
+      status: "Boxeador",
+      estreia: 1968, // Ashita no Joe início
+      técnica: "Boxe",
+      nível: "B", // Nível médio para boxeador
+    },
+  },
+
+  // TREVOR BELMONT (Castlevania)
+  {
+    id: 275,
+    name: "TREVOR BELMONT",
+    category: "Castlevania",
+    image: "img/castlevania/Trevor-Belmont-1.png",
+    description:
+      "Caçador de vampiros da família Belmont que vive durante o século 15, protagonista de Castlevania III: Dracula's Curse. Conhecido por ser um dos primeiros Belmonts a enfrentar Drácula e por usar o chicote Vampire Killer combinado com armas secundárias.",
+    details: {
+      universo: "Castlevania",
+      poder:
+        "Chicote Vampire Killer, Artes Marciais Belmont, Uso de Armas Secundárias",
+      status: "Caçador de Vampiros - Ancestral Belmont",
+      estreia: 1989, // Castlevania III: Dracula's Curse
+      recompensa: "N/A",
+      afinidade: "Caça a Vampiros",
+      nível: "S", // Nível alto como Belmont experiente
+    },
+  },
 ];
