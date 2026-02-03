@@ -4767,4 +4767,63 @@ const charactersData = [
       nível: "S", // Nível alto como campeão mundial
     },
   },
+
+  // SWAIN (League of Legends)
+  {
+    id: 263, // Continuando a sequência
+    name: "SWAIN",
+    category: "League of Legend",
+    image: "img/lol/Swain-1.png",
+    description:
+      "Grande General de Noxus e líder do Trifarix que governa o império. Após derrotar o demônio Raum, ganhou poderes demoníacos incluindo visão estratégica através de corvos e transformação em uma forma demoníaca. Mestre estrategista e governante implacável.",
+    details: {
+      universo: "League of Legends",
+      poder:
+        "Controle Demoníaco, Visão através de Corvos, Transformação Demoníaca, Estratégia Militar",
+      status: "Grande General - Líder do Trifarix de Noxus",
+      estreia: 2010,
+      título: "O Grande General",
+      objetivo: "Expandir e Fortalecer Noxus",
+      nível: "S", // Nível alto como líder de nação com poderes demoníacos
+    },
+  },
+
+  // VOID (Berserk)
+  {
+    id: 264,
+    name: "VOID",
+    category: "Berserk",
+    image: "img/Berserk/Void-1.png",
+    description:
+      "Membro mais antigo e líder intelectual da Mão de Deus, conhecido como 'O Sábio'. Responsável por criar os apóstolos através do Eclipse e por possuir conhecimento profundo sobre o fluxo causal e as leis do universo. Representa a busca pelo conhecimento absoluto.",
+    details: {
+      universo: "Berserk",
+      poder:
+        "Conhecimento Cósmico, Criação de Apóstolos, Manipulação da Realidade",
+      status: "Membro da Mão de Deus - O Sábio",
+      estreia: 1992, // Berserk Volume 13 (Eclipse)
+      recompensa: "N/A",
+      afinidade: "Conhecimento/Causalidade",
+      nível: "SSS", // Nível máximo como membro da Mão de Deus
+    },
+  },
+  // MAHITO (Jujutsu Kaisen)
+  {
+    id: 265,
+    name: "MAHITO",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Mahito-1.png",
+    description:
+      "Maldição da Forma Humana nascida do ódio humano, considerada uma maldição de grau especial. Capaz de manipular a forma das almas, moldando corpos e transformando humanos. Representa a maldade intrínseca da humanidade e busca entender sua própria existência.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Manipulação de Alma, Transformação Corporal, Técnica de Domínio: Self-Embodiment of Perfection",
+      status: "Maldição de Grau Especial",
+      estreia: 2018, // Jujutsu Kaisen Capítulo 16
+      recompensa: "N/A",
+      afinidade: "Alma/Transformação",
+      nível: "SS+", // Nível muito alto como maldição de grau especial
+    },
+  },
 ];
