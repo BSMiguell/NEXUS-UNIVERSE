@@ -5153,4 +5153,43 @@ const charactersData = [
       nível: "SS+", // Nível muito alto como Monstro Deus
     },
   },
+
+  // ZENO ZOLDYCK (Hunter x Hunter)
+  {
+    id: 284, // Continuando a sequência
+    name: "ZENO ZOLDYCK",
+    category: "HXH",
+    image: "img/hxh/Zeno-Zoldyck-1.png",
+    description:
+      "Patriarca da família Zoldyck e avô de Killua, considerado um dos assassinos mais experientes e perigosos do mundo. Especialista em Nen com afinidade para Emissão, capaz de criar dragões de energia. Trabalhou como guarda-costas para a família Netero e participou da invasão ao Palácio de Meruem.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder:
+        "Nen - Emissão (Dragão), Experiência de Assassinato, Habilidades Zoldyck",
+      status: "Assassino - Patriarca dos Zoldyck",
+      estreia: 1999, // Hunter x Hunter Capítulo 71
+      recompensa: "N/A",
+      afinidade: "Assassinato/Experiência",
+      nível: "S+", // Nível muito alto como patriarca experiente
+    },
+  },
+
+  // AEGON TARGARYEN (Game of Thrones)
+  {
+    id: 285,
+    name: "AEGON TARGARYEN",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Aegon-Targaryen-1.png",
+    description:
+      "Conhecido como Aegon, o Conquistador, fundador da Dinastia Targaryen e primeiro Rei dos Sete Reinos de Westeros. Conquistou seis dos sete reinos com seus dragões Balerion, Vhagar e Meraxes, e estabeleceu o Trono de Ferro. Ancestral de Daenerys Targaryen.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Estratégia Militar, Liderança, Montaria de Dragão (Balerion)",
+      status: "Rei - Fundador da Dinastia Targaryen",
+      estreia: 1996, // A Game of Thrones (livro, menções históricas)
+      recompensa: "N/A",
+      afinidade: "Conquista/Dragões",
+      nível: "SS", // Nível muito alto como conquistador com dragão
+    },
+  },
 ];
