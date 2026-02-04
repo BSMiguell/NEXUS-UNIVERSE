@@ -74,7 +74,7 @@
 
 .modal-character-image:hover {
   transform: translateY(-5px);
-  border-color: var(--quantum-primary);
+
   box-shadow:
     0 25px 50px rgba(0, 255, 234, 0.2),
     0 15px 35px rgba(0, 0, 0, 0.5);
@@ -337,7 +337,6 @@
     0 15px 40px rgba(255, 42, 109, 0.3),
     0 0 30px rgba(255, 42, 109, 0.2);
 }
-
 /* =============== RESPONSIVIDADE MELHORADA =============== */
 @media (max-width: 1200px) {
   .modal-character-grid {

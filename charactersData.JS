@@ -2271,7 +2271,7 @@ const charactersData = [
     id: 127,
     name: "PORTGAS D. ACE",
     category: "One-Piece",
-    image: "One-Piece/Ace-1.png",
+    image: "img/One-Piece/Ace-1.png",
     description:
       "Comandante da 2ª Divisão dos Piratas do Barba Branca, usuário do poder do fogo e irmão de Luffy.",
     details: {
@@ -2289,7 +2289,7 @@ const charactersData = [
     id: 128,
     name: "MAHORAGA",
     category: "jujutsu kaisen",
-    image: "Jujutsu/mahoraga-1.png",
+    image: "img/Jujutsu/mahoraga-1.png",
     description:
       "Shikigami supremo da Técnica das Dez Sombras, capaz de se adaptar a qualquer ataque.",
     details: {
@@ -2307,7 +2307,7 @@ const charactersData = [
     id: 129,
     name: "ITACHI UCHIHA",
     category: "Naruto",
-    image: "Naruto/itachi-1.png",
+    image: "img/Naruto/itachi-1.png",
     description:
       "Gênio do clã Uchiha que sacrificou tudo para proteger Konoha, mestre absoluto do Sharingan.",
     details: {
@@ -2325,7 +2325,7 @@ const charactersData = [
     id: 130,
     name: "DAENERYS TARGARYEN",
     category: "Game of Thrones",
-    image: "Game-of-Thrones/daenerys-targaryen-1.png",
+    image: "img/Game-of-Thrones/daenerys-targaryen-1.png",
     description:
       "A Mãe dos Dragões, herdeira da Casa Targaryen, determinada a reconquistar o Trono de Ferro.",
     details: {
@@ -2343,7 +2343,7 @@ const charactersData = [
     id: 131,
     name: "YAMI SUKEHIRO",
     category: "Black Clover",
-    image: "Black Clover/Yami-Sukehiro-1.png",
+    image: "img/Black Clover/Yami-Sukehiro-1.png",
     description:
       "Capitão dos Touros Negros, conhecido por seu poder de Magia de Trevas e personalidade dura, mas justa.",
     details: {
@@ -2361,7 +2361,7 @@ const charactersData = [
     id: 132,
     name: "MIRIO TOGATA",
     category: "Boku no Hero",
-    image: "Boku-no-Hero/mirio-togata-1.png",
+    image: "img/Boku-no-Hero/mirio-togata-1.png",
     description:
       "Herói de Classe 1-A da U.A., conhecido como Lemillion, possui a Quirk de Passagem e espírito incansável.",
     details: {
@@ -2379,7 +2379,7 @@ const charactersData = [
     id: 133,
     name: "DENJI",
     category: "Chainsaw Man",
-    image: "Chainsaw-Man/denji-1.png",
+    image: "img/Chainsaw-Man/denji-1.png",
     description:
       "Jovem caçador de demônios que se fundiu com Pochita, tornando-se o Chainsaw Man, lutando por sobrevivência e sonhos simples.",
     details: {
@@ -2397,7 +2397,7 @@ const charactersData = [
     id: 134,
     name: "ROSE QUARTZO",
     category: "Steven Universo",
-    image: "Steven-Universo/Rose-Quartzo-1.png",
+    image: "img/Steven-Universo/Rose-Quartzo-1.png",
     description:
       "Líder das Crystal Gems, protetora da Terra, conhecida por sua compaixão e poder incomparável.",
     details: {
@@ -2415,7 +2415,7 @@ const charactersData = [
     id: 135,
     name: "JINBE",
     category: "One-Piece",
-    image: "One-Piece/jinbe-1.png",
+    image: "img/One-Piece/jinbe-1.png",
     description:
       "Membro dos Piratas do Chapéu de Palha e mestre em Fish-Man Karate, leal e protetor de seus amigos.",
     details: {
@@ -2433,7 +2433,7 @@ const charactersData = [
     id: 136,
     name: "CHOSO",
     category: "jujutsu kaisen",
-    image: "Jujutsu/Choso-1.png",
+    image: "img/Jujutsu/Choso-1.png",
     description:
       "Irmão mais velho das Maldições Cursed Womb, especialista em manipulação de sangue e combate letal.",
     details: {
@@ -2451,7 +2451,7 @@ const charactersData = [
     id: 137,
     name: "SION",
     category: "League of Legend",
-    image: "lol/Sion.png",
+    image: "img/lol/Sion.png",
     description:
       "Guerreiro morto-vivo de Noxus, um colosso de força bruta que avança sem medo da morte.",
     details: {
@@ -2469,7 +2469,7 @@ const charactersData = [
     id: 138,
     name: "SIMON BELMONT",
     category: "Castlevania",
-    image: "castlevania/simon-belmont-1.png",
+    image: "img/castlevania/simon-belmont-1.png",
     description:
       "Caçador de vampiros do clã Belmont, lendário por enfrentar Drácula usando o chicote sagrado Vampire Killer.",
     details: {
@@ -2487,7 +2487,7 @@ const charactersData = [
     id: 139,
     name: "GRIMMJOW JAEGERJAQUEZ",
     category: "Bleach",
-    image: "Bleach/Grimmjow-Jaegerjaquez-1.png",
+    image: "img/Bleach/Grimmjow-Jaegerjaquez-1.png",
     description:
       "Arrancar extremamente agressivo e orgulhoso, o Sexto Espada busca batalhas intensas para provar sua força absoluta.",
     details: {
@@ -2505,7 +2505,7 @@ const charactersData = [
     id: 140,
     name: "ZENON ZOGRATIS",
     category: "Black Clover",
-    image: "Black Clover/Zenon-Zogratis-1.png",
+    image: "img/Black Clover/Zenon-Zogratis-1.png",
     description:
       "Membro da Tríade Negra e hospedeiro de um demônio de alto nível, Zenon luta com frieza absoluta usando magia de ossos e poder demoníaco.",
     details: {
@@ -2523,7 +2523,7 @@ const charactersData = [
     id: 141,
     name: "SAKATA KINTOKI",
     category: "Shuumatsu",
-    image: "Shuumatsu/Sakata-Kintoki-1.png",
+    image: "img/Shuumatsu/Sakata-Kintoki-1.png",
     description:
       "Herói lendário do folclore japonês e um dos campeões da humanidade, possuidor de força sobre-humana e espírito indomável.",
     details: {
@@ -2541,7 +2541,7 @@ const charactersData = [
     id: 142,
     name: "SANEMI SHINAZUGAWA",
     category: "Kimetsu no Yaiba",
-    image: "kimetsu/Sanemi-Shinazugawa-1.png",
+    image: "img/kimetsu/Sanemi-Shinazugawa-1.png",
     description:
       "Pilar do Vento da Corporação dos Caçadores de Demônios, conhecido por sua personalidade agressiva e técnica mortal com a Respiração do Vento.",
     details: {
@@ -2559,7 +2559,7 @@ const charactersData = [
     id: 143,
     name: "KOZUKI ODEN",
     category: "One-Piece",
-    image: "One-Piece/oden-1.png",
+    image: "img/One-Piece/oden-1.png",
     description:
       "Samurai lendário de Wano, portador de uma força monstruosa e de uma vontade indomável capaz de ferir até imperadores dos mares.",
     details: {
@@ -2577,7 +2577,7 @@ const charactersData = [
     id: 144,
     name: "SANDOR CLEGANE",
     category: "Game of Thrones",
-    image: "Game-of-Thrones/perdigueiro-1.png",
+    image: "img/Game-of-Thrones/perdigueiro-1.png",
     description:
       "Conhecido como O Perdigueiro, Sandor Clegane é um guerreiro brutal e pragmático, temido por sua ferocidade e desprezo pela cavalaria.",
     details: {
@@ -2595,7 +2595,7 @@ const charactersData = [
     id: 145,
     name: "GRIFFITH",
     category: "Berserk",
-    image: "Berserk/Griffith-1.png",
+    image: "img/Berserk/Griffith-1.png",
     description:
       "Antigo líder do Bando do Falcão, cuja ambição o levou a um sacrifício impiedoso e à ascensão como uma entidade demoníaca além da humanidade.",
     details: {
@@ -2613,7 +2613,7 @@ const charactersData = [
     id: 146,
     name: "GARNET",
     category: "Steven Universo",
-    image: "Steven-Universo/garnet-1.png",
+    image: "img/Steven-Universo/garnet-1.png",
     description:
       "Líder calma e poderosa das Crystal Gems, Garnet combina força, visão futura e habilidades de fusão para proteger a Terra.",
     details: {
@@ -2631,7 +2631,7 @@ const charactersData = [
     id: 147,
     name: "ULQUIORRA CIFER",
     category: "Bleach",
-    image: "Bleach/Ulquiorra-Cifer-1.png",
+    image: "img/Bleach/Ulquiorra-Cifer-1.png",
     description:
       "Quarta Espada do exército de Arrancares de Aizen, conhecido por sua frieza absoluta e força devastadora, capaz de regenerar ferimentos rapidamente.",
     details: {
@@ -2649,7 +2649,7 @@ const charactersData = [
     id: 148,
     name: "SHOTA AIZAWA",
     category: "Boku no Hero",
-    image: "Boku-no-Hero/Shota-Aizawa-1.png",
+    image: "img/Boku-no-Hero/Shota-Aizawa-1.png",
     description:
       "Professor da U.A. e herói profissional conhecido como Eraser Head, capaz de anular os poderes de seus oponentes com um simples olhar.",
     details: {
@@ -2667,7 +2667,7 @@ const charactersData = [
     id: 149,
     name: "FUEGOLEON VERMILLION",
     category: "Black Clover",
-    image: "Black Clover/Fuegoleon-Vermillion-1.png",
+    image: "img/Black Clover/Fuegoleon-Vermillion-1.png",
     description:
       "Capitão do Crimson Lion Kingdom e usuário de magia de fogo, Fuegoleon é um líder nobre e estrategista incansável que inspira seus aliados.",
     details: {
@@ -2685,7 +2685,7 @@ const charactersData = [
     id: 150,
     name: "GOL D. ROGER",
     category: "One-Piece",
-    image: "One-Piece/Roger-1.png",
+    image: "img/One-Piece/Roger-1.png",
     description:
       "Conhecido como o Rei dos Piratas, Gol D. Roger conquistou todos os mares e deixou um legado lendário que inspirou gerações de aventureiros.",
     details: {
@@ -2703,7 +2703,7 @@ const charactersData = [
     id: 151,
     name: "MAKIMA",
     category: "Chainsaw Man",
-    image: "Chainsaw-Man/Makima-1.png",
+    image: "img/Chainsaw-Man/Makima-1.png",
     description:
       "Enigmática e manipuladora, Makima é uma das figuras mais poderosas do mundo de Chainsaw Man, controlando demônios e humanos com inteligência e força devastadora.",
     details: {
@@ -2721,7 +2721,7 @@ const charactersData = [
     id: 152,
     name: "Godspeed",
     category: "Flash",
-    image: "Flash/godspeed-1.png",
+    image: "img/Flash/godspeed-1.png",
     description:
       "Godspeed é um dos velocistas mais perigosos do universo Flash. Obcecado por velocidade e justiça distorcida, ele utiliza a Força de Aceleração para alcançar níveis absurdos de rapidez, sendo capaz de enfrentar o próprio Flash em combate direto.",
     details: {
@@ -2739,7 +2739,7 @@ const charactersData = [
     id: 153,
     name: "MOHG, LORD OF BLOOD",
     category: "souls",
-    image: "souls/Mohg-1.png",
+    image: "img/souls/Mohg-1.png",
     description:
       "Mohg, Lord of Blood é um semideus corrompido pelo Sangue Amaldiçoado, governando nas sombras enquanto busca instaurar uma dinastia profana através de rituais sangrentos e poder arcano.",
     details: {
@@ -2757,7 +2757,7 @@ const charactersData = [
     id: 154,
     name: "AKUMA",
     category: "Street-Fighter",
-    image: "Street-Fighter/Akuma-1.png",
+    image: "img/Street-Fighter/Akuma-1.png",
     description:
       "Akuma é um mestre supremo do Satsui no Hado, buscando apenas a força absoluta. Seu poder destrutivo e sua filosofia de combate o colocam além dos limites da humanidade.",
     details: {
@@ -2775,7 +2775,7 @@ const charactersData = [
     id: 155,
     name: "MAITO GAI",
     category: "Naruto",
-    image: "Naruto/Maito-gai-1.png",
+    image: "img/Naruto/Maito-gai-1.png",
     description:
       "Maito Gai é um mestre do taijutsu e símbolo do esforço absoluto. Incapaz de usar ninjutsu ou genjutsu, ele supera todos os limites do corpo humano através de treino extremo e pura determinação.",
     details: {
@@ -2808,7 +2808,7 @@ const charactersData = [
     id: 157,
     name: "LEON",
     category: "Pokemon",
-    image: "Pokemon/Leon-1.png",
+    image: "img/Pokemon/Leon-1.png",
     description:
       "Leon é o Campeão da região de Galar, conhecido por sua incrível habilidade em batalhas Pokémon e por nunca perder uma partida. Carismático e confiante, inspira treinadores a superarem seus limites.",
     details: {
@@ -2826,7 +2826,7 @@ const charactersData = [
     id: 158,
     name: "MIYAMOTO MUSASHI",
     category: "Vagabond",
-    image: "Vagabond/miyamoto-3.png",
+    image: "img/Vagabond/miyamoto-3.png",
     description:
       "Miyamoto Musashi é um lendário samurai em busca da perfeição na arte da espada. Determinado, introspectivo e implacável, ele enfrenta qualquer oponente para dominar a verdadeira essência do combate.",
     details: {
@@ -2844,7 +2844,7 @@ const charactersData = [
     id: 159,
     name: "CHARLOTTE KATAKURI",
     category: "One-Piece",
-    image: "One-Piece/Katakuri-1.png",
+    image: "img/One-Piece/Katakuri-1.png",
     description:
       "Katakuri é o filho mais poderoso da família Charlotte, conhecido por sua força brutal, velocidade extrema e habilidade única de prever movimentos com o Mochi Mochi no Mi. Um adversário quase imbatível em combate direto.",
     details: {
@@ -2862,7 +2862,7 @@ const charactersData = [
     id: 160,
     name: "KENSHIN HIMURA",
     category: "Samurai-X",
-    image: "Samurai-X/samurai x-1.png",
+    image: "img/Samurai-X/samurai x-1.png",
     description:
       "Kenshin Himura é um lendário samurai errante, conhecido como Battousai, o Retalhador. Movido por redenção, ele busca proteger os inocentes enquanto luta para superar seu passado violento.",
     details: {
@@ -2898,7 +2898,7 @@ const charactersData = [
     id: 162,
     name: "RADAGON OF THE GOLDEN ORDER",
     category: "souls",
-    image: "souls/Radagon of the Golden Order-1.png",
+    image: "img/souls/Radagon of the Golden Order-1.png",
     description:
       "Radagon é um semideus lendário de Elden Ring, governando com força absoluta e domínio divino. Sua presença impõe ordem e destruição, combinando poder físico e magia sagrada.",
     details: {
@@ -2916,7 +2916,7 @@ const charactersData = [
     id: 163,
     name: "TERCEIRO RAIKAGE",
     category: "Naruto",
-    image: "Naruto/Raikage-2.png",
+    image: "img/Naruto/Raikage-2.png",
     description:
       "O Terceiro Raikage é conhecido por sua velocidade e força sobre-humanas, além de seu corpo extremamente resistente. Líder respeitado de Kumogakure, ele combina poder físico com uma determinação inabalável.",
     details: {
@@ -2934,7 +2934,7 @@ const charactersData = [
     id: 164,
     name: "TITÃ DE ATAQUE",
     category: "Shingeki-no-Kyojin",
-    image: "Shingeki-no-Kyojin/titan-de-ataque-1.png",
+    image: "img/Shingeki-no-Kyojin/titan-de-ataque-1.png",
     description:
       "O Titã de Ataque é uma poderosa entidade capaz de lutar com agilidade e força sobre-humana. Ele é o símbolo da resistência da humanidade, passando de um portador para outro ao longo da história.",
     details: {
@@ -2952,7 +2952,7 @@ const charactersData = [
     id: 165,
     name: "Shinso",
     category: "Pokemon",
-    image: "Pokemon/Shinso-2.png",
+    image: "img/Pokemon/Shinso-2.png",
     description:
       "Shinso é o principal vilão da hack room Pokémon Blue Stars 3 Forces. Frio, estratégico e manipulador, ele atua nos bastidores controlando eventos, treinadores e Pokémon para impor sua própria visão de poder e domínio.",
     details: {
@@ -2970,7 +2970,7 @@ const charactersData = [
     id: 166,
     name: "Marshall D. Teach",
     category: "One-Piece",
-    image: "One-Piece/Marshall-D-Teach-1.png",
+    image: "img/One-Piece/Marshall-D-Teach-1.png",
     description:
       "Marshall D. Teach, conhecido como Barba Negra, é um dos antagonistas mais perigosos de One Piece. Extremamente ambicioso e imprevisível, ele busca o poder absoluto, sendo o único conhecido a possuir duas Akuma no Mi.",
     details: {
@@ -2988,7 +2988,7 @@ const charactersData = [
     id: 167,
     name: "Ryu",
     category: "Street-Fighter",
-    image: "Street-Fighter/Ryu-1.png",
+    image: "img/Street-Fighter/Ryu-1.png",
     description:
       "Ryu é um dos maiores guerreiros do mundo em Street Fighter. Dedicado ao caminho do combate e ao aperfeiçoamento pessoal, ele busca constantemente superar seus próprios limites, lutando entre o equilíbrio e o poder do Satsui no Hado.",
     details: {
@@ -3007,7 +3007,7 @@ const charactersData = [
     id: 168,
     name: "Kim Kaphwan",
     category: "The King of Fighters",
-    image: "The-King-of-Fighters/Kim.png",
+    image: "img/The-King-of-Fighters/Kim.png",
     description:
       "Kim Kaphwan é um mestre de Taekwondo e um dos personagens mais respeitados de The King of Fighters. Famoso por sua disciplina, senso de justiça e técnicas rápidas de chutes, ele busca sempre ensinar aos outros a importância da honra e da moralidade.",
     details: {
@@ -3026,7 +3026,7 @@ const charactersData = [
     id: 169,
     name: "Hades",
     category: "Os Zavaleiros do Zodíaco",
-    image: "Os-Cavaleiros-do-Zodíaco/hades-2.png",
+    image: "img/Os-Cavaleiros-do-Zodíaco/hades-2.png",
     description:
       "Hades é o deus do submundo em Os Cavaleiros do Zodíaco, governando o mundo dos mortos com poderes divinos. Frio, calculista e implacável, ele busca reorganizar o mundo segundo sua própria visão, sendo uma ameaça suprema para os Cavaleiros de Athena.",
     details: {
@@ -3044,7 +3044,7 @@ const charactersData = [
     id: 170,
     name: "TITÃ BLINDADO",
     category: "Shingeki-no-Kyojin",
-    image: "Shingeki-no-Kyojin/titan-blindado-1.png",
+    image: "img/Shingeki-no-Kyojin/titan-blindado-1.png",
     description:
       "O Titã Blindado é uma das armas mais destrutivas do universo de Shingeki no Kyojin. Conhecido por sua couraça praticamente impenetrável, ele é especializado em investidas frontais, atuando como uma verdadeira fortaleza em movimento.",
     details: {
@@ -3063,7 +3063,7 @@ const charactersData = [
     id: 171,
     name: "Marco Diaz",
     category: "Star-vs.",
-    image: "star-vs/marco-diaz-1.png",
+    image: "img/star-vs/marco-diaz-1.png",
     description:
       "Marco Diaz é o melhor amigo e aliado de Star Butterfly em Star vs. the Forces of Evil. Corajoso, leal e sempre racional, ele ajuda a enfrentar as forças do mal enquanto equilibra a vida escolar e aventuras interdimensionais.",
     details: {
@@ -3081,7 +3081,7 @@ const charactersData = [
     id: 172,
     name: "Godfrey, First Elden Lord",
     category: "souls",
-    image: "souls/Godfrey-First-Elden-Lord-1.png",
+    image: "img/souls/Godfrey-First-Elden-Lord-1.png",
     description:
       "Godfrey, o Primeiro Elden Lord, é um lendário guerreiro de Elden Ring, conhecido por sua força titânica e habilidades de combate excepcionais. Inicialmente herói e defensor do reino, sua presença impõe respeito absoluto e temor aos inimigos.",
     details: {
@@ -3099,7 +3099,7 @@ const charactersData = [
     id: 173,
     name: "Sengoku",
     category: "One-Piece",
-    image: "One-Piece/Sengoku-1.png",
+    image: "img/One-Piece/Sengoku-1.png",
     description:
       "Sengoku, o antigo Almirante de Frota da Marinha em One Piece, é um estrategista brilhante e um líder respeitado. Possui uma presença imponente e o poder da Hito Hito no Mi, Modelo: Daibutsu, que lhe permite se transformar em um gigante Buda dourado durante a batalha.",
     details: {
@@ -3118,7 +3118,7 @@ const charactersData = [
     id: 174,
     name: "Rugal Bernstein",
     category: "The King of Fighters",
-    image: "The-King-of-Fighters/Rugal-2.png",
+    image: "img/The-King-of-Fighters/Rugal-2.png",
     description:
       "Rugal Bernstein é um dos vilões mais icônicos da franquia The King of Fighters. Extremamente poderoso e cruel, ele busca adversários fortes para derrotar e transformar em troféus de pedra, demonstrando sua obsessão por força absoluta.",
     details: {
@@ -3136,7 +3136,7 @@ const charactersData = [
     id: 175,
     name: "Gregor Clegane",
     category: "Game of Thrones",
-    image: "Game-of-Thrones/montanha-1.png",
+    image: "img/Game-of-Thrones/montanha-1.png",
     description:
       "Gregor Clegane, conhecido como A Montanha, é um dos guerreiros mais temidos de Game of Thrones. Brutal, impiedoso e de força física monstruosa, ele serve fielmente à Casa Lannister, espalhando terror tanto no campo de batalha quanto fora dele.",
     details: {
@@ -3154,7 +3154,7 @@ const charactersData = [
     id: 176,
     name: "Titã Bestial",
     category: "Shingeki-no-Kyojin",
-    image: "Shingeki-no-Kyojin/titan-beast-1.png",
+    image: "img/Shingeki-no-Kyojin/titan-beast-1.png",
     description:
       "O Titã Bestial é um dos Nove Titãs de Shingeki no Kyojin, conhecido por sua aparência animalesca e por sua capacidade devastadora de ataques à distância. Extremamente inteligente entre os titãs, ele utiliza arremessos de precisão mortal para dizimar exércitos inteiros.",
     details: {
@@ -3172,7 +3172,7 @@ const charactersData = [
     id: 177,
     name: "Chun-Li",
     category: "Street-Fighter",
-    image: "Street-Fighter/chun-li-1.png",
+    image: "img/Street-Fighter/chun-li-1.png",
     description:
       "Chun-Li é uma das lutadoras mais icônicas de Street Fighter. Agente da Interpol e mestre em artes marciais chinesas, ela é conhecida por sua velocidade extrema, chutes poderosos e forte senso de justiça, lutando incansavelmente contra o crime organizado.",
     details: {
@@ -3190,7 +3190,7 @@ const charactersData = [
     id: 179,
     name: "Sasaki Kojirō",
     category: "Vagabond",
-    image: "Vagabond/sasaki-kojiro-1.png",
+    image: "img/Vagabond/sasaki-kojiro-1.png",
     description:
       "Sasaki Kojirō é um dos espadachins mais talentosos e trágicos de Vagabond. Surdo desde jovem, ele desenvolveu uma percepção única do mundo e um estilo de combate extremamente refinado, tornando-se um rival lendário no caminho da espada.",
     details: {
@@ -3226,7 +3226,7 @@ const charactersData = [
     id: 180,
     name: "Eclipsa Butterfly",
     category: "Star-vs.",
-    image: "star-vs/Eclipsa-Butterfly-1.png",
+    image: "img/star-vs/Eclipsa-Butterfly-1.png",
     description:
       "Eclipsa Butterfly é uma das rainhas mais controversas do Reino de Mewni em Star vs. the Forces of Evil. Conhecida por sua magia extremamente poderosa e por desafiar tradições antigas, ela é uma personagem complexa, marcada por escolhas difíceis, amor proibido e um domínio mágico que ultrapassa limites morais.",
     details: {
@@ -3244,7 +3244,7 @@ const charactersData = [
     id: 181,
     name: "Monkey D. Dragon",
     category: "One-Piece",
-    image: "One-Piece/dragon-1.png",
+    image: "img/One-Piece/dragon-1.png",
     description:
       "Monkey D. Dragon é o líder do Exército Revolucionário e o homem mais procurado do mundo em One Piece. Extremamente enigmático, ele luta contra o Governo Mundial visando derrubar o sistema de opressão global. Sua presença impõe respeito absoluto, e seus poderes misteriosos sugerem um domínio avassalador sobre forças naturais.",
     details: {
@@ -3262,7 +3262,7 @@ const charactersData = [
     id: 182,
     name: "Kiyotaka Ayanokōji",
     category: "Classroom-of-the-Elite",
-    image: "classroom-of-the-elite/Kiyotaka-Ayanokōji-1.png",
+    image: "img/classroom-of-the-elite/Kiyotaka-Ayanokōji-1.png",
     description:
       "Kiyotaka Ayanokōji é o protagonista de Classroom of the Elite, um estudante aparentemente comum da Classe D, mas que esconde uma mente genial moldada pelo rigoroso programa conhecido como White Room. Frio, calculista e estrategista excepcional, ele manipula situações e pessoas nos bastidores para alcançar seus objetivos sem chamar atenção.",
     details: {

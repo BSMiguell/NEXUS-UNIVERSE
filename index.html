@@ -1207,6 +1207,12 @@
         background: linear-gradient(135deg, #ff2a6d, #9d00ff);
       }
 
+      /* Botão Pesquisa */
+      .search-toggle {
+        bottom: 425px;
+        background: linear-gradient(135deg, #00ff9d, #00b3ff);
+      }
+
       /* Efeito de Cursor Magnético */
       .cursor-magnetic {
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1235,7 +1241,6 @@
         gap: 15px;
         transform-style: preserve-3d;
         transform: translateZ(0);
-        margin-top: 20px;
       }
 
       #viewFavoritesBtn:hover {
@@ -1480,6 +1485,9 @@
         .theme-toggle {
           bottom: 245px;
         }
+        .search-toggle {
+          bottom: 312px;
+        }
         .quantum-toast {
           min-width: 350px;
           padding: 20px 40px;
@@ -1672,6 +1680,7 @@
     <link rel="stylesheet" href="style/Card.css" />
     <link rel="stylesheet" href="style/modal-character.css" />
     <link rel="stylesheet" href="style/favorite.css" />
+    <link rel="stylesheet" href="style/modal-search.css" />
     <link rel="stylesheet" href="style/footer.css" />
   </head>
 
@@ -1828,6 +1837,16 @@
               >
                 <i class="fas fa-heart" aria-hidden="true"></i>
                 VER FAVORITOS 13/10
+              </button>
+
+              <!-- Botão para acessar Pesquisa -->
+              <button
+                class="quantum-button"
+                id="viewSearchBtn"
+                aria-label="Abrir pesquisa quântica"
+              >
+                <i class="fas fa-search" aria-hidden="true"></i>
+                PESQUISA QUÂNTICA
               </button>
 
               <div class="terminal-control">
@@ -2128,7 +2147,6 @@
       >
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
       </button>
-
       <button
         class="quantum-control-btn sound-toggle"
         id="soundToggle"
@@ -2136,7 +2154,6 @@
       >
         <i class="fas fa-volume-up" id="soundIcon" aria-hidden="true"></i>
       </button>
-
       <button
         class="quantum-control-btn favorites-toggle"
         id="favoritesToggle"
@@ -2144,13 +2161,19 @@
       >
         <i class="fas fa-heart" id="favoritesIcon" aria-hidden="true"></i>
       </button>
-
       <button
         class="quantum-control-btn theme-toggle"
         id="themeToggle"
         aria-label="Mudar tema/cores"
       >
         <i class="fas fa-palette" aria-hidden="true"></i>
+      </button>
+      <button
+        class="quantum-control-btn search-toggle"
+        id="searchToggle"
+        aria-label="Abrir pesquisa quântica"
+      >
+        <i class="fas fa-search" aria-hidden="true"></i>
       </button>
 
       <!-- Modal Quântico -->
@@ -2398,6 +2421,57 @@
         </div>
       </div>
 
+      <!-- Modal de Pesquisa -->
+      <div
+        class="quantum-modal"
+        id="searchModal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        tabindex="-1"
+        hidden
+      >
+        <div class="modal-quantum modal-search">
+          <button
+            class="modal-quantum-close"
+            id="searchClose"
+            aria-label="Fechar"
+          >
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+          <div class="modal-search-content modal-content-scroll">
+            <h2 class="modal-search-title">
+              <i class="fas fa-search"></i>
+              PESQUISA QUÂNTICA 13/10
+            </h2>
+            <div class="search-input-container">
+              <input
+                type="text"
+                class="search-input-quantum"
+                id="searchInput"
+                placeholder="DIGITE O NOME DE UM PERSONAGEM..."
+                aria-label="Campo de pesquisa de personagens"
+                autocomplete="off"
+              />
+              <i class="fas fa-search search-icon" aria-hidden="true"></i>
+            </div>
+            <div
+              class="search-results"
+              id="searchResults"
+              role="listbox"
+              aria-label="Resultados da pesquisa"
+            >
+              <!-- Os resultados serão inseridos aqui via JavaScript -->
+            </div>
+            <div class="search-info">
+              <i class="fas fa-info-circle"></i>
+              A pesquisa é tolerante a erros e não diferencia maiúsculas de
+              minúsculas.
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Toast Quântico -->
       <div
         class="quantum-toast"
@@ -2413,6 +2487,7 @@
     <script src="Js/Temas.js"></script>
     <script src="Js/Favoritos.js"></script>
     <script src="charactersData.JS"></script>
+    <script src="Js/modal-search.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -2757,6 +2832,7 @@
             await this.loadSound("hover", this.generateTone(523.25, 0.05));
             await this.loadSound("click", this.generateTone(659.25, 0.1));
             await this.loadSound("favorite", this.generateTone(1046.5, 0.3));
+            await this.loadSound("search", this.generateTone(880.0, 0.15));
 
             this.setupEventListeners();
           } catch (error) {
@@ -2877,6 +2953,8 @@
         }
       }
 
+      // ===== SISTEMA DE PESQUISA AVANÇADA =====
+
       // ===== GALERIA QUÂNTICA OTIMIZADA =====
       class QuantumGallery {
         constructor(cache) {
@@ -2895,10 +2973,9 @@
             currentSort: "original",
             filteredCharacters: [...charactersData],
             isModalOpen: false,
+            isSearchModalOpen: false,
             showFavoritesPage: false,
-            // Nova propriedade para controlar de onde o modal foi aberto
             modalOpenedFromFavorites: false,
-            // Variável para armazenar a posição de rolagem antes de abrir o modal
             scrollPositionBeforeModal: 0,
           };
 
@@ -2908,6 +2985,7 @@
           this.audio = new QuantumAudio();
           this.themeSystem = new QuantumThemeSystem();
           this.favorites = new QuantumFavoritesSystem(this);
+          this.searchSystem = new QuantumSearch(this);
 
           this.elements = {};
           this.init();
@@ -3003,10 +3081,16 @@
               "quantumFavoritesPage",
             ),
             viewFavoritesBtn: document.getElementById("viewFavoritesBtn"),
+            viewSearchBtn: document.getElementById("viewSearchBtn"),
             backToGallery: document.getElementById("backToGallery"),
             favoritesCountTerminal: document.getElementById(
               "favoritesCountTerminal",
             ),
+            searchModal: document.getElementById("searchModal"),
+            searchToggle: document.getElementById("searchToggle"),
+            searchClose: document.getElementById("searchClose"),
+            searchInput: document.getElementById("searchInput"),
+            searchResults: document.getElementById("searchResults"),
           };
         }
 
@@ -3145,6 +3229,47 @@
             });
           }
 
+          if (this.elements.viewSearchBtn) {
+            this.elements.viewSearchBtn.addEventListener("click", () => {
+              this.openSearchModal();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.searchToggle) {
+            this.elements.searchToggle.addEventListener("click", () => {
+              this.openSearchModal();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.searchClose) {
+            this.elements.searchClose.addEventListener("click", () => {
+              this.closeSearchModal();
+              this.audio.play("click");
+            });
+          }
+
+          if (this.elements.searchInput) {
+            this.elements.searchInput.addEventListener(
+              "input",
+              debounce((e) => {
+                this.handleSearchInput(e.target.value);
+              }, 300),
+            );
+
+            this.elements.searchInput.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") {
+                const results = this.elements.searchResults.querySelectorAll(
+                  ".search-result-item",
+                );
+                if (results.length > 0) {
+                  results[0].click();
+                }
+              }
+            });
+          }
+
           if (this.elements.backToGallery) {
             this.elements.backToGallery.addEventListener("click", () => {
               this.showGalleryPage();
@@ -3155,11 +3280,18 @@
           document.addEventListener("keydown", (e) => {
             if (e.key === "Escape") {
               if (this.state.isModalOpen) this.closeModal();
+              if (this.state.isSearchModalOpen) this.closeSearchModal();
               if (
                 document.getElementById("themeModal").classList.contains("show")
               ) {
                 this.themeSystem.closeThemeModal();
               }
+            }
+
+            // Atalho Ctrl+F ou Cmd+F para pesquisa
+            if ((e.ctrlKey || e.metaKey) && e.key === "f") {
+              e.preventDefault();
+              this.openSearchModal();
             }
           });
 
@@ -3169,6 +3301,12 @@
               e.target === this.elements.quantumModal
             ) {
               this.closeModal();
+            }
+            if (
+              this.state.isSearchModalOpen &&
+              e.target === this.elements.searchModal
+            ) {
+              this.closeSearchModal();
             }
           });
 
@@ -3641,7 +3779,6 @@
           this.openModalInternal(character);
         }
 
-        // SEGUNDA ALTERAÇÃO: Nova função para abrir modal a partir da página de favoritos
         openModalFromFavorites(character) {
           this.state.modalOpenedFromFavorites = true;
           this.openModalInternal(character);
@@ -3657,10 +3794,8 @@
 
           this.state.isModalOpen = true;
 
-          // ===== ALTERAÇÃO TERCEIRA: Salvar a posição de rolagem antes de abrir o modal =====
           this.state.scrollPositionBeforeModal = window.pageYOffset;
 
-          // Salvar a posição como CSS custom property para uso no pseudo-elemento
           document.documentElement.style.setProperty(
             "--scroll-top",
             `${this.state.scrollPositionBeforeModal}px`,
@@ -3752,7 +3887,6 @@
           this.elements.quantumModal.removeAttribute("hidden");
           this.elements.quantumModal.setAttribute("aria-hidden", "false");
 
-          // ===== ALTERAÇÃO TERCEIRA: Adicionar classe para ocultar scroll =====
           document.body.classList.add("modal-open");
 
           this.elements.modalContent.scrollTop = 0;
@@ -3769,25 +3903,186 @@
           this.elements.quantumModal.setAttribute("hidden", "");
           this.elements.quantumModal.setAttribute("aria-hidden", "true");
 
-          // ===== ALTERAÇÃO TERCEIRA: Remover classe para restaurar scroll =====
           document.body.classList.remove("modal-open");
 
-          // Remover a propriedade CSS personalizada
           document.documentElement.style.removeProperty("--scroll-top");
 
           this.state.isModalOpen = false;
 
-          // Restaurar a posição de rolagem
           window.scrollTo(0, this.state.scrollPositionBeforeModal);
 
-          // SEGUNDA ALTERAÇÃO: Se o modal foi aberto da página de favoritos, manter o usuário lá
           if (
             this.state.modalOpenedFromFavorites &&
             this.state.showFavoritesPage
           ) {
-            // Já estamos na página de favoritos, não fazer nada
             this.state.modalOpenedFromFavorites = false;
           }
+        }
+
+        // ===== SISTEMA DE PESQUISA =====
+        openSearchModal() {
+          if (
+            this.state.isModalOpen ||
+            this.state.isSearchModalOpen ||
+            !this.elements.searchModal
+          )
+            return;
+
+          this.state.isSearchModalOpen = true;
+          this.elements.searchModal.classList.add("show");
+          this.elements.searchModal.removeAttribute("hidden");
+          this.elements.searchModal.setAttribute("aria-hidden", "false");
+
+          // Focar no input
+          setTimeout(() => {
+            this.elements.searchInput.focus();
+          }, 100);
+
+          this.audio.play("search");
+        }
+
+        closeSearchModal() {
+          if (!this.state.isSearchModalOpen) return;
+
+          this.state.isSearchModalOpen = false;
+          this.elements.searchModal.classList.remove("show");
+          this.elements.searchModal.setAttribute("hidden", "");
+          this.elements.searchModal.setAttribute("aria-hidden", "true");
+
+          // Limpar resultados e input
+          this.elements.searchInput.value = "";
+          this.elements.searchResults.innerHTML = "";
+        }
+
+        async handleSearchInput(query) {
+          const resultsContainer = this.elements.searchResults;
+          if (!resultsContainer) return;
+
+          if (!query.trim()) {
+            resultsContainer.innerHTML = `
+              <div class="search-no-results">
+                <i class="fas fa-search"></i>
+                <h3>DIGITE PARA PESQUISAR</h3>
+                <p>Digite o nome de um personagem para iniciar a busca quântica.</p>
+              </div>
+            `;
+            return;
+          }
+
+          // Mostrar loading
+          resultsContainer.innerHTML = `
+            <div class="search-no-results">
+              <div class="loading-ring" style="width: 60px; height: 60px; margin: 0 auto 20px;"></div>
+              <h3>ANALISANDO REALIDADE QUÂNTICA...</h3>
+              <p>Buscando correspondências na base de dados.</p>
+            </div>
+          `;
+
+          // Pequeno delay para melhor UX
+          await new Promise((resolve) => setTimeout(resolve, 200));
+
+          const results = this.searchSystem.fuzzySearch(query, 15);
+
+          if (results.length === 0) {
+            resultsContainer.innerHTML = `
+              <div class="search-no-results">
+                <i class="fas fa-search-minus"></i>
+                <h3>NENHUM PERSONAGEM ENCONTRADO</h3>
+                <p>Tente digitar o nome de forma diferente ou use termos mais genéricos.</p>
+              </div>
+            `;
+            return;
+          }
+
+          // Renderizar resultados
+          resultsContainer.innerHTML = results
+            .map((character) => {
+              const normalizedPath = this.cache.normalizePath(character.image);
+              const cachedImg = this.cache.imageCache.get(normalizedPath);
+              const imgSrc = cachedImg ? cachedImg.src : character.image;
+              const isFavorite = this.favorites.isFavorite(character.id);
+
+              return `
+                <div class="search-result-item" data-id="${character.id}">
+                  <img src="${imgSrc}" 
+                       alt="${character.originalName}" 
+                       class="search-result-image"
+                       onerror="this.onerror=null; this.src='${this.generatePlaceholderSVG(
+                         character,
+                         true,
+                       )}';">
+                  <div class="search-result-info">
+                    <h3 class="search-result-name">${character.originalName}</h3>
+                    <div class="search-result-category">${
+                      categoryNames[character.category] || character.category
+                    }</div>
+                    <div class="search-result-match">
+                      <i class="fas fa-${
+                        character.matchType === "exact"
+                          ? "check-circle"
+                          : "bullseye"
+                      }"></i>
+                      ${
+                        character.matchType === "exact"
+                          ? "Correspondência exata"
+                          : "Correspondência aproximada"
+                      }
+                    </div>
+                  </div>
+                  <button class="search-result-favorite  ${
+                    isFavorite ? "active" : ""
+                  }" data-id="${character.id}" aria-label="${
+                    isFavorite
+                      ? "Remover dos favoritos"
+                      : "Adicionar aos favoritos"
+                  }">
+                    <i class="${isFavorite ? "fas" : "far"} fa-heart"></i>
+                  </button>
+                  <i class="fas fa-chevron-right search-result-arrow" aria-hidden="true"></i>
+                </div>
+              `;
+            })
+            .join("");
+
+          // Adicionar event listeners para cada resultado
+          resultsContainer
+            .querySelectorAll(".search-result-item")
+            .forEach((item) => {
+              item.addEventListener("click", (e) => {
+                // Não fechar se clicar no botão de favorito
+                if (e.target.closest(".search-result-favorite")) {
+                  return;
+                }
+
+                const id = parseInt(item.dataset.id);
+                const character = charactersData.find((c) => c.id === id);
+                if (character) {
+                  this.closeSearchModal();
+                  this.openModal(character);
+                }
+              });
+            });
+
+          // Adicionar event listeners para os botões de favorito
+          resultsContainer
+            .querySelectorAll(".search-result-favorite")
+            .forEach((btn) => {
+              btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const id = parseInt(btn.dataset.id);
+                this.favorites.toggleFavorite(id);
+                const icon = btn.querySelector("i");
+                if (this.favorites.isFavorite(id)) {
+                  icon.className = "fas fa-heart";
+                  btn.classList.add("active");
+                  this.audio.play("favorite");
+                } else {
+                  icon.className = "far fa-heart";
+                  btn.classList.remove("active");
+                  this.audio.play("click");
+                }
+              });
+            });
         }
 
         setCategory(category, silent = false) {
