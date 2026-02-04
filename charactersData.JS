@@ -5116,4 +5116,41 @@ const charactersData = [
       nível: "SS", // Nível muito alto como demiurgo/deus antigo
     },
   },
+
+  // HARALD (One Piece)
+  {
+    id: 281, // Continuando a sequência
+    name: "HARALD",
+    category: "One-Piece",
+    image: "img/One-Piece/Harald-1.png",
+    description:
+      "Personagem do universo de One Piece, envolvido nas aventuras e conflitos do mundo dos piratas. Participa dos eventos da série com habilidades e características únicas dentro do rico lore de One Piece.",
+    details: {
+      universo: "One Piece",
+      poder: "Habilidades específicas do mundo de One Piece",
+      status: "Ativo - Personagem de One Piece",
+      estreia: 2026, //
+      recompensa: "N/A",
+      afinidade: "Aventura",
+      nível: "B+", // Nível médio-alto (precisa contexto específico)
+    },
+  },
+  // OROCHI (One Punch Man)
+  {
+    id: 282,
+    name: "OROCHI",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Orochi-1.png",
+    description:
+      "Monstro Deus e líder da Associação de Monstros, criado por Psykos através de experimentos. Considerado o monstro mais forte antes de aparecerem ameaças divinas. Capaz de absorver outros monstros e adaptar suas habilidades, com forma final de dragão monstruoso.",
+    details: {
+      universo: "One Punch Man",
+      poder: "Absorção de Monstros, Adaptação, Forma de Dragão, Regeneração",
+      status: "Monstro Deus - Ex-Líder da Associação de Monstros",
+      estreia: 2016, // One Punch Man Webcomic/Manga
+      recompensa: "N/A",
+      afinidade: "Absorção/Evolução",
+      nível: "SS+", // Nível muito alto como Monstro Deus
+    },
+  },
 ];
