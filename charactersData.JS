@@ -5018,4 +5018,102 @@ const charactersData = [
       nível: "S", // Nível alto como Belmont experiente
     },
   },
+
+  // GERARD VALKYRIE (Bleach)
+  {
+    id: 276, // Continuando a sequência
+    name: "GERARD VALKYRIE",
+    category: "Bleach",
+    image: "img/Bleach/Gerard-Valkyrie-1.png",
+    description:
+      "Sternritter 'M' (The Miracle) do exército de Yhwach, conhecido como o 'Cavaleiro Milagroso'. Sua habilidade 'The Miracle' transforma fé e esperança em poder, permitindo-lhe crescer em tamanho e força com cada derrota aparente. Considerado uma das guardas reais mais poderosas.",
+    details: {
+      universo: "Bleach",
+      poder:
+        "The Miracle (transformação divina), Crescimento com Fé, Força Divina",
+      status: "Sternritter - Cavaleiro Milagroso",
+      estreia: 2014, // Bleach Capítulo 565
+      recompensa: "N/A",
+      afinidade: "Milagre/Fé",
+      nível: "SS+", // Nível muito alto como Sternritter poderoso
+    },
+  },
+
+  // KILLUA ZOLDYCK (Hunter x Hunter)
+  {
+    id: 277,
+    name: "KILLUA ZOLDYCK",
+    category: "HXH",
+    image: "img/hxh/Killua-Zoldyck-1.png",
+    description:
+      "Herdeiro da família de assassinos Zoldyck e melhor amigo de Gon Freecss. Especialista em Nen com afinidade para Transformação e Transmutação, criando eletricidade com seu Nen. Conhecido por sua velocidade extrema, habilidades de assassinato e crescimento ao longo da série.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder:
+        "Nen - Eletricidade (Godspeed), Velocidade Extrema, Habilidades de Assassinato",
+      status: "Assassino - Herdeiro dos Zoldyck",
+      estreia: 1998, // Hunter x Hunter Capítulo 4
+      recompensa: "N/A",
+      afinidade: "Eletricidade/Velocidade",
+      nível: "S+", // Nível muito alto, um dos mais fortes de sua geração
+    },
+  },
+
+  // RYU ISHIGORI (Jujutsu Kaisen)
+  {
+    id: 278,
+    name: "RYU ISHIGORI",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Ryu-Ishigori-1.png",
+    description:
+      "Feiticeiro jujutsu da Era de Ouro que foi reencarnado no presente. Conhecido por possuir uma quantidade colossal de energia amaldiçoada e por sua técnica de feixes de energia pura. Considerado um dos feiticeiros mais fortes de sua era, com poder bruto impressionante.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Energia Amaldiçoada Colossal, Feixes de Energia Pura, Força Bruta",
+      status: "Feiticeiro da Era de Ouro - Reencarnado",
+      estreia: 2021, // Jujutsu Kaisen Capítulo 158
+      recompensa: "N/A",
+      afinidade: "Energia Pura",
+      nível: "SS", // Nível muito alto com energia colossal
+    },
+  },
+
+  {
+    id: 279, // Continuando a sequência
+    name: "KATANA MAN",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Katana-Man-1.png",
+    description:
+      "Demônio-humano que pode transformar partes de seu corpo em katanas afiadas, neto do Demônio da Katana. Antagonista principal do arco de Katana Man, busca vingança contra Denji por matar seu avô. Trabalha como segurança para a Yakuza antes de se tornar um híbrido demônio.",
+    details: {
+      universo: "Chainsaw Man",
+      poder:
+        "Transformação em Katanas, Habilidades de Corte Afiadas, Híbrido Demônio-Humano",
+      status: "Antagonista - Híbrido Demônio da Katana",
+      estreia: 2019, // Chainsaw Man Capítulo 20
+      recompensa: "N/A",
+      afinidade: "Katana/Vingança",
+      nível: "A+", // Nível médio-alto como antagonista do primeiro arco
+    },
+  },
+
+  {
+    id: 280, // Continuando a sequência
+    name: "VOLIBEAR",
+    category: "League of Legend",
+    image: "img/lol/Volibear-1.png",
+    description:
+      "O Trovão Implacável, um antigo demiurgo Freljordiano e deus da guerra, tempestade e trovão. Irmão de Ornn, Anivia e outras entidades antigas, busca destruir a civilização moderna para restaurar os caminhos selvagens e primitivos de Runeterra.",
+    details: {
+      universo: "League of Legends",
+      poder:
+        "Controle de Tempestades e Trovões, Força Primordial, Imortalidade Divina, Regeneração",
+      status: "Demiurgo - Deus Antigo do Freljord",
+      estreia: 2011,
+      título: "O Trovão Implacável",
+      objetivo: "Destruir a Civilização, Restaurar a Natureza Selvagem",
+      nível: "SS", // Nível muito alto como demiurgo/deus antigo
+    },
+  },
 ];

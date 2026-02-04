@@ -632,7 +632,7 @@ class QuantumThemeSystem {
       modal.classList.add("show");
       modal.removeAttribute("hidden");
       modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("modal-open");
+      // LINHA REMOVIDA: document.body.classList.add("modal-open");
       const container = modal.querySelector(".modal-content-scroll");
       if (container) {
         container.scrollTop = 0;
@@ -647,7 +647,7 @@ class QuantumThemeSystem {
       modal.classList.remove("show");
       modal.setAttribute("hidden", "");
       modal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("modal-open");
+      // LINHA REMOVIDA: document.body.classList.remove("modal-open");
     }
   }
 
