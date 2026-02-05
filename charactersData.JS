@@ -939,7 +939,7 @@ const charactersData = [
     id: 53,
     name: "Gajeel Redfox",
     category: "Fairy Tail",
-    image: "img/Fairy-Taill/Gajeel Redfox-1.png",
+    image: "img/Fairy-Taill/Gajeel-Redfox-1.png",
     description:
       "Mago do Ferro Dragon Slayer da Fairy Tail, conhecido por sua personalidade rude e habilidades de manipulação de metal.",
     details: {
@@ -2217,7 +2217,7 @@ const charactersData = [
     id: 124,
     name: "BALERION",
     category: "Game of Thrones",
-    image: "Game-of-Thrones/balerion-1.png",
+    image: "img/Game-of-Thrones/balerion-1.png",
     description:
       "O maior e mais temido dragão da história de Westeros, montaria de Aegon, o Conquistador.",
     details: {
@@ -2235,7 +2235,7 @@ const charactersData = [
     id: 125,
     name: "KLED",
     category: "League of Legend",
-    image: "lol/Kled-1.png",
+    image: "img/lol/Kled-1.png",
     description:
       "Yordle completamente insano, guerreiro de Noxus que luta montado em Skaarl, defendendo seu território com violência extrema.",
     details: {
@@ -4151,7 +4151,7 @@ const charactersData = [
     id: 230, // Continuando a sequência
     name: "TORU RIKIISHI",
     category: "Ashita-no-Joe",
-    image: "img/Ashita-no-Joe/Toru-Rikiishi-1.png",
+    image: "img/Ashita-no-Joe/TORU-RIKIISHI-2.png",
     description:
       "Boxeador profissional e primeiro grande rival de Joe Yabuki. Conhecido por seu estilo técnico e rigoroso, representa o contraste entre o boxe disciplinado e o estilo selvagem de Joe. Sua luta contra Joe se torna lendária no mundo do boxe.",
     details: {
@@ -5190,6 +5190,100 @@ const charactersData = [
       recompensa: "N/A",
       afinidade: "Conquista/Dragões",
       nível: "SS", // Nível muito alto como conquistador com dragão
+    },
+  },
+
+  // MINA LOVEBERRY (Star vs. the Forces of Evil)
+  {
+    id: 286, // Continuando a sequência
+    name: "MINA LOVEBERRY",
+    category: "Star-vs.",
+    image: "img/star-vs/Mina-Loveberry-1.png",
+    description:
+      "Guerreira de Mewni e líder das Guerreras do Arco-Íris, um grupo de guerreiras que serviu sob a Rainha Solaria. Extremamente poderosa e leal à causa de exterminar monstros, mas com visão radical e preconceituosa que causa conflitos na série.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      poder: "Força Sobre-Humana, Habilidades de Combate, Liderança Militar",
+      status: "Guerreira - Líder das Guerreras do Arco-Íris",
+      estreia: 2017, // Star vs. the Forces of Evil Season 3
+      recompensa: "N/A",
+      afinidade: "Guerra/Preconceito",
+      nível: "A+", // Nível médio-alto como guerreira poderosa
+    },
+  },
+
+  // SISTER FRIEDE (Dark Souls III)
+  {
+    id: 287,
+    name: "SISTER FRIEDE",
+    category: "souls",
+    image: "img/souls/Sister-Friede-1.png",
+    description:
+      "Chefe do DLC Ashes of Ariandel em Dark Souls III, também conhecida como Elfriede. Uma das Filhas das Cinzas que rejeitou ligar a Primeira Chama. Luta com uma foice gelada e pode ressuscitar três vezes durante a batalha, sendo um dos chefes mais desafiadores da série.",
+    details: {
+      universo: "Dark Souls III",
+      poder:
+        "Foice Gélida, Invisibilidade, Ressurreição (3 fases), Magia Negra",
+      status: "Chefe - Filha das Cinzas",
+      estreia: 2016, // Dark Souls III: Ashes of Ariandel
+      recompensa: "N/A",
+      afinidade: "Gelo/Espera",
+      nível: "SS", // Nível muito alto como chefe difícil de 3 fases
+    },
+  },
+
+  {
+    id: 288, // Continuando a sequência
+    name: "CARLOS RIVERA",
+    category: "Ashita-no-Joe",
+    image: "img/Ashita-no-Joe/Carlos-Rivera-2.png",
+    description:
+      "Boxeador profissional internacional que faz parte do universo competitivo de Ashita no Joe. Participa dos torneios e desafios do mundo do boxe, contribuindo para o cenário esportivo global que Joe Yabuki navega em sua jornada.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Habilidades de Boxe, Experiência Internacional",
+      status: "Boxeador Profissional - Internacional",
+
+      técnica: "Boxe",
+      nível: "B+", // Nível médio-alto para boxeador internacional
+    },
+  },
+
+  {
+    id: 289, // Continuando a sequição
+    name: "GOD SERENA",
+    category: "Fairy Tail",
+    image: "img/Fairy-Taill/God-Serena-1.png",
+    description:
+      "Ex-mago dos Dez Santos Sagrados e posteriormente membro dos Spriggan 12 do Império Alvarez. Conhecido como o 'Mago mais forte de Ishgar' antes de sua morte, possui oito diferentes Lacrimas de Dragão Slayer que lhe permitem usar múltiplos elementos de dragão.",
+    details: {
+      universo: "Fairy Tail",
+      poder:
+        "Oito Lacrimas de Dragão Slayer (Fogo, Água, Terra, Ar, Luz, Sombra, Veneno, Caverna), Magia de Dragão Slayer Multi-Elemental",
+      status: "Mago dos Spriggan 12 - Ex-Mago dos Dez Santos",
+      estreia: 2015, // Fairy Tail Capítulo 465
+      recompensa: "N/A",
+      afinidade: "Dragão Slayer Multi-Elemental",
+      nível: "SS+", // Nível muito alto como Spriggan 12 com 8 lacrimas
+    },
+  },
+
+  {
+    id: 289, // Continuando a sequência
+    name: "STRIGA",
+    category: "Castlevania",
+    image: "img/castlevania/striga-1.png",
+    description:
+      "Vampira poderosa da série Castlevania da Netflix, irmã de Morana e membro do conselho de vampiros que governa Wallachia. Conhecida por sua força física impressionante, habilidades de combate e lealdade à causa vampírica. Representa a força bruta e tradição entre os vampiros.",
+    details: {
+      universo: "Castlevania",
+      poder:
+        "Força Vampírica, Habilidades de Combate, Transformação, Regeneração",
+      status: "Vampira - Membro do Conselho de Wallachia",
+      estreia: 2020, // Castlevania Season 4 (Netflix)
+      recompensa: "N/A",
+      afinidade: "Força/Tradição",
+      nível: "A+", // Nível médio-alto como vampira poderosa
     },
   },
 ];
