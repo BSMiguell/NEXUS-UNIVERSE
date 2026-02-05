@@ -5269,7 +5269,7 @@ const charactersData = [
   },
 
   {
-    id: 289, // Continuando a sequência
+    id: 290, // Continuando a sequência
     name: "STRIGA",
     category: "Castlevania",
     image: "img/castlevania/striga-1.png",
@@ -5284,6 +5284,83 @@ const charactersData = [
       recompensa: "N/A",
       afinidade: "Força/Tradição",
       nível: "A+", // Nível médio-alto como vampira poderosa
+    },
+  },
+
+  // LUCIFERO (Black Clover)
+  {
+    id: 291, // Continuando a sequência
+    name: "LUCIFERO",
+    category: "Black Clover",
+    image: "img/Black Clover/Lucifero-1.png",
+    description:
+      "Rei Demônio do mundo dos demônios e um dos seres mais poderosos do universo de Black Clover. Líder dos demônios de alto nível que buscam invadir o mundo humano. Possui poder absoluto de gravidade que pode distorcer o espaço e esmagar qualquer coisa.",
+    details: {
+      universo: "Black Clover",
+      poder:
+        "Magia da Gravidade Absoluta, Distorção Espacial, Poder Demoníaco Supremo",
+      status: "Rei Demônio - Antagonista Principal",
+      estreia: 2020, // Black Clover Capítulo 228
+      recompensa: "N/A",
+      afinidade: "Gravidade/Demoníaco",
+      nível: "SSS", // Nível máximo como Rei Demônio
+    },
+  },
+
+  // SMOLDER (League of Legends)
+  {
+    id: 292,
+    name: "SMOLDER",
+    category: "League of Legend",
+    image: "img/lol/Smolder-1.png",
+    description:
+      "Filhote de dragão ambicioso e filho de uma poderosa mãe dragão em Camavor. Apesar de jovem e inexperiente, está determinado a provar seu valor e criar sua própria lenda, cuspindo fogo mágico e usando habilidades dragônicas únicas.",
+    details: {
+      universo: "League of Legends",
+      poder: "Fogo de Dragão, Habilidades Dragônicas, Crescimento",
+      status: "Filhote de Dragão - Herdeiro Dragônico",
+      estreia: 2024,
+      título: "O Filhote de Dragão",
+      objetivo: "Criar Sua Própria Lenda",
+      nível: "B+", // Nível médio-alto como dragão jovem
+    },
+  },
+
+  // YORU (Chainsaw Man)
+  {
+    id: 293,
+    name: "YORU",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Yoru-1.png",
+    description:
+      "Demônio da Guerra que toma posse do corpo de Asa Mitaka após a morte de Yoru original. Busca recuperar seu poder completo roubado pelo Chainsaw Man. Pode criar armas a partir de partes do corpo de pessoas e manipular memórias relacionadas a conflitos.",
+    details: {
+      universo: "Chainsaw Man",
+      poder:
+        "Criação de Armas Corporais, Manipulação de Memórias de Guerra, Controle Parcial do Corpo Hospedeiro",
+      status: "Demônio da Guerra - Possuidora de Asa Mitaka",
+      estreia: 2020, // Chainsaw Man Parte 2, Capítulo 98
+      recompensa: "N/A",
+      afinidade: "Guerra/Armas",
+      nível: "S", // Nível alto como demônio primordial
+    },
+  },
+
+  {
+    id: 294,
+    name: "KUSANAGI",
+    category: "The King of Fighters",
+    image: "img/The-King-of-Fighters/Kusanagi-1.png",
+    description:
+      "Versão alternativa/corrompida de Kyo Kusanagi que apareceu em The King of Fighters 2002 Unlimited Match. Possui poderes do Orochi e um estilo de luta mais agressivo, com chamas vermelhas em vez das tradicionais chamas roxas da família Kusanagi.",
+    details: {
+      universo: "The King of Fighters",
+      poder:
+        "Chamas do Orochi, Estilo Kusanagi Modificado, Poderes Orochi Corrompidos",
+      status: "Personagem Alternativo - Versão Orochi de Kyo",
+      estreia: 2002, // KOF 2002 UM
+      técnica: "Orochinagi, Yaotome, 108 Shiki Yamibarai",
+      nível: "SS", // Nível muito alto com poderes Orochi
     },
   },
 ];
