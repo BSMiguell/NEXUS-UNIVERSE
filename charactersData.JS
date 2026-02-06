@@ -5154,6 +5154,24 @@ const charactersData = [
     },
   },
 
+  {
+    id: 283,
+    name: "SOUTH TERANO",
+    category: "tokyo", // Note: categoria em minúsculo como outros Tokyo Revengers
+    image: "img/tokyo-revengers/South-Terano-1.png",
+    description:
+      "Líder da gangue Rokuhara Tandai e um dos antagonistas mais fortes de Tokyo Revengers. Conhecido por sua força física monstruosa e personalidade violenta. Representa uma ameaça significativa para os Tokyo Manji Gang.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Força Física Extrema, Combate Brutal, Liderança Gangster",
+      status: "Antagonista - Líder da Rokuhara Tandai",
+      estreia: 2019, // Tokyo Revengers Capítulo 138
+      recompensa: "N/A",
+      afinidade: "Violência/Força",
+      nível: "S", // Nível alto como antagonista poderoso
+    },
+  },
+
   // ZENO ZOLDYCK (Hunter x Hunter)
   {
     id: 284, // Continuando a sequência
@@ -5361,6 +5379,120 @@ const charactersData = [
       estreia: 2002, // KOF 2002 UM
       técnica: "Orochinagi, Yaotome, 108 Shiki Yamibarai",
       nível: "SS", // Nível muito alto com poderes Orochi
+    },
+  },
+
+  // HUGH (Pokémon) - ID 295
+  {
+    id: 295,
+    name: "HUGH",
+    category: "Pokemon",
+    image: "img/Pokemon/Hugh-1.png",
+    description:
+      "Rival principal em Pokémon Black 2 e White 2, amigo de infância do protagonista. Motivado por recuperar a Purrloin de sua irmã que foi roubada pela Team Plasma. Conhecido por sua personalidade intensa e forte senso de justiça.",
+    details: {
+      universo: "Pokémon",
+      poder: "Estratégia de Batalha, Determinação, Vínculo com Pokémon",
+      status: "Treinador Pokémon - Rival",
+      estreia: 2012, // Pokémon Black 2/White 2
+      recompensa: "N/A",
+      afinidade: "Justiça",
+      nível: "A", // Nível médio como rival
+    },
+  },
+
+  // EMPORIO ALNINO (Jojo) - ID 296
+  {
+    id: 296,
+    name: "EMPORIO ALNINO",
+    category: "jojo",
+    image: "img/Jojo/Emporio-Alnino-1.png",
+    description:
+      "Criança que vive na Prisão Green Dolphin Street e personagem sobrevivente de JoJo's Bizarre Adventure Part 6: Stone Ocean. Usuário do Stand Burning Down the House que permite interagir com objetos fantasmas. Crucial para o desfecho da Parte 6.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder: "Stand Burning Down the House, Sobrevivência, Inteligência",
+      status: "Sobrevivente - Usuário de Stand",
+      estreia: 2000, // Stone Ocean Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Sobrevivência/Fantasma",
+      nível: "B+", // Nível médio-alto, Stand mais utilitário que ofensivo
+    },
+  },
+
+  // BUNDUS (Gachiakuta) - ID 297
+  {
+    id: 297,
+    name: "BUNDUS",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Bundus-1.png",
+    description:
+      "Personagem do mundo distópico de Gachiakuta, envolvido no complexo sistema de sobrevivência e relações de poder do ambiente hostil da série. Possui habilidades adaptadas ao mundo desolador de Gachiakuta.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo de Gachiakuta",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Sobrevivência",
+      nível: "B", // Nível médio como outros personagens de Gachiakuta
+    },
+  },
+
+  {
+    id: 298, // Continuando a sequência
+    name: "SCOPPER GABAN",
+    category: "One-Piece",
+    image: "img/One-Piece/Scopper-Gaban-1.png",
+    description:
+      "Terceiro imediato dos Piratas do Roger, conhecido como 'Gaban, o Demolidor'. Um dos membros mais fortes da tripulação lendária, especialista em combate com machados e Haki. Pouco visto, mas mencionado como crucial para o sucesso da tripulação.",
+    details: {
+      universo: "One Piece",
+      poder: "Haki Avançado, Combate com Machados, Força Física",
+      status: "Ex-Pirata - Membro dos Piratas do Roger",
+      estreia: 2000, // One Piece Capítulo 233 (primeira menção)
+      recompensa: "Desconhecida (provavelmente >฿1,000,000,000)",
+      afinidade: "Machados/Lealdade",
+      nível: "SS", // Nível muito alto como membro da tripulação de Roger
+    },
+  },
+
+  {
+    id: 299,
+    name: "TITAN COLOSSAL",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/Titan-Colossal-1.png",
+    description:
+      "Um dos Nove Titãs, conhecido por seu tamanho massivo (60 metros) e capacidade de liberar vapor superaquecido. Primeiro titã visto atacando a Muralha Maria. Sua aparição marcou o início da série e a queda da humanidade.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      portador: "Bertolt Hoover → Armin Arlert",
+      poder:
+        "Tamanho Colossal (60m), Liberação de Vapor Superaquecido, Força Destrutiva Massiva",
+      status: "Titã Shifter - Um dos Nove Titãs",
+      estreia: 2009, // Shingeki no Kyojin Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Vapor/Tamanho",
+      nível: "S+", // Nível muito alto como um dos Nove Titãs
+    },
+  },
+
+  {
+    id: 300, // Continuando a sequência
+    name: "SUPERALLOY DARKSHINE",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Superalloy-Darkshine-1.png",
+    description:
+      "Herói profissional Classe S Rank 11, conhecido por seu corpo musculoso brilhante e resistência extrema. Especialista em defesa absoluta através de treinamento físico intensivo, considerado virtualmente indestrutível até encontrar Garou. Sua confiança é abalada após ser machucado.",
+    details: {
+      universo: "One Punch Man",
+      poder:
+        "Corpo Indestrutível, Força Sobre-Humana, Defesa Absoluta, Brilho Metálico",
+      status: "Herói Classe S Rank 11",
+      estreia: 2012, // One Punch Man Webcomic Capítulo 40
+      recompensa: "N/A",
+      afinidade: "Defesa/Física",
+      nível: "S+", // Nível muito alto como herói Classe S com defesa máxima
     },
   },
 ];
