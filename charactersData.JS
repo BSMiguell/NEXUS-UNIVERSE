@@ -129,7 +129,7 @@ const charactersData = [
     id: 8,
     name: "ALUCARD",
     category: "Castlevania",
-    image: "img/castlevania/alucard-1.png",
+    image: "img/Castlevania/alucard-1.png",
     description:
       "Filho de Drácula, caçador de vampiros, guardião da humanidade. Habilidades: Magia Vampírica e Espadas.",
     details: {
@@ -363,7 +363,7 @@ const charactersData = [
     id: 21,
     name: "Vlad Drácula",
     category: "Castlevania",
-    image: "img/castlevania/Vlad Drácula-1.png",
+    image: "img/Castlevania/Vlad Drácula-1.png",
     description:
       "O Lorde das Trevas, um vampiro imortal que governa o Castelo Drácula e é a encarnação do mal na série Castlevania.",
     details: {
@@ -2469,7 +2469,7 @@ const charactersData = [
     id: 138,
     name: "SIMON BELMONT",
     category: "Castlevania",
-    image: "img/castlevania/simon-belmont-1.png",
+    image: "img/Castlevania/simon-belmont-1.png",
     description:
       "Caçador de vampiros do clã Belmont, lendário por enfrentar Drácula usando o chicote sagrado Vampire Killer.",
     details: {
@@ -4601,7 +4601,7 @@ const charactersData = [
     id: 254, // Continuando a sequência
     name: "RICHTER BELMONT",
     category: "Castlevania",
-    image: "img/castlevania/Richter-Belmont-1.png",
+    image: "img/Castlevania/Richter-Belmont-1.png",
     description:
       "Descendente da família Belmont e um dos caçadores de vampiros mais famosos da linhagem. Protagonista de Castlevania: Rondo of Blood e Symphony of the Night. Conhecido por sua agilidade excepcional e domínio do chicote Vampire Killer.",
     details: {
@@ -5004,7 +5004,7 @@ const charactersData = [
     id: 275,
     name: "TREVOR BELMONT",
     category: "Castlevania",
-    image: "img/castlevania/Trevor-Belmont-1.png",
+    image: "img/Castlevania/Trevor-Belmont-1.png",
     description:
       "Caçador de vampiros da família Belmont que vive durante o século 15, protagonista de Castlevania III: Dracula's Curse. Conhecido por ser um dos primeiros Belmonts a enfrentar Drácula e por usar o chicote Vampire Killer combinado com armas secundárias.",
     details: {
@@ -5290,7 +5290,7 @@ const charactersData = [
     id: 290, // Continuando a sequência
     name: "STRIGA",
     category: "Castlevania",
-    image: "img/castlevania/striga-1.png",
+    image: "img/Castlevania/striga-1.png",
     description:
       "Vampira poderosa da série Castlevania da Netflix, irmã de Morana e membro do conselho de vampiros que governa Wallachia. Conhecida por sua força física impressionante, habilidades de combate e lealdade à causa vampírica. Representa a força bruta e tradição entre os vampiros.",
     details: {
@@ -5574,7 +5574,7 @@ const charactersData = [
     id: 305, // Continuando a sequência
     name: "MACHI KOMACINE",
     category: "HXH",
-    image: "img/HXH/Machi-Komacine-1.png",
+    image: "img/HXH/Machi-Komacine.png",
     description:
       "Membro número 3 da Tropa Fantasma, especialista em Nen de Transmutação. Pode criar fios de Nen extremamente resistentes que usa para costurar feridas, criar armadilhas e manipular objetos. Conhecida por sua personalidade calma e lealdade à Tropa.",
     details: {
@@ -5604,6 +5604,81 @@ const charactersData = [
       recompensa: "N/A",
       afinidade: "Liderança/Combate",
       nível: "S", // Nível alto como líder de gangue forte
+    },
+  },
+
+  {
+    id: 307, // Continuando a sequência
+    name: "SHIZUKU MURASAKI",
+    category: "HXH",
+    image: "img/HXH/Shizuku-Murasaki-1.png",
+    description:
+      "Membro número 12 da Tropa Fantasma, especialista em Nen de Conjuração. Usa a habilidade 'Blinky' - um aspirador de pó demoníaco que pode sugar qualquer coisa não-viva. Conhecida por sua memória ruim e personalidade distraída, mas letal em combate.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder:
+        "Nen - Conjuração (Blinky), Aspiração de Objetos, Limpeza Pós-Batalha",
+      status: "Membro da Tropa Fantasma - Número 12",
+      estreia: 1999, // Hunter x Hunter Capítulo 78
+      recompensa: "N/A",
+      afinidade: "Conjuração/Limpeza",
+      nível: "A", // Nível médio-alto com habilidade versátil
+    },
+  },
+
+  {
+    id: 308,
+    name: "IORI YAGAMI",
+    category: "The King of Fighters",
+    image: "img/The-King-of-Fighters/Iori-Yagami-1.png",
+    description:
+      "Membro do clã Yagami e rival de Kyo Kusanagi, portador das Chamas Roxas (ou Púrpuras) da família Yagami. Possui o sangue do Orochi que periodicamente o leva a um estado de fúria incontrolável. Personagem icônico da série desde KOF '95.",
+    details: {
+      universo: "The King of Fighters",
+      poder:
+        "Chamas Roxas/Púrpuras, Sangue do Orochi, Estilo Yagami, Modo Riot of the Blood",
+      status: "Lutador - Membro do Clã Yagami",
+      estreia: 1995, // The King of Fighters '95
+      técnica: "Yami Barai, 108 Shiki Yashiori, Ura 108 Shiki Yashiori",
+      nível: "SS", // Nível muito alto como um dos protagonistas/rivais principais
+    },
+  },
+
+  {
+    id: 309, // Continuando a sequência
+    name: "SYPHA BELNADES",
+    category: "Castlevania",
+    image: "img/Castlevania/Sypha-Belnades-1.png",
+    description:
+      "Maga da família Belnades e uma das principais caçadoras de vampiros em Castlevania. Especialista em magia elemental, particularmente magia de fogo, gelo e eletricidade. Companheira de Trevor Belmont e posteriormente mãe de Simon Belmont.",
+    details: {
+      universo: "Castlevania",
+      poder:
+        "Magia Elemental (Fogo, Gelo, Eletricidade), Feitiços Ofensivos e Defensivos",
+      status: "Maga - Caçadora de Vampiros",
+      estreia: 1989, // Castlevania III: Dracula's Curse
+      recompensa: "N/A",
+      afinidade: "Magia Elemental",
+      nível: "A+", // Nível alto como maga poderosa
+    },
+  },
+
+  {
+    id: 310,
+    name: "RIN TOHSAKA",
+    category: "Fate",
+    image: "img/Fate/Rin-Tohsaka-1.png",
+    description:
+      "Mestra de magia e uma das protagonistas de Fate/stay night. Herdeira da família Tohsaka, especialista em magia de pedras preciosas (Jewel Magecraft) e uma das participantes da Quinta Guerra do Santo Graal. Conhecida por sua inteligência, habilidades mágicas e personalidade tsundere.",
+    details: {
+      universo: "Fate",
+      poder:
+        "Jewel Magecraft, Magia de Pedras Preciosas, Gandr, Servant Summoning",
+      status: "Mestra de Magia - Participante da Guerra do Santo Graal",
+      estreia: 2004, // Fate/stay night (visual novel)
+      recompensa: "N/A",
+      afinidade: "Magia de Gemas",
+      nível: "A+", // Nível alto como maga talentosa, abaixo dos Servants
     },
   },
 ];
