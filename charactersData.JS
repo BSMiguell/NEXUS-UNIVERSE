@@ -75,7 +75,7 @@ const charactersData = [
     id: 5,
     name: "CHROLLO LUCILFER",
     category: "HXH",
-    image: "hxh/Chrollo.png",
+    image: "img/HXH/Chrollo.png",
     description:
       "Líder da Tropa Fantasma, usuário de Nen com habilidade de roubar técnicas. Especialidade: Bandit's Secret.",
     details: {
@@ -651,7 +651,7 @@ const charactersData = [
     id: 37,
     name: "Feitan Portor",
     category: "HXH",
-    image: "img/hxh/Feitan-1.png",
+    image: "img/HXH/Feitan-1.png",
     description:
       "Membro da Tropa Fantasma, especialista em interrogatório e usuário da habilidade Pain Packer que converte dor em poder.",
     details: {
@@ -993,7 +993,7 @@ const charactersData = [
     id: 56,
     name: "Gon Freecss",
     category: "HXH",
-    image: "img/hxh/Gon-1.png",
+    image: "img/HXH/Gon-1.png",
     description:
       "Protagonista de Hunter x Hunter, um jovem determinado a se tornar um Hunter como seu pai e descobrir os segredos do mundo.",
     details: {
@@ -1461,7 +1461,7 @@ const charactersData = [
     id: 82,
     name: "Hisoka Morow",
     category: "HXH",
-    image: "img/hxh/Hisoka-1.png",
+    image: "img/HXH/Hisoka-1.png",
     description:
       "Mago e Hunter que vive para encontrar oponentes dignos, usuário das habilidades Bungee Gum e Texture Surprise.",
     details: {
@@ -1677,7 +1677,7 @@ const charactersData = [
     id: 94,
     name: "Meruem",
     category: "HXH",
-    image: "img/hxh/Meruem-1.png",
+    image: "img/HXH/Meruem-1.png",
     description:
       "Rei das Formigas Quimera, criatura com inteligência e poder incomparáveis que evolui rapidamente ao absorver habilidades de outros.",
     details: {
@@ -1983,7 +1983,7 @@ const charactersData = [
     id: 111,
     name: "Neferpitou",
     category: "HXH",
-    image: "img/hxh/Neferpitou-2.png",
+    image: "img/HXH/Neferpitou-2.png",
     description:
       "Guarda Real das Formigas Quimera especializada em habilidades de médico e combate, possuindo o Nen mais refinado entre os Guardas.",
     details: {
@@ -2791,7 +2791,7 @@ const charactersData = [
   {
     id: 156,
     name: "JOE YABUKI",
-    category: "Ashita-no-Joe",
+    category: "Ashita no Joe",
     image: "img/Ashita-no-Joe/Joe-4.png",
     description:
       "Joe Yabuki é um boxeador indomável que luta movido por orgulho, liberdade e autodestruição...",
@@ -3261,7 +3261,7 @@ const charactersData = [
   {
     id: 182,
     name: "Kiyotaka Ayanokōji",
-    category: "Classroom-of-the-Elite",
+    category: "Classroom of the Elite",
     image: "img/classroom-of-the-elite/Kiyotaka-Ayanokōji-1.png",
     description:
       "Kiyotaka Ayanokōji é o protagonista de Classroom of the Elite, um estudante aparentemente comum da Classe D, mas que esconde uma mente genial moldada pelo rigoroso programa conhecido como White Room. Frio, calculista e estrategista excepcional, ele manipula situações e pessoas nos bastidores para alcançar seus objetivos sem chamar atenção.",
@@ -3369,7 +3369,7 @@ const charactersData = [
   {
     id: 188, // Continuando a sequência
     name: "RYUEN KAKERU",
-    category: "Classroom-of-the-Elite",
+    category: "Classroom of the Elite",
     image: "img/classroom-of-the-elite/ryuen-kakeru-1.png",
     description:
       "Líder agressivo e impiedoso da Classe C da Advanced Nurturing High School. Conhecido por sua abordagem violenta para resolver problemas e táticas de intimidação para alcançar objetivos.",
@@ -3837,7 +3837,7 @@ const charactersData = [
     id: 213, // Continuando a sequência
     name: "KURAPIKA",
     category: "HXH",
-    image: "img/hxh/Kurapika-1.png",
+    image: "img/HXH/Kurapika-1.png",
     description:
       "Último sobrevivente do clã Kurta, caçador especializado em recuperar os olhos escarlates de seu povo. Desenvolveu habilidades de Nen específicas para combater a Tropa Fantasma.",
     details: {
@@ -4079,7 +4079,7 @@ const charactersData = [
     id: 226, // Continuando a sequência
     name: "SILVA ZOLDYCK",
     category: "HXH",
-    image: "img/hxh/silva-zoldyck-1.png",
+    image: "img/HXH/silva-zoldyck-1.png",
     description:
       "Chefe da Família Zoldyck, uma das famílias de assassinos mais temidas do mundo. Pai de Killua Zoldyck e mestre em técnicas de assassinato usando Nen. Conhecido por sua força implacável e ética profissional rigorosa.",
     details: {
@@ -4150,7 +4150,7 @@ const charactersData = [
   {
     id: 230, // Continuando a sequência
     name: "TORU RIKIISHI",
-    category: "Ashita-no-Joe",
+    category: "Ashita no Joe",
     image: "img/Ashita-no-Joe/TORU-RIKIISHI-2.png",
     description:
       "Boxeador profissional e primeiro grande rival de Joe Yabuki. Conhecido por seu estilo técnico e rigoroso, representa o contraste entre o boxe disciplinado e o estilo selvagem de Joe. Sua luta contra Joe se torna lendária no mundo do boxe.",
@@ -4258,7 +4258,7 @@ const charactersData = [
   {
     id: 236, // Continuando a sequência (considerando Hashirama como 235)
     name: "KEI KARUIZAWA",
-    category: "Classroom-of-the-Elite",
+    category: "Classroom of the Elite",
     image: "img/classroom-of-the-elite/Kei-Karuizawa-1.png",
     description:
       "Estudante popular da Classe D da Advanced Nurturing High School, conhecida por seu estilo fashion e influência social. Por trás da fachada confiante, esconde traumas de bullying e desenvolve uma complexa relação com Kiyotaka Ayanokōji.",
@@ -4314,7 +4314,7 @@ const charactersData = [
   {
     id: 239, // Continuando a sequência
     name: "YONG-BI KIM",
-    category: "Ashita-no-Joe",
+    category: "Ashita no Joe",
     image: "img/Ashita-no-Joe/Yong-Bi-Kim-1.png",
     description:
       "Boxeador profissional coreano que enfrenta Joe Yabuki em uma luta internacional. Conhecido por seu estilo técnico e experiência, representa um desafio significativo para Joe em sua jornada no boxe profissional.",
@@ -4333,7 +4333,7 @@ const charactersData = [
     id: 240, // Continuando a sequência
     name: "KITE",
     category: "HXH",
-    image: "img/hxh/kite-1.png",
+    image: "img/HXH/kite-1.png",
     description:
       "Hunter profissional e ex-aluno de Ging Freecss, que se torna mentor de Gon. Portador de uma habilidade de Nen única com sua arma 'Crazy Slots' que gira aleatoriamente para diferentes armas. Conhecido por seu senso de responsabilidade e ética como hunter.",
     details: {
@@ -4388,7 +4388,7 @@ const charactersData = [
   {
     id: 243, // Continuando a sequência
     name: "ROKUSUKE KOENJI",
-    category: "Classroom-of-the-Elite",
+    category: "Classroom of the Elite",
     image: "img/classroom-of-the-elite/Rokusuke-Koenji-1.png",
     description:
       "Estudante extremamente confiante e excêntrico da Classe D, conhecido por suas habilidades físicas excepcionais e personalidade narcisista. Age de acordo com seus próprios interesses, muitas vezes ignorando regras e hierarquias, mas demonstrando capacidades impressionantes quando motivado.",
@@ -4522,7 +4522,7 @@ const charactersData = [
   {
     id: 250, // Continuando a sequência (Diego 248, Higuruma 249)
     name: "HARIMAU",
-    category: "Ashita-no-Joe",
+    category: "Ashita no Joe",
     image: "img/Ashita-no-Joe/Harimau-1.png",
     description:
       "Boxeador indonésio que enfrenta Joe Yabuki em uma luta internacional, conhecido por seu apelido que significa 'Tigre' em indonésio/malaio. Representa o desafio dos boxeadores do sudeste asiático na carreira internacional de Joe.",
@@ -4658,7 +4658,7 @@ const charactersData = [
   {
     id: 257,
     name: "SUZUNE HORIKITA",
-    category: "Classroom-of-the-Elite",
+    category: "Classroom of the Elite",
     image: "img/classroom-of-the-elite/Suzune-Horikita-1.png",
     description:
       "Estudante da Classe D conhecida por sua personalidade fria, independente e altas habilidades acadêmicas. Irmã mais nova de Manabu Horikita, inicialmente desinteressada em socializar mas gradualmente se abre ao trabalhar com outros estudantes.",
@@ -4716,7 +4716,7 @@ const charactersData = [
     id: 260, // Continuando a sequência
     name: "UVOGIN",
     category: "HXH",
-    image: "img/hxh/Uvogin-1.png",
+    image: "img/HXH/Uvogin-1.png",
     description:
       "Membro número 11 da Tropa Fantasma e especialista em Nen de Reforço. Conhecido por sua força física monstruosa e personalidade agressiva. Considerado o membro mais forte fisicamente da Tropa, capaz de destruir edifícios com seus punhos.",
     details: {
@@ -4754,7 +4754,7 @@ const charactersData = [
   {
     id: 262,
     name: "JOSE MENDOZA",
-    category: "Ashita-no-Joe",
+    category: "Ashita no Joe",
     image: "img/Ashita-no-Joe/Jose-Mendosa-1.png",
     description:
       "Campeão mundial de boxe dos pesos-médios e oponente final de Joe Yabuki. Conhecido como 'O Imperador', representa o auge do boxe mundial e o maior desafio na carreira de Joe. Luta com estilo técnico e experiência incomparável.",
@@ -4985,7 +4985,7 @@ const charactersData = [
   {
     id: 274,
     name: "KANICHI NISHI",
-    category: "Ashita-no-Joe",
+    category: "Ashita no Joe",
     image: "img/Ashita-no-Joe/Kanichi-Nishi-1.png",
     description:
       "Boxeador que faz parte do universo de Ashita no Joe, participando das competições e desafios do mundo do boxe da série. Contribui para o desenvolvimento do cenário boxístico que Joe Yabuki navega.",
@@ -5044,7 +5044,7 @@ const charactersData = [
     id: 277,
     name: "KILLUA ZOLDYCK",
     category: "HXH",
-    image: "img/hxh/Killua-Zoldyck-1.png",
+    image: "img/HXH/Killua-Zoldyck-1.png",
     description:
       "Herdeiro da família de assassinos Zoldyck e melhor amigo de Gon Freecss. Especialista em Nen com afinidade para Transformação e Transmutação, criando eletricidade com seu Nen. Conhecido por sua velocidade extrema, habilidades de assassinato e crescimento ao longo da série.",
     details: {
@@ -5177,7 +5177,7 @@ const charactersData = [
     id: 284, // Continuando a sequência
     name: "ZENO ZOLDYCK",
     category: "HXH",
-    image: "img/hxh/Zeno-Zoldyck-1.png",
+    image: "img/HXH/Zeno-Zoldyck-1.png",
     description:
       "Patriarca da família Zoldyck e avô de Killua, considerado um dos assassinos mais experientes e perigosos do mundo. Especialista em Nen com afinidade para Emissão, capaz de criar dragões de energia. Trabalhou como guarda-costas para a família Netero e participou da invasão ao Palácio de Meruem.",
     details: {
@@ -5253,7 +5253,7 @@ const charactersData = [
   {
     id: 288, // Continuando a sequência
     name: "CARLOS RIVERA",
-    category: "Ashita-no-Joe",
+    category: "Ashita no Joe",
     image: "img/Ashita-no-Joe/Carlos-Rivera-2.png",
     description:
       "Boxeador profissional internacional que faz parte do universo competitivo de Ashita no Joe. Participa dos torneios e desafios do mundo do boxe, contribuindo para o cenário esportivo global que Joe Yabuki navega em sua jornada.",
@@ -5493,6 +5493,117 @@ const charactersData = [
       recompensa: "N/A",
       afinidade: "Defesa/Física",
       nível: "S+", // Nível muito alto como herói Classe S com defesa máxima
+    },
+  },
+
+  {
+    id: 301, // Continuando a sequência
+    name: "GUARDIAN APE",
+    category: "souls", // Note: categoria "souls" inclui Sekiro (mesmo desenvolvedor)
+    image: "img/souls/guardian-ape-sekiro-1.png",
+    description:
+      "Chefe icônico de Sekiro: Shadows Die Twice, um macaco colossal e imortal que guarda a Flor Persimmon no Vale da Fonte. Conhecido por seu combate em duas fases: primeira como macaco selvagem, segunda como macaco decapitado controlado por um centopéia gigante.",
+    details: {
+      universo: "Sekiro: Shadows Die Twice",
+      poder:
+        "Imortalidade, Força Bruta, Segunda Fase com Espada Decapitada, Grito Sônico",
+      status: "Chefe - Guardião do Vale da Fonte",
+      estreia: 2019, // Sekiro: Shadows Die Twice
+      recompensa: "N/A",
+      afinidade: "Imortalidade/Macaco",
+      nível: "S+", // Nível muito alto como chefe desafiador
+    },
+  },
+
+  {
+    id: 302,
+    name: "DANTE ZOGRATIS",
+    category: "Black Clover",
+    image: "img/Black Clover/Dante-Zogratis-1.png",
+    description:
+      "Membro mais velho da Tríade Negra e irmão de Vanica e Zenon Zogratis. Possui 100% de afinidade com um demônio de alto nível que lhe concede o poder de manipulação de gravidade. Considerado um dos humanos mais fortes do Reino do Trifolium.",
+    details: {
+      universo: "Black Clover",
+      poder:
+        "Manipulação de Gravidade (100% Demônio), Corpo Regenerativo, Magia Sombria",
+      status: "Antagonista - Líder da Tríade Negra",
+      estreia: 2019, // Black Clover Capítulo 228
+      recompensa: "N/A",
+      afinidade: "Gravidade/Demônio",
+      nível: "SS+", // Nível muito alto com poder demoníaco máximo
+    },
+  },
+
+  {
+    id: 303, // Continuando a sequência
+    name: "GEKI",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/Geki-1.png",
+    description:
+      "Personagem de Street Fighter originalmente planejado para o primeiro jogo mas que apareceu apenas em material complementar. Ninja mestre que usa shurikens e técnicas de furtividade. Representa o estilo ninja dentro do universo Street Fighter.",
+    details: {
+      universo: "Street Fighter",
+      poder: "Técnicas Ninja, Shurikens, Furtividade, Artes Marciais",
+      status: "Ninja - Personagem Beta/Cameo",
+      estreia: 1987, // Street Fighter (conceito original)
+      técnica: "Shuriken Throw, Ninja Arts",
+      nível: "B", // Nível médio como personagem menos conhecido
+    },
+  },
+
+  {
+    id: 304,
+    name: "HEKAPOO",
+    category: "Star-vs.",
+    image: "img/star-vs/Hekapoo-1.png",
+    description:
+      "Membro da Comissão Mágica e uma das Magical High Commission em Mewni. Especialista em portais e dimensional travel, criadora das tesouras dimensionais. Conhecida por sua personalidade sarcástica, competitiva e habilidades de criação de portais.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      poder:
+        "Criação de Portais, Tesouras Dimensionais, Magia de Dimensional Travel",
+      status: "Membro da Comissão Mágica",
+      estreia: 2015, // Star vs. the Forces of Evil Season 1
+      recompensa: "N/A",
+      afinidade: "Portais/Dimensões",
+      nível: "A+", // Nível médio-alto como membro da comissão mágica
+    },
+  },
+
+  {
+    id: 305, // Continuando a sequência
+    name: "MACHI KOMACINE",
+    category: "HXH",
+    image: "img/HXH/Machi-Komacine-1.png",
+    description:
+      "Membro número 3 da Tropa Fantasma, especialista em Nen de Transmutação. Pode criar fios de Nen extremamente resistentes que usa para costurar feridas, criar armadilhas e manipular objetos. Conhecida por sua personalidade calma e lealdade à Tropa.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder:
+        "Nen - Transmutação (Fios), Costura com Nen, Habilidades de Suporte",
+      status: "Membro da Tropa Fantasma - Número 3",
+      estreia: 1999, // Hunter x Hunter Capítulo 70
+      recompensa: "N/A",
+      afinidade: "Fios/Suporte",
+      nível: "A+", // Nível médio-alto como especialista em suporte da Tropa
+    },
+  },
+
+  {
+    id: 306,
+    name: "SENJU KAWARAGI",
+    category: "tokyo", // minúsculo como outros Tokyo Revengers
+    image: "img/tokyo-revengers/Senju-Kawaragi-1.png",
+    description:
+      "Líder da gangue Brahman e única líder feminina entre as grandes gangues de Tokyo Revengers. Irmã mais nova de Haruchiyo Sanzu e conhecida por sua força excepcional e habilidades de liderança. Uma das figuras mais respeitadas no underground de Tóquio.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Habilidades de Combate Excepcionais, Liderança, Força Física",
+      status: "Líder - Brahman Gang",
+      estreia: 2020, // Tokyo Revengers Capítulo 188
+      recompensa: "N/A",
+      afinidade: "Liderança/Combate",
+      nível: "S", // Nível alto como líder de gangue forte
     },
   },
 ];
