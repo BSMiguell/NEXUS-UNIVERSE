@@ -290,7 +290,8 @@
 }
 
 .modal-explore-btn,
-.modal-close-btn {
+.modal-close-btn,
+.modal-battle-btn {
   flex: 1;
   min-width: 200px;
   padding: clamp(14px, 3vw, 18px) clamp(20px, 4vw, 30px);
@@ -317,6 +318,20 @@
 }
 
 .modal-explore-btn:hover {
+  background: rgba(0, 255, 234, 0.25);
+  transform: translateY(-3px);
+  box-shadow:
+    0 15px 40px rgba(0, 255, 234, 0.3),
+    0 0 30px rgba(0, 255, 234, 0.2);
+}
+
+.modal-battle-btn {
+  background: rgba(0, 255, 234, 0.15);
+  color: var(--quantum-primary);
+  border: 1px solid rgba(0, 255, 234, 0.3);
+}
+
+.modal-battle-btn:hover {
   background: rgba(0, 255, 234, 0.25);
   transform: translateY(-3px);
   box-shadow:

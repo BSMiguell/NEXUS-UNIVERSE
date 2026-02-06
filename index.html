@@ -1205,6 +1205,12 @@
         background: linear-gradient(135deg, #00ff9d, #00b3ff);
       }
 
+      /* Botão Batalha */
+      .battle-toggle {
+        bottom: 515px;
+        background: linear-gradient(135deg, #ff2a6d, #ff4500);
+      }
+
       /* Efeito de Cursor Magnético */
       .cursor-magnetic {
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1433,6 +1439,9 @@
         .quantum-favorites-page {
           padding: 40px 20px;
         }
+        .quantum-battle-page {
+          padding: 40px 20px;
+        }
         .quantum-header {
           padding: 60px 20px;
           margin-bottom: 80px;
@@ -1479,6 +1488,9 @@
         }
         .search-toggle {
           bottom: 312px;
+        }
+        .battle-toggle {
+          bottom: 378px;
         }
         .quantum-toast {
           min-width: 350px;
@@ -1673,6 +1685,7 @@
     <link rel="stylesheet" href="style/modal-character.css" />
     <link rel="stylesheet" href="style/favorite.css" />
     <link rel="stylesheet" href="style/modal-search.css" />
+    <link rel="stylesheet" href="style/battleSystem.css" />
     <link rel="stylesheet" href="style/footer.css" />
   </head>
 
@@ -1735,7 +1748,8 @@
           </h1>
           <p class="quantum-subtitle">
             A EXPERIÊNCIA VISUAL DEFINITIVA • IMERSÃO TOTAL COM COMANDOS DE VOZ,
-            REALIDADE 3D, CONQUISTAS E INTELIGÊNCIA ARTIFICIAL
+            REALIDADE 3D, CONQUISTAS E INTELIGÊNCIA ARTIFICIAL • SISTEMA DE
+            BATALHA QUÂNTICA
           </p>
           <div class="rating-badge" aria-label="Avaliação: Design 13 de 10">
             <div class="rating-stars" aria-hidden="true">
@@ -1831,6 +1845,16 @@
                 VER FAVORITOS 13/10
               </button>
 
+              <!-- Botão para acessar Batalha -->
+              <button
+                class="quantum-button"
+                id="viewBattleBtn"
+                aria-label="Acessar sistema de batalha"
+              >
+                <i class="fas fa-fist-raised" aria-hidden="true"></i>
+                SISTEMA DE BATALHA
+              </button>
+
               <!-- Botão para acessar Pesquisa -->
               <button
                 class="quantum-button"
@@ -1859,6 +1883,10 @@
                     <span id="favoritesCountTerminal" class="status-active"
                       >0</span
                     >
+                  </div>
+                  <div>
+                    > BATALHA:
+                    <span class="status-active">PRONTA</span>
                   </div>
                 </div>
               </div>
@@ -2096,14 +2124,122 @@
         </div>
       </div>
 
+      <!-- Página de Batalha Quântica -->
+      <div
+        class="quantum-battle-page"
+        id="quantumBattlePage"
+        role="main"
+        hidden
+      >
+        <!-- Header da Batalha -->
+        <header class="battle-header">
+          <h1 class="battle-title">SISTEMA DE BATALHA QUÂNTICA 13/10</h1>
+          <p class="battle-subtitle">
+            SELECIONE DOIS PERSONAGENS E TESTE QUEM VENCERIA EM UMA BATALHA
+            EPICA • SISTEMA DE CÁLCULO QUÂNTICO AVANÇADO
+          </p>
+        </header>
+
+        <!-- Arena de Batalha -->
+        <div class="battle-arena">
+          <!-- Personagem 1 -->
+          <div class="battle-selection" id="player1Selection">
+            <h3 class="selection-title">PERSONAGEM 1</h3>
+            <div class="selection-display" id="player1Display">
+              <div class="empty-selection">
+                <i
+                  class="fas fa-user-circle"
+                  style="
+                    font-size: 100px;
+                    color: var(--text-secondary);
+                    margin-bottom: 20px;
+                  "
+                ></i>
+                <p style="font-size: 1.2rem; color: var(--text-secondary)">
+                  SELECIONE UM PERSONAGEM
+                </p>
+              </div>
+            </div>
+            <button class="character-select-btn" data-player="1">
+              <i class="fas fa-users"></i>
+              SELECIONAR PERSONAGEM 1
+            </button>
+          </div>
+
+          <!-- VS -->
+          <div class="vs-container">
+            <div class="vs-text">VS</div>
+            <p style="color: var(--text-secondary); margin-top: 10px">
+              CONFRONTO QUÂNTICO
+            </p>
+          </div>
+
+          <!-- Personagem 2 -->
+          <div class="battle-selection" id="player2Selection">
+            <h3 class="selection-title">PERSONAGEM 2</h3>
+            <div class="selection-display" id="player2Display">
+              <div class="empty-selection">
+                <i
+                  class="fas fa-user-circle"
+                  style="
+                    font-size: 100px;
+                    color: var(--text-secondary);
+                    margin-bottom: 20px;
+                  "
+                ></i>
+                <p style="font-size: 1.2rem; color: var(--text-secondary)">
+                  SELECIONE UM PERSONAGEM
+                </p>
+              </div>
+            </div>
+            <button class="character-select-btn" data-player="2">
+              <i class="fas fa-users"></i>
+              SELECIONAR PERSONAGEM 2
+            </button>
+          </div>
+
+          <!-- Controles da Batalha -->
+          <div class="battle-controls">
+            <button class="battle-start-btn" id="startBattleBtn" disabled>
+              <i class="fas fa-play"></i>
+              INICIAR BATALHA QUÂNTICA
+            </button>
+            <button class="battle-reset-btn" id="resetBattleBtn">
+              <i class="fas fa-redo"></i>
+              REINICIAR BATALHA
+            </button>
+          </div>
+        </div>
+
+        <!-- Resultados da Batalha -->
+        <div class="battle-results" id="battleResults">
+          <h3 class="results-title">RESULTADO DA BATALHA</h3>
+          <div class="results-content" id="resultsContent">
+            <!-- Conteúdo será preenchido via JavaScript -->
+          </div>
+          <div class="battle-log" id="battleLog">
+            <h4 class="log-title">REGISTRO DA BATALHA</h4>
+            <!-- Log será preenchido via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Botão para voltar à galeria -->
+        <div style="text-align: center; margin-top: 60px">
+          <button class="quantum-button" id="backToGalleryFromBattle">
+            <i class="fas fa-arrow-left"></i>
+            VOLTAR À GALERIA PRINCIPAL
+          </button>
+        </div>
+      </div>
+
       <!-- Footer Quântico -->
       <footer class="quantum-footer" role="contentinfo">
         <div class="footer-quantum">NEXUS QUANTUM 13/10</div>
         <p class="footer-description footer-description-class">
           Uma experiência visual quântica 13/10 com comandos de voz, realidade
-          3D, sistema de conquistas, efeitos magnéticos e inteligência
-          artificial. Explore realidades alternativas como nunca antes
-          imaginado.
+          3D, sistema de conquistas, efeitos magnéticos, sistema de batalha e
+          inteligência artificial. Explore realidades alternativas como nunca
+          antes imaginado.
         </p>
         <div class="footer-stats-grid">
           <div class="footer-stat">
@@ -2123,6 +2259,12 @@
               <i class="fas fa-cube"></i>
             </div>
             <div class="footer-stat-label">MODO 3D</div>
+          </div>
+          <div class="footer-stat">
+            <div class="footer-stat-icon">
+              <i class="fas fa-fist-raised"></i>
+            </div>
+            <div class="footer-stat-label">SISTEMA DE BATALHA</div>
           </div>
         </div>
         <p class="copyright">
@@ -2167,6 +2309,13 @@
       >
         <i class="fas fa-search" aria-hidden="true"></i>
       </button>
+      <button
+        class="quantum-control-btn battle-toggle"
+        id="battleToggle"
+        aria-label="Acessar sistema de batalha"
+      >
+        <i class="fas fa-fist-raised" aria-hidden="true"></i>
+      </button>
 
       <!-- Modal Quântico -->
       <div
@@ -2187,6 +2336,34 @@
             <i class="fas fa-times" aria-hidden="true"></i>
           </button>
           <div id="modalContent" class="modal-content-scroll"></div>
+        </div>
+      </div>
+
+      <!-- Modal de Seleção de Personagem para Batalha -->
+      <div
+        class="character-selector-modal"
+        id="characterSelectorModal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <div class="selector-container">
+          <div class="selector-header">
+            <h2 class="selector-title" id="selectorTitle">
+              SELECIONE UM PERSONAGEM
+            </h2>
+            <button
+              class="selector-close"
+              id="selectorClose"
+              aria-label="Fechar"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="selector-grid" id="characterSelectorGrid">
+            <!-- Personagens serão carregados aqui -->
+          </div>
         </div>
       </div>
 
@@ -2478,6 +2655,7 @@
     <!-- Scripts -->
     <script src="Js/Temas.js"></script>
     <script src="Js/Favoritos.js"></script>
+    <script src="Js/QuantumBattleSystem.js"></script>
     <script src="charactersData.JS"></script>
     <script src="Js/modal-search.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -2672,6 +2850,8 @@
         }
       }
 
+      // ===== SISTEMA DE BATALHA =====
+
       // ===== SISTEMA DE HISTÓRIA E ESTADO =====
       class QuantumHistory {
         constructor(gallery) {
@@ -2825,6 +3005,7 @@
             await this.loadSound("click", this.generateTone(659.25, 0.1));
             await this.loadSound("favorite", this.generateTone(1046.5, 0.3));
             await this.loadSound("search", this.generateTone(880.0, 0.15));
+            await this.loadSound("battle", this.generateTone(349.23, 0.4));
 
             this.setupEventListeners();
           } catch (error) {
@@ -2967,6 +3148,7 @@
             isModalOpen: false,
             isSearchModalOpen: false,
             showFavoritesPage: false,
+            showBattlePage: false,
             modalOpenedFromFavorites: false,
             scrollPositionBeforeModal: 0,
           };
@@ -2978,6 +3160,7 @@
           this.themeSystem = new QuantumThemeSystem();
           this.favorites = new QuantumFavoritesSystem(this);
           this.searchSystem = new QuantumSearch(this);
+          this.battleSystem = new QuantumBattleSystem(this);
 
           this.elements = {};
           this.init();
@@ -3072,7 +3255,9 @@
             quantumFavoritesPage: document.getElementById(
               "quantumFavoritesPage",
             ),
+            quantumBattlePage: document.getElementById("quantumBattlePage"),
             viewFavoritesBtn: document.getElementById("viewFavoritesBtn"),
+            viewBattleBtn: document.getElementById("viewBattleBtn"),
             viewSearchBtn: document.getElementById("viewSearchBtn"),
             backToGallery: document.getElementById("backToGallery"),
             favoritesCountTerminal: document.getElementById(
@@ -3083,6 +3268,7 @@
             searchClose: document.getElementById("searchClose"),
             searchInput: document.getElementById("searchInput"),
             searchResults: document.getElementById("searchResults"),
+            battleToggle: document.getElementById("battleToggle"),
           };
         }
 
@@ -3221,6 +3407,13 @@
             });
           }
 
+          if (this.elements.viewBattleBtn) {
+            this.elements.viewBattleBtn.addEventListener("click", () => {
+              this.battleSystem.showBattlePage();
+              this.audio.play("click");
+            });
+          }
+
           if (this.elements.viewSearchBtn) {
             this.elements.viewSearchBtn.addEventListener("click", () => {
               this.openSearchModal();
@@ -3278,12 +3471,25 @@
               ) {
                 this.themeSystem.closeThemeModal();
               }
+              if (
+                document
+                  .getElementById("characterSelectorModal")
+                  .classList.contains("show")
+              ) {
+                this.battleSystem.closeCharacterSelector();
+              }
             }
 
             // Atalho Ctrl+F ou Cmd+F para pesquisa
             if ((e.ctrlKey || e.metaKey) && e.key === "f") {
               e.preventDefault();
               this.openSearchModal();
+            }
+
+            // Atalho Ctrl+B ou Cmd+B para batalha
+            if ((e.ctrlKey || e.metaKey) && e.key === "b") {
+              e.preventDefault();
+              this.battleSystem.showBattlePage();
             }
           });
 
@@ -3635,9 +3841,9 @@
                                       aria-label="Analisar ${character.name}">
                                   <i class="fas fa-expand" aria-hidden="true"></i> ANALISAR
                               </button>
-                              <button class="quantum-button explore-quantum" data-category="${character.category}"
-                                      aria-label="Explorar categoria ${categoryNames[character.category]}">
-                                  <i class="fas fa-layer-group" aria-hidden="true"></i> EXPLORAR
+                              <button class="quantum-button battle-quantum" data-id="${character.id}"
+                                      aria-label="Selecionar ${character.name} para batalha">
+                                  <i class="fas fa-fist-raised" aria-hidden="true"></i> BATALHA
                               </button>
                           </div>
                       </div>
@@ -3649,7 +3855,7 @@
           }
 
           const viewBtn = card.querySelector(".view-quantum");
-          const exploreBtn = card.querySelector(".explore-quantum");
+          const battleBtn = card.querySelector(".battle-quantum");
           const favoriteBtn = card.querySelector(".quantum-favorite");
 
           viewBtn.addEventListener("click", (e) => {
@@ -3658,12 +3864,21 @@
             this.audio.play("click");
           });
 
-          exploreBtn.addEventListener("click", (e) => {
+          battleBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            const category =
-              e.target.closest(".quantum-button").dataset.category;
-            this.setCategory(category);
-            this.scrollToCardsSection();
+            this.battleSystem.openCharacterSelector(1);
+            setTimeout(() => {
+              // Selecionar automaticamente este personagem no seletor
+              const selectorGrid = document.getElementById(
+                "characterSelectorGrid",
+              );
+              const characterElement = selectorGrid.querySelector(
+                `[data-id="${character.id}"]`,
+              );
+              if (characterElement) {
+                characterElement.click();
+              }
+            }, 100);
             this.audio.play("click");
           });
 
@@ -3844,6 +4059,10 @@
                       <button class="modal-explore-btn" onclick="window.gallery.setCategory('${character.category}')">
                           <i class="fas fa-filter"></i>
                           EXPLORAR ${categoryNames[character.category]}
+                      </button>
+                      <button class="modal-battle-btn" onclick="window.gallery.battleSystem.openCharacterSelector(1); setTimeout(() => { const selectorGrid = document.getElementById('characterSelectorGrid'); const characterElement = selectorGrid.querySelector('[data-id=\\'${character.id}\\']'); if (characterElement) characterElement.click(); }, 100); window.gallery.closeModal();">
+                          <i class="fas fa-fist-raised"></i>
+                          SELECIONAR PARA BATALHA
                       </button>
                       <button class="modal-close-btn" onclick="window.gallery.closeModal()">
                           <i class="fas fa-times"></i>
@@ -4429,21 +4648,20 @@
           }
         }
 
-        // ===== SISTEMA DE PÁGINAS (GALERIA/FAVORITOS) =====
-        toggleFavoritesPage() {
-          if (this.state.showFavoritesPage) {
-            this.showGalleryPage();
-          } else {
-            this.showFavoritesPage();
-          }
-        }
-
+        // ===== SISTEMA DE PÁGINAS (GALERIA/FAVORITOS/BATALHA) =====
         showFavoritesPage() {
           this.state.showFavoritesPage = true;
+          this.state.showBattlePage = false;
 
-          // Ocultar galeria
+          // Ocultar outras páginas
           if (this.elements.quantumUniverse) {
             this.elements.quantumUniverse.style.display = "none";
+          }
+
+          if (this.elements.quantumBattlePage) {
+            this.elements.quantumBattlePage.style.display = "none";
+            this.elements.quantumBattlePage.classList.remove("active");
+            this.elements.quantumBattlePage.setAttribute("hidden", "");
           }
 
           // Mostrar página de favoritos
@@ -4476,17 +4694,24 @@
 
         showGalleryPage() {
           this.state.showFavoritesPage = false;
+          this.state.showBattlePage = false;
 
           // Mostrar galeria
           if (this.elements.quantumUniverse) {
             this.elements.quantumUniverse.style.display = "block";
           }
 
-          // Ocultar página de favoritos
+          // Ocultar outras páginas
           if (this.elements.quantumFavoritesPage) {
             this.elements.quantumFavoritesPage.style.display = "none";
             this.elements.quantumFavoritesPage.classList.remove("active");
             this.elements.quantumFavoritesPage.setAttribute("hidden", "");
+          }
+
+          if (this.elements.quantumBattlePage) {
+            this.elements.quantumBattlePage.style.display = "none";
+            this.elements.quantumBattlePage.classList.remove("active");
+            this.elements.quantumBattlePage.setAttribute("hidden", "");
           }
 
           // Atualizar ícone do botão
@@ -4553,7 +4778,8 @@
             { text: "Ativando filtros...", progress: 55 },
             { text: "Renderizando entidades...", progress: 70 },
             { text: "Otimizando performance...", progress: 85 },
-            { text: "Calibrando efeitos 13/10...", progress: 95 },
+            { text: "Inicializando sistema de batalha...", progress: 92 },
+            { text: "Calibrando efeitos 13/10...", progress: 96 },
             { text: "Pronto para explorar!", progress: 100 },
           ];
 

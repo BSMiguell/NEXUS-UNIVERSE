@@ -129,7 +129,7 @@ const charactersData = [
     id: 8,
     name: "ALUCARD",
     category: "Castlevania",
-    image: "img/Castlevania/alucard-1.png",
+    image: "img/castlevania/alucard-1.png",
     description:
       "Filho de Drácula, caçador de vampiros, guardião da humanidade. Habilidades: Magia Vampírica e Espadas.",
     details: {
@@ -363,7 +363,7 @@ const charactersData = [
     id: 21,
     name: "Vlad Drácula",
     category: "Castlevania",
-    image: "img/Castlevania/Vlad Drácula-1.png",
+    image: "img/castlevania/Vlad Drácula-1.png",
     description:
       "O Lorde das Trevas, um vampiro imortal que governa o Castelo Drácula e é a encarnação do mal na série Castlevania.",
     details: {
@@ -2469,7 +2469,7 @@ const charactersData = [
     id: 138,
     name: "SIMON BELMONT",
     category: "Castlevania",
-    image: "img/Castlevania/simon-belmont-1.png",
+    image: "img/castlevania/simon-belmont-1.png",
     description:
       "Caçador de vampiros do clã Belmont, lendário por enfrentar Drácula usando o chicote sagrado Vampire Killer.",
     details: {
@@ -4601,7 +4601,7 @@ const charactersData = [
     id: 254, // Continuando a sequência
     name: "RICHTER BELMONT",
     category: "Castlevania",
-    image: "img/Castlevania/Richter-Belmont-1.png",
+    image: "img/castlevania/Richter-Belmont-1.png",
     description:
       "Descendente da família Belmont e um dos caçadores de vampiros mais famosos da linhagem. Protagonista de Castlevania: Rondo of Blood e Symphony of the Night. Conhecido por sua agilidade excepcional e domínio do chicote Vampire Killer.",
     details: {
@@ -5004,7 +5004,7 @@ const charactersData = [
     id: 275,
     name: "TREVOR BELMONT",
     category: "Castlevania",
-    image: "img/Castlevania/Trevor-Belmont-1.png",
+    image: "img/castlevania/Trevor-Belmont-1.png",
     description:
       "Caçador de vampiros da família Belmont que vive durante o século 15, protagonista de Castlevania III: Dracula's Curse. Conhecido por ser um dos primeiros Belmonts a enfrentar Drácula e por usar o chicote Vampire Killer combinado com armas secundárias.",
     details: {
@@ -5290,7 +5290,7 @@ const charactersData = [
     id: 290, // Continuando a sequência
     name: "STRIGA",
     category: "Castlevania",
-    image: "img/Castlevania/striga-1.png",
+    image: "img/castlevania/striga-1.png",
     description:
       "Vampira poderosa da série Castlevania da Netflix, irmã de Morana e membro do conselho de vampiros que governa Wallachia. Conhecida por sua força física impressionante, habilidades de combate e lealdade à causa vampírica. Representa a força bruta e tradição entre os vampiros.",
     details: {
@@ -5648,7 +5648,7 @@ const charactersData = [
     id: 309, // Continuando a sequência
     name: "SYPHA BELNADES",
     category: "Castlevania",
-    image: "img/Castlevania/Sypha-Belnades-1.png",
+    image: "img/castlevania/Sypha-Belnades-1.png",
     description:
       "Maga da família Belnades e uma das principais caçadoras de vampiros em Castlevania. Especialista em magia elemental, particularmente magia de fogo, gelo e eletricidade. Companheira de Trevor Belmont e posteriormente mãe de Simon Belmont.",
     details: {
