@@ -75,7 +75,7 @@ const charactersData = [
     id: 5,
     name: "CHROLLO LUCILFER",
     category: "HXH",
-    image: "img/HXH/Chrollo.png",
+    image: "img/hxh/Chrollo.png",
     description:
       "Líder da Tropa Fantasma, usuário de Nen com habilidade de roubar técnicas. Especialidade: Bandit's Secret.",
     details: {
@@ -651,7 +651,7 @@ const charactersData = [
     id: 37,
     name: "Feitan Portor",
     category: "HXH",
-    image: "img/HXH/Feitan-1.png",
+    image: "img/hxh/Feitan-1.png",
     description:
       "Membro da Tropa Fantasma, especialista em interrogatório e usuário da habilidade Pain Packer que converte dor em poder.",
     details: {
@@ -993,7 +993,7 @@ const charactersData = [
     id: 56,
     name: "Gon Freecss",
     category: "HXH",
-    image: "img/HXH/Gon-1.png",
+    image: "img/hxh/Gon-1.png",
     description:
       "Protagonista de Hunter x Hunter, um jovem determinado a se tornar um Hunter como seu pai e descobrir os segredos do mundo.",
     details: {
@@ -1461,7 +1461,7 @@ const charactersData = [
     id: 82,
     name: "Hisoka Morow",
     category: "HXH",
-    image: "img/HXH/Hisoka-1.png",
+    image: "img/hxh/Hisoka-1.png",
     description:
       "Mago e Hunter que vive para encontrar oponentes dignos, usuário das habilidades Bungee Gum e Texture Surprise.",
     details: {
@@ -1677,7 +1677,7 @@ const charactersData = [
     id: 94,
     name: "Meruem",
     category: "HXH",
-    image: "img/HXH/Meruem-1.png",
+    image: "img/hxh/Meruem-1.png",
     description:
       "Rei das Formigas Quimera, criatura com inteligência e poder incomparáveis que evolui rapidamente ao absorver habilidades de outros.",
     details: {
@@ -1983,7 +1983,7 @@ const charactersData = [
     id: 111,
     name: "Neferpitou",
     category: "HXH",
-    image: "img/HXH/Neferpitou-2.png",
+    image: "img/hxh/Neferpitou-2.png",
     description:
       "Guarda Real das Formigas Quimera especializada em habilidades de médico e combate, possuindo o Nen mais refinado entre os Guardas.",
     details: {
@@ -3837,7 +3837,7 @@ const charactersData = [
     id: 213, // Continuando a sequência
     name: "KURAPIKA",
     category: "HXH",
-    image: "img/HXH/Kurapika-1.png",
+    image: "img/hxh/Kurapika-1.png",
     description:
       "Último sobrevivente do clã Kurta, caçador especializado em recuperar os olhos escarlates de seu povo. Desenvolveu habilidades de Nen específicas para combater a Tropa Fantasma.",
     details: {
@@ -4079,7 +4079,7 @@ const charactersData = [
     id: 226, // Continuando a sequência
     name: "SILVA ZOLDYCK",
     category: "HXH",
-    image: "img/HXH/silva-zoldyck-1.png",
+    image: "img/hxh/silva-zoldyck-1.png",
     description:
       "Chefe da Família Zoldyck, uma das famílias de assassinos mais temidas do mundo. Pai de Killua Zoldyck e mestre em técnicas de assassinato usando Nen. Conhecido por sua força implacável e ética profissional rigorosa.",
     details: {
@@ -4333,7 +4333,7 @@ const charactersData = [
     id: 240, // Continuando a sequência
     name: "KITE",
     category: "HXH",
-    image: "img/HXH/kite-1.png",
+    image: "img/hxh/kite-1.png",
     description:
       "Hunter profissional e ex-aluno de Ging Freecss, que se torna mentor de Gon. Portador de uma habilidade de Nen única com sua arma 'Crazy Slots' que gira aleatoriamente para diferentes armas. Conhecido por seu senso de responsabilidade e ética como hunter.",
     details: {
@@ -4716,7 +4716,7 @@ const charactersData = [
     id: 260, // Continuando a sequência
     name: "UVOGIN",
     category: "HXH",
-    image: "img/HXH/Uvogin-1.png",
+    image: "img/hxh/Uvogin-1.png",
     description:
       "Membro número 11 da Tropa Fantasma e especialista em Nen de Reforço. Conhecido por sua força física monstruosa e personalidade agressiva. Considerado o membro mais forte fisicamente da Tropa, capaz de destruir edifícios com seus punhos.",
     details: {
@@ -5044,7 +5044,7 @@ const charactersData = [
     id: 277,
     name: "KILLUA ZOLDYCK",
     category: "HXH",
-    image: "img/HXH/Killua-Zoldyck-1.png",
+    image: "img/hxh/Killua-Zoldyck-1.png",
     description:
       "Herdeiro da família de assassinos Zoldyck e melhor amigo de Gon Freecss. Especialista em Nen com afinidade para Transformação e Transmutação, criando eletricidade com seu Nen. Conhecido por sua velocidade extrema, habilidades de assassinato e crescimento ao longo da série.",
     details: {
@@ -5177,7 +5177,7 @@ const charactersData = [
     id: 284, // Continuando a sequência
     name: "ZENO ZOLDYCK",
     category: "HXH",
-    image: "img/HXH/Zeno-Zoldyck-1.png",
+    image: "img/hxh/Zeno-Zoldyck-1.png",
     description:
       "Patriarca da família Zoldyck e avô de Killua, considerado um dos assassinos mais experientes e perigosos do mundo. Especialista em Nen com afinidade para Emissão, capaz de criar dragões de energia. Trabalhou como guarda-costas para a família Netero e participou da invasão ao Palácio de Meruem.",
     details: {
@@ -5574,7 +5574,7 @@ const charactersData = [
     id: 305, // Continuando a sequência
     name: "MACHI KOMACINE",
     category: "HXH",
-    image: "img/HXH/Machi-Komacine.png",
+    image: "img/hxh/Machi-Komacine.png",
     description:
       "Membro número 3 da Tropa Fantasma, especialista em Nen de Transmutação. Pode criar fios de Nen extremamente resistentes que usa para costurar feridas, criar armadilhas e manipular objetos. Conhecida por sua personalidade calma e lealdade à Tropa.",
     details: {
@@ -5611,7 +5611,7 @@ const charactersData = [
     id: 307, // Continuando a sequência
     name: "SHIZUKU MURASAKI",
     category: "HXH",
-    image: "img/HXH/Shizuku-Murasaki-1.png",
+    image: "img/hxh/Shizuku-Murasaki-1.png",
     description:
       "Membro número 12 da Tropa Fantasma, especialista em Nen de Conjuração. Usa a habilidade 'Blinky' - um aspirador de pó demoníaco que pode sugar qualquer coisa não-viva. Conhecida por sua memória ruim e personalidade distraída, mas letal em combate.",
     details: {
@@ -5679,6 +5679,81 @@ const charactersData = [
       recompensa: "N/A",
       afinidade: "Magia de Gemas",
       nível: "A+", // Nível alto como maga talentosa, abaixo dos Servants
+    },
+  },
+
+  {
+    id: 311, // Continuando a sequência
+    name: "BRUNO BUCCIARATI",
+    category: "jojo",
+    image: "img/Jojo/Bruno-Bucciarati-1.png",
+    description:
+      "Líder de um time da Passione e personagem central de JoJo's Bizarre Adventure Part 5: Vento Aureo. Usuário do Stand Sticky Fingers que cria zíperes em qualquer superfície. Conhecido por sua lealdade, senso de justiça e liderança que inspira seus subordinados.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder:
+        "Stand Sticky Fingers, Criação de Zíperes, Combate Corporal, Liderança",
+      status: "Capo - Líder da Passione",
+      estreia: 1995, // Vento Aureo Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Zíperes/Justiça",
+      nível: "S", // Nível alto como líder e usuário de Stand versátil
+    },
+  },
+
+  {
+    id: 312,
+    name: "ANGEL DEVIL",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Angel-Devil-1.png",
+    description:
+      "Demônio que trabalha como caçador de demônios na Divisão Especial 4. Sua habilidade permite drenar a vida útil das pessoas que toca, usando essa energia para criar armas angelicais. Conhecido por sua aparência andrógina, personalidade apática e história trágica.",
+    details: {
+      universo: "Chainsaw Man",
+      poder: "Drenagem de Vida, Criação de Armas Angelicais, Asas Angelicais",
+      status: "Demônio - Caçador de Demônios",
+      estreia: 2019, // Chainsaw Man Capítulo 11
+      recompensa: "N/A",
+      afinidade: "Vida/Anjos",
+      nível: "A+", // Nível médio-alto, poderoso mas com limitações
+    },
+  },
+
+  {
+    id: 313,
+    name: "DRACULE MIHAWK",
+    category: "One-Piece",
+    image: "img/One-Piece/Mihawk-1.png",
+    description:
+      "Conhecido como 'Hawk Eyes', o maior espadachim do mundo e ex-Shichibukai. Portador da espada negra Yoru, uma das 12 Espadas Supremas. Considerado o ápice da habilidade com espadas no mundo de One Piece, servindo como objetivo final para Roronoa Zoro.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Espadachim Supremo, Espada Yoru (Suprema), Haki Avançado, Observação Precisa",
+      status: "Ex-Shichibukai - Maior Espadachim do Mundo",
+      estreia: 1998, // One Piece Chapter 49
+      recompensa: "฿3,590,000,000",
+      afinidade: "Espadas/Precisão",
+      nível: "SS+", // Nível muito alto como maior espadachim do mundo
+    },
+  },
+
+  {
+    id: 314,
+    name: "ALAIN",
+    category: "Pokemon",
+    image: "img/Pokemon/Alain-1.png",
+    description:
+      "Personagem do anime Pokémon XYZ, pesquisador de Mega Evolução e rival de Ash Ketchum na Liga de Kalos. Treinador de um poderoso Charizard que pode realizar Mega Evolução. Conhecido por sua personalidade séria e busca por fortalecer seu Pokémon.",
+    details: {
+      universo: "Pokémon",
+      poder:
+        "Especialista em Mega Evolução, Estratégia de Batalha, Vínculo com Charizard",
+      status: "Treinador Pokémon - Pesquisador de Mega Evolução",
+      estreia: 2015, // Pokémon XY Episode 65
+      recompensa: "N/A",
+      afinidade: "Mega Evolução",
+      nível: "S", // Nível alto como treinador de elite com Mega Charizard
     },
   },
 ];
