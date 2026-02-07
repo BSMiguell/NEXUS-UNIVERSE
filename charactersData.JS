@@ -5830,4 +5830,40 @@ const charactersData = [
       nível: "S", // Nível alto como mestra de dobra de água
     },
   },
+
+  {
+    id: 319,
+    name: "BLUE MARY",
+    category: "The King of Fighters",
+    image: "img/The-King-of-Fighters/Blue-Mary-1.png",
+    description:
+      "Agente especial e lutadora de The King of Fighters, especialista em artes marciais mistas e grappling. Ex-integrante das forças especiais, conhecida por seu estilo de luta baseado em jiu-jitsu, wrestling e movimentos aéreos. Participa regularmente dos torneios KOF.",
+    details: {
+      universo: "The King of Fighters",
+      poder:
+        "Artes Marciais Mistas, Grappling, Jiu-Jitsu, Wrestling, Movimentos Aéreos",
+      status: "Agente Especial - Lutadora do KOF",
+      estreia: 1995, // Fatal Fury 3
+      técnica: "M. Spider, M. Snatcher, Vertical Arrow",
+      nível: "A", // Nível médio-alto como lutadora habilidosa
+    },
+  },
+
+  {
+    id: 320,
+    name: "TOM LUCITOR",
+    category: "Star-vs.",
+    image: "img/star-vs/Tom-Lucitor-1.png",
+    description:
+      "Príncipe do Submundo e ex-namorado de Star Butterfly, filho do Rei Pony Head. Conhecido por sua personalidade impulsiva e temperamento quente, mas com coração nobre. Desenvolve uma relação complexa com Star e posteriormente com Marco Diaz.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      poder: "Chamas Demoníacas, Força Sobre-Humana, Voo, Magia do Submundo",
+      status: "Príncipe do Submundo",
+      estreia: 2015, // Star vs. the Forces of Evil Season 1
+      recompensa: "N/A",
+      afinidade: "Fogo/Submundo",
+      nível: "A", // Nível médio-alto como príncipe demoníaco
+    },
+  },
 ];
