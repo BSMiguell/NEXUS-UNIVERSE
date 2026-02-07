@@ -5756,4 +5756,78 @@ const charactersData = [
       nível: "S", // Nível alto como treinador de elite com Mega Charizard
     },
   },
+
+  {
+    id: 315,
+    name: "ANAN KUROSE",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Anan-Kurose-1.png",
+    description:
+      "Heroína profissional conhecida como 'Ms. Joke', professora da Ketsubutsu Academy High School. Possui a Quirk 'Outburst' que força pessoas ao seu redor a rirem incontrolavelmente. Rival amigável e interesse romântico de Shota Aizawa (Eraser Head).",
+    details: {
+      universo: "My Hero Academia",
+      poder:
+        "Quirk: Outburst (Riso Incontrolável), Experiência de Ensino, Combate",
+      status: "Heroína Profissional - Professora",
+      estreia: 2016, // My Hero Academia Capítulo 124
+      recompensa: "¥N/A",
+      afinidade: "Riso/Ensino",
+      nível: "A", // Nível médio-alto como heroína profissional
+    },
+  },
+
+  {
+    id: 316,
+    name: "KING BRADLEY",
+    category: "Fullmetal",
+    image: "img/Fullmetal-Alchemist/King-Bradley-1.png",
+    description:
+      "Também conhecido como 'Wrath', um dos Homúnculos e Führer presidente de Amestris. Portador do Olho Último que lhe concede visão acelerada e reflexos sobre-humanos. Considerado o espadachim mais forte do mundo de Fullmetal Alchemist.",
+    details: {
+      universo: "Fullmetal Alchemist",
+      poder:
+        "Olho Último (Ultimate Eye), Espadachim Supremo, Reflexos Sobre-humanos",
+      status: "Homúnculo - Führer de Amestris",
+      estreia: 2003, // Fullmetal Alchemist (mangá) Capítulo 30
+      recompensa: "N/A",
+      afinidade: "Espada/Precisão",
+      nível: "SS", // Nível muito alto como homúnculo mais forte
+    },
+  },
+
+  {
+    id: 317,
+    name: "RIYO",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Riyo-1.png",
+    description:
+      "Personagem do mundo distópico de Gachiakuta, envolvida no complexo sistema de sobrevivência e relações de poder do ambiente hostil da série. Possui habilidades adaptadas às condições extremas do mundo de Gachiakuta.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo de Gachiakuta",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Sobrevivência",
+      nível: "B", // Nível médio como outros personagens de Gachiakuta
+    },
+  },
+
+  {
+    id: 318,
+    name: "KATARA",
+    category: "Avatar",
+    image: "img/Avatar/Katara-1.png",
+    description:
+      "Última dobradora de água da Tribo da Água do Sul e uma das principais protagonistas de Avatar. Aprende a dominar a dobra de água, cura e posteriormente dobra de sangue. Irmã de Sokka e interesse amoroso de Aang, torna-se uma das dobradoras mais poderosas do mundo.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra de Água, Cura, Dobra de Sangue (limitada), Liderança",
+      status: "Mestra de Dobra - Protetora",
+      estreia: 2005, // Avatar: The Last Airbender Episode 1
+      recompensa: "N/A",
+      afinidade: "Água/Cura",
+      nível: "S", // Nível alto como mestra de dobra de água
+    },
+  },
 ];
