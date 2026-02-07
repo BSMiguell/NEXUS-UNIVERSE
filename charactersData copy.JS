@@ -1,0 +1,5869 @@
+const charactersData = [
+  {
+    id: 1,
+    name: "MONKEY D. LUFFY",
+    category: "One-Piece",
+    image: "img/One-Piece/Luffy-1.png",
+    description:
+      "Capitão dos Piratas do Chapéu de Palha, usuário da Akuma no Mi Gomu Gomu, futuro Rei dos Piratas. Destino: Encontrar o One Piece.",
+    details: {
+      universo: "One Piece",
+      poder: "Gomu Gomu no Mi (Fruta da Borracha)",
+      status: "Ativo - Em Busca do One Piece",
+      estreia: 1997,
+      recompensa: "฿3,000,000,000",
+      afinidade: "Haki do Conquistador",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 2,
+    name: "SON GOKU",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/gokou-1.png",
+    description:
+      "O guerreiro Sayajin mais forte, protetor da Terra, mestre das Artes Marciais. Transformações: Super Saiyajin a Deus.",
+    details: {
+      universo: "Dragon Ball",
+      poder: "Ki Divino - Ultra Instinto",
+      status: "Lendário - Protetor Universal",
+      estreia: 1984,
+      transformação: "Super Saiyajin Blue",
+      técnica: "Kamehameha",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 3,
+    name: "GUTS",
+    category: "Berserk",
+    image: "img/Berserk/Guts-1.png",
+    description:
+      "O Espadachim Negro, caçador de apóstolos, portador da Marca do Sacrifício. Armamento: Dragonslayer.",
+    details: {
+      universo: "Berserk",
+      poder: "Força Sobre-humana",
+      status: "Sobrevivente - Caçador de Apóstolos",
+      estreia: 1989,
+      arma: "Dragonslayer",
+      marca: "Marca do Sacrifício",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 4,
+    name: "MADARA UCHIHA",
+    category: "Naruto",
+    image: "img/Naruto/Madara-1.png",
+    description:
+      "Lendário shinobi, co-fundador de Konoha, mestre do Sharingan e Rinnegan. Objetivo: Plano Olho da Lua.",
+    details: {
+      universo: "Naruto",
+      poder: "Sharingan Eterno, Rinnegan",
+      status: "Lendário - Reencarnado",
+      estreia: 2002,
+      aldeia: "Konohagakure (Fundador)",
+      jutsu: "Susano'o Completo",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 5,
+    name: "CHROLLO LUCILFER",
+    category: "HXH",
+    image: "img/hxh/Chrollo.png",
+    description:
+      "Líder da Tropa Fantasma, usuário de Nen com habilidade de roubar técnicas. Especialidade: Bandit's Secret.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Nen - Especialista",
+      status: "Ativo - Líder da Tropa Fantasma",
+      estreia: 1998,
+      habilidade: "Skill Hunter",
+      grupo: "Phantom Troupe",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 6,
+    name: "GYOMEI HIMEJIMA",
+    category: "Kimetsu no Yaiba",
+    image: "img/kimetsu/gyomei himejima-2.png",
+    description:
+      "Pilar da Pedra, o mais forte dos Pilares, mestre da Respiração da Pedra. Arma: Corrente com Machado.",
+    details: {
+      universo: "Demon Slayer",
+      poder: "Respiração da Pedra",
+      status: "Pilar - Hashira da Pedra",
+      estreia: 2016,
+      respiração: "Pedra",
+      característica: "Cego - Sentidos Aprimorados",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 7,
+    name: "ALL MIGHT",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/all might-3.png",
+    description:
+      'O Símbolo da Paz, portador do One For All, professor de U.A. Frase: "Sou eu que chego!".',
+    details: {
+      universo: "My Hero Academia",
+      poder: "One For All",
+      status: "Símbolo da Paz (Aposentado)",
+      estreia: 2014,
+      escola: "U.A. High School",
+      frase: "I AM HERE!",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 8,
+    name: "ALUCARD",
+    category: "Castlevania",
+    image: "img/castlevania/alucard-1.png",
+    description:
+      "Filho de Drácula, caçador de vampiros, guardião da humanidade. Habilidades: Magia Vampírica e Espadas.",
+    details: {
+      universo: "Castlevania",
+      poder: "Magia Vampírica e Habilidades Sobrenaturais",
+      status: "Imortal - Guardião",
+      estreia: 1986,
+      origem: "Filho de Drácula",
+      especialidade: "Caçador de Vampiros",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 9,
+    name: "AATROX",
+    category: "League of Legend",
+    image: "img/lol/Aatrox-1s.png",
+    description:
+      "A Espada das Trevas, entidade celestial corrompida, destruidor de mundos. Objetivo: Aniquilar tudo.",
+    details: {
+      universo: "League of Legends",
+      poder: "Espada das Trevas - Ascendente Corrompido",
+      status: "Ascendente - Aniquilador",
+      estreia: 2013,
+      título: "A Espada das Trevas",
+      objetivo: "Destruição Total",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 10,
+    name: "EDWARD ELRIC",
+    category: "Fullmetal",
+    image: "img/Fullmetal-Alchemist/Edward elric-1.png",
+    description:
+      "O Alquimista de Aço, mais jovem alquimista estatal da história. Busca: A Pedra Filosofal.",
+    details: {
+      universo: "Fullmetal Alchemist",
+      poder: "Alquimia - Transmutação sem Círculo",
+      status: "Alquimista Estatal",
+      estreia: 2001,
+      título: "Fullmetal Alchemist",
+      objetivo: "Recuperar o corpo do irmão",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 11,
+    name: "Golden Sperm",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/golden-sperm-1s.png",
+    description:
+      "Monstro formado pela fusão de inúmeros espermatozoides monstruosos, uma das criações mais poderosas da Associação de Monstros em One Punch-Man.",
+    details: {
+      universo: "One Punch Man",
+      poder: "Força e velocidade sobre-humanas, transformação corporal",
+      status: "Derrotado por Saitama",
+      estreia: 2015,
+      recompensa: "N/A",
+      afinidade: "Monstruosidade",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 12,
+    name: "Kenpachi Zaraki",
+    category: "Bleach",
+    image: "img/Bleach/Zaraki-1.png",
+    description:
+      "Capitão da 11ª Divisão da Sociedade de Almas, conhecido por sua sede insaciável de batalha e força bruta incomparável.",
+    details: {
+      universo: "Bleach",
+      poder: "Espada Zanpakutō (Nozarashi), força física imensa",
+      status: "Ativo - Capitão",
+      estreia: 2001,
+      recompensa: "N/A",
+      afinidade: "Batalha",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 13,
+    name: "Radahn",
+    category: "souls",
+    image: "img/souls/radahn-8.png",
+    description:
+      "General Radahn, o Conquistador das Estrelas, um semideus que detém as estrelas em seu lugar com sua poderosa magia gravitacional.",
+    details: {
+      universo: "Elden Ring",
+      poder: "Magia gravitacional, combate montado",
+      status: "Corrompido pela Podridão Escarlate",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Gravidade",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 14,
+    name: "Keisuke Baji",
+    category: "tokyo",
+    image: "img/tokyo-revengers/Baji-2.png",
+    description:
+      "Membro fundador dos Tokyo Manji Gang, conhecido por sua lealdade inabalável e habilidades de combate excepcionais.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Combate corpo a corpo, facas",
+      status: "Falecido",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Lealdade",
+      nível: "A",
+    },
+  },
+
+  {
+    id: 15,
+    name: "Ryomen Sukuna",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/sukana-4s.png",
+    description:
+      "O Rei das Maldições, uma entidade de poder incomensurável que assombrou a Era de Ouro dos Feiticeiros Jujutsu.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Técnicas Amaldiçoadas, domínio Malevolente",
+      status: "Reencarnado em Yuji Itadori",
+      estreia: 2018,
+      recompensa: "N/A",
+      afinidade: "Maldição",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 16,
+    name: "Yoriichi Tsugikuni",
+    category: "Kimetsu no Yaiba",
+    image: "img/kimetsu/Yoriichi-2.png",
+    description:
+      "O caçador de demônios mais forte da história, criador da Respiração do Sol e único a quase derrotar Muzan Kibutsuji.",
+    details: {
+      universo: "Demon Slayer",
+      poder: "Respiração do Sol, Marca Solar",
+      status: "Falecido",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Sol",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 17,
+    name: "Zeldris",
+    category: "Nanatsu",
+    image: "img/Taizai/zeldris-1.png",
+    description:
+      "Comandante dos Dez Mandamentos e Príncipe dos Demônios, portador do Mandamento da Piedade e servo do Rei Demônio.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Poder Demoniaco, Mandamento da Piedade",
+      status: "Ativo - Comandante",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Trevas",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 18,
+    name: "Dear",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Dear-1.png",
+    description:
+      "Personagem do mundo de Gachiakuta, envolvido nas complexas dinâmicas de poder e sobrevivência em um ambiente desolado.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades de combate especializadas",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Sobrevivência",
+      nível: "B+",
+    },
+  },
+
+  {
+    id: 19,
+    name: "Acnologia",
+    category: "Fairy Tail",
+    image: "img/Fairy-Taill/acnologia-1s.png",
+    description:
+      "O Dragão Rei, um dragão que se alimenta de outros dragões e é considerado a maior ameaça ao mundo de Fairy Tail.",
+    details: {
+      universo: "Fairy Tail",
+      poder: "Magia de Dragão Slayer, transformação em dragão",
+      status: "Derrotado",
+      estreia: 2009,
+      recompensa: "N/A",
+      afinidade: "Dragão",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 20,
+    name: "Roronoa Zoro",
+    category: "One-Piece",
+    image: "img/One-Piece/zoro-1.png",
+    description:
+      "Espadachim dos Piratas do Chapéu de Palha e futuro maior espadachim do mundo, mestre do estilo de três espadas.",
+    details: {
+      universo: "One Piece",
+      poder: "Estilo de Três Espadas, Haki",
+      status: "Ativo - Em busca do One Piece",
+      estreia: 1997,
+      recompensa: "฿1,111,000,000",
+      afinidade: "Espadas",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 21,
+    name: "Vlad Drácula",
+    category: "Castlevania",
+    image: "img/castlevania/Vlad Drácula-1.png",
+    description:
+      "O Lorde das Trevas, um vampiro imortal que governa o Castelo Drácula e é a encarnação do mal na série Castlevania.",
+    details: {
+      universo: "Castlevania",
+      poder: "Magia negra, transformação, imortalidade",
+      status: "Ressurge periodicamente",
+      estreia: 1986,
+      recompensa: "N/A",
+      afinidade: "Trevas",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 22,
+    name: "Qin Shi Huang",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Qin Shi Huang-1.png",
+    description:
+      "Primeiro Imperador da China, representante da humanidade no Ragnarok com habilidades baseadas em sua lenda histórica.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Qi, técnicas de imperador",
+      status: "Participante do Ragnarok",
+      estreia: 2021,
+      recompensa: "N/A",
+      afinidade: "Realeza",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 23,
+    name: "Jotaro Kujo",
+    category: "jojo",
+    image: "img/Jojo/Jotaro-1.png",
+    description:
+      "Usuário do Stand Star Platinum, protagonista da Parte 3: Stardust Crusaders, neto de Joseph Joestar.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder: "Stand (Star Platinum), Time Stop",
+      status: "Ativo - Feiticeiro Stand",
+      estreia: 1989,
+      recompensa: "N/A",
+      afinidade: "Stand",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 24,
+    name: "Nosferatu Zodd",
+    category: "Berserk",
+    image: "img/Berserk/Nosferatu Zodd-1.png",
+    description:
+      "Apóstolo imortal que busca oponentes dignos em batalha, conhecido por sua forma monstruosa e habilidades de regeneração.",
+    details: {
+      universo: "Berserk",
+      poder: "Transformação apóstolo, regeneração, imortalidade",
+      status: "Ativo - Mercenário",
+      estreia: 1990,
+      recompensa: "N/A",
+      afinidade: "Batalha",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 25,
+    name: "Alphonse Elric",
+    category: "Fullmetal",
+    image: "img/Fullmetal-Alchemist/Alphonse Elric-1.png",
+    description:
+      "Irmão mais novo de Edward Elric, cuja alma está ligada a uma armadura de metal após um experimento de alquimia falho.",
+    details: {
+      universo: "Fullmetal Alchemist",
+      poder: "Alquimia sem círculo de transmutação",
+      status: "Recuperou seu corpo",
+      estreia: 2001,
+      recompensa: "N/A",
+      afinidade: "Alquimia",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 26,
+    name: "Darius",
+    category: "League of Legend",
+    image: "img/lol/Darius-1.png",
+    description:
+      "A Mão de Noxus, um comandante implacável cuja presença no campo de batalha inspira tanto terror quanto lealdade.",
+    details: {
+      universo: "League of Legends",
+      poder: "Machadão, execuções",
+      status: "Ativo - General de Noxus",
+      estreia: 2012,
+      recompensa: "N/A",
+      afinidade: "Força",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 27,
+    name: "Kyojuro Rengoku",
+    category: "Kimetsu no Yaiba",
+    image: "img/kimetsu/Rengoku-3.png",
+    description:
+      "Pilar das Chamas, um caçador de demônios entusiasta e poderoso que vive pelo código de proteger os mais fracos.",
+    details: {
+      universo: "Demon Slayer",
+      poder: "Respiração das Chamas",
+      status: "Falecido em batalha",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Chamas",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 28,
+    name: "Satoru Gojo",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Gojo-1.png",
+    description:
+      "Considerado o feiticeiro jujutsu mais forte da era atual, professor na Escola de Feitiçaria de Tóquio e membro do clã Gojo.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Limitless, Seis Olhos, Domínio Malevolente",
+      status: "Selado/Ativo",
+      estreia: 2018,
+      recompensa: "N/A",
+      afinidade: "Espaço",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 29,
+    name: "Genryusai Shigekuni Yamamoto",
+    category: "Bleach",
+    image: "img/Bleach/yamamoto-2.png",
+    description:
+      "Capitão-Comandante da Sociedade de Almas por mais de mil anos, detentor da Zanpakutō de fogo mais poderosa.",
+    details: {
+      universo: "Bleach",
+      poder: "Zanpakutō Ryujin Jakka (fogo)",
+      status: "Falecido",
+      estreia: 2001,
+      recompensa: "N/A",
+      afinidade: "Fogo",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 30,
+    name: "Nameless King",
+    category: "souls",
+    image: "img/souls/Nameless King-1.png",
+    description:
+      "Deus da Guerra exilado, filho de Gwyn e mestre das tempestades, que se aliou aos dragões ancestrais.",
+    details: {
+      universo: "Dark Souls III",
+      poder: "Raio, combate montado em dragão",
+      status: "Chefe opcional",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Raio/Tempestade",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 31,
+    name: "Laxus Dreyar",
+    category: "Fairy Tail",
+    image: "img/Fairy-Taill/Laxus-1.png",
+    description:
+      "Mago do Trovão da Fairy Tail, neto do mestre Makarov, conhecido por seu poder eletrizante e personalidade orgulhosa.",
+    details: {
+      universo: "Fairy Tail",
+      poder: "Magia de Dragon Slayer do Raio",
+      status: "Ativo - Mago da Fairy Tail",
+      estreia: 2009,
+      recompensa: "N/A",
+      afinidade: "Raio",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 32,
+    name: "Saga de Gêmeos",
+    category: "Os Zavaleiros do Zodíaco",
+    image: "img/Os-Cavaleiros-do-Zodíaco/Saga-1.png",
+    description:
+      "Cavaleiro de Ouro de Gêmeos, antigo patriarca do Santuário que possui o poder de manipular o espaço e a dimensão.",
+    details: {
+      universo: "Saint Seiya",
+      poder: "Outra Dimensão, Explosão Galáctica",
+      status: "Redimido/Falecido",
+      estreia: 1986,
+      recompensa: "N/A",
+      afinidade: "Dimensão",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 33,
+    name: "Skull Knight",
+    category: "Berserk",
+    image: "img/Berserk/Skull Knight-1.png",
+    description:
+      "Entidade enigmática que vagueia pelo mundo, opondo-se à Mão de Deus e auxiliando Guts em sua jornada.",
+    details: {
+      universo: "Berserk",
+      poder: "Espada da Ativação, premonições",
+      status: "Ativo - Viajante dimensional",
+      estreia: 1990,
+      recompensa: "N/A",
+      afinidade: "Justiça",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 34,
+    name: "Enjin",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Enjin -1s.png",
+    description:
+      "Personagem do mundo árido de Gachiakuta, com habilidades únicas adaptadas ao ambiente hostil em que vive.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Adaptação",
+      nível: "B+",
+    },
+  },
+
+  {
+    id: 35,
+    name: "Loki",
+    category: "One-Piece",
+    image: "img/One-Piece/Loki-2.png",
+    description:
+      "Deus da Trapaça da mitologia nórdica, que faz aparições no mundo de One Piece como uma figura divina.",
+    details: {
+      universo: "One Piece",
+      poder: "Poderes divinos, ilusão",
+      status: "Ativo - Entidade Divina",
+      estreia: 1997,
+      recompessa: "N/A",
+      afinidade: "Trapaça",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 36,
+    name: "Estarossa",
+    category: "Nanatsu",
+    image: "img/Taizai/estarossa-1.png",
+    description:
+      "Comandante dos Dez Mandamentos portador do Mandamento do Amor, cuja verdadeira identidade esconde um trágico destino.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Mandamento do Amor, Full Counter",
+      status: "Transformado em Mael",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Amor",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 37,
+    name: "Feitan Portor",
+    category: "HXH",
+    image: "img/hxh/Feitan-1.png",
+    description:
+      "Membro da Tropa Fantasma, especialista em interrogatório e usuário da habilidade Pain Packer que converte dor em poder.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Pain Packer, Rising Sun",
+      status: "Ativo - Membro da Tropa Fantasma",
+      estreia: 1999,
+      recompensa: "N/A",
+      afinidade: "Dor",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 38,
+    name: "Kokushibo",
+    category: "Kimetsu no Yaiba",
+    image: "img/kimetsu/Kokushibo-1.png",
+    description:
+      "Lua Superior 1, irmão de Yoriichi Tsugikuni que se tornou demônio em busca de superar seu próprio irmão.",
+    details: {
+      universo: "Demon Slayer",
+      poder: "Respiração da Lua, regeneração demoníaca",
+      status: "Derrotado",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Lua",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 39,
+    name: "Battle Beast",
+    category: "Invencível",
+    image: "img/Invencível/Battle Beast-4.png",
+    description:
+      "Guerreiro leão alienígena que busca oponentes dignos em batalha, considerado um dos lutadores mais habilidosos do universo.",
+    details: {
+      universo: "Invincible",
+      poder: "Força sobre-humana, habilidades de batalha",
+      status: "Falecido em combate",
+      estreia: 2004,
+      recompensa: "N/A",
+      afinidade: "Batalha",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 40,
+    name: "Kakuzu",
+    category: "Naruto",
+    image: "img/Naruto/Kakuzu-1.png",
+    description:
+      "Membro da Akatsuki imortal que possui cinco corações e pode utilizar múltiplas naturezas de chakra simultaneamente.",
+    details: {
+      universo: "Naruto",
+      poder: "Jiongu (técnica de fios), múltiplos corações",
+      status: "Derrotado",
+      estreia: 2002,
+      recompensa: "N/A",
+      afinidade: "Chakra",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 41,
+    name: "Blast",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/blast-1.png",
+    description:
+      "Herói Classe S Rank 1, um enigmático herói que raramente aparece mas possui poder suficiente para enfrentar ameaças de nível divino.",
+    details: {
+      universo: "One Punch Man",
+      poder: "Manipulação espacial, velocidade extrema",
+      status: "Ativo - Herói Classe S",
+      estreia: 2015,
+      recompensa: "N/A",
+      afinidade: "Espaço",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 42,
+    name: "Benimaru Shinmon",
+    category: "Fire Force",
+    image: "img/Fire Force/benimaru-1.png",
+    description:
+      "Capitão da 7ª Companhia do Corpo de Bombeiros Especiais, conhecido como o 'Homem Mais Forte de Asakusa' e usuário de duas naturezas de chamas.",
+    details: {
+      universo: "Fire Force",
+      poder: "Chamas de Exorcismo e Assassino",
+      status: "Ativo - Capitão",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Fogo",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 43,
+    name: "Broly",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/Broly-3.png",
+    description:
+      "O Lendário Super Saiyajin, um guerreiro com poder de crescimento infinito cuja força aumenta exponencialmente durante a batalha.",
+    details: {
+      universo: "Dragon Ball",
+      poder: "Lendário Super Saiyajin, poder crescente",
+      status: "Ativo - Guerreiro Saiyajin",
+      estreia: 1993,
+      recompensa: "N/A",
+      afinidade: "Fúria",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 44,
+    name: "Erza Scarlet",
+    category: "Fairy Tail",
+    image: "img/Fairy-Taill/Erza Scarlet-1.png",
+    description:
+      "Mago da Armadura da Fairy Tail, famosa por sua vasta coleção de armaduras mágicas e habilidades de requip.",
+    details: {
+      universo: "Fairy Tail",
+      poder: "Requip - Armadura Mágica",
+      status: "Ativo - Mago da Fairy Tail",
+      estreia: 2009,
+      recompensa: "N/A",
+      afinidade: "Armamento",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 45,
+    name: "Thragg",
+    category: "Invencível",
+    image: "img/Invencível/Thragg-3.png",
+    description:
+      "Líder supremo dos Viltrumitas e o guerreiro mais forte de sua espécie, determinado a restaurar o império Viltrumita.",
+    details: {
+      universo: "Invincible",
+      poder: "Força Viltrumita, voo, durabilidade",
+      status: "Derrotado",
+      estreia: 2004,
+      recompensa: "N/A",
+      afinidade: "Dominação",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 46,
+    name: "Dio Brando",
+    category: "jojo",
+    image: "img/Jojo/Dio-1.png",
+    description:
+      "Vampiro imortal e usuário do Stand The World, principal antagonista das Partes 1 e 3 de JoJo's Bizarre Adventure.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder: "Stand The World, vampirismo, congelamento",
+      status: "Derrotado",
+      estreia: 1987,
+      recompensa: "N/A",
+      afinidade: "Tempo",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 47,
+    name: "Jiren",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/Jiren-1.png",
+    description:
+      "Guerreiro do Universo 11 e membro do Pride Troopers, considerado o lutador mais forte entre todos os universos antes do Torneio do Poder.",
+    details: {
+      universo: "Dragon Ball Super",
+      poder: "Puro poder, Meditação",
+      status: "Ativo - Pride Trooper",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Poder Puro",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 48,
+    name: "Akainu",
+    category: "One-Piece",
+    image: "img/One-Piece/akainu-1.png",
+    description:
+      "Almirante da Marinha e posteriormente Almirante-da-Frota, usuário da Akuma no Mi Magu Magu que lhe concede poderes de magma.",
+    details: {
+      universo: "One Piece",
+      poder: "Magu Magu no Mi (Fruta do Magma)",
+      status: "Ativo - Almirante-da-Frota",
+      estreia: 1999,
+      recompensa: "N/A",
+      afinidade: "Magma",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 49,
+    name: "Yhwach",
+    category: "Bleach",
+    image: "img/Bleach/yhwach-1.png",
+    description:
+      "Rei dos Quincy e principal antagonista de Bleach, com a habilidade de ver e alterar todos os futuros possíveis.",
+    details: {
+      universo: "Bleach",
+      poder: "The Almighty, absorção de poderes",
+      status: "Derrotado/Selado",
+      estreia: 2012,
+      recompensa: "N/A",
+      afinidade: "Futuro",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 50,
+    name: "Kanon de Gêmeos",
+    category: "Os Zavaleiros do Zodíaco",
+    image: "img/Os-Cavaleiros-do-Zodíaco/kanon-1.png",
+    description:
+      "Cavaleiro de Ouro de Gêmeos, irmão gêmeo de Saga que inicialmente serve como antagonista mas posteriormente se redime.",
+    details: {
+      universo: "Saint Seiya",
+      poder: "Outra Dimensão, Explosão Galáctica",
+      status: "Redimido",
+      estreia: 1988,
+      recompensa: "N/A",
+      afinidade: "Redenção",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 51,
+    name: "Malenia, A Lâmina de Miquella",
+    category: "souls",
+    image: "img/souls/Malenia-3.png",
+    description:
+      "Guerreira mais poderosa de Elden Ring, irmã gêmea de Miquella e portadora da Podridão Escarlate que nunca conheceu a derrota.",
+    details: {
+      universo: "Elden Ring",
+      poder: "Podridão Escarlate, espada protética, habilidades aquáticas",
+      status: "Derrotada/Chefe",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Podridão",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 52,
+    name: "A - Quarto Raikage",
+    category: "Naruto",
+    image: "img/Naruto/Raikage-1.png",
+    description:
+      "Quarto Raikage da Vila da Nuvem, conhecido por sua velocidade e força incomparáveis, além de sua liderança firme.",
+    details: {
+      universo: "Naruto",
+      poder: "Estilo de Relâmpago, força física",
+      status: "Ativo - Raikage",
+      estreia: 2008,
+      recompensa: "N/A",
+      afinidade: "Relâmpago",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 53,
+    name: "Gajeel Redfox",
+    category: "Fairy Tail",
+    image: "img/Fairy-Taill/Gajeel-Redfox-1.png",
+    description:
+      "Mago do Ferro Dragon Slayer da Fairy Tail, conhecido por sua personalidade rude e habilidades de manipulação de metal.",
+    details: {
+      universo: "Fairy Tail",
+      poder: "Magia de Dragon Slayer do Ferro",
+      status: "Ativo - Mago da Fairy Tail",
+      estreia: 2009,
+      recompensa: "N/A",
+      afinidade: "Ferro",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 54,
+    name: "Corvus",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Corvus-1.png",
+    description:
+      "Personagem do universo de Gachiakuta, possuindo habilidades únicas adaptadas ao ambiente desolador do mundo da série.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Adaptação",
+      nível: "B+",
+    },
+  },
+
+  {
+    id: 55,
+    name: "Toji Fushiguro",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/fushiguro toji-2.png",
+    description:
+      "O Assassino Sem Energia Amaldiçoada, conhecido como 'O Exterminador de Feiticeiros' por sua capacidade de anular técnicas de detecção de energia amaldiçoada.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Corpo celestial, arsenal de armas amaldiçoadas",
+      status: "Falecido",
+      estreia: 2018,
+      recompensa: "N/A",
+      afinidade: "Física",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 56,
+    name: "Gon Freecss",
+    category: "HXH",
+    image: "img/hxh/Gon-1.png",
+    description:
+      "Protagonista de Hunter x Hunter, um jovem determinado a se tornar um Hunter como seu pai e descobrir os segredos do mundo.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Nen (Reforço), Jajanken",
+      status: "Ativo - Hunter",
+      estreia: 1998,
+      recompensa: "N/A",
+      afinidade: "Determinação",
+      nível: "S (pico)",
+    },
+  },
+
+  {
+    id: 57,
+    name: "Ogun Montgomery",
+    category: "Fire Force",
+    image: "img/Fire Force/Ogun Montgomery-1.png",
+    description:
+      "Membro da 4ª Companhia do Corpo de Bombeiros Especiais, usuário da terceira geração de poderes pirocinéticos com foco em armas.",
+    details: {
+      universo: "Fire Force",
+      poder: "Manipulação de metal quente, criação de armas",
+      status: "Ativo - Bombeiro Especial",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Metal",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 58,
+    name: "Raiden Tameemon",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Raiden-1.png",
+    description:
+      "Lutador de sumô lendário representando a humanidade no Ragnarok, conhecido por sua força bruta e técnicas de sumô aprimoradas.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Técnicas de sumô, força sobre-humana",
+      status: "Participante do Ragnarok",
+      estreia: 2021,
+      recompensa: "N/A",
+      afinidade: "Força Bruta",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 59,
+    name: "Garou",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Garou-2.png",
+    description:
+      "O Herói Caçador, um discípulo das artes marciais que busca se tornar o monstro perfeito para derrotar todos os heróis.",
+    details: {
+      universo: "One Punch Man",
+      poder: "Estilo de Luta Monstro, adaptação em batalha",
+      status: "Reabilitado",
+      estreia: 2012,
+      recompensa: "N/A",
+      afinidade: "Artes Marciais",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 60,
+    name: "Omni-Man",
+    category: "Invencível",
+    image: "img/Invencível/omni man-1.png",
+    description:
+      "Pai de Mark Grayson (Invincible), um Viltrumita enviado à Terra para preparar o planeta para a conquista Viltrumita.",
+    details: {
+      universo: "Invincible",
+      poder: "Força Viltrumita, voo, durabilidade",
+      status: "Redimido/Exilado",
+      estreia: 2003,
+      recompensa: "N/A",
+      afinidade: "Viltrum",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 61,
+    name: "Soul of Cinder",
+    category: "souls",
+    image: "img/souls/Soul of Cinder-1.png",
+    description:
+      "Manifestação física de todos os Lordes das Cinzas que já ligaram a Primeira Chama, chefe final de Dark Souls III.",
+    details: {
+      universo: "Dark Souls III",
+      poder: "Multiplas armas e estilos de luta, magia de chama",
+      status: "Chefe Final",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Chama",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 62,
+    name: "Escanor",
+    category: "Nanatsu",
+    image: "img/Taizai/escanor-2.png",
+    description:
+      "O Leão do Orgulho dos Sete Pecados Capitais, cujo poder aumenta drasticamente ao meio-dia, tornando-o invencível sob o sol.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Sunshine, força crescente com o sol",
+      status: "Falecido",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Sol",
+      nível: "S+ (ao meio-dia)",
+    },
+  },
+
+  {
+    id: 63,
+    name: "Naruto Uzumaki",
+    category: "Naruto",
+    image: "img/Naruto/naruto-1.png",
+    description:
+      "Sétimo Hokage da Vila da Folha, portador do Chakra da Raposa de Nove Caudas e salvador do Mundo Shinobi.",
+    details: {
+      universo: "Naruto",
+      poder: "Modo Sábio dos Seis Caminhos, Kurama, Rasengan",
+      status: "Ativo - Hokage",
+      estreia: 1999,
+      recompensa: "N/A",
+      afinidade: "Vento",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 64,
+    name: "Edward Newgate - Barba Branca",
+    category: "One-Piece",
+    image: "img/One-Piece/barba branca-1.png",
+    description:
+      "Conhecido como 'O Homem Mais Forte do Mundo' e 'O Pirata Mais Próximo do One Piece', capitão dos Piratas do Barba Branca.",
+    details: {
+      universo: "One Piece",
+      poder: "Gura Gura no Mi (Fruta do Terremoto), Haki",
+      status: "Falecido",
+      estreia: 1997,
+      recompensa: "฿5,046,000,000",
+      afinidade: "Terremoto",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 65,
+    name: "Irene Belserion",
+    category: "Fairy Tail",
+    image: "img/Fairy-Taill/Irene Belserion-1.png",
+    description:
+      "Rainha das Dragões, uma das fundadoras da guilda Fairy Tail e uma das magas mais poderosas da história, mãe de Erza Scarlet.",
+    details: {
+      universo: "Fairy Tail",
+      poder: "Alto Encantamento, Magia de Dragon Slayer",
+      status: "Falecida",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Encantamento",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 66,
+    name: "Tomura Shigaraki",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Tomura Shigaraki-1.png",
+    description:
+      "Líder da Liga dos Vilões e sucessor de All For One, possuindo a capacidade de desintegrar qualquer coisa que toque.",
+    details: {
+      universo: "My Hero Academia",
+      poder: "Decay (Desintegração), All For One",
+      status: "Ativo - Líder da Liga",
+      estreia: 2015,
+      recompensa: "¥N/A",
+      afinidade: "Destruição",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 67,
+    name: "Johnny Joestar",
+    category: "jojo",
+    image: "img/Jojo/Johnny Joestar-1.png",
+    description:
+      "Protagonista da Parte 7: Steel Ball Run, um jóquei paraplégico que desenvolve o Stand Tusk durante a corrida transcontinental.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder: "Stand Tusk, Técnica da Roda",
+      status: "Ativo - Jóquei",
+      estreia: 2004,
+      recompensa: "N/A",
+      afinidade: "Rotação",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 68,
+    name: "Guita",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Guita-1.png",
+    description:
+      "Personagem do mundo distópico de Gachiakuta, possuindo habilidades adaptadas ao ambiente hostil e sistema de castas da série.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Sobrevivência",
+      nível: "B",
+    },
+  },
+
+  {
+    id: 69,
+    name: "Maki Zenin",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Maki-1.png",
+    description:
+      "Feiticeira jujutsu que, após um ritual, obtém um corpo celestial sem energia amaldiçoada, tornando-se igual a Toji Fushiguro.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Corpo celestial, percepção aprimorada",
+      status: "Ativo - Feiticeira",
+      estreia: 2018,
+      recompensa: "N/A",
+      afinidade: "Física",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 70,
+    name: "Ikki de Fênix",
+    category: "Os Zavaleiros do Zodíaco",
+    image: "img/Os-Cavaleiros-do-Zodíaco/Ikki-1.png",
+    description:
+      "Cavaleiro de Bronze de Fênix, conhecido por renascer mais forte após cada derrota e por sua capacidade de ilusões.",
+    details: {
+      universo: "Saint Seiya",
+      poder: "Ilusões, renascimento, Fênix Genma Ken",
+      status: "Ativo - Cavaleiro de Bronze",
+      estreia: 1986,
+      recompensa: "N/A",
+      afinidade: "Fogo/Renascimento",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 71,
+    name: "Saitama",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Saitama-1.png",
+    description:
+      "Herói por Hobby da Classe B, capaz de derrotar qualquer oponente com um único soco após treinamento intenso que removeu seus limites.",
+    details: {
+      universo: "One Punch Man",
+      poder: "Força infinita, velocidade, invulnerabilidade",
+      status: "Ativo - Herói",
+      estreia: 2009,
+      recompensa: "N/A",
+      afinidade: "Quebra de Limites",
+      nível: "EX",
+    },
+  },
+
+  {
+    id: 72,
+    name: "Apolo",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/apolo-1.png",
+    description:
+      "Deus grego do sol, música, poesia e profecia, representante dos deuses no Ragnarok com habilidades relacionadas à luz e beleza.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Manipulação de luz, profecia, arco solar",
+      status: "Participante do Ragnarok",
+      estreia: 2023,
+      recompensa: "N/A",
+      afinidade: "Luz",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 73,
+    name: "Ambessa Medarda",
+    category: "League of Legend",
+    image: "img/lol/Ambessa-1.png",
+    description:
+      "Matriarca da casa Medarda e uma das figuras mais temidas de Noxus, conhecida por sua força brutal e táticas militares implacáveis.",
+    details: {
+      universo: "League of Legends/Arcane",
+      poder: "Força, liderança, estratégia militar",
+      status: "Ativa - Matriarca",
+      estreia: 2021,
+      recompensa: "N/A",
+      afinidade: "Guerra",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 74,
+    name: "Pain/Nagato",
+    category: "Naruto",
+    image: "img/Naruto/Pain-1.png",
+    description:
+      "Líder da Akatsuki e usuário do Rinnegan, capaz de controlar seis corpos diferentes com habilidades únicas e realizar técnicas divinas.",
+    details: {
+      universo: "Naruto",
+      poder: "Rinnegan, Seis Caminhos da Dor",
+      status: "Falecido",
+      estreia: 2005,
+      recompensa: "N/A",
+      afinidade: "Todos os elementos",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 75,
+    name: "Kashimo Hajime",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/hajime-1.png",
+    description:
+      "Feiticeiro jujutsu da Era de Ouro conhecido como 'Deus do Relâmpago', que aguardou séculos para lutar contra Sukuna.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Técnica amaldiçoada: eletricidade",
+      status: "Falecido",
+      estreia: 2021,
+      recompensa: "N/A",
+      afinidade: "Relâmpago",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 76,
+    name: "Meliodas",
+    category: "Nanatsu",
+    image: "img/Taizai/Meliodas-1.png",
+    description:
+      "Líder dos Sete Pecados Capitais e portador do Pecado da Ira, filho do Rei Demônio e antigo líder dos Dez Mandamentos.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Poder Demoniaco, Full Counter",
+      status: "Ativo - Rei de Liones",
+      estreia: 2012,
+      recompensa: "N/A",
+      afinidade: "Trevas",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 77,
+    name: "Shoto Todoroki",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Todoroki shoto-1.png",
+    description:
+      "Herói em treinamento da U.A. High School, possuindo a habilidade Quirk de gerar gelo pelo lado direito e fogo pelo lado esquerdo.",
+    details: {
+      universo: "My Hero Academia",
+      poder: "Half-Cold Half-Hot (Meio-Frio Meio-Quente)",
+      status: "Ativo - Estudante",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Gelo/Fogo",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 78,
+    name: "Kaido",
+    category: "One-Piece",
+    image: "img/One-Piece/Kaido-1.png",
+    description:
+      "Governador-Geral das Feras e um dos Quatro Imperadores, conhecido como 'A Criatura Mais Forte do Mundo' e usuário da Uo Uo no Mi.",
+    details: {
+      universo: "One Piece",
+      poder: "Uo Uo no Mi, Modelo: Dragão Azul, Haki",
+      status: "Derrotado",
+      estreia: 2011,
+      recompensa: "฿4,611,100,000",
+      afinidade: "Dragão",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 79,
+    name: "Satan Soul",
+    category: "Fairy Tail",
+    image: "img/Fairy-Taill/Satan Soul-1.png",
+    description:
+      "Forma de Take Over utilizada por Mirajane Strauss que lhe permite assumir características e poderes de demônios.",
+    details: {
+      universo: "Fairy Tail",
+      poder: "Take Over: Satan Soul",
+      status: "Ativo - Mago da Fairy Tail",
+      estreia: 2009,
+      recompensa: "N/A",
+      afinidade: "Demônio",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 80,
+    name: "Darkeater Midir",
+    category: "souls",
+    image: "img/souls/Darkeater Midir-1.png",
+    description:
+      "Dragão ancestral que consome a escuridão, um dos últimos descendentes dos dragões imortais e chefe opcional em Dark Souls III.",
+    details: {
+      universo: "Dark Souls III",
+      poder: "Fogo negro, resistência extrema",
+      status: "Chefe",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Escuridão",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 81,
+    name: "Ken Ryuguji (Draken)",
+    category: "tokyo",
+    image: "img/tokyo-revengers/draken-2.png",
+    description:
+      "Vice-Líder dos Tokyo Manji Gang, conhecido por sua habilidade de combate excepcional e lealdade inabalável a Mikey.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Combate corpo a corpo, liderança",
+      status: "Falecido",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Lealdade",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 82,
+    name: "Hisoka Morow",
+    category: "HXH",
+    image: "img/hxh/Hisoka-1.png",
+    description:
+      "Mago e Hunter que vive para encontrar oponentes dignos, usuário das habilidades Bungee Gum e Texture Surprise.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Bungee Gum, Texture Surprise",
+      status: "Ativo - Hunter",
+      estreia: 1998,
+      recompensa: "N/A",
+      afinidade: "Batalha",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 83,
+    name: "Zodyl",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Zodyl-1.png",
+    description:
+      "Personagem do universo de Gachiakuta, envolvido nas complexas relações de poder e sobrevivência do mundo da série.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Sobrevivência",
+      nível: "B",
+    },
+  },
+
+  {
+    id: 84,
+    name: "Kojiro Sasaki",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Kojiro Sasaki-1.png",
+    description:
+      "Conhecido como 'O Maior Espadachim' e 'Vagabundo', representa a humanidade no Ragnarok com sua técnica de milhares de estilos de espada.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Tsubame Gaeshi, análise de estilos",
+      status: "Participante do Ragnarok",
+      estreia: 2021,
+      recompensa: "N/A",
+      afinidade: "Espada",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 85,
+    name: "Son Gohan",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/gohan-1.png",
+    description:
+      "Filho mais velho de Goku, possuindo potencial latente maior que qualquer outro Saiyajin e múltiplas transformações únicas.",
+    details: {
+      universo: "Dragon Ball",
+      poder: "Potential Unleashed, Ultimate Form",
+      status: "Ativo - Estudioso/Guerreiro",
+      estreia: 1989,
+      recompensa: "N/A",
+      afinidade: "Potencial",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 86,
+    name: "Allen, o Alienígena",
+    category: "Invencível",
+    image: "img/Invencível/allen-1.png",
+    description:
+      "Aliens da Coalizão que auxiliam os Viltrumitas, conhecidos por sua fisiologia única e habilidades tecnológicas avançadas.",
+    details: {
+      universo: "Invincible",
+      poder: "Tecnologia alienígena, adaptação",
+      status: "Ativo - Membro da Coalizão",
+      estreia: 2004,
+      recompensa: "N/A",
+      afinidade: "Tecnologia",
+      nível: "B+",
+    },
+  },
+
+  {
+    id: 87,
+    name: "Gyro Zeppeli",
+    category: "jojo",
+    image: "img/Jojo/gyro-zeppeli-1.png",
+    description:
+      "Cavaleiro de Steel Ball Run e mestre da Técnica da Roda, que compete na corrida para salvar seu país e ensina Johnny Joestar.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder: "Steel Balls, Técnica da Roda",
+      status: "Falecido",
+      estreia: 2004,
+      recompensa: "N/A",
+      afinidade: "Rotação",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 88,
+    name: "Sasori",
+    category: "Naruto",
+    image: "img/Naruto/Sasori-1.png",
+    description:
+      "Membro da Akatsuki conhecido como 'Sasori da Areia Vermelha', mestre de marionetes que transforma corpos em armas.",
+    details: {
+      universo: "Naruto",
+      poder: "Marionetes, venenos, corpo de marionete",
+      status: "Derrotado",
+      estreia: 2005,
+      recompensa: "N/A",
+      afinidade: "Marionetes",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 89,
+    name: "K'Sante",
+    category: "League of Legend",
+    image: "img/lol/k'sante-1.png",
+    description:
+      "O Orgulho de Nazumah, um caçador determinado a proteger sua cidade dos monstros do deserto com suas armas únicas.",
+    details: {
+      universo: "League of Legends",
+      poder: "Armas Ntofos, transformação",
+      status: "Ativo - Protetor",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Terra",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 90,
+    name: "Suguru Geto",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/suguru geto-1.png",
+    description:
+      "Ex-feiticeiro de grau especial e antigo melhor amigo de Satoru Gojo, que se tornou um malditor após absorver milhares de maldições.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Manipulação de Maldições",
+      status: "Falecido (corpo usurpado)",
+      estreia: 2018,
+      recompensa: "N/A",
+      afinidade: "Maldição",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 91,
+    name: "Shanks",
+    category: "One-Piece",
+    image: "img/One-Piece/Shaks-1.png",
+    description:
+      "Imperador do Mar e capitão dos Piratas do Ruivo, conhecido por sua influência no mundo e por ser o homem que inspirou Luffy.",
+    details: {
+      universo: "One Piece",
+      poder: "Haki do Conquistador avançado, espadachim",
+      status: "Ativo - Imperador",
+      estreia: 1997,
+      recompensa: "฿4,048,900,000",
+      afinidade: "Haki",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 92,
+    name: "Fumikage Tokoyami",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Fumikage Tokoyami-1.png",
+    description:
+      "Herói em treinamento da U.A. com a Quirk Dark Shadow, uma sombra viva que se fortalece na escuridão e enfraquece na luz.",
+    details: {
+      universo: "My Hero Academia",
+      poder: "Dark Shadow (Sombra Escura)",
+      status: "Ativo - Estudante",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Sombra",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 93,
+    name: "Manjiro Sano (Mikey)",
+    category: "tokyo",
+    image: "img/tokyo-revengers/Makey-2.png",
+    description:
+      "Líder dos Tokyo Manji Gang, conhecido por sua velocidade e poder de chutes devastadores, além de sua personalidade carismática.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Velocidade extrema, chutes poderosos",
+      status: "Ativo - Líder",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Liderança",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 94,
+    name: "Meruem",
+    category: "HXH",
+    image: "img/hxh/Meruem-1.png",
+    description:
+      "Rei das Formigas Quimera, criatura com inteligência e poder incomparáveis que evolui rapidamente ao absorver habilidades de outros.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Força, velocidade, absorção de habilidades",
+      status: "Falecido",
+      estreia: 2011,
+      recompensa: "N/A",
+      afinidade: "Evolução",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 95,
+    name: "Simo Häyhä",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/simo häyhä-1.png",
+    description:
+      "Conhecido como 'A Morte Branca', atirador de elite finlandês que representa a humanidade no Ragnarok com suas habilidades de sniper.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Precisão extrema, camuflagem, resistência",
+      status: "Participante do Ragnarok",
+      estreia: 2023,
+      recompensa: "N/A",
+      afinidade: "Precisão",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 96,
+    name: "Aoi Todo",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Aoi todo-2.png",
+    description:
+      "Feiticeiro de grau 1 semi que luta com seu irmão adotivo, possuindo a técnica Boogie Woogie para trocar posições com alvos.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Boogie Woogie, força física",
+      status: "Incapacitado",
+      estreia: 2018,
+      recompensa: "N/A",
+      afinidade: "Troca",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 97,
+    name: "Leonardo Burns",
+    category: "Fire Force",
+    image: "img/Fire Force/Leonardo Burns-1.png",
+    description:
+      "Capitão da 1ª Companhia do Corpo de Bombeiros Especiais, conhecido por sua ética de trabalho rigorosa e poderosas chamas azuis.",
+    details: {
+      universo: "Fire Force",
+      poder: "Chamas azuis, controle preciso",
+      status: "Ativo - Capitão",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Chama Azul",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 98,
+    name: "Bartholomew Kuma",
+    category: "One-Piece",
+    image: "img/One-Piece/Kuma-1.png",
+    description:
+      "O Tirano, antigo Shichibukai e revolucionário que foi completamente transformado em ciborgue pelo Governo Mundial.",
+    details: {
+      universo: "One Piece",
+      poder: "Ursus Ursus no Mi, Paw-Paw Fruit, ciborgue",
+      status: "Transformado em arma",
+      estreia: 2007,
+      recompensa: "฿296,000,000",
+      afinidade: "Repulsão",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 99,
+    name: "Kazutora Hanemiya",
+    category: "tokyo",
+    image: "img/tokyo-revengers/Kazutora Hanemiya-1.png",
+    description:
+      "Membro dos Tokyo Manji Gang com um passado traumático, conhecido por sua instabilidade emocional e lealdade conflituosa.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Combate agressivo, instabilidade",
+      status: "Preso/Redimido",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Conflito",
+      nível: "B+",
+    },
+  },
+
+  {
+    id: 100,
+    name: "Baby",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/baby-1.png",
+    description:
+      "Parasita Tuffle criado pelo Dr. Myuu para vingar os Tuffles, capaz de possuir corpos e absorver energia de Saiyajins.",
+    details: {
+      universo: "Dragon Ball GT",
+      poder: "Possessão, absorção de energia",
+      status: "Derrotado",
+      estreia: 1997,
+      recompensa: "N/A",
+      afinidade: "Parasita",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 101,
+    name: "Overhaul (Kai Chisaki)",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/overhaul-1.png",
+    description:
+      "Líder da yakuza Shie Hassaikai e portador da Quirk Overhaul, permitindo-lhe desmontar e reconstruir matéria com um toque.",
+    details: {
+      universo: "My Hero Academia",
+      poder: "Overhaul (Reconstrução)",
+      status: "Preso",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Reconstrução",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 102,
+    name: "Odin",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Odin-1.png",
+    description:
+      "Pai dos deuses nórdicos e governante de Asgard, representante dos deuses no Ragnarok com poder sobre o destino e conhecimento.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Poder divino, conhecimento, destino",
+      status: "Participante do Ragnarok",
+      estreia: 2023,
+      recompensa: "N/A",
+      afinidade: "Destino",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 103,
+    name: "Shisui Uchiha",
+    category: "Naruto",
+    image: "img/Naruto/Shisui-2.png",
+    description:
+      "Conhecido como 'Shisui, o Telepata', membro do clã Uchiha com o Mangekyō Sharingan mais avançado e a técnica Kotoamatsukami.",
+    details: {
+      universo: "Naruto",
+      poder: "Kotoamatsukami, Body Flicker",
+      status: "Falecido",
+      estreia: 2005,
+      recompensa: "N/A",
+      afinidade: "Ilusão",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 104,
+    name: "Chandler",
+    category: "Nanatsu",
+    image: "img/Taizai/chandler-1.png",
+    description:
+      "O Mago Supremo e servo do Rei Demônio, mestre de magia negra e professor de Meliodas durante sua juventude.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Magia negra, transformação",
+      status: "Derrotado",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Magia Negra",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 105,
+    name: "Takashi Mitsuya (Angry)",
+    category: "tokyo",
+    image: "img/tokyo-revengers/Angry-1.png",
+    description:
+      "Membro dos Tokyo Manji Gang conhecido como 'Angry', irmão gêmeo de Smiley e vice-capitão da primeira divisão.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Combate calmo e calculista",
+      status: "Ativo - Vice-Capitão",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Controle",
+      nível: "B+",
+    },
+  },
+
+  {
+    id: 106,
+    name: "Monkey D. Garp",
+    category: "One-Piece",
+    image: "img/One-Piece/Garp-1.png",
+    description:
+      "O Herói da Marinha, avô de Luffy e pai de Dragon, conhecido por sua força lendária que rivaliza com a dos Piratas da Época de Ouro.",
+    details: {
+      universo: "One Piece",
+      poder: "Haki avançado, força física",
+      status: "Ativo - Vice-Almirante",
+      estreia: 1998,
+      recompensa: "N/A",
+      afinidade: "Justiça",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 107,
+    name: "Derieri",
+    category: "Nanatsu",
+    image: "img/Taizai/Derieri-1.png",
+    description:
+      "Comandante dos Dez Mandamentos portadora do Mandamento da Piedade, especialista em combate corpo a corpo com ataques combinados.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Combo Star, Mandamento da Piedade",
+      status: "Falecida",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Combos",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 108,
+    name: "Tengen Uzui",
+    category: "Kimetsu no Yaiba",
+    image: "img/kimetsu/uzui tengen-1.png",
+    description:
+      "Pilar do Som e ex-ninja, conhecido por suas técnicas musicais de combate e por ser o mais 'extravagante' dos Pilares.",
+    details: {
+      universo: "Demon Slayer",
+      poder: "Respiração do Som, resistência a veneno",
+      status: "Aposentado",
+      estreia: 2019,
+      recompensa: "N/A",
+      afinidade: "Som",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 109,
+    name: "Dabi (Toya Todoroki)",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Dabi-1.png",
+    description:
+      "Vilão da Liga dos Vilões e filho mais velho de Endeavor, portador da Quirk Cremation que produz chamas azuis superiores.",
+    details: {
+      universo: "My Hero Academia",
+      poder: "Cremation (Chamas Azuis)",
+      status: "Ativo - Vilão",
+      estreia: 2016,
+      recompensa: "¥N/A",
+      afinidade: "Chama Azul",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 110,
+    name: "Messmer, o Empalador",
+    category: "souls",
+    image: "img/souls/Messmer-1.png",
+    description:
+      "Filho da Deusa Marika e comandante da Expedição ao continente sombrio, portador de chamas sombrias e habilidades de empalamento.",
+    details: {
+      universo: "Elden Ring: Shadow of the Erdtree",
+      poder: "Chamas sombrias, empalamento, serpente",
+      status: "Chefe",
+      estreia: 2024,
+      recompensa: "N/A",
+      afinidade: "Chama Sombria",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 111,
+    name: "Neferpitou",
+    category: "HXH",
+    image: "img/hxh/Neferpitou-2.png",
+    description:
+      "Guarda Real das Formigas Quimera especializada em habilidades de médico e combate, possuindo o Nen mais refinado entre os Guardas.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Doctor Blythe, Terpsichora",
+      status: "Derrotado",
+      estreia: 2011,
+      recompensa: "N/A",
+      afinidade: "Nen",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 112,
+    name: "Jiraiya",
+    category: "Naruto",
+    image: "img/Naruto/jiraiya-1.png",
+    description:
+      "Um dos Três Sannin Lendários, mestre de Naruto e autor da série 'Icha Icha', especialista em invocações e técnicas de selamento.",
+    details: {
+      universo: "Naruto",
+      poder: "Modo Sábio, invocações, Rasengan",
+      status: "Falecido",
+      estreia: 1999,
+      recompensa: "N/A",
+      afinidade: "Sapos",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 113,
+    name: "Frieza",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/Freeza-1.png",
+    description:
+      "Imperador do universo e arqui-inimigo dos Saiyajins, possuindo múltiplas transformações e poderes cósmicos.",
+    details: {
+      universo: "Dragon Ball",
+      poder: "Formas de transformação, poderes cósmicos",
+      status: "Ativo - Imperador",
+      estreia: 1990,
+      recompensa: "N/A",
+      afinidade: "Destruição",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 114,
+    name: "Roy Mustang",
+    category: "Fullmetal",
+    image: "img/Fullmetal-Alchemist/Roy Mustang-1.png",
+    description:
+      "Alquimista da Chama e coronel do exército de Amestris, capaz de criar explosões controladas com seus dedos estalados.",
+    details: {
+      universo: "Fullmetal Alchemist",
+      poder: "Alquimia da Chama",
+      status: "Ativo - General",
+      estreia: 2001,
+      recompensa: "N/A",
+      afinidade: "Fogo",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 115,
+    name: "Silvers Rayleigh",
+    category: "One-Piece",
+    image: "img/One-Piece/Rayleigh-1.png",
+    description:
+      "O Rei das Trevas e primeiro imediato dos Piratas do Roger, mentor de Luffy no uso do Haki e um dos homens mais fortes do mundo.",
+    details: {
+      universo: "One Piece",
+      poder: "Haki avançado, espadachim",
+      status: "Aposentado",
+      estreia: 1999,
+      recompensa: "Desconhecida",
+      afinidade: "Haki",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 116,
+    name: "Endeavor (Enji Todoroki)",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Endeavor-1.png",
+    description:
+      "Herói profissional Número 1 e pai de Shoto Todoroki, portador da poderosa Quirk Hellflame que produz chamas extremamente quentes.",
+    details: {
+      universo: "My Hero Academia",
+      poder: "Hellflame (Chamas do Inferno)",
+      status: "Ativo - Herói Número 1",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Chama",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 117,
+    name: "Leônidas I",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Leonidas-1.png",
+    description:
+      "Rei de Esparta e representante da humanidade no Ragnarok, conhecido por sua bravura na Batalha das Termópilas e espírito indomável.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Força espartana, escudo e lança",
+      status: "Participante do Ragnarok",
+      estreia: 2023,
+      recompensa: "N/A",
+      afinidade: "Bravura",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 118,
+    name: "Monspiet",
+    category: "Nanatsu",
+    image: "img/Taizai/Monspiet-1.png",
+    description:
+      "Comandante dos Dez Mandamentos portador do Mandamento da Fé, companheiro de Derieri e especialista em chamas mágicas.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Chamas mágicas, Mandamento da Fé",
+      status: "Falecido",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Chama",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 119,
+    name: "Taiju Shiba",
+    category: "tokyo",
+    image: "img/tokyo-revengers/taiju shiba-2.png",
+    description:
+      "Líder da Black Dragons e irmão mais velho de Yuzuha, conhecido por sua força sobre-humana e personalidade extremamente violenta.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Força sobre-humana, resistência",
+      status: "Redimido",
+      estreia: 2018,
+      recompensa: "N/A",
+      afinidade: "Força Bruta",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 120,
+    name: "Kakashi Hatake",
+    category: "Naruto",
+    image: "img/Naruto/kakashi-1.png",
+    description:
+      "O Ninja Copiador, Sexto Hokage e líder do Time 7, famoso por seu Sharingan e pela técnica Chidori.",
+    details: {
+      universo: "Naruto",
+      poder: "Sharingan, Chidori, mil técnicas",
+      status: "Aposentado - Ex-Hokage",
+      estreia: 1999,
+      recompensa: "N/A",
+      afinidade: "Cópia",
+      nível: "S+",
+    },
+  },
+
+  {
+    id: 121,
+    name: "DONQUIXOTE DOFLAMINGO",
+    category: "One-Piece",
+    image: "img/One-Piece/Domflamingo-1.png",
+    description:
+      "Ex-Shichibukai conhecido como o Coringa do submundo, manipulador cruel e extremamente poderoso.",
+    details: {
+      universo: "One Piece",
+      poder: "Ito Ito no Mi (Fruta do Fio)",
+      status: "Vilão - Ex-Shichibukai",
+      estreia: 1997,
+      transformação: "Despertar da Akuma no Mi",
+      técnica: "Bird Cage",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 122,
+    name: "MEREOLEONA VERMILLION",
+    category: "Black Clover",
+    image: "img/Black Clover/Mereoleona-1.png",
+    description:
+      "Guerreira feroz e capitã lendária, conhecida por sua força absurda e domínio absoluto da magia de fogo.",
+    details: {
+      universo: "Black Clover",
+      poder: "Magia de Fogo",
+      status: "Heroína - Capitã dos Touros Carmesim",
+      estreia: 2017,
+      transformação: "Mana Zone",
+      técnica: "Calidos Brachium",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 123,
+    name: "BUDDHA",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Buddha-1.png",
+    description:
+      "Deus imprevisível que desafia os céus e luta pela humanidade usando sua iluminação divina.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Iluminação Divina",
+      status: "Deus - Traidor dos Deuses",
+      estreia: 2018,
+      transformação: "Caminhos dos Seis Reinos",
+      técnica: "Visão do Futuro",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 124,
+    name: "BALERION",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/balerion-1.png",
+    description:
+      "O maior e mais temido dragão da história de Westeros, montaria de Aegon, o Conquistador.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Fogo Dracônico Ancestral",
+      status: "Lendário - Dragão de Aegon",
+      estreia: 1996,
+      transformação: "Forma Anciã",
+      técnica: "Chamas Negras",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 125,
+    name: "KLED",
+    category: "League of Legend",
+    image: "img/lol/Kled-1.png",
+    description:
+      "Yordle completamente insano, guerreiro de Noxus que luta montado em Skaarl, defendendo seu território com violência extrema.",
+    details: {
+      universo: "League of Legends",
+      poder: "Fúria Noxiana",
+      status: "Anti-herói - Guerreiro de Noxus",
+      estreia: 2016,
+      transformação: "Montado em Skaarl",
+      técnica: "CHAAAARGE!!!",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 126,
+    name: "JASPER",
+    category: "Steven Universo",
+    image: "img/Steven-Universo/Jasper-1.png",
+    description:
+      "Gema guerreira extremamente forte e orgulhosa, criada para combate e leal ao Império Gem.",
+    details: {
+      universo: "Steven Universe",
+      poder: "Força Gem Superior",
+      status: "Anti-heroína - Guerreira Gem",
+      estreia: 2015,
+      transformação: "Forma Corrompida",
+      técnica: "Golpe Gem Brutal",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 127,
+    name: "PORTGAS D. ACE",
+    category: "One-Piece",
+    image: "img/One-Piece/Ace-1.png",
+    description:
+      "Comandante da 2ª Divisão dos Piratas do Barba Branca, usuário do poder do fogo e irmão de Luffy.",
+    details: {
+      universo: "One Piece",
+      poder: "Mera Mera no Mi (Fruta do Fogo)",
+      status: "Herói - Pirata do Barba Branca",
+      estreia: 1999,
+      transformação: "Forma Logia",
+      técnica: "Hiken",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 128,
+    name: "MAHORAGA",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/mahoraga-1.png",
+    description:
+      "Shikigami supremo da Técnica das Dez Sombras, capaz de se adaptar a qualquer ataque.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Adaptação Absoluta",
+      status: "Invocação - Shikigami",
+      estreia: 2018,
+      transformação: "Roda da Adaptação",
+      técnica: "Adaptação Infinita",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 129,
+    name: "ITACHI UCHIHA",
+    category: "Naruto",
+    image: "img/Naruto/itachi-1.png",
+    description:
+      "Gênio do clã Uchiha que sacrificou tudo para proteger Konoha, mestre absoluto do Sharingan.",
+    details: {
+      universo: "Naruto",
+      poder: "Sharingan e Mangekyō Sharingan",
+      status: "Anti-herói - Ex-nukenin",
+      estreia: 1999,
+      transformação: "Susanoo",
+      técnica: "Tsukuyomi",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 130,
+    name: "DAENERYS TARGARYEN",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/daenerys-targaryen-1.png",
+    description:
+      "A Mãe dos Dragões, herdeira da Casa Targaryen, determinada a reconquistar o Trono de Ferro.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Controle de Dragões",
+      status: "Heroína - Rainha Targaryen",
+      estreia: 1996,
+      transformação: "Mãe dos Dragões",
+      técnica: "Dracarys",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 131,
+    name: "YAMI SUKEHIRO",
+    category: "Black Clover",
+    image: "img/Black Clover/Yami-Sukehiro-1.png",
+    description:
+      "Capitão dos Touros Negros, conhecido por seu poder de Magia de Trevas e personalidade dura, mas justa.",
+    details: {
+      universo: "Black Clover",
+      poder: "Magia das Trevas",
+      status: "Herói - Capitão dos Touros Negros",
+      estreia: 2015,
+      transformação: "Mana Zone",
+      técnica: "Dark Cloaked Dimension Slash",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 132,
+    name: "MIRIO TOGATA",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/mirio-togata-1.png",
+    description:
+      "Herói de Classe 1-A da U.A., conhecido como Lemillion, possui a Quirk de Passagem e espírito incansável.",
+    details: {
+      universo: "Boku no Hero Academia",
+      poder: "Quirk: Passagem",
+      status: "Herói - Classe 1-A",
+      estreia: 2014,
+      transformação: "Lemillion",
+      técnica: "Golpe de Alta Velocidade",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 133,
+    name: "DENJI",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/denji-1.png",
+    description:
+      "Jovem caçador de demônios que se fundiu com Pochita, tornando-se o Chainsaw Man, lutando por sobrevivência e sonhos simples.",
+    details: {
+      universo: "Chainsaw Man",
+      poder: "Fusão com Pochita",
+      status: "Anti-herói - Caçador de Demônios",
+      estreia: 2018,
+      transformação: "Chainsaw Man",
+      técnica: "Chainsaw Punch",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 134,
+    name: "ROSE QUARTZO",
+    category: "Steven Universo",
+    image: "img/Steven-Universo/Rose-Quartzo-1.png",
+    description:
+      "Líder das Crystal Gems, protetora da Terra, conhecida por sua compaixão e poder incomparável.",
+    details: {
+      universo: "Steven Universe",
+      poder: "Força Gem e Cura",
+      status: "Heroína - Líder das Crystal Gems",
+      estreia: 2013,
+      transformação: "Forma Completa",
+      técnica: "Escudo de Rosa",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 135,
+    name: "JINBE",
+    category: "One-Piece",
+    image: "img/One-Piece/jinbe-1.png",
+    description:
+      "Membro dos Piratas do Chapéu de Palha e mestre em Fish-Man Karate, leal e protetor de seus amigos.",
+    details: {
+      universo: "One Piece",
+      poder: "Fish-Man Karate",
+      status: "Herói - Pirata do Chapéu de Palha",
+      estreia: 1999,
+      transformação: "Forma de Combate Total",
+      técnica: "Gyojin Ogi: Hajiki",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 136,
+    name: "CHOSO",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Choso-1.png",
+    description:
+      "Irmão mais velho das Maldições Cursed Womb, especialista em manipulação de sangue e combate letal.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Manipulação de Sangue",
+      status: "Anti-herói - Maldição",
+      estreia: 2018,
+      transformação: "Forma de Maldição Pura",
+      técnica: "Cursed Blood Technique",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 137,
+    name: "SION",
+    category: "League of Legend",
+    image: "img/lol/Sion.png",
+    description:
+      "Guerreiro morto-vivo de Noxus, um colosso de força bruta que avança sem medo da morte.",
+    details: {
+      universo: "League of Legends",
+      poder: "Força Bruta / Imortalidade",
+      status: "Anti-herói - Morto-vivo",
+      estreia: 2009,
+      transformação: "Forma Enfurecida Pós-Morte",
+      técnica: "Glory in Death",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 138,
+    name: "SIMON BELMONT",
+    category: "Castlevania",
+    image: "img/castlevania/simon-belmont-1.png",
+    description:
+      "Caçador de vampiros do clã Belmont, lendário por enfrentar Drácula usando o chicote sagrado Vampire Killer.",
+    details: {
+      universo: "Castlevania",
+      poder: "Armas Sagradas / Combate Corpo a Corpo",
+      status: "Herói - Humano",
+      estreia: 1986,
+      transformação: "Modo de Caçador Lendário",
+      técnica: "Vampire Killer",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 139,
+    name: "GRIMMJOW JAEGERJAQUEZ",
+    category: "Bleach",
+    image: "img/Bleach/Grimmjow-Jaegerjaquez-1.png",
+    description:
+      "Arrancar extremamente agressivo e orgulhoso, o Sexto Espada busca batalhas intensas para provar sua força absoluta.",
+    details: {
+      universo: "Bleach",
+      poder: "Reiatsu / Combate Espiritual",
+      status: "Anti-herói - Arrancar",
+      estreia: 2006,
+      transformação: "Ressurrección: Pantera",
+      técnica: "Desgarrón",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 140,
+    name: "ZENON ZOGRATIS",
+    category: "Black Clover",
+    image: "img/Black Clover/Zenon-Zogratis-1.png",
+    description:
+      "Membro da Tríade Negra e hospedeiro de um demônio de alto nível, Zenon luta com frieza absoluta usando magia de ossos e poder demoníaco.",
+    details: {
+      universo: "Black Clover",
+      poder: "Magia de Ossos / Poder Demoníaco",
+      status: "Vilão - Humano Possuído",
+      estreia: 2019,
+      transformação: "Forma de União Demoníaca",
+      técnica: "Spatial Domination",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 141,
+    name: "SAKATA KINTOKI",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Sakata-Kintoki-1.png",
+    description:
+      "Herói lendário do folclore japonês e um dos campeões da humanidade, possuidor de força sobre-humana e espírito indomável.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Força Sobre-humana / Combate Divino",
+      status: "Herói - Humano",
+      estreia: 2021,
+      transformação: "Despertar do Herói Dourado",
+      técnica: "Machado Celestial",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 142,
+    name: "SANEMI SHINAZUGAWA",
+    category: "Kimetsu no Yaiba",
+    image: "img/kimetsu/Sanemi-Shinazugawa-1.png",
+    description:
+      "Pilar do Vento da Corporação dos Caçadores de Demônios, conhecido por sua personalidade agressiva e técnica mortal com a Respiração do Vento.",
+    details: {
+      universo: "Kimetsu no Yaiba",
+      poder: "Respiração do Vento",
+      status: "Herói - Humano",
+      estreia: 2017,
+      transformação: "Marca do Caçador",
+      técnica: "Respiração do Vento – Primeira Forma",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 143,
+    name: "KOZUKI ODEN",
+    category: "One-Piece",
+    image: "img/One-Piece/oden-1.png",
+    description:
+      "Samurai lendário de Wano, portador de uma força monstruosa e de uma vontade indomável capaz de ferir até imperadores dos mares.",
+    details: {
+      universo: "One Piece",
+      poder: "Haki / Estilo de Duas Espadas",
+      status: "Herói - Humano",
+      estreia: 1999,
+      transformação: "Vontade Ardente de Wano",
+      técnica: "Togen Totsuka",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 144,
+    name: "SANDOR CLEGANE",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/perdigueiro-1.png",
+    description:
+      "Conhecido como O Perdigueiro, Sandor Clegane é um guerreiro brutal e pragmático, temido por sua ferocidade e desprezo pela cavalaria.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Combate Corpo a Corpo / Espadas",
+      status: "Anti-herói - Humano",
+      estreia: 2011,
+      transformação: "Modo Fúria de Batalha",
+      técnica: "Combate Brutal",
+      nível: "A",
+    },
+  },
+
+  {
+    id: 145,
+    name: "GRIFFITH",
+    category: "Berserk",
+    image: "img/Berserk/Griffith-1.png",
+    description:
+      "Antigo líder do Bando do Falcão, cuja ambição o levou a um sacrifício impiedoso e à ascensão como uma entidade demoníaca além da humanidade.",
+    details: {
+      universo: "Berserk",
+      poder: "Carisma / Poder Demoníaco",
+      status: "Vilão - Membro da Mão de Deus",
+      estreia: 1989,
+      transformação: "Femto",
+      técnica: "Manipulação do Destino",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 146,
+    name: "GARNET",
+    category: "Steven Universo",
+    image: "img/Steven-Universo/garnet-1.png",
+    description:
+      "Líder calma e poderosa das Crystal Gems, Garnet combina força, visão futura e habilidades de fusão para proteger a Terra.",
+    details: {
+      universo: "Steven Universo",
+      poder: "Força Sobre-humana / Visão do Futuro",
+      status: "Heroína - Gem",
+      estreia: 2013,
+      transformação: "Fusão Garnet",
+      técnica: "Punch Preciso / Combate Estratégico",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 147,
+    name: "ULQUIORRA CIFER",
+    category: "Bleach",
+    image: "img/Bleach/Ulquiorra-Cifer-1.png",
+    description:
+      "Quarta Espada do exército de Arrancares de Aizen, conhecido por sua frieza absoluta e força devastadora, capaz de regenerar ferimentos rapidamente.",
+    details: {
+      universo: "Bleach",
+      poder: "Reiatsu / Regeneração / Combate Espiritual",
+      status: "Vilão - Arrancar",
+      estreia: 2006,
+      transformação: "Segunda Forma Resurrección: Murciélago",
+      técnica: "Lanza del Relámpago",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 148,
+    name: "SHOTA AIZAWA",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Shota-Aizawa-1.png",
+    description:
+      "Professor da U.A. e herói profissional conhecido como Eraser Head, capaz de anular os poderes de seus oponentes com um simples olhar.",
+    details: {
+      universo: "Boku no Hero Academia",
+      poder: "Anulação de Quirks",
+      status: "Herói - Humano",
+      estreia: 2014,
+      transformação: "Modo Combate Heróico",
+      técnica: "Eraser Head Quirk Nullification",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 149,
+    name: "FUEGOLEON VERMILLION",
+    category: "Black Clover",
+    image: "img/Black Clover/Fuegoleon-Vermillion-1.png",
+    description:
+      "Capitão do Crimson Lion Kingdom e usuário de magia de fogo, Fuegoleon é um líder nobre e estrategista incansável que inspira seus aliados.",
+    details: {
+      universo: "Black Clover",
+      poder: "Magia de Fogo / Liderança Estratégica",
+      status: "Herói - Humano",
+      estreia: 2015,
+      transformação: "Modo Rei do Fogo",
+      técnica: "Crimson Blaze",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 150,
+    name: "GOL D. ROGER",
+    category: "One-Piece",
+    image: "img/One-Piece/Roger-1.png",
+    description:
+      "Conhecido como o Rei dos Piratas, Gol D. Roger conquistou todos os mares e deixou um legado lendário que inspirou gerações de aventureiros.",
+    details: {
+      universo: "One Piece",
+      poder: "Haki / Espadas / Liderança",
+      status: "Herói - Humano",
+      estreia: 1997,
+      transformação: "Rei dos Piratas",
+      técnica: "Golpe de Espada e Haki Supremo",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 151,
+    name: "MAKIMA",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Makima-1.png",
+    description:
+      "Enigmática e manipuladora, Makima é uma das figuras mais poderosas do mundo de Chainsaw Man, controlando demônios e humanos com inteligência e força devastadora.",
+    details: {
+      universo: "Chainsaw Man",
+      poder: "Controle Mental / Manipulação de Demônios",
+      status: "Vilã - Humana Possuída",
+      estreia: 2018,
+      transformação: "Forma Suprema",
+      técnica: "Domínio Absoluto",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 152,
+    name: "Godspeed",
+    category: "Flash",
+    image: "img/Flash/godspeed-1.png",
+    description:
+      "Godspeed é um dos velocistas mais perigosos do universo Flash. Obcecado por velocidade e justiça distorcida, ele utiliza a Força de Aceleração para alcançar níveis absurdos de rapidez, sendo capaz de enfrentar o próprio Flash em combate direto.",
+    details: {
+      universo: "DC Comics / The Flash",
+      papel: "Antagonista",
+      status: "Humano / Velocista",
+      poder: "Super Velocidade / Manipulação da Força de Aceleração",
+      estreia: 2016,
+      técnica: "Speed Force Lightning / Velocidade Relâmpago",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 153,
+    name: "MOHG, LORD OF BLOOD",
+    category: "souls",
+    image: "img/souls/Mohg-1.png",
+    description:
+      "Mohg, Lord of Blood é um semideus corrompido pelo Sangue Amaldiçoado, governando nas sombras enquanto busca instaurar uma dinastia profana através de rituais sangrentos e poder arcano.",
+    details: {
+      universo: "Elden Ring",
+      poder: "Manipulação de Sangue / Magia Profana",
+      status: "Vilão - Semideus",
+      estreia: 2022,
+      transformação: "Forma do Senhor do Sangue",
+      técnica: "Ritual da Dinastia de Sangue",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 154,
+    name: "AKUMA",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/Akuma-1.png",
+    description:
+      "Akuma é um mestre supremo do Satsui no Hado, buscando apenas a força absoluta. Seu poder destrutivo e sua filosofia de combate o colocam além dos limites da humanidade.",
+    details: {
+      universo: "Street Fighter",
+      poder: "Satsui no Hado / Energia Demoníaca",
+      status: "Anti-herói - Humano Corrompido",
+      estreia: 1994,
+      transformação: "Shin Akuma",
+      técnica: "Shun Goku Satsu",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 155,
+    name: "MAITO GAI",
+    category: "Naruto",
+    image: "img/Naruto/Maito-gai-1.png",
+    description:
+      "Maito Gai é um mestre do taijutsu e símbolo do esforço absoluto. Incapaz de usar ninjutsu ou genjutsu, ele supera todos os limites do corpo humano através de treino extremo e pura determinação.",
+    details: {
+      universo: "Naruto",
+      poder: "Taijutsu / Oito Portões",
+      status: "Herói - Ninja",
+      estreia: 2002,
+      transformação: "Oitavo Portão: Portão da Morte",
+      técnica: "Yagai (Chute do Elefante Noturno)",
+      nível: "SSS",
+    },
+  },
+  {
+    id: 156,
+    name: "JOE YABUKI",
+    category: "Ashita no Joe",
+    image: "img/Ashita-no-Joe/Joe-4.png",
+    description:
+      "Joe Yabuki é um boxeador indomável que luta movido por orgulho, liberdade e autodestruição...",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Força Física / Resistência Extrema",
+      status: "Anti-herói - Humano",
+      estreia: 1968,
+      técnica: "Cross Counter",
+      nível: "S",
+    },
+  },
+  {
+    id: 157,
+    name: "LEON",
+    category: "Pokemon",
+    image: "img/Pokemon/Leon-1.png",
+    description:
+      "Leon é o Campeão da região de Galar, conhecido por sua incrível habilidade em batalhas Pokémon e por nunca perder uma partida. Carismático e confiante, inspira treinadores a superarem seus limites.",
+    details: {
+      universo: "Pokémon",
+      poder: "Estratégia / Liderança em Batalha",
+      status: "Herói - Humano",
+      estreia: 2019,
+      transformação: "Gigantamax",
+      técnica: "Final Showdown",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 158,
+    name: "MIYAMOTO MUSASHI",
+    category: "Vagabond",
+    image: "img/Vagabond/miyamoto-3.png",
+    description:
+      "Miyamoto Musashi é um lendário samurai em busca da perfeição na arte da espada. Determinado, introspectivo e implacável, ele enfrenta qualquer oponente para dominar a verdadeira essência do combate.",
+    details: {
+      universo: "Vagabond",
+      poder: "Kenjutsu / Estratégia de Combate",
+      status: "Herói - Humano",
+      estreia: 1998,
+      transformação: "Forma Mestre da Espada",
+      técnica: "Dois Céus, Uma Espada",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 159,
+    name: "CHARLOTTE KATAKURI",
+    category: "One-Piece",
+    image: "img/One-Piece/Katakuri-1.png",
+    description:
+      "Katakuri é o filho mais poderoso da família Charlotte, conhecido por sua força brutal, velocidade extrema e habilidade única de prever movimentos com o Mochi Mochi no Mi. Um adversário quase imbatível em combate direto.",
+    details: {
+      universo: "One Piece",
+      poder: "Mochi Mochi no Mi / Haki da Observação Avançado",
+      status: "Anti-herói - Humano",
+      estreia: 2016,
+      transformação: "Forma Total Mochi",
+      técnica: "Rengoku Mochi",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 160,
+    name: "KENSHIN HIMURA",
+    category: "Samurai-X",
+    image: "img/Samurai-X/samurai x-1.png",
+    description:
+      "Kenshin Himura é um lendário samurai errante, conhecido como Battousai, o Retalhador. Movido por redenção, ele busca proteger os inocentes enquanto luta para superar seu passado violento.",
+    details: {
+      universo: "Samurai X",
+      poder: "Kenjutsu / Battoujutsu",
+      status: "Herói - Humano",
+      estreia: 1996,
+      transformação: "Forma Battousai",
+      técnica: "Amakakeru Ryu no Hirameki",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 161,
+    name: "SOLARIA BUTTERFLY",
+    category: "Star-vs.",
+    image: "img/star-vs/solaria-1.png",
+    description:
+      "Solaria Butterfly é uma princesa guerreira do reino mágico de Mewni, poderosa e estratégica. Conhecida por sua liderança e habilidade em magia de batalha, ela protege seu reino com coragem e determinação.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      poder: "Magia de Mewni / Estratégia de Combate",
+      status: "Heróina - Mewman",
+      estreia: 2015,
+      transformação: "Forma de Poder Real",
+      técnica: "Feitiço de Combate Supremo",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 162,
+    name: "RADAGON OF THE GOLDEN ORDER",
+    category: "souls",
+    image: "img/souls/Radagon of the Golden Order-1.png",
+    description:
+      "Radagon é um semideus lendário de Elden Ring, governando com força absoluta e domínio divino. Sua presença impõe ordem e destruição, combinando poder físico e magia sagrada.",
+    details: {
+      universo: "Elden Ring",
+      poder: "Magia Sagrada / Força Divina",
+      status: "Vilão - Semideus",
+      estreia: 2022,
+      transformação: "Forma Radagon Supremo",
+      técnica: "Golpe da Ordem Dourada",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 163,
+    name: "TERCEIRO RAIKAGE",
+    category: "Naruto",
+    image: "img/Naruto/Raikage-2.png",
+    description:
+      "O Terceiro Raikage é conhecido por sua velocidade e força sobre-humanas, além de seu corpo extremamente resistente. Líder respeitado de Kumogakure, ele combina poder físico com uma determinação inabalável.",
+    details: {
+      universo: "Naruto",
+      poder: "Força Sobre-Humana / Velocidade Extrema",
+      status: "Herói - Ninja",
+      estreia: 2002,
+      transformação: "Forma Raikage Suprema",
+      técnica: "Lariat Supremo",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 164,
+    name: "TITÃ DE ATAQUE",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/titan-de-ataque-1.png",
+    description:
+      "O Titã de Ataque é uma poderosa entidade capaz de lutar com agilidade e força sobre-humana. Ele é o símbolo da resistência da humanidade, passando de um portador para outro ao longo da história.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      poder: "Força Titanica / Agilidade Avançada",
+      status: "Herói - Titan Shifter",
+      estreia: 2009,
+      transformação: "Forma Completa do Titã de Ataque",
+      técnica: "Ruptura Titanica",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 165,
+    name: "Shinso",
+    category: "Pokemon",
+    image: "img/Pokemon/Shinso-2.png",
+    description:
+      "Shinso é o principal vilão da hack room Pokémon Blue Stars 3 Forces. Frio, estratégico e manipulador, ele atua nos bastidores controlando eventos, treinadores e Pokémon para impor sua própria visão de poder e domínio.",
+    details: {
+      universo: "Pokémon Blue Stars 3 Forces",
+      papel: "Vilão Principal",
+      alinhamento: "Antagonista",
+      especialidade: "Manipulação Psíquica / Controle Mental",
+      status: "Ativo",
+      estreia: "Hack Room Blue Stars 3 Forces",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 166,
+    name: "Marshall D. Teach",
+    category: "One-Piece",
+    image: "img/One-Piece/Marshall-D-Teach-1.png",
+    description:
+      "Marshall D. Teach, conhecido como Barba Negra, é um dos antagonistas mais perigosos de One Piece. Extremamente ambicioso e imprevisível, ele busca o poder absoluto, sendo o único conhecido a possuir duas Akuma no Mi.",
+    details: {
+      universo: "One Piece",
+      papel: "Vilão",
+      status: "Imperador dos Mares (Yonkou)",
+      akumaNoMi: "Yami Yami no Mi / Gura Gura no Mi",
+      especialidade: "Domínio da Escuridão / Destruição em Massa",
+      estreia: 1999,
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 167,
+    name: "Ryu",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/Ryu-1.png",
+    description:
+      "Ryu é um dos maiores guerreiros do mundo em Street Fighter. Dedicado ao caminho do combate e ao aperfeiçoamento pessoal, ele busca constantemente superar seus próprios limites, lutando entre o equilíbrio e o poder do Satsui no Hado.",
+    details: {
+      universo: "Street Fighter",
+      papel: "Protagonista",
+      estiloDeLuta: "Ansatsuken",
+      poder: "Ki / Artes Marciais Avançadas",
+      status: "Guerreiro Errante",
+      estreia: 1987,
+      técnica: "Hadouken / Shoryuken / Tatsumaki Senpukyaku",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 168,
+    name: "Kim Kaphwan",
+    category: "The King of Fighters",
+    image: "img/The-King-of-Fighters/Kim.png",
+    description:
+      "Kim Kaphwan é um mestre de Taekwondo e um dos personagens mais respeitados de The King of Fighters. Famoso por sua disciplina, senso de justiça e técnicas rápidas de chutes, ele busca sempre ensinar aos outros a importância da honra e da moralidade.",
+    details: {
+      universo: "The King of Fighters",
+      papel: "Herói",
+      estiloDeLuta: "Taekwondo",
+      poder: "Agilidade / Força Física / Técnicas de Chute",
+      status: "Lutador Justo",
+      estreia: 1992,
+      técnica: "Hien Shippuu Kyaku / Hou'ou Kyaku",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 169,
+    name: "Hades",
+    category: "Os Zavaleiros do Zodíaco",
+    image: "img/Os-Cavaleiros-do-Zodíaco/hades-2.png",
+    description:
+      "Hades é o deus do submundo em Os Cavaleiros do Zodíaco, governando o mundo dos mortos com poderes divinos. Frio, calculista e implacável, ele busca reorganizar o mundo segundo sua própria visão, sendo uma ameaça suprema para os Cavaleiros de Athena.",
+    details: {
+      universo: "Os Cavaleiros do Zodíaco",
+      papel: "Vilão Supremo",
+      status: "Deidade / Antagonista",
+      poder: "Imortalidade / Controle do Submundo / Cosmo Divino",
+      estreia: 1986,
+      técnica: "Seiten Heaven / Hades’ Judgment",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 170,
+    name: "TITÃ BLINDADO",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/titan-blindado-1.png",
+    description:
+      "O Titã Blindado é uma das armas mais destrutivas do universo de Shingeki no Kyojin. Conhecido por sua couraça praticamente impenetrável, ele é especializado em investidas frontais, atuando como uma verdadeira fortaleza em movimento.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      portador: "Reiner Braun",
+      poder: "Defesa Absoluta / Força Titanica",
+      status: "Anti-Herói - Titan Shifter",
+      estreia: 2009,
+      transformação: "Forma Blindada do Titã",
+      técnica: "Investida Blindada",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 171,
+    name: "Marco Diaz",
+    category: "Star-vs.",
+    image: "img/star-vs/marco-diaz-1.png",
+    description:
+      "Marco Diaz é o melhor amigo e aliado de Star Butterfly em Star vs. the Forces of Evil. Corajoso, leal e sempre racional, ele ajuda a enfrentar as forças do mal enquanto equilibra a vida escolar e aventuras interdimensionais.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      papel: "Herói / Aliado",
+      status: "Humano / Lutador Treinado",
+      poder: "Habilidades de Combate / Estratégia",
+      estreia: 2015,
+      técnica: "Martial Arts / Estratégias Táticas",
+      nível: "A",
+    },
+  },
+
+  {
+    id: 172,
+    name: "Godfrey, First Elden Lord",
+    category: "souls",
+    image: "img/souls/Godfrey-First-Elden-Lord-1.png",
+    description:
+      "Godfrey, o Primeiro Elden Lord, é um lendário guerreiro de Elden Ring, conhecido por sua força titânica e habilidades de combate excepcionais. Inicialmente herói e defensor do reino, sua presença impõe respeito absoluto e temor aos inimigos.",
+    details: {
+      universo: "Elden Ring",
+      papel: "Elden Lord / Antagonista opcional",
+      status: "Imortal / Guerreiro Supremo",
+      poder: "Força Sobre-Humana / Habilidade com Armas",
+      estreia: 2022,
+      técnica: "Terra Crush / Godslayer Strike",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 173,
+    name: "Sengoku",
+    category: "One-Piece",
+    image: "img/One-Piece/Sengoku-1.png",
+    description:
+      "Sengoku, o antigo Almirante de Frota da Marinha em One Piece, é um estrategista brilhante e um líder respeitado. Possui uma presença imponente e o poder da Hito Hito no Mi, Modelo: Daibutsu, que lhe permite se transformar em um gigante Buda dourado durante a batalha.",
+    details: {
+      universo: "One Piece",
+      papel: "Herói / Marinha",
+      status: "Ex-Almirante de Frota",
+      akumaNoMi: "Hito Hito no Mi, Modelo: Daibutsu",
+      poder: "Força Titânica / Estratégia Militar",
+      estreia: 1997,
+      técnica: "Gigante Buda / Golpes de Impacto",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 174,
+    name: "Rugal Bernstein",
+    category: "The King of Fighters",
+    image: "img/The-King-of-Fighters/Rugal-2.png",
+    description:
+      "Rugal Bernstein é um dos vilões mais icônicos da franquia The King of Fighters. Extremamente poderoso e cruel, ele busca adversários fortes para derrotar e transformar em troféus de pedra, demonstrando sua obsessão por força absoluta.",
+    details: {
+      universo: "The King of Fighters",
+      papel: "Vilão",
+      status: "Humano Aprimorado",
+      poder: "Força Sobre-Humana / Energia Sombria",
+      estreia: 1994,
+      técnica: "Genocide Cutter / Kaiser Wave / Gigantic Pressure",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 175,
+    name: "Gregor Clegane",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/montanha-1.png",
+    description:
+      "Gregor Clegane, conhecido como A Montanha, é um dos guerreiros mais temidos de Game of Thrones. Brutal, impiedoso e de força física monstruosa, ele serve fielmente à Casa Lannister, espalhando terror tanto no campo de batalha quanto fora dele.",
+    details: {
+      universo: "Game of Thrones",
+      papel: "Antagonista",
+      status: "Humano / Cavaleiro",
+      poder: "Força Física Extrema / Resistência Anormal",
+      estreia: 2011,
+      técnica: "Combate Brutal / Uso de Espada Pesada",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 176,
+    name: "Titã Bestial",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/titan-beast-1.png",
+    description:
+      "O Titã Bestial é um dos Nove Titãs de Shingeki no Kyojin, conhecido por sua aparência animalesca e por sua capacidade devastadora de ataques à distância. Extremamente inteligente entre os titãs, ele utiliza arremessos de precisão mortal para dizimar exércitos inteiros.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      papel: "Antagonista",
+      status: "Titã Metamorfo",
+      poder: "Força Titânica / Arremesso de Longa Distância",
+      estreia: 2013,
+      técnica: "Arremesso Devastador / Comando de Titãs",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 177,
+    name: "Chun-Li",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/chun-li-1.png",
+    description:
+      "Chun-Li é uma das lutadoras mais icônicas de Street Fighter. Agente da Interpol e mestre em artes marciais chinesas, ela é conhecida por sua velocidade extrema, chutes poderosos e forte senso de justiça, lutando incansavelmente contra o crime organizado.",
+    details: {
+      universo: "Street Fighter",
+      papel: "Heroína",
+      status: "Humana / Agente da Interpol",
+      poder: "Velocidade Extrema / Técnicas de Chute",
+      estreia: 1991,
+      técnica: "Hyakuretsukyaku / Kikoken / Spinning Bird Kick",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 179,
+    name: "Sasaki Kojirō",
+    category: "Vagabond",
+    image: "img/Vagabond/sasaki-kojiro-1.png",
+    description:
+      "Sasaki Kojirō é um dos espadachins mais talentosos e trágicos de Vagabond. Surdo desde jovem, ele desenvolveu uma percepção única do mundo e um estilo de combate extremamente refinado, tornando-se um rival lendário no caminho da espada.",
+    details: {
+      universo: "Vagabond",
+      papel: "Rival",
+      status: "Humano / Espadachim",
+      poder: "Habilidade Suprema com Espada / Instinto de Combate",
+      estreia: 1998,
+      técnica: "Cortes Precisos / Estilo Fluido de Espadas",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 178,
+    name: "VEGETA",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/vegeta-1.png",
+    description:
+      "Orgulhoso príncipe dos Saiyajins, Vegeta é um guerreiro extremamente poderoso que evolui constantemente, movido por rivalidade, honra e o desejo de superar seus próprios limites.",
+    details: {
+      universo: "Dragon Ball",
+      poder: "Manipulação de Ki / Transformações Saiyajin",
+      status: "Anti-herói - Saiyajin",
+      estreia: 1988,
+      transformação: "Super Saiyajin Blue",
+      técnica: "Final Flash",
+      nível: "SS",
+    },
+  },
+
+  {
+    id: 180,
+    name: "Eclipsa Butterfly",
+    category: "Star-vs.",
+    image: "img/star-vs/Eclipsa-Butterfly-1.png",
+    description:
+      "Eclipsa Butterfly é uma das rainhas mais controversas do Reino de Mewni em Star vs. the Forces of Evil. Conhecida por sua magia extremamente poderosa e por desafiar tradições antigas, ela é uma personagem complexa, marcada por escolhas difíceis, amor proibido e um domínio mágico que ultrapassa limites morais.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      papel: "Anti-heroína",
+      status: "Rainha / Usuária de Magia",
+      poder: "Magia Negra Avançada / Feitiços de Alto Nível",
+      estreia: 2017,
+      técnica: "Feitiços Proibidos / Magia do Livro de Eclipsa",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 181,
+    name: "Monkey D. Dragon",
+    category: "One-Piece",
+    image: "img/One-Piece/dragon-1.png",
+    description:
+      "Monkey D. Dragon é o líder do Exército Revolucionário e o homem mais procurado do mundo em One Piece. Extremamente enigmático, ele luta contra o Governo Mundial visando derrubar o sistema de opressão global. Sua presença impõe respeito absoluto, e seus poderes misteriosos sugerem um domínio avassalador sobre forças naturais.",
+    details: {
+      universo: "One Piece",
+      papel: "Anti-herói",
+      status: "Humano / Revolucionário",
+      poder: "Manipulação de Fenômenos Naturais / Liderança Estratégica",
+      estreia: 1997,
+      técnica: "Habilidades Climáticas Desconhecidas",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 182,
+    name: "Kiyotaka Ayanokōji",
+    category: "Classroom of the Elite",
+    image: "img/classroom-of-the-elite/Kiyotaka-Ayanokōji-1.png",
+    description:
+      "Kiyotaka Ayanokōji é o protagonista de Classroom of the Elite, um estudante aparentemente comum da Classe D, mas que esconde uma mente genial moldada pelo rigoroso programa conhecido como White Room. Frio, calculista e estrategista excepcional, ele manipula situações e pessoas nos bastidores para alcançar seus objetivos sem chamar atenção.",
+    details: {
+      universo: "Classroom of the Elite",
+      papel: "Anti-herói",
+      status: "Humano / Estudante",
+      poder: "Intelecto Supremo / Manipulação Estratégica",
+      estreia: 2017,
+      técnica: "Estratégia Psicológica / Combate Corporal Avançado",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 183,
+    name: "GILGAMESH",
+    category: "Fate",
+    image: "img/Fate/gilgamesh-1.png",
+    description:
+      "O Rei dos Heróis, possuidor do tesouro supremo Gate of Babylon e da poderosa espada Ea. Considerado o mais forte dos Servants.",
+    details: {
+      universo: "Fate",
+      poder: "Gate of Babylon, Noble Phantasm Ea",
+      status: "Servant - Rei dos Heróis",
+      estreia: 2004,
+      recompensa: "N/A",
+      afinidade: "Tesouros Heróicos",
+      nível: "SSS",
+    },
+  },
+
+  {
+    id: 184,
+    name: "HIKIGAYA HACHIMAN",
+    category: "OreGairu",
+    image: "img/OreGairu/Hikigaya-Hachiman-1.png",
+    description:
+      "Protagonista cínico e observador de My Teen Romantic Comedy SNAFU, conhecido por seu monólogo interno afiado e abordagem pragmática para resolver problemas.",
+    details: {
+      universo: "My Teen Romantic Comedy SNAFU",
+      poder: "Inteligência Observacional, Pensamento Lógico",
+      status: "Estudante - Clube de Serviço",
+      estreia: 2011,
+      recompensa: "N/A",
+      afinidade: "Solução de Problemas",
+      nível: "B",
+    },
+  },
+
+  {
+    id: 185,
+    name: "RED",
+    category: "Pokemon",
+    image: "img/Pokemon/Red.png",
+    description:
+      "O lendário treinador Pokémon de Kanto, primeiro campeão da Liga Pokémon e protagonista dos jogos originais. Conhecido por seu silêncio icônico e time poderoso.",
+    details: {
+      universo: "Pokémon",
+      poder: "Estratégia de Batalha, Vínculo com Pokémon",
+      status: "Campeão da Liga Pokémon",
+      estreia: 1996,
+      recompensa: "N/A",
+      afinidade: "Liderança Pokémon",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 186,
+    name: "HOBBY",
+    category: "Marvel-Comics",
+    image: "img/Marvel-Comics/hobby-1.png",
+    description:
+      "Versão punk do Homem-Aranha de uma realidade alternativa, conhecido por sua atitude rebelde, estilo único e luta contra o sistema opressivo.",
+    details: {
+      universo: "Marvel Comics",
+      poder: "Poderes de Aranha, Sentido Aranha, Agilidade Sobre-Humana",
+      status: "Herói Alternativo - Spider-Verse",
+      estreia: 2014,
+      recompensa: "N/A",
+      afinidade: "Rebeldia",
+      nível: "A+",
+    },
+  },
+
+  {
+    id: 187,
+    name: "GUNMAR",
+    category: "Trollhunters",
+    image: "img/Trollhunters/Gunmar-1.png",
+    description:
+      "O temível Troll Negro, antigo líder dos Gumm-Gumms e principal antagonista de Trollhunters. Conhecido por sua força colossal e desejo de dominar tanto o mundo dos trolls quanto o humano.",
+    details: {
+      universo: "Trollhunters",
+      poder: "Força Sobre-Humana, Pele Indestrutível, Grito Sônico",
+      status: "Vilão - Líder dos Gumm-Gumms",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Guerra",
+      nível: "S",
+    },
+  },
+
+  {
+    id: 188, // Continuando a sequência
+    name: "RYUEN KAKERU",
+    category: "Classroom of the Elite",
+    image: "img/classroom-of-the-elite/ryuen-kakeru-1.png",
+    description:
+      "Líder agressivo e impiedoso da Classe C da Advanced Nurturing High School. Conhecido por sua abordagem violenta para resolver problemas e táticas de intimidação para alcançar objetivos.",
+    details: {
+      universo: "Classroom of the Elite",
+      poder: "Intimidação, Liderança Autoritária, Combate Físico",
+      status: "Estudante - Líder da Classe C",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Confronto",
+      nível: "B+", // Nível mais baixo que Ayanokōji
+    },
+  },
+
+  {
+    id: 189, // Continuando a sequência
+    name: "KORRA",
+    category: "Avatar",
+    image: "img/Avatar/korra-1.png",
+    description:
+      "A Avatar sucessora de Aang, nascida na Tribo da Água do Sul. Dominadora dos quatro elementos com personalidade forte e determinada, enfrentando desafios espirituais e políticos na República City.",
+    details: {
+      universo: "Avatar: The Legend of Korra",
+      poder: "Dobra dos Quatro Elementos, Estado Avatar, Dobra de Metal",
+      status: "Avatar Ativa - Protetora do Mundo",
+      estreia: 2012,
+      recompensa: "N/A",
+      afinidade: "Água (elemento nativo)",
+      nível: "S+", // Nível alto por ser Avatar
+    },
+  },
+
+  {
+    id: 190, // Continuando a sequência
+    name: "ARTORIA PENDRAGON",
+    category: "Fate",
+    image: "img/Fate/Artoria-Pendragon-1.png",
+    description:
+      "Servant da classe Saber, a lendária Rei Artoria Pendragon do reino de Camelot. Portadora da espada sagrada Excalibur e detentora do Noble Phantasm mais puro, conhecida como a 'King of Knights'.",
+    details: {
+      universo: "Fate",
+      poder: "Excalibur, Avalon, Instinto de Batalha",
+      status: "Servant - Rei dos Cavaleiros",
+      estreia: 2004,
+      recompensa: "N/A",
+      afinidade: "Cavaleirismo",
+      nível: "SS", // Um nível abaixo de Gilgamesh (SSS)
+    },
+  },
+
+  {
+    id: 191, // Continuando a sequência
+    name: "YUKINO YUKINOSHITA",
+    category: "OreGairu",
+    image: "img/OreGairu/Yukino-Yukinoshita-1.png",
+    description:
+      "Estudante modelo da escola Sobu High, conhecida por sua inteligência excepcional, personalidade fria e distante, e habilidades analíticas afiadas. Membro do Clube de Serviço.",
+    details: {
+      universo: "My Teen Romantic Comedy SNAFU",
+      poder: "Inteligência Acadêmica, Habilidade Analítica",
+      status: "Estudante - Clube de Serviço",
+      estreia: 2011,
+      recompensa: "N/A",
+      afinidade: "Análise",
+      nível: "B", // Mesmo nível que Hachiman (série slice of life)
+    },
+  },
+
+  {
+    id: 192,
+    name: "JIM LAKE JR.",
+    category: "Trollhunters",
+    image: "img/Trollhunters/Jim-Lake Jr.-1.png",
+    description:
+      "O primeiro Trollhunter humano, escolhido pelo Amuleto de Daylight para proteger o mundo humano e troll de ameaças sobrenaturais. Estudante comum que se torna herói.",
+    details: {
+      universo: "Trollhunters",
+      poder: "Armadura Amuleto, Combate com Espadas, Liderança",
+      status: "Herói - Trollhunter",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Coragem",
+      nível: "A+", // Nível médio-alto para protagonista
+    },
+  },
+
+  // CHARLOTTE LINLIN (One Piece)
+  {
+    id: 193,
+    name: "CHARLOTTE LINLIN",
+    category: "One-Piece",
+    image: "img/One-Piece/Charlotte-Linlin-1.png",
+    description:
+      "Uma das Yonko (Quatro Imperadores) do mar, conhecida como Big Mom. Líder da Família Charlotte e do país Totto Land, usuária da poderosa Soru Soru no Mi.",
+    details: {
+      universo: "One Piece",
+      poder: "Soru Soru no Mi (Fruta da Alma), Haki Conquistador",
+      status: "Imperatriz - Yonko",
+      estreia: 2011,
+      recompensa: "฿4,388,000,000",
+      afinidade: "Alma",
+      nível: "S+", // Nível de Yonko
+    },
+  },
+
+  // TOPH BEIFONG (Avatar)
+  {
+    id: 194,
+    name: "TOPH BEIFONG",
+    category: "Avatar",
+    image: "img/Avatar/Toph-Beifong-1.png",
+    description:
+      "A maior dobradora de terra da história, apesar de ser cega desde o nascimento. Desenvolveu a dobra de metal e é conhecida por sua personalidade forte e teimosa.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra de Terra, Dobra de Metal, Visão Sísmica",
+      status: "Mestra de Dobra - Fundadora da Polícia de Republic City",
+      estreia: 2006,
+      recompensa: "N/A",
+      afinidade: "Terra",
+      nível: "S", // Nível alto como mestre lendária
+    },
+  },
+
+  {
+    id: 195, // Continuando a sequência
+    name: "SAVITAR",
+    category: "Flash",
+    image: "img/Flash/savitar-1.png",
+    description:
+      "O autoproclamado 'Deus da Velocidade', uma versão futura e corrompida de Barry Allen que retorna ao passado para reescrever seu destino. O primeiro velocista a acessar a Força da Velocidade.",
+    details: {
+      universo: "DC Comics / The Flash",
+      papel: "Antagonista Principal",
+      status: "Velocista Corrompido / Barry Allen do Futuro",
+      poder: "Força da Velocidade Avançada, Armadura Filosofal",
+      estreia: 2016, // The Flash Temporada 3
+      técnica: "Time Remnant, Armadura Filosofal",
+      nível: "SSS", // Nível mais alto que Godspeed por ser "Deus da Velocidade"
+    },
+  },
+
+  {
+    id: 196,
+    name: "ROCK LEE",
+    category: "Naruto",
+    image: "img/Naruto/rock-lee -1.png",
+    description:
+      "Ninja especializado exclusivamente em taijutsu, incapaz de usar ninjutsu ou genjutsu. Discípulo de Might Guy, conhecido por seu trabalho duro, espírito de nunca desistir e abertura dos Portões internos.",
+    details: {
+      universo: "Naruto",
+      poder: "Taijutsu Supremo, Oito Portões",
+      status: "Ninja de Konoha - Jounin",
+      estreia: 2000,
+      recompensa: "N/A",
+      afinidade: "Esforço",
+      nível: "S", // Nível alto quando abre os Portões
+    },
+  },
+
+  // MAJIN BOO (Dragon Ball)
+  {
+    id: 197,
+    name: "MAJIN BOO",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/majin-boo-1.png",
+    description:
+      "Entidade mágica criada pelo mago Bibidi há milhões de anos. Possui múltiplas formas com diferentes personalidades e poderes, incluindo habilidades de regeneração, absorção e transformação.",
+    details: {
+      universo: "Dragon Ball",
+      poder: "Regeneração, Absorção, Transformação, Magia",
+      status: "Antagonista - Entidade Mágica",
+      estreia: 1994,
+      transformação: "Multiple Forms (Fat Buu, Kid Buu, etc.)",
+      técnica: "Absorção, Regeneração Instantânea",
+      nível: "SSS", // Nível de vilão final do arco
+    },
+  },
+
+  {
+    id: 198, // Continuando a sequência
+    name: "KAFKA HIBINO",
+    category: "Kaiju-No-8", // Categoria específica
+    image: "img/Kaiju/kafka-1.png",
+    description:
+      "Homem de 32 anos que trabalha em limpeza de kaijus e sonha em se juntar à Força de Defesa. Após ser infectado por um kaiju, ganha a habilidade de se transformar no poderoso Kaiju No. 8.",
+    details: {
+      universo: "Kaiju No. 8",
+      poder: "Transformação em Kaiju, Força Sobre-Humana, Regeneração",
+      status: "Recruta da Força de Defesa - Portador de Kaiju",
+      estreia: 2020,
+      recompensa: "N/A",
+      afinidade: "Transformação",
+      nível: "S+", // Nível alto por ser um kaiju poderoso
+    },
+  },
+
+  // CYNTHIA (Pokémon)
+  {
+    id: 199,
+    name: "CYNTHIA",
+    category: "Pokemon",
+    image: "img/Pokemon/cynthia-1.png",
+    description:
+      "A campeã da região de Sinnoh, conhecida como uma das treinadoras mais fortes do mundo Pokémon. Especialista em Pokémon do tipo Dragão e pesquisadora de mitologia.",
+    details: {
+      universo: "Pokémon",
+      poder: "Estratégia de Batalha, Conhecimento Mitológico",
+      status: "Campeã - Pesquisadora",
+      estreia: 2006,
+      recompensa: "N/A",
+      afinidade: "Dragão",
+      nível: "SS", // Nível alto por ser uma das campeãs mais fortes
+    },
+  },
+
+  // OTSU (Vagabond)
+  {
+    id: 200,
+    name: "OTSU",
+    category: "Vagabond",
+    image: "img/Vagabond/otsu-1.png",
+    description:
+      "Mulher forte e determinada que trabalha em uma estalagem, conhecida por sua conexão com Takezo/Musashi. Representa a vida pacífica que Musashi poderia ter tido.",
+    details: {
+      universo: "Vagabond",
+      poder: "Resiliência Emocional, Trabalho Duro",
+      status: "Trabalhadora - Estalagem",
+      estreia: 1999,
+      recompensa: "N/A",
+      afinidade: "Paz",
+      nível: "C", // Nível baixo - personagem não combatente
+    },
+  },
+
+  // EMIYA (Fate)
+  {
+    id: 201,
+    name: "EMIYA",
+    category: "Fate",
+    image: "img/Fate/Emiya-1.png",
+    description:
+      "Servant da classe Archer, verdadeira identidade de Shirou Emiya do futuro. Conhecido como o 'Guardian', utiliza a realidade mágica Unlimited Blade Works para projetar armas.",
+    details: {
+      universo: "Fate",
+      poder: "Unlimited Blade Works, Projeção de Armas",
+      status: "Servant - Counter Guardian",
+      estreia: 2004,
+      recompensa: "N/A",
+      afinidade: "Espadas",
+      nível: "SS", // Nível alto, abaixo de Artoria e Gilgamesh
+    },
+  },
+
+  // ROCKS D. XEBEC (One Piece)
+  {
+    id: 202,
+    name: "ROCKS D. XEBEC",
+    category: "One-Piece",
+    image: "img/One-Piece/Rocks-D-Xebec-2.png",
+    description:
+      "Lendário capitão pirata da era anterior a Roger, líder dos Piratas Rocks. Tinha em sua tripulação futuros Yonko como Big Mom, Kaido e Barba Branca.",
+    details: {
+      universo: "One Piece",
+      poder: "Força Inigualável, Liderança de Monstros",
+      status: "Pirata Lendário - Capitão dos Rocks",
+      estreia: 2018, // Mencionado primeiro no Chapter 907
+      recompensa: "Desconhecida (provavelmente >฿5,000,000,000)",
+      afinidade: "Ambição",
+      nível: "SSS", // Nível máximo por ser lenda das lendas
+    },
+  },
+
+  // NIGHT KING (Game of Thrones)
+  {
+    id: 203,
+    name: "NIGHT KING",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Night-King-1.png",
+    description:
+      "Líder supremo dos Caminhantes Brancos, uma antiga raça de seres mágicos que ameaçam extinguir toda a vida em Westeros. Criado pelos Filhos da Floresta para lutar contra os Primeiros Homens.",
+    details: {
+      universo: "Game of Thrones",
+      poder:
+        "Criação de Caminhantes Brancos, Ressurreição de Mortos, Imortalidade",
+      status: "Antagonista - Rei dos Caminhantes Brancos",
+      estreia: 2014, // Game of Thrones Season 4, Episode 4
+      recompensa: "N/A",
+      afinidade: "Gelo/Morte",
+      nível: "SS", // Nível alto como ameaça existencial
+    },
+  },
+
+  // BULAR (Trollhunters)
+  {
+    id: 204,
+    name: "BULAR",
+    category: "Trollhunters",
+    image: "img/Trollhunters/burlar-1.png",
+    description:
+      "Troll Gumm-Gumm feroz e leal a Gunmar, determinado a libertar seu mestre do Submundo. Conhecido por sua força brutal e desejo de destruir o Trollhunter.",
+    details: {
+      universo: "Trollhunters",
+      poder: "Força Sobre-Humana, Combate com Espadas, Resistência",
+      status: "Vilão - Líder Gumm-Gumm",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Lealdade",
+      nível: "A+", // Nível alto mas abaixo de Gunmar
+    },
+  },
+
+  // GIORNO GIOVANNA (Jojo)
+  {
+    id: 205,
+    name: "GIORNO GIOVANNA",
+    category: "jojo",
+    image: "img/Jojo/Giorno-Giovanna-1.png",
+    description:
+      "Protagonista da Parte 5: Vento Aureo, filho de Dio Brando e herdeiro do Joestar bloodline. Líder da Passione que busca se tornar um 'Gang-Star' para limpar a máfia italiana de corrupção.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder: "Stand Gold Experience → Gold Experience Requiem",
+      status: "Líder da Passione - Gang-Star",
+      estreia: 1995, // Manga: 1995, Anime: 2018
+      recompensa: "N/A",
+      afinidade: "Vida/Criação",
+      nível: "SSS", // Nível máximo por ter GER
+    },
+  },
+
+  // KUSHINA UZUMAKI (Naruto)
+  {
+    id: 206,
+    name: "KUSHINA UZUMAKI",
+    category: "Naruto",
+    image: "img/Naruto/Kushina.png",
+    description:
+      "Mãe de Naruto Uzumaki e ex-jinchūriki do Nove-Caudas. Membro do clã Uzumaki conhecida por seu cabelo vermelho vibrante, personalidade forte e habilidades de selamento excepcionais.",
+    details: {
+      universo: "Naruto",
+      poder:
+        "Chakra Uzumaki, Técnicas de Selamento, Cadeias de Chakra Adamantinas",
+      status: "Ex-Jinchūriki - Falecida",
+      estreia: 2005, // Naruto Capítulo 382
+      recompensa: "N/A",
+      afinidade: "Selamento",
+      nível: "S", // Nível alto por ser Uzumaki e ex-jinchūriki
+    },
+  },
+
+  // STEVE (Pokémon) - Assumindo que seja um treinador genérico
+  {
+    id: 207,
+    name: "STEVE",
+    category: "Pokemon",
+    image: "img/Pokemon/steve-1.png",
+    description:
+      "Treinador Pokémon determinado em sua jornada para se tornar um Mestre Pokémon. Conhecido por seu espírito aventureiro e vínculo forte com seus Pokémon.",
+    details: {
+      universo: "Pokémon",
+      poder: "Treinamento Pokémon, Estratégia de Batalha",
+      status: "Treinador Pokémon",
+      estreia: 1996, // Se for dos jogos originais
+      recompensa: "N/A",
+      afinidade: "Aventura",
+      nível: "B", // Nível médio para treinador
+    },
+  },
+
+  // GHOST (Marvel Comics)
+  {
+    id: 208,
+    name: "GHOST",
+    category: "Marvel-Comics",
+    image: "img/Marvel-Comics/Ghost-1.png",
+    description:
+      "Hacker e sabotador corporativo que usa um traje tecnológico que concede intangibilidade e invisibilidade. Anti-herói/vilão que luta contra corporações corruptas.",
+    details: {
+      universo: "Marvel Comics",
+      poder: "Intangibilidade, Invisibilidade, Hacking Avançado",
+      status: "Anti-herói - Hacker Corporativo",
+      estreia: 1987, // Iron Man #219
+      recompensa: "N/A",
+      afinidade: "Tecnologia",
+      nível: "A", // Nível médio-alto, vilão street-level
+    },
+  },
+
+  {
+    id: 209, // Continuando a sequência
+    name: "HOZOIN INSHUN",
+    category: "Vagabond",
+    image: "img/Vagabond/hozoin-inshun-1.png",
+    description:
+      "Monge guerreiro do templo Hozoin e mestre da lança (sōjutsu). Conhecido por seu estilo único de lança e por ser um dos oponentes mais formidáveis enfrentados por Miyamoto Musashi em sua jornada.",
+    details: {
+      universo: "Vagabond",
+      poder: "Sōjutsu (arte da lança), Técnicas de Hozoin-ryu",
+      status: "Monge Guerreiro - Mestre de Lança",
+      estreia: 1999,
+      recompensa: "N/A",
+      afinidade: "Lança",
+      nível: "A+", // Nível alto como mestre de lança, abaixo de Musashi e Kojiro
+    },
+  },
+
+  // YUTA OKKOTSU (Jujutsu Kaisen)
+  {
+    id: 210,
+    name: "YUTA OKKOTSU",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Yuta-Okkotsu-1.png",
+    description:
+      "Feiticeiro de grau especial e protagonista de Jujutsu Kaisen 0. Portador da poderosa maldição Rika e considerado o segundo feiticeiro mais forte após Satoru Gojo.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Maldição Rika, Cópia de Técnicas Amaldiçoadas",
+      status: "Feiticeiro de Grau Especial",
+      estreia: 2017, // Jujutsu Kaisen 0
+      recompensa: "N/A",
+      afinidade: "Maldição/Love",
+      nível: "SS+", // Nível muito alto, abaixo apenas de Gojo e Sukuna
+    },
+  },
+
+  // AZULA (Avatar)
+  {
+    id: 211,
+    name: "AZULA",
+    category: "Avatar",
+    image: "img/Avatar/Azula-1.png",
+    description:
+      "Princesa da Nação do Fogo, irmã mais nova de Zuko e filha do Senhor do Fogo Ozai. Gênio tático e prodígio na dobra de fogo, conhecida por criar o raro fogo azul e sua busca obsessiva pela perfeição.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra de Fogo Avançada, Fogo Azul, Eletrocondução",
+      status: "Princesa da Nação do Fogo",
+      estreia: 2005, // Avatar Season 2
+      recompensa: "N/A",
+      afinidade: "Fogo/Perfeição",
+      nível: "S", // Nível alto como prodígio e antagonista principal
+    },
+  },
+
+  {
+    id: 212, // Continuando a sequência
+    name: "MORDEKAISER",
+    category: "League of Legend",
+    image: "img/lol/Mordekaiser-1.png",
+    description:
+      "O Revenã de Ferro, um antigo imperador de um reino esquecido que retornou dos mortos através de necromancia. Constrói um reino dos mortos e busca dominar tanto o mundo espiritual quanto o material.",
+    details: {
+      universo: "League of Legends",
+      poder: "Domínio da Morte, Criação do Reino da Morte, Magia Negra",
+      status: "Revenã - Imperador dos Mortos",
+      estreia: 2010,
+      título: "O Revenã de Ferro",
+      objetivo: "Dominação dos Reinos Vivos e Mortos",
+      nível: "SS", // Mesmo nível que Aatrox
+    },
+  },
+
+  {
+    id: 213, // Continuando a sequência
+    name: "KURAPIKA",
+    category: "HXH",
+    image: "img/hxh/Kurapika-1.png",
+    description:
+      "Último sobrevivente do clã Kurta, caçador especializado em recuperar os olhos escarlates de seu povo. Desenvolveu habilidades de Nen específicas para combater a Tropa Fantasma.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Nen - Conjurador, Correntes de Julgamento, Emperor Time",
+      status: "Hunter - Caçador da Tropa Fantasma",
+      estreia: 1998,
+      recompensa: "N/A",
+      afinidade: "Vingança",
+      nível: "S+", // Nível alto quando usa Emperor Time
+    },
+  },
+
+  // AAARRRGGHH!!! (Trollhunters)
+  {
+    id: 214,
+    name: "A",
+    category: "Trollhunters",
+    image: "img/Trollhunters/AAARRRGGHH-2.png",
+    description:
+      "Troll Krubera gentil e pacífico, melhor amigo de Blinky. Apesar de seu tamanho e aparência intimidante, prefere a paz e protege seus amigos com lealdade inabalável.",
+    details: {
+      universo: "Trollhunters",
+      poder: "Força Sobre-Humana, Resistência, Lealdade",
+      status: "Aliado - Troll Krubera",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Amizade",
+      nível: "A", // Nível médio-alto, forte mas pacífico
+    },
+  },
+
+  // ROB LUCCI (One Piece)
+  {
+    id: 215,
+    name: "ROB LUCCI",
+    category: "One-Piece",
+    image: "img/One-Piece/Rob.png",
+    description:
+      "Agente do CP9 e posteriormente CP0, considerado o assassino mais letal do Governo Mundial. Usuário da Neko Neko no Mi, Modelo: Leopardo e mestre do Rokushiki.",
+    details: {
+      universo: "One Piece",
+      poder: "Neko Neko no Mi (Fruta do Leopardo), Rokushiki, Haki",
+      status: "Agente do CP0",
+      estreia: 1999, // One Piece Capítulo 323
+      recompensa: "N/A (agente do governo)",
+      afinidade: "Assassinato",
+      nível: "S+", // Nível alto como um dos agentes mais fortes
+    },
+  },
+
+  {
+    id: 216, // Continuando a sequência
+    name: "KIKORU SHINOMIYA",
+    category: "Kaiju-No-8",
+    image: "img/Kaiju/Kikoru-Shinomiya-1.png",
+    description:
+      "Oficial prodígio da Força de Defesa contra Kaijus, filha do comandante Isao Shinomiya. Conhecida por suas habilidades excepcionais de combate, disciplina rigorosa e determinação em se tornar a mais forte.",
+    details: {
+      universo: "Kaiju No. 8",
+      poder:
+        "Habilidades de Combate de Elite, Traje de Combate Avançado, Estratégia Militar",
+      status: "Oficial da Força de Defesa",
+      estreia: 2020,
+      recompensa: "N/A",
+      afinidade: "Disciplina",
+      nível: "A+", // Nível alto como oficial prodígio, abaixo de Kafka em forma de Kaiju
+    },
+  },
+
+  {
+    id: 217, // Continuando a sequência
+    name: "LANCE",
+    category: "Pokemon",
+    image: "img/Pokemon/lance-1.png",
+    description:
+      "Membro da Elite Four das regiões Kanto e Johto, posteriormente promovido a Champion. Especialista em Pokémon do tipo Dragão, conhecido por sua personalidade nobre e habilidades de batalha excepcionais.",
+    details: {
+      universo: "Pokémon",
+      poder: "Estratégia com Pokémon Dragão, Liderança",
+      status: "Champion/Elite Four",
+      estreia: 1999, // Pokémon Gold/Silver
+      recompensa: "N/A",
+      afinidade: "Dragão",
+      nível: "S", // Nível alto como Champion/Elite Four
+    },
+  },
+
+  {
+    id: 218, // Continuando a sequência
+    name: "GOWTHER ORIGINAL",
+    category: "Nanatsu",
+    image: "img/Taizai/gowther-Original-1.png",
+    description:
+      "O grande mago que criou o autômato Gowther, mestre supremo da magia mental e emocional. Um dos magos mais poderosos da era dos deuses, responsável por pesquisas proibidas sobre emoções e alma.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Magia Mental Suprema, Criação de Autômatos, Manipulação de Almas",
+      status: "Mago Lendário - Criador",
+      estreia: 2018, // Aparece mais tarde na série
+      recompensa: "N/A",
+      afinidade: "Criação/Emoções",
+      nível: "SS+", // Nível muito alto como mago lendário da era antiga
+    },
+  },
+
+  {
+    id: 219, // Continuando a sequência (considerando Gowther Original como 218)
+    name: "GAARA",
+    category: "Naruto",
+    image: "img/Naruto/Gaara-1.png",
+    description:
+      "Quinto Kazekage da Vila Oculta da Areia e ex-jinchūriki da Shukaku (Uma-Cauda). Conhecido por seu controle sobre a areia, evolução de vilão a herói, e forte vínculo de amizade com Naruto Uzumaki.",
+    details: {
+      universo: "Naruto",
+      poder:
+        "Controle de Areia, Defesa Automática da Areia, Jutsu de Selamento",
+      status: "Kazekage - Líder da Vila da Areia",
+      estreia: 2000, // Naruto Capítulo 35
+      recompensa: "N/A",
+      afinidade: "Areia/Defesa",
+      nível: "S+", // Nível alto como Kage e ex-jinchūriki
+    },
+  },
+
+  {
+    id: 220, // Continuando a sequência
+    name: "TAMSY",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Tamsy-2.png",
+    description:
+      "Personagem do mundo distópico de Gachiakuta, envolvido no complexo sistema de castas e sobrevivência do ambiente hostil. Possui habilidades únicas adaptadas ao mundo desolador da série.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo de Gachiakuta",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Adaptação",
+      nível: "B", // Mesmo nível que outros personagens de Gachiakuta
+    },
+  },
+
+  {
+    id: 221, // Continuando a sequência
+    name: "ZUKO",
+    category: "Avatar",
+    image: "img/Avatar/Zuko-1.png",
+    description:
+      "Príncipe herdeiro da Nação do Fogo que inicia como antagonista caçando o Avatar, mas passa por uma jornada de redenção tornando-se aliado de Aang. Conhecido por sua busca por honra e domínio único do fogo através da raiva e posteriormente da paz interior.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra de Fogo, Eletrocondução, Dobra de Fogo dos Dragões",
+      status: "Lorde do Fogo - Príncipe da Nação do Fogo",
+      estreia: 2005, // Avatar Season 1, Episode 1
+      recompensa: "N/A",
+      afinidade: "Fogo/Redenção",
+      nível: "S", // Nível alto como mestre de fogo e personagem principal
+    },
+  },
+
+  {
+    id: 222, // Continuando a sequência
+    name: "GIYU TOMIOKA",
+    category: "Kimetsu no Yaiba",
+    image: "img/kimetsu/Giyu-Tomioka-1.png",
+    description:
+      "Pilar da Água da Corporação de Caçadores de Demônios, conhecido por sua personalidade reservada e técnica perfeccionista. Primeiro Pilar a encontrar Tanjiro e Nezuko, desempenhando papel crucial em seu treinamento.",
+    details: {
+      universo: "Demon Slayer (Kimetsu no Yaiba)",
+      poder: "Respiração da Água, 11ª Forma: Calmaria",
+      status: "Pilar - Hashira da Água",
+      estreia: 2016,
+      recompensa: "N/A",
+      afinidade: "Água",
+      nível: "S", // Nível alto como Pilar/Hashira
+    },
+  },
+
+  {
+    id: 223, // Continuando a sequência
+    name: "KAIJU NO. 9",
+    category: "Kaiju-No-8",
+    image: "img/Kaiju/Kaiju-No-9-1.png",
+    description:
+      "Kaiju humanoide inteligente e principal antagonista da série, capaz de assumir forma humana, absorver habilidades de outros kaijus e evoluir constantemente. Busca alcançar a forma perfeita de kaiju.",
+    details: {
+      universo: "Kaiju No. 8",
+      poder:
+        "Absorção de Habilidades, Transformação, Evolução Rápida, Inteligência Estratégica",
+      status: "Antagonista Principal - Kaiju Evolutivo",
+      estreia: 2020,
+      recompensa: "N/A",
+      afinidade: "Evolução/Absorção",
+      nível: "SS+", // Nível muito alto como antagonista principal
+    },
+  },
+
+  // ILLAOI (League of Legends)
+  {
+    id: 224,
+    name: "ILLAOI",
+    category: "League of Legend",
+    image: "img/lol/illaoi-1.png",
+    description:
+      "Sacerdotisa do Grande Kraken de Bilgewater, que testa o espírito dos mortais para determinar se são dignos. Utiliza um ídolo divino que invoca tentáculos espirituais para atacar seus inimigos.",
+    details: {
+      universo: "League of Legends",
+      poder: "Invocações do Kraken, Teste do Espírito, Combate com Ídolo",
+      status: "Sacerdotisa - Testadora de Espíritos",
+      estreia: 2015,
+      título: "O Teste do Kraken",
+      objetivo: "Testar os Espíritos dos Mortais",
+      nível: "A+", // Nível médio-alto, campeã de suporte/dano
+    },
+  },
+
+  // GRUNBELD (Berserk)
+  {
+    id: 225,
+    name: "GRUNBELD",
+    category: "Berserk",
+    image: "img/Berserk/grunbeld-1.png",
+    description:
+      "Um dos apóstolos mais poderosos, comandante da nova Tropa do Falcão sob Griffith. Em sua forma apóstolo, transforma-se em um dragão de cristal praticamente indestrutível.",
+    details: {
+      universo: "Berserk",
+      poder:
+        "Transformação em Dragão de Cristal, Força Colossal, Defesa Absoluta",
+      status: "Apóstolo - Comandante da Tropa do Falcão",
+      estreia: 1999, // Berserk Volume 22
+      recompensa: "N/A",
+      afinidade: "Cristal/Dragão",
+      nível: "S+", // Nível muito alto como um dos apóstolos mais fortes
+    },
+  },
+
+  {
+    id: 226, // Continuando a sequência
+    name: "SILVA ZOLDYCK",
+    category: "HXH",
+    image: "img/hxh/silva-zoldyck-1.png",
+    description:
+      "Chefe da Família Zoldyck, uma das famílias de assassinos mais temidas do mundo. Pai de Killua Zoldyck e mestre em técnicas de assassinato usando Nen. Conhecido por sua força implacável e ética profissional rigorosa.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Nen - Emissor, Técnicas de Assassinato, Força Física",
+      status: "Assassino - Chefe da Família Zoldyck",
+      estreia: 1999, // Hunter x Hunter Capítulo 44
+      recompensa: "N/A",
+      afinidade: "Assassinato",
+      nível: "S+", // Nível muito alto como chefe dos Zoldyck
+    },
+  },
+
+  {
+    id: 227, // Continuando a sequência
+    name: "EDDARD STARK",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Ned-Stark-1.png",
+    description:
+      "Senhor de Winterfell, Protetor do Norte, e Mão do Rei Robert Baratheon. Conhecido por seu forte senso de honra, justiça e lealdade à família. Sua busca pela verdade sobre a linhagem real desencadeia eventos cruciais em Westeros.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Liderança, Habilidade com Espada (Gelo), Honra Inabalável",
+      status: "Senhor de Winterfell - Executado",
+      estreia: 1996, // A Game of Thrones (livro)
+      recompensa: "N/A",
+      afinidade: "Honra/Justiça",
+      nível: "A+", // Nível alto como líder e guerreiro, mas personagem mais político/moral
+    },
+  },
+
+  {
+    id: 228, // Continuando a sequência
+    name: "KALGARA",
+    category: "One-Piece",
+    image: "img/One-Piece/Kalgara-1.png",
+    description:
+      "Lendário guerreiro chefe da tribo Shandia de Shandora, conhecido como 'Kalgara do Sul'. Fez uma promessa de amizade com o explorador Montblanc Noland e lutou para proteger o Sino de Ouro e a cidade de Shandora.",
+    details: {
+      universo: "One Piece",
+      poder: "Habilidades de Combate Tribal, Força Física, Liderança",
+      status: "Chefe Guerreiro - Shandia Lendário",
+      estreia: 2002, // One Piece Capítulo 286 (arco Skypiea)
+      recompensa: "N/A (era pré-sistema de recompensas)",
+      afinidade: "Honra/Promessa",
+      nível: "A+", // Nível alto como guerreiro lendário, mas era pré-Haki
+    },
+  },
+
+  {
+    id: 229, // Continuando a sequência
+    name: "FUNNY VALENTINE",
+    category: "jojo",
+    image: "img/Jojo/Funny-Valentine-1.png",
+    description:
+      "23º Presidente dos Estados Unidos e antagonista principal de Steel Ball Run. Portador do Stand D4C (Dirty Deeds Done Dirt Cheap) que lhe permite viajar entre dimensões paralelas. Movido pelo patriotismo extremo e desejo de garantir a 'felicidade' da América.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder: "Stand D4C, Travel Between Dimensions, Love Train",
+      status: "Antagonista - Presidente dos EUA",
+      estreia: 2004, // Steel Ball Run Capítulo 46
+      recompensa: "N/A",
+      afinidade: "Patriotismo/Dimensões",
+      nível: "SSS", // Nível máximo por ter Love Train, considerado um dos Stands mais quebrados
+    },
+  },
+
+  {
+    id: 230, // Continuando a sequência
+    name: "TORU RIKIISHI",
+    category: "Ashita no Joe",
+    image: "img/Ashita-no-Joe/TORU-RIKIISHI-2.png",
+    description:
+      "Boxeador profissional e primeiro grande rival de Joe Yabuki. Conhecido por seu estilo técnico e rigoroso, representa o contraste entre o boxe disciplinado e o estilo selvagem de Joe. Sua luta contra Joe se torna lendária no mundo do boxe.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Técnica de Boxe Refinada, Disciplina, Estratégia",
+      status: "Boxeador Profissional - Rival de Joe",
+      estreia: 1968,
+      técnica: "Boxe Técnico, Defesa Sólida",
+      nível: "A+", // Nível alto como boxeador profissional, mas abaixo de Joe
+    },
+  },
+
+  {
+    id: 231, // Continuando a sequência
+    name: "KINJI HAKARI",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Kinji-Hakari-1.png",
+    description:
+      "Feiticeiro de grau especial e estudante do terceiro ano da Escola de Feitiçaria de Tóquio. Conhecido por sua técnica amaldiçoada única baseada em cassino/pachinko que lhe concede imortalidade temporária quando atinge o 'jackpot'.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Técnica Amaldiçoada: Idle Death Gamble, Imortalidade por Jackpot",
+      status: "Feiticeiro de Grau Especial - Estudante",
+      estreia: 2021, // Jujutsu Kaisen Capítulo 158
+      recompensa: "N/A",
+      afinidade: "Sorte/Cassino",
+      nível: "SS", // Nível muito alto quando no modo jackpot
+    },
+  },
+
+  {
+    id: 232, // Continuando a sequência
+    name: "IROH",
+    category: "Avatar",
+    image: "img/Avatar/Iroh-1.png",
+    description:
+      "Conhecido como 'O Dragão do Oeste', ex-general da Nação do Fogo e tio de Zuko. Mestre de dobra de fogo que redescobriu os segredos originais da dobra com os dragões. Sábio, compassivo e guia espiritual, famoso por seu amor ao chá e sabedoria profunda.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra de Fogo dos Dragões, Eletrocondução, Sabedoria Espiritual",
+      status: "Ex-General - Dono da Loja de Chá",
+      estreia: 2005, // Avatar Season 1
+      recompensa: "N/A",
+      afinidade: "Sabedoria/Chá",
+      nível: "S+", // Nível muito alto como mestre de fogo dos dragões
+    },
+  },
+
+  {
+    id: 233, // Continuando a sequência
+    name: "IRIS",
+    category: "Pokemon",
+    image: "img/Pokemon/Iris-1.png",
+    description:
+      "Campeã da região de Unova e especialista em Pokémon do tipo Dragão. Começou como líder de ginásio em Opelucid City e posteriormente se tornou Campeã, conhecida por sua personalidade energética e forte vínculo com seus Pokémon dragão.",
+    details: {
+      universo: "Pokémon",
+      poder: "Estratégia com Pokémon Dragão, Liderança, Conexão com Pokémon",
+      status: "Campeã - Região de Unova",
+      estreia: 2010, // Pokémon Black/White
+      recompensa: "N/A",
+      afinidade: "Dragão",
+      nível: "S", // Nível alto como Campeã
+    },
+  },
+
+  {
+    id: 234, // Continuando a sequência
+    name: "SETT",
+    category: "League of Legend",
+    image: "img/lol/Sett-2.png",
+    description:
+      "Conhecido como 'O Chefe', meio-vastaya meio-humano que domina a cena underground de lutas de Ionia. Filho de uma vastaya ioniana e um humano noxiano, usa sua força bruta e habilidades de regeneração para manter seu império ilegal.",
+    details: {
+      universo: "League of Legends",
+      poder: "Força Sobre-Humana, Regeneração Vastaya, Combate Corpo a Corpo",
+      status: "Chefe Underground - Dono da Arena de Lutas",
+      estreia: 2020,
+      título: "O Chefe",
+      objetivo: "Manter Seu Império e Cuidar da Mãe",
+      nível: "A+", // Nível médio-alto, campeão lutador/tanque
+    },
+  },
+
+  {
+    id: 235, // Continuando a sequência
+    name: "HASHIRAMA SENJU",
+    category: "Naruto",
+    image: "img/Naruto/Hashirama-1.png",
+    description:
+      "Primeiro Hokage da Vila Oculta da Folha, co-fundador de Konoha com Madara Uchiha. Conhecido como 'Deus Shinobi' e detentor do Kekkei Genkai Mokuton (Estilo Madeira), considerado o shinobi mais forte de sua era.",
+    details: {
+      universo: "Naruto",
+      poder:
+        "Mokuton (Estilo Madeira), Regeneração Celular, Senjutsu do Modo Sábio",
+      status: "Primeiro Hokage - Lendário",
+      estreia: 2002, // Primeira menção no Chapter 120
+      recompensa: "N/A (era pré-sistema)",
+      afinidade: "Madeira/Vida",
+      nível: "SSS", // Nível máximo como "Deus Shinobi"
+    },
+  },
+
+  {
+    id: 236, // Continuando a sequência (considerando Hashirama como 235)
+    name: "KEI KARUIZAWA",
+    category: "Classroom of the Elite",
+    image: "img/classroom-of-the-elite/Kei-Karuizawa-1.png",
+    description:
+      "Estudante popular da Classe D da Advanced Nurturing High School, conhecida por seu estilo fashion e influência social. Por trás da fachada confiante, esconde traumas de bullying e desenvolve uma complexa relação com Kiyotaka Ayanokōji.",
+    details: {
+      universo: "Classroom of the Elite",
+      poder: "Influência Social, Inteligência Emocional, Adaptação",
+      status: "Estudante - Classe D",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Sobrevivência Social",
+      nível: "B", // Nível similar aos outros estudantes
+    },
+  },
+
+  // SCHIERKE (Berserk)
+  {
+    id: 237, // Continuando a sequência
+    name: "SCHIERKE",
+    category: "Berserk",
+    image: "img/Berserk/Schierke-1.png",
+    description:
+      "Jovem feiticeira aprendiz da poderosa maga Flora, que se junta ao grupo de Guts. Especialista em magia elemental e espiritual, serve como guia espiritual para o grupo, ajudando a proteger suas almas de influências demoníacas.",
+    details: {
+      universo: "Berserk",
+      poder: "Magia Elemental, Invocação de Espíritos, Proteção Espiritual",
+      status: "Feiticeira - Membro do Grupo de Guts",
+      estreia: 1999, // Berserk Volume 23
+      recompensa: "N/A",
+      afinidade: "Magia/Espíritos",
+      nível: "A+", // Nível médio-alto como feiticeira talentosa
+    },
+  },
+
+  // FISHER TIGER (One Piece)
+  {
+    id: 238,
+    name: "FISHER TIGER",
+    category: "One-Piece",
+    image: "img/One-Piece/Fisher-Tiger-1.png",
+    description:
+      "Lendário fish-man que conquistou a liberdade sozinho e se tornou o primeiro fish-man a escalar a Red Line. Fundador dos Piratas do Sol e herói para sua raça, conhecido por sua filosofia de não odiar humanos apesar de ter sido escravizado.",
+    details: {
+      universo: "One Piece",
+      poder: "Fish-Man Karate, Força Sobre-Humana, Natação Excepcional",
+      status: "Herói Lendário - Ex-escravo, Fundador dos Piratas do Sol",
+      estreia: 2010, // One Piece Capítulo 521 (Flashback)
+      recompensa: "฿230,000,000 (estimada)",
+      afinidade: "Liberdade",
+      nível: "S", // Nível alto como herói lendário
+    },
+  },
+
+  {
+    id: 239, // Continuando a sequência
+    name: "YONG-BI KIM",
+    category: "Ashita no Joe",
+    image: "img/Ashita-no-Joe/Yong-Bi-Kim-1.png",
+    description:
+      "Boxeador profissional coreano que enfrenta Joe Yabuki em uma luta internacional. Conhecido por seu estilo técnico e experiência, representa um desafio significativo para Joe em sua jornada no boxe profissional.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Técnica de Boxe Avançada, Experiência Internacional, Estratégia",
+      status: "Boxeador Profissional - Internacional",
+      estreia: 1970, // Ashita no Joe Parte 2
+      técnica: "Boxe Técnico, Defesa Sólida",
+      nível: "A", // Nível alto como boxeador profissional experiente
+    },
+  },
+
+  // KITE (Hunter x Hunter)
+  {
+    id: 240, // Continuando a sequência
+    name: "KITE",
+    category: "HXH",
+    image: "img/hxh/kite-1.png",
+    description:
+      "Hunter profissional e ex-aluno de Ging Freecss, que se torna mentor de Gon. Portador de uma habilidade de Nen única com sua arma 'Crazy Slots' que gira aleatoriamente para diferentes armas. Conhecido por seu senso de responsabilidade e ética como hunter.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Nen - Crazy Slots (9 armas aleatórias), Habilidade de Caçador",
+      status: "Hunter Profissional - Mentor",
+      estreia: 1999, // Hunter x Hunter Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Responsabilidade",
+      nível: "S", // Nível alto como hunter experiente
+    },
+  },
+
+  // TYRION LANNISTER (Game of Thrones)
+  {
+    id: 241,
+    name: "TYRION LANNISTER",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Tyrion-Lannister-1.png",
+    description:
+      "Membro da Casa Lannister, conhecido como 'O Anão' ou 'Meio-Homem'. Inteligência afiada, habilidade política excepcional e sagacidade verbal fazem dele um dos estrategistas mais astutos de Westeros, apesar de seu físico.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Inteligência Estratégica, Habilidade Política, Oratória",
+      status: "Mão do Rei - Conselheiro Real",
+      estreia: 1996, // A Game of Thrones (livro)
+      recompensa: "N/A",
+      afinidade: "Estratégia/Inteligência",
+      nível: "A+", // Nível alto como estrategista, baixo combate físico
+    },
+  },
+
+  {
+    id: 242, // Continuando a sequência
+    name: "YUKI TSUKUMO",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Yuki-Tsukumo-1.png",
+    description:
+      "Uma das quatro feiticeiras de grau especial do mundo, ao lado de Satoru Gojo. Mestre de Todo e ex-mentor de Geto. Possui a rara técnica amaldiçoada 'Star Plasma' que lhe concede habilidades de manipulação de massa e gravidade.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Técnica Amaldiçoada: Star Plasma, Manipulação de Massa, Pseudo-Cinemática",
+      status: "Feiticeira de Grau Especial - Star Plasma Vessel",
+      estreia: 2021, // Jujutsu Kaisen Capítulo 143
+      recompensa: "N/A",
+      afinidade: "Massa/Gravidade",
+      nível: "SS+", // Nível muito alto como feiticeira de grau especial
+    },
+  },
+
+  {
+    id: 243, // Continuando a sequência
+    name: "ROKUSUKE KOENJI",
+    category: "Classroom of the Elite",
+    image: "img/classroom-of-the-elite/Rokusuke-Koenji-1.png",
+    description:
+      "Estudante extremamente confiante e excêntrico da Classe D, conhecido por suas habilidades físicas excepcionais e personalidade narcisista. Age de acordo com seus próprios interesses, muitas vezes ignorando regras e hierarquias, mas demonstrando capacidades impressionantes quando motivado.",
+    details: {
+      universo: "Classroom of the Elite",
+      poder:
+        "Habilidades Físicas Excepcionais, Inteligência, Autoconfiança Extrema",
+      status: "Estudante - Classe D",
+      estreia: 2017,
+      recompensa: "N/A",
+      afinidade: "Individualismo",
+      nível: "A", // Nível médio-alto por habilidades físicas, mas comportamento imprevisível
+    },
+  },
+
+  {
+    id: 244, // Continuando a sequência
+    name: "MARK GRAYSON",
+    category: "Invencível",
+    image: "img/Invencível/Mark-Grayson-1.png",
+    description:
+      "Protagonista da série Invincible, filho de Omni-Man (Nolan Grayson) e herdeiro dos poderes Viltrumitas. Adolescente que desenvolve superpoderes e adota o codinome 'Invencível', aprendendo a ser um herói enquanto enfrenta o legado complicado de seu pai.",
+    details: {
+      universo: "Invincible",
+      poder: "Força Viltrumita, Voo, Durabilidade, Velocidade Sobre-Humana",
+      status: "Herói - Invencível",
+      estreia: 2003, // Invincible #1
+      recompensa: "N/A",
+      afinidade: "Herança Viltrumita",
+      nível: "S+", // Nível muito alto como Viltrumita puro-sangue
+    },
+  },
+
+  {
+    id: 245, // Continuando a sequência
+    name: "OZAI",
+    category: "Avatar",
+    image: "img/Avatar/Ozai.png",
+    description:
+      "Senhor do Fogo da Nação do Fogo durante a Guerra dos Cem Anos e principal antagonista da série. Pai de Zuko e Azula, conhecido por sua crueldade, ambição desmedida e desejo de dominar o mundo. Considerado um dos dobradores de fogo mais poderosos da história.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra de Fogo Poderosa, Eletrocondução, Agilidade em Combate",
+      status: "Antagonista - Senhor do Fogo",
+      estreia: 2006, // Avatar Season 2, Episode 1 (primeira menção)
+      recompensa: "N/A",
+      afinidade: "Poder/Dominação",
+      nível: "S+", // Nível muito alto como vilão final e mestre de fogo
+    },
+  },
+
+  // YRUL (Black Clover)
+  {
+    id: 246, // Continuando a sequência
+    name: "YRUL",
+    category: "Black Clover",
+    image: "img/Black Clover/yrul-1.png",
+    description:
+      "Personagem do universo de Black Clover, envolvido nas batalhas mágicas do Reino do Trifolium. Utiliza magia única dentro do sistema de magia do mundo, participando dos conflitos entre os reinos mágicos.",
+    details: {
+      universo: "Black Clover",
+      poder: "Magia Específica de Yrul",
+      status: "Ativo - Usuário de Magia",
+      estreia: 2015, // Black Clover início
+      recompensa: "N/A",
+      afinidade: "Magia",
+      nível: "A", // Nível médio-alto para personagem de Black Clover
+    },
+  },
+
+  // IRVINE (Berserk)
+  {
+    id: 247,
+    name: "IRVINE",
+    category: "Berserk",
+    image: "img/Berserk/Irvine-1.png",
+    description:
+      "Apóstolo que serve a Griffith na nova Tropa do Falcão, conhecido como o 'Arqueiro Silencioso'. Em sua forma apóstolo, transforma-se em um centauro com habilidades de arqueiro excepcionais, capaz de atirar flechas a distâncias extremas com precisão mortal.",
+    details: {
+      universo: "Berserk",
+      poder: "Arqueiro Supremo, Transformação em Centauro, Sentidos Aguçados",
+      status: "Apóstolo - Arqueiro da Tropa do Falcão",
+      estreia: 1999, // Berserk Volume 27
+      recompensa: "N/A",
+      afinidade: "Arco/Flecha",
+      nível: "S", // Nível alto como apóstolo especializado
+    },
+  },
+
+  // DIEGO BRANDO (Jojo - Steel Ball Run) - NOVO
+  {
+    id: 248, // Continuando a sequência
+    name: "DIEGO BRANDO",
+    category: "jojo",
+    image: "img/Jojo/Diego-Brando-1.png",
+    description:
+      "Cavaleiro britânico que participa da Steel Ball Run, versão alternativa de Dio Brando em um universo paralelo. Extremamente competitivo e ambicioso, inicialmente sem Stand, mas posteriormente adquire o Stand Scary Monsters que lhe permite transformar-se em dinossauro.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder:
+        "Stand Scary Monsters, Transformação em Dinossauro, Habilidades de Cavalaria",
+      status: "Cavaleiro - Competidor da Steel Ball Run",
+      estreia: 2004, // Steel Ball Run Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Competição/Dinossauros",
+      nível: "A+", // Nível médio-alto, abaixo de Funny Valentine
+    },
+  },
+
+  // HIROMI HIGURUMA (Jujutsu Kaisen) - NOVO
+  {
+    id: 249,
+    name: "HIROMI HIGURUMA",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Hiromi-Higuruma-1.png",
+    description:
+      "Ex-advogado que se tornou um usuário de maldição após a morte de um cliente. Conhecido como 'Juiz Amaldiçoado', possui a técnica amaldiçoada 'Deadly Sentencing' que cria um domínio de tribunal onde julga e penaliza seus oponentes baseado em suas infrações.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Técnica Amaldiçoada: Deadly Sentencing, Domínio Malevolente, Manipulação Judicial",
+      status: "Usuário de Maldição - Ex-Advogado",
+      estreia: 2021, // Jujutsu Kaisen Capítulo 158
+      recompensa: "N/A",
+      afinidade: "Justiça/Julgamento",
+      nível: "S", // Nível alto com domínio malevolente único
+    },
+  },
+
+  // HARIMAU (Ashita no Joe)
+  {
+    id: 250, // Continuando a sequência (Diego 248, Higuruma 249)
+    name: "HARIMAU",
+    category: "Ashita no Joe",
+    image: "img/Ashita-no-Joe/Harimau-1.png",
+    description:
+      "Boxeador indonésio que enfrenta Joe Yabuki em uma luta internacional, conhecido por seu apelido que significa 'Tigre' em indonésio/malaio. Representa o desafio dos boxeadores do sudeste asiático na carreira internacional de Joe.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Estilo de Boxe Agressivo, Força Física",
+      status: "Boxeador Profissional - Internacional",
+      estreia: 1971, // Ashita no Joe Parte 2
+      técnica: "Boxe Ofensivo",
+      nível: "B+", // Nível médio para boxeador internacional
+    },
+  },
+
+  // KING (One Piece)
+  {
+    id: 251,
+    name: "KING",
+    category: "One-Piece",
+    image: "img/One-Piece/king-1.png",
+    description:
+      "Calamidade mais forte dos Piratas das Feras e braço direito de Kaido. Último sobrevivente da raça Lunarian, possui habilidades únicas como geração de fogo, durabilidade extrema e capacidade de voo. Conhecido por sua lealdade absoluta a Kaido.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Habilidades Lunarian, Geração de Fogo, Forma de Pteranodon, Haki Avançado",
+      status: "Calamidade - Braço Direito de Kaido",
+      estreia: 2018, // One Piece Capítulo 925
+      recompensa: "฿1,390,000,000",
+      afinidade: "Fogo/Lunarian",
+      nível: "S+", // Nível muito alto como Calamidade mais forte
+    },
+  },
+
+  // POWER (Chainsaw Man)
+  {
+    id: 252, // Continuando a sequência
+    name: "POWER",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Power-1.png",
+    description:
+      "Demônio do Sangue que faz um contrato com Denji para se tornar uma humana-demoníaca. Conhecida por sua personalidade egoísta, preguiçosa e obsessão por gatos, mas desenvolve um vínculo genuíno com Denji e Aki. Capaz de manipular sangue para criar armas.",
+    details: {
+      universo: "Chainsaw Man",
+      poder:
+        "Manipulação de Sangue, Transformação de Sangue em Armas, Contrato Demoníaco",
+      status: "Demônio do Sangue - Ex-Membro da Divisão de Demônios Especiais",
+      estreia: 2019, // Chainsaw Man Capítulo 6
+      recompensa: "N/A",
+      afinidade: "Sangue/Egoísmo",
+      nível: "A+", // Nível médio-alto como demônio do sangue
+    },
+  },
+
+  // JULIUS NOVACHRONO (Black Clover)
+  {
+    id: 253,
+    name: "JULIUS NOVACHRONO",
+    category: "Black Clover",
+    image: "img/Black Clover/Julius-Novachrono-1.png",
+    description:
+      "28º Mago Imperador do Reino do Trifolium, conhecido como o mago mais forte do reino. Usuário da rara magia do tempo, capaz de manipular, acelerar, desacelerar e parar o tempo. Excêntrico e colecionador de magias únicas.",
+    details: {
+      universo: "Black Clover",
+      poder:
+        "Magia do Tempo, Aceleração/Desaceleração Temporal, Parada do Tempo",
+      status: "Mago Imperador - Líder do Reino do Trifolium",
+      estreia: 2015, // Black Clover Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Tempo",
+      nível: "SSS", // Nível máximo como Mago Imperador e usuário de magia do tempo
+    },
+  },
+
+  // RICHTER BELMONT (Castlevania)
+  {
+    id: 254, // Continuando a sequência
+    name: "RICHTER BELMONT",
+    category: "Castlevania",
+    image: "img/castlevania/Richter-Belmont-1.png",
+    description:
+      "Descendente da família Belmont e um dos caçadores de vampiros mais famosos da linhagem. Protagonista de Castlevania: Rondo of Blood e Symphony of the Night. Conhecido por sua agilidade excepcional e domínio do chicote Vampire Killer.",
+    details: {
+      universo: "Castlevania",
+      poder: "Chicote Vampire Killer, Artes Marciais Belmont, Magias Sagradas",
+      status: "Caçador de Vampiros - Descendente de Belmont",
+      estreia: 1993, // Castlevania: Rondo of Blood
+      recompensa: "N/A",
+      afinidade: "Caça a Vampiros",
+      nível: "S", // Nível alto como Belmont experiente
+    },
+  },
+
+  // LEVI ACKERMAN (Shingeki no Kyojin)
+  {
+    id: 255,
+    name: "LEVI ACKERMAN",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/Levi-Ackerman-1.png",
+    description:
+      "Capitão do Esquadrão de Operações Especiais e considerado o soldado mais forte da humanidade. Membro da família Ackerman com habilidades sobre-humanas, especialista em combate com equipamento de manobra tridimensional e eliminação de titãs.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      poder:
+        "Habilidades Ackerman, Agilidade Sobrenatural, Combate com Equipamento Tridimensional",
+      status: "Capitão - Esquadrão de Operações Especiais",
+      estreia: 2009, // Shingeki no Kyojin Capítulo 3
+      recompensa: "N/A",
+      afinidade: "Combate/Limpeza",
+      nível: "S+", // Nível muito alto como "soldado mais forte"
+    },
+  },
+
+  // KHAL DROGO (Game of Thrones)
+  {
+    id: 256, // Continuando a sequência
+    name: "KHAL DROGO",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Khal-Drogo-1.png",
+    description:
+      "Khal (líder) dos Dothraki, considerado o guerreiro mais forte entre seu povo. Marido de Daenerys Targaryen, conhecido por sua força física impressionante, habilidades de combate excepcionais e liderança incontestável sobre o maior khalasar.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Força Física Extrema, Habilidades de Combate Dothraki, Liderança",
+      status: "Khal dos Dothraki - Falecido",
+      estreia: 1996, // A Game of Thrones (livro)
+      recompensa: "N/A",
+      afinidade: "Força/Honra Dothraki",
+      nível: "A+", // Nível alto como guerreiro mais forte dos Dothraki
+    },
+  },
+
+  // SUZUNE HORIKITA (Classroom of the Elite)
+  {
+    id: 257,
+    name: "SUZUNE HORIKITA",
+    category: "Classroom of the Elite",
+    image: "img/classroom-of-the-elite/Suzune-Horikita-1.png",
+    description:
+      "Estudante da Classe D conhecida por sua personalidade fria, independente e altas habilidades acadêmicas. Irmã mais nova de Manabu Horikita, inicialmente desinteressada em socializar mas gradualmente se abre ao trabalhar com outros estudantes.",
+    details: {
+      universo: "Classroom of the Elite",
+      poder: "Inteligência Acadêmica, Independência, Habilidades Analíticas",
+      status: "Estudante - Classe D",
+      estreia: 2015, // Classroom of the Elite Light Novel Volume 1
+      recompensa: "N/A",
+      afinidade: "Independência",
+      nível: "B+", // Nível médio-alto como estudante competente
+    },
+  },
+
+  // AANG (Avatar) - NOVO
+  {
+    id: 258, // Continuando a sequência
+    name: "AANG",
+    category: "Avatar",
+    image: "img/Avatar/Aang-1.png",
+    description:
+      "O Avatar e último mestre do ar sobrevivente do genocídio dos Nômades do Ar. Descoberto após 100 anos congelado em um iceberg, embarca em uma jornada para dominar os quatro elementos e restaurar o equilíbrio ao mundo, terminando a Guerra dos Cem Anos.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra dos Quatro Elementos, Estado Avatar, Energia",
+      status: "Avatar - O Último Mestre do Ar",
+      estreia: 2005, // Avatar: The Last Airbender
+      recompensa: "N/A",
+      afinidade: "Ar (elemento nativo)",
+      nível: "SS", // Nível muito alto como Avatar completo
+    },
+  },
+
+  {
+    id: 259, // Continuando a sequência
+    name: "JOSUKE HIGASHIKATA (JOJOLION)",
+    category: "jojo",
+    image: "img/Jojo/josuke-higashikata-part-8.png",
+    description:
+      "Protagonista de JoJo's Bizarre Adventure Part 8: JoJolion. Um amnésico encontrado enterrado em Morioh com o nome 'Josuke Higashikata', na verdade uma fusão de Josefumi Kujo e Yoshikage Kira (universo alternativo). Usuário do Stand Soft & Wet.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      parte: "JoJolion (Part 8)",
+      poder: "Stand Soft & Wet, Roubo de Propriedades, Bolhas Explosivas",
+      status: "Protagonista - Amnésico / Fusão",
+      estreia: 2011, // JoJolion Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Fusão/Bolhas",
+      nível: "S+", // Nível alto como protagonista com Stand único
+    },
+  },
+
+  // UVOGIN (Hunter x Hunter)
+  {
+    id: 260, // Continuando a sequência
+    name: "UVOGIN",
+    category: "HXH",
+    image: "img/hxh/Uvogin-1.png",
+    description:
+      "Membro número 11 da Tropa Fantasma e especialista em Nen de Reforço. Conhecido por sua força física monstruosa e personalidade agressiva. Considerado o membro mais forte fisicamente da Tropa, capaz de destruir edifícios com seus punhos.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Nen - Reforço Extremo, Força Física Colossal, Big Bang Impact",
+      status: "Membro da Tropa Fantasma - Falecido",
+      estreia: 1999, // Hunter x Hunter Capítulo 70
+      recompensa: "N/A",
+      afinidade: "Força Bruta",
+      nível: "S", // Nível alto como especialista em reforço
+    },
+  },
+
+  // SOSUKE AIZEN (Bleach)
+  {
+    id: 261,
+    name: "SOSUKE AIZEN",
+    category: "Bleach",
+    image: "img/Bleach/Sosuke-Aizen-1.png",
+    description:
+      "Antagonista principal de Bleach, ex-capitão da 5ª Divisão que planejou todos os eventos da série. Usuário da Zanpakutō Kyōka Suigetsu com habilidade de ilusão perfeita, e posteriormente alcança um estado evolutivo além de Shinigami e Hollow.",
+    details: {
+      universo: "Bleach",
+      poder:
+        "Kyōka Suigetsu (Ilusão Completa), Reiatsu Monstruoso, Evolução Transcendente",
+      status: "Antagonista - Prisioneiro da Sociedade de Almas",
+      estreia: 2002, // Bleach Capítulo 50
+      recompensa: "N/A",
+      afinidade: "Ilusão/Evolução",
+      nível: "SSS", // Nível máximo como vilão principal transcendente
+    },
+  },
+
+  // JOSE MENDOZA (Ashita no Joe)
+  {
+    id: 262,
+    name: "JOSE MENDOZA",
+    category: "Ashita no Joe",
+    image: "img/Ashita-no-Joe/Jose-Mendosa-1.png",
+    description:
+      "Campeão mundial de boxe dos pesos-médios e oponente final de Joe Yabuki. Conhecido como 'O Imperador', representa o auge do boxe mundial e o maior desafio na carreira de Joe. Luta com estilo técnico e experiência incomparável.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Técnica de Boxe Perfeita, Experiência Mundial, Estratégia",
+      status: "Campeão Mundial de Boxe",
+      estreia: 1972, // Ashita no Joe Parte 2 (final)
+      técnica: "Boxe Técnico Perfeito",
+      nível: "S", // Nível alto como campeão mundial
+    },
+  },
+
+  // SWAIN (League of Legends)
+  {
+    id: 263, // Continuando a sequência
+    name: "SWAIN",
+    category: "League of Legend",
+    image: "img/lol/Swain-1.png",
+    description:
+      "Grande General de Noxus e líder do Trifarix que governa o império. Após derrotar o demônio Raum, ganhou poderes demoníacos incluindo visão estratégica através de corvos e transformação em uma forma demoníaca. Mestre estrategista e governante implacável.",
+    details: {
+      universo: "League of Legends",
+      poder:
+        "Controle Demoníaco, Visão através de Corvos, Transformação Demoníaca, Estratégia Militar",
+      status: "Grande General - Líder do Trifarix de Noxus",
+      estreia: 2010,
+      título: "O Grande General",
+      objetivo: "Expandir e Fortalecer Noxus",
+      nível: "S", // Nível alto como líder de nação com poderes demoníacos
+    },
+  },
+
+  // VOID (Berserk)
+  {
+    id: 264,
+    name: "VOID",
+    category: "Berserk",
+    image: "img/Berserk/Void-1.png",
+    description:
+      "Membro mais antigo e líder intelectual da Mão de Deus, conhecido como 'O Sábio'. Responsável por criar os apóstolos através do Eclipse e por possuir conhecimento profundo sobre o fluxo causal e as leis do universo. Representa a busca pelo conhecimento absoluto.",
+    details: {
+      universo: "Berserk",
+      poder:
+        "Conhecimento Cósmico, Criação de Apóstolos, Manipulação da Realidade",
+      status: "Membro da Mão de Deus - O Sábio",
+      estreia: 1992, // Berserk Volume 13 (Eclipse)
+      recompensa: "N/A",
+      afinidade: "Conhecimento/Causalidade",
+      nível: "SSS", // Nível máximo como membro da Mão de Deus
+    },
+  },
+  // MAHITO (Jujutsu Kaisen)
+  {
+    id: 265,
+    name: "MAHITO",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Mahito-1.png",
+    description:
+      "Maldição da Forma Humana nascida do ódio humano, considerada uma maldição de grau especial. Capaz de manipular a forma das almas, moldando corpos e transformando humanos. Representa a maldade intrínseca da humanidade e busca entender sua própria existência.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Manipulação de Alma, Transformação Corporal, Técnica de Domínio: Self-Embodiment of Perfection",
+      status: "Maldição de Grau Especial",
+      estreia: 2018, // Jujutsu Kaisen Capítulo 16
+      recompensa: "N/A",
+      afinidade: "Alma/Transformação",
+      nível: "SS+", // Nível muito alto como maldição de grau especial
+    },
+  },
+
+  {
+    id: 266, // Continuando a sequência
+    name: "BOA HANCOCK",
+    category: "One-Piece",
+    image: "img/One-Piece/Boa-Hancock-1.png",
+    description:
+      "Imperatriz das Amazonas Kuja, Shichibukai (ex), e conhecida como a 'Mulher Mais Bela do Mundo'. Usuária da Mero Mero no Mi (Fruta do Amor) que permite petrificar quem a deseje. Apaixonada por Monkey D. Luffy e líder das Kuja Pirates.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Mero Mero no Mi (Fruta do Amor), Haki dos Três Tipos, Combate com Chutes",
+      status: "Imperatriz - Líder das Amazonas Kuja",
+      estreia: 2008, // One Piece Capítulo 516
+      recompensa: "฿1,659,000,000 (pós-dissolução Shichibukai)",
+      afinidade: "Amor/Beleza",
+      nível: "S+", // Nível muito alto como ex-Shichibukai e usuária de Haki avançado
+    },
+  },
+
+  // HIMENO (Chainsaw Man)
+  {
+    id: 267, // Continuando a sequência
+    name: "HIMENO",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Himeno-1.png",
+    description:
+      "Caçadora de demônios da Divisão de Demônios Especiais e parceira de Aki Hayakawa. Possui um contrato com o Demônio do Fantasma que lhe concede um olho fantasma e a habilidade de usar o poder do fantasma. Conhecida por seu comportamento descontraído e relação próxima com Aki.",
+    details: {
+      universo: "Chainsaw Man",
+      poder:
+        "Contrato com Demônio do Fantasma, Olho Fantasma, Experiência em Combate",
+      status: "Caçadora de Demônios - Divisão Especial",
+      estreia: 2019, // Chainsaw Man Capítulo 12
+      recompensa: "N/A",
+      afinidade: "Fantasma/Lealdade",
+      nível: "B+", // Nível médio-alto como caçadora experiente
+    },
+  },
+
+  // JESTER GARANDROS (Black Clover) - NOVO
+  {
+    id: 268,
+    name: "JESTER GARANDROS",
+    category: "Black Clover",
+    image: "img/Black Clover/Jester-Garandros-1.png",
+    description:
+      "Mago do Reino do Trifolium com habilidades mágicas únicas no universo de Black Clover. Participa das batalhas mágicas e eventos do reino, utilizando magia especializada dentro do sistema de magia do mundo.",
+    details: {
+      universo: "Black Clover",
+      poder: "Magia Específica de Jester Garandros",
+      status: "Mago - Reino do Trifolium",
+      estreia: 2015, // Black Clover início
+      recompensa: "N/A",
+      afinidade: "Magia",
+      nível: "A", // Nível médio-alto para mago de Black Clover
+    },
+  },
+
+  // BANG (One Punch Man)
+  {
+    id: 269, // Continuando a sequência
+    name: "BANG",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Bang-1.png",
+    description:
+      "Herói profissional Classe S Rank 3, conhecido como 'Silver Fang'. Mestre das artes marciais e fundador do dojo de artes marciais 'Bang dojo'. Considerado um dos heróis mais fortes mesmo entre os Classe S, especialista no estilo de luta 'Flowing Water Crushing Rock'.",
+    details: {
+      universo: "One Punch Man",
+      poder:
+        "Artes Marciais de Nível Divino, Velocidade Extrema, Técnica 'Abandonment'",
+      status: "Herói Classe S Rank 3 - Mestre de Artes Marciais",
+      estreia: 2012, // One Punch Man Webcomic Capítulo 15
+      recompensa: "N/A",
+      afinidade: "Artes Marciais",
+      nível: "SS+", // Nível muito alto como top 3 Classe S
+    },
+  },
+
+  // JAIME LANNISTER (Game of Thrones)
+  {
+    id: 270,
+    name: "JAIME LANNISTER",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Jaime-Lannister-1.png",
+    description:
+      "Membro da Casa Lannister, conhecido como 'O Matador de Reis' por assassinar o Rei Louco Aerys II Targaryen. Considerado um dos melhores espadachins de Westeros antes de perder a mão direita. Irmão gêmeo de Cersei Lannister com quem tem um relacionamento incestuoso.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Espadachim Excepcional, Estratégia Militar, Coragem",
+      status: "Lord Comandante da Guarda Real - Falecido",
+      estreia: 1996, // A Game of Thrones (livro)
+      recompensa: "N/A",
+      afinidade: "Espada/Honra",
+      nível: "A+", // Nível alto como um dos melhores espadachins
+    },
+  },
+
+  // M. BISON (Street Fighter)
+  {
+    id: 271, // Continuando a sequência
+    name: "M. BISON",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/M-Bison-1.png",
+    description:
+      "Ditador e líder da organização criminosa Shadaloo, principal antagonista da série Street Fighter. Utiliza o poder psico (Psycho Power) que lhe concede habilidades sobre-humanas como telecinese, voo e projeção de energia. Busca dominar o mundo através de seu exército.",
+    details: {
+      universo: "Street Fighter",
+      poder: "Psycho Power, Telecinese, Voo, Projeção de Energia",
+      status: "Antagonista - Líder da Shadaloo",
+      estreia: 1991, // Street Fighter II
+      técnica: "Psycho Crusher, Head Press, Devil Reverse",
+      nível: "SS", // Nível muito alto como vilão principal com poderes psíquicos
+    },
+  },
+
+  // MIKASA ACKERMAN (Shingeki no Kyojin)
+  {
+    id: 272,
+    name: "MIKASA ACKERMAN",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/Mikasa-Ackerman-1.png",
+    description:
+      "Membro do Esquadrão de Operações Especiais e considerada a soldada mais forte da humanidade após Levi. Última descendente do clã Ackerman asiático, possui habilidades de combate instintivas e força sobre-humana quando ativada. Protege Eren Yeager desde a infância.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      poder:
+        "Habilidades Ackerman, Agilidade Sobrenatural, Combate com Equipamento Tridimensional, Instinto de Batalha",
+      status: "Soldada - Esquadrão de Operações Especiais",
+      estreia: 2009, // Shingeki no Kyojin Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Proteção/Lealdade",
+      nível: "S", // Nível alto como Ackerman, abaixo de Levi
+    },
+  },
+
+  // CASCA (Berserk)
+  {
+    id: 273, // Continuando a sequência
+    name: "CASCA",
+    category: "Berserk",
+    image: "img/Berserk/Casca-1.png",
+    description:
+      "Única mulher no Bando do Falcão original e uma das melhores espadachins do grupo. Noiva de Guts e segunda em comando após Griffith. Sofre traumas profundos após o Eclipse, regredindo a um estado infantil, mas gradualmente recupera suas memórias.",
+    details: {
+      universo: "Berserk",
+      poder: "Habilidades de Espada Excepcionais, Liderança, Resistência",
+      status: "Ex-Membro do Bando do Falcão - Em Recuperação",
+      estreia: 1990, // Berserk Volume 3
+      recompensa: "N/A",
+      afinidade: "Lealdade/Sobrevivência",
+      nível: "A+", // Nível alto como guerreira experiente, abaixo de Guts
+    },
+  },
+
+  // KANICHI NISHI (Ashita no Joe)
+  {
+    id: 274,
+    name: "KANICHI NISHI",
+    category: "Ashita no Joe",
+    image: "img/Ashita-no-Joe/Kanichi-Nishi-1.png",
+    description:
+      "Boxeador que faz parte do universo de Ashita no Joe, participando das competições e desafios do mundo do boxe da série. Contribui para o desenvolvimento do cenário boxístico que Joe Yabuki navega.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Habilidades de Boxe",
+      status: "Boxeador",
+      estreia: 1968, // Ashita no Joe início
+      técnica: "Boxe",
+      nível: "B", // Nível médio para boxeador
+    },
+  },
+
+  // TREVOR BELMONT (Castlevania)
+  {
+    id: 275,
+    name: "TREVOR BELMONT",
+    category: "Castlevania",
+    image: "img/castlevania/Trevor-Belmont-1.png",
+    description:
+      "Caçador de vampiros da família Belmont que vive durante o século 15, protagonista de Castlevania III: Dracula's Curse. Conhecido por ser um dos primeiros Belmonts a enfrentar Drácula e por usar o chicote Vampire Killer combinado com armas secundárias.",
+    details: {
+      universo: "Castlevania",
+      poder:
+        "Chicote Vampire Killer, Artes Marciais Belmont, Uso de Armas Secundárias",
+      status: "Caçador de Vampiros - Ancestral Belmont",
+      estreia: 1989, // Castlevania III: Dracula's Curse
+      recompensa: "N/A",
+      afinidade: "Caça a Vampiros",
+      nível: "S", // Nível alto como Belmont experiente
+    },
+  },
+
+  // GERARD VALKYRIE (Bleach)
+  {
+    id: 276, // Continuando a sequência
+    name: "GERARD VALKYRIE",
+    category: "Bleach",
+    image: "img/Bleach/Gerard-Valkyrie-1.png",
+    description:
+      "Sternritter 'M' (The Miracle) do exército de Yhwach, conhecido como o 'Cavaleiro Milagroso'. Sua habilidade 'The Miracle' transforma fé e esperança em poder, permitindo-lhe crescer em tamanho e força com cada derrota aparente. Considerado uma das guardas reais mais poderosas.",
+    details: {
+      universo: "Bleach",
+      poder:
+        "The Miracle (transformação divina), Crescimento com Fé, Força Divina",
+      status: "Sternritter - Cavaleiro Milagroso",
+      estreia: 2014, // Bleach Capítulo 565
+      recompensa: "N/A",
+      afinidade: "Milagre/Fé",
+      nível: "SS+", // Nível muito alto como Sternritter poderoso
+    },
+  },
+
+  // KILLUA ZOLDYCK (Hunter x Hunter)
+  {
+    id: 277,
+    name: "KILLUA ZOLDYCK",
+    category: "HXH",
+    image: "img/hxh/Killua-Zoldyck-1.png",
+    description:
+      "Herdeiro da família de assassinos Zoldyck e melhor amigo de Gon Freecss. Especialista em Nen com afinidade para Transformação e Transmutação, criando eletricidade com seu Nen. Conhecido por sua velocidade extrema, habilidades de assassinato e crescimento ao longo da série.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder:
+        "Nen - Eletricidade (Godspeed), Velocidade Extrema, Habilidades de Assassinato",
+      status: "Assassino - Herdeiro dos Zoldyck",
+      estreia: 1998, // Hunter x Hunter Capítulo 4
+      recompensa: "N/A",
+      afinidade: "Eletricidade/Velocidade",
+      nível: "S+", // Nível muito alto, um dos mais fortes de sua geração
+    },
+  },
+
+  // RYU ISHIGORI (Jujutsu Kaisen)
+  {
+    id: 278,
+    name: "RYU ISHIGORI",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Ryu-Ishigori-1.png",
+    description:
+      "Feiticeiro jujutsu da Era de Ouro que foi reencarnado no presente. Conhecido por possuir uma quantidade colossal de energia amaldiçoada e por sua técnica de feixes de energia pura. Considerado um dos feiticeiros mais fortes de sua era, com poder bruto impressionante.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Energia Amaldiçoada Colossal, Feixes de Energia Pura, Força Bruta",
+      status: "Feiticeiro da Era de Ouro - Reencarnado",
+      estreia: 2021, // Jujutsu Kaisen Capítulo 158
+      recompensa: "N/A",
+      afinidade: "Energia Pura",
+      nível: "SS", // Nível muito alto com energia colossal
+    },
+  },
+
+  {
+    id: 279, // Continuando a sequência
+    name: "KATANA MAN",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Katana-Man-1.png",
+    description:
+      "Demônio-humano que pode transformar partes de seu corpo em katanas afiadas, neto do Demônio da Katana. Antagonista principal do arco de Katana Man, busca vingança contra Denji por matar seu avô. Trabalha como segurança para a Yakuza antes de se tornar um híbrido demônio.",
+    details: {
+      universo: "Chainsaw Man",
+      poder:
+        "Transformação em Katanas, Habilidades de Corte Afiadas, Híbrido Demônio-Humano",
+      status: "Antagonista - Híbrido Demônio da Katana",
+      estreia: 2019, // Chainsaw Man Capítulo 20
+      recompensa: "N/A",
+      afinidade: "Katana/Vingança",
+      nível: "A+", // Nível médio-alto como antagonista do primeiro arco
+    },
+  },
+
+  {
+    id: 280, // Continuando a sequência
+    name: "VOLIBEAR",
+    category: "League of Legend",
+    image: "img/lol/Volibear-1.png",
+    description:
+      "O Trovão Implacável, um antigo demiurgo Freljordiano e deus da guerra, tempestade e trovão. Irmão de Ornn, Anivia e outras entidades antigas, busca destruir a civilização moderna para restaurar os caminhos selvagens e primitivos de Runeterra.",
+    details: {
+      universo: "League of Legends",
+      poder:
+        "Controle de Tempestades e Trovões, Força Primordial, Imortalidade Divina, Regeneração",
+      status: "Demiurgo - Deus Antigo do Freljord",
+      estreia: 2011,
+      título: "O Trovão Implacável",
+      objetivo: "Destruir a Civilização, Restaurar a Natureza Selvagem",
+      nível: "SS", // Nível muito alto como demiurgo/deus antigo
+    },
+  },
+
+  // HARALD (One Piece)
+  {
+    id: 281, // Continuando a sequência
+    name: "HARALD",
+    category: "One-Piece",
+    image: "img/One-Piece/Harald-1.png",
+    description:
+      "Personagem do universo de One Piece, envolvido nas aventuras e conflitos do mundo dos piratas. Participa dos eventos da série com habilidades e características únicas dentro do rico lore de One Piece.",
+    details: {
+      universo: "One Piece",
+      poder: "Habilidades específicas do mundo de One Piece",
+      status: "Ativo - Personagem de One Piece",
+      estreia: 2026, //
+      recompensa: "N/A",
+      afinidade: "Aventura",
+      nível: "B+", // Nível médio-alto (precisa contexto específico)
+    },
+  },
+  // OROCHI (One Punch Man)
+  {
+    id: 282,
+    name: "OROCHI",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Orochi-1.png",
+    description:
+      "Monstro Deus e líder da Associação de Monstros, criado por Psykos através de experimentos. Considerado o monstro mais forte antes de aparecerem ameaças divinas. Capaz de absorver outros monstros e adaptar suas habilidades, com forma final de dragão monstruoso.",
+    details: {
+      universo: "One Punch Man",
+      poder: "Absorção de Monstros, Adaptação, Forma de Dragão, Regeneração",
+      status: "Monstro Deus - Ex-Líder da Associação de Monstros",
+      estreia: 2016, // One Punch Man Webcomic/Manga
+      recompensa: "N/A",
+      afinidade: "Absorção/Evolução",
+      nível: "SS+", // Nível muito alto como Monstro Deus
+    },
+  },
+
+  {
+    id: 283,
+    name: "SOUTH TERANO",
+    category: "tokyo", // Note: categoria em minúsculo como outros Tokyo Revengers
+    image: "img/tokyo-revengers/South-Terano-1.png",
+    description:
+      "Líder da gangue Rokuhara Tandai e um dos antagonistas mais fortes de Tokyo Revengers. Conhecido por sua força física monstruosa e personalidade violenta. Representa uma ameaça significativa para os Tokyo Manji Gang.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Força Física Extrema, Combate Brutal, Liderança Gangster",
+      status: "Antagonista - Líder da Rokuhara Tandai",
+      estreia: 2019, // Tokyo Revengers Capítulo 138
+      recompensa: "N/A",
+      afinidade: "Violência/Força",
+      nível: "S", // Nível alto como antagonista poderoso
+    },
+  },
+
+  // ZENO ZOLDYCK (Hunter x Hunter)
+  {
+    id: 284, // Continuando a sequência
+    name: "ZENO ZOLDYCK",
+    category: "HXH",
+    image: "img/hxh/Zeno-Zoldyck-1.png",
+    description:
+      "Patriarca da família Zoldyck e avô de Killua, considerado um dos assassinos mais experientes e perigosos do mundo. Especialista em Nen com afinidade para Emissão, capaz de criar dragões de energia. Trabalhou como guarda-costas para a família Netero e participou da invasão ao Palácio de Meruem.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder:
+        "Nen - Emissão (Dragão), Experiência de Assassinato, Habilidades Zoldyck",
+      status: "Assassino - Patriarca dos Zoldyck",
+      estreia: 1999, // Hunter x Hunter Capítulo 71
+      recompensa: "N/A",
+      afinidade: "Assassinato/Experiência",
+      nível: "S+", // Nível muito alto como patriarca experiente
+    },
+  },
+
+  // AEGON TARGARYEN (Game of Thrones)
+  {
+    id: 285,
+    name: "AEGON TARGARYEN",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Aegon-Targaryen-1.png",
+    description:
+      "Conhecido como Aegon, o Conquistador, fundador da Dinastia Targaryen e primeiro Rei dos Sete Reinos de Westeros. Conquistou seis dos sete reinos com seus dragões Balerion, Vhagar e Meraxes, e estabeleceu o Trono de Ferro. Ancestral de Daenerys Targaryen.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Estratégia Militar, Liderança, Montaria de Dragão (Balerion)",
+      status: "Rei - Fundador da Dinastia Targaryen",
+      estreia: 1996, // A Game of Thrones (livro, menções históricas)
+      recompensa: "N/A",
+      afinidade: "Conquista/Dragões",
+      nível: "SS", // Nível muito alto como conquistador com dragão
+    },
+  },
+
+  // MINA LOVEBERRY (Star vs. the Forces of Evil)
+  {
+    id: 286, // Continuando a sequência
+    name: "MINA LOVEBERRY",
+    category: "Star-vs.",
+    image: "img/star-vs/Mina-Loveberry-1.png",
+    description:
+      "Guerreira de Mewni e líder das Guerreras do Arco-Íris, um grupo de guerreiras que serviu sob a Rainha Solaria. Extremamente poderosa e leal à causa de exterminar monstros, mas com visão radical e preconceituosa que causa conflitos na série.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      poder: "Força Sobre-Humana, Habilidades de Combate, Liderança Militar",
+      status: "Guerreira - Líder das Guerreras do Arco-Íris",
+      estreia: 2017, // Star vs. the Forces of Evil Season 3
+      recompensa: "N/A",
+      afinidade: "Guerra/Preconceito",
+      nível: "A+", // Nível médio-alto como guerreira poderosa
+    },
+  },
+
+  // SISTER FRIEDE (Dark Souls III)
+  {
+    id: 287,
+    name: "SISTER FRIEDE",
+    category: "souls",
+    image: "img/souls/Sister-Friede-1.png",
+    description:
+      "Chefe do DLC Ashes of Ariandel em Dark Souls III, também conhecida como Elfriede. Uma das Filhas das Cinzas que rejeitou ligar a Primeira Chama. Luta com uma foice gelada e pode ressuscitar três vezes durante a batalha, sendo um dos chefes mais desafiadores da série.",
+    details: {
+      universo: "Dark Souls III",
+      poder:
+        "Foice Gélida, Invisibilidade, Ressurreição (3 fases), Magia Negra",
+      status: "Chefe - Filha das Cinzas",
+      estreia: 2016, // Dark Souls III: Ashes of Ariandel
+      recompensa: "N/A",
+      afinidade: "Gelo/Espera",
+      nível: "SS", // Nível muito alto como chefe difícil de 3 fases
+    },
+  },
+
+  {
+    id: 288, // Continuando a sequência
+    name: "CARLOS RIVERA",
+    category: "Ashita no Joe",
+    image: "img/Ashita-no-Joe/Carlos-Rivera-2.png",
+    description:
+      "Boxeador profissional internacional que faz parte do universo competitivo de Ashita no Joe. Participa dos torneios e desafios do mundo do boxe, contribuindo para o cenário esportivo global que Joe Yabuki navega em sua jornada.",
+    details: {
+      universo: "Ashita no Joe",
+      poder: "Habilidades de Boxe, Experiência Internacional",
+      status: "Boxeador Profissional - Internacional",
+
+      técnica: "Boxe",
+      nível: "B+", // Nível médio-alto para boxeador internacional
+    },
+  },
+
+  {
+    id: 289, // Continuando a sequição
+    name: "GOD SERENA",
+    category: "Fairy Tail",
+    image: "img/Fairy-Taill/God-Serena-1.png",
+    description:
+      "Ex-mago dos Dez Santos Sagrados e posteriormente membro dos Spriggan 12 do Império Alvarez. Conhecido como o 'Mago mais forte de Ishgar' antes de sua morte, possui oito diferentes Lacrimas de Dragão Slayer que lhe permitem usar múltiplos elementos de dragão.",
+    details: {
+      universo: "Fairy Tail",
+      poder:
+        "Oito Lacrimas de Dragão Slayer (Fogo, Água, Terra, Ar, Luz, Sombra, Veneno, Caverna), Magia de Dragão Slayer Multi-Elemental",
+      status: "Mago dos Spriggan 12 - Ex-Mago dos Dez Santos",
+      estreia: 2015, // Fairy Tail Capítulo 465
+      recompensa: "N/A",
+      afinidade: "Dragão Slayer Multi-Elemental",
+      nível: "SS+", // Nível muito alto como Spriggan 12 com 8 lacrimas
+    },
+  },
+
+  {
+    id: 290, // Continuando a sequência
+    name: "STRIGA",
+    category: "Castlevania",
+    image: "img/castlevania/striga-1.png",
+    description:
+      "Vampira poderosa da série Castlevania da Netflix, irmã de Morana e membro do conselho de vampiros que governa Wallachia. Conhecida por sua força física impressionante, habilidades de combate e lealdade à causa vampírica. Representa a força bruta e tradição entre os vampiros.",
+    details: {
+      universo: "Castlevania",
+      poder:
+        "Força Vampírica, Habilidades de Combate, Transformação, Regeneração",
+      status: "Vampira - Membro do Conselho de Wallachia",
+      estreia: 2020, // Castlevania Season 4 (Netflix)
+      recompensa: "N/A",
+      afinidade: "Força/Tradição",
+      nível: "A+", // Nível médio-alto como vampira poderosa
+    },
+  },
+
+  // LUCIFERO (Black Clover)
+  {
+    id: 291, // Continuando a sequência
+    name: "LUCIFERO",
+    category: "Black Clover",
+    image: "img/Black Clover/Lucifero-1.png",
+    description:
+      "Rei Demônio do mundo dos demônios e um dos seres mais poderosos do universo de Black Clover. Líder dos demônios de alto nível que buscam invadir o mundo humano. Possui poder absoluto de gravidade que pode distorcer o espaço e esmagar qualquer coisa.",
+    details: {
+      universo: "Black Clover",
+      poder:
+        "Magia da Gravidade Absoluta, Distorção Espacial, Poder Demoníaco Supremo",
+      status: "Rei Demônio - Antagonista Principal",
+      estreia: 2020, // Black Clover Capítulo 228
+      recompensa: "N/A",
+      afinidade: "Gravidade/Demoníaco",
+      nível: "SSS", // Nível máximo como Rei Demônio
+    },
+  },
+
+  // SMOLDER (League of Legends)
+  {
+    id: 292,
+    name: "SMOLDER",
+    category: "League of Legend",
+    image: "img/lol/Smolder-1.png",
+    description:
+      "Filhote de dragão ambicioso e filho de uma poderosa mãe dragão em Camavor. Apesar de jovem e inexperiente, está determinado a provar seu valor e criar sua própria lenda, cuspindo fogo mágico e usando habilidades dragônicas únicas.",
+    details: {
+      universo: "League of Legends",
+      poder: "Fogo de Dragão, Habilidades Dragônicas, Crescimento",
+      status: "Filhote de Dragão - Herdeiro Dragônico",
+      estreia: 2024,
+      título: "O Filhote de Dragão",
+      objetivo: "Criar Sua Própria Lenda",
+      nível: "B+", // Nível médio-alto como dragão jovem
+    },
+  },
+
+  // YORU (Chainsaw Man)
+  {
+    id: 293,
+    name: "YORU",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Yoru-1.png",
+    description:
+      "Demônio da Guerra que toma posse do corpo de Asa Mitaka após a morte de Yoru original. Busca recuperar seu poder completo roubado pelo Chainsaw Man. Pode criar armas a partir de partes do corpo de pessoas e manipular memórias relacionadas a conflitos.",
+    details: {
+      universo: "Chainsaw Man",
+      poder:
+        "Criação de Armas Corporais, Manipulação de Memórias de Guerra, Controle Parcial do Corpo Hospedeiro",
+      status: "Demônio da Guerra - Possuidora de Asa Mitaka",
+      estreia: 2020, // Chainsaw Man Parte 2, Capítulo 98
+      recompensa: "N/A",
+      afinidade: "Guerra/Armas",
+      nível: "S", // Nível alto como demônio primordial
+    },
+  },
+
+  {
+    id: 294,
+    name: "KUSANAGI",
+    category: "The King of Fighters",
+    image: "img/The-King-of-Fighters/Kusanagi-1.png",
+    description:
+      "Versão alternativa/corrompida de Kyo Kusanagi que apareceu em The King of Fighters 2002 Unlimited Match. Possui poderes do Orochi e um estilo de luta mais agressivo, com chamas vermelhas em vez das tradicionais chamas roxas da família Kusanagi.",
+    details: {
+      universo: "The King of Fighters",
+      poder:
+        "Chamas do Orochi, Estilo Kusanagi Modificado, Poderes Orochi Corrompidos",
+      status: "Personagem Alternativo - Versão Orochi de Kyo",
+      estreia: 2002, // KOF 2002 UM
+      técnica: "Orochinagi, Yaotome, 108 Shiki Yamibarai",
+      nível: "SS", // Nível muito alto com poderes Orochi
+    },
+  },
+
+  // HUGH (Pokémon) - ID 295
+  {
+    id: 295,
+    name: "HUGH",
+    category: "Pokemon",
+    image: "img/Pokemon/Hugh-1.png",
+    description:
+      "Rival principal em Pokémon Black 2 e White 2, amigo de infância do protagonista. Motivado por recuperar a Purrloin de sua irmã que foi roubada pela Team Plasma. Conhecido por sua personalidade intensa e forte senso de justiça.",
+    details: {
+      universo: "Pokémon",
+      poder: "Estratégia de Batalha, Determinação, Vínculo com Pokémon",
+      status: "Treinador Pokémon - Rival",
+      estreia: 2012, // Pokémon Black 2/White 2
+      recompensa: "N/A",
+      afinidade: "Justiça",
+      nível: "A", // Nível médio como rival
+    },
+  },
+
+  // EMPORIO ALNINO (Jojo) - ID 296
+  {
+    id: 296,
+    name: "EMPORIO ALNINO",
+    category: "jojo",
+    image: "img/Jojo/Emporio-Alnino-1.png",
+    description:
+      "Criança que vive na Prisão Green Dolphin Street e personagem sobrevivente de JoJo's Bizarre Adventure Part 6: Stone Ocean. Usuário do Stand Burning Down the House que permite interagir com objetos fantasmas. Crucial para o desfecho da Parte 6.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder: "Stand Burning Down the House, Sobrevivência, Inteligência",
+      status: "Sobrevivente - Usuário de Stand",
+      estreia: 2000, // Stone Ocean Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Sobrevivência/Fantasma",
+      nível: "B+", // Nível médio-alto, Stand mais utilitário que ofensivo
+    },
+  },
+
+  // BUNDUS (Gachiakuta) - ID 297
+  {
+    id: 297,
+    name: "BUNDUS",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Bundus-1.png",
+    description:
+      "Personagem do mundo distópico de Gachiakuta, envolvido no complexo sistema de sobrevivência e relações de poder do ambiente hostil da série. Possui habilidades adaptadas ao mundo desolador de Gachiakuta.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo de Gachiakuta",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Sobrevivência",
+      nível: "B", // Nível médio como outros personagens de Gachiakuta
+    },
+  },
+
+  {
+    id: 298, // Continuando a sequência
+    name: "SCOPPER GABAN",
+    category: "One-Piece",
+    image: "img/One-Piece/Scopper-Gaban-1.png",
+    description:
+      "Terceiro imediato dos Piratas do Roger, conhecido como 'Gaban, o Demolidor'. Um dos membros mais fortes da tripulação lendária, especialista em combate com machados e Haki. Pouco visto, mas mencionado como crucial para o sucesso da tripulação.",
+    details: {
+      universo: "One Piece",
+      poder: "Haki Avançado, Combate com Machados, Força Física",
+      status: "Ex-Pirata - Membro dos Piratas do Roger",
+      estreia: 2000, // One Piece Capítulo 233 (primeira menção)
+      recompensa: "Desconhecida (provavelmente >฿1,000,000,000)",
+      afinidade: "Machados/Lealdade",
+      nível: "SS", // Nível muito alto como membro da tripulação de Roger
+    },
+  },
+
+  {
+    id: 299,
+    name: "TITAN COLOSSAL",
+    category: "Shingeki-no-Kyojin",
+    image: "img/Shingeki-no-Kyojin/Titan-Colossal-1.png",
+    description:
+      "Um dos Nove Titãs, conhecido por seu tamanho massivo (60 metros) e capacidade de liberar vapor superaquecido. Primeiro titã visto atacando a Muralha Maria. Sua aparição marcou o início da série e a queda da humanidade.",
+    details: {
+      universo: "Shingeki no Kyojin",
+      portador: "Bertolt Hoover → Armin Arlert",
+      poder:
+        "Tamanho Colossal (60m), Liberação de Vapor Superaquecido, Força Destrutiva Massiva",
+      status: "Titã Shifter - Um dos Nove Titãs",
+      estreia: 2009, // Shingeki no Kyojin Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Vapor/Tamanho",
+      nível: "S+", // Nível muito alto como um dos Nove Titãs
+    },
+  },
+
+  {
+    id: 300, // Continuando a sequência
+    name: "SUPERALLOY DARKSHINE",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Superalloy-Darkshine-1.png",
+    description:
+      "Herói profissional Classe S Rank 11, conhecido por seu corpo musculoso brilhante e resistência extrema. Especialista em defesa absoluta através de treinamento físico intensivo, considerado virtualmente indestrutível até encontrar Garou. Sua confiança é abalada após ser machucado.",
+    details: {
+      universo: "One Punch Man",
+      poder:
+        "Corpo Indestrutível, Força Sobre-Humana, Defesa Absoluta, Brilho Metálico",
+      status: "Herói Classe S Rank 11",
+      estreia: 2012, // One Punch Man Webcomic Capítulo 40
+      recompensa: "N/A",
+      afinidade: "Defesa/Física",
+      nível: "S+", // Nível muito alto como herói Classe S com defesa máxima
+    },
+  },
+
+  {
+    id: 301, // Continuando a sequência
+    name: "GUARDIAN APE",
+    category: "souls", // Note: categoria "souls" inclui Sekiro (mesmo desenvolvedor)
+    image: "img/souls/guardian-ape-sekiro-1.png",
+    description:
+      "Chefe icônico de Sekiro: Shadows Die Twice, um macaco colossal e imortal que guarda a Flor Persimmon no Vale da Fonte. Conhecido por seu combate em duas fases: primeira como macaco selvagem, segunda como macaco decapitado controlado por um centopéia gigante.",
+    details: {
+      universo: "Sekiro: Shadows Die Twice",
+      poder:
+        "Imortalidade, Força Bruta, Segunda Fase com Espada Decapitada, Grito Sônico",
+      status: "Chefe - Guardião do Vale da Fonte",
+      estreia: 2019, // Sekiro: Shadows Die Twice
+      recompensa: "N/A",
+      afinidade: "Imortalidade/Macaco",
+      nível: "S+", // Nível muito alto como chefe desafiador
+    },
+  },
+
+  {
+    id: 302,
+    name: "DANTE ZOGRATIS",
+    category: "Black Clover",
+    image: "img/Black Clover/Dante-Zogratis-1.png",
+    description:
+      "Membro mais velho da Tríade Negra e irmão de Vanica e Zenon Zogratis. Possui 100% de afinidade com um demônio de alto nível que lhe concede o poder de manipulação de gravidade. Considerado um dos humanos mais fortes do Reino do Trifolium.",
+    details: {
+      universo: "Black Clover",
+      poder:
+        "Manipulação de Gravidade (100% Demônio), Corpo Regenerativo, Magia Sombria",
+      status: "Antagonista - Líder da Tríade Negra",
+      estreia: 2019, // Black Clover Capítulo 228
+      recompensa: "N/A",
+      afinidade: "Gravidade/Demônio",
+      nível: "SS+", // Nível muito alto com poder demoníaco máximo
+    },
+  },
+
+  {
+    id: 303, // Continuando a sequência
+    name: "GEKI",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/Geki-1.png",
+    description:
+      "Personagem de Street Fighter originalmente planejado para o primeiro jogo mas que apareceu apenas em material complementar. Ninja mestre que usa shurikens e técnicas de furtividade. Representa o estilo ninja dentro do universo Street Fighter.",
+    details: {
+      universo: "Street Fighter",
+      poder: "Técnicas Ninja, Shurikens, Furtividade, Artes Marciais",
+      status: "Ninja - Personagem Beta/Cameo",
+      estreia: 1987, // Street Fighter (conceito original)
+      técnica: "Shuriken Throw, Ninja Arts",
+      nível: "B", // Nível médio como personagem menos conhecido
+    },
+  },
+
+  {
+    id: 304,
+    name: "HEKAPOO",
+    category: "Star-vs.",
+    image: "img/star-vs/Hekapoo-1.png",
+    description:
+      "Membro da Comissão Mágica e uma das Magical High Commission em Mewni. Especialista em portais e dimensional travel, criadora das tesouras dimensionais. Conhecida por sua personalidade sarcástica, competitiva e habilidades de criação de portais.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      poder:
+        "Criação de Portais, Tesouras Dimensionais, Magia de Dimensional Travel",
+      status: "Membro da Comissão Mágica",
+      estreia: 2015, // Star vs. the Forces of Evil Season 1
+      recompensa: "N/A",
+      afinidade: "Portais/Dimensões",
+      nível: "A+", // Nível médio-alto como membro da comissão mágica
+    },
+  },
+
+  {
+    id: 305, // Continuando a sequência
+    name: "MACHI KOMACINE",
+    category: "HXH",
+    image: "img/hxh/Machi-Komacine.png",
+    description:
+      "Membro número 3 da Tropa Fantasma, especialista em Nen de Transmutação. Pode criar fios de Nen extremamente resistentes que usa para costurar feridas, criar armadilhas e manipular objetos. Conhecida por sua personalidade calma e lealdade à Tropa.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder:
+        "Nen - Transmutação (Fios), Costura com Nen, Habilidades de Suporte",
+      status: "Membro da Tropa Fantasma - Número 3",
+      estreia: 1999, // Hunter x Hunter Capítulo 70
+      recompensa: "N/A",
+      afinidade: "Fios/Suporte",
+      nível: "A+", // Nível médio-alto como especialista em suporte da Tropa
+    },
+  },
+
+  {
+    id: 306,
+    name: "SENJU KAWARAGI",
+    category: "tokyo", // minúsculo como outros Tokyo Revengers
+    image: "img/tokyo-revengers/Senju-Kawaragi-1.png",
+    description:
+      "Líder da gangue Brahman e única líder feminina entre as grandes gangues de Tokyo Revengers. Irmã mais nova de Haruchiyo Sanzu e conhecida por sua força excepcional e habilidades de liderança. Uma das figuras mais respeitadas no underground de Tóquio.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Habilidades de Combate Excepcionais, Liderança, Força Física",
+      status: "Líder - Brahman Gang",
+      estreia: 2020, // Tokyo Revengers Capítulo 188
+      recompensa: "N/A",
+      afinidade: "Liderança/Combate",
+      nível: "S", // Nível alto como líder de gangue forte
+    },
+  },
+
+  {
+    id: 307, // Continuando a sequência
+    name: "SHIZUKU MURASAKI",
+    category: "HXH",
+    image: "img/hxh/Shizuku-Murasaki-1.png",
+    description:
+      "Membro número 12 da Tropa Fantasma, especialista em Nen de Conjuração. Usa a habilidade 'Blinky' - um aspirador de pó demoníaco que pode sugar qualquer coisa não-viva. Conhecida por sua memória ruim e personalidade distraída, mas letal em combate.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder:
+        "Nen - Conjuração (Blinky), Aspiração de Objetos, Limpeza Pós-Batalha",
+      status: "Membro da Tropa Fantasma - Número 12",
+      estreia: 1999, // Hunter x Hunter Capítulo 78
+      recompensa: "N/A",
+      afinidade: "Conjuração/Limpeza",
+      nível: "A", // Nível médio-alto com habilidade versátil
+    },
+  },
+
+  {
+    id: 308,
+    name: "IORI YAGAMI",
+    category: "The King of Fighters",
+    image: "img/The-King-of-Fighters/Iori-Yagami-1.png",
+    description:
+      "Membro do clã Yagami e rival de Kyo Kusanagi, portador das Chamas Roxas (ou Púrpuras) da família Yagami. Possui o sangue do Orochi que periodicamente o leva a um estado de fúria incontrolável. Personagem icônico da série desde KOF '95.",
+    details: {
+      universo: "The King of Fighters",
+      poder:
+        "Chamas Roxas/Púrpuras, Sangue do Orochi, Estilo Yagami, Modo Riot of the Blood",
+      status: "Lutador - Membro do Clã Yagami",
+      estreia: 1995, // The King of Fighters '95
+      técnica: "Yami Barai, 108 Shiki Yashiori, Ura 108 Shiki Yashiori",
+      nível: "SS", // Nível muito alto como um dos protagonistas/rivais principais
+    },
+  },
+
+  {
+    id: 309, // Continuando a sequência
+    name: "SYPHA BELNADES",
+    category: "Castlevania",
+    image: "img/castlevania/Sypha-Belnades-1.png",
+    description:
+      "Maga da família Belnades e uma das principais caçadoras de vampiros em Castlevania. Especialista em magia elemental, particularmente magia de fogo, gelo e eletricidade. Companheira de Trevor Belmont e posteriormente mãe de Simon Belmont.",
+    details: {
+      universo: "Castlevania",
+      poder:
+        "Magia Elemental (Fogo, Gelo, Eletricidade), Feitiços Ofensivos e Defensivos",
+      status: "Maga - Caçadora de Vampiros",
+      estreia: 1989, // Castlevania III: Dracula's Curse
+      recompensa: "N/A",
+      afinidade: "Magia Elemental",
+      nível: "A+", // Nível alto como maga poderosa
+    },
+  },
+
+  {
+    id: 310,
+    name: "RIN TOHSAKA",
+    category: "Fate",
+    image: "img/Fate/Rin-Tohsaka-1.png",
+    description:
+      "Mestra de magia e uma das protagonistas de Fate/stay night. Herdeira da família Tohsaka, especialista em magia de pedras preciosas (Jewel Magecraft) e uma das participantes da Quinta Guerra do Santo Graal. Conhecida por sua inteligência, habilidades mágicas e personalidade tsundere.",
+    details: {
+      universo: "Fate",
+      poder:
+        "Jewel Magecraft, Magia de Pedras Preciosas, Gandr, Servant Summoning",
+      status: "Mestra de Magia - Participante da Guerra do Santo Graal",
+      estreia: 2004, // Fate/stay night (visual novel)
+      recompensa: "N/A",
+      afinidade: "Magia de Gemas",
+      nível: "A+", // Nível alto como maga talentosa, abaixo dos Servants
+    },
+  },
+
+  {
+    id: 311, // Continuando a sequência
+    name: "BRUNO BUCCIARATI",
+    category: "jojo",
+    image: "img/Jojo/Bruno-Bucciarati-1.png",
+    description:
+      "Líder de um time da Passione e personagem central de JoJo's Bizarre Adventure Part 5: Vento Aureo. Usuário do Stand Sticky Fingers que cria zíperes em qualquer superfície. Conhecido por sua lealdade, senso de justiça e liderança que inspira seus subordinados.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder:
+        "Stand Sticky Fingers, Criação de Zíperes, Combate Corporal, Liderança",
+      status: "Capo - Líder da Passione",
+      estreia: 1995, // Vento Aureo Capítulo 1
+      recompensa: "N/A",
+      afinidade: "Zíperes/Justiça",
+      nível: "S", // Nível alto como líder e usuário de Stand versátil
+    },
+  },
+
+  {
+    id: 312,
+    name: "ANGEL DEVIL",
+    category: "Chainsaw Man",
+    image: "img/Chainsaw-Man/Angel-Devil-1.png",
+    description:
+      "Demônio que trabalha como caçador de demônios na Divisão Especial 4. Sua habilidade permite drenar a vida útil das pessoas que toca, usando essa energia para criar armas angelicais. Conhecido por sua aparência andrógina, personalidade apática e história trágica.",
+    details: {
+      universo: "Chainsaw Man",
+      poder: "Drenagem de Vida, Criação de Armas Angelicais, Asas Angelicais",
+      status: "Demônio - Caçador de Demônios",
+      estreia: 2019, // Chainsaw Man Capítulo 11
+      recompensa: "N/A",
+      afinidade: "Vida/Anjos",
+      nível: "A+", // Nível médio-alto, poderoso mas com limitações
+    },
+  },
+
+  {
+    id: 313,
+    name: "DRACULE MIHAWK",
+    category: "One-Piece",
+    image: "img/One-Piece/Mihawk-1.png",
+    description:
+      "Conhecido como 'Hawk Eyes', o maior espadachim do mundo e ex-Shichibukai. Portador da espada negra Yoru, uma das 12 Espadas Supremas. Considerado o ápice da habilidade com espadas no mundo de One Piece, servindo como objetivo final para Roronoa Zoro.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Espadachim Supremo, Espada Yoru (Suprema), Haki Avançado, Observação Precisa",
+      status: "Ex-Shichibukai - Maior Espadachim do Mundo",
+      estreia: 1998, // One Piece Chapter 49
+      recompensa: "฿3,590,000,000",
+      afinidade: "Espadas/Precisão",
+      nível: "SS+", // Nível muito alto como maior espadachim do mundo
+    },
+  },
+
+  {
+    id: 314,
+    name: "ALAIN",
+    category: "Pokemon",
+    image: "img/Pokemon/Alain-1.png",
+    description:
+      "Personagem do anime Pokémon XYZ, pesquisador de Mega Evolução e rival de Ash Ketchum na Liga de Kalos. Treinador de um poderoso Charizard que pode realizar Mega Evolução. Conhecido por sua personalidade séria e busca por fortalecer seu Pokémon.",
+    details: {
+      universo: "Pokémon",
+      poder:
+        "Especialista em Mega Evolução, Estratégia de Batalha, Vínculo com Charizard",
+      status: "Treinador Pokémon - Pesquisador de Mega Evolução",
+      estreia: 2015, // Pokémon XY Episode 65
+      recompensa: "N/A",
+      afinidade: "Mega Evolução",
+      nível: "S", // Nível alto como treinador de elite com Mega Charizard
+    },
+  },
+
+  {
+    id: 315,
+    name: "ANAN KUROSE",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Anan-Kurose-1.png",
+    description:
+      "Heroína profissional conhecida como 'Ms. Joke', professora da Ketsubutsu Academy High School. Possui a Quirk 'Outburst' que força pessoas ao seu redor a rirem incontrolavelmente. Rival amigável e interesse romântico de Shota Aizawa (Eraser Head).",
+    details: {
+      universo: "My Hero Academia",
+      poder:
+        "Quirk: Outburst (Riso Incontrolável), Experiência de Ensino, Combate",
+      status: "Heroína Profissional - Professora",
+      estreia: 2016, // My Hero Academia Capítulo 124
+      recompensa: "¥N/A",
+      afinidade: "Riso/Ensino",
+      nível: "A", // Nível médio-alto como heroína profissional
+    },
+  },
+
+  {
+    id: 316,
+    name: "KING BRADLEY",
+    category: "Fullmetal",
+    image: "img/Fullmetal-Alchemist/King-Bradley-1.png",
+    description:
+      "Também conhecido como 'Wrath', um dos Homúnculos e Führer presidente de Amestris. Portador do Olho Último que lhe concede visão acelerada e reflexos sobre-humanos. Considerado o espadachim mais forte do mundo de Fullmetal Alchemist.",
+    details: {
+      universo: "Fullmetal Alchemist",
+      poder:
+        "Olho Último (Ultimate Eye), Espadachim Supremo, Reflexos Sobre-humanos",
+      status: "Homúnculo - Führer de Amestris",
+      estreia: 2003, // Fullmetal Alchemist (mangá) Capítulo 30
+      recompensa: "N/A",
+      afinidade: "Espada/Precisão",
+      nível: "SS", // Nível muito alto como homúnculo mais forte
+    },
+  },
+
+  {
+    id: 317,
+    name: "RIYO",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Riyo-1.png",
+    description:
+      "Personagem do mundo distópico de Gachiakuta, envolvida no complexo sistema de sobrevivência e relações de poder do ambiente hostil da série. Possui habilidades adaptadas às condições extremas do mundo de Gachiakuta.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Habilidades específicas do mundo de Gachiakuta",
+      status: "Ativo",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Sobrevivência",
+      nível: "B", // Nível médio como outros personagens de Gachiakuta
+    },
+  },
+
+  {
+    id: 318,
+    name: "KATARA",
+    category: "Avatar",
+    image: "img/Avatar/Katara-1.png",
+    description:
+      "Última dobradora de água da Tribo da Água do Sul e uma das principais protagonistas de Avatar. Aprende a dominar a dobra de água, cura e posteriormente dobra de sangue. Irmã de Sokka e interesse amoroso de Aang, torna-se uma das dobradoras mais poderosas do mundo.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra de Água, Cura, Dobra de Sangue (limitada), Liderança",
+      status: "Mestra de Dobra - Protetora",
+      estreia: 2005, // Avatar: The Last Airbender Episode 1
+      recompensa: "N/A",
+      afinidade: "Água/Cura",
+      nível: "S", // Nível alto como mestra de dobra de água
+    },
+  },
+
+  {
+    id: 319,
+    name: "BLUE MARY",
+    category: "The King of Fighters",
+    image: "img/The-King-of-Fighters/Blue-Mary-1.png",
+    description:
+      "Agente especial e lutadora de The King of Fighters, especialista em artes marciais mistas e grappling. Ex-integrante das forças especiais, conhecida por seu estilo de luta baseado em jiu-jitsu, wrestling e movimentos aéreos. Participa regularmente dos torneios KOF.",
+    details: {
+      universo: "The King of Fighters",
+      poder:
+        "Artes Marciais Mistas, Grappling, Jiu-Jitsu, Wrestling, Movimentos Aéreos",
+      status: "Agente Especial - Lutadora do KOF",
+      estreia: 1995, // Fatal Fury 3
+      técnica: "M. Spider, M. Snatcher, Vertical Arrow",
+      nível: "A", // Nível médio-alto como lutadora habilidosa
+    },
+  },
+
+  {
+    id: 320,
+    name: "TOM LUCITOR",
+    category: "Star-vs.",
+    image: "img/star-vs/Tom-Lucitor-1.png",
+    description:
+      "Príncipe do Submundo e ex-namorado de Star Butterfly, filho do Rei Pony Head. Conhecido por sua personalidade impulsiva e temperamento quente, mas com coração nobre. Desenvolve uma relação complexa com Star e posteriormente com Marco Diaz.",
+    details: {
+      universo: "Star vs. the Forces of Evil",
+      poder: "Chamas Demoníacas, Força Sobre-Humana, Voo, Magia do Submundo",
+      status: "Príncipe do Submundo",
+      estreia: 2015, // Star vs. the Forces of Evil Season 1
+      recompensa: "N/A",
+      afinidade: "Fogo/Submundo",
+      nível: "A", // Nível médio-alto como príncipe demoníaco
+    },
+  },
+];

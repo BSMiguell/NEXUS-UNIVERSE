@@ -148,6 +148,20 @@ class QuantumBattleSystem {
               <div class="selector-character-category">
                 ${categoryNames[character.category] || character.category}
               </div>
+              <div class="selector-character-stats">
+                <div class="stat-item">
+                  <span class="stat-label">FOR:</span>
+                  <span class="stat-value">${character.stats.forca}</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">VEL:</span>
+                  <span class="stat-value">${character.stats.velocidade}</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">DEF:</span>
+                  <span class="stat-value">${character.stats.defesa}</span>
+                </div>
+              </div>
             `;
 
       characterEl.addEventListener("click", () => {
@@ -195,6 +209,28 @@ class QuantumBattleSystem {
             <div class="selected-character-category">
               ${categoryNames[character.category] || character.category}
             </div>
+            <div class="selected-character-stats">
+              <div class="stat-badge stat-strong">
+                <i class="fas fa-fist-raised"></i>
+                <span>${character.stats.forca}</span>
+              </div>
+              <div class="stat-badge  stat-ray">
+                <i class="fas fa-bolt"></i>
+                <span>${character.stats.velocidade}</span>
+              </div>
+              <div class="stat-badge stat-shield">
+                <i class="fas fa-shield-alt"></i>
+                <span>${character.stats.defesa}</span>
+              </div>
+              <div class="stat-badge stat-fire">
+                <i class="fas fa-fire"></i>
+                <span>${character.stats.energia}</span>
+              </div>
+              <div class="stat-badge stat-brain">
+                <i class="fas fa-brain"></i>
+                <span>${character.stats.habilidade}</span>
+              </div>
+            </div>
           `;
   }
 
@@ -224,7 +260,7 @@ class QuantumBattleSystem {
       "start",
     );
 
-    // Calcular estatísticas dos personagens
+    // Calcular estatísticas dos personagens baseado nos atributos
     const stats1 = this.calculateCharacterStats(
       this.selectedCharacters.player1,
     );
@@ -246,67 +282,40 @@ class QuantumBattleSystem {
   }
 
   calculateCharacterStats(character) {
-    // Baseado nos detalhes do personagem, calcular atributos de batalha
-    const details = character.details || {};
+    const stats = character.stats;
 
-    // Calcular nível base (converter S, A, B, C para números)
-    const levelMap = { S: 100, A: 80, B: 60, C: 40, D: 20 };
-    const baseLevel = levelMap[details.nível] || 50;
+    // Calcular atributos baseados nos status
+    const health = Math.floor(
+      stats.forca * 15 + stats.defesa * 10 + stats.energia * 5,
+    );
 
-    // Calcular poder baseado na descrição e detalhes
-    let powerScore = 0;
+    const attack = Math.floor(
+      stats.forca * 3 + stats.velocidade * 2 + stats.habilidade * 2,
+    );
 
-    // Bonus por categoria
-    const categoryBonus = {
-      "Dragon-Ball": 30,
-      "One-Piece": 25,
-      Naruto: 25,
-      Berserk: 20,
-      "Demon Slayer": 20,
-      "Hunter x Hunter": 20,
-      "My Hero Academia": 15,
-      "Fullmetal Alchemist": 15,
-      "League of Legends": 15,
-      Castlevania: 10,
-      Pokemon: 10,
-    };
+    const defense = Math.floor(
+      stats.defesa * 3 + stats.forca * 1.5 + stats.habilidade * 1,
+    );
 
-    powerScore += categoryBonus[character.category] || 10;
+    const speed = Math.floor(stats.velocidade * 3 + stats.habilidade * 2);
 
-    // Bonus por termos específicos na descrição
-    const description = character.description.toLowerCase();
-    const detailsText = details.poder ? details.poder.toLowerCase() : "";
-    const fullText = description + " " + detailsText;
-
-    if (fullText.includes("poderoso") || fullText.includes("forte"))
-      powerScore += 20;
-    if (fullText.includes("mega") || fullText.includes("evolução"))
-      powerScore += 25;
-    if (fullText.includes("deus") || fullText.includes("divino"))
-      powerScore += 40;
-    if (fullText.includes("rei") || fullText.includes("lendário"))
-      powerScore += 30;
-    if (fullText.includes("herói")) powerScore += 15;
-    if (fullText.includes("vilão")) powerScore += 15;
-    if (fullText.includes("protagonista")) powerScore += 20;
-    if (fullText.includes("rival")) powerScore += 10;
-
-    // Calcular saúde, ataque e defesa
-    const health = Math.floor(baseLevel * 10 + powerScore * 5);
-    const attack = Math.floor(baseLevel * 2 + powerScore * 3);
-    const defense = Math.floor(baseLevel * 1.5 + powerScore * 2);
+    const luck = Math.floor(Math.random() * 20) + 1; // Fator de sorte (1-20)
 
     // Calcular poder total
-    const totalPower = health + attack + defense + powerScore;
+    const totalPower = Math.floor(
+      health * 0.3 + attack * 0.25 + defense * 0.2 + speed * 0.15 + luck * 0.1,
+    );
 
     return {
       character,
       health,
       attack,
       defense,
-      powerScore,
+      speed,
+      luck,
       totalPower,
       currentHealth: health,
+      baseStats: stats,
     };
   }
 
@@ -314,7 +323,32 @@ class QuantumBattleSystem {
     this.addToLog("⚔️ INICIANDO SIMULAÇÃO QUÂNTICA...", "info");
 
     let round = 1;
-    const maxRounds = 5;
+    const maxRounds = 8;
+    let criticalHits1 = 0;
+    let criticalHits2 = 0;
+    let dodges1 = 0;
+    let dodges2 = 0;
+
+    // Adicionar fator de sorte para personagem mais fraco
+    const powerDifference = Math.abs(stats1.totalPower - stats2.totalPower);
+    const underdogBonus = Math.min(30, Math.floor(powerDifference * 0.3)); // Até 30% de bônus para o mais fraco
+
+    let underdog = null;
+    if (stats1.totalPower > stats2.totalPower) {
+      underdog = stats2;
+      stats2.luck += underdogBonus;
+      this.addToLog(
+        `🍀 BÔNUS DE AZARÃO: ${stats2.character.name} recebe +${underdogBonus} de sorte!`,
+        "info",
+      );
+    } else if (stats2.totalPower > stats1.totalPower) {
+      underdog = stats1;
+      stats1.luck += underdogBonus;
+      this.addToLog(
+        `🍀 BÔNUS DE AZARÃO: ${stats1.character.name} recebe +${underdogBonus} de sorte!`,
+        "info",
+      );
+    }
 
     while (
       round <= maxRounds &&
@@ -324,29 +358,55 @@ class QuantumBattleSystem {
       this.addToLog(`\n🔴 ROUND ${round}:`, "round");
 
       // Personagem 1 ataca
-      const damage1 = this.calculateDamage(stats1, stats2);
-      stats2.currentHealth -= damage1;
+      const attackResult1 = this.calculateAttack(stats1, stats2, round);
+      stats2.currentHealth -= attackResult1.damage;
+
+      if (attackResult1.critical) criticalHits1++;
+      if (attackResult1.dodged) dodges2++;
+
       this.addToLog(
-        `🎯 ${stats1.character.name} ataca! Causa ${damage1} de dano. ${stats2.character.name}: ${Math.max(0, stats2.currentHealth)}/${stats2.health} HP`,
-        "damage",
+        `🎯 ${stats1.character.name} ataca! ${attackResult1.message} ${stats2.character.name}: ${Math.max(0, stats2.currentHealth)}/${stats2.health} HP`,
+        attackResult1.critical ? "critical" : "damage",
       );
 
       if (stats2.currentHealth <= 0) {
         this.addToLog(`💀 ${stats2.character.name} foi derrotado!`, "winner");
-        return { winner: stats1, loser: stats2, rounds: round };
+        return {
+          winner: stats1,
+          loser: stats2,
+          rounds: round,
+          criticalHits: {
+            player1: criticalHits1,
+            player2: criticalHits2,
+          },
+          dodges: { player1: dodges1, player2: dodges2 },
+        };
       }
 
       // Personagem 2 ataca
-      const damage2 = this.calculateDamage(stats2, stats1);
-      stats1.currentHealth -= damage2;
+      const attackResult2 = this.calculateAttack(stats2, stats1, round);
+      stats1.currentHealth -= attackResult2.damage;
+
+      if (attackResult2.critical) criticalHits2++;
+      if (attackResult2.dodged) dodges1++;
+
       this.addToLog(
-        `🎯 ${stats2.character.name} contra-ataca! Causa ${damage2} de dano. ${stats1.character.name}: ${Math.max(0, stats1.currentHealth)}/${stats1.health} HP`,
-        "damage",
+        `🎯 ${stats2.character.name} contra-ataca! ${attackResult2.message} ${stats1.character.name}: ${Math.max(0, stats1.currentHealth)}/${stats1.health} HP`,
+        attackResult2.critical ? "critical" : "damage",
       );
 
       if (stats1.currentHealth <= 0) {
         this.addToLog(`💀 ${stats1.character.name} foi derrotado!`, "winner");
-        return { winner: stats2, loser: stats1, rounds: round };
+        return {
+          winner: stats2,
+          loser: stats1,
+          rounds: round,
+          criticalHits: {
+            player1: criticalHits1,
+            player2: criticalHits2,
+          },
+          dodges: { player1: dodges1, player2: dodges2 },
+        };
       }
 
       round++;
@@ -354,16 +414,18 @@ class QuantumBattleSystem {
 
     // Decidir vencedor por pontos se a saúde de ambos > 0
     if (stats1.currentHealth > 0 && stats2.currentHealth > 0) {
-      const score1 = (stats1.currentHealth / stats1.health) * 100;
-      const score2 = (stats2.currentHealth / stats2.health) * 100;
+      const score1 =
+        (stats1.currentHealth / stats1.health) * 100 + criticalHits1 * 5;
+      const score2 =
+        (stats2.currentHealth / stats2.health) * 100 + criticalHits2 * 5;
 
       this.addToLog("\n⏰ TEMPO ESGOTADO! Decisão por pontos:", "info");
       this.addToLog(
-        `${stats1.character.name}: ${score1.toFixed(1)}% HP restante`,
+        `${stats1.character.name}: ${score1.toFixed(1)} pontos (${criticalHits1} críticos)`,
         "info",
       );
       this.addToLog(
-        `${stats2.character.name}: ${score2.toFixed(1)}% HP restante`,
+        `${stats2.character.name}: ${score2.toFixed(1)} pontos (${criticalHits2} críticos)`,
         "info",
       );
 
@@ -377,6 +439,11 @@ class QuantumBattleSystem {
           loser: stats2,
           rounds: maxRounds,
           winByPoints: true,
+          criticalHits: {
+            player1: criticalHits1,
+            player2: criticalHits2,
+          },
+          dodges: { player1: dodges1, player2: dodges2 },
         };
       } else if (score2 > score1) {
         this.addToLog(
@@ -388,18 +455,63 @@ class QuantumBattleSystem {
           loser: stats1,
           rounds: maxRounds,
           winByPoints: true,
+          criticalHits: {
+            player1: criticalHits1,
+            player2: criticalHits2,
+          },
+          dodges: { player1: dodges1, player2: dodges2 },
         };
       } else {
-        this.addToLog(
-          "🤝 EMPATE! Ambos os combatentes são igualmente poderosos!",
-          "info",
-        );
-        return {
-          winner: null,
-          loser: null,
-          rounds: maxRounds,
-          draw: true,
-        };
+        // Desempate por sorte
+        if (stats1.luck > stats2.luck) {
+          this.addToLog(
+            `🎲 ${stats1.character.name} vence por sorte! (${stats1.luck} vs ${stats2.luck})`,
+            "winner",
+          );
+          return {
+            winner: stats1,
+            loser: stats2,
+            rounds: maxRounds,
+            winByLuck: true,
+            criticalHits: {
+              player1: criticalHits1,
+              player2: criticalHits2,
+            },
+            dodges: { player1: dodges1, player2: dodges2 },
+          };
+        } else if (stats2.luck > stats1.luck) {
+          this.addToLog(
+            `🎲 ${stats2.character.name} vence por sorte! (${stats2.luck} vs ${stats1.luck})`,
+            "winner",
+          );
+          return {
+            winner: stats2,
+            loser: stats1,
+            rounds: maxRounds,
+            winByLuck: true,
+            criticalHits: {
+              player1: criticalHits1,
+              player2: criticalHits2,
+            },
+            dodges: { player1: dodges1, player2: dodges2 },
+          };
+        } else {
+          this.addToLog(
+            "🤝 EMPATE! Ambos os combatentes são igualmente poderosos!",
+            "info",
+          );
+          return {
+            winner: null,
+            loser: null,
+            rounds: maxRounds,
+            draw: true,
+            criticalHits: {
+              player1: criticalHits1,
+              player2: criticalHits2,
+            },
+            dodges: { player1: dodges1, player2: dodges2 },
+          };
+        }
       }
     }
 
@@ -407,19 +519,64 @@ class QuantumBattleSystem {
       winner: stats1.currentHealth > 0 ? stats1 : stats2,
       loser: stats1.currentHealth > 0 ? stats2 : stats1,
       rounds: round - 1,
+      criticalHits: { player1: criticalHits1, player2: criticalHits2 },
+      dodges: { player1: dodges1, player2: dodges2 },
     };
   }
 
-  calculateDamage(attacker, defender) {
-    // Base damage é o ataque do atacante - defesa do defensor
-    let damage = Math.max(1, attacker.attack - defender.defense / 2);
+  calculateAttack(attacker, defender, round) {
+    // Chance base de acerto crítico: 5% + (sorte/2)%
+    const criticalChance = 5 + attacker.luck / 2;
+    const isCritical = Math.random() * 100 < criticalChance;
 
-    // Adicionar elemento aleatório
-    const randomFactor = 0.8 + Math.random() * 0.4; // 0.8 a 1.2
+    // Chance de esquiva: 3% + (velocidade do defensor - velocidade do atacante)/10
+    const dodgeChance = 3 + (defender.speed - attacker.speed) / 10;
+    const isDodged = Math.random() * 100 < Math.max(0, dodgeChance);
+
+    if (isDodged) {
+      return {
+        damage: 0,
+        critical: false,
+        dodged: true,
+        message: "ATAQUE ESQUIVADO! ⚡",
+      };
+    }
+
+    // Base damage é o ataque do atacante - defesa do defensor
+    let damage = Math.max(1, attacker.attack - defender.defense / 3);
+
+    // Adicionar variação aleatória
+    const randomFactor = 0.7 + Math.random() * 0.6; // 0.7 a 1.3
     damage *= randomFactor;
 
-    // Arredondar
-    return Math.floor(damage);
+    // Aplicar crítico se ocorrer
+    if (isCritical) {
+      damage *= 2;
+      return {
+        damage: Math.floor(damage),
+        critical: true,
+        dodged: false,
+        message: `GOLPE CRÍTICO! 💥 Causa ${Math.floor(damage)} de dano.`,
+      };
+    }
+
+    // Bônus de round final (último esforço)
+    if (round >= 7) {
+      damage *= 1.3;
+      return {
+        damage: Math.floor(damage),
+        critical: false,
+        dodged: false,
+        message: `ÚLTIMO ESFORÇO! 🔥 Causa ${Math.floor(damage)} de dano.`,
+      };
+    }
+
+    return {
+      damage: Math.floor(damage),
+      critical: false,
+      dodged: false,
+      message: `Causa ${Math.floor(damage)} de dano.`,
+    };
   }
 
   addToLog(message, type = "info") {
@@ -452,12 +609,34 @@ class QuantumBattleSystem {
                 <p style="font-size: 1.2rem; color: var(--text-secondary);">
                   Ambos os combatentes demonstraram poder equivalente após ${result.rounds} rounds.
                 </p>
+                <div style="margin-top: 30px;">
+                  <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: var(--border-radius-md);">
+                      <h4 style="color: var(--quantum-primary); margin-bottom: 10px;">${stats1.character.name}</h4>
+                      <div>Críticos: ${result.criticalHits.player1}</div>
+                      <div>Esquivas: ${result.dodges.player1}</div>
+                    </div>
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: var(--border-radius-md);">
+                      <h4 style="color: var(--quantum-primary); margin-bottom: 10px;">${stats2.character.name}</h4>
+                      <div>Críticos: ${result.criticalHits.player2}</div>
+                      <div>Esquivas: ${result.dodges.player2}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             `;
       return;
     }
 
-    const { winner, loser, rounds, winByPoints } = result;
+    const {
+      winner,
+      loser,
+      rounds,
+      winByPoints,
+      winByLuck,
+      criticalHits,
+      dodges,
+    } = result;
 
     resultsContent.innerHTML = `
             <div class="winner-display">
@@ -484,12 +663,21 @@ class QuantumBattleSystem {
                   <i class="fas fa-bolt" style="color: var(--quantum-warning);"></i>
                   ATAQUE: ${winner.attack}
                 </div>
-                <div style="font-size: 1.1rem;">
+                <div style="font-size: 1.1rem; margin-bottom: 10px;">
                   <i class="fas fa-shield-alt" style="color: var(--quantum-primary);"></i>
                   DEFESA: ${winner.defense}
                 </div>
+                <div style="font-size: 1.1rem; margin-bottom: 10px;">
+                  <i class="fas fa-tachometer-alt" style="color: var(--quantum-secondary);"></i>
+                  VELOCIDADE: ${winner.speed}
+                </div>
+                <div style="font-size: 1.1rem; margin-bottom: 10px;">
+                  <i class="fas fa-clover" style="color: var(--quantum-accent);"></i>
+                  SORTE: ${winner.luck}
+                </div>
               </div>
               ${winByPoints ? '<div style="margin-top: 15px; color: var(--quantum-accent); font-size: 1.1rem;">🎯 Vitória por pontos!</div>' : ""}
+              ${winByLuck ? '<div style="margin-top: 15px; color: var(--quantum-accent); font-size: 1.1rem;">🎲 Vitória por sorte!</div>' : ""}
             </div>
             
             <div class="loser-display">
@@ -516,9 +704,17 @@ class QuantumBattleSystem {
                   <i class="fas fa-bolt" style="color: var(--quantum-warning);"></i>
                   ATAQUE: ${loser.attack}
                 </div>
-                <div style="font-size: 1.1rem;">
+                <div style="font-size: 1.1rem; margin-bottom: 10px;">
                   <i class="fas fa-shield-alt" style="color: var(--quantum-primary);"></i>
                   DEFESA: ${loser.defense}
+                </div>
+                <div style="font-size: 1.1rem; margin-bottom: 10px;">
+                  <i class="fas fa-tachometer-alt" style="color: var(--quantum-secondary);"></i>
+                  VELOCIDADE: ${loser.speed}
+                </div>
+                <div style="font-size: 1.1rem; margin-bottom: 10px;">
+                  <i class="fas fa-clover" style="color: var(--quantum-accent);"></i>
+                  SORTE: ${loser.luck}
                 </div>
               </div>
             </div>
@@ -532,17 +728,27 @@ class QuantumBattleSystem {
                     <div style="font-size: 1.5rem; font-weight: bold; color: var(--quantum-accent);">${rounds}</div>
                   </div>
                   <div>
-                    <div style="font-size: 0.9rem; color: var(--text-secondary);">DIFERENÇA DE PODER</div>
-                    <div style="font-size: 1.5rem; font-weight: bold; color: ${winner.totalPower > loser.totalPower ? "var(--quantum-success)" : "var(--quantum-danger)"}">
-                      ${Math.abs(winner.totalPower - loser.totalPower)}
+                    <div style="font-size: 0.9rem; color: var(--text-secondary);">CRÍTICOS</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: var(--quantum-warning);">
+                      ${criticalHits.player1 + criticalHits.player2}
                     </div>
                   </div>
                   <div>
-                    <div style="font-size: 0.9rem; color: var(--text-secondary);">TOTAL DE PODER</div>
-                    <div style="font-size: 1.5rem; font-weight: bold; color: var(--quantum-primary);">
-                      ${winner.totalPower + loser.totalPower}
+                    <div style="font-size: 0.9rem; color: var(--text-secondary);">ESQUIVAS</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: var(--quantum-success);">
+                      ${dodges.player1 + dodges.player2}
                     </div>
                   </div>
+                  <div>
+                    <div style="font-size: 0.9rem; color: var(--text-secondary);">DIF. PODER</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: ${Math.abs(winner.totalPower - loser.totalPower) < 50 ? "var(--quantum-accent)" : "var(--quantum-danger)"}">
+                      ${Math.abs(winner.totalPower - loser.totalPower)}
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: var(--text-secondary);">
+                  <i class="fas fa-info-circle"></i>
+                  Sistema inclui: bônus de azarão, críticos, esquivas e fator sorte
                 </div>
               </div>
             </div>

@@ -1181,34 +1181,101 @@
         transform: translateY(0) scale(1) translateZ(20px);
       }
 
-      /* Botão Sons */
+      /* Botão de Menu */
+      .menu-toggle {
+        bottom: 165px;
+        right: 60px;
+        background: var(--quantum-gradient);
+        z-index: calc(var(--z-controls) + 1);
+      }
+
+      /* Container dos botões ocultos */
+      .control-buttons-container {
+        position: fixed;
+        right: 0px;
+        bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        z-index: var(--z-controls);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px) scale(0.8);
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .control-buttons-container.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+      }
+
+      /* Botões ocultos */
       .sound-toggle {
         bottom: 155px;
         background: linear-gradient(135deg, #ff00ff, #ff2a6d);
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        transition: all 0.3s ease;
       }
 
-      /* Botão Favoritos */
       .favorites-toggle {
         bottom: 245px;
         background: linear-gradient(135deg, #ffff00, #ffaa00);
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        transition: all 0.3s ease 0.05s;
       }
 
-      /* Botão Temas */
       .theme-toggle {
         bottom: 335px;
         background: linear-gradient(135deg, #ff2a6d, #9d00ff);
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        transition: all 0.3s ease 0.1s;
       }
 
-      /* Botão Pesquisa */
       .search-toggle {
         bottom: 425px;
         background: linear-gradient(135deg, #00ff9d, #00b3ff);
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        transition: all 0.3s ease 0.15s;
       }
 
-      /* Botão Batalha */
       .battle-toggle {
         bottom: 515px;
         background: linear-gradient(135deg, #ff2a6d, #ff4500);
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        transition: all 0.3s ease 0.2s;
+      }
+
+      /* Animações quando visíveis */
+      .control-buttons-container.show .sound-toggle {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .control-buttons-container.show .favorites-toggle {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .control-buttons-container.show .theme-toggle {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .control-buttons-container.show .search-toggle {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .control-buttons-container.show .battle-toggle {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
       /* Efeito de Cursor Magnético */
@@ -1473,24 +1540,17 @@
           font-size: 1.5rem;
           right: 30px;
         }
-        .quantum-jump {
+        .control-buttons-container {
+          right: 30px;
+          bottom: 120px;
+        }
+        .menu-toggle {
           bottom: 40px;
           right: 30px;
         }
-        .sound-toggle {
-          bottom: 110px;
-        }
-        .favorites-toggle {
-          bottom: 178px;
-        }
-        .theme-toggle {
-          bottom: 245px;
-        }
-        .search-toggle {
-          bottom: 312px;
-        }
-        .battle-toggle {
-          bottom: 378px;
+        .quantum-jump {
+          bottom: 40px;
+          right: 30px;
         }
         .quantum-toast {
           min-width: 350px;
@@ -1560,6 +1620,14 @@
           width: 60px;
           height: 60px;
           font-size: 1.3rem;
+          right: 20px;
+        }
+        .control-buttons-container {
+          right: 20px;
+          bottom: 100px;
+        }
+        .menu-toggle {
+          bottom: 30px;
           right: 20px;
         }
         .favorites-header h2 {
@@ -2274,47 +2342,60 @@
       </footer>
 
       <!-- Botões de Controle 13/10 -->
+      <div class="control-buttons-container" id="controlButtonsContainer">
+        <button
+          class="quantum-control-btn sound-toggle"
+          id="soundToggle"
+          aria-label="Alternar sons"
+        >
+          <i class="fas fa-volume-up" id="soundIcon" aria-hidden="true"></i>
+        </button>
+        <button
+          class="quantum-control-btn favorites-toggle"
+          id="favoritesToggle"
+          aria-label="Alternar entre galeria e favoritos"
+        >
+          <i class="fas fa-heart" id="favoritesIcon" aria-hidden="true"></i>
+        </button>
+        <button
+          class="quantum-control-btn theme-toggle"
+          id="themeToggle"
+          aria-label="Mudar tema/cores"
+        >
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </button>
+        <button
+          class="quantum-control-btn search-toggle"
+          id="searchToggle"
+          aria-label="Abrir pesquisa quântica"
+        >
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </button>
+        <button
+          class="quantum-control-btn battle-toggle"
+          id="battleToggle"
+          aria-label="Acessar sistema de batalha"
+        >
+          <i class="fas fa-fist-raised" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Botão de Menu para Controles -->
+      <button
+        class="quantum-control-btn menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menu de controles"
+      >
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <!-- Botão Salto Quântico -->
       <button
         class="quantum-control-btn quantum-jump"
         id="quantumJump"
         aria-label="Voltar ao topo da página"
       >
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
-      </button>
-      <button
-        class="quantum-control-btn sound-toggle"
-        id="soundToggle"
-        aria-label="Alternar sons"
-      >
-        <i class="fas fa-volume-up" id="soundIcon" aria-hidden="true"></i>
-      </button>
-      <button
-        class="quantum-control-btn favorites-toggle"
-        id="favoritesToggle"
-        aria-label="Alternar entre galeria e favoritos"
-      >
-        <i class="fas fa-heart" id="favoritesIcon" aria-hidden="true"></i>
-      </button>
-      <button
-        class="quantum-control-btn theme-toggle"
-        id="themeToggle"
-        aria-label="Mudar tema/cores"
-      >
-        <i class="fas fa-palette" aria-hidden="true"></i>
-      </button>
-      <button
-        class="quantum-control-btn search-toggle"
-        id="searchToggle"
-        aria-label="Abrir pesquisa quântica"
-      >
-        <i class="fas fa-search" aria-hidden="true"></i>
-      </button>
-      <button
-        class="quantum-control-btn battle-toggle"
-        id="battleToggle"
-        aria-label="Acessar sistema de batalha"
-      >
-        <i class="fas fa-fist-raised" aria-hidden="true"></i>
       </button>
 
       <!-- Modal Quântico -->
@@ -2850,7 +2931,7 @@
         }
       }
 
-      // ===== SISTEMA DE BATALHA =====
+      // ===== SISTEMA DE BATALHA ATUALIZADO =====
 
       // ===== SISTEMA DE HISTÓRIA E ESTADO =====
       class QuantumHistory {
@@ -3128,6 +3209,8 @@
 
       // ===== SISTEMA DE PESQUISA AVANÇADA =====
 
+      // ===== SISTEMA DE DADOS DE PERSONAGENS COM ATRIBUTOS =====
+
       // ===== GALERIA QUÂNTICA OTIMIZADA =====
       class QuantumGallery {
         constructor(cache) {
@@ -3180,6 +3263,7 @@
           this.setupSortOptions();
           this.initScrollAnimations();
           this.setupIntersectionObserver();
+          this.setupMenuToggle();
 
           this.handlePageRefresh();
 
@@ -3192,6 +3276,56 @@
           window.addEventListener("beforeunload", () => {
             window.scrollTo(0, 0);
           });
+        }
+
+        setupMenuToggle() {
+          const menuToggle = document.getElementById("menuToggle");
+          const controlButtons = document.getElementById(
+            "controlButtonsContainer",
+          );
+
+          if (menuToggle && controlButtons) {
+            menuToggle.addEventListener("click", () => {
+              const isVisible = controlButtons.classList.contains("show");
+
+              if (isVisible) {
+                controlButtons.classList.remove("show");
+                menuToggle.setAttribute(
+                  "aria-label",
+                  "Abrir menu de controles",
+                );
+                menuToggle.innerHTML =
+                  '<i class="fas fa-bars" aria-hidden="true"></i>';
+              } else {
+                controlButtons.classList.add("show");
+                menuToggle.setAttribute(
+                  "aria-label",
+                  "Fechar menu de controles",
+                );
+                menuToggle.innerHTML =
+                  '<i class="fas fa-times" aria-hidden="true"></i>';
+              }
+
+              this.audio.play("click");
+            });
+
+            // Fechar menu ao clicar em qualquer botão de controle
+            document
+              .querySelectorAll(
+                ".control-buttons-container .quantum-control-btn",
+              )
+              .forEach((btn) => {
+                btn.addEventListener("click", () => {
+                  controlButtons.classList.remove("show");
+                  menuToggle.setAttribute(
+                    "aria-label",
+                    "Abrir menu de controles",
+                  );
+                  menuToggle.innerHTML =
+                    '<i class="fas fa-bars" aria-hidden="true"></i>';
+                });
+              });
+          }
         }
 
         async preloadFirstFourImages() {
@@ -3490,6 +3624,12 @@
             if ((e.ctrlKey || e.metaKey) && e.key === "b") {
               e.preventDefault();
               this.battleSystem.showBattlePage();
+            }
+
+            // Atalho Ctrl+M ou Cmd+M para menu
+            if ((e.ctrlKey || e.metaKey) && e.key === "m") {
+              e.preventDefault();
+              document.getElementById("menuToggle").click();
             }
           });
 
@@ -4199,7 +4339,7 @@
               <div class="search-no-results">
                 <i class="fas fa-search-minus"></i>
                 <h3>NENHUM PERSONAGEM ENCONTRADO</h3>
-                <p>Tente digitar o nome de forma diferente ou use termos mais genéricos.</p>
+                <p>Tente digitar o nome de forma diferente ou usar termos mais genéricos.</p>
               </div>
             `;
             return;

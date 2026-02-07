@@ -264,22 +264,6 @@
 }
 
 /* ===== PÁGINA DE FAVORITOS - EXPERIÊNCIA 15/10 ===== */
-.quantum-favorites-page {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--background-primary);
-  z-index: var(--z-modal);
-  opacity: 0;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  transform: translateY(100%);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-x: hidden;
-}
 
 .quantum-favorites-page.active {
   display: block;

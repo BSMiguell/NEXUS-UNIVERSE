@@ -405,9 +405,9 @@
   background: var(--card-gradient);
   border-radius: var(--border-radius-xl);
   padding: 40px;
-  width: 90%;
-  max-width: 1200px;
-  max-height: 80vh;
+  width: 100%;
+  max-width: 1380px;
+  max-height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -459,6 +459,7 @@
   cursor: pointer;
   transition: var(--transition-smooth);
   border: 2px solid transparent;
+  height: 480px;
 }
 
 .selector-character:hover {
@@ -474,14 +475,14 @@
 
 .selector-character-image {
   width: 100%;
-  height: 150px;
+  height: 290px;
   object-fit: cover;
   border-radius: var(--border-radius-sm);
   margin-bottom: 15px;
 }
 
 .selector-character-name {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 5px;
 }
@@ -493,6 +494,40 @@
   padding: 4px 10px;
   border-radius: var(--border-radius-full);
   display: inline-block;
+}
+
+.selected-character-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.selected-character-stats .stat-strong {
+  color: #ff0000;
+}
+
+.selected-character-stats .stat-ray {
+  color: #ffff00;
+}
+
+.selected-character-stats .stat-shield {
+  color: #f5f7fa;
+}
+
+.selected-character-stats .stat-fire {
+  color: #ff6a00;
+}
+
+.selected-character-stats .stat-brain {
+  color: #ff00dd;
+}
+
+.selected-character-stats span {
+  color: var(--quantum-primary);
+}
+
+.selector-character-stats {
+  display: flex;
+  gap: 10px;
 }
 
 @media (max-width: 992px) {
