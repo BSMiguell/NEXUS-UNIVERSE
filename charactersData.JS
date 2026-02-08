@@ -852,7 +852,7 @@ const charactersData = [
     id: 35,
     name: "LOKI",
     category: "One-Piece",
-    image: "img/One-Piece/Loki-2.png",
+    image: "img/One-Piece/Loki-5.png",
     description:
       "Deus da Trapaça da mitologia nórdica, que faz aparições no mundo de One Piece como uma figura divina.",
     details: {
@@ -1927,7 +1927,7 @@ const charactersData = [
     id: 78,
     name: "KAIDO",
     category: "One-Piece",
-    image: "img/One-Piece/Kaido-1.png",
+    image: "img/One-Piece/Kaido-4.png",
     description:
       "Governador-Geral das Feras e um dos Quatro Imperadores, conhecido como 'A Criatura Mais Forte do Mundo'.",
     details: {
