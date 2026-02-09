@@ -4502,7 +4502,7 @@ const charactersData = [
     id: 181,
     name: "MONKEY D. DRAGON",
     category: "One-Piece",
-    image: "img/One-Piece/dragon-1.png",
+    image: "img/One-Piece/dragon-2.png",
     description:
       "Monkey D. Dragon é o líder do Exército Revolucionário e o homem mais procurado do mundo.",
     details: {

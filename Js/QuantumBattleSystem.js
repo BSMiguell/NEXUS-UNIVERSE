@@ -8,7 +8,13 @@ class QuantumBattleSystem {
     this.battleLog = [];
     this.history = [];
     this.animationActive = false;
-    this.battleResult = null; // NOVO: Armazenar resultado para animação
+    this.battleResult = null;
+    this.damageNumbers = [];
+    this.effects = [];
+    this.particleSystems = [];
+    this.frameCount = 0;
+    this.animationId = null;
+
     this.init();
   }
 
@@ -16,6 +22,819 @@ class QuantumBattleSystem {
     this.cacheElements();
     this.setupEventListeners();
     this.loadHistory();
+    this.addBattleStyles();
+    this.initParticleSystem();
+  }
+
+  addBattleStyles() {
+    const style = document.createElement("style");
+    style.textContent = `
+      /* ANIMAÇÕES AVANÇADAS DE BATALHA */
+      @keyframes dimensionalShift {
+        0% {
+          transform: translateX(0) scale(1) rotate(0deg);
+          filter: hue-rotate(0deg) blur(0);
+        }
+        25% {
+          transform: translateX(-30px) scale(1.05) rotate(-5deg);
+          filter: hue-rotate(90deg) blur(1px);
+        }
+        50% {
+          transform: translateX(30px) scale(1.1) rotate(5deg);
+          filter: hue-rotate(180deg) blur(2px);
+        }
+        75% {
+          transform: translateX(-15px) scale(1.05) rotate(-2deg);
+          filter: hue-rotate(270deg) blur(1px);
+        }
+        100% {
+          transform: translateX(0) scale(1) rotate(0deg);
+          filter: hue-rotate(360deg) blur(0);
+        }
+      }
+      
+      @keyframes quantumFlash {
+        0%, 100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.1);
+        }
+      }
+      
+      @keyframes rippleEffect {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+          box-shadow: 0 0 0 0 rgba(66, 220, 255, 0.7);
+        }
+        100% {
+          transform: scale(4);
+          opacity: 0;
+          box-shadow: 0 0 0 20px rgba(66, 220, 255, 0);
+        }
+      }
+      
+      @keyframes swordSlash {
+        0% {
+          transform: translateX(-100%) rotate(-45deg) scaleX(0);
+          opacity: 0;
+        }
+        30% {
+          transform: translateX(0) rotate(-45deg) scaleX(1);
+          opacity: 1;
+        }
+        70% {
+          transform: translateX(100%) rotate(-45deg) scaleX(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(200%) rotate(-45deg) scaleX(0);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes energyBlast {
+        0% {
+          transform: scale(0) translateX(0);
+          opacity: 0;
+        }
+        20% {
+          transform: scale(1.2) translateX(50px);
+          opacity: 1;
+        }
+        80% {
+          transform: scale(1) translateX(150px);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(0.5) translateX(300px);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes shieldBlock {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.2) rotate(180deg);
+          opacity: 1;
+          border-width: 8px;
+        }
+        100% {
+          transform: scale(1.5) rotate(360deg);
+          opacity: 0;
+          border-width: 2px;
+        }
+      }
+      
+      @keyframes healingPulse {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 0.8;
+          box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+        50% {
+          transform: scale(1.3);
+          opacity: 0.4;
+          box-shadow: 0 0 40px rgba(0, 255, 136, 0.8);
+        }
+      }
+      
+      @keyframes lightningStrike {
+        0%, 100% {
+          opacity: 0;
+          transform: translateY(-100%) scaleY(0);
+        }
+        10%, 90% {
+          opacity: 1;
+          transform: translateY(0) scaleY(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: translateY(50%) scaleY(1.2);
+        }
+      }
+      
+      @keyframes fireBurn {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.5) rotate(180deg);
+          opacity: 0.8;
+          filter: blur(2px);
+        }
+        100% {
+          transform: scale(2) rotate(360deg);
+          opacity: 0;
+          filter: blur(5px);
+        }
+      }
+      
+      @keyframes iceFreeze {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+          filter: blur(0) brightness(1);
+        }
+        30% {
+          transform: scale(1.2);
+          opacity: 1;
+          filter: blur(2px) brightness(2);
+        }
+        70% {
+          transform: scale(1.2);
+          opacity: 0.8;
+          filter: blur(4px) brightness(1.5);
+        }
+        100% {
+          transform: scale(1.5);
+          opacity: 0;
+          filter: blur(8px) brightness(1);
+        }
+      }
+      
+      @keyframes poisonCloud {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.5);
+          opacity: 0.7;
+          filter: blur(5px);
+        }
+        100% {
+          transform: scale(2.5);
+          opacity: 0;
+          filter: blur(10px);
+        }
+      }
+      
+      @keyframes earthShatter {
+        0% {
+          transform: scale(0) translateY(0);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(2) translateY(-20px);
+          opacity: 0.8;
+          filter: blur(3px);
+        }
+        100% {
+          transform: scale(3) translateY(0);
+          opacity: 0;
+          filter: blur(6px);
+        }
+      }
+      
+      @keyframes windGust {
+        0% {
+          transform: translateX(0) scaleX(0);
+          opacity: 0;
+        }
+        30% {
+          transform: translateX(100px) scaleX(1.5);
+          opacity: 1;
+          filter: blur(3px);
+        }
+        70% {
+          transform: translateX(200px) scaleX(1.2);
+          opacity: 0.8;
+          filter: blur(5px);
+        }
+        100% {
+          transform: translateX(300px) scaleX(0);
+          opacity: 0;
+          filter: blur(8px);
+        }
+      }
+      
+      /* ELEMENTOS DE EFEITO */
+      .dimensional-shift {
+        animation: dimensionalShift 0.8s ease-out;
+      }
+      
+      .quantum-flash {
+        animation: quantumFlash 0.3s ease-in-out 2;
+      }
+      
+      .ripple {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(66, 220, 255, 0.3);
+        border: 2px solid rgba(66, 220, 255, 0.8);
+        pointer-events: none;
+        z-index: 450;
+        animation: rippleEffect 1s ease-out forwards;
+      }
+      
+      .sword-slash {
+        position: absolute;
+        width: 150px;
+        height: 20px;
+        background: linear-gradient(90deg, 
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.9) 50%,
+          rgba(255, 255, 255, 0) 100%);
+        clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+        filter: drop-shadow(0 0 10px #ffffff);
+        pointer-events: none;
+        z-index: 500;
+        animation: swordSlash 0.6s ease-out forwards;
+      }
+      
+      .energy-blast {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background: radial-gradient(circle, 
+          rgba(255, 100, 100, 0.9) 0%,
+          rgba(255, 50, 50, 0.6) 50%,
+          rgba(255, 0, 0, 0) 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 550;
+        animation: energyBlast 0.8s ease-out forwards;
+      }
+      
+      .shield-block {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border: 4px solid rgba(100, 200, 255, 0.8);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 600;
+        animation: shieldBlock 0.6s ease-out forwards;
+      }
+      
+      .healing-pulse {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: radial-gradient(circle,
+          rgba(0, 255, 136, 0.6) 0%,
+          rgba(0, 255, 136, 0.3) 50%,
+          rgba(0, 255, 136, 0) 70%);
+        pointer-events: none;
+        z-index: 400;
+        animation: healingPulse 1s ease-in-out infinite;
+      }
+      
+      .lightning-strike {
+        position: absolute;
+        width: 8px;
+        height: 100px;
+        background: linear-gradient(to bottom,
+          rgba(255, 255, 100, 0) 0%,
+          rgba(255, 255, 100, 0.9) 30%,
+          rgba(100, 200, 255, 0.9) 50%,
+          rgba(66, 220, 255, 0) 100%);
+        clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        filter: drop-shadow(0 0 10px #42dcff);
+        pointer-events: none;
+        z-index: 650;
+        animation: lightningStrike 0.5s ease-out forwards;
+      }
+      
+      .fire-burn {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle,
+          rgba(255, 100, 0, 0.9) 0%,
+          rgba(255, 50, 0, 0.6) 50%,
+          rgba(255, 0, 0, 0) 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 700;
+        animation: fireBurn 1s ease-out forwards;
+      }
+      
+      .ice-freeze {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle,
+          rgba(100, 200, 255, 0.9) 0%,
+          rgba(66, 220, 255, 0.6) 50%,
+          rgba(0, 150, 255, 0) 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 650;
+        animation: iceFreeze 1.2s ease-out forwards;
+      }
+      
+      .poison-cloud {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle,
+          rgba(0, 255, 0, 0.4) 0%,
+          rgba(50, 255, 50, 0.2) 50%,
+          rgba(100, 255, 100, 0) 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 500;
+        animation: poisonCloud 2s ease-out forwards;
+      }
+      
+      .earth-shatter {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle,
+          rgba(139, 69, 19, 0.8) 0%,
+          rgba(160, 82, 45, 0.5) 50%,
+          rgba(210, 105, 30, 0) 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 550;
+        animation: earthShatter 1s ease-out forwards;
+      }
+      
+      .wind-gust {
+        position: absolute;
+        width: 200px;
+        height: 40px;
+        background: linear-gradient(90deg,
+          rgba(200, 200, 255, 0) 0%,
+          rgba(200, 200, 255, 0.6) 50%,
+          rgba(200, 200, 255, 0) 100%);
+        border-radius: 20px;
+        filter: blur(5px);
+        pointer-events: none;
+        z-index: 450;
+        animation: windGust 0.7s ease-out forwards;
+      }
+      
+      /* SISTEMA DE PARTÍCULAS AVANÇADO */
+      .particle {
+        position: absolute;
+        pointer-events: none;
+        z-index: 800;
+      }
+      
+      .particle-damage {
+        background: #ff4444;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #ff4444;
+      }
+      
+      .particle-heal {
+        background: #00ff88;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00ff88;
+      }
+      
+      .particle-energy {
+        background: #42dcff;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #42dcff;
+      }
+      
+      .particle-fire {
+        background: #ff6600;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #ff6600;
+      }
+      
+      .particle-ice {
+        background: #66ccff;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #66ccff;
+      }
+      
+      .particle-lightning {
+        background: #ffff00;
+        border-radius: 0;
+        transform: rotate(45deg);
+        box-shadow: 0 0 15px #ffff00;
+      }
+      
+      /* ANIMAÇÕES DE DANO MELHORADAS */
+      @keyframes damagePop {
+        0% {
+          transform: translateY(0) scale(0.5);
+          opacity: 0;
+          text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        }
+        20% {
+          transform: translateY(-50px) scale(1.3);
+          opacity: 1;
+          text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+        40% {
+          transform: translateY(-60px) scale(1.2);
+          opacity: 0.9;
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+        80% {
+          transform: translateY(-100px) scale(1.1);
+          opacity: 0.7;
+          text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+        }
+        100% {
+          transform: translateY(-150px) scale(0.9);
+          opacity: 0;
+          text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        }
+      }
+      
+      .damage-number {
+        position: absolute;
+        font-size: 28px;
+        font-weight: 900;
+        z-index: 1000;
+        pointer-events: none;
+        animation: damagePop 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+      
+      .damage-physical {
+        color: #ff4444;
+        text-shadow: 
+          2px 2px 0 #000,
+          0 0 10px #ff4444,
+          0 0 20px #ff0000;
+      }
+      
+      .damage-magical {
+        color: #8844ff;
+        text-shadow: 
+          2px 2px 0 #000,
+          0 0 10px #8844ff,
+          0 0 20px #6600ff;
+      }
+      
+      .damage-critical {
+        color: #ffaa00;
+        font-size: 36px;
+        text-shadow: 
+          2px 2px 0 #000,
+          0 0 15px #ffaa00,
+          0 0 30px #ff8800,
+          0 0 45px #ff6600;
+        animation: damagePop 2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+      
+      .heal-number {
+        color: #00ff88;
+        text-shadow: 
+          2px 2px 0 #000,
+          0 0 10px #00ff88,
+          0 0 20px #00cc66;
+      }
+      
+      /* ANIMAÇÕES DE PERSONAGEM */
+      @keyframes characterCharge {
+        0% {
+          transform: translateX(0) scale(1);
+          filter: brightness(1) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+        }
+        30% {
+          transform: translateX(40px) scale(1.1);
+          filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+        }
+        70% {
+          transform: translateX(40px) scale(1.1);
+          filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+        }
+        100% {
+          transform: translateX(0) scale(1);
+          filter: brightness(1) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+        }
+      }
+      
+      @keyframes characterImpact {
+        0% {
+          transform: translateX(0) scale(1);
+          filter: brightness(1) hue-rotate(0deg);
+        }
+        15% {
+          transform: translateX(-30px) scale(0.95) rotate(-5deg);
+          filter: brightness(2) hue-rotate(180deg) saturate(2);
+        }
+        35% {
+          transform: translateX(20px) scale(0.97) rotate(3deg);
+          filter: brightness(1.8) hue-rotate(270deg) saturate(1.5);
+        }
+        65% {
+          transform: translateX(-10px) scale(0.98) rotate(-2deg);
+          filter: brightness(1.5) hue-rotate(360deg) saturate(1.2);
+        }
+        85% {
+          transform: translateX(5px) scale(0.99) rotate(1deg);
+          filter: brightness(1.2) hue-rotate(450deg) saturate(1.1);
+        }
+        100% {
+          transform: translateX(0) scale(1) rotate(0deg);
+          filter: brightness(1) hue-rotate(0deg) saturate(1);
+        }
+      }
+      
+      .character-charge {
+        animation: characterCharge 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+      
+      .character-impact {
+        animation: characterImpact 1s cubic-bezier(0.36, 0, 0.66, -0.56);
+      }
+      
+      /* EFEITOS DE TELA */
+      @keyframes screenShake {
+        0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-10px) translateY(-5px) rotate(-0.5deg); }
+        20%, 40%, 60%, 80% { transform: translateX(10px) translateY(5px) rotate(0.5deg); }
+      }
+      
+      @keyframes screenFlash {
+        0%, 100% { background-color: transparent; }
+        50% { background-color: rgba(255, 255, 255, 0.3); }
+      }
+      
+      .screen-shake {
+        animation: screenShake 0.5s ease-out;
+      }
+      
+      .screen-flash {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        animation: screenFlash 0.3s ease-out;
+      }
+      
+      /* EFEITOS DE COMBO */
+      @keyframes comboRush {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 0;
+        }
+        30% {
+          transform: scale(1.5) rotate(180deg);
+          opacity: 1;
+          filter: brightness(2) drop-shadow(0 0 20px #ff6600);
+        }
+        70% {
+          transform: scale(1.5) rotate(180deg);
+          opacity: 1;
+          filter: brightness(2) drop-shadow(0 0 20px #ff6600);
+        }
+        100% {
+          transform: scale(3) rotate(360deg);
+          opacity: 0;
+          filter: brightness(1) drop-shadow(0 0 0 #ff6600);
+        }
+      }
+      
+      .combo-rush {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle,
+          rgba(255, 100, 0, 0.9) 0%,
+          rgba(255, 50, 0, 0.6) 50%,
+          rgba(255, 0, 0, 0) 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 750;
+        animation: comboRush 0.8s ease-out forwards;
+      }
+      
+      /* EFEITOS DE STATUS */
+      .status-burn {
+        filter: sepia(1) saturate(2) hue-rotate(-30deg);
+        animation: quantumFlash 1s infinite;
+      }
+      
+      .status-freeze {
+        filter: hue-rotate(180deg) brightness(1.2) contrast(0.8);
+        animation: pulse 2s infinite;
+      }
+      
+      .status-poison {
+        filter: hue-rotate(90deg) saturate(2);
+        animation: shake 0.5s infinite;
+      }
+      
+      .status-stun {
+        filter: brightness(1.5) contrast(1.2);
+        animation: stunEffect 0.5s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+      
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+      
+      @keyframes stunEffect {
+        0%, 100% { 
+          filter: brightness(1) contrast(1) blur(0);
+        }
+        50% { 
+          filter: brightness(1.8) contrast(0.7) blur(2px);
+        }
+      }
+      
+      /* EFEITOS DE VITÓRIA/DERROTA */
+      @keyframes victoryGlow {
+        0%, 100% {
+          filter: drop-shadow(0 0 10px gold) brightness(1);
+          transform: scale(1);
+        }
+        50% {
+          filter: drop-shadow(0 0 30px gold) brightness(1.3);
+          transform: scale(1.05);
+        }
+      }
+      
+      @keyframes defeatShake {
+        0%, 100% { transform: translateX(0) rotate(0deg); }
+        25% { transform: translateX(-20px) rotate(-5deg); }
+        75% { transform: translateX(20px) rotate(5deg); }
+      }
+      
+      .victory-glow {
+        animation: victoryGlow 1s infinite alternate;
+      }
+      
+      .defeat-shake {
+        animation: defeatShake 0.5s ease-in-out 3;
+      }
+      
+      /* BARRA DE COMBO */
+      .combo-bar {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        height: 40px;
+        background: linear-gradient(90deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(20, 20, 20, 0.8) 100%);
+        border-radius: 20px;
+        border: 3px solid #ff6600;
+        overflow: hidden;
+        z-index: 2000;
+        display: none;
+      }
+      
+      .combo-fill {
+        height: 100%;
+        background: linear-gradient(90deg,
+          #ff3300,
+          #ff6600,
+          #ff9900,
+          #ffcc00);
+        border-radius: 20px;
+        transition: width 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .combo-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          transparent 100%);
+        animation: comboShimmer 1s infinite linear;
+      }
+      
+      @keyframes comboShimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      
+      .combo-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+      
+      /* INDICADORES DE STATS */
+      .stat-buff {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(90deg, 
+          rgba(0, 255, 136, 0.2) 0%,
+          rgba(0, 255, 136, 0.8) 50%,
+          rgba(0, 255, 136, 0.2) 100%);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 300;
+        animation: floatUp 2s ease-out forwards;
+      }
+      
+      .stat-debuff {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(90deg, 
+          rgba(255, 68, 68, 0.2) 0%,
+          rgba(255, 68, 68, 0.8) 50%,
+          rgba(255, 68, 68, 0.2) 100%);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 300;
+        animation: floatUp 2s ease-out forwards;
+      }
+      
+      @keyframes floatUp {
+        0% {
+          transform: translateX(-50%) translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-50%) translateY(-50px);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   }
 
   cacheElements() {
@@ -66,11 +885,31 @@ class QuantumBattleSystem {
       historyDetailModal: document.getElementById("historyDetailModal"),
       historyDetailClose: document.getElementById("historyDetailClose"),
       historyDetailBody: document.getElementById("historyDetailBody"),
+
+      // Elementos para efeitos
+      comboBar: document.createElement("div"),
+      screenOverlay: document.createElement("div"),
     };
+
+    // Adicionar elementos ao DOM
+    if (this.elements.battleAnimationContainer) {
+      this.elements.comboBar.className = "combo-bar";
+      this.elements.comboBar.innerHTML = `
+        <div class="combo-fill" style="width: 0%"></div>
+        <div class="combo-text">COMBO: 0x</div>
+      `;
+      this.elements.battleAnimationContainer.appendChild(
+        this.elements.comboBar,
+      );
+
+      this.elements.screenOverlay.className = "screen-flash";
+      this.elements.screenOverlay.style.display = "none";
+      document.body.appendChild(this.elements.screenOverlay);
+    }
   }
 
   setupEventListeners() {
-    // Botões de seleção de personagens
+    // Listeners existentes...
     document.querySelectorAll(".character-select-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const player = parseInt(e.currentTarget.dataset.player);
@@ -79,7 +918,6 @@ class QuantumBattleSystem {
       });
     });
 
-    // Botão iniciar batalha
     if (this.elements.startBattleBtn) {
       this.elements.startBattleBtn.addEventListener("click", () => {
         this.startBattle();
@@ -87,7 +925,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão resetar batalha
     if (this.elements.resetBattleBtn) {
       this.elements.resetBattleBtn.addEventListener("click", () => {
         this.resetBattle();
@@ -95,7 +932,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão fechar seletor
     if (this.elements.selectorClose) {
       this.elements.selectorClose.addEventListener("click", () => {
         this.closeCharacterSelector();
@@ -103,7 +939,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão voltar à galeria
     if (this.elements.backToGalleryFromBattle) {
       this.elements.backToGalleryFromBattle.addEventListener("click", () => {
         this.gallery.showGalleryPage();
@@ -111,7 +946,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão acessar batalha
     if (this.elements.viewBattleBtn) {
       this.elements.viewBattleBtn.addEventListener("click", () => {
         this.showBattlePage();
@@ -119,7 +953,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão toggle batalha
     if (this.elements.battleToggle) {
       this.elements.battleToggle.addEventListener("click", () => {
         this.showBattlePage();
@@ -127,7 +960,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão pular animação
     if (this.elements.skipAnimationBtn) {
       this.elements.skipAnimationBtn.addEventListener("click", () => {
         this.skipAnimation();
@@ -135,7 +967,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão fechar modal de resultados
     if (this.elements.resultModalClose) {
       this.elements.resultModalClose.addEventListener("click", () => {
         this.closeResultModal();
@@ -143,7 +974,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão revanche
     if (this.elements.resultModalRematch) {
       this.elements.resultModalRematch.addEventListener("click", () => {
         this.rematch();
@@ -151,7 +981,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão limpar histórico - CORREÇÃO: Limpar imediatamente com confirmação
     if (this.elements.clearHistoryBtn) {
       this.elements.clearHistoryBtn.addEventListener("click", () => {
         this.clearHistoryWithConfirmation();
@@ -159,7 +988,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Botão fechar modal de detalhes
     if (this.elements.historyDetailClose) {
       this.elements.historyDetailClose.addEventListener("click", () => {
         this.closeHistoryDetail();
@@ -167,7 +995,6 @@ class QuantumBattleSystem {
       });
     }
 
-    // Fechar modais ao clicar fora
     if (this.elements.characterSelectorModal) {
       this.elements.characterSelectorModal.addEventListener("click", (e) => {
         if (e.target === this.elements.characterSelectorModal) {
@@ -193,10 +1020,1086 @@ class QuantumBattleSystem {
     }
   }
 
+  // SISTEMA DE PARTÍCULAS AVANÇADO
+  initParticleSystem() {
+    this.particleSystems = [];
+    this.frameCount = 0;
+
+    const updateParticles = () => {
+      this.frameCount++;
+
+      for (let i = this.particleSystems.length - 1; i >= 0; i--) {
+        const system = this.particleSystems[i];
+        const now = Date.now();
+
+        if (now - system.startTime > system.duration) {
+          system.container.remove();
+          this.particleSystems.splice(i, 1);
+          continue;
+        }
+
+        system.particles.forEach((particle, pIndex) => {
+          const progress = (now - system.startTime) / system.duration;
+
+          if (progress > particle.life) {
+            particle.element.remove();
+            system.particles.splice(pIndex, 1);
+            return;
+          }
+
+          const x = particle.startX + particle.velocityX * progress * 100;
+          const y =
+            particle.startY +
+            particle.velocityY * progress * 100 +
+            (particle.gravity * Math.pow(progress * 100, 2)) / 2;
+
+          const scale = 1 - progress / particle.life;
+          const opacity = 1 - progress / particle.life;
+
+          particle.element.style.left = `${x}px`;
+          particle.element.style.top = `${y}px`;
+          particle.element.style.transform = `scale(${scale}) rotate(${progress * 360}deg)`;
+          particle.element.style.opacity = opacity;
+        });
+
+        if (system.particles.length === 0) {
+          system.container.remove();
+          this.particleSystems.splice(i, 1);
+        }
+      }
+
+      if (this.particleSystems.length > 0 || this.animationActive) {
+        requestAnimationFrame(updateParticles);
+      }
+    };
+
+    // Iniciar loop de partículas quando necessário
+    this.updateParticles = updateParticles;
+  }
+
+  createParticleSystem(type, x, y, options = {}) {
+    const container = this.elements.battleAnimationContainer;
+    const particleContainer = document.createElement("div");
+    particleContainer.style.position = "absolute";
+    particleContainer.style.left = "0";
+    particleContainer.style.top = "0";
+    particleContainer.style.width = "100%";
+    particleContainer.style.height = "100%";
+    particleContainer.style.pointerEvents = "none";
+    particleContainer.style.zIndex = "800";
+
+    container.appendChild(particleContainer);
+
+    const system = {
+      container: particleContainer,
+      particles: [],
+      startTime: Date.now(),
+      duration: options.duration || 2000,
+    };
+
+    const particleCount = options.count || 30;
+    const colors = {
+      damage: ["#ff4444", "#ff0000", "#ff8888"],
+      heal: ["#00ff88", "#00cc66", "#66ffaa"],
+      energy: ["#42dcff", "#00aaff", "#88eeff"],
+      fire: ["#ff6600", "#ff3300", "#ff9900"],
+      ice: ["#66ccff", "#00aaff", "#aaddff"],
+      lightning: ["#ffff00", "#ffcc00", "#ffff88"],
+    };
+
+    const typeColors = colors[type] || colors.damage;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement("div");
+      particle.className = `particle particle-${type}`;
+
+      const size = Math.random() * 8 + 4;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.position = "absolute";
+      particle.style.borderRadius = type === "lightning" ? "2px" : "50%";
+      particle.style.backgroundColor =
+        typeColors[Math.floor(Math.random() * typeColors.length)];
+      particle.style.boxShadow = `0 0 ${size / 2}px currentColor`;
+
+      const life = Math.random() * 0.8 + 0.2;
+      const velocityX = (Math.random() - 0.5) * 10;
+      const velocityY = (Math.random() - 0.5) * 10 - 5;
+      const gravity = Math.random() * 0.05 + 0.02;
+
+      system.particles.push({
+        element: particle,
+        startX: x,
+        startY: y,
+        velocityX,
+        velocityY,
+        gravity,
+        life,
+      });
+
+      particleContainer.appendChild(particle);
+    }
+
+    this.particleSystems.push(system);
+
+    if (this.particleSystems.length === 1) {
+      this.updateParticles();
+    }
+
+    return system;
+  }
+
+  // NOVOS EFEITOS VISUAIS
+  createBattleEffect(type, x, y, options = {}) {
+    const container = this.elements.battleAnimationContainer;
+    const effect = document.createElement("div");
+
+    switch (type) {
+      case "ripple":
+        effect.className = "ripple";
+        effect.style.left = `${x - 10}px`;
+        effect.style.top = `${y - 10}px`;
+        break;
+
+      case "swordSlash":
+        effect.className = "sword-slash";
+        effect.style.left = `${x}px`;
+        effect.style.top = `${y}px`;
+        effect.style.transform = `rotate(${options.angle || -45}deg)`;
+        break;
+
+      case "energyBlast":
+        effect.className = "energy-blast";
+        effect.style.left = `${x - 40}px`;
+        effect.style.top = `${y - 40}px`;
+        break;
+
+      case "shieldBlock":
+        effect.className = "shield-block";
+        effect.style.left = `${x - 60}px`;
+        effect.style.top = `${y - 60}px`;
+        break;
+
+      case "healingPulse":
+        effect.className = "healing-pulse";
+        effect.style.left = `${x - 50}px`;
+        effect.style.top = `${y - 50}px`;
+        break;
+
+      case "lightningStrike":
+        effect.className = "lightning-strike";
+        effect.style.left = `${x - 4}px`;
+        effect.style.top = `${y}px`;
+        effect.style.transform = `rotate(${options.angle || 0}deg)`;
+        break;
+
+      case "fireBurn":
+        effect.className = "fire-burn";
+        effect.style.left = `${x - 50}px`;
+        effect.style.top = `${y - 50}px`;
+        break;
+
+      case "iceFreeze":
+        effect.className = "ice-freeze";
+        effect.style.left = `${x - 60}px`;
+        effect.style.top = `${y - 60}px`;
+        break;
+
+      case "poisonCloud":
+        effect.className = "poison-cloud";
+        effect.style.left = `${x - 75}px`;
+        effect.style.top = `${y - 75}px`;
+        break;
+
+      case "earthShatter":
+        effect.className = "earth-shatter";
+        effect.style.left = `${x - 60}px`;
+        effect.style.top = `${y - 60}px`;
+        break;
+
+      case "windGust":
+        effect.className = "wind-gust";
+        effect.style.left = `${x}px`;
+        effect.style.top = `${y - 20}px`;
+        effect.style.transform = `rotate(${options.angle || 0}deg)`;
+        break;
+
+      case "comboRush":
+        effect.className = "combo-rush";
+        effect.style.left = `${x - 75}px`;
+        effect.style.top = `${y - 75}px`;
+        break;
+    }
+
+    container.appendChild(effect);
+    this.effects.push(effect);
+
+    const duration =
+      options.duration ||
+      (type === "healingPulse"
+        ? 1000
+        : type === "poisonCloud"
+          ? 2000
+          : type === "comboRush"
+            ? 800
+            : 1000);
+
+    setTimeout(() => {
+      if (effect.parentNode) effect.remove();
+      this.effects = this.effects.filter((e) => e !== effect);
+    }, duration);
+
+    return effect;
+  }
+
+  applyCharacterEffect(characterElement, effectType) {
+    switch (effectType) {
+      case "dimensionalShift":
+        characterElement.classList.add("dimensional-shift");
+        setTimeout(() => {
+          characterElement.classList.remove("dimensional-shift");
+        }, 800);
+        break;
+
+      case "quantumFlash":
+        characterElement.classList.add("quantum-flash");
+        setTimeout(() => {
+          characterElement.classList.remove("quantum-flash");
+        }, 600);
+        break;
+
+      case "characterCharge":
+        characterElement.classList.add("character-charge");
+        setTimeout(() => {
+          characterElement.classList.remove("character-charge");
+        }, 600);
+        break;
+
+      case "characterImpact":
+        characterElement.classList.add("character-impact");
+        setTimeout(() => {
+          characterElement.classList.remove("character-impact");
+        }, 1000);
+        break;
+
+      case "victoryGlow":
+        characterElement.classList.add("victory-glow");
+        break;
+
+      case "defeatShake":
+        characterElement.classList.add("defeat-shake");
+        setTimeout(() => {
+          characterElement.classList.remove("defeat-shake");
+        }, 1500);
+        break;
+
+      case "statusBurn":
+        characterElement.classList.add("status-burn");
+        setTimeout(() => {
+          characterElement.classList.remove("status-burn");
+        }, 3000);
+        break;
+
+      case "statusFreeze":
+        characterElement.classList.add("status-freeze");
+        setTimeout(() => {
+          characterElement.classList.remove("status-freeze");
+        }, 3000);
+        break;
+
+      case "statusPoison":
+        characterElement.classList.add("status-poison");
+        setTimeout(() => {
+          characterElement.classList.remove("status-poison");
+        }, 3000);
+        break;
+
+      case "statusStun":
+        characterElement.classList.add("status-stun");
+        setTimeout(() => {
+          characterElement.classList.remove("status-stun");
+        }, 3000);
+        break;
+    }
+  }
+
+  createScreenEffect(effectType) {
+    switch (effectType) {
+      case "screenShake":
+        this.elements.battleAnimationContainer.classList.add("screen-shake");
+        setTimeout(() => {
+          this.elements.battleAnimationContainer.classList.remove(
+            "screen-shake",
+          );
+        }, 500);
+        break;
+
+      case "screenFlash":
+        this.elements.screenOverlay.style.display = "block";
+        setTimeout(() => {
+          this.elements.screenOverlay.style.display = "none";
+        }, 300);
+        break;
+    }
+  }
+
+  createDamageNumber(
+    x,
+    y,
+    damage,
+    type = "physical",
+    isCritical = false,
+    isHeal = false,
+  ) {
+    const container = this.elements.battleAnimationContainer;
+    const damageNumber = document.createElement("div");
+
+    damageNumber.className = `damage-number ${
+      isCritical ? "damage-critical" : isHeal ? "heal-number" : `damage-${type}`
+    }`;
+    damageNumber.textContent = isHeal ? `+${damage}` : `-${damage}`;
+    damageNumber.style.left = `${x}px`;
+    damageNumber.style.top = `${y}px`;
+
+    if (isCritical) {
+      damageNumber.textContent = `CRÍTICO! ${damage}`;
+    }
+
+    container.appendChild(damageNumber);
+    this.damageNumbers.push(damageNumber);
+
+    setTimeout(() => {
+      if (damageNumber.parentNode) damageNumber.remove();
+      this.damageNumbers = this.damageNumbers.filter((d) => d !== damageNumber);
+    }, 1800);
+
+    return damageNumber;
+  }
+
+  updateComboBar(comboCount) {
+    const comboBar = this.elements.comboBar;
+    const comboFill = comboBar.querySelector(".combo-fill");
+    const comboText = comboBar.querySelector(".combo-text");
+
+    if (comboCount > 1) {
+      comboBar.style.display = "block";
+      const fillPercentage = Math.min(100, comboCount * 10);
+      comboFill.style.width = `${fillPercentage}%`;
+      comboText.textContent = `COMBO: ${comboCount}x`;
+
+      if (comboCount >= 5) {
+        comboBar.style.borderColor = "#ff3300";
+        comboFill.style.background =
+          "linear-gradient(90deg, #ff0000, #ff6600, #ffcc00)";
+      } else if (comboCount >= 3) {
+        comboBar.style.borderColor = "#ff9900";
+        comboFill.style.background =
+          "linear-gradient(90deg, #ff6600, #ff9900, #ffcc00)";
+      }
+    } else {
+      comboBar.style.display = "none";
+    }
+  }
+
+  createStatIndicator(characterElement, text, isBuff = true) {
+    const indicator = document.createElement("div");
+    indicator.className = isBuff ? "stat-buff" : "stat-debuff";
+    indicator.textContent = text;
+
+    characterElement.appendChild(indicator);
+
+    setTimeout(() => {
+      if (indicator.parentNode) indicator.remove();
+    }, 2000);
+  }
+
+  // MÉTODOS DE ANIMAÇÃO DE BATALHA MELHORADOS
+  async startBattleAnimationWithRealResult(result) {
+    return new Promise((resolve) => {
+      const char1 =
+        result.winner.character.id === this.selectedCharacters.player1.id
+          ? result.winner
+          : result.loser;
+      const char2 =
+        result.winner.character.id === this.selectedCharacters.player2.id
+          ? result.winner
+          : result.loser;
+
+      const isWinnerPlayer1 =
+        result.winner.character.id === this.selectedCharacters.player1.id;
+      const winnerHealth = result.winner.currentHealth;
+      const loserHealth = result.loser.currentHealth;
+      const winnerTotalHealth = result.winner.health;
+      const loserTotalHealth = result.loser.health;
+
+      // Carregar imagens
+      const img1Src = this.gallery.cache.imageCache.has(
+        this.gallery.cache.normalizePath(char1.character.image),
+      )
+        ? this.gallery.cache.imageCache.get(
+            this.gallery.cache.normalizePath(char1.character.image),
+          ).src
+        : char1.character.image;
+
+      const img2Src = this.gallery.cache.imageCache.has(
+        this.gallery.cache.normalizePath(char2.character.image),
+      )
+        ? this.gallery.cache.imageCache.get(
+            this.gallery.cache.normalizePath(char2.character.image),
+          ).src
+        : char2.character.image;
+
+      this.elements.animationImg1.src = img1Src;
+      this.elements.animationImg2.src = img2Src;
+
+      // Inicializar barras de HP
+      this.updateHpBar(this.elements.hpBar1, this.elements.hpText1, 100);
+      this.updateHpBar(this.elements.hpBar2, this.elements.hpText2, 100);
+
+      // Efeito de entrada
+      this.applyCharacterEffect(
+        this.elements.animationChar1,
+        "dimensionalShift",
+      );
+      this.applyCharacterEffect(
+        this.elements.animationChar2,
+        "dimensionalShift",
+      );
+
+      // Efeito de tela
+      this.createScreenEffect("screenFlash");
+
+      this.elements.battleAnimationContainer.classList.add("active");
+      document.body.style.overflow = "hidden";
+
+      let currentStep = 0;
+      const totalSteps = 30;
+      let comboCount = 0;
+      let lastAttackStep = 0;
+
+      const winnerFinalHealthPercent = (winnerHealth / winnerTotalHealth) * 100;
+      const loserFinalHealthPercent = (loserHealth / loserTotalHealth) * 100;
+
+      const animateStep = () => {
+        if (!this.animationActive) {
+          this.endAnimation();
+          resolve();
+          return;
+        }
+
+        currentStep++;
+        const progress = (currentStep / totalSteps) * 100;
+        this.elements.animationProgressBar.style.width = `${progress}%`;
+
+        // Textos dinâmicos
+        const texts = [
+          "⚡ INICIALIZANDO SISTEMA QUÂNTICO...",
+          "🌀 SINCRONIZANDO DIMENSÕES...",
+          "💫 ESTABILIZANDO CAMPO DE BATALHA...",
+          "🔥 CARREGANDO PODERES...",
+          "⚔️ BATALHA QUÂNTICA INICIADA!",
+          "🗡️ ATAQUE RÁPIDO!",
+          "🛡️ DEFESA ATIVADA!",
+          "⚡ RELÂMPAGO VELOZ!",
+          "🔥 CHAMAS ARDENTES!",
+          "❄️ CONGELAMENTO!",
+          "💨 VENTANIA CORTANTE!",
+          "⚡ CONTRA-ATAQUE!",
+          "💥 EXPLOSÃO DE ENERGIA!",
+          "🌀 DISTORÇÃO TEMPORAL!",
+          "⚡ ATAQUE EM CADEIA!",
+          "🔥 INFERNO EM CHAMAS!",
+          "❄️ GEADA MORTAL!",
+          "💨 TORNADO DESTRUIDOR!",
+          "⚡ PODER SUPREMO!",
+          "💥 COLISÃO FINAL!",
+          "🔥 ULTRA EXPLOSÃO!",
+          "❄️ CONGELAMENTO ABSOLUTO!",
+          "💨 VENTO DA MORTE!",
+          "⚡ RAIOS DA PERDIÇÃO!",
+          "💥 MEGA EXPLOSÃO!",
+          "🌟 PODER MÁXIMO!",
+          "💫 ULTRA EVOLUÇÃO!",
+          "⚡ ATAQUE DEFINITIVO!",
+          "💥 COLAPSO FINAL!",
+          "🏁 BATALHA CONCLUÍDA!",
+        ];
+
+        if (currentStep <= totalSteps) {
+          this.elements.animationText.textContent = texts[currentStep - 1];
+
+          // Efeitos de batalha
+          if (currentStep >= 5 && currentStep <= 28) {
+            const isPlayer1Attack = currentStep % 2 === 1;
+            const attacker = isPlayer1Attack
+              ? this.elements.animationChar1
+              : this.elements.animationChar2;
+            const defender = isPlayer1Attack
+              ? this.elements.animationChar2
+              : this.elements.animationChar1;
+
+            // Efeito de ataque
+            this.createAttackAnimation(
+              attacker,
+              defender,
+              currentStep,
+              isPlayer1Attack,
+            );
+
+            // Contador de combo
+            if (currentStep - lastAttackStep === 1) {
+              comboCount++;
+              this.updateComboBar(comboCount);
+
+              if (comboCount >= 3) {
+                const rect = defender.getBoundingClientRect();
+                const containerRect =
+                  this.elements.battleAnimationContainer.getBoundingClientRect();
+                const x = rect.left + rect.width / 2 - containerRect.left;
+                const y = rect.top + rect.height / 2 - containerRect.top;
+                this.createBattleEffect("comboRush", x, y);
+              }
+            } else {
+              comboCount = 0;
+              this.updateComboBar(0);
+            }
+            lastAttackStep = currentStep;
+
+            // Aplicar dano progressivo
+            if (currentStep >= 6 && currentStep <= 25) {
+              const stepProgress = (currentStep - 5) / 20;
+              const damageProgress = Math.pow(stepProgress, 1.5);
+
+              const winnerCurrentHP = Math.max(
+                winnerFinalHealthPercent,
+                100 - (100 - winnerFinalHealthPercent) * damageProgress,
+              );
+              const loserCurrentHP = Math.max(
+                loserFinalHealthPercent,
+                100 - (100 - loserFinalHealthPercent) * damageProgress,
+              );
+
+              if (isWinnerPlayer1) {
+                this.updateHpBar(
+                  this.elements.hpBar1,
+                  this.elements.hpText1,
+                  winnerCurrentHP,
+                );
+                this.updateHpBar(
+                  this.elements.hpBar2,
+                  this.elements.hpText2,
+                  loserCurrentHP,
+                );
+              } else {
+                this.updateHpBar(
+                  this.elements.hpBar1,
+                  this.elements.hpText1,
+                  loserCurrentHP,
+                );
+                this.updateHpBar(
+                  this.elements.hpBar2,
+                  this.elements.hpText2,
+                  winnerCurrentHP,
+                );
+              }
+
+              // Criar números de dano
+              if (currentStep % 2 === 0) {
+                this.createDamageEffects(
+                  defender,
+                  currentStep,
+                  isPlayer1Attack,
+                );
+              }
+            }
+
+            // Efeitos especiais
+            if (
+              currentStep === 10 ||
+              currentStep === 15 ||
+              currentStep === 20 ||
+              currentStep === 25
+            ) {
+              this.createSpecialAttack(currentStep, isPlayer1Attack);
+            }
+          }
+
+          // Fim da batalha
+          if (currentStep === totalSteps) {
+            // Valores finais exatos
+            if (isWinnerPlayer1) {
+              this.updateHpBar(
+                this.elements.hpBar1,
+                this.elements.hpText1,
+                winnerFinalHealthPercent,
+              );
+              this.updateHpBar(
+                this.elements.hpBar2,
+                this.elements.hpText2,
+                loserFinalHealthPercent,
+              );
+            } else {
+              this.updateHpBar(
+                this.elements.hpBar1,
+                this.elements.hpText1,
+                loserFinalHealthPercent,
+              );
+              this.updateHpBar(
+                this.elements.hpBar2,
+                this.elements.hpText2,
+                winnerFinalHealthPercent,
+              );
+            }
+
+            // Efeito de vitória
+            this.createVictorySequence(isWinnerPlayer1, result);
+          }
+
+          // Continuar animação
+          const stepDuration =
+            currentStep >= totalSteps - 3
+              ? 600
+              : currentStep >= 25
+                ? 400
+                : currentStep >= 20
+                  ? 350
+                  : currentStep >= 15
+                    ? 300
+                    : currentStep >= 10
+                      ? 250
+                      : 200;
+
+          setTimeout(animateStep, stepDuration);
+        } else {
+          this.endAnimation();
+          resolve();
+        }
+      };
+
+      // Iniciar animação
+      setTimeout(() => {
+        animateStep();
+      }, 1000);
+    });
+  }
+
+  createAttackAnimation(attacker, defender, step, isPlayer1Attack) {
+    // Efeito no atacante
+    this.applyCharacterEffect(attacker, "characterCharge");
+
+    // Efeito no defensor
+    setTimeout(() => {
+      this.applyCharacterEffect(defender, "characterImpact");
+    }, 300);
+
+    // Posições para efeitos
+    const attackerRect = attacker.getBoundingClientRect();
+    const defenderRect = defender.getBoundingClientRect();
+    const containerRect =
+      this.elements.battleAnimationContainer.getBoundingClientRect();
+
+    const startX =
+      attackerRect.left + attackerRect.width / 2 - containerRect.left;
+    const startY =
+      attackerRect.top + attackerRect.height / 2 - containerRect.top;
+    const endX =
+      defenderRect.left + defenderRect.width / 2 - containerRect.left;
+    const endY = defenderRect.top + defenderRect.height / 2 - containerRect.top;
+
+    // Tipos de ataque baseados no step
+    const attackTypes = [
+      "swordSlash",
+      "energyBlast",
+      "fireBurn",
+      "iceFreeze",
+      "lightningStrike",
+      "windGust",
+      "earthShatter",
+    ];
+    const attackType = attackTypes[step % attackTypes.length];
+
+    // Criar efeito visual
+    switch (attackType) {
+      case "swordSlash":
+        this.createBattleEffect("swordSlash", startX, startY, {
+          angle:
+            (Math.atan2(endY - startY, endX - startX) * 180) / Math.PI - 45,
+        });
+        break;
+
+      case "energyBlast":
+        this.createBattleEffect("energyBlast", endX, endY);
+        this.createParticleSystem("energy", endX, endY, { count: 20 });
+        break;
+
+      case "fireBurn":
+        this.createBattleEffect("fireBurn", endX, endY);
+        this.createParticleSystem("fire", endX, endY, { count: 25 });
+        break;
+
+      case "iceFreeze":
+        this.createBattleEffect("iceFreeze", endX, endY);
+        this.createParticleSystem("ice", endX, endY, { count: 20 });
+        break;
+
+      case "lightningStrike":
+        this.createBattleEffect("lightningStrike", endX, endY);
+        this.createParticleSystem("lightning", endX, endY, { count: 15 });
+        break;
+
+      case "windGust":
+        this.createBattleEffect("windGust", startX, startY, {
+          angle: (Math.atan2(endY - startY, endX - startX) * 180) / Math.PI,
+        });
+        break;
+
+      case "earthShatter":
+        this.createBattleEffect("earthShatter", endX, endY);
+        break;
+    }
+
+    // Efeito de ripple no impacto
+    setTimeout(() => {
+      this.createBattleEffect("ripple", endX, endY);
+    }, 300);
+
+    // Chance de efeito de tela
+    if (step % 7 === 0) {
+      this.createScreenEffect("screenShake");
+    }
+
+    // Chance de crítico (15%)
+    const isCritical = Math.random() < 0.15;
+    if (isCritical) {
+      this.createScreenEffect("screenFlash");
+      this.applyCharacterEffect(defender, "quantumFlash");
+    }
+
+    // Chance de status effect (10%)
+    if (Math.random() < 0.1) {
+      const statusEffects = [
+        "statusBurn",
+        "statusFreeze",
+        "statusPoison",
+        "statusStun",
+      ];
+      const statusEffect =
+        statusEffects[Math.floor(Math.random() * statusEffects.length)];
+      this.applyCharacterEffect(defender, statusEffect);
+
+      // Indicador de status
+      const statusTexts = {
+        statusBurn: "QUEIMADO!",
+        statusFreeze: "CONGELADO!",
+        statusPoison: "ENVENENADO!",
+        statusStun: "ATORDOADO!",
+      };
+      this.createStatIndicator(defender, statusTexts[statusEffect], false);
+    }
+
+    // Chance de buff (5%)
+    if (Math.random() < 0.05) {
+      this.applyCharacterEffect(attacker, "quantumFlash");
+      this.createStatIndicator(attacker, "PODER AUMENTADO!", true);
+    }
+  }
+
+  createDamageEffects(defender, step, isPlayer1Attack) {
+    const defenderRect = defender.getBoundingClientRect();
+    const containerRect =
+      this.elements.battleAnimationContainer.getBoundingClientRect();
+
+    const x = defenderRect.left + defenderRect.width / 2 - containerRect.left;
+    const y = defenderRect.top - containerRect.top;
+
+    const damageAmount = Math.floor(Math.random() * 35) + 20;
+    const isCritical = Math.random() < 0.2;
+    const damageType = Math.random() < 0.5 ? "physical" : "magical";
+
+    // Número de dano
+    this.createDamageNumber(x, y, damageAmount, damageType, isCritical);
+
+    // Sistema de partículas
+    if (isCritical) {
+      this.createParticleSystem("energy", x, y, { count: 40, duration: 2500 });
+    } else {
+      this.createParticleSystem("damage", x, y, { count: 25, duration: 2000 });
+    }
+
+    // Efeito de impacto
+    if (isCritical) {
+      this.createBattleEffect("energyBlast", x, y);
+      this.createBattleEffect("ripple", x, y);
+    }
+  }
+
+  createSpecialAttack(step, isPlayer1Attack) {
+    const attacker = isPlayer1Attack
+      ? this.elements.animationChar1
+      : this.elements.animationChar2;
+    const defender = isPlayer1Attack
+      ? this.elements.animationChar2
+      : this.elements.animationChar1;
+
+    const attackerRect = attacker.getBoundingClientRect();
+    const defenderRect = defender.getBoundingClientRect();
+    const containerRect =
+      this.elements.battleAnimationContainer.getBoundingClientRect();
+
+    const startX =
+      attackerRect.left + attackerRect.width / 2 - containerRect.left;
+    const startY =
+      attackerRect.top + attackerRect.height / 2 - containerRect.top;
+    const endX =
+      defenderRect.left + defenderRect.width / 2 - containerRect.left;
+    const endY = defenderRect.top + defenderRect.height / 2 - containerRect.top;
+
+    switch (step) {
+      case 10: // Ataque especial 1
+        this.applyCharacterEffect(attacker, "dimensionalShift");
+        this.createBattleEffect("energyBlast", endX, endY);
+        this.createBattleEffect("ripple", endX, endY);
+        this.createParticleSystem("energy", endX, endY, {
+          count: 50,
+          duration: 3000,
+        });
+        this.createScreenEffect("screenFlash");
+        break;
+
+      case 15: // Ataque especial 2
+        this.applyCharacterEffect(attacker, "quantumFlash");
+        for (let i = 0; i < 3; i++) {
+          setTimeout(() => {
+            this.createBattleEffect(
+              "lightningStrike",
+              endX + (Math.random() * 100 - 50),
+              endY + (Math.random() * 100 - 50),
+            );
+          }, i * 200);
+        }
+        this.createParticleSystem("lightning", endX, endY, {
+          count: 40,
+          duration: 2500,
+        });
+        break;
+
+      case 20: // Ataque especial 3
+        this.applyCharacterEffect(attacker, "characterCharge");
+        this.createBattleEffect("fireBurn", endX, endY);
+        this.createBattleEffect("iceFreeze", endX, endY);
+        this.createParticleSystem("fire", endX, endY, {
+          count: 60,
+          duration: 3500,
+        });
+        this.createParticleSystem("ice", endX, endY, {
+          count: 40,
+          duration: 3000,
+        });
+        this.createScreenEffect("screenShake");
+        break;
+
+      case 25: // Ataque supremo
+        this.applyCharacterEffect(attacker, "dimensionalShift");
+        this.applyCharacterEffect(defender, "characterImpact");
+
+        // Múltiplos efeitos
+        const effects = [
+          "fireBurn",
+          "iceFreeze",
+          "lightningStrike",
+          "earthShatter",
+          "windGust",
+        ];
+        effects.forEach((effect, i) => {
+          setTimeout(() => {
+            this.createBattleEffect(effect, endX, endY);
+          }, i * 100);
+        });
+
+        // Sistema de partículas massivo
+        this.createParticleSystem("energy", endX, endY, {
+          count: 100,
+          duration: 4000,
+        });
+        this.createParticleSystem("fire", endX, endY, {
+          count: 80,
+          duration: 3500,
+        });
+        this.createParticleSystem("ice", endX, endY, {
+          count: 60,
+          duration: 3000,
+        });
+
+        this.createScreenEffect("screenShake");
+        this.createScreenEffect("screenFlash");
+        break;
+    }
+
+    // Indicador de ataque especial
+    this.createStatIndicator(attacker, "ATAQUE ESPECIAL!", true);
+  }
+
+  createVictorySequence(isWinnerPlayer1, result) {
+    const winnerElement = isWinnerPlayer1
+      ? this.elements.animationChar1
+      : this.elements.animationChar2;
+    const loserElement = isWinnerPlayer1
+      ? this.elements.animationChar2
+      : this.elements.animationChar1;
+
+    // Efeitos no vencedor
+    this.applyCharacterEffect(winnerElement, "victoryGlow");
+    this.applyCharacterEffect(winnerElement, "quantumFlash");
+
+    // Efeitos no perdedor
+    this.applyCharacterEffect(loserElement, "defeatShake");
+
+    // Efeitos de vitória
+    const winnerRect = winnerElement.getBoundingClientRect();
+    const containerRect =
+      this.elements.battleAnimationContainer.getBoundingClientRect();
+    const centerX = winnerRect.left + winnerRect.width / 2 - containerRect.left;
+    const centerY = winnerRect.top + winnerRect.height / 2 - containerRect.top;
+
+    // Sistema de partículas de vitória
+    this.createParticleSystem("energy", centerX, centerY, {
+      count: 80,
+      duration: 5000,
+    });
+    this.createParticleSystem("heal", centerX, centerY, {
+      count: 60,
+      duration: 4000,
+    });
+
+    // Efeitos visuais
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        this.createBattleEffect("ripple", centerX, centerY);
+        this.createBattleEffect("healingPulse", centerX, centerY);
+      }, i * 300);
+    }
+
+    // Texto de vitória
+    const victoryText = document.createElement("div");
+    victoryText.className = "damage-number damage-critical";
+    victoryText.textContent = result.underdogWin
+      ? "🎲 VITÓRIA SURPRESA!"
+      : "🏆 VITÓRIA!";
+    victoryText.style.left = "50%";
+    victoryText.style.top = "15%";
+    victoryText.style.transform = "translateX(-50%)";
+    victoryText.style.fontSize = "48px";
+    victoryText.style.zIndex = "2000";
+
+    this.elements.battleAnimationContainer.appendChild(victoryText);
+
+    setTimeout(() => {
+      if (victoryText.parentNode) victoryText.remove();
+    }, 3000);
+  }
+
+  updateHpBar(barElement, textElement, newPercentage) {
+    const currentWidth = parseFloat(barElement.style.width) || 100;
+    const difference = currentWidth - newPercentage;
+
+    if (difference > 20) {
+      barElement.classList.add("hp-bar-pulse");
+      setTimeout(() => {
+        barElement.classList.remove("hp-bar-pulse");
+      }, 1000);
+    }
+
+    barElement.style.width = `${Math.max(0, newPercentage)}%`;
+    textElement.textContent = `${Math.max(0, Math.round(newPercentage))}%`;
+
+    if (difference > 0) {
+      barElement.parentNode.classList.add("damage-shake");
+      setTimeout(() => {
+        barElement.parentNode.classList.remove("damage-shake");
+      }, 500);
+    }
+  }
+
+  skipAnimation() {
+    this.animationActive = false;
+
+    // Efeito de transição
+    this.createScreenEffect("screenFlash");
+
+    // Mostrar resultado imediatamente
+    if (this.battleResult) {
+      this.createVictorySequence(
+        this.battleResult.winner.character.id ===
+          this.selectedCharacters.player1.id,
+        this.battleResult,
+      );
+
+      setTimeout(() => {
+        this.endAnimation();
+      }, 1000);
+    } else {
+      this.endAnimation();
+    }
+  }
+
+  endAnimation() {
+    // Limpar todas as animações
+    this.damageNumbers.forEach((number) => {
+      if (number.parentNode) number.remove();
+    });
+    this.damageNumbers = [];
+
+    this.effects.forEach((effect) => {
+      if (effect.parentNode) effect.remove();
+    });
+    this.effects = [];
+
+    // Limpar sistemas de partículas
+    this.particleSystems.forEach((system) => {
+      system.container.remove();
+    });
+    this.particleSystems = [];
+
+    // Remover classes de animação
+    [this.elements.animationChar1, this.elements.animationChar2].forEach(
+      (char) => {
+        if (char) {
+          char.classList.remove(
+            "dimensional-shift",
+            "quantum-flash",
+            "character-charge",
+            "character-impact",
+            "victory-glow",
+            "defeat-shake",
+            "status-burn",
+            "status-freeze",
+            "status-poison",
+            "status-stun",
+          );
+          char.style.transform = "";
+          char.style.filter = "";
+          char.style.animation = "";
+        }
+      },
+    );
+
+    // Limpar efeitos de tela
+    this.elements.battleAnimationContainer.classList.remove(
+      "active",
+      "screen-shake",
+    );
+    this.elements.screenOverlay.style.display = "none";
+
+    // Esconder barra de combo
+    this.elements.comboBar.style.display = "none";
+
+    document.body.style.overflow = "";
+  }
+
+  // Resto dos métodos mantidos...
   openCharacterSelector(player) {
     this.currentPlayer = player;
     this.elements.selectorTitle.textContent = `SELECIONE PERSONAGEM ${player}`;
-
     this.renderCharacterSelector();
     this.elements.characterSelectorModal.classList.add("show");
     document.body.style.overflow = "hidden";
@@ -223,7 +2126,6 @@ class QuantumBattleSystem {
         (this.currentPlayer === 2 &&
           this.selectedCharacters.player2?.id === character.id);
 
-      // Calcular saúde baseada nas estatísticas
       const health = this.calculateHealth(character.stats);
 
       const characterEl = document.createElement("div");
@@ -269,7 +2171,6 @@ class QuantumBattleSystem {
   }
 
   calculateHealth(stats) {
-    // Fórmula melhorada para calcular saúde
     const baseHealth = 50;
     const strengthBonus = stats.forca * 2;
     const defenseBonus = stats.defesa * 1.5;
@@ -285,7 +2186,6 @@ class QuantumBattleSystem {
       energyBonus +
       skillBonus;
 
-    // Normalizar para máximo 100%
     return Math.min(100, Math.max(20, totalHealth));
   }
 
@@ -298,7 +2198,6 @@ class QuantumBattleSystem {
       this.renderCharacterDisplay(character, 2);
     }
 
-    // Habilitar botão de iniciar batalha se ambos estiverem selecionados
     if (this.selectedCharacters.player1 && this.selectedCharacters.player2) {
       this.elements.startBattleBtn.disabled = false;
       this.elements.startBattleBtn.innerHTML = `
@@ -308,7 +2207,7 @@ class QuantumBattleSystem {
     }
   }
 
-  renderCharacterDisplay(character, player) {
+  renderCharacterDisplay(character, player, healthPercent = null) {
     const display =
       player === 1
         ? this.elements.player1Display
@@ -319,8 +2218,10 @@ class QuantumBattleSystem {
     const cachedImg = this.gallery.cache.imageCache.get(normalizedPath);
     const imgSrc = cachedImg ? cachedImg.src : character.image;
 
-    // Calcular saúde
-    const health = this.calculateHealth(character.stats);
+    const health =
+      healthPercent !== null
+        ? healthPercent
+        : this.calculateHealth(character.stats);
 
     display.innerHTML = `
             <img src="${imgSrc}" 
@@ -334,12 +2235,12 @@ class QuantumBattleSystem {
             
             <!-- Barra de Saúde -->
             <div class="character-health-container">
-                <div class="health-bar player-${player}" style="width: ${health}%"></div>
-                <div class="health-text">SAÚDE: ${Math.round(health)}%</div>
+                <div class="health-bar player-${player}" style="width: ${Math.max(0, health)}%"></div>
+                <div class="health-text">SAÚDE: ${Math.max(0, Math.round(health))}%</div>
                 <div class="health-stats">
                     <div class="health-stat">
                         <i class="fas fa-heart"></i>
-                        <span>${Math.round(health)}%</span>
+                        <span>${Math.max(0, Math.round(health))}%</span>
                     </div>
                     <div class="health-stat">
                         <i class="fas fa-fist-raised"></i>
@@ -377,6 +2278,42 @@ class QuantumBattleSystem {
         `;
   }
 
+  updateCharacterHealthAfterBattle(result) {
+    const winnerHealthPercent = Math.round(
+      (result.winner.currentHealth / result.winner.health) * 100,
+    );
+    const loserHealthPercent = Math.round(
+      (result.loser.currentHealth / result.loser.health) * 100,
+    );
+
+    const isWinnerPlayer1 =
+      result.winner.character.id === this.selectedCharacters.player1.id;
+
+    if (isWinnerPlayer1) {
+      this.renderCharacterDisplay(
+        this.selectedCharacters.player1,
+        1,
+        Math.max(0, winnerHealthPercent),
+      );
+      this.renderCharacterDisplay(
+        this.selectedCharacters.player2,
+        2,
+        Math.max(0, loserHealthPercent),
+      );
+    } else {
+      this.renderCharacterDisplay(
+        this.selectedCharacters.player1,
+        1,
+        Math.max(0, loserHealthPercent),
+      );
+      this.renderCharacterDisplay(
+        this.selectedCharacters.player2,
+        2,
+        Math.max(0, winnerHealthPercent),
+      );
+    }
+  }
+
   async startBattle() {
     if (!this.selectedCharacters.player1 || !this.selectedCharacters.player2) {
       this.gallery.showToast("❌ SELECIONE AMBOS OS PERSONAGENS!");
@@ -390,7 +2327,6 @@ class QuantumBattleSystem {
       return;
     }
 
-    // Desativar botão durante animação
     this.elements.startBattleBtn.disabled = true;
     this.elements.startBattleBtn.innerHTML = `
             <i class="fas fa-spinner fa-spin"></i>
@@ -398,9 +2334,8 @@ class QuantumBattleSystem {
         `;
 
     this.animationActive = true;
-    this.battleResult = null; // Resetar resultado anterior
+    this.battleResult = null;
 
-    // Calcular estatísticas dos personagens ANTES da animação
     const stats1 = this.calculateCharacterStats(
       this.selectedCharacters.player1,
     );
@@ -408,19 +2343,16 @@ class QuantumBattleSystem {
       this.selectedCharacters.player2,
     );
 
-    // Simular batalha ANTES da animação
     this.battleResult = this.simulateBattle(stats1, stats2);
 
-    // Iniciar animação COM base no resultado real
     await this.startBattleAnimationWithRealResult(this.battleResult);
 
-    // Salvar no histórico
+    this.updateCharacterHealthAfterBattle(this.battleResult);
+
     this.saveToHistory(this.battleResult);
 
-    // Mostrar resultados no modal
     this.showResultModalWithCharacterInfo(this.battleResult, stats1, stats2);
 
-    // Reativar botão
     this.elements.startBattleBtn.disabled = false;
     this.elements.startBattleBtn.innerHTML = `
             <i class="fas fa-play"></i>
@@ -428,328 +2360,12 @@ class QuantumBattleSystem {
         `;
     this.animationActive = false;
 
-    // Tocar som de vitória
     this.gallery.audio.play("favorite");
-  }
-
-  // NOVA FUNÇÃO: Animar com base no resultado real
-  async startBattleAnimationWithRealResult(result) {
-    return new Promise((resolve) => {
-      // Preparar animação
-      const char1 =
-        result.winner.character.id === this.selectedCharacters.player1.id
-          ? result.winner
-          : result.loser;
-      const char2 =
-        result.winner.character.id === this.selectedCharacters.player2.id
-          ? result.winner
-          : result.loser;
-
-      // Determinar qual personagem é qual na animação
-      const isWinnerPlayer1 =
-        result.winner.character.id === this.selectedCharacters.player1.id;
-      const winnerHealth = result.winner.currentHealth;
-      const loserHealth = result.loser.currentHealth;
-      const winnerTotalHealth = result.winner.health;
-      const loserTotalHealth = result.loser.health;
-
-      // Carregar imagens na animação
-      const img1Src = this.gallery.cache.imageCache.has(
-        this.gallery.cache.normalizePath(char1.character.image),
-      )
-        ? this.gallery.cache.imageCache.get(
-            this.gallery.cache.normalizePath(char1.character.image),
-          ).src
-        : char1.character.image;
-
-      const img2Src = this.gallery.cache.imageCache.has(
-        this.gallery.cache.normalizePath(char2.character.image),
-      )
-        ? this.gallery.cache.imageCache.get(
-            this.gallery.cache.normalizePath(char2.character.image),
-          ).src
-        : char2.character.image;
-
-      this.elements.animationImg1.src = img1Src;
-      this.elements.animationImg2.src = img2Src;
-
-      // Resetar barras de HP
-      this.elements.hpBar1.style.width = "100%";
-      this.elements.hpBar2.style.width = "100%";
-      this.elements.hpText1.textContent = "100%";
-      this.elements.hpText2.textContent = "100%";
-
-      // Mostrar container de animação
-      this.elements.battleAnimationContainer.classList.add("active");
-      document.body.style.overflow = "hidden";
-
-      let progress = 0;
-      const totalSteps = 12;
-      let currentStep = 0;
-
-      // Calcular dano por step baseado no resultado real
-      const winnerFinalHealthPercent = (winnerHealth / winnerTotalHealth) * 100;
-      const loserFinalHealthPercent = (loserHealth / loserTotalHealth) * 100;
-
-      // Calcular quanto HP perder por step (aproximação)
-      const winnerDamagePerStep = (100 - winnerFinalHealthPercent) / 8; // 8 steps de dano
-      const loserDamagePerStep = (100 - loserFinalHealthPercent) / 8;
-
-      const animateStep = () => {
-        if (!this.animationActive) {
-          this.endAnimation();
-          resolve();
-          return;
-        }
-
-        currentStep++;
-        progress = (currentStep / totalSteps) * 100;
-        this.elements.animationProgressBar.style.width = `${progress}%`;
-
-        // Atualizar texto da animação
-        const texts = [
-          "PREPARANDO BATALHA...",
-          "CARREGANDO ENERGIA...",
-          "CALCULANDO PODER...",
-          "ANALISANDO HABILIDADES...",
-          "INICIANDO COMBATE...",
-          "ATAQUES CRÍTICOS!",
-          "ESQUIVAS EPICAS!",
-          "GOLPES DEFINITIVOS!",
-          "PODER MÁXIMO!",
-          "CONSULTANDO O QUÂNTUM...",
-          "ULTIMATO...",
-          "FINALIZANDO BATALHA...",
-        ];
-
-        if (currentStep <= totalSteps) {
-          this.elements.animationText.textContent = texts[currentStep - 1];
-
-          // Criar efeitos visuais baseados no passo
-          if (currentStep >= 5 && currentStep <= 11) {
-            this.createEnhancedAnimationEffect(currentStep);
-          }
-
-          // Aplicar dano progressivo baseado no resultado REAL
-          if (currentStep >= 6 && currentStep <= 10) {
-            // Calcular HP atual baseado no progresso
-            const stepIndex = currentStep - 5; // 1 a 6
-            const winnerCurrentHP = Math.max(
-              winnerFinalHealthPercent,
-              100 - winnerDamagePerStep * stepIndex,
-            );
-            const loserCurrentHP = Math.max(
-              loserFinalHealthPercent,
-              100 - loserDamagePerStep * stepIndex,
-            );
-
-            // Determinar qual barra é qual personagem
-            if (isWinnerPlayer1) {
-              this.elements.hpBar1.style.width = `${winnerCurrentHP}%`;
-              this.elements.hpBar2.style.width = `${loserCurrentHP}%`;
-              this.elements.hpText1.textContent = `${Math.round(winnerCurrentHP)}%`;
-              this.elements.hpText2.textContent = `${Math.round(loserCurrentHP)}%`;
-            } else {
-              this.elements.hpBar1.style.width = `${loserCurrentHP}%`;
-              this.elements.hpBar2.style.width = `${winnerCurrentHP}%`;
-              this.elements.hpText1.textContent = `${Math.round(loserCurrentHP)}%`;
-              this.elements.hpText2.textContent = `${Math.round(winnerCurrentHP)}%`;
-            }
-
-            // Efeito visual de dano baseado na gravidade
-            const maxDamage = Math.max(winnerDamagePerStep, loserDamagePerStep);
-            if (maxDamage > 10) {
-              this.createCriticalEffect();
-            }
-          }
-
-          // No último step, garantir que as barras mostrem o resultado exato
-          if (currentStep === totalSteps) {
-            if (isWinnerPlayer1) {
-              this.elements.hpBar1.style.width = `${winnerFinalHealthPercent}%`;
-              this.elements.hpBar2.style.width = `${loserFinalHealthPercent}%`;
-              this.elements.hpText1.textContent = `${Math.round(winnerFinalHealthPercent)}%`;
-              this.elements.hpText2.textContent = `${Math.round(loserFinalHealthPercent)}%`;
-            } else {
-              this.elements.hpBar1.style.width = `${loserFinalHealthPercent}%`;
-              this.elements.hpBar2.style.width = `${winnerFinalHealthPercent}%`;
-              this.elements.hpText1.textContent = `${Math.round(loserFinalHealthPercent)}%`;
-              this.elements.hpText2.textContent = `${Math.round(winnerFinalHealthPercent)}%`;
-            }
-          }
-
-          setTimeout(animateStep, 500);
-        } else {
-          this.endAnimation();
-          resolve();
-        }
-      };
-
-      // Iniciar animação
-      setTimeout(animateStep, 800);
-    });
-  }
-
-  // NOVA FUNÇÃO: Criar animações de ataque nas imagens dos personagens
-  createEnhancedAnimationEffect(step) {
-    const effectsContainer = this.elements.animationEffects;
-
-    // Tipos de ataque diferentes
-    const attackTypes = ["fire", "lightning", "quantum"];
-    const attackType = attackTypes[step % 3];
-
-    // Determinar quem ataca (alterna entre os personagens)
-    const isPlayer1Attack = step % 2 === 1;
-    const attacker = isPlayer1Attack
-      ? this.elements.animationChar1
-      : this.elements.animationChar2;
-    const defender = isPlayer1Attack
-      ? this.elements.animationChar2
-      : this.elements.animationChar1;
-
-    // Animar o atacante (move para frente)
-    if (attacker) {
-      attacker.style.transform = "translateX(0)";
-      void attacker.offsetWidth; // Trigger reflow
-      attacker.style.transition = "transform 0.3s ease-out";
-      attacker.style.transform = isPlayer1Attack
-        ? "translateX(50px)"
-        : "translateX(-50px)";
-
-      // Resetar posição
-      setTimeout(() => {
-        attacker.style.transform = "translateX(0)";
-      }, 300);
-    }
-
-    // Animar o defensor (recebe impacto)
-    if (defender) {
-      defender.style.transform = "translateX(0) scale(1)";
-      void defender.offsetWidth;
-      defender.style.transition = "all 0.3s ease-out";
-      defender.style.transform = isPlayer1Attack
-        ? "translateX(-30px) scale(0.95)"
-        : "translateX(30px) scale(0.95)";
-      defender.style.filter = "brightness(1.2)";
-
-      // Resetar
-      setTimeout(() => {
-        defender.style.transform = "translateX(0) scale(1)";
-        defender.style.filter = "brightness(1)";
-      }, 300);
-    }
-
-    // Criar múltiplos efeitos de ataque
-    for (let i = 0; i < 3; i++) {
-      const attackEffect = document.createElement("div");
-      attackEffect.className = `attack-effect ${attackType}`;
-      attackEffect.style.top = `${Math.random() * 70 + 15}%`;
-      attackEffect.style.left = isPlayer1Attack
-        ? `${10 + i * 20}%`
-        : `${70 - i * 20}%`;
-      attackEffect.style.animationDelay = `${i * 0.2}s`;
-      attackEffect.style.animationDuration = `${0.8 + Math.random() * 0.4}s`;
-
-      // Criar efeito de dano
-      const damageEffect = document.createElement("div");
-      damageEffect.className = "damage-effect";
-      damageEffect.style.top = `${Math.random() * 60 + 20}%`;
-      damageEffect.style.left = isPlayer1Attack ? "70%" : "10%";
-      damageEffect.style.animationDelay = `${0.4 + i * 0.1}s`;
-
-      effectsContainer.appendChild(attackEffect);
-      effectsContainer.appendChild(damageEffect);
-
-      // Remover efeitos após animação
-      setTimeout(() => {
-        if (attackEffect.parentNode) {
-          attackEffect.remove();
-        }
-        if (damageEffect.parentNode) {
-          damageEffect.remove();
-        }
-      }, 2000);
-    }
-
-    // Efeito de esquiva ocasional (baseado no resultado real)
-    if (this.battleResult && Math.random() > 0.7) {
-      const dodgeEffect = document.createElement("div");
-      dodgeEffect.className = "dodge-effect";
-      dodgeEffect.style.top = `${Math.random() * 60 + 20}%`;
-      dodgeEffect.style.left = isPlayer1Attack ? "30%" : "60%";
-
-      effectsContainer.appendChild(dodgeEffect);
-      setTimeout(() => {
-        if (dodgeEffect.parentNode) {
-          dodgeEffect.remove();
-        }
-      }, 1000);
-    }
-  }
-
-  createCriticalEffect() {
-    const effectsContainer = this.elements.animationEffects;
-
-    // Flash vermelho para efeito crítico
-    const flash = document.createElement("div");
-    flash.style.position = "absolute";
-    flash.style.top = "0";
-    flash.style.left = "0";
-    flash.style.width = "100%";
-    flash.style.height = "100%";
-    flash.style.background = "rgba(255, 42, 109, 0.3)";
-    flash.style.animation = "criticalFlash 0.3s ease-out";
-
-    effectsContainer.appendChild(flash);
-    setTimeout(() => {
-      if (flash.parentNode) {
-        flash.remove();
-      }
-    }, 300);
-  }
-
-  endAnimation() {
-    this.elements.battleAnimationContainer.classList.remove("active");
-    document.body.style.overflow = "";
-    this.elements.animationEffects.innerHTML = "";
-  }
-
-  skipAnimation() {
-    this.animationActive = false;
-    this.endAnimation();
-
-    // CORREÇÃO: Mesmo pulando a animação, garantir que as barras mostrem o resultado correto
-    if (this.battleResult) {
-      const isWinnerPlayer1 =
-        this.battleResult.winner.character.id ===
-        this.selectedCharacters.player1.id;
-      const winnerFinalHealthPercent =
-        (this.battleResult.winner.currentHealth /
-          this.battleResult.winner.health) *
-        100;
-      const loserFinalHealthPercent =
-        (this.battleResult.loser.currentHealth /
-          this.battleResult.loser.health) *
-        100;
-
-      if (isWinnerPlayer1) {
-        this.elements.hpBar1.style.width = `${winnerFinalHealthPercent}%`;
-        this.elements.hpBar2.style.width = `${loserFinalHealthPercent}%`;
-        this.elements.hpText1.textContent = `${Math.round(winnerFinalHealthPercent)}%`;
-        this.elements.hpText2.textContent = `${Math.round(loserFinalHealthPercent)}%`;
-      } else {
-        this.elements.hpBar1.style.width = `${loserFinalHealthPercent}%`;
-        this.elements.hpBar2.style.width = `${winnerFinalHealthPercent}%`;
-        this.elements.hpText1.textContent = `${Math.round(loserFinalHealthPercent)}%`;
-        this.elements.hpText2.textContent = `${Math.round(winnerFinalHealthPercent)}%`;
-      }
-    }
   }
 
   calculateCharacterStats(character) {
     const stats = character.stats;
 
-    // Calcular atributos baseados nos status
     const health = Math.floor(
       stats.forca * 25 + stats.defesa * 20 + stats.energia * 10,
     );
@@ -764,7 +2380,6 @@ class QuantumBattleSystem {
 
     const speed = Math.floor(stats.velocidade * 5 + stats.habilidade * 3);
 
-    // Novas chances de crítico e esquiva baseadas em atributos
     const criticalChance = Math.min(
       30,
       Math.floor((stats.velocidade * 0.8 + stats.habilidade * 0.6) * 10) / 10,
@@ -775,7 +2390,6 @@ class QuantumBattleSystem {
       Math.floor((stats.velocidade * 1.2 + stats.habilidade * 0.5) * 10) / 10,
     );
 
-    // Calcular poder total
     const totalPower = Math.floor(
       health * 0.3 +
         attack * 0.25 +
@@ -799,7 +2413,6 @@ class QuantumBattleSystem {
     };
   }
 
-  // FUNÇÃO CORRIGIDA: Simular batalha com sistema de azarão balanceado
   simulateBattle(stats1, stats2) {
     this.battleLog = [];
     this.elements.battleLog.innerHTML =
@@ -810,27 +2423,19 @@ class QuantumBattleSystem {
       "start",
     );
 
-    // Sistema de azarão (underdog) - PEQUENA chance para o mais fraco
     const powerDiff = Math.abs(stats1.totalPower - stats2.totalPower);
     let underdogBonus = 0;
     let underdogMessage = "";
 
-    // Só ativa o bônus do azarão se a diferença for MUITO grande
     if (powerDiff > 80) {
-      // Diferença muito grande
-      // Bônus MUITO pequeno: apenas 3-8%
       underdogBonus = 0.03 + Math.random() * 0.05;
 
-      // Só 30% de chance de ativar o bônus do azarão
       if (Math.random() < 0.3) {
         if (stats1.totalPower < stats2.totalPower) {
-          // Bônus MÍNIMO para o azarão
-          const originalAttack1 = stats1.attack;
           stats1.attack *= 1 + underdogBonus;
-          stats1.criticalChance += 1; // Apenas +1% de crítico
+          stats1.criticalChance += 1;
           underdogMessage = `${stats1.character.name} é o azarão! Recebe +${Math.round(underdogBonus * 100)}% de ataque (apenas por sorte!).`;
         } else {
-          const originalAttack2 = stats2.attack;
           stats2.attack *= 1 + underdogBonus;
           stats2.criticalChance += 1;
           underdogMessage = `${stats2.character.name} é o azarão! Recebe +${Math.round(underdogBonus * 100)}% de ataque (apenas por sorte!).`;
@@ -850,11 +2455,9 @@ class QuantumBattleSystem {
     let totalDamage1 = 0;
     let totalDamage2 = 0;
 
-    // Sistema de vantagem baseada em atributos (peso principal)
     const advantage1 = this.calculateDynamicAdvantage(stats1, stats2);
     const advantage2 = this.calculateDynamicAdvantage(stats2, stats1);
 
-    // Vantagem MAIOR para quem tem melhor atributos
     if (advantage1 > advantage2 + 15) {
       stats1.attack *= 1.12;
       stats1.defense *= 1.08;
@@ -885,7 +2488,6 @@ class QuantumBattleSystem {
       );
     }
 
-    // Sistema de rounds dinâmico
     const maxRounds = Math.min(
       25,
       Math.max(
@@ -896,7 +2498,6 @@ class QuantumBattleSystem {
 
     this.addToLog(`⏱️ Máximo de ${maxRounds} rounds.`, "info");
 
-    // Contadores para controlar quem deveria ganhar
     let expectedWinner =
       stats1.totalPower > stats2.totalPower ? stats1 : stats2;
     let underdog = stats1.totalPower < stats2.totalPower ? stats1 : stats2;
@@ -909,7 +2510,6 @@ class QuantumBattleSystem {
     ) {
       this.addToLog(`\n🔴 ROUND ${round}:`, "round");
 
-      // Personagem 1 ataca
       const attackResult1 = this.calculateBalancedAttack(
         stats1,
         stats2,
@@ -969,7 +2569,6 @@ class QuantumBattleSystem {
         };
       }
 
-      // Personagem 2 ataca
       const attackResult2 = this.calculateBalancedAttack(
         stats2,
         stats1,
@@ -1032,7 +2631,6 @@ class QuantumBattleSystem {
       round++;
     }
 
-    // Decisão por pontos - FAVORECENDO quem tem melhor status
     const score1 = this.calculateBalancedScore(
       stats1,
       criticalHits1,
@@ -1060,12 +2658,10 @@ class QuantumBattleSystem {
       "info",
     );
 
-    // Pequena chance para o azarão vencer por pontos (apenas 10%)
     let finalScore1 = score1;
     let finalScore2 = score2;
 
     if (stats1.totalPower < stats2.totalPower && Math.random() < 0.1) {
-      // Azarão ganha pequeno bônus (5%) em apenas 10% das vezes
       finalScore1 = score1 * 1.05;
       this.addToLog(
         `⭐ ${stats1.character.name} (azarão) recebe pequeno bônus!`,
@@ -1128,9 +2724,7 @@ class QuantumBattleSystem {
     }
   }
 
-  // NOVA FUNÇÃO: Ataque balanceado que favorece o favorito
   calculateBalancedAttack(attacker, defender, round, isFavorite) {
-    // Verificar esquiva
     const dodgeRoll = Math.random() * 100;
     if (dodgeRoll < defender.dodgeChance) {
       return {
@@ -1141,47 +2735,38 @@ class QuantumBattleSystem {
       };
     }
 
-    // Calcular dano base
     let damage = attacker.attack;
 
-    // Redução pela defesa
     const defenseReduction = Math.min(
       75,
       (defender.defense / (defender.defense + 120)) * 100,
     );
     damage *= 1 - defenseReduction / 100;
 
-    // Verificar crítico
     const criticalRoll = Math.random() * 100;
     let isCritical = criticalRoll < attacker.criticalChance;
 
-    // Favorito tem 20% mais chance de crítico
     if (isFavorite && !isCritical) {
       isCritical = criticalRoll < attacker.criticalChance * 1.2;
     }
 
     if (isCritical) {
-      damage *= 1.8 + Math.random() * 0.4; // 1.8-2.2x
+      damage *= 1.8 + Math.random() * 0.4;
     }
 
-    // Bônus de round
     if (round > 8) {
-      // Favorito ganha mais bônus
       const roundBonus = isFavorite ? 0.025 : 0.015;
       damage *= 1 + (round - 8) * roundBonus;
     }
 
-    // Variação aleatória - menos variação para favorecer consistência
     const randomFactor = isFavorite
-      ? 0.9 + Math.random() * 0.2 // Favorito: 0.9-1.1
-      : 0.85 + Math.random() * 0.3; // Azarão: 0.85-1.15
+      ? 0.9 + Math.random() * 0.2
+      : 0.85 + Math.random() * 0.3;
 
     damage *= randomFactor;
 
-    // Garantir dano mínimo
     damage = Math.max(1, Math.floor(damage));
 
-    // Ataque especial
     const bestAttr = this.getBestAttribute(attacker.baseStats);
     let specialMessage = "";
 
@@ -1220,7 +2805,6 @@ class QuantumBattleSystem {
     };
   }
 
-  // NOVA FUNÇÃO: Pontuação balanceada que favorece o favorito
   calculateBalancedScore(
     stats,
     criticalHits,
@@ -1230,9 +2814,8 @@ class QuantumBattleSystem {
     isFavorite,
   ) {
     const healthScore = (stats.currentHealth / stats.health) * 40;
-    const powerScore = stats.totalPower * 0.35; // Mais peso no poder total
+    const powerScore = stats.totalPower * 0.35;
 
-    // Favorito ganha bônus na pontuação
     const favoriteBonus = isFavorite ? 15 : 0;
 
     const criticalScore = criticalHits * 7;
@@ -1252,13 +2835,11 @@ class QuantumBattleSystem {
   calculateDynamicAdvantage(attacker, defender) {
     let advantage = 0;
 
-    // Vantagem por atributo - mais peso nos atributos
     advantage += (attacker.speed - defender.speed) * 0.7;
     advantage += (attacker.attack - defender.defense) * 0.4;
     advantage += (attacker.defense - defender.attack) * 0.3;
     advantage += (attacker.criticalChance - defender.dodgeChance) * 0.5;
 
-    // Vantagem por tipo de combate
     const attackerBest = this.getBestAttribute(attacker.baseStats);
     const defenderBest = this.getBestAttribute(defender.baseStats);
 
@@ -1304,22 +2885,45 @@ class QuantumBattleSystem {
     this.elements.battleLog.appendChild(logEntry);
     this.battleLog.push({ timestamp, message, type });
 
-    // Rolar para o final do log
     this.elements.battleLog.scrollTop = this.elements.battleLog.scrollHeight;
   }
 
-  // FUNÇÃO CORRIGIDA: Mostrar modal de resultados COM informações dos personagens
   showResultModalWithCharacterInfo(result, stats1, stats2) {
     this.elements.resultModalTitle.textContent = "VITÓRIA QUÂNTICA!";
 
-    // Destacar se foi vitória do azarão
     if (result.underdogWin) {
-      this.elements.resultModalWinner.innerHTML = `🎲 SURPRESA!<br>${result.winnerName} VENCEU!<br><small style="font-size: 0.8rem; color: #9b59b6;">(Vitória do Azarão!)</small>`;
+      this.elements.resultModalWinner.innerHTML = `
+        <div style="animation: bounce 1s infinite alternate;">
+          🎲 SURPRESA!<br>${result.winnerName} VENCEU!<br>
+          <small style="font-size: 0.8rem; color: #9b59b6;">(Vitória do Azarão!)</small>
+        </div>
+      `;
+
+      const bounceStyle = document.createElement("style");
+      bounceStyle.textContent = `
+        @keyframes bounce {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-10px); }
+        }
+      `;
+      document.head.appendChild(bounceStyle);
     } else {
-      this.elements.resultModalWinner.innerHTML = `🏆 <br> ${result.winnerName} VENCEU!`;
+      this.elements.resultModalWinner.innerHTML = `
+        <div style="animation: glow 2s infinite alternate;">
+          🏆 <br> ${result.winnerName} VENCEU!
+        </div>
+      `;
+
+      const glowStyle = document.createElement("style");
+      glowStyle.textContent = `
+        @keyframes glow {
+          0% { text-shadow: 0 0 10px gold; }
+          100% { text-shadow: 0 0 20px gold, 0 0 30px gold; }
+        }
+      `;
+      document.head.appendChild(glowStyle);
     }
 
-    // Obter imagens dos personagens
     const winnerImg = this.gallery.cache.imageCache.has(
       this.gallery.cache.normalizePath(result.winner.character.image),
     )
@@ -1343,53 +2947,101 @@ class QuantumBattleSystem {
       (result.loser.currentHealth / result.loser.health) * 100,
     );
 
-    // Criar estatísticas
     const statsHTML = `
-            <div class="result-stat">
-                <div class="result-stat-label">VENCEDOR</div>
-                <div class="result-stat-value" style="display: flex; align-items: center; gap: 10px;">
-                    <img src="${winnerImg}" alt="${result.winnerName}" style="height: 170px; border-radius: 8px; border: 2px solid ${result.underdogWin ? "#9b59b6" : "var(--quantum-success)"};">
-                    <div class="result-stat-div">
-                        <strong>${result.winnerName}</strong><br>
-                        <small>${categoryNames[result.winner.character.category] || result.winner.character.category}</small>
-                        ${result.underdogWin ? '<br><small style="color: #9b59b6;">🎲 Azarão Vitorioso!</small>' : ""}
-                    </div>
-                </div>
-            </div>
-            <div class="result-stat">
-                <div class="result-stat-label">PERDEDOR</div>
-                <div class="result-stat-value" style="display: flex; align-items: center; gap: 10px;">
-                    <img src="${loserImg}" alt="${result.loserName}" style="height: 170px; border-radius: 8px; border: 2px solid var(--quantum-danger);">
-                    <div class="result-stat-div">
-                        <strong>${result.loserName}</strong><br>
-                        <small>${categoryNames[result.loser.character.category] || result.loser.character.category}</small>
-                    </div>
-                </div>
-            </div>
-            <div class="result-stat">
-                <div class="result-stat-label">ROUNDS</div>
-                <div class="result-stat-value">${result.rounds}</div>
-            </div>
-            <div class="result-stat">
-                <div class="result-stat-label">SAÚDE RESTANTE</div>
-                <div class="result-stat-value">${winnerHealth}% vs ${loserHealth}%</div>
-            </div>
-            <div class="result-stat">
-                <div class="result-stat-label">CRÍTICOS</div>
-                <div class="result-stat-value">${result.criticalHits.player1 + result.criticalHits.player2}</div>
-            </div>
-            <div class="result-stat">
-                <div class="result-stat-label">ESQUIVAS</div>
-                <div class="result-stat-value">${result.dodges.player1 + result.dodges.player2}</div>
-            </div>
-            ${result.winByPoints ? '<div class="result-stat"><div class="result-stat-label">VITÓRIA POR</div><div class="result-stat-value">PONTOS</div></div>' : ""}
-        `;
+      <div class="result-stat" style="animation: slideInLeft 0.5s ease-out;">
+        <div class="result-stat-label">VENCEDOR</div>
+        <div class="result-stat-value" style="display: flex; align-items: center; gap: 10px;">
+          <img src="${winnerImg}" alt="${result.winnerName}" 
+               style="height: 170px; border-radius: 10px; border: 3px solid ${result.underdogWin ? "#9b59b6" : "var(--quantum-success)"};
+                      animation: ${result.underdogWin ? "pulsePurple 1s infinite" : "pulseGreen 1s infinite"};">
+          <div>
+            <strong>${result.winnerName}</strong><br>
+            <small>${categoryNames[result.winner.character.category] || result.winner.character.category}</small>
+            ${result.underdogWin ? '<br><small style="color: #9b59b6;">🎲 Azarão Vitorioso!</small>' : ""}
+          </div>
+        </div>
+      </div>
+      <div class="result-stat" style="animation: slideInRight 0.5s ease-out 0.1s both;">
+        <div class="result-stat-label">PERDEDOR</div>
+        <div class="result-stat-value" style="display: flex; align-items: center; gap: 10px;">
+          <img src="${loserImg}" alt="${result.loserName}" 
+               style="height: 170px; border-radius: 10px; border: 3px solid var(--quantum-danger);">
+          <div>
+            <strong>${result.loserName}</strong><br>
+            <small>${categoryNames[result.loser.character.category] || result.loser.character.category}</small>
+          </div>
+        </div>
+      </div>
+      <div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.2s both;">
+        <div class="result-stat-label">ROUNDS</div>
+        <div class="result-stat-value">${result.rounds}</div>
+      </div>
+      <div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.3s both;">
+        <div class="result-stat-label">SAÚDE RESTANTE</div>
+        <div class="result-stat-value">
+          <span style="color: var(--quantum-success); font-weight: bold;">${winnerHealth}%</span> vs 
+          <span style="color: var(--quantum-danger); font-weight: bold;">${loserHealth}%</span>
+        </div>
+      </div>
+      <div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.4s both;">
+        <div class="result-stat-label">CRÍTICOS</div>
+        <div class="result-stat-value" style="color: #ff9900; font-weight: bold;">
+          ${result.criticalHits.player1 + result.criticalHits.player2}
+        </div>
+      </div>
+      <div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.5s both;">
+        <div class="result-stat-label">ESQUIVAS</div>
+        <div class="result-stat-value" style="color: #33ccff; font-weight: bold;">
+          ${result.dodges.player1 + result.dodges.player2}
+        </div>
+      </div>
+      ${result.winByPoints ? '<div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.6s both;"><div class="result-stat-label">VITÓRIA POR</div><div class="result-stat-value">PONTOS</div></div>' : ""}
+    `;
 
     this.elements.resultModalStats.innerHTML = statsHTML;
 
-    // Mostrar modal
-    this.elements.battleResultModal.classList.add("active");
-    document.body.style.overflow = "hidden";
+    const modalAnimations = document.createElement("style");
+    modalAnimations.textContent = `
+      @keyframes slideInLeft {
+        from { transform: translateX(-50px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      
+      @keyframes slideInRight {
+        from { transform: translateX(50px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes pulseGreen {
+        0%, 100% { box-shadow: 0 0 10px var(--quantum-success); }
+        50% { box-shadow: 0 0 20px var(--quantum-success); }
+      }
+      
+      @keyframes pulsePurple {
+        0%, 100% { box-shadow: 0 0 10px #9b59b6; }
+        50% { box-shadow: 0 0 20px #9b59b6; }
+      }
+    `;
+    document.head.appendChild(modalAnimations);
+
+    setTimeout(() => {
+      this.elements.battleResultModal.classList.add("active");
+      document.body.style.overflow = "hidden";
+
+      this.elements.battleResultModal.style.opacity = "0";
+      this.elements.battleResultModal.style.transform = "scale(0.9)";
+
+      setTimeout(() => {
+        this.elements.battleResultModal.style.transition = "all 0.3s ease-out";
+        this.elements.battleResultModal.style.opacity = "1";
+        this.elements.battleResultModal.style.transform = "scale(1)";
+      }, 10);
+    }, 500);
   }
 
   closeResultModal() {
@@ -1408,7 +3060,6 @@ class QuantumBattleSystem {
     this.battleLog = [];
     this.battleResult = null;
 
-    // Resetar displays
     this.elements.player1Display.innerHTML = `
             <div class="empty-selection">
                 <i class="fas fa-user-circle" style="font-size: 100px; color: var(--text-secondary); margin-bottom: 20px;"></i>
@@ -1427,7 +3078,6 @@ class QuantumBattleSystem {
             </div>
         `;
 
-    // Resetar botão e resultados
     this.elements.startBattleBtn.disabled = true;
     this.elements.battleResults.classList.remove("show");
     this.elements.battleLog.innerHTML =
@@ -1438,7 +3088,6 @@ class QuantumBattleSystem {
     );
   }
 
-  // ===== HISTÓRICO DE BATALHAS CLICÁVEL =====
   loadHistory() {
     const savedHistory = localStorage.getItem("nexus_battle_history_13");
     if (savedHistory) {
@@ -1541,7 +3190,6 @@ class QuantumBattleSystem {
 
     historyList.innerHTML = historyHTML;
 
-    // Adicionar eventos de clique nos itens do histórico
     document.querySelectorAll(".history-item").forEach((item, index) => {
       item.addEventListener("click", () => {
         this.showHistoryDetail(this.history[index]);
@@ -1552,7 +3200,6 @@ class QuantumBattleSystem {
   showHistoryDetail(entry) {
     const body = this.elements.historyDetailBody;
 
-    // Obter imagens dos personagens
     const winnerImg = this.gallery.cache.imageCache.has(
       this.gallery.cache.normalizePath(entry.winnerCharacter.image),
     )
@@ -1701,7 +3348,6 @@ class QuantumBattleSystem {
             </div>
         `;
 
-    // Adicionar log da batalha se disponível
     if (entry.battleLog && entry.battleLog.length > 0) {
       detailHTML += `
                 <div class="history-log" style="grid-column: 1 / -1; margin-top: 30px;">
@@ -1734,17 +3380,13 @@ class QuantumBattleSystem {
     document.body.style.overflow = "";
   }
 
-  // CORREÇÃO: Função para limpar histórico imediatamente com confirmação
   clearHistoryWithConfirmation() {
-    // Usar o sistema de toast do site para confirmação
     this.gallery.showToast("🗑️ HISTÓRICO DE BATALHAS LIMPO COM SUCESSO!");
 
-    // Limpar imediatamente
     this.history = [];
     this.saveHistory();
     this.renderHistory();
 
-    // Atualizar a interface sem precisar de F5
     this.elements.battleHistoryList.innerHTML = `
             <div class="empty-history" id="emptyHistory">
                 <i class="fas fa-scroll"></i>
@@ -1757,7 +3399,6 @@ class QuantumBattleSystem {
   showBattlePage() {
     this.gallery.state.showFavoritesPage = false;
 
-    // Ocultar outras páginas
     if (this.gallery.elements.quantumUniverse) {
       this.gallery.elements.quantumUniverse.style.display = "none";
     }
@@ -1768,123 +3409,30 @@ class QuantumBattleSystem {
       this.gallery.elements.quantumFavoritesPage.setAttribute("hidden", "");
     }
 
-    // Mostrar página de batalha
     if (this.elements.battlePage) {
       this.elements.battlePage.style.display = "block";
       this.elements.battlePage.classList.add("active");
       this.elements.battlePage.removeAttribute("hidden");
 
-      // Animação de entrada
       setTimeout(() => {
         this.elements.battlePage.style.opacity = "1";
         this.elements.battlePage.style.transform = "translateY(0)";
       }, 50);
     }
 
-    // Atualizar ícone do botão de favoritos
     const favoritesIcon = document.getElementById("favoritesIcon");
     if (favoritesIcon) {
       favoritesIcon.className = "fas fa-heart";
     }
 
-    // Atualizar título da página
     document.title = "⚔️ SISTEMA DE BATALHA | NEXUS UNIVERSE 13/10";
 
-    // Rolar para o topo
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Tocar som
     this.gallery.audio.play("click");
 
     this.gallery.showToast("⚔️ ACESSANDO SISTEMA DE BATALHA QUÂNTICA 13/10");
 
-    // Atualizar histórico
     this.renderHistory();
   }
 }
-
-// Adicionar CSS para animações de ataque
-const style = document.createElement("style");
-style.textContent = `
-    /* Animações de ataque para as imagens dos personagens */
-    @keyframes attackForward {
-        0% { transform: translateX(0) scale(1); }
-        50% { transform: translateX(50px) scale(1.1); }
-        100% { transform: translateX(0) scale(1); }
-    }
-    
-    @keyframes attackBackward {
-        0% { transform: translateX(0) scale(1); }
-        50% { transform: translateX(-50px) scale(1.1); }
-        100% { transform: translateX(0) scale(1); }
-    }
-    
-    @keyframes takeDamage {
-        0% { transform: translateX(0) scale(1); }
-        25% { transform: translateX(-30px) scale(0.95); }
-        50% { transform: translateX(30px) scale(0.95); }
-        75% { transform: translateX(-15px) scale(0.98); }
-        100% { transform: translateX(0) scale(1); }
-    }
-    
-    .attacking-forward {
-        animation: attackForward 0.3s ease-out !important;
-    }
-    
-    .attacking-backward {
-        animation: attackBackward 0.3s ease-out !important;
-    }
-    
-    .taking-damage {
-        animation: takeDamage 0.4s ease-out !important;
-    }
-    
-    /* Melhorar efeitos de ataque */
-    .attack-effect {
-        z-index: 100;
-    }
-    
-    .damage-effect {
-        z-index: 99;
-    }
-    
-    /* Estilo para logs e itens de underdog */
-    .log-entry.underdog {
-        background: rgba(155, 89, 182, 0.1);
-        border-left: 3px solid #9b59b6;
-        color: #d0a8ff;
-    }
-    
-    .history-item.underdog {
-        background: rgba(155, 89, 182, 0.05);
-        border-left: 4px solid #9b59b6;
-    }
-    
-    .history-detail-summary.underdog {
-        background: rgba(155, 89, 182, 0.1);
-        border-left: 4px solid #9b59b6;
-    }
-    
-    .history-detail-stat.underdog {
-        background: rgba(155, 89, 182, 0.1);
-        border: 1px solid rgba(155, 89, 182, 0.3);
-    }
-    
-    .history-detail-stat.underdog .history-detail-stat-value {
-        color: #9b59b6;
-    }
-    
-    /* Estilo para logs de esquiva */
-    .log-entry.dodge {
-        background: rgba(52, 152, 219, 0.1);
-        border-left: 3px solid #3498db;
-        color: #a6d8ff;
-    }
-    
-    .log-entry.critical {
-        background: rgba(231, 76, 60, 0.1);
-        border-left: 3px solid #e74c3c;
-        color: #ffb8b0;
-    }
-`;
-document.head.appendChild(style);
