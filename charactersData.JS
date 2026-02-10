@@ -8023,4 +8023,136 @@ const charactersData = [
       habilidade: 85,
     },
   },
+
+  {
+    id: 321,
+    name: "MELINA",
+    category: "souls",
+    image: "img/souls/Melina-1.png",
+    description:
+      "Figura misteriosa que auxilia o Tarnished em sua jornada através das Terras Intermédias. Oferece-se para ser a 'dedo' do jogador, permitindo nivelamento e conversão de Runes. Possui conexão com a Árvore-sede e conhecimento profundo sobre o mundo.",
+    details: {
+      universo: "Elden Ring",
+      poder:
+        "Conhecimento das Terras Intermédias, Nivelamento de Runes, Magia de Chama Destinada",
+      status: "Guia - Dedo do Tarnished",
+      estreia: 2022,
+      recompensa: "N/A",
+      afinidade: "Guia/Chama Destinada",
+      nível: "S", // Nível alto como figura importante na lore
+    },
+  },
+
+  {
+    id: 322,
+    name: "PSYKOS",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Psykos-2.png",
+    description:
+      "Ex-líder da Associação de Heróis que se tornou a líder da Associação de Monstros. Psíquica poderosa com habilidades telepáticas e telecinéticas extremas. Fundiu-se com Orochi para se tornar Psykos-Orochi, buscando criar um mundo onde os fortes governam os fracos.",
+    details: {
+      universo: "One Punch Man",
+      poder:
+        "Psicocinese Avançada, Telepatia, Fusão com Orochi, Criação de Monstros",
+      status: "Antagonista - Ex-líder da Associação de Heróis",
+      estreia: 2012, // Webcomic Capítulo 54
+      recompensa: "N/A",
+      afinidade: "Psíquico/Monstro",
+      nível: "SS+", // Nível muito alto como psíquica poderosa
+    },
+  },
+
+  {
+    id: 323,
+    name: "AOKIJI",
+    category: "One-Piece",
+    image: "img/One-Piece/Aokiji-1.png",
+    description:
+      "Ex-Almirante da Marinha conhecido como 'Aokiji' (Pica-Pau Azul), usuário da Hie Hie no Mi (Fruta do Gelo) que lhe concede controle absoluto sobre gelo. Após perder para Akainu, deixou a Marinha e atualmente trabalha como mercenário aliado dos Piratas do Barba Negra.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Hie Hie no Mi (Controle de Gelo), Haki Avançado, Criação de Climas Glaciais",
+      status: "Ex-Almirante - Mercenário",
+      estreia: 1999, // One Piece Capítulo 303
+      recompensa: "N/A (ex-Almirante)",
+      afinidade: "Gelo/Justiça Flexível",
+      nível: "SS+", // Nível muito alto como ex-Almirante
+    },
+  },
+
+  {
+    id: 324,
+    name: "TORU",
+    category: "jojo",
+    image: "img/Jojo/Toru-1.png",
+    description:
+      "Antagonista principal de JoJo's Bizarre Adventure Part 8: JoJolion, conhecido como 'Tooru' ou 'Wonder of U'. Usuário do Stand Wonder of U, um dos Stands mais perigosos e quebrados da série, que ativa uma calamidade sobre qualquer um que o persiga ou tenha intenções hostis.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder:
+        "Stand Wonder of U, Ativação de Calamidades, Imunidade a Perseguição",
+      status: "Antagonista Principal - Portador do Stand Wonder of U",
+      estreia: 2019, // JoJolion Capítulo 91 (como antagonista revelado)
+      recompensa: "N/A",
+      afinidade: "Calamidade/Sorte Inversa",
+      nível: "SSS", // Nível máximo, considerado um dos Stands mais quebrados
+    },
+  },
+
+  {
+    id: 325,
+    name: "CONQUEST",
+    category: "Invencível",
+    image: "img/Invencível/conquest-2.png",
+    description:
+      "Um dos Viltrumitas mais poderosos e brutais, conhecido por sua filosofia de conquista implacável e força sobre-humana. Representa o aspecto mais agressivo e expansionista da cultura Viltrumita, sendo enviado para subjugar planetas rebeldes.",
+    details: {
+      universo: "Invincible",
+      poder:
+        "Força Viltrumita Máxima, Voo, Durabilidade Extrema, Filosofia de Conquista",
+      status: "Viltrumita - Conquistador",
+      estreia: 2005, // Invincible #30 (aproximadamente)
+      recompensa: "N/A",
+      afinidade: "Conquista/Brutalidade",
+      nível: "SS", // Nível muito alto como Viltrumita de elite
+    },
+  },
+
+  {
+    id: 326,
+    name: "JOGO",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Jogo-1.png",
+    description:
+      "Maldição especial de grau especial nascida do medo humano de desastres naturais, especificamente vulcões e terremotos. Um dos desastres amaldiçoados que serve a Geto/Pseudo-Geto. Conhecido por seu poder destrutivo massivo com lava e fogo.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Manipulação de Lava e Fogo, Desastre Natural Personificado, Domínio Malevolente: Coffin of the Iron Mountain",
+      status: "Maldição de Grau Especial - Desastre Amaldiçoado",
+      estreia: 2018, // Jujutsu Kaisen Capítulo 8
+      recompensa: "N/A",
+      afinidade: "Lava/Desastre Natural",
+      nível: "SS", // Nível muito alto como maldição de desastre natural
+    },
+  },
+
+  {
+    id: 327,
+    name: "BRIENNE OF TARTH",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Brienne-of-Tarth-1.png",
+    description:
+      "Cavaleira de Tarth, conhecida como 'Brienne, a Bela'. Uma das melhores espadachinas de Westeros, jura lealdade à Catelyn Stark e posteriormente a Sansa Stark. Conhecida por seu senso de honra inabalável, força física e habilidade excepcional com espada.",
+    details: {
+      universo: "Game of Thrones",
+      poder: "Espadachim Excepcional, Força Física, Honra Inabalável, Lealdade",
+      status: "Cavaleira - Protetora de Sansa Stark",
+      estreia: 1998, // A Clash of Kings (livro)
+      recompensa: "N/A",
+      afinidade: "Honra/Lealdade",
+      nível: "A+", // Nível alto como uma das melhores espadachinas
+    },
+  },
 ];
