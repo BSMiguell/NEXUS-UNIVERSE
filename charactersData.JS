@@ -8037,122 +8037,206 @@ const charactersData = [
         "Conhecimento das Terras Intermédias, Nivelamento de Runes, Magia de Chama Destinada",
       status: "Guia - Dedo do Tarnished",
       estreia: 2022,
-      recompensa: "N/A",
-      afinidade: "Guia/Chama Destinada",
-      nível: "S", // Nível alto como figura importante na lore
+      caracteristica: "Conexão com a Árvore-sede",
+      nivel: "S",
+    },
+    stats: {
+      forca: 65,
+      velocidade: 85,
+      defesa: 70,
+      energia: 90,
+      habilidade: 95,
     },
   },
-
   {
     id: 322,
     name: "PSYKOS",
-    category: "One Punch Man",
+    category: "One-Punch-Man",
     image: "img/One-Punch-Man/Psykos-2.png",
     description:
       "Ex-líder da Associação de Heróis que se tornou a líder da Associação de Monstros. Psíquica poderosa com habilidades telepáticas e telecinéticas extremas. Fundiu-se com Orochi para se tornar Psykos-Orochi, buscando criar um mundo onde os fortes governam os fracos.",
     details: {
       universo: "One Punch Man",
-      poder:
-        "Psicocinese Avançada, Telepatia, Fusão com Orochi, Criação de Monstros",
-      status: "Antagonista - Ex-líder da Associação de Heróis",
-      estreia: 2012, // Webcomic Capítulo 54
-      recompensa: "N/A",
-      afinidade: "Psíquico/Monstro",
-      nível: "SS+", // Nível muito alto como psíquica poderosa
+      poder: "Psicocinese Avançada, Telepatia, Fusão com Orochi",
+      status: "Antagonista - Líder da Associação de Monstros",
+      estreia: 2012,
+      afiliacao: "Associação de Monstros",
+      caracteristica: "Ex-líder da Associação de Heróis",
+      nivel: "S+",
+    },
+    stats: {
+      forca: 82,
+      velocidade: 87,
+      defesa: 78,
+      energia: 95,
+      habilidade: 96,
     },
   },
-
   {
     id: 323,
     name: "AOKIJI",
     category: "One-Piece",
     image: "img/One-Piece/Aokiji-1.png",
     description:
-      "Ex-Almirante da Marinha conhecido como 'Aokiji' (Pica-Pau Azul), usuário da Hie Hie no Mi (Fruta do Gelo) que lhe concede controle absoluto sobre gelo. Após perder para Akainu, deixou a Marinha e atualmente trabalha como mercenário aliado dos Piratas do Barba Negra.",
+      "Ex-Almirante da Marinha conhecido como 'Aokiji', usuário da Hie Hie no Mi que lhe concede controle absoluto sobre gelo. Após perder para Akainu, deixou a Marinha e atualmente trabalha como mercenário aliado dos Piratas do Barba Negra.",
     details: {
       universo: "One Piece",
-      poder:
-        "Hie Hie no Mi (Controle de Gelo), Haki Avançado, Criação de Climas Glaciais",
+      poder: "Hie Hie no Mi (Fruta do Gelo), Haki Avançado",
       status: "Ex-Almirante - Mercenário",
-      estreia: 1999, // One Piece Capítulo 303
+      estreia: 1999,
       recompensa: "N/A (ex-Almirante)",
-      afinidade: "Gelo/Justiça Flexível",
-      nível: "SS+", // Nível muito alto como ex-Almirante
+      caracteristica: "Justiça Flexível",
+      nivel: "SS",
+    },
+    stats: {
+      forca: 92,
+      velocidade: 85,
+      defesa: 88,
+      energia: 94,
+      habilidade: 90,
     },
   },
-
   {
     id: 324,
     name: "TORU",
     category: "jojo",
     image: "img/Jojo/Toru-1.png",
     description:
-      "Antagonista principal de JoJo's Bizarre Adventure Part 8: JoJolion, conhecido como 'Tooru' ou 'Wonder of U'. Usuário do Stand Wonder of U, um dos Stands mais perigosos e quebrados da série, que ativa uma calamidade sobre qualquer um que o persiga ou tenha intenções hostis.",
+      "Antagonista principal de JoJo's Bizarre Adventure Part 8: JoJolion, conhecido como 'Wonder of U'. Usuário do Stand mais perigoso que ativa calamidades sobre qualquer um que o persiga ou tenha intenções hostis.",
     details: {
       universo: "JoJo's Bizarre Adventure",
-      poder:
-        "Stand Wonder of U, Ativação de Calamidades, Imunidade a Perseguição",
-      status: "Antagonista Principal - Portador do Stand Wonder of U",
-      estreia: 2019, // JoJolion Capítulo 91 (como antagonista revelado)
-      recompensa: "N/A",
-      afinidade: "Calamidade/Sorte Inversa",
-      nível: "SSS", // Nível máximo, considerado um dos Stands mais quebrados
+      poder: "Stand Wonder of U, Ativação de Calamidades",
+      status: "Antagonista Principal",
+      estreia: 2019,
+      caracteristica: "Calamidade/Sorte Inversa",
+      nivel: "SS+",
+    },
+    stats: {
+      forca: 75,
+      velocidade: 80,
+      defesa: 85,
+      energia: 98,
+      habilidade: 100,
     },
   },
-
   {
     id: 325,
     name: "CONQUEST",
     category: "Invencível",
     image: "img/Invencível/conquest-2.png",
     description:
-      "Um dos Viltrumitas mais poderosos e brutais, conhecido por sua filosofia de conquista implacável e força sobre-humana. Representa o aspecto mais agressivo e expansionista da cultura Viltrumita, sendo enviado para subjugar planetas rebeldes.",
+      "Um dos Viltrumitas mais poderosos e brutais, conhecido por sua filosofia de conquista implacável e força sobre-humana. Representa o aspecto mais agressivo e expansionista da cultura Viltrumita.",
     details: {
       universo: "Invincible",
-      poder:
-        "Força Viltrumita Máxima, Voo, Durabilidade Extrema, Filosofia de Conquista",
+      poder: "Força Viltrumita Máxima, Voo, Durabilidade Extrema",
       status: "Viltrumita - Conquistador",
-      estreia: 2005, // Invincible #30 (aproximadamente)
-      recompensa: "N/A",
-      afinidade: "Conquista/Brutalidade",
-      nível: "SS", // Nível muito alto como Viltrumita de elite
+      estreia: 2005,
+      afiliacao: "Império Viltrumita",
+      caracteristica: "Filosofia de Conquista",
+      nivel: "S+",
+    },
+    stats: {
+      forca: 97,
+      velocidade: 90,
+      defesa: 95,
+      energia: 92,
+      habilidade: 88,
     },
   },
-
   {
     id: 326,
     name: "JOGO",
     category: "jujutsu kaisen",
     image: "img/Jujutsu/Jogo-1.png",
     description:
-      "Maldição especial de grau especial nascida do medo humano de desastres naturais, especificamente vulcões e terremotos. Um dos desastres amaldiçoados que serve a Geto/Pseudo-Geto. Conhecido por seu poder destrutivo massivo com lava e fogo.",
+      "Maldição especial de grau especial nascida do medo humano de desastres naturais, especificamente vulcões e terremotos. Um dos desastres amaldiçoados que serve a Geto/Pseudo-Geto.",
     details: {
       universo: "Jujutsu Kaisen",
-      poder:
-        "Manipulação de Lava e Fogo, Desastre Natural Personificado, Domínio Malevolente: Coffin of the Iron Mountain",
-      status: "Maldição de Grau Especial - Desastre Amaldiçoado",
-      estreia: 2018, // Jujutsu Kaisen Capítulo 8
-      recompensa: "N/A",
-      afinidade: "Lava/Desastre Natural",
-      nível: "SS", // Nível muito alto como maldição de desastre natural
+      poder: "Manipulação de Lava e Fogo, Desastre Natural Personificado",
+      status: "Maldição de Grau Especial",
+      estreia: 2018,
+      afiliacao: "Desastres Amaldiçoados",
+      caracteristica: "Domínio: Coffin of the Iron Mountain",
+      nivel: "S",
+    },
+    stats: {
+      forca: 94,
+      velocidade: 82,
+      defesa: 85,
+      energia: 96,
+      habilidade: 87,
     },
   },
-
   {
     id: 327,
     name: "BRIENNE OF TARTH",
     category: "Game of Thrones",
     image: "img/Game-of-Thrones/Brienne-of-Tarth-1.png",
     description:
-      "Cavaleira de Tarth, conhecida como 'Brienne, a Bela'. Uma das melhores espadachinas de Westeros, jura lealdade à Catelyn Stark e posteriormente a Sansa Stark. Conhecida por seu senso de honra inabalável, força física e habilidade excepcional com espada.",
+      "Cavaleira de Tarth, conhecida como 'Brienne, a Bela'. Uma das melhores espadachinas de Westeros, jura lealdade à Catelyn Stark e posteriormente a Sansa Stark. Conhecida por seu senso de honra inabalável.",
     details: {
       universo: "Game of Thrones",
-      poder: "Espadachim Excepcional, Força Física, Honra Inabalável, Lealdade",
+      poder: "Espadachim Excepcional, Força Física, Honra Inabalável",
       status: "Cavaleira - Protetora de Sansa Stark",
-      estreia: 1998, // A Clash of Kings (livro)
-      recompensa: "N/A",
-      afinidade: "Honra/Lealdade",
-      nível: "A+", // Nível alto como uma das melhores espadachinas
+      estreia: 1998,
+      afiliacao: "Casa Tarth, Protetora de Sansa Stark",
+      caracteristica: "Lealdade Absoluta",
+      nivel: "A+",
+    },
+    stats: {
+      forca: 88,
+      velocidade: 75,
+      defesa: 85,
+      energia: 82,
+      habilidade: 90,
+    },
+  },
+  {
+    id: 328,
+    name: "ALLUKA ZOLDYCK",
+    category: "HXH",
+    image: "img/hxh/Alluka-Zoldyck-1.png",
+    description:
+      "Irmã mais nova de Killua Zoldyck e membro da família Zoldyck. Portadora da entidade misteriosa Nanika que concede desejos a um custo terrível. Considerada a mais perigosa dos Zoldyck.",
+    details: {
+      universo: "Hunter x Hunter",
+      poder: "Nanika (Concessão de Desejos), Regras de Custo Proibitivo",
+      status: "Membro dos Zoldyck - Portadora de Nanika",
+      estreia: 2011,
+      afiliacao: "Família Zoldyck",
+      caracteristica: "Irmã de Killua",
+      nivel: "S+",
+    },
+    stats: {
+      forca: 30,
+      velocidade: 45,
+      defesa: 40,
+      energia: 99,
+      habilidade: 100,
+    },
+  },
+  {
+    id: 329,
+    name: "KEN MASTERS",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/Ken-Masters-1.png",
+    description:
+      "Rival e melhor amigo de Ryu, mestre do estilo Ansatsuken. Diferente de Ryu, Ken incorporou técnicas americanas e um estilo mais agressivo. Herdeiro da corporação Masters.",
+    details: {
+      universo: "Street Fighter",
+      poder: "Ansatsuken, Hadouken, Shoryuken, Tatsumaki Senpukyaku",
+      status: "Lutador Profissional - Herdeiro da Masters Foundation",
+      estreia: 1987,
+      tecnica: "Shoryuken, Hadouken, Tatsumaki Senpukyaku",
+      caracteristica: "Estilo Agressivo Americanizado",
+      nivel: "S",
+    },
+    stats: {
+      forca: 87,
+      velocidade: 89,
+      defesa: 82,
+      energia: 85,
+      habilidade: 92,
     },
   },
 ];
