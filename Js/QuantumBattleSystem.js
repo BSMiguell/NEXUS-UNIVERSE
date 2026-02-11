@@ -29,27 +29,27 @@ class QuantumBattleSystem {
   addBattleStyles() {
     const style = document.createElement("style");
     style.textContent = `
-      /* ANIMAÇÕES AVANÇADAS DE BATALHA */
+      /* ANIMAÇÕES OTIMIZADAS DE BATALHA */
       @keyframes dimensionalShift {
         0% {
-          transform: translateX(0) scale(1) rotate(0deg);
-          filter: hue-rotate(0deg) blur(0);
+          transform: translateX(0) scale(1);
+          filter: brightness(1);
         }
         25% {
-          transform: translateX(-30px) scale(1.05) rotate(-5deg);
-          filter: hue-rotate(90deg) blur(1px);
+          transform: translateX(-15px) scale(1.02);
+          filter: brightness(1.2);
         }
         50% {
-          transform: translateX(30px) scale(1.1) rotate(5deg);
-          filter: hue-rotate(180deg) blur(2px);
+          transform: translateX(15px) scale(1.02);
+          filter: brightness(1.2);
         }
         75% {
-          transform: translateX(-15px) scale(1.05) rotate(-2deg);
-          filter: hue-rotate(270deg) blur(1px);
+          transform: translateX(-8px) scale(1.01);
+          filter: brightness(1.1);
         }
         100% {
-          transform: translateX(0) scale(1) rotate(0deg);
-          filter: hue-rotate(360deg) blur(0);
+          transform: translateX(0) scale(1);
+          filter: brightness(1);
         }
       }
       
@@ -59,8 +59,8 @@ class QuantumBattleSystem {
           transform: scale(1);
         }
         50% {
-          opacity: 0.7;
-          transform: scale(1.1);
+          opacity: 0.8;
+          transform: scale(1.05);
         }
       }
       
@@ -68,12 +68,12 @@ class QuantumBattleSystem {
         0% {
           transform: scale(0);
           opacity: 1;
-          box-shadow: 0 0 0 0 rgba(66, 220, 255, 0.7);
+          box-shadow: 0 0 0 0 rgba(66, 220, 255, 0.5);
         }
         100% {
-          transform: scale(4);
+          transform: scale(3);
           opacity: 0;
-          box-shadow: 0 0 0 20px rgba(66, 220, 255, 0);
+          box-shadow: 0 0 0 10px rgba(66, 220, 255, 0);
         }
       }
       
@@ -87,11 +87,11 @@ class QuantumBattleSystem {
           opacity: 1;
         }
         70% {
-          transform: translateX(100%) rotate(-45deg) scaleX(1);
+          transform: translateX(80%) rotate(-45deg) scaleX(1);
           opacity: 1;
         }
         100% {
-          transform: translateX(200%) rotate(-45deg) scaleX(0);
+          transform: translateX(150%) rotate(-45deg) scaleX(0);
           opacity: 0;
         }
       }
@@ -102,15 +102,15 @@ class QuantumBattleSystem {
           opacity: 0;
         }
         20% {
-          transform: scale(1.2) translateX(50px);
+          transform: scale(1.1) translateX(30px);
           opacity: 1;
         }
         80% {
-          transform: scale(1) translateX(150px);
+          transform: scale(1) translateX(100px);
           opacity: 0.8;
         }
         100% {
-          transform: scale(0.5) translateX(300px);
+          transform: scale(0.5) translateX(200px);
           opacity: 0;
         }
       }
@@ -121,12 +121,12 @@ class QuantumBattleSystem {
           opacity: 0;
         }
         50% {
-          transform: scale(1.2) rotate(180deg);
+          transform: scale(1.1) rotate(180deg);
           opacity: 1;
-          border-width: 8px;
+          border-width: 6px;
         }
         100% {
-          transform: scale(1.5) rotate(360deg);
+          transform: scale(1.3) rotate(360deg);
           opacity: 0;
           border-width: 2px;
         }
@@ -135,20 +135,20 @@ class QuantumBattleSystem {
       @keyframes healingPulse {
         0%, 100% {
           transform: scale(1);
-          opacity: 0.8;
-          box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+          opacity: 0.7;
+          box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
         }
         50% {
-          transform: scale(1.3);
-          opacity: 0.4;
-          box-shadow: 0 0 40px rgba(0, 255, 136, 0.8);
+          transform: scale(1.2);
+          opacity: 0.5;
+          box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
         }
       }
       
       @keyframes lightningStrike {
         0%, 100% {
           opacity: 0;
-          transform: translateY(-100%) scaleY(0);
+          transform: translateY(-80%) scaleY(0);
         }
         10%, 90% {
           opacity: 1;
@@ -156,7 +156,7 @@ class QuantumBattleSystem {
         }
         50% {
           opacity: 0.8;
-          transform: translateY(50%) scaleY(1.2);
+          transform: translateY(30%) scaleY(1.1);
         }
       }
       
@@ -166,14 +166,14 @@ class QuantumBattleSystem {
           opacity: 1;
         }
         50% {
-          transform: scale(1.5) rotate(180deg);
+          transform: scale(1.3) rotate(180deg);
           opacity: 0.8;
-          filter: blur(2px);
+          filter: blur(1px);
         }
         100% {
-          transform: scale(2) rotate(360deg);
+          transform: scale(1.6) rotate(360deg);
           opacity: 0;
-          filter: blur(5px);
+          filter: blur(3px);
         }
       }
       
@@ -184,19 +184,19 @@ class QuantumBattleSystem {
           filter: blur(0) brightness(1);
         }
         30% {
-          transform: scale(1.2);
+          transform: scale(1.1);
           opacity: 1;
-          filter: blur(2px) brightness(2);
+          filter: blur(1px) brightness(1.5);
         }
         70% {
-          transform: scale(1.2);
+          transform: scale(1.1);
           opacity: 0.8;
-          filter: blur(4px) brightness(1.5);
+          filter: blur(2px) brightness(1.3);
         }
         100% {
-          transform: scale(1.5);
+          transform: scale(1.3);
           opacity: 0;
-          filter: blur(8px) brightness(1);
+          filter: blur(4px) brightness(1);
         }
       }
       
@@ -206,14 +206,14 @@ class QuantumBattleSystem {
           opacity: 0;
         }
         50% {
-          transform: scale(1.5);
-          opacity: 0.7;
-          filter: blur(5px);
+          transform: scale(1.3);
+          opacity: 0.6;
+          filter: blur(3px);
         }
         100% {
-          transform: scale(2.5);
+          transform: scale(1.8);
           opacity: 0;
-          filter: blur(10px);
+          filter: blur(6px);
         }
       }
       
@@ -223,14 +223,14 @@ class QuantumBattleSystem {
           opacity: 1;
         }
         50% {
-          transform: scale(2) translateY(-20px);
+          transform: scale(1.5) translateY(-15px);
           opacity: 0.8;
-          filter: blur(3px);
+          filter: blur(2px);
         }
         100% {
-          transform: scale(3) translateY(0);
+          transform: scale(2) translateY(0);
           opacity: 0;
-          filter: blur(6px);
+          filter: blur(4px);
         }
       }
       
@@ -240,185 +240,185 @@ class QuantumBattleSystem {
           opacity: 0;
         }
         30% {
-          transform: translateX(100px) scaleX(1.5);
+          transform: translateX(80px) scaleX(1.3);
           opacity: 1;
-          filter: blur(3px);
+          filter: blur(2px);
         }
         70% {
-          transform: translateX(200px) scaleX(1.2);
+          transform: translateX(150px) scaleX(1.1);
           opacity: 0.8;
-          filter: blur(5px);
+          filter: blur(3px);
         }
         100% {
-          transform: translateX(300px) scaleX(0);
+          transform: translateX(220px) scaleX(0);
           opacity: 0;
-          filter: blur(8px);
+          filter: blur(5px);
         }
       }
       
-      /* ELEMENTOS DE EFEITO */
+      /* ELEMENTOS DE EFEITO OTIMIZADOS */
       .dimensional-shift {
-        animation: dimensionalShift 0.8s ease-out;
+        animation: dimensionalShift 0.6s ease-out;
       }
       
       .quantum-flash {
-        animation: quantumFlash 0.3s ease-in-out 2;
+        animation: quantumFlash 0.25s ease-in-out 2;
       }
       
       .ripple {
         position: absolute;
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
-        background: rgba(66, 220, 255, 0.3);
-        border: 2px solid rgba(66, 220, 255, 0.8);
+        background: rgba(66, 220, 255, 0.25);
+        border: 1.5px solid rgba(66, 220, 255, 0.7);
         pointer-events: none;
         z-index: 450;
-        animation: rippleEffect 1s ease-out forwards;
+        animation: rippleEffect 0.8s ease-out forwards;
       }
       
       .sword-slash {
         position: absolute;
-        width: 150px;
-        height: 20px;
+        width: 120px;
+        height: 16px;
         background: linear-gradient(90deg, 
           rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.9) 50%,
+          rgba(255, 255, 255, 0.8) 50%,
           rgba(255, 255, 255, 0) 100%);
         clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-        filter: drop-shadow(0 0 10px #ffffff);
+        filter: drop-shadow(0 0 6px #ffffff);
         pointer-events: none;
         z-index: 500;
-        animation: swordSlash 0.6s ease-out forwards;
+        animation: swordSlash 0.5s ease-out forwards;
       }
       
       .energy-blast {
         position: absolute;
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
         background: radial-gradient(circle, 
-          rgba(255, 100, 100, 0.9) 0%,
-          rgba(255, 50, 50, 0.6) 50%,
+          rgba(255, 100, 100, 0.8) 0%,
+          rgba(255, 50, 50, 0.5) 50%,
           rgba(255, 0, 0, 0) 70%);
         border-radius: 50%;
         pointer-events: none;
         z-index: 550;
-        animation: energyBlast 0.8s ease-out forwards;
+        animation: energyBlast 0.6s ease-out forwards;
       }
       
       .shield-block {
         position: absolute;
-        width: 120px;
-        height: 120px;
-        border: 4px solid rgba(100, 200, 255, 0.8);
+        width: 100px;
+        height: 100px;
+        border: 3px solid rgba(100, 200, 255, 0.7);
         border-radius: 50%;
         pointer-events: none;
         z-index: 600;
-        animation: shieldBlock 0.6s ease-out forwards;
+        animation: shieldBlock 0.5s ease-out forwards;
       }
       
       .healing-pulse {
         position: absolute;
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
         background: radial-gradient(circle,
-          rgba(0, 255, 136, 0.6) 0%,
-          rgba(0, 255, 136, 0.3) 50%,
+          rgba(0, 255, 136, 0.5) 0%,
+          rgba(0, 255, 136, 0.25) 50%,
           rgba(0, 255, 136, 0) 70%);
         pointer-events: none;
         z-index: 400;
-        animation: healingPulse 1s ease-in-out infinite;
+        animation: healingPulse 0.8s ease-in-out infinite;
       }
       
       .lightning-strike {
         position: absolute;
-        width: 8px;
-        height: 100px;
+        width: 6px;
+        height: 80px;
         background: linear-gradient(to bottom,
           rgba(255, 255, 100, 0) 0%,
-          rgba(255, 255, 100, 0.9) 30%,
-          rgba(100, 200, 255, 0.9) 50%,
+          rgba(255, 255, 100, 0.8) 30%,
+          rgba(100, 200, 255, 0.8) 50%,
           rgba(66, 220, 255, 0) 100%);
         clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-        filter: drop-shadow(0 0 10px #42dcff);
+        filter: drop-shadow(0 0 6px #42dcff);
         pointer-events: none;
         z-index: 650;
-        animation: lightningStrike 0.5s ease-out forwards;
+        animation: lightningStrike 0.4s ease-out forwards;
       }
       
       .fire-burn {
         position: absolute;
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         background: radial-gradient(circle,
-          rgba(255, 100, 0, 0.9) 0%,
-          rgba(255, 50, 0, 0.6) 50%,
+          rgba(255, 100, 0, 0.8) 0%,
+          rgba(255, 50, 0, 0.5) 50%,
           rgba(255, 0, 0, 0) 70%);
         border-radius: 50%;
         pointer-events: none;
         z-index: 700;
-        animation: fireBurn 1s ease-out forwards;
+        animation: fireBurn 0.8s ease-out forwards;
       }
       
       .ice-freeze {
         position: absolute;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         background: radial-gradient(circle,
-          rgba(100, 200, 255, 0.9) 0%,
-          rgba(66, 220, 255, 0.6) 50%,
+          rgba(100, 200, 255, 0.8) 0%,
+          rgba(66, 220, 255, 0.5) 50%,
           rgba(0, 150, 255, 0) 70%);
         border-radius: 50%;
         pointer-events: none;
         z-index: 650;
-        animation: iceFreeze 1.2s ease-out forwards;
+        animation: iceFreeze 1s ease-out forwards;
       }
       
       .poison-cloud {
         position: absolute;
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
         background: radial-gradient(circle,
-          rgba(0, 255, 0, 0.4) 0%,
-          rgba(50, 255, 50, 0.2) 50%,
+          rgba(0, 255, 0, 0.3) 0%,
+          rgba(50, 255, 50, 0.15) 50%,
           rgba(100, 255, 100, 0) 70%);
         border-radius: 50%;
         pointer-events: none;
         z-index: 500;
-        animation: poisonCloud 2s ease-out forwards;
+        animation: poisonCloud 1.5s ease-out forwards;
       }
       
       .earth-shatter {
         position: absolute;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         background: radial-gradient(circle,
-          rgba(139, 69, 19, 0.8) 0%,
-          rgba(160, 82, 45, 0.5) 50%,
+          rgba(139, 69, 19, 0.7) 0%,
+          rgba(160, 82, 45, 0.4) 50%,
           rgba(210, 105, 30, 0) 70%);
         border-radius: 50%;
         pointer-events: none;
         z-index: 550;
-        animation: earthShatter 1s ease-out forwards;
+        animation: earthShatter 0.8s ease-out forwards;
       }
       
       .wind-gust {
         position: absolute;
-        width: 200px;
-        height: 40px;
+        width: 160px;
+        height: 30px;
         background: linear-gradient(90deg,
           rgba(200, 200, 255, 0) 0%,
-          rgba(200, 200, 255, 0.6) 50%,
+          rgba(200, 200, 255, 0.5) 50%,
           rgba(200, 200, 255, 0) 100%);
-        border-radius: 20px;
-        filter: blur(5px);
+        border-radius: 15px;
+        filter: blur(3px);
         pointer-events: none;
         z-index: 450;
-        animation: windGust 0.7s ease-out forwards;
+        animation: windGust 0.6s ease-out forwards;
       }
       
-      /* SISTEMA DE PARTÍCULAS AVANÇADO */
+      /* SISTEMA DE PARTÍCULAS OTIMIZADO */
       .particle {
         position: absolute;
         pointer-events: none;
@@ -428,41 +428,41 @@ class QuantumBattleSystem {
       .particle-damage {
         background: #ff4444;
         border-radius: 50%;
-        box-shadow: 0 0 10px #ff4444;
+        box-shadow: 0 0 6px #ff4444;
       }
       
       .particle-heal {
         background: #00ff88;
         border-radius: 50%;
-        box-shadow: 0 0 10px #00ff88;
+        box-shadow: 0 0 6px #00ff88;
       }
       
       .particle-energy {
         background: #42dcff;
         border-radius: 50%;
-        box-shadow: 0 0 10px #42dcff;
+        box-shadow: 0 0 6px #42dcff;
       }
       
       .particle-fire {
         background: #ff6600;
         border-radius: 50%;
-        box-shadow: 0 0 15px #ff6600;
+        box-shadow: 0 0 8px #ff6600;
       }
       
       .particle-ice {
         background: #66ccff;
         border-radius: 50%;
-        box-shadow: 0 0 15px #66ccff;
+        box-shadow: 0 0 8px #66ccff;
       }
       
       .particle-lightning {
         background: #ffff00;
         border-radius: 0;
         transform: rotate(45deg);
-        box-shadow: 0 0 15px #ffff00;
+        box-shadow: 0 0 8px #ffff00;
       }
       
-      /* ANIMAÇÕES DE DANO MELHORADAS */
+      /* ANIMAÇÕES DE DANO OTIMIZADAS */
       @keyframes damagePop {
         0% {
           transform: translateY(0) scale(0.5);
@@ -470,22 +470,22 @@ class QuantumBattleSystem {
           text-shadow: 0 0 0 rgba(255, 255, 255, 0);
         }
         20% {
-          transform: translateY(-50px) scale(1.3);
+          transform: translateY(-40px) scale(1.2);
           opacity: 1;
-          text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-        }
-        40% {
-          transform: translateY(-60px) scale(1.2);
-          opacity: 0.9;
           text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
         }
+        40% {
+          transform: translateY(-50px) scale(1.1);
+          opacity: 0.9;
+          text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+        }
         80% {
-          transform: translateY(-100px) scale(1.1);
+          transform: translateY(-80px) scale(1);
           opacity: 0.7;
-          text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+          text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
         }
         100% {
-          transform: translateY(-150px) scale(0.9);
+          transform: translateY(-120px) scale(0.8);
           opacity: 0;
           text-shadow: 0 0 0 rgba(255, 255, 255, 0);
         }
@@ -493,61 +493,61 @@ class QuantumBattleSystem {
       
       .damage-number {
         position: absolute;
-        font-size: 28px;
-        font-weight: 900;
+        font-size: 24px;
+        font-weight: 800;
         z-index: 1000;
         pointer-events: none;
-        animation: damagePop 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        animation: damagePop 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
       }
       
       .damage-physical {
         color: #ff4444;
         text-shadow: 
-          2px 2px 0 #000,
-          0 0 10px #ff4444,
-          0 0 20px #ff0000;
+          1px 1px 0 #000,
+          0 0 6px #ff4444,
+          0 0 12px #ff0000;
       }
       
       .damage-magical {
         color: #8844ff;
         text-shadow: 
-          2px 2px 0 #000,
-          0 0 10px #8844ff,
-          0 0 20px #6600ff;
+          1px 1px 0 #000,
+          0 0 6px #8844ff,
+          0 0 12px #6600ff;
       }
       
       .damage-critical {
         color: #ffaa00;
-        font-size: 36px;
+        font-size: 30px;
         text-shadow: 
-          2px 2px 0 #000,
-          0 0 15px #ffaa00,
-          0 0 30px #ff8800,
-          0 0 45px #ff6600;
-        animation: damagePop 2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          1px 1px 0 #000,
+          0 0 10px #ffaa00,
+          0 0 20px #ff8800,
+          0 0 30px #ff6600;
+        animation: damagePop 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
       }
       
       .heal-number {
         color: #00ff88;
         text-shadow: 
-          2px 2px 0 #000,
-          0 0 10px #00ff88,
-          0 0 20px #00cc66;
+          1px 1px 0 #000,
+          0 0 6px #00ff88,
+          0 0 12px #00cc66;
       }
       
-      /* ANIMAÇÕES DE PERSONAGEM */
+      /* ANIMAÇÕES DE PERSONAGEM OTIMIZADAS */
       @keyframes characterCharge {
         0% {
           transform: translateX(0) scale(1);
           filter: brightness(1) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
         }
         30% {
-          transform: translateX(40px) scale(1.1);
-          filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+          transform: translateX(30px) scale(1.05);
+          filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
         }
         70% {
-          transform: translateX(40px) scale(1.1);
-          filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+          transform: translateX(30px) scale(1.05);
+          filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
         }
         100% {
           transform: translateX(0) scale(1);
@@ -558,52 +558,52 @@ class QuantumBattleSystem {
       @keyframes characterImpact {
         0% {
           transform: translateX(0) scale(1);
-          filter: brightness(1) hue-rotate(0deg);
+          filter: brightness(1);
         }
         15% {
-          transform: translateX(-30px) scale(0.95) rotate(-5deg);
-          filter: brightness(2) hue-rotate(180deg) saturate(2);
+          transform: translateX(-20px) scale(0.97) rotate(-3deg);
+          filter: brightness(1.5);
         }
         35% {
-          transform: translateX(20px) scale(0.97) rotate(3deg);
-          filter: brightness(1.8) hue-rotate(270deg) saturate(1.5);
+          transform: translateX(15px) scale(0.98) rotate(2deg);
+          filter: brightness(1.3);
         }
         65% {
-          transform: translateX(-10px) scale(0.98) rotate(-2deg);
-          filter: brightness(1.5) hue-rotate(360deg) saturate(1.2);
+          transform: translateX(-8px) scale(0.99) rotate(-1deg);
+          filter: brightness(1.1);
         }
         85% {
-          transform: translateX(5px) scale(0.99) rotate(1deg);
-          filter: brightness(1.2) hue-rotate(450deg) saturate(1.1);
+          transform: translateX(4px) scale(0.995) rotate(0.5deg);
+          filter: brightness(1.05);
         }
         100% {
           transform: translateX(0) scale(1) rotate(0deg);
-          filter: brightness(1) hue-rotate(0deg) saturate(1);
+          filter: brightness(1);
         }
       }
       
       .character-charge {
-        animation: characterCharge 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        animation: characterCharge 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
       }
       
       .character-impact {
-        animation: characterImpact 1s cubic-bezier(0.36, 0, 0.66, -0.56);
+        animation: characterImpact 0.8s cubic-bezier(0.36, 0, 0.66, -0.56);
       }
       
-      /* EFEITOS DE TELA */
+      /* EFEITOS DE TELA OTIMIZADOS */
       @keyframes screenShake {
         0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-10px) translateY(-5px) rotate(-0.5deg); }
-        20%, 40%, 60%, 80% { transform: translateX(10px) translateY(5px) rotate(0.5deg); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-6px) translateY(-3px) rotate(-0.3deg); }
+        20%, 40%, 60%, 80% { transform: translateX(6px) translateY(3px) rotate(0.3deg); }
       }
       
       @keyframes screenFlash {
         0%, 100% { background-color: transparent; }
-        50% { background-color: rgba(255, 255, 255, 0.3); }
+        50% { background-color: rgba(255, 255, 255, 0.2); }
       }
       
       .screen-shake {
-        animation: screenShake 0.5s ease-out;
+        animation: screenShake 0.4s ease-out;
       }
       
       .screen-flash {
@@ -614,27 +614,27 @@ class QuantumBattleSystem {
         height: 100%;
         pointer-events: none;
         z-index: 9999;
-        animation: screenFlash 0.3s ease-out;
+        animation: screenFlash 0.2s ease-out;
       }
       
-      /* EFEITOS DE COMBO */
+      /* EFEITOS DE COMBO OTIMIZADOS */
       @keyframes comboRush {
         0% {
           transform: scale(0) rotate(0deg);
           opacity: 0;
         }
         30% {
-          transform: scale(1.5) rotate(180deg);
+          transform: scale(1.3) rotate(180deg);
           opacity: 1;
-          filter: brightness(2) drop-shadow(0 0 20px #ff6600);
+          filter: brightness(1.5) drop-shadow(0 0 12px #ff6600);
         }
         70% {
-          transform: scale(1.5) rotate(180deg);
+          transform: scale(1.3) rotate(180deg);
           opacity: 1;
-          filter: brightness(2) drop-shadow(0 0 20px #ff6600);
+          filter: brightness(1.5) drop-shadow(0 0 12px #ff6600);
         }
         100% {
-          transform: scale(3) rotate(360deg);
+          transform: scale(2.2) rotate(360deg);
           opacity: 0;
           filter: brightness(1) drop-shadow(0 0 0 #ff6600);
         }
@@ -642,48 +642,48 @@ class QuantumBattleSystem {
       
       .combo-rush {
         position: absolute;
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
         background: radial-gradient(circle,
-          rgba(255, 100, 0, 0.9) 0%,
-          rgba(255, 50, 0, 0.6) 50%,
+          rgba(255, 100, 0, 0.8) 0%,
+          rgba(255, 50, 0, 0.5) 50%,
           rgba(255, 0, 0, 0) 70%);
         border-radius: 50%;
         pointer-events: none;
         z-index: 750;
-        animation: comboRush 0.8s ease-out forwards;
+        animation: comboRush 0.6s ease-out forwards;
       }
       
-      /* EFEITOS DE STATUS */
+      /* EFEITOS DE STATUS OTIMIZADOS */
       .status-burn {
-        filter: sepia(1) saturate(2) hue-rotate(-30deg);
-        animation: quantumFlash 1s infinite;
+        filter: sepia(0.8) saturate(1.5) hue-rotate(-20deg);
+        animation: quantumFlash 0.8s infinite;
       }
       
       .status-freeze {
-        filter: hue-rotate(180deg) brightness(1.2) contrast(0.8);
-        animation: pulse 2s infinite;
+        filter: hue-rotate(160deg) brightness(1.1) contrast(0.9);
+        animation: pulse 1.5s infinite;
       }
       
       .status-poison {
-        filter: hue-rotate(90deg) saturate(2);
-        animation: shake 0.5s infinite;
+        filter: hue-rotate(70deg) saturate(1.5);
+        animation: shake 0.4s infinite;
       }
       
       .status-stun {
-        filter: brightness(1.5) contrast(1.2);
-        animation: stunEffect 0.5s infinite;
+        filter: brightness(1.3) contrast(1.1);
+        animation: stunEffect 0.4s infinite;
       }
       
       @keyframes pulse {
         0%, 100% { opacity: 1; }
-        50% { opacity: 0.7; }
+        50% { opacity: 0.8; }
       }
       
       @keyframes shake {
         0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        75% { transform: translateX(5px); }
+        25% { transform: translateX(-3px); }
+        75% { transform: translateX(3px); }
       }
       
       @keyframes stunEffect {
@@ -691,49 +691,49 @@ class QuantumBattleSystem {
           filter: brightness(1) contrast(1) blur(0);
         }
         50% { 
-          filter: brightness(1.8) contrast(0.7) blur(2px);
+          filter: brightness(1.5) contrast(0.8) blur(1px);
         }
       }
       
-      /* EFEITOS DE VITÓRIA/DERROTA */
+      /* EFEITOS DE VITÓRIA/DERROTA OTIMIZADOS */
       @keyframes victoryGlow {
         0%, 100% {
-          filter: drop-shadow(0 0 10px gold) brightness(1);
+          filter: drop-shadow(0 0 6px gold) brightness(1);
           transform: scale(1);
         }
         50% {
-          filter: drop-shadow(0 0 30px gold) brightness(1.3);
-          transform: scale(1.05);
+          filter: drop-shadow(0 0 20px gold) brightness(1.2);
+          transform: scale(1.03);
         }
       }
       
       @keyframes defeatShake {
         0%, 100% { transform: translateX(0) rotate(0deg); }
-        25% { transform: translateX(-20px) rotate(-5deg); }
-        75% { transform: translateX(20px) rotate(5deg); }
+        25% { transform: translateX(-12px) rotate(-3deg); }
+        75% { transform: translateX(12px) rotate(3deg); }
       }
       
       .victory-glow {
-        animation: victoryGlow 1s infinite alternate;
+        animation: victoryGlow 0.8s infinite alternate;
       }
       
       .defeat-shake {
-        animation: defeatShake 0.5s ease-in-out 3;
+        animation: defeatShake 0.4s ease-in-out 3;
       }
       
-      /* BARRA DE COMBO */
+      /* BARRA DE COMBO OTIMIZADA */
       .combo-bar {
         position: absolute;
-        top: 20px;
+        top: 15px;
         left: 50%;
         transform: translateX(-50%);
-        width: 300px;
-        height: 40px;
+        width: 250px;
+        height: 35px;
         background: linear-gradient(90deg,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(20, 20, 20, 0.8) 100%);
-        border-radius: 20px;
-        border: 3px solid #ff6600;
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(20, 20, 20, 0.7) 100%);
+        border-radius: 18px;
+        border: 2px solid #ff6600;
         overflow: hidden;
         z-index: 2000;
         display: none;
@@ -746,8 +746,8 @@ class QuantumBattleSystem {
           #ff6600,
           #ff9900,
           #ffcc00);
-        border-radius: 20px;
-        transition: width 0.3s ease;
+        border-radius: 18px;
+        transition: width 0.25s ease;
         position: relative;
         overflow: hidden;
       }
@@ -761,9 +761,9 @@ class QuantumBattleSystem {
         bottom: 0;
         background: linear-gradient(90deg,
           transparent 0%,
-          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0.3) 50%,
           transparent 100%);
-        animation: comboShimmer 1s infinite linear;
+        animation: comboShimmer 0.8s infinite linear;
       }
       
       @keyframes comboShimmer {
@@ -782,45 +782,45 @@ class QuantumBattleSystem {
         justify-content: center;
         color: white;
         font-weight: bold;
-        font-size: 18px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        font-size: 16px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
       }
       
-      /* INDICADORES DE STATS */
+      /* INDICADORES DE STATS OTIMIZADOS */
       .stat-buff {
         position: absolute;
-        top: -30px;
+        top: -25px;
         left: 50%;
         transform: translateX(-50%);
         background: linear-gradient(90deg, 
-          rgba(0, 255, 136, 0.2) 0%,
-          rgba(0, 255, 136, 0.8) 50%,
-          rgba(0, 255, 136, 0.2) 100%);
+          rgba(0, 255, 136, 0.15) 0%,
+          rgba(0, 255, 136, 0.6) 50%,
+          rgba(0, 255, 136, 0.15) 100%);
         color: white;
-        padding: 5px 15px;
-        border-radius: 15px;
-        font-size: 12px;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 11px;
         font-weight: bold;
         z-index: 300;
-        animation: floatUp 2s ease-out forwards;
+        animation: floatUp 1.5s ease-out forwards;
       }
       
       .stat-debuff {
         position: absolute;
-        top: -30px;
+        top: -25px;
         left: 50%;
         transform: translateX(-50%);
         background: linear-gradient(90deg, 
-          rgba(255, 68, 68, 0.2) 0%,
-          rgba(255, 68, 68, 0.8) 50%,
-          rgba(255, 68, 68, 0.2) 100%);
+          rgba(255, 68, 68, 0.15) 0%,
+          rgba(255, 68, 68, 0.6) 50%,
+          rgba(255, 68, 68, 0.15) 100%);
         color: white;
-        padding: 5px 15px;
-        border-radius: 15px;
-        font-size: 12px;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 11px;
         font-weight: bold;
         z-index: 300;
-        animation: floatUp 2s ease-out forwards;
+        animation: floatUp 1.5s ease-out forwards;
       }
       
       @keyframes floatUp {
@@ -829,7 +829,7 @@ class QuantumBattleSystem {
           opacity: 1;
         }
         100% {
-          transform: translateX(-50%) translateY(-50px);
+          transform: translateX(-50%) translateY(-40px);
           opacity: 0;
         }
       }
@@ -1020,7 +1020,7 @@ class QuantumBattleSystem {
     }
   }
 
-  // SISTEMA DE PARTÍCULAS AVANÇADO
+  // SISTEMA DE PARTÍCULAS OTIMIZADO
   initParticleSystem() {
     this.particleSystems = [];
     this.frameCount = 0;
@@ -1047,18 +1047,18 @@ class QuantumBattleSystem {
             return;
           }
 
-          const x = particle.startX + particle.velocityX * progress * 100;
+          const x = particle.startX + particle.velocityX * progress * 80;
           const y =
             particle.startY +
-            particle.velocityY * progress * 100 +
-            (particle.gravity * Math.pow(progress * 100, 2)) / 2;
+            particle.velocityY * progress * 80 +
+            (particle.gravity * Math.pow(progress * 80, 2)) / 2;
 
           const scale = 1 - progress / particle.life;
           const opacity = 1 - progress / particle.life;
 
           particle.element.style.left = `${x}px`;
           particle.element.style.top = `${y}px`;
-          particle.element.style.transform = `scale(${scale}) rotate(${progress * 360}deg)`;
+          particle.element.style.transform = `scale(${scale}) rotate(${progress * 180}deg)`;
           particle.element.style.opacity = opacity;
         });
 
@@ -1094,10 +1094,10 @@ class QuantumBattleSystem {
       container: particleContainer,
       particles: [],
       startTime: Date.now(),
-      duration: options.duration || 2000,
+      duration: options.duration || 1500,
     };
 
-    const particleCount = options.count || 30;
+    const particleCount = options.count || 15; // Reduzido de 30
     const colors = {
       damage: ["#ff4444", "#ff0000", "#ff8888"],
       heal: ["#00ff88", "#00cc66", "#66ffaa"],
@@ -1113,19 +1113,19 @@ class QuantumBattleSystem {
       const particle = document.createElement("div");
       particle.className = `particle particle-${type}`;
 
-      const size = Math.random() * 8 + 4;
+      const size = Math.random() * 6 + 3; // Reduzido de 8+4
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
       particle.style.position = "absolute";
-      particle.style.borderRadius = type === "lightning" ? "2px" : "50%";
+      particle.style.borderRadius = type === "lightning" ? "1px" : "50%";
       particle.style.backgroundColor =
         typeColors[Math.floor(Math.random() * typeColors.length)];
-      particle.style.boxShadow = `0 0 ${size / 2}px currentColor`;
+      particle.style.boxShadow = `0 0 ${size / 2.5}px currentColor`;
 
-      const life = Math.random() * 0.8 + 0.2;
-      const velocityX = (Math.random() - 0.5) * 10;
-      const velocityY = (Math.random() - 0.5) * 10 - 5;
-      const gravity = Math.random() * 0.05 + 0.02;
+      const life = Math.random() * 0.6 + 0.3;
+      const velocityX = (Math.random() - 0.5) * 8;
+      const velocityY = (Math.random() - 0.5) * 6 - 3;
+      const gravity = Math.random() * 0.03 + 0.015;
 
       system.particles.push({
         element: particle,
@@ -1149,7 +1149,7 @@ class QuantumBattleSystem {
     return system;
   }
 
-  // NOVOS EFEITOS VISUAIS
+  // EFEITOS VISUAIS OTIMIZADOS
   createBattleEffect(type, x, y, options = {}) {
     const container = this.elements.battleAnimationContainer;
     const effect = document.createElement("div");
@@ -1157,8 +1157,8 @@ class QuantumBattleSystem {
     switch (type) {
       case "ripple":
         effect.className = "ripple";
-        effect.style.left = `${x - 10}px`;
-        effect.style.top = `${y - 10}px`;
+        effect.style.left = `${x - 9}px`;
+        effect.style.top = `${y - 9}px`;
         break;
 
       case "swordSlash":
@@ -1170,64 +1170,64 @@ class QuantumBattleSystem {
 
       case "energyBlast":
         effect.className = "energy-blast";
-        effect.style.left = `${x - 40}px`;
-        effect.style.top = `${y - 40}px`;
+        effect.style.left = `${x - 30}px`;
+        effect.style.top = `${y - 30}px`;
         break;
 
       case "shieldBlock":
         effect.className = "shield-block";
-        effect.style.left = `${x - 60}px`;
-        effect.style.top = `${y - 60}px`;
-        break;
-
-      case "healingPulse":
-        effect.className = "healing-pulse";
         effect.style.left = `${x - 50}px`;
         effect.style.top = `${y - 50}px`;
         break;
 
+      case "healingPulse":
+        effect.className = "healing-pulse";
+        effect.style.left = `${x - 40}px`;
+        effect.style.top = `${y - 40}px`;
+        break;
+
       case "lightningStrike":
         effect.className = "lightning-strike";
-        effect.style.left = `${x - 4}px`;
+        effect.style.left = `${x - 3}px`;
         effect.style.top = `${y}px`;
         effect.style.transform = `rotate(${options.angle || 0}deg)`;
         break;
 
       case "fireBurn":
         effect.className = "fire-burn";
-        effect.style.left = `${x - 50}px`;
-        effect.style.top = `${y - 50}px`;
+        effect.style.left = `${x - 40}px`;
+        effect.style.top = `${y - 40}px`;
         break;
 
       case "iceFreeze":
         effect.className = "ice-freeze";
-        effect.style.left = `${x - 60}px`;
-        effect.style.top = `${y - 60}px`;
+        effect.style.left = `${x - 50}px`;
+        effect.style.top = `${y - 50}px`;
         break;
 
       case "poisonCloud":
         effect.className = "poison-cloud";
-        effect.style.left = `${x - 75}px`;
-        effect.style.top = `${y - 75}px`;
+        effect.style.left = `${x - 60}px`;
+        effect.style.top = `${y - 60}px`;
         break;
 
       case "earthShatter":
         effect.className = "earth-shatter";
-        effect.style.left = `${x - 60}px`;
-        effect.style.top = `${y - 60}px`;
+        effect.style.left = `${x - 50}px`;
+        effect.style.top = `${y - 50}px`;
         break;
 
       case "windGust":
         effect.className = "wind-gust";
         effect.style.left = `${x}px`;
-        effect.style.top = `${y - 20}px`;
+        effect.style.top = `${y - 15}px`;
         effect.style.transform = `rotate(${options.angle || 0}deg)`;
         break;
 
       case "comboRush":
         effect.className = "combo-rush";
-        effect.style.left = `${x - 75}px`;
-        effect.style.top = `${y - 75}px`;
+        effect.style.left = `${x - 60}px`;
+        effect.style.top = `${y - 60}px`;
         break;
     }
 
@@ -1237,12 +1237,12 @@ class QuantumBattleSystem {
     const duration =
       options.duration ||
       (type === "healingPulse"
-        ? 1000
+        ? 800
         : type === "poisonCloud"
-          ? 2000
+          ? 1500
           : type === "comboRush"
-            ? 800
-            : 1000);
+            ? 600
+            : 800);
 
     setTimeout(() => {
       if (effect.parentNode) effect.remove();
@@ -1258,28 +1258,28 @@ class QuantumBattleSystem {
         characterElement.classList.add("dimensional-shift");
         setTimeout(() => {
           characterElement.classList.remove("dimensional-shift");
-        }, 800);
+        }, 600);
         break;
 
       case "quantumFlash":
         characterElement.classList.add("quantum-flash");
         setTimeout(() => {
           characterElement.classList.remove("quantum-flash");
-        }, 600);
+        }, 500);
         break;
 
       case "characterCharge":
         characterElement.classList.add("character-charge");
         setTimeout(() => {
           characterElement.classList.remove("character-charge");
-        }, 600);
+        }, 500);
         break;
 
       case "characterImpact":
         characterElement.classList.add("character-impact");
         setTimeout(() => {
           characterElement.classList.remove("character-impact");
-        }, 1000);
+        }, 800);
         break;
 
       case "victoryGlow":
@@ -1290,35 +1290,35 @@ class QuantumBattleSystem {
         characterElement.classList.add("defeat-shake");
         setTimeout(() => {
           characterElement.classList.remove("defeat-shake");
-        }, 1500);
+        }, 1200);
         break;
 
       case "statusBurn":
         characterElement.classList.add("status-burn");
         setTimeout(() => {
           characterElement.classList.remove("status-burn");
-        }, 3000);
+        }, 2500);
         break;
 
       case "statusFreeze":
         characterElement.classList.add("status-freeze");
         setTimeout(() => {
           characterElement.classList.remove("status-freeze");
-        }, 3000);
+        }, 2500);
         break;
 
       case "statusPoison":
         characterElement.classList.add("status-poison");
         setTimeout(() => {
           characterElement.classList.remove("status-poison");
-        }, 3000);
+        }, 2500);
         break;
 
       case "statusStun":
         characterElement.classList.add("status-stun");
         setTimeout(() => {
           characterElement.classList.remove("status-stun");
-        }, 3000);
+        }, 2500);
         break;
     }
   }
@@ -1331,14 +1331,14 @@ class QuantumBattleSystem {
           this.elements.battleAnimationContainer.classList.remove(
             "screen-shake",
           );
-        }, 500);
+        }, 400);
         break;
 
       case "screenFlash":
         this.elements.screenOverlay.style.display = "block";
         setTimeout(() => {
           this.elements.screenOverlay.style.display = "none";
-        }, 300);
+        }, 200);
         break;
     }
   }
@@ -1371,7 +1371,7 @@ class QuantumBattleSystem {
     setTimeout(() => {
       if (damageNumber.parentNode) damageNumber.remove();
       this.damageNumbers = this.damageNumbers.filter((d) => d !== damageNumber);
-    }, 1800);
+    }, 1500);
 
     return damageNumber;
   }
@@ -1410,10 +1410,10 @@ class QuantumBattleSystem {
 
     setTimeout(() => {
       if (indicator.parentNode) indicator.remove();
-    }, 2000);
+    }, 1500);
   }
 
-  // MÉTODOS DE ANIMAÇÃO DE BATALHA MELHORADOS
+  // MÉTODOS DE ANIMAÇÃO DE BATALHA OTIMIZADOS
   async startBattleAnimationWithRealResult(result) {
     return new Promise((resolve) => {
       const char1 =
@@ -1473,7 +1473,7 @@ class QuantumBattleSystem {
       document.body.style.overflow = "hidden";
 
       let currentStep = 0;
-      const totalSteps = 30;
+      const totalSteps = 25; // Reduzido de 30
       let comboCount = 0;
       let lastAttackStep = 0;
 
@@ -1493,35 +1493,30 @@ class QuantumBattleSystem {
 
         // Textos dinâmicos
         const texts = [
-          "⚡ INICIALIZANDO SISTEMA QUÂNTICO...",
-          "🌀 SINCRONIZANDO DIMENSÕES...",
-          "💫 ESTABILIZANDO CAMPO DE BATALHA...",
-          "🔥 CARREGANDO PODERES...",
-          "⚔️ BATALHA QUÂNTICA INICIADA!",
+          "⚡ INICIALIZANDO SISTEMA...",
+          "🌀 SINCRONIZANDO...",
+          "💫 CAMPO DE BATALHA...",
+          "🔥 CARREGANDO...",
+          "⚔️ BATALHA INICIADA!",
           "🗡️ ATAQUE RÁPIDO!",
           "🛡️ DEFESA ATIVADA!",
-          "⚡ RELÂMPAGO VELOZ!",
-          "🔥 CHAMAS ARDENTES!",
+          "⚡ RELÂMPAGO!",
+          "🔥 CHAMAS!",
           "❄️ CONGELAMENTO!",
-          "💨 VENTANIA CORTANTE!",
+          "💨 VENTANIA!",
           "⚡ CONTRA-ATAQUE!",
-          "💥 EXPLOSÃO DE ENERGIA!",
-          "🌀 DISTORÇÃO TEMPORAL!",
+          "💥 EXPLOSÃO!",
+          "🌀 DISTORÇÃO!",
           "⚡ ATAQUE EM CADEIA!",
-          "🔥 INFERNO EM CHAMAS!",
-          "❄️ GEADA MORTAL!",
-          "💨 TORNADO DESTRUIDOR!",
+          "🔥 INFERNO!",
+          "❄️ GEADA!",
+          "💨 TORNADO!",
           "⚡ PODER SUPREMO!",
-          "💥 COLISÃO FINAL!",
-          "🔥 ULTRA EXPLOSÃO!",
-          "❄️ CONGELAMENTO ABSOLUTO!",
-          "💨 VENTO DA MORTE!",
-          "⚡ RAIOS DA PERDIÇÃO!",
-          "💥 MEGA EXPLOSÃO!",
-          "🌟 PODER MÁXIMO!",
-          "💫 ULTRA EVOLUÇÃO!",
-          "⚡ ATAQUE DEFINITIVO!",
-          "💥 COLAPSO FINAL!",
+          "💥 COLISÃO!",
+          "🔥 EXPLOSÃO!",
+          "❄️ CONGELAMENTO!",
+          "💨 VENTO!",
+          "⚡ RAIOS!",
           "🏁 BATALHA CONCLUÍDA!",
         ];
 
@@ -1529,7 +1524,7 @@ class QuantumBattleSystem {
           this.elements.animationText.textContent = texts[currentStep - 1];
 
           // Efeitos de batalha
-          if (currentStep >= 5 && currentStep <= 28) {
+          if (currentStep >= 5 && currentStep <= 23) {
             const isPlayer1Attack = currentStep % 2 === 1;
             const attacker = isPlayer1Attack
               ? this.elements.animationChar1
@@ -1566,8 +1561,8 @@ class QuantumBattleSystem {
             lastAttackStep = currentStep;
 
             // Aplicar dano progressivo
-            if (currentStep >= 6 && currentStep <= 25) {
-              const stepProgress = (currentStep - 5) / 20;
+            if (currentStep >= 6 && currentStep <= 22) {
+              const stepProgress = (currentStep - 5) / 17;
               const damageProgress = Math.pow(stepProgress, 1.5);
 
               const winnerCurrentHP = Math.max(
@@ -1613,13 +1608,8 @@ class QuantumBattleSystem {
               }
             }
 
-            // Efeitos especiais
-            if (
-              currentStep === 10 ||
-              currentStep === 15 ||
-              currentStep === 20 ||
-              currentStep === 25
-            ) {
+            // Efeitos especiais (reduzidos)
+            if (currentStep === 10 || currentStep === 15 || currentStep === 20) {
               this.createSpecialAttack(currentStep, isPlayer1Attack);
             }
           }
@@ -1658,16 +1648,14 @@ class QuantumBattleSystem {
           // Continuar animação
           const stepDuration =
             currentStep >= totalSteps - 3
-              ? 600
-              : currentStep >= 25
-                ? 400
-                : currentStep >= 20
-                  ? 350
-                  : currentStep >= 15
-                    ? 300
-                    : currentStep >= 10
-                      ? 250
-                      : 200;
+              ? 500
+              : currentStep >= 20
+                ? 350
+                : currentStep >= 15
+                  ? 280
+                  : currentStep >= 10
+                    ? 220
+                    : 180;
 
           setTimeout(animateStep, stepDuration);
         } else {
@@ -1679,7 +1667,7 @@ class QuantumBattleSystem {
       // Iniciar animação
       setTimeout(() => {
         animateStep();
-      }, 1000);
+      }, 800);
     });
   }
 
@@ -1690,7 +1678,7 @@ class QuantumBattleSystem {
     // Efeito no defensor
     setTimeout(() => {
       this.applyCharacterEffect(defender, "characterImpact");
-    }, 300);
+    }, 250);
 
     // Posições para efeitos
     const attackerRect = attacker.getBoundingClientRect();
@@ -1729,22 +1717,22 @@ class QuantumBattleSystem {
 
       case "energyBlast":
         this.createBattleEffect("energyBlast", endX, endY);
-        this.createParticleSystem("energy", endX, endY, { count: 20 });
+        this.createParticleSystem("energy", endX, endY, { count: 12 });
         break;
 
       case "fireBurn":
         this.createBattleEffect("fireBurn", endX, endY);
-        this.createParticleSystem("fire", endX, endY, { count: 25 });
+        this.createParticleSystem("fire", endX, endY, { count: 15 });
         break;
 
       case "iceFreeze":
         this.createBattleEffect("iceFreeze", endX, endY);
-        this.createParticleSystem("ice", endX, endY, { count: 20 });
+        this.createParticleSystem("ice", endX, endY, { count: 12 });
         break;
 
       case "lightningStrike":
         this.createBattleEffect("lightningStrike", endX, endY);
-        this.createParticleSystem("lightning", endX, endY, { count: 15 });
+        this.createParticleSystem("lightning", endX, endY, { count: 10 });
         break;
 
       case "windGust":
@@ -1761,10 +1749,10 @@ class QuantumBattleSystem {
     // Efeito de ripple no impacto
     setTimeout(() => {
       this.createBattleEffect("ripple", endX, endY);
-    }, 300);
+    }, 250);
 
-    // Chance de efeito de tela
-    if (step % 7 === 0) {
+    // Chance de efeito de tela (reduzida)
+    if (step % 8 === 0) {
       this.createScreenEffect("screenShake");
     }
 
@@ -1775,8 +1763,8 @@ class QuantumBattleSystem {
       this.applyCharacterEffect(defender, "quantumFlash");
     }
 
-    // Chance de status effect (10%)
-    if (Math.random() < 0.1) {
+    // Chance de status effect (8%)
+    if (Math.random() < 0.08) {
       const statusEffects = [
         "statusBurn",
         "statusFreeze",
@@ -1797,8 +1785,8 @@ class QuantumBattleSystem {
       this.createStatIndicator(defender, statusTexts[statusEffect], false);
     }
 
-    // Chance de buff (5%)
-    if (Math.random() < 0.05) {
+    // Chance de buff (4%)
+    if (Math.random() < 0.04) {
       this.applyCharacterEffect(attacker, "quantumFlash");
       this.createStatIndicator(attacker, "PODER AUMENTADO!", true);
     }
@@ -1812,8 +1800,8 @@ class QuantumBattleSystem {
     const x = defenderRect.left + defenderRect.width / 2 - containerRect.left;
     const y = defenderRect.top - containerRect.top;
 
-    const damageAmount = Math.floor(Math.random() * 35) + 20;
-    const isCritical = Math.random() < 0.2;
+    const damageAmount = Math.floor(Math.random() * 30) + 15;
+    const isCritical = Math.random() < 0.15;
     const damageType = Math.random() < 0.5 ? "physical" : "magical";
 
     // Número de dano
@@ -1821,9 +1809,9 @@ class QuantumBattleSystem {
 
     // Sistema de partículas
     if (isCritical) {
-      this.createParticleSystem("energy", x, y, { count: 40, duration: 2500 });
+      this.createParticleSystem("energy", x, y, { count: 25, duration: 2000 });
     } else {
-      this.createParticleSystem("damage", x, y, { count: 25, duration: 2000 });
+      this.createParticleSystem("damage", x, y, { count: 18, duration: 1500 });
     }
 
     // Efeito de impacto
@@ -1860,26 +1848,26 @@ class QuantumBattleSystem {
         this.createBattleEffect("energyBlast", endX, endY);
         this.createBattleEffect("ripple", endX, endY);
         this.createParticleSystem("energy", endX, endY, {
-          count: 50,
-          duration: 3000,
+          count: 30,
+          duration: 2500,
         });
         this.createScreenEffect("screenFlash");
         break;
 
       case 15: // Ataque especial 2
         this.applyCharacterEffect(attacker, "quantumFlash");
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 2; i++) {
           setTimeout(() => {
             this.createBattleEffect(
               "lightningStrike",
-              endX + (Math.random() * 100 - 50),
-              endY + (Math.random() * 100 - 50),
+              endX + (Math.random() * 80 - 40),
+              endY + (Math.random() * 80 - 40),
             );
-          }, i * 200);
+          }, i * 180);
         }
         this.createParticleSystem("lightning", endX, endY, {
-          count: 40,
-          duration: 2500,
+          count: 25,
+          duration: 2000,
         });
         break;
 
@@ -1888,50 +1876,14 @@ class QuantumBattleSystem {
         this.createBattleEffect("fireBurn", endX, endY);
         this.createBattleEffect("iceFreeze", endX, endY);
         this.createParticleSystem("fire", endX, endY, {
-          count: 60,
-          duration: 3500,
-        });
-        this.createParticleSystem("ice", endX, endY, {
           count: 40,
-          duration: 3000,
-        });
-        this.createScreenEffect("screenShake");
-        break;
-
-      case 25: // Ataque supremo
-        this.applyCharacterEffect(attacker, "dimensionalShift");
-        this.applyCharacterEffect(defender, "characterImpact");
-
-        // Múltiplos efeitos
-        const effects = [
-          "fireBurn",
-          "iceFreeze",
-          "lightningStrike",
-          "earthShatter",
-          "windGust",
-        ];
-        effects.forEach((effect, i) => {
-          setTimeout(() => {
-            this.createBattleEffect(effect, endX, endY);
-          }, i * 100);
-        });
-
-        // Sistema de partículas massivo
-        this.createParticleSystem("energy", endX, endY, {
-          count: 100,
-          duration: 4000,
-        });
-        this.createParticleSystem("fire", endX, endY, {
-          count: 80,
-          duration: 3500,
+          duration: 2800,
         });
         this.createParticleSystem("ice", endX, endY, {
-          count: 60,
-          duration: 3000,
+          count: 30,
+          duration: 2500,
         });
-
         this.createScreenEffect("screenShake");
-        this.createScreenEffect("screenFlash");
         break;
     }
 
@@ -1963,20 +1915,20 @@ class QuantumBattleSystem {
 
     // Sistema de partículas de vitória
     this.createParticleSystem("energy", centerX, centerY, {
-      count: 80,
-      duration: 5000,
+      count: 50,
+      duration: 4000,
     });
     this.createParticleSystem("heal", centerX, centerY, {
-      count: 60,
-      duration: 4000,
+      count: 40,
+      duration: 3500,
     });
 
     // Efeitos visuais
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       setTimeout(() => {
         this.createBattleEffect("ripple", centerX, centerY);
         this.createBattleEffect("healingPulse", centerX, centerY);
-      }, i * 300);
+      }, i * 400);
     }
 
     // Texto de vitória
@@ -1988,25 +1940,25 @@ class QuantumBattleSystem {
     victoryText.style.left = "50%";
     victoryText.style.top = "15%";
     victoryText.style.transform = "translateX(-50%)";
-    victoryText.style.fontSize = "48px";
+    victoryText.style.fontSize = "40px";
     victoryText.style.zIndex = "2000";
 
     this.elements.battleAnimationContainer.appendChild(victoryText);
 
     setTimeout(() => {
       if (victoryText.parentNode) victoryText.remove();
-    }, 3000);
+    }, 2500);
   }
 
   updateHpBar(barElement, textElement, newPercentage) {
     const currentWidth = parseFloat(barElement.style.width) || 100;
     const difference = currentWidth - newPercentage;
 
-    if (difference > 20) {
+    if (difference > 15) {
       barElement.classList.add("hp-bar-pulse");
       setTimeout(() => {
         barElement.classList.remove("hp-bar-pulse");
-      }, 1000);
+      }, 800);
     }
 
     barElement.style.width = `${Math.max(0, newPercentage)}%`;
@@ -2016,7 +1968,7 @@ class QuantumBattleSystem {
       barElement.parentNode.classList.add("damage-shake");
       setTimeout(() => {
         barElement.parentNode.classList.remove("damage-shake");
-      }, 500);
+      }, 400);
     }
   }
 
@@ -2036,7 +1988,7 @@ class QuantumBattleSystem {
 
       setTimeout(() => {
         this.endAnimation();
-      }, 1000);
+      }, 800);
     } else {
       this.endAnimation();
     }
@@ -2893,7 +2845,7 @@ class QuantumBattleSystem {
 
     if (result.underdogWin) {
       this.elements.resultModalWinner.innerHTML = `
-        <div style="animation: bounce 1s infinite alternate;">
+        <div style="animation: bounce 0.8s infinite alternate;">
           🎲 SURPRESA!<br>${result.winnerName} VENCEU!<br>
           <small style="font-size: 0.8rem; color: #9b59b6;">(Vitória do Azarão!)</small>
         </div>
@@ -2903,13 +2855,13 @@ class QuantumBattleSystem {
       bounceStyle.textContent = `
         @keyframes bounce {
           0% { transform: translateY(0); }
-          100% { transform: translateY(-10px); }
+          100% { transform: translateY(-8px); }
         }
       `;
       document.head.appendChild(bounceStyle);
     } else {
       this.elements.resultModalWinner.innerHTML = `
-        <div style="animation: glow 2s infinite alternate;">
+        <div style="animation: glow 1.5s infinite alternate;">
           🏆 <br> ${result.winnerName} VENCEU!
         </div>
       `;
@@ -2917,8 +2869,8 @@ class QuantumBattleSystem {
       const glowStyle = document.createElement("style");
       glowStyle.textContent = `
         @keyframes glow {
-          0% { text-shadow: 0 0 10px gold; }
-          100% { text-shadow: 0 0 20px gold, 0 0 30px gold; }
+          0% { text-shadow: 0 0 6px gold; }
+          100% { text-shadow: 0 0 15px gold, 0 0 22px gold; }
         }
       `;
       document.head.appendChild(glowStyle);
@@ -2948,12 +2900,12 @@ class QuantumBattleSystem {
     );
 
     const statsHTML = `
-      <div class="result-stat" style="animation: slideInLeft 0.5s ease-out;">
+      <div class="result-stat" style="animation: slideInLeft 0.4s ease-out;">
         <div class="result-stat-label">VENCEDOR</div>
         <div class="result-stat-value" style="display: flex; align-items: center; gap: 10px;">
           <img src="${winnerImg}" alt="${result.winnerName}" 
-               style="height: 170px; border-radius: 10px; border: 3px solid ${result.underdogWin ? "#9b59b6" : "var(--quantum-success)"};
-                      animation: ${result.underdogWin ? "pulsePurple 1s infinite" : "pulseGreen 1s infinite"};">
+               style="height: 150px; border-radius: 10px; border: 3px solid ${result.underdogWin ? "#9b59b6" : "var(--quantum-success)"};
+                      animation: ${result.underdogWin ? "pulsePurple 0.8s infinite" : "pulseGreen 0.8s infinite"};">
           <div>
             <strong>${result.winnerName}</strong><br>
             <small>${categoryNames[result.winner.character.category] || result.winner.character.category}</small>
@@ -2961,41 +2913,41 @@ class QuantumBattleSystem {
           </div>
         </div>
       </div>
-      <div class="result-stat" style="animation: slideInRight 0.5s ease-out 0.1s both;">
+      <div class="result-stat" style="animation: slideInRight 0.4s ease-out 0.1s both;">
         <div class="result-stat-label">PERDEDOR</div>
         <div class="result-stat-value" style="display: flex; align-items: center; gap: 10px;">
           <img src="${loserImg}" alt="${result.loserName}" 
-               style="height: 170px; border-radius: 10px; border: 3px solid var(--quantum-danger);">
+               style="height: 150px; border-radius: 10px; border: 3px solid var(--quantum-danger);">
           <div>
             <strong>${result.loserName}</strong><br>
             <small>${categoryNames[result.loser.character.category] || result.loser.character.category}</small>
           </div>
         </div>
       </div>
-      <div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.2s both;">
+      <div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.2s both;">
         <div class="result-stat-label">ROUNDS</div>
         <div class="result-stat-value">${result.rounds}</div>
       </div>
-      <div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.3s both;">
+      <div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.3s both;">
         <div class="result-stat-label">SAÚDE RESTANTE</div>
         <div class="result-stat-value">
           <span style="color: var(--quantum-success); font-weight: bold;">${winnerHealth}%</span> vs 
           <span style="color: var(--quantum-danger); font-weight: bold;">${loserHealth}%</span>
         </div>
       </div>
-      <div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.4s both;">
+      <div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.4s both;">
         <div class="result-stat-label">CRÍTICOS</div>
         <div class="result-stat-value" style="color: #ff9900; font-weight: bold;">
           ${result.criticalHits.player1 + result.criticalHits.player2}
         </div>
       </div>
-      <div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.5s both;">
+      <div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.5s both;">
         <div class="result-stat-label">ESQUIVAS</div>
         <div class="result-stat-value" style="color: #33ccff; font-weight: bold;">
           ${result.dodges.player1 + result.dodges.player2}
         </div>
       </div>
-      ${result.winByPoints ? '<div class="result-stat" style="animation: fadeIn 0.5s ease-out 0.6s both;"><div class="result-stat-label">VITÓRIA POR</div><div class="result-stat-value">PONTOS</div></div>' : ""}
+      ${result.winByPoints ? '<div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.6s both;"><div class="result-stat-label">VITÓRIA POR</div><div class="result-stat-value">PONTOS</div></div>' : ""}
     `;
 
     this.elements.resultModalStats.innerHTML = statsHTML;
@@ -3003,12 +2955,12 @@ class QuantumBattleSystem {
     const modalAnimations = document.createElement("style");
     modalAnimations.textContent = `
       @keyframes slideInLeft {
-        from { transform: translateX(-50px); opacity: 0; }
+        from { transform: translateX(-40px); opacity: 0; }
         to { transform: translateX(0); opacity: 1; }
       }
       
       @keyframes slideInRight {
-        from { transform: translateX(50px); opacity: 0; }
+        from { transform: translateX(40px); opacity: 0; }
         to { transform: translateX(0); opacity: 1; }
       }
       
@@ -3018,13 +2970,13 @@ class QuantumBattleSystem {
       }
       
       @keyframes pulseGreen {
-        0%, 100% { box-shadow: 0 0 10px var(--quantum-success); }
-        50% { box-shadow: 0 0 20px var(--quantum-success); }
+        0%, 100% { box-shadow: 0 0 8px var(--quantum-success); }
+        50% { box-shadow: 0 0 15px var(--quantum-success); }
       }
       
       @keyframes pulsePurple {
-        0%, 100% { box-shadow: 0 0 10px #9b59b6; }
-        50% { box-shadow: 0 0 20px #9b59b6; }
+        0%, 100% { box-shadow: 0 0 8px #9b59b6; }
+        50% { box-shadow: 0 0 15px #9b59b6; }
       }
     `;
     document.head.appendChild(modalAnimations);
@@ -3034,14 +2986,14 @@ class QuantumBattleSystem {
       document.body.style.overflow = "hidden";
 
       this.elements.battleResultModal.style.opacity = "0";
-      this.elements.battleResultModal.style.transform = "scale(0.9)";
+      this.elements.battleResultModal.style.transform = "scale(0.95)";
 
       setTimeout(() => {
-        this.elements.battleResultModal.style.transition = "all 0.3s ease-out";
+        this.elements.battleResultModal.style.transition = "all 0.25s ease-out";
         this.elements.battleResultModal.style.opacity = "1";
         this.elements.battleResultModal.style.transform = "scale(1)";
       }, 10);
-    }, 500);
+    }, 400);
   }
 
   closeResultModal() {
@@ -3062,8 +3014,8 @@ class QuantumBattleSystem {
 
     this.elements.player1Display.innerHTML = `
             <div class="empty-selection">
-                <i class="fas fa-user-circle" style="font-size: 100px; color: var(--text-secondary); margin-bottom: 20px;"></i>
-                <p style="font-size: 1.2rem; color: var(--text-secondary);">
+                <i class="fas fa-user-circle" style="font-size: 90px; color: var(--text-secondary); margin-bottom: 15px;"></i>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">
                     SELECIONE UM PERSONAGEM
                 </p>
             </div>
@@ -3071,8 +3023,8 @@ class QuantumBattleSystem {
 
     this.elements.player2Display.innerHTML = `
             <div class="empty-selection">
-                <i class="fas fa-user-circle" style="font-size: 100px; color: var(--text-secondary); margin-bottom: 20px;"></i>
-                <p style="font-size: 1.2rem; color: var(--text-secondary);">
+                <i class="fas fa-user-circle" style="font-size: 90px; color: var(--text-secondary); margin-bottom: 15px;"></i>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">
                     SELECIONE UM PERSONAGEM
                 </p>
             </div>
@@ -3234,15 +3186,15 @@ class QuantumBattleSystem {
                 ${entry.underdogWin ? '<p style="color: #9b59b6; margin-top: 10px;"><strong>🎲 Vitória do Azarão!</strong></p>' : ""}
             </div>
 
-            <div class="history-detail-body" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+            <div class="history-detail-body" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
                 <!-- Vencedor -->
                 <div class="history-character-info">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
                         <img src="${winnerImg}" alt="${entry.winner}" 
-                             style="width: 100px; height: 135px; border-radius: 10px; border: ${winnerBorder};">
+                             style="width: 90px; height: 120px; border-radius: 8px; border: ${winnerBorder};">
                         <div>
                             <h4 class="history-character-name">${entry.winner}</h4>
-                            <div style="background: ${winnerBadgeColor}; color: ${winnerTextColor}; padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                            <div style="background: ${winnerBadgeColor}; color: ${winnerTextColor}; padding: 4px 8px; border-radius: 16px; font-size: 0.85rem;">
                                 ${categoryNames[entry.winnerCharacter.category] || entry.winnerCharacter.category}
                                 ${entry.underdogWin ? "<br><small>🎲 Azarão Vitorioso</small>" : ""}
                             </div>
@@ -3268,23 +3220,23 @@ class QuantumBattleSystem {
                         </div>
                     </div>
                     
-                    <div style="margin-top: 20px;">
-                        <h5 style="color: var(--quantum-primary); margin-bottom: 10px;">ATRIBUTOS:</h5>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">FORÇA</div>
+                    <div style="margin-top: 15px;">
+                        <h5 style="color: var(--quantum-primary); margin-bottom: 8px;">ATRIBUTOS:</h5>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary);">FORÇA</div>
                                 <div style="font-weight: bold; color: var(--quantum-primary);">${entry.winnerStats.baseStats.forca}</div>
                             </div>
-                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">VELOCIDADE</div>
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary);">VELOCIDADE</div>
                                 <div style="font-weight: bold; color: var(--quantum-primary);">${entry.winnerStats.baseStats.velocidade}</div>
                             </div>
-                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">DEFESA</div>
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary);">DEFESA</div>
                                 <div style="font-weight: bold; color: var(--quantum-primary);">${entry.winnerStats.baseStats.defesa}</div>
                             </div>
-                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">ENERGIA</div>
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary);">ENERGIA</div>
                                 <div style="font-weight: bold; color: var(--quantum-primary);">${entry.winnerStats.baseStats.energia}</div>
                             </div>
                         </div>
@@ -3293,12 +3245,12 @@ class QuantumBattleSystem {
                 
                 <!-- Perdedor -->
                 <div class="history-character-info">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
                         <img src="${loserImg}" alt="${entry.loser}" 
-                             style="width: 100px; height: 135px; border-radius: 10px; border: 3px solid var(--quantum-danger);">
+                             style="width: 90px; height: 120px; border-radius: 8px; border: 3px solid var(--quantum-danger);">
                         <div>
                             <h4 class="history-character-name">${entry.loser}</h4>
-                            <div style="background: rgba(255, 42, 109, 0.1); color: var(--quantum-danger); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                            <div style="background: rgba(255, 42, 109, 0.1); color: var(--quantum-danger); padding: 4px 8px; border-radius: 16px; font-size: 0.85rem;">
                                 ${categoryNames[entry.loserCharacter.category] || entry.loserCharacter.category}
                             </div>
                         </div>
@@ -3323,23 +3275,23 @@ class QuantumBattleSystem {
                         </div>
                     </div>
                     
-                    <div style="margin-top: 20px;">
-                        <h5 style="color: var(--quantum-primary); margin-bottom: 10px;">ATRIBUTOS:</h5>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">FORÇA</div>
+                    <div style="margin-top: 15px;">
+                        <h5 style="color: var(--quantum-primary); margin-bottom: 8px;">ATRIBUTOS:</h5>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary);">FORÇA</div>
                                 <div style="font-weight: bold; color: var(--quantum-primary);">${entry.loserStats.baseStats.forca}</div>
                             </div>
-                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">VELOCIDADE</div>
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary);">VELOCIDADE</div>
                                 <div style="font-weight: bold; color: var(--quantum-primary);">${entry.loserStats.baseStats.velocidade}</div>
                             </div>
-                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">DEFESA</div>
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary);">DEFESA</div>
                                 <div style="font-weight: bold; color: var(--quantum-primary);">${entry.loserStats.baseStats.defesa}</div>
                             </div>
-                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
-                                <div style="font-size: 0.8rem; color: var(--text-secondary);">ENERGIA</div>
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary);">ENERGIA</div>
                                 <div style="font-weight: bold; color: var(--quantum-primary);">${entry.loserStats.baseStats.energia}</div>
                             </div>
                         </div>
@@ -3350,9 +3302,9 @@ class QuantumBattleSystem {
 
     if (entry.battleLog && entry.battleLog.length > 0) {
       detailHTML += `
-                <div class="history-log" style="grid-column: 1 / -1; margin-top: 30px;">
+                <div class="history-log" style="grid-column: 1 / -1; margin-top: 25px;">
                     <h4 class="history-log-title">REGISTRO DA BATALHA</h4>
-                    <div style="max-height: 200px; overflow-y: auto; padding-right: 10px;">
+                    <div style="max-height: 180px; overflow-y: auto; padding-right: 10px;">
                         ${entry.battleLog
                           .map((log) => {
                             let logClass = "";
@@ -3436,3 +3388,1567 @@ class QuantumBattleSystem {
     this.renderHistory();
   }
 }
+
+// class QuantumBattleSystem {
+//   constructor(gallery) {
+//     this.gallery = gallery;
+//     this.selectedCharacters = {
+//       player1: null,
+//       player2: null,
+//     };
+//     this.battleLog = [];
+//     this.history = [];
+//     this.animationActive = false;
+//     this.battleResult = null;
+
+//     this.init();
+//   }
+
+//   init() {
+//     this.cacheElements();
+//     this.setupEventListeners();
+//     this.loadHistory();
+//     this.addBattleStyles();
+//   }
+
+//   addBattleStyles() {
+//     const style = document.createElement("style");
+//     style.textContent = `
+//       /* ANIMAÇÕES SIMPLIFICADAS */
+//       @keyframes characterAttack {
+//         0% { transform: translateX(0); }
+//         50% { transform: translateX(40px); }
+//         100% { transform: translateX(0); }
+//       }
+
+//       @keyframes characterHit {
+//         0% { transform: translateX(0); }
+//         25% { transform: translateX(-20px); }
+//         75% { transform: translateX(10px); }
+//         100% { transform: translateX(0); }
+//       }
+
+//       @keyframes damagePop {
+//         0% {
+//           transform: translateY(0) scale(0.5);
+//           opacity: 0;
+//         }
+//         50% {
+//           transform: translateY(-60px) scale(1.2);
+//           opacity: 1;
+//         }
+//         100% {
+//           transform: translateY(-100px) scale(0.9);
+//           opacity: 0;
+//         }
+//       }
+
+//       .character-attack {
+//         animation: characterAttack 0.4s ease-out;
+//       }
+
+//       .character-hit {
+//         animation: characterHit 0.6s ease-out;
+//       }
+
+//       .damage-number {
+//         position: absolute;
+//         font-size: 28px;
+//         font-weight: 900;
+//         color: #ff4444;
+//         z-index: 1000;
+//         pointer-events: none;
+//         text-shadow: 2px 2px 0 #000;
+//         animation: damagePop 1.2s ease-out forwards;
+//       }
+
+//       .heal-number {
+//         color: #00ff88;
+//       }
+
+//       .critical-number {
+//         color: #ffaa00;
+//         font-size: 36px;
+//       }
+//     `;
+//     document.head.appendChild(style);
+//   }
+
+//   cacheElements() {
+//     this.elements = {
+//       battlePage: document.getElementById("quantumBattlePage"),
+//       player1Selection: document.getElementById("player1Selection"),
+//       player2Selection: document.getElementById("player2Selection"),
+//       player1Display: document.getElementById("player1Display"),
+//       player2Display: document.getElementById("player2Display"),
+//       startBattleBtn: document.getElementById("startBattleBtn"),
+//       resetBattleBtn: document.getElementById("resetBattleBtn"),
+//       battleResults: document.getElementById("battleResults"),
+//       resultsContent: document.getElementById("resultsContent"),
+//       battleLog: document.getElementById("battleLog"),
+//       characterSelectorModal: document.getElementById("characterSelectorModal"),
+//       characterSelectorGrid: document.getElementById("characterSelectorGrid"),
+//       selectorTitle: document.getElementById("selectorTitle"),
+//       selectorClose: document.getElementById("selectorClose"),
+//       backToGalleryFromBattle: document.getElementById(
+//         "backToGalleryFromBattle",
+//       ),
+//       viewBattleBtn: document.getElementById("viewBattleBtn"),
+//       battleToggle: document.getElementById("battleToggle"),
+//       battleAnimationContainer: document.getElementById(
+//         "battleAnimationContainer",
+//       ),
+//       skipAnimationBtn: document.getElementById("skipAnimationBtn"),
+//       animationChar1: document.getElementById("animationChar1"),
+//       animationChar2: document.getElementById("animationChar2"),
+//       animationImg1: document.getElementById("animationImg1"),
+//       animationImg2: document.getElementById("animationImg2"),
+//       hpBar1: document.getElementById("hpBar1"),
+//       hpBar2: document.getElementById("hpBar2"),
+//       hpText1: document.getElementById("hpText1"),
+//       hpText2: document.getElementById("hpText2"),
+//       animationText: document.getElementById("animationText"),
+//       animationEffects: document.getElementById("animationEffects"),
+//       animationProgressBar: document.getElementById("animationProgressBar"),
+//       battleResultModal: document.getElementById("battleResultModal"),
+//       resultModalTitle: document.getElementById("resultModalTitle"),
+//       resultModalWinner: document.getElementById("resultModalWinner"),
+//       resultModalStats: document.getElementById("resultModalStats"),
+//       resultModalClose: document.getElementById("resultModalClose"),
+//       resultModalRematch: document.getElementById("resultModalRematch"),
+//       battleHistoryList: document.getElementById("battleHistoryList"),
+//       clearHistoryBtn: document.getElementById("clearHistoryBtn"),
+//       emptyHistory: document.getElementById("emptyHistory"),
+//       historyDetailModal: document.getElementById("historyDetailModal"),
+//       historyDetailClose: document.getElementById("historyDetailClose"),
+//       historyDetailBody: document.getElementById("historyDetailBody"),
+//     };
+//   }
+
+//   setupEventListeners() {
+//     document.querySelectorAll(".character-select-btn").forEach((btn) => {
+//       btn.addEventListener("click", (e) => {
+//         const player = parseInt(e.currentTarget.dataset.player);
+//         this.openCharacterSelector(player);
+//         this.gallery.audio.play("click");
+//       });
+//     });
+
+//     if (this.elements.startBattleBtn) {
+//       this.elements.startBattleBtn.addEventListener("click", () => {
+//         this.startBattle();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.resetBattleBtn) {
+//       this.elements.resetBattleBtn.addEventListener("click", () => {
+//         this.resetBattle();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.selectorClose) {
+//       this.elements.selectorClose.addEventListener("click", () => {
+//         this.closeCharacterSelector();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.backToGalleryFromBattle) {
+//       this.elements.backToGalleryFromBattle.addEventListener("click", () => {
+//         this.gallery.showGalleryPage();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.viewBattleBtn) {
+//       this.elements.viewBattleBtn.addEventListener("click", () => {
+//         this.showBattlePage();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.battleToggle) {
+//       this.elements.battleToggle.addEventListener("click", () => {
+//         this.showBattlePage();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.skipAnimationBtn) {
+//       this.elements.skipAnimationBtn.addEventListener("click", () => {
+//         this.skipAnimation();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.resultModalClose) {
+//       this.elements.resultModalClose.addEventListener("click", () => {
+//         this.closeResultModal();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.resultModalRematch) {
+//       this.elements.resultModalRematch.addEventListener("click", () => {
+//         this.rematch();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.clearHistoryBtn) {
+//       this.elements.clearHistoryBtn.addEventListener("click", () => {
+//         this.clearHistoryWithConfirmation();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.historyDetailClose) {
+//       this.elements.historyDetailClose.addEventListener("click", () => {
+//         this.closeHistoryDetail();
+//         this.gallery.audio.play("click");
+//       });
+//     }
+
+//     if (this.elements.characterSelectorModal) {
+//       this.elements.characterSelectorModal.addEventListener("click", (e) => {
+//         if (e.target === this.elements.characterSelectorModal) {
+//           this.closeCharacterSelector();
+//         }
+//       });
+//     }
+
+//     if (this.elements.battleResultModal) {
+//       this.elements.battleResultModal.addEventListener("click", (e) => {
+//         if (e.target === this.elements.battleResultModal) {
+//           this.closeResultModal();
+//         }
+//       });
+//     }
+
+//     if (this.elements.historyDetailModal) {
+//       this.elements.historyDetailModal.addEventListener("click", (e) => {
+//         if (e.target === this.elements.historyDetailModal) {
+//           this.closeHistoryDetail();
+//         }
+//       });
+//     }
+//   }
+
+//   createDamageNumber(x, y, damage, isCritical = false, isHeal = false) {
+//     const container = this.elements.battleAnimationContainer;
+//     const damageNumber = document.createElement("div");
+
+//     damageNumber.className = `damage-number ${isCritical ? "critical-number" : ""} ${isHeal ? "heal-number" : ""}`;
+//     damageNumber.textContent = isHeal ? `+${damage}` : `-${damage}`;
+//     damageNumber.style.left = `${x}px`;
+//     damageNumber.style.top = `${y}px`;
+
+//     if (isCritical) {
+//       damageNumber.textContent = `CRIT! ${damage}`;
+//     }
+
+//     container.appendChild(damageNumber);
+
+//     setTimeout(() => {
+//       if (damageNumber.parentNode) damageNumber.remove();
+//     }, 1200);
+
+//     return damageNumber;
+//   }
+
+//   async startBattleAnimationWithRealResult(result) {
+//     return new Promise((resolve) => {
+//       const char1 =
+//         result.winner.character.id === this.selectedCharacters.player1.id
+//           ? result.winner
+//           : result.loser;
+//       const char2 =
+//         result.winner.character.id === this.selectedCharacters.player2.id
+//           ? result.winner
+//           : result.loser;
+
+//       const isWinnerPlayer1 =
+//         result.winner.character.id === this.selectedCharacters.player1.id;
+//       const winnerHealth = result.winner.currentHealth;
+//       const loserHealth = result.loser.currentHealth;
+//       const winnerTotalHealth = result.winner.health;
+//       const loserTotalHealth = result.loser.health;
+
+//       // Carregar imagens
+//       const img1Src = this.gallery.cache.imageCache.has(
+//         this.gallery.cache.normalizePath(char1.character.image),
+//       )
+//         ? this.gallery.cache.imageCache.get(
+//             this.gallery.cache.normalizePath(char1.character.image),
+//           ).src
+//         : char1.character.image;
+
+//       const img2Src = this.gallery.cache.imageCache.has(
+//         this.gallery.cache.normalizePath(char2.character.image),
+//       )
+//         ? this.gallery.cache.imageCache.get(
+//             this.gallery.cache.normalizePath(char2.character.image),
+//           ).src
+//         : char2.character.image;
+
+//       this.elements.animationImg1.src = img1Src;
+//       this.elements.animationImg2.src = img2Src;
+
+//       // Inicializar barras de HP
+//       this.updateHpBar(this.elements.hpBar1, this.elements.hpText1, 100);
+//       this.updateHpBar(this.elements.hpBar2, this.elements.hpText2, 100);
+
+//       this.elements.battleAnimationContainer.classList.add("active");
+//       document.body.style.overflow = "hidden";
+
+//       let currentStep = 0;
+//       const totalSteps = 20;
+//       let comboCount = 0;
+
+//       const winnerFinalHealthPercent = (winnerHealth / winnerTotalHealth) * 100;
+//       const loserFinalHealthPercent = (loserHealth / loserTotalHealth) * 100;
+
+//       const animateStep = () => {
+//         if (!this.animationActive) {
+//           this.endAnimation();
+//           resolve();
+//           return;
+//         }
+
+//         currentStep++;
+//         const progress = (currentStep / totalSteps) * 100;
+//         this.elements.animationProgressBar.style.width = `${progress}%`;
+
+//         // Textos dinâmicos
+//         const texts = [
+//           "⚡ BATALHA INICIADA!",
+//           "⚔️ ATAQUE!",
+//           "🗡️ CONTRA-ATAQUE!",
+//           "💥 DANO CRÍTICO!",
+//           "⚡ ATAQUE RÁPIDO!",
+//           "🛡️ DEFESA!",
+//           "💥 EXPLOSÃO!",
+//           "⚡ RELÂMPAGO!",
+//           "🔥 CHAMAS!",
+//           "❄️ CONGELAMENTO!",
+//           "⚔️ ATAQUE FINAL!",
+//           "💥 MEGA EXPLOSÃO!",
+//           "🌟 PODER MÁXIMO!",
+//           "💫 ULTRA EVOLUÇÃO!",
+//           "⚡ ATAQUE DEFINITIVO!",
+//           "💥 COLAPSO FINAL!",
+//           "🏁 BATALHA CONCLUÍDA!",
+//         ];
+
+//         if (currentStep <= totalSteps) {
+//           this.elements.animationText.textContent =
+//             texts[Math.min(currentStep - 1, texts.length - 1)];
+
+//           // Efeitos de batalha
+//           if (currentStep >= 2 && currentStep <= 15) {
+//             const isPlayer1Attack = currentStep % 2 === 1;
+//             const attacker = isPlayer1Attack
+//               ? this.elements.animationChar1
+//               : this.elements.animationChar2;
+//             const defender = isPlayer1Attack
+//               ? this.elements.animationChar2
+//               : this.elements.animationChar1;
+
+//             // Animar ataque
+//             attacker.classList.add("character-attack");
+//             setTimeout(() => {
+//               attacker.classList.remove("character-attack");
+//             }, 400);
+
+//             // Animar impacto
+//             setTimeout(() => {
+//               defender.classList.add("character-hit");
+//               setTimeout(() => {
+//                 defender.classList.remove("character-hit");
+//               }, 600);
+//             }, 200);
+
+//             // Criar número de dano
+//             setTimeout(() => {
+//               const rect = defender.getBoundingClientRect();
+//               const containerRect =
+//                 this.elements.battleAnimationContainer.getBoundingClientRect();
+//               const x = rect.left + rect.width / 2 - containerRect.left;
+//               const y = rect.top - containerRect.top;
+
+//               const damageAmount = Math.floor(Math.random() * 35) + 20;
+//               const isCritical = Math.random() < 0.2;
+
+//               this.createDamageNumber(x, y, damageAmount, isCritical);
+//             }, 300);
+
+//             // Aplicar dano progressivo
+//             if (currentStep >= 3 && currentStep <= 14) {
+//               const stepProgress = (currentStep - 2) / 12;
+//               const damageProgress = Math.pow(stepProgress, 1.5);
+
+//               const winnerCurrentHP = Math.max(
+//                 winnerFinalHealthPercent,
+//                 100 - (100 - winnerFinalHealthPercent) * damageProgress,
+//               );
+//               const loserCurrentHP = Math.max(
+//                 loserFinalHealthPercent,
+//                 100 - (100 - loserFinalHealthPercent) * damageProgress,
+//               );
+
+//               if (isWinnerPlayer1) {
+//                 this.updateHpBar(
+//                   this.elements.hpBar1,
+//                   this.elements.hpText1,
+//                   winnerCurrentHP,
+//                 );
+//                 this.updateHpBar(
+//                   this.elements.hpBar2,
+//                   this.elements.hpText2,
+//                   loserCurrentHP,
+//                 );
+//               } else {
+//                 this.updateHpBar(
+//                   this.elements.hpBar1,
+//                   this.elements.hpText1,
+//                   loserCurrentHP,
+//                 );
+//                 this.updateHpBar(
+//                   this.elements.hpBar2,
+//                   this.elements.hpText2,
+//                   winnerCurrentHP,
+//                 );
+//               }
+//             }
+//           }
+
+//           // Fim da batalha
+//           if (currentStep === totalSteps) {
+//             // Valores finais exatos
+//             if (isWinnerPlayer1) {
+//               this.updateHpBar(
+//                 this.elements.hpBar1,
+//                 this.elements.hpText1,
+//                 winnerFinalHealthPercent,
+//               );
+//               this.updateHpBar(
+//                 this.elements.hpBar2,
+//                 this.elements.hpText2,
+//                 loserFinalHealthPercent,
+//               );
+//             } else {
+//               this.updateHpBar(
+//                 this.elements.hpBar1,
+//                 this.elements.hpText1,
+//                 loserFinalHealthPercent,
+//               );
+//               this.updateHpBar(
+//                 this.elements.hpBar2,
+//                 this.elements.hpText2,
+//                 winnerFinalHealthPercent,
+//               );
+//             }
+
+//             // Efeito de vitória
+//             const winnerElement = isWinnerPlayer1
+//               ? this.elements.animationChar1
+//               : this.elements.animationChar2;
+
+//             winnerElement.style.boxShadow = "0 0 30px gold";
+
+//             const victoryText = document.createElement("div");
+//             victoryText.className = "damage-number critical-number";
+//             victoryText.textContent = result.underdogWin
+//               ? "🎲 VITÓRIA SURPRESA!"
+//               : "🏆 VITÓRIA!";
+//             victoryText.style.left = "50%";
+//             victoryText.style.top = "15%";
+//             victoryText.style.transform = "translateX(-50%)";
+//             victoryText.style.fontSize = "48px";
+
+//             this.elements.battleAnimationContainer.appendChild(victoryText);
+
+//             setTimeout(() => {
+//               if (victoryText.parentNode) victoryText.remove();
+//             }, 3000);
+//           }
+
+//           // Continuar animação
+//           const stepDuration = 300;
+//           setTimeout(animateStep, stepDuration);
+//         } else {
+//           this.endAnimation();
+//           resolve();
+//         }
+//       };
+
+//       // Iniciar animação
+//       setTimeout(() => {
+//         animateStep();
+//       }, 500);
+//     });
+//   }
+
+//   updateHpBar(barElement, textElement, newPercentage) {
+//     const currentWidth = parseFloat(barElement.style.width) || 100;
+//     const difference = currentWidth - newPercentage;
+
+//     if (difference > 20) {
+//       barElement.style.transition = "width 0.5s ease-out";
+//     } else {
+//       barElement.style.transition = "width 0.3s ease-out";
+//     }
+
+//     barElement.style.width = `${Math.max(0, newPercentage)}%`;
+//     textElement.textContent = `${Math.max(0, Math.round(newPercentage))}%`;
+//   }
+
+//   skipAnimation() {
+//     this.animationActive = false;
+//     this.endAnimation();
+//   }
+
+//   endAnimation() {
+//     // Remover classes de animação
+//     [this.elements.animationChar1, this.elements.animationChar2].forEach(
+//       (char) => {
+//         if (char) {
+//           char.classList.remove("character-attack", "character-hit");
+//           char.style.transform = "";
+//           char.style.boxShadow = "";
+//         }
+//       },
+//     );
+
+//     // Limpar elementos de dano
+//     document.querySelectorAll(".damage-number").forEach((el) => el.remove());
+
+//     this.elements.battleAnimationContainer.classList.remove("active");
+//     document.body.style.overflow = "";
+//   }
+
+//   // Resto dos métodos mantidos (mas simplificados onde possível)
+//   openCharacterSelector(player) {
+//     this.currentPlayer = player;
+//     this.elements.selectorTitle.textContent = `SELECIONE PERSONAGEM ${player}`;
+//     this.renderCharacterSelector();
+//     this.elements.characterSelectorModal.classList.add("show");
+//     document.body.style.overflow = "hidden";
+//   }
+
+//   closeCharacterSelector() {
+//     this.elements.characterSelectorModal.classList.remove("show");
+//     document.body.style.overflow = "";
+//   }
+
+//   renderCharacterSelector() {
+//     const grid = this.elements.characterSelectorGrid;
+//     if (!grid) return;
+
+//     grid.innerHTML = "";
+
+//     charactersData.forEach((character) => {
+//       const normalizedPath = this.gallery.cache.normalizePath(character.image);
+//       const cachedImg = this.gallery.cache.imageCache.get(normalizedPath);
+//       const imgSrc = cachedImg ? cachedImg.src : character.image;
+//       const isSelected =
+//         (this.currentPlayer === 1 &&
+//           this.selectedCharacters.player1?.id === character.id) ||
+//         (this.currentPlayer === 2 &&
+//           this.selectedCharacters.player2?.id === character.id);
+
+//       const health = this.calculateHealth(character.stats);
+
+//       const characterEl = document.createElement("div");
+//       characterEl.className = `selector-character ${isSelected ? "selected" : ""}`;
+//       characterEl.dataset.id = character.id;
+//       characterEl.innerHTML = `
+//                 <img src="${imgSrc}"
+//                      alt="${character.name}"
+//                      class="selector-character-image"
+//                      onerror="this.onerror=null; this.src='${this.gallery.generatePlaceholderSVG(character, true)}';">
+//                 <h4 class="selector-character-name">${character.name}</h4>
+//                 <div class="selector-character-category">
+//                     ${categoryNames[character.category] || character.category}
+//                 </div>
+//                 <div class="character-health-container" style="margin-top: 10px;">
+//                     <div class="health-bar" style="width: ${health}%"></div>
+//                     <div class="health-text">${Math.round(health)}% SAÚDE</div>
+//                 </div>
+//                 <div class="selector-character-stats" style="margin-top: 10px;">
+//                     <div class="stat-item">
+//                         <span class="stat-label">FOR:</span>
+//                         <span class="stat-value">${character.stats.forca}</span>
+//                     </div>
+//                     <div class="stat-item">
+//                         <span class="stat-label">VEL:</span>
+//                         <span class="stat-value">${character.stats.velocidade}</span>
+//                     </div>
+//                     <div class="stat-item">
+//                         <span class="stat-label">DEF:</span>
+//                         <span class="stat-value">${character.stats.defesa}</span>
+//                     </div>
+//                 </div>
+//             `;
+
+//       characterEl.addEventListener("click", () => {
+//         this.selectCharacter(character);
+//         this.closeCharacterSelector();
+//         this.gallery.audio.play("click");
+//       });
+
+//       grid.appendChild(characterEl);
+//     });
+//   }
+
+//   calculateHealth(stats) {
+//     const baseHealth = 50;
+//     const strengthBonus = stats.forca * 2;
+//     const defenseBonus = stats.defesa * 1.5;
+//     const speedBonus = stats.velocidade * 0.5;
+//     const energyBonus = stats.energia * 1;
+//     const skillBonus = stats.habilidade * 0.8;
+
+//     const totalHealth =
+//       baseHealth +
+//       strengthBonus +
+//       defenseBonus +
+//       speedBonus +
+//       energyBonus +
+//       skillBonus;
+
+//     return Math.min(100, Math.max(20, totalHealth));
+//   }
+
+//   selectCharacter(character) {
+//     if (this.currentPlayer === 1) {
+//       this.selectedCharacters.player1 = character;
+//       this.renderCharacterDisplay(character, 1);
+//     } else {
+//       this.selectedCharacters.player2 = character;
+//       this.renderCharacterDisplay(character, 2);
+//     }
+
+//     if (this.selectedCharacters.player1 && this.selectedCharacters.player2) {
+//       this.elements.startBattleBtn.disabled = false;
+//       this.elements.startBattleBtn.innerHTML = `
+//                 <i class="fas fa-play"></i>
+//                 INICIAR BATALHA
+//             `;
+//     }
+//   }
+
+//   renderCharacterDisplay(character, player, healthPercent = null) {
+//     const display =
+//       player === 1
+//         ? this.elements.player1Display
+//         : this.elements.player2Display;
+//     if (!display) return;
+
+//     const normalizedPath = this.gallery.cache.normalizePath(character.image);
+//     const cachedImg = this.gallery.cache.imageCache.get(normalizedPath);
+//     const imgSrc = cachedImg ? cachedImg.src : character.image;
+
+//     const health =
+//       healthPercent !== null
+//         ? healthPercent
+//         : this.calculateHealth(character.stats);
+
+//     display.innerHTML = `
+//             <img src="${imgSrc}"
+//                  alt="${character.name}"
+//                  class="selected-character-image"
+//                  onerror="this.onerror=null; this.src='${this.gallery.generatePlaceholderSVG(character, true)}';">
+//             <h3 class="selected-character-name">${character.name}</h3>
+//             <div class="selected-character-category">
+//                 ${categoryNames[character.category] || character.category}
+//             </div>
+
+//             <!-- Barra de Saúde -->
+//             <div class="character-health-container">
+//                 <div class="health-bar player-${player}" style="width: ${Math.max(0, health)}%"></div>
+//                 <div class="health-text">SAÚDE: ${Math.max(0, Math.round(health))}%</div>
+//             </div>
+//         `;
+//   }
+
+//   updateCharacterHealthAfterBattle(result) {
+//     const winnerHealthPercent = Math.round(
+//       (result.winner.currentHealth / result.winner.health) * 100,
+//     );
+//     const loserHealthPercent = Math.round(
+//       (result.loser.currentHealth / result.loser.health) * 100,
+//     );
+
+//     const isWinnerPlayer1 =
+//       result.winner.character.id === this.selectedCharacters.player1.id;
+
+//     if (isWinnerPlayer1) {
+//       this.renderCharacterDisplay(
+//         this.selectedCharacters.player1,
+//         1,
+//         Math.max(0, winnerHealthPercent),
+//       );
+//       this.renderCharacterDisplay(
+//         this.selectedCharacters.player2,
+//         2,
+//         Math.max(0, loserHealthPercent),
+//       );
+//     } else {
+//       this.renderCharacterDisplay(
+//         this.selectedCharacters.player1,
+//         1,
+//         Math.max(0, loserHealthPercent),
+//       );
+//       this.renderCharacterDisplay(
+//         this.selectedCharacters.player2,
+//         2,
+//         Math.max(0, winnerHealthPercent),
+//       );
+//     }
+//   }
+
+//   async startBattle() {
+//     if (!this.selectedCharacters.player1 || !this.selectedCharacters.player2) {
+//       this.gallery.showToast("❌ SELECIONE AMBOS OS PERSONAGENS!");
+//       return;
+//     }
+
+//     if (
+//       this.selectedCharacters.player1.id === this.selectedCharacters.player2.id
+//     ) {
+//       this.gallery.showToast("❌ SELECIONE PERSONAGENS DIFERENTES!");
+//       return;
+//     }
+
+//     this.elements.startBattleBtn.disabled = true;
+//     this.elements.startBattleBtn.innerHTML = `
+//             <i class="fas fa-spinner fa-spin"></i>
+//             BATALHA EM ANDAMENTO...
+//         `;
+
+//     this.animationActive = true;
+//     this.battleResult = null;
+
+//     const stats1 = this.calculateCharacterStats(
+//       this.selectedCharacters.player1,
+//     );
+//     const stats2 = this.calculateCharacterStats(
+//       this.selectedCharacters.player2,
+//     );
+
+//     this.battleResult = this.simulateBattle(stats1, stats2);
+
+//     await this.startBattleAnimationWithRealResult(this.battleResult);
+
+//     this.updateCharacterHealthAfterBattle(this.battleResult);
+
+//     this.saveToHistory(this.battleResult);
+
+//     this.showResultModalWithCharacterInfo(this.battleResult, stats1, stats2);
+
+//     this.elements.startBattleBtn.disabled = false;
+//     this.elements.startBattleBtn.innerHTML = `
+//             <i class="fas fa-play"></i>
+//             INICIAR BATALHA
+//         `;
+//     this.animationActive = false;
+
+//     this.gallery.audio.play("favorite");
+//   }
+
+//   calculateCharacterStats(character) {
+//     const stats = character.stats;
+
+//     const health = Math.floor(
+//       stats.forca * 25 + stats.defesa * 20 + stats.energia * 10,
+//     );
+
+//     const attack = Math.floor(
+//       stats.forca * 4 + stats.velocidade * 3 + stats.habilidade * 3,
+//     );
+
+//     const defense = Math.floor(
+//       stats.defesa * 5 + stats.forca * 2 + stats.habilidade * 2,
+//     );
+
+//     const speed = Math.floor(stats.velocidade * 5 + stats.habilidade * 3);
+
+//     const criticalChance = Math.min(
+//       30,
+//       Math.floor((stats.velocidade * 0.8 + stats.habilidade * 0.6) * 10) / 10,
+//     );
+
+//     const dodgeChance = Math.min(
+//       25,
+//       Math.floor((stats.velocidade * 1.2 + stats.habilidade * 0.5) * 10) / 10,
+//     );
+
+//     const totalPower = Math.floor(
+//       health * 0.3 +
+//         attack * 0.25 +
+//         defense * 0.2 +
+//         speed * 0.15 +
+//         criticalChance * 0.05 +
+//         dodgeChance * 0.05,
+//     );
+
+//     return {
+//       character,
+//       health,
+//       attack,
+//       defense,
+//       speed,
+//       criticalChance,
+//       dodgeChance,
+//       totalPower,
+//       currentHealth: health,
+//       baseStats: stats,
+//     };
+//   }
+
+//   simulateBattle(stats1, stats2) {
+//     this.battleLog = [];
+//     this.elements.battleLog.innerHTML =
+//       "<h4 class='log-title'>REGISTRO DA BATALHA</h4>";
+
+//     this.addToLog(
+//       `🏁 BATALHA INICIADA: ${stats1.character.name} vs ${stats2.character.name}`,
+//       "start",
+//     );
+
+//     const powerDiff = Math.abs(stats1.totalPower - stats2.totalPower);
+//     let underdogBonus = 0;
+
+//     if (powerDiff > 80) {
+//       underdogBonus = 0.03 + Math.random() * 0.05;
+
+//       if (Math.random() < 0.3) {
+//         if (stats1.totalPower < stats2.totalPower) {
+//           stats1.attack *= 1 + underdogBonus;
+//           stats1.criticalChance += 1;
+//           this.addToLog(
+//             `⭐ ${stats1.character.name} é o azarão! Recebe bônus de ataque.`,
+//             "underdog",
+//           );
+//         } else {
+//           stats2.attack *= 1 + underdogBonus;
+//           stats2.criticalChance += 1;
+//           this.addToLog(
+//             `⭐ ${stats2.character.name} é o azarão! Recebe bônus de ataque.`,
+//             "underdog",
+//           );
+//         }
+//       }
+//     }
+
+//     let round = 1;
+//     let criticalHits1 = 0;
+//     let criticalHits2 = 0;
+//     let dodges1 = 0;
+//     let dodges2 = 0;
+//     let totalDamage1 = 0;
+//     let totalDamage2 = 0;
+
+//     const maxRounds = Math.min(
+//       25,
+//       Math.max(
+//         8,
+//         Math.floor((stats1.totalPower + stats2.totalPower) / 100) * 3,
+//       ),
+//     );
+
+//     let expectedWinner =
+//       stats1.totalPower > stats2.totalPower ? stats1 : stats2;
+//     let underdog = stats1.totalPower < stats2.totalPower ? stats1 : stats2;
+//     let underdogWon = false;
+
+//     while (
+//       round <= maxRounds &&
+//       stats1.currentHealth > 0 &&
+//       stats2.currentHealth > 0
+//     ) {
+//       this.addToLog(`🔴 ROUND ${round}:`, "round");
+
+//       const attackResult1 = this.calculateBalancedAttack(
+//         stats1,
+//         stats2,
+//         round,
+//         expectedWinner === stats1,
+//       );
+//       if (!attackResult1.dodged) {
+//         const actualDamage = Math.max(1, attackResult1.damage);
+//         stats2.currentHealth -= actualDamage;
+//         totalDamage2 += actualDamage;
+
+//         if (attackResult1.critical) criticalHits1++;
+//       } else {
+//         dodges2++;
+//       }
+
+//       this.addToLog(
+//         `🎯 ${stats1.character.name} ataca! ${attackResult1.message} ${stats2.character.name}: ${Math.max(0, Math.round(stats2.currentHealth))}/${stats2.health} HP`,
+//         attackResult1.critical
+//           ? "critical"
+//           : attackResult1.dodged
+//             ? "dodge"
+//             : "damage",
+//       );
+
+//       if (stats2.currentHealth <= 0) {
+//         underdogWon = stats1 === underdog;
+//         this.addToLog(`💀 ${stats2.character.name} foi derrotado!`, "winner");
+//         this.addToLog(
+//           `🏆 ${stats1.character.name} VENCEU APÓS ${round} ROUNDS!`,
+//           "winner",
+//         );
+
+//         if (underdogWon) {
+//           this.addToLog(
+//             `🎲 SURPRESA! O azarão venceu contra as probabilidades!`,
+//             "underdog",
+//           );
+//         }
+
+//         return {
+//           winner: stats1,
+//           loser: stats2,
+//           rounds: round,
+//           criticalHits: {
+//             player1: criticalHits1,
+//             player2: criticalHits2,
+//           },
+//           dodges: { player1: dodges1, player2: dodges2 },
+//           totalDamage: { player1: totalDamage1, player2: totalDamage2 },
+//           winnerName: stats1.character.name,
+//           loserName: stats2.character.name,
+//           type: "win",
+//           underdogWin: underdogWon,
+//           timestamp: new Date().toISOString(),
+//           battleLog: [...this.battleLog],
+//         };
+//       }
+
+//       const attackResult2 = this.calculateBalancedAttack(
+//         stats2,
+//         stats1,
+//         round,
+//         expectedWinner === stats2,
+//       );
+//       if (!attackResult2.dodged) {
+//         const actualDamage = Math.max(1, attackResult2.damage);
+//         stats1.currentHealth -= actualDamage;
+//         totalDamage1 += actualDamage;
+
+//         if (attackResult2.critical) criticalHits2++;
+//       } else {
+//         dodges1++;
+//       }
+
+//       this.addToLog(
+//         `🎯 ${stats2.character.name} contra-ataca! ${attackResult2.message} ${stats1.character.name}: ${Math.max(0, Math.round(stats1.currentHealth))}/${stats1.health} HP`,
+//         attackResult2.critical
+//           ? "critical"
+//           : attackResult2.dodged
+//             ? "dodge"
+//             : "damage",
+//       );
+
+//       if (stats1.currentHealth <= 0) {
+//         underdogWon = stats2 === underdog;
+//         this.addToLog(`💀 ${stats1.character.name} foi derrotado!`, "winner");
+//         this.addToLog(
+//           `🏆 ${stats2.character.name} VENCEU APÓS ${round} ROUNDS!`,
+//           "winner",
+//         );
+
+//         if (underdogWon) {
+//           this.addToLog(
+//             `🎲 SURPRESA! O azarão venceu contra as probabilidades!`,
+//             "underdog",
+//           );
+//         }
+
+//         return {
+//           winner: stats2,
+//           loser: stats1,
+//           rounds: round,
+//           criticalHits: {
+//             player1: criticalHits1,
+//             player2: criticalHits2,
+//           },
+//           dodges: { player1: dodges1, player2: dodges2 },
+//           totalDamage: { player1: totalDamage1, player2: totalDamage2 },
+//           winnerName: stats2.character.name,
+//           loserName: stats1.character.name,
+//           type: "win",
+//           underdogWin: underdogWon,
+//           timestamp: new Date().toISOString(),
+//           battleLog: [...this.battleLog],
+//         };
+//       }
+
+//       round++;
+//     }
+
+//     const score1 = this.calculateBalancedScore(
+//       stats1,
+//       criticalHits1,
+//       dodges1,
+//       totalDamage2,
+//       round,
+//       expectedWinner === stats1,
+//     );
+//     const score2 = this.calculateBalancedScore(
+//       stats2,
+//       criticalHits2,
+//       dodges2,
+//       totalDamage1,
+//       round,
+//       expectedWinner === stats2,
+//     );
+
+//     this.addToLog("\n⏰ TEMPO ESGOTADO! Decisão por pontos:", "info");
+
+//     let finalScore1 = score1;
+//     let finalScore2 = score2;
+
+//     if (stats1.totalPower < stats2.totalPower && Math.random() < 0.1) {
+//       finalScore1 = score1 * 1.05;
+//       this.addToLog(
+//         `⭐ ${stats1.character.name} (azarão) recebe pequeno bônus!`,
+//         "underdog",
+//       );
+//     } else if (stats2.totalPower < stats1.totalPower && Math.random() < 0.1) {
+//       finalScore2 = score2 * 1.05;
+//       this.addToLog(
+//         `⭐ ${stats2.character.name} (azarão) recebe pequeno bônus!`,
+//         "underdog",
+//       );
+//     }
+
+//     if (finalScore1 >= finalScore2) {
+//       underdogWon = stats1 === underdog;
+//       this.addToLog(`🏆 ${stats1.character.name} vence por pontos!`, "winner");
+
+//       if (underdogWon) {
+//         this.addToLog(`🎲 SURPRESA! O azarão venceu nos pontos!`, "underdog");
+//       }
+
+//       return {
+//         winner: stats1,
+//         loser: stats2,
+//         rounds: maxRounds,
+//         winByPoints: true,
+//         criticalHits: { player1: criticalHits1, player2: criticalHits2 },
+//         dodges: { player1: dodges1, player2: dodges2 },
+//         totalDamage: { player1: totalDamage1, player2: totalDamage2 },
+//         winnerName: stats1.character.name,
+//         loserName: stats2.character.name,
+//         type: "win",
+//         underdogWin: underdogWon,
+//         timestamp: new Date().toISOString(),
+//         battleLog: [...this.battleLog],
+//       };
+//     } else {
+//       underdogWon = stats2 === underdog;
+//       this.addToLog(`🏆 ${stats2.character.name} vence por pontos!`, "winner");
+
+//       if (underdogWon) {
+//         this.addToLog(`🎲 SURPRESA! O azarão venceu nos pontos!`, "underdog");
+//       }
+
+//       return {
+//         winner: stats2,
+//         loser: stats1,
+//         rounds: maxRounds,
+//         winByPoints: true,
+//         criticalHits: { player1: criticalHits1, player2: criticalHits2 },
+//         dodges: { player1: dodges1, player2: dodges2 },
+//         totalDamage: { player1: totalDamage1, player2: totalDamage2 },
+//         winnerName: stats2.character.name,
+//         loserName: stats1.character.name,
+//         type: "win",
+//         underdogWin: underdogWon,
+//         timestamp: new Date().toISOString(),
+//         battleLog: [...this.battleLog],
+//       };
+//     }
+//   }
+
+//   calculateBalancedAttack(attacker, defender, round, isFavorite) {
+//     const dodgeRoll = Math.random() * 100;
+//     if (dodgeRoll < defender.dodgeChance) {
+//       return {
+//         damage: 0,
+//         critical: false,
+//         dodged: true,
+//         message: "ATAQUE ESQUIVADO! ⚡",
+//       };
+//     }
+
+//     let damage = attacker.attack;
+
+//     const defenseReduction = Math.min(
+//       75,
+//       (defender.defense / (defender.defense + 120)) * 100,
+//     );
+//     damage *= 1 - defenseReduction / 100;
+
+//     const criticalRoll = Math.random() * 100;
+//     let isCritical = criticalRoll < attacker.criticalChance;
+
+//     if (isFavorite && !isCritical) {
+//       isCritical = criticalRoll < attacker.criticalChance * 1.2;
+//     }
+
+//     if (isCritical) {
+//       damage *= 1.8 + Math.random() * 0.4;
+//     }
+
+//     if (round > 8) {
+//       const roundBonus = isFavorite ? 0.025 : 0.015;
+//       damage *= 1 + (round - 8) * roundBonus;
+//     }
+
+//     const randomFactor = isFavorite
+//       ? 0.9 + Math.random() * 0.2
+//       : 0.85 + Math.random() * 0.3;
+
+//     damage *= randomFactor;
+
+//     damage = Math.max(1, Math.floor(damage));
+
+//     if (isCritical) {
+//       return {
+//         damage,
+//         critical: true,
+//         dodged: false,
+//         message: `CRÍTICO! 💥 Causa ${damage} de dano.`,
+//       };
+//     }
+
+//     return {
+//       damage,
+//       critical: false,
+//       dodged: false,
+//       message: `Causa ${damage} de dano.`,
+//     };
+//   }
+
+//   calculateBalancedScore(
+//     stats,
+//     criticalHits,
+//     dodges,
+//     damageTaken,
+//     rounds,
+//     isFavorite,
+//   ) {
+//     const healthScore = (stats.currentHealth / stats.health) * 40;
+//     const powerScore = stats.totalPower * 0.35;
+
+//     const favoriteBonus = isFavorite ? 15 : 0;
+
+//     const criticalScore = criticalHits * 7;
+//     const dodgeScore = dodges * 4;
+//     const survivalScore = rounds * 1.5 - damageTaken * 0.03;
+
+//     return (
+//       healthScore +
+//       powerScore +
+//       criticalScore +
+//       dodgeScore +
+//       survivalScore +
+//       favoriteBonus
+//     );
+//   }
+
+//   addToLog(message, type = "info") {
+//     const timestamp = new Date().toLocaleTimeString([], {
+//       hour: "2-digit",
+//       minute: "2-digit",
+//       second: "2-digit",
+//     });
+//     const logEntry = document.createElement("div");
+//     logEntry.className = `log-entry ${type}`;
+//     logEntry.innerHTML = `<strong>[${timestamp}]</strong> ${message}`;
+
+//     this.elements.battleLog.appendChild(logEntry);
+//     this.battleLog.push({ timestamp, message, type });
+
+//     this.elements.battleLog.scrollTop = this.elements.battleLog.scrollHeight;
+//   }
+
+//   showResultModalWithCharacterInfo(result, stats1, stats2) {
+//     this.elements.resultModalTitle.textContent = "VITÓRIA!";
+
+//     if (result.underdogWin) {
+//       this.elements.resultModalWinner.innerHTML = `
+//         🎲 SURPRESA!<br>${result.winnerName} VENCEU!<br>
+//         <small>(Vitória do Azarão!)</small>
+//       `;
+//     } else {
+//       this.elements.resultModalWinner.innerHTML = `
+//         🏆 <br> ${result.winnerName} VENCEU!
+//       `;
+//     }
+
+//     const winnerImg = this.gallery.cache.imageCache.has(
+//       this.gallery.cache.normalizePath(result.winner.character.image),
+//     )
+//       ? this.gallery.cache.imageCache.get(
+//           this.gallery.cache.normalizePath(result.winner.character.image),
+//         ).src
+//       : result.winner.character.image;
+
+//     const loserImg = this.gallery.cache.imageCache.has(
+//       this.gallery.cache.normalizePath(result.loser.character.image),
+//     )
+//       ? this.gallery.cache.imageCache.get(
+//           this.gallery.cache.normalizePath(result.loser.character.image),
+//         ).src
+//       : result.loser.character.image;
+
+//     const winnerHealth = Math.round(
+//       (result.winner.currentHealth / result.winner.health) * 100,
+//     );
+//     const loserHealth = Math.round(
+//       (result.loser.currentHealth / result.loser.health) * 100,
+//     );
+
+//     const statsHTML = `
+//       <div class="result-stat">
+//         <div class="result-stat-label">VENCEDOR</div>
+//         <div class="result-stat-value">
+//           <img src="${winnerImg}" alt="${result.winnerName}"
+//                style="height: 170px; border-radius: 10px; border: 3px solid ${result.underdogWin ? "#9b59b6" : "var(--quantum-success)"};">
+//           <div>
+//             <strong>${result.winnerName}</strong><br>
+//             <small>${categoryNames[result.winner.character.category] || result.winner.character.category}</small>
+//           </div>
+//         </div>
+//       </div>
+//       <div class="result-stat">
+//         <div class="result-stat-label">PERDEDOR</div>
+//         <div class="result-stat-value">
+//           <img src="${loserImg}" alt="${result.loserName}"
+//                style="height: 170px; border-radius: 10px; border: 3px solid var(--quantum-danger);">
+//           <div>
+//             <strong>${result.loserName}</strong><br>
+//             <small>${categoryNames[result.loser.character.category] || result.loser.character.category}</small>
+//           </div>
+//         </div>
+//       </div>
+//       <div class="result-stat">
+//         <div class="result-stat-label">ROUNDS</div>
+//         <div class="result-stat-value">${result.rounds}</div>
+//       </div>
+//       <div class="result-stat">
+//         <div class="result-stat-label">SAÚDE RESTANTE</div>
+//         <div class="result-stat-value">
+//           <span style="color: var(--quantum-success);">${winnerHealth}%</span> vs
+//           <span style="color: var(--quantum-danger);">${loserHealth}%</span>
+//         </div>
+//       </div>
+//       <div class="result-stat">
+//         <div class="result-stat-label">CRÍTICOS</div>
+//         <div class="result-stat-value">${result.criticalHits.player1 + result.criticalHits.player2}</div>
+//       </div>
+//     `;
+
+//     this.elements.resultModalStats.innerHTML = statsHTML;
+
+//     setTimeout(() => {
+//       this.elements.battleResultModal.classList.add("active");
+//       document.body.style.overflow = "hidden";
+//     }, 500);
+//   }
+
+//   closeResultModal() {
+//     this.elements.battleResultModal.classList.remove("active");
+//     document.body.style.overflow = "";
+//   }
+
+//   rematch() {
+//     this.closeResultModal();
+//     this.resetBattle();
+//   }
+
+//   resetBattle() {
+//     this.selectedCharacters.player1 = null;
+//     this.selectedCharacters.player2 = null;
+//     this.battleLog = [];
+//     this.battleResult = null;
+
+//     this.elements.player1Display.innerHTML = `
+//             <div class="empty-selection">
+//                 <i class="fas fa-user-circle" style="font-size: 100px; color: var(--text-secondary); margin-bottom: 20px;"></i>
+//                 <p style="font-size: 1.2rem; color: var(--text-secondary);">
+//                     SELECIONE UM PERSONAGEM
+//                 </p>
+//             </div>
+//         `;
+
+//     this.elements.player2Display.innerHTML = `
+//             <div class="empty-selection">
+//                 <i class="fas fa-user-circle" style="font-size: 100px; color: var(--text-secondary); margin-bottom: 20px;"></i>
+//                 <p style="font-size: 1.2rem; color: var(--text-secondary);">
+//                     SELECIONE UM PERSONAGEM
+//                 </p>
+//             </div>
+//         `;
+
+//     this.elements.startBattleBtn.disabled = true;
+//     this.elements.battleResults.classList.remove("show");
+//     this.elements.battleLog.innerHTML =
+//       "<h4 class='log-title'>REGISTRO DA BATALHA</h4>";
+
+//     this.gallery.showToast(
+//       "🔄 BATALHA REINICIADA • SELECIONE NOVOS PERSONAGENS",
+//     );
+//   }
+
+//   loadHistory() {
+//     const savedHistory = localStorage.getItem("nexus_battle_history_13");
+//     if (savedHistory) {
+//       try {
+//         const historyData = JSON.parse(savedHistory);
+//         this.history = historyData.map((entry) => ({
+//           ...entry,
+//           battleLog: entry.battleLog || [],
+//         }));
+//         this.renderHistory();
+//       } catch (e) {
+//         console.error("Erro ao carregar histórico:", e);
+//         this.history = [];
+//       }
+//     }
+//   }
+
+//   saveHistory() {
+//     try {
+//       localStorage.setItem(
+//         "nexus_battle_history_13",
+//         JSON.stringify(this.history),
+//       );
+//     } catch (e) {
+//       console.error("Erro ao salvar histórico:", e);
+//     }
+//   }
+
+//   saveToHistory(result) {
+//     const historyEntry = {
+//       id: Date.now(),
+//       winner: result.winnerName,
+//       loser: result.loserName,
+//       winnerCharacter: result.winner.character,
+//       loserCharacter: result.loser.character,
+//       winnerStats: result.winner,
+//       loserStats: result.loser,
+//       type: result.type,
+//       rounds: result.rounds,
+//       criticalHits: result.criticalHits,
+//       dodges: result.dodges,
+//       totalDamage: result.totalDamage,
+//       timestamp: result.timestamp,
+//       date: new Date().toLocaleDateString("pt-BR"),
+//       time: new Date().toLocaleTimeString("pt-BR", {
+//         hour: "2-digit",
+//         minute: "2-digit",
+//         second: "2-digit",
+//       }),
+//       battleLog: result.battleLog || [],
+//       underdogWin: result.underdogWin || false,
+//     };
+
+//     this.history.unshift(historyEntry);
+//     if (this.history.length > 20) {
+//       this.history = this.history.slice(0, 20);
+//     }
+
+//     this.saveHistory();
+//     this.renderHistory();
+//   }
+
+//   renderHistory() {
+//     const historyList = this.elements.battleHistoryList;
+//     const emptyHistory = this.elements.emptyHistory;
+
+//     if (this.history.length === 0) {
+//       emptyHistory.style.display = "block";
+//       return;
+//     }
+
+//     emptyHistory.style.display = "none";
+
+//     let historyHTML = "";
+//     this.history.forEach((entry, index) => {
+//       let resultClass = entry.underdogWin ? "underdog" : "win";
+//       let resultText = `${entry.winner} venceu`;
+//       let resultIcon = entry.underdogWin ? "🎲" : "🏆";
+
+//       if (entry.underdogWin) {
+//         resultText = `${entry.winner} venceu (azarão!)`;
+//       }
+
+//       historyHTML += `
+//                 <div class="history-item ${resultClass}" data-index="${index}">
+//                     <div class="history-info">
+//                         <div class="history-characters">
+//                             ${resultIcon} ${entry.winner || "?"} vs ${entry.loser || "?"}
+//                         </div>
+//                         <div class="history-result">
+//                             ${resultText} • ${entry.rounds} rounds • ${entry.date}
+//                         </div>
+//                     </div>
+//                     <div class="history-expand">
+//                         <i class="fas fa-chevron-right"></i>
+//                     </div>
+//                 </div>
+//             `;
+//     });
+
+//     historyList.innerHTML = historyHTML;
+
+//     document.querySelectorAll(".history-item").forEach((item, index) => {
+//       item.addEventListener("click", () => {
+//         this.showHistoryDetail(this.history[index]);
+//       });
+//     });
+//   }
+
+//   showHistoryDetail(entry) {
+//     const body = this.elements.historyDetailBody;
+
+//     const winnerImg = this.gallery.cache.imageCache.has(
+//       this.gallery.cache.normalizePath(entry.winnerCharacter.image),
+//     )
+//       ? this.gallery.cache.imageCache.get(
+//           this.gallery.cache.normalizePath(entry.winnerCharacter.image),
+//         ).src
+//       : entry.winnerCharacter.image;
+
+//     const loserImg = this.gallery.cache.imageCache.has(
+//       this.gallery.cache.normalizePath(entry.loserCharacter.image),
+//     )
+//       ? this.gallery.cache.imageCache.get(
+//           this.gallery.cache.normalizePath(entry.loserCharacter.image),
+//         ).src
+//       : entry.loserCharacter.image;
+
+//     const winnerBorder = entry.underdogWin
+//       ? "3px solid #9b59b6"
+//       : "3px solid var(--quantum-success)";
+
+//     let detailHTML = `
+//             <div class="history-detail-summary ${entry.underdogWin ? "underdog" : "win"}">
+//                 <h3>${entry.underdogWin ? "🎲 SURPRESA! " : ""}VITÓRIA DE ${entry.winner}</h3>
+//                 <p>${entry.winner || "?"} vs ${entry.loser || "?"}</p>
+//                 <p>${entry.rounds} rounds • ${entry.date} ${entry.time}</p>
+//             </div>
+
+//             <div class="history-detail-body">
+//                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+//                     <div>
+//                         <img src="${winnerImg}" alt="${entry.winner}"
+//                              style="width: 100%; border-radius: 10px; border: ${winnerBorder};">
+//                         <h4>${entry.winner}</h4>
+//                         <p>${categoryNames[entry.winnerCharacter.category] || entry.winnerCharacter.category}</p>
+//                     </div>
+//                     <div>
+//                         <img src="${loserImg}" alt="${entry.loser}"
+//                              style="width: 100%; border-radius: 10px; border: 3px solid var(--quantum-danger);">
+//                         <h4>${entry.loser}</h4>
+//                         <p>${categoryNames[entry.loserCharacter.category] || entry.loserCharacter.category}</p>
+//                     </div>
+//                 </div>
+
+//                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px;">
+//                     <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
+//                         <div style="font-size: 0.8rem; color: var(--text-secondary);">ROUNDS</div>
+//                         <div style="font-weight: bold;">${entry.rounds}</div>
+//                     </div>
+//                     <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
+//                         <div style="font-size: 0.8rem; color: var(--text-secondary);">CRÍTICOS</div>
+//                         <div style="font-weight: bold; color: #ff9900;">${entry.criticalHits.player1 + entry.criticalHits.player2}</div>
+//                     </div>
+//                     <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
+//                         <div style="font-size: 0.8rem; color: var(--text-secondary);">ESQUIVAS</div>
+//                         <div style="font-weight: bold; color: #33ccff;">${entry.dodges.player1 + entry.dodges.player2}</div>
+//                     </div>
+//                     <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 8px;">
+//                         <div style="font-size: 0.8rem; color: var(--text-secondary);">DANO TOTAL</div>
+//                         <div style="font-weight: bold;">${Math.round(entry.totalDamage.player1 + entry.totalDamage.player2)}</div>
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+
+//     body.innerHTML = detailHTML;
+//     this.elements.historyDetailModal.classList.add("active");
+//     document.body.style.overflow = "hidden";
+//   }
+
+//   closeHistoryDetail() {
+//     this.elements.historyDetailModal.classList.remove("active");
+//     document.body.style.overflow = "";
+//   }
+
+//   clearHistoryWithConfirmation() {
+//     this.gallery.showToast("🗑️ HISTÓRICO DE BATALHAS LIMPO COM SUCESSO!");
+
+//     this.history = [];
+//     this.saveHistory();
+//     this.renderHistory();
+
+//     this.elements.battleHistoryList.innerHTML = `
+//             <div class="empty-history" id="emptyHistory">
+//                 <i class="fas fa-scroll"></i>
+//                 <h3>NENHUM HISTÓRICO DE BATALHA</h3>
+//                 <p>Realize batalhas para ver o histórico aqui</p>
+//             </div>
+//         `;
+//   }
+
+//   showBattlePage() {
+//     this.gallery.state.showFavoritesPage = false;
+
+//     if (this.gallery.elements.quantumUniverse) {
+//       this.gallery.elements.quantumUniverse.style.display = "none";
+//     }
+
+//     if (this.gallery.elements.quantumFavoritesPage) {
+//       this.gallery.elements.quantumFavoritesPage.style.display = "none";
+//       this.gallery.elements.quantumFavoritesPage.classList.remove("active");
+//       this.gallery.elements.quantumFavoritesPage.setAttribute("hidden", "");
+//     }
+
+//     if (this.elements.battlePage) {
+//       this.elements.battlePage.style.display = "block";
+//       this.elements.battlePage.classList.add("active");
+//       this.elements.battlePage.removeAttribute("hidden");
+
+//       setTimeout(() => {
+//         this.elements.battlePage.style.opacity = "1";
+//         this.elements.battlePage.style.transform = "translateY(0)";
+//       }, 50);
+//     }
+
+//     const favoritesIcon = document.getElementById("favoritesIcon");
+//     if (favoritesIcon) {
+//       favoritesIcon.className = "fas fa-heart";
+//     }
+
+//     document.title = "⚔️ SISTEMA DE BATALHA | NEXUS UNIVERSE 13/10";
+
+//     window.scrollTo({ top: 0, behavior: "smooth" });
+
+//     this.gallery.audio.play("click");
+
+//     this.gallery.showToast("⚔️ ACESSANDO SISTEMA DE BATALHA QUÂNTICA 13/10");
+
+//     this.renderHistory();
+//   }
+// }

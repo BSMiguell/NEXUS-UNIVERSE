@@ -188,7 +188,7 @@
 .modal-character-description {
   font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: var(--quantum-primary);
   padding: clamp(12px, 2vw, 15px);
   background: rgba(20, 25, 45, 0.6);
   border-radius: var(--border-radius-md);
@@ -274,7 +274,7 @@
 }
 
 .modal-spec-value {
-  color: var(--text-primary);
+  color: var(--quantum-primary);
   font-weight: 600;
   font-size: clamp(1rem, 2.5vw, 1rem);
   font-family: "Exo 2", sans-serif;

@@ -105,9 +105,7 @@
 }
 
 [data-theme="light"] .footer-description {
-  background: rgba(255, 255, 255, 0.8);
   color: var(--text-secondary);
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .footer-stats-grid {

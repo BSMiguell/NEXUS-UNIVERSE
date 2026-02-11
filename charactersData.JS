@@ -8239,4 +8239,179 @@ const charactersData = [
       habilidade: 92,
     },
   },
+
+  {
+    id: 330,
+    name: "KING",
+    category: "Nanatsu",
+    image: "img/Taizai/King-2.png",
+    description:
+      "Rei das Fadas e membro dos Sete Pecados Capitais, representando o Pecado da Preguiça. Portador da lança sagrada Chastiefol que pode assumir diversas formas. Protetor da Floresta das Fadas e um dos seres mais antigos de Britannia.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder: "Desastre, Chastiefol (lança sagrada), Poder das Fadas",
+      status: "Ativo - Rei das Fadas / Pecado da Preguiça",
+      estreia: 2013,
+      afiliacao: "Sete Pecados Capitais",
+      caracteristica: "Protetor da Floresta das Fadas",
+      nivel: "S",
+    },
+    stats: {
+      forca: 88,
+      velocidade: 85,
+      defesa: 90,
+      energia: 95,
+      habilidade: 92,
+    },
+  },
+
+  {
+    id: 331,
+    name: "IRELIA",
+    category: "League of Legend",
+    image: "img/lol/Irelia-1.png",
+    description:
+      "A Dançarina das Lâminas de Ionia, mestra das lâminas flutuantes e defensora fervorosa de sua terra natal. Após a invasão noxiana, liderou a resistência ioniana utilizando suas lâminas familiares que controla telecineticamente.",
+    details: {
+      universo: "League of Legends",
+      poder: "Controle Telecinético de Lâminas, Dança das Lâminas, Hiten",
+      status: "Ativa - Defensora de Ionia",
+      estreia: 2010,
+      afiliacao: "Ionia",
+      caracteristica: "Dançarina das Lâminas",
+      nivel: "S",
+    },
+    stats: {
+      forca: 85,
+      velocidade: 92,
+      defesa: 82,
+      energia: 88,
+      habilidade: 96,
+    },
+  },
+
+  {
+    id: 332,
+    name: "ICHIBE HYOSUBE",
+    category: "Bleach",
+    image: "img/Bleach/Ichibe-Hyosube-1.png",
+    description:
+      "Líder dos Membros Reais (Zero Division) e o Shinigami mais antigo em existência. Conhecido como 'Monk que Chama o Verdadeiro Nome', possui autoridade sobre todos os nomes no mundo espiritual. Foi ele quem nomeou todas as coisas em Soul Society.",
+    details: {
+      universo: "Bleach",
+      poder: "Ichimonji, Controle sobre Nomes, Tinta Negra, Poderes Ancestrais",
+      status: "Ativo - Líder da Zero Division",
+      estreia: 2012,
+      titulo: "Monk que Chama o Verdadeiro Nome",
+      caracteristica: "Shinigami mais antigo",
+      nivel: "SS+",
+    },
+    stats: {
+      forca: 96,
+      velocidade: 90,
+      defesa: 94,
+      energia: 100,
+      habilidade: 99,
+    },
+  },
+
+  {
+    id: 333,
+    name: "KING BUMI",
+    category: "Avatar",
+    image: "img/Avatar/king-bumi-1.png",
+    description:
+      "Rei excêntrico e louco de Omashu, um dos dobradores de terra mais poderosos do mundo e amigo de infância do Avatar Aang. Apesar de sua aparência e comportamento excêntricos, é um estrategista brilhante e mestre da Dobra de Terra com mais de 100 anos de experiência.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Dobra de Terra, Estratégia Militar, Força sobre-humana",
+      status: "Ativo - Rei de Omashu",
+      estreia: 2005,
+      afiliacao: "Reino da Terra",
+      caracteristica: "Rei Louco de Omashu",
+      nivel: "A+",
+    },
+    stats: {
+      forca: 92,
+      velocidade: 70,
+      defesa: 95,
+      energia: 88,
+      habilidade: 94,
+    },
+  },
+
+  {
+    id: 334,
+    name: "ARISU SAKAYANAGI",
+    category: "Classroom of the Elite",
+    image: "img/Classroom-of-the-Elite/Arisu-Sakayanagi-1.png",
+    description:
+      "Líder da Classe A do 1º ano da Advanced Nurturing High School e presidente do conselho estudantil. Filha do diretor da escola, é uma gênio estratégica que valoriza a competição intelectual acima de tudo. Conhecida por sua postura elegante e mente calculista.",
+    details: {
+      universo: "Classroom of the Elite",
+      poder: "Inteligência Estratégica, Manipulação, Liderança",
+      status: "Ativa - Líder da Classe A",
+      estreia: 2015,
+      afiliacao: "Advanced Nurturing High School",
+      caracteristica: "Filha do Diretor",
+      nivel: "B+",
+    },
+    stats: {
+      forca: 35,
+      velocidade: 40,
+      defesa: 45,
+      energia: 70,
+      habilidade: 95,
+    },
+  },
+
+  {
+    id: 335,
+    name: "IZANA KUROKAWA",
+    category: "tokyo",
+    image: "img/tokyo-revengers/Izana-Kurokawa-1.png",
+    description:
+      "Oitavo e mais forte líder dos Black Dragons, meio-irmão de Mikey (Manjiro Sano). Conhecido como 'O Rei Sem Coroa', é um lutador excepcional com velocidade sobre-humana e técnicas de combate refinadas. Sua história é marcada por solidão e busca por conexões familiares.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Velocidade Extrema, Combate Corpo a Corpo, Instinto de Luta",
+      status: "Falecido - Ex-líder dos Black Dragons",
+      estreia: 2017,
+      afiliacao: "Black Dragons",
+      caracteristica: "Meio-irmão de Mikey",
+      nivel: "A+",
+    },
+    stats: {
+      forca: 85,
+      velocidade: 96,
+      defesa: 78,
+      energia: 82,
+      habilidade: 90,
+    },
+  },
+
+  {
+    id: 336,
+    name: "N",
+    category: "Pokemon",
+    image: "img/Pokemon/N-1.png",
+    description:
+      "O misterioso e carismático líder da Equipe Plasma, que busca libertar os Pokémon dos humanos. Criado por Ghetsis para ser um rei idealista, N possui a habilidade única de compreender a fala dos Pokémon. Sua jornada é marcada por conflitos entre suas crenças e a realidade.",
+    details: {
+      universo: "Pokémon",
+      poder: "Comunicação com Pokémon, Estratégia de Batalha, Carisma",
+      status: "Ex-líder da Equipe Plasma",
+      estreia: 2010,
+      afiliacao: "Equipe Plasma (anteriormente)",
+      caracteristica: "Pode falar com Pokémon",
+      nivel: "A",
+    },
+    stats: {
+      forca: 60,
+      velocidade: 75,
+      defesa: 65,
+      energia: 80,
+      habilidade: 92,
+    },
+  },
 ];

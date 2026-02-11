@@ -136,7 +136,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: transparent;
   border-radius: var(--border-radius-md);
   padding: 30px;
   margin-bottom: 30px;
@@ -1250,6 +1250,7 @@
   border: 3px solid transparent;
   background-clip: padding-box;
   overflow: auto;
+  margin-top: 20px;
 }
 
 .history-detail-header {
@@ -1505,15 +1506,16 @@
 }
 
 .selector-container {
-  background: var(--card-gradient);
+  background: rgb(34, 33, 33);
   border-radius: var(--border-radius-xl);
   padding: 40px;
   width: 100%;
   max-width: 1380px;
-  max-height: 100vh;
+  max-height: 95vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: 2px solid rgba(0, 255, 234, 0.3);
 }
 
 .selector-header {
@@ -1534,7 +1536,7 @@
 .selector-close {
   background: none;
   border: none;
-  color: var(--text-primary);
+  color: #fff;
   font-size: 2rem;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -1565,6 +1567,7 @@
   height: 480px;
   position: relative;
   overflow: hidden;
+  margin-top: 10px;
 }
 
 .selector-character::before {
@@ -1615,11 +1618,12 @@
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 5px;
+  color: #fff;
 }
 
 .selector-character-category {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: #fff;
   background: rgba(0, 255, 234, 0.1);
   padding: 4px 10px;
   border-radius: var(--border-radius-full);
@@ -1658,6 +1662,7 @@
 .selector-character-stats {
   display: flex;
   gap: 10px;
+  color: #fff;
 }
 
 @media (max-width: 992px) {
