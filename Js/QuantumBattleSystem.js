@@ -1609,7 +1609,11 @@ class QuantumBattleSystem {
             }
 
             // Efeitos especiais (reduzidos)
-            if (currentStep === 10 || currentStep === 15 || currentStep === 20) {
+            if (
+              currentStep === 10 ||
+              currentStep === 15 ||
+              currentStep === 20
+            ) {
               this.createSpecialAttack(currentStep, isPlayer1Attack);
             }
           }

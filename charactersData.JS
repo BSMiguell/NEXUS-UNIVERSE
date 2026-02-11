@@ -8051,7 +8051,7 @@ const charactersData = [
   {
     id: 322,
     name: "PSYKOS",
-    category: "One-Punch-Man",
+    category: "One Punch Man",
     image: "img/One-Punch-Man/Psykos-2.png",
     description:
       "Ex-líder da Associação de Heróis que se tornou a líder da Associação de Monstros. Psíquica poderosa com habilidades telepáticas e telecinéticas extremas. Fundiu-se com Orochi para se tornar Psykos-Orochi, buscando criar um mundo onde os fortes governam os fracos.",
@@ -8344,7 +8344,7 @@ const charactersData = [
     id: 334,
     name: "ARISU SAKAYANAGI",
     category: "Classroom of the Elite",
-    image: "img/Classroom-of-the-Elite/Arisu-Sakayanagi-1.png",
+    image: "img/classroom-of-the-elite/Arisu-Sakayanagi-1.png",
     description:
       "Líder da Classe A do 1º ano da Advanced Nurturing High School e presidente do conselho estudantil. Filha do diretor da escola, é uma gênio estratégica que valoriza a competição intelectual acima de tudo. Conhecida por sua postura elegante e mente calculista.",
     details: {
@@ -8412,6 +8412,155 @@ const charactersData = [
       defesa: 65,
       energia: 80,
       habilidade: 92,
+    },
+  },
+
+  {
+    id: 337,
+    name: "ECTOPLASM",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Ectoplasm-1.png",
+    description:
+      "Herói profissional e professor da U.A. High School, especializado em matemática. Seu Quirk 'Ectoplasm' permite criar clones de si mesmo a partir de sua boca, com cada clone possuindo suas próprias habilidades de combate. Os clones podem funcionar independentemente ou em coordenação perfeita.",
+    details: {
+      universo: "My Hero Academia",
+      poder: "Quirk: Ectoplasm (Criação de Clones)",
+      status: "Ativo - Professor da U.A.",
+      estreia: 2014,
+      afiliacao: "U.A. High School",
+      caracteristica: "Mestre em táticas de grupo",
+      nivel: "B+",
+    },
+    stats: {
+      forca: 75,
+      velocidade: 70,
+      defesa: 68,
+      energia: 85,
+      habilidade: 88,
+    },
+  },
+  {
+    id: 338,
+    name: "ROBERT BARATHEON",
+    category: "Game of Thrones",
+    image: "img/Game-of-Thrones/Robert-Baratheon-1.png",
+    description:
+      "Rei dos Sete Reinos durante a Rebelião de Robert, conhecido como 'O Usurpador'. Em sua juventude, foi um guerreiro formidável que derrotou Rhaegar Targaryen no Tridente. Como rei, tornou-se obeso e desinteressado pelos deveres do trono, levando Westeros à beira da bancarrota.",
+    details: {
+      universo: "Game of Thrones",
+      poder:
+        "Força Bruta, Habilidade com Martelo de Guerra, Liderança Carismática",
+      status: "Falecido - Ex-Rei dos Sete Reinos",
+      estreia: 1996,
+      afiliacao: "Casa Baratheon",
+      caracteristica: "O Usurpador",
+      nivel: "B",
+    },
+    stats: {
+      forca: 92,
+      velocidade: 65,
+      defesa: 78,
+      energia: 75,
+      habilidade: 82,
+    },
+  },
+  {
+    id: 339,
+    name: "ELDEN BEAST",
+    category: "souls",
+    image: "img/souls/Elden-Beast-1.png",
+    description:
+      "Manifestação física da Vontade da Árvore-sede e chefe final de Elden Ring. Uma entidade divina e cósmica que habita as Erdtrees, representando as leis naturais das Terras Intermédias. Seu combate ocorre em um plano astral, utilizando ataques baseados em constelações e magia sagrada.",
+    details: {
+      universo: "Elden Ring",
+      poder: "Magia Sagrada, Manipulação Cósmica, Forma Etérea",
+      status: "Chefe Final - Vontade da Árvore-sede",
+      estreia: 2022,
+      titulo: "Vontade da Árvore-sede",
+      caracteristica: "Entidade Divina Cósmica",
+      nivel: "SS+",
+    },
+    stats: {
+      forca: 98,
+      velocidade: 85,
+      defesa: 95,
+      energia: 100,
+      habilidade: 90,
+    },
+  },
+
+  {
+    id: 340,
+    name: "NOBARA KUGISAKI",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Nobara-Kugisaki-1.png",
+    description:
+      "Feiticeira jujutsu do 1º ano da Escola de Feitiçaria de Tóquio e colega de Yuji Itadori e Megumi Fushiguro. Sua técnica amaldiçoada utiliza martelo, pregos e uma boneca vodu para atacar a alma dos oponentes. Proveniente do interior, possui personalidade direta e confiante.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder: "Técnica de Boneca Vodu, Pregos Ressonantes, Haki Simples",
+      status: "Ativa - Feiticeira de Grau 3",
+      estreia: 2018,
+      afiliacao: "Escola de Feitiçaria de Tóquio",
+      caracteristica: "Especialista em ataques à alma",
+      nivel: "B+",
+    },
+    stats: {
+      forca: 70,
+      velocidade: 75,
+      defesa: 68,
+      energia: 82,
+      habilidade: 85,
+    },
+  },
+
+  {
+    id: 341,
+    name: "KEN ISHIYAMA",
+    category: "Boku no Hero",
+    image: "img/Boku-no-Hero/Ken-Ishiyama-1.png",
+    description:
+      "Conhecido como o herói profissional 'Cimentooss', professor da U.A. High School especializado em arte moderna. Seu Quirk 'Cimento' permite criar e manipular cimento à vontade, tornando-o ideal para construção, contenção e combate defensivo. Mestre em controle de terreno e cenários de batalha.",
+    details: {
+      universo: "My Hero Academia",
+      poder: "Quirk: Cimento (Manipulação de Cimento)",
+      status: "Ativo - Professor da U.A.",
+      estreia: 2014,
+      afiliacao: "U.A. High School",
+      caracteristica: "Especialista em controle de terreno",
+      nivel: "B+",
+    },
+    stats: {
+      forca: 82,
+      velocidade: 65,
+      defesa: 90,
+      energia: 80,
+      habilidade: 85,
+    },
+  },
+
+  {
+    id: 342,
+    name: "FUBUKI",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Fubuki-1.png",
+    description:
+      "Também conhecida como Hellish Blizzard, líder do grupo de heróis Blizzard e irmã mais nova de Tatsumaki. Herói de Classe B Rank 1 que intencionalmente mantém seu ranking para controlar outros heróis. Sua habilidade psíquica é poderosa, embora inferior à de sua irmã.",
+    details: {
+      universo: "One Punch Man",
+      poder: "Psicocinese, Telecinese, Criação de Barreiras Psíquicas",
+      status: "Ativa - Herói Classe B Rank 1",
+      estreia: 2012,
+      afiliacao: "Associação de Heróis",
+      caracteristica: "Líder do grupo Blizzard",
+      nivel: "A",
+    },
+    stats: {
+      forca: 65,
+      velocidade: 72,
+      defesa: 70,
+      energia: 85,
+      habilidade: 88,
     },
   },
 ];
