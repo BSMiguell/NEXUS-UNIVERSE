@@ -1242,15 +1242,15 @@
 .history-detail-content {
   background: rgb(34, 33, 33);
   border-radius: var(--border-radius-xl);
-  padding: 20px;
+  padding: 40px;
   width: 100%;
   max-width: 1000px;
-  max-height: 100vh;
+  max-height: 95vh;
   position: relative;
   border: 3px solid transparent;
   background-clip: padding-box;
   overflow: auto;
-  margin-top: 20px;
+  border: 2px solid rgba(0, 255, 234, 0.3);
 }
 
 .history-detail-header {

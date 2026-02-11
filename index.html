@@ -367,167 +367,6 @@
         transform: translateY(50px);
       }
 
-      /* Quantum Header */
-      .quantum-header {
-        text-align: center;
-        margin-bottom: 100px;
-        position: relative;
-        padding: 80px 40px;
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        border: 1px solid var(--glass-border);
-        border-radius: var(--border-radius-xl);
-        overflow: hidden;
-        isolation: isolate;
-        transform-style: preserve-3d;
-        perspective: 1000px;
-      }
-
-      .header-nebula {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background:
-          radial-gradient(
-            circle at 30% 20%,
-            rgba(0, 255, 234, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 70% 80%,
-            rgba(255, 0, 255, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 50% 50%,
-            rgba(255, 255, 0, 0.1) 0%,
-            transparent 60%
-          );
-        z-index: -1;
-        animation: nebulaFloat 20s ease-in-out infinite alternate;
-        transform: translateZ(-50px);
-      }
-
-      .quantum-title {
-        font-family: "Audiowide", cursive;
-        font-size: clamp(5rem, 12vw, 8rem);
-        font-weight: 900;
-        letter-spacing: 6px;
-        margin-bottom: 30px;
-        position: relative;
-        transform-style: preserve-3d;
-      }
-
-      .title-text {
-        background: var(--quantum-gradient);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        background-size: 300% 100%;
-        animation: quantumFlow 8s linear infinite;
-        text-shadow: 0 5px 30px rgba(0, 255, 234, 0.3);
-        position: relative;
-        display: inline-block;
-        transform: translateZ(50px);
-      }
-
-      .title-particles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-      }
-
-      .title-particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: var(--quantum-primary);
-        border-radius: 50%;
-        filter: blur(1px);
-        animation: particleFloat 4s ease-in-out infinite;
-        transform: translateZ(var(--particle-z, 0px));
-      }
-
-      .quantum-subtitle {
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-        color: var(--text-secondary);
-        max-width: 1000px;
-        margin: 0 auto 50px;
-        font-weight: 300;
-        line-height: 1.6;
-        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-        transform: translateZ(30px);
-      }
-
-      .rating-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 20px;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(20px);
-        padding: 20px 40px;
-        border-radius: var(--border-radius-full);
-        border: 2px solid transparent;
-        background-clip: padding-box;
-        position: relative;
-        overflow: hidden;
-        transform-style: preserve-3d;
-        transform: translateZ(40px);
-      }
-
-      .rating-badge::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        padding: 2px;
-        background: var(--quantum-gradient);
-        border-radius: var(--border-radius-full);
-        mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        mask-composite: exclude;
-        animation: borderRotate 4s linear infinite;
-      }
-
-      .rating-stars {
-        color: var(--quantum-accent);
-        font-size: 2rem;
-        animation: starPulse 2s ease-in-out infinite;
-        transform: translateZ(20px);
-      }
-
-      .rating-text {
-        font-family: "Orbitron", monospace;
-        font-size: 1.5rem;
-        font-weight: 700;
-        background: var(--quantum-gradient);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        letter-spacing: 3px;
-        transform: translateZ(20px);
-      }
-
-      /* Quantum Controls */
-      .quantum-controls {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 60px;
-        margin-bottom: 100px;
-        position: relative;
-      }
-
-      @media (max-width: 1200px) {
-        .quantum-controls {
-          grid-template-columns: 1fr;
-        }
-      }
-
       /* Quantum Filters */
       .quantum-filters {
         background: var(--glass-bg);
@@ -1754,6 +1593,7 @@
       }
     </style>
 
+    <link rel="stylesheet" href="style/header.css" />
     <link rel="stylesheet" href="style/Card.css" />
     <link rel="stylesheet" href="style/modal-character.css" />
     <link rel="stylesheet" href="style/favorite.css" />
@@ -1810,32 +1650,71 @@
       <!-- Página Principal (Galeria) -->
       <div class="quantum-universe" id="quantumUniverse" role="main">
         <!-- Header Quântico -->
-        <header class="quantum-header" role="banner">
-          <div class="header-nebula" aria-hidden="true"></div>
-          <h1 class="quantum-title">
-            <span class="title-text">NEXUS<br />UNIVERSE 13/10</span>
-            <div class="title-particles" aria-hidden="true"></div>
-            <span class="sr-only"
-              >Nexus Universe 13/10 - Experiência Quântica Definitiva</span
-            >
-          </h1>
-          <p class="quantum-subtitle">
-            A EXPERIÊNCIA VISUAL DEFINITIVA • IMERSÃO TOTAL COM COMANDOS DE VOZ,
-            REALIDADE 3D, CONQUISTAS E INTELIGÊNCIA ARTIFICIAL • SISTEMA DE
-            BATALHA QUÂNTICA
-          </p>
-          <div class="rating-badge" aria-label="Avaliação: Design 13 de 10">
-            <div class="rating-stars" aria-hidden="true">
-              <i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
+        <!-- ===== NOVO BANNER QUÂNTICO 13/10 ===== -->
+        <header class="quantum-hero" role="banner">
+          <!-- Background dinâmico (camadas de partículas) -->
+          <div class="hero-background">
+            <div class="hero-grid"></div>
+            <div class="hero-glow"></div>
+          </div>
+
+          <div class="hero-container">
+            <!-- Coluna de conteúdo -->
+            <div class="hero-content">
+              <div class="hero-badge">
+                <span class="badge-pulse">⚡ EXPERIÊNCIA 10/10</span>
+              </div>
+
+              <h1 class="hero-title">
+                <span class="title-line">NEXUS</span>
+                <span class="title-line quantum">UNIVERSE</span>
+                <span class="title-marker">10/10</span>
+              </h1>
+
+              <div class="hero-typing-container">
+                <p class="hero-subtitle" id="typingSubtitle"></p>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <span class="stat-value" id="quantumFlux">0</span>
+                  <span class="stat-label">FLUXO QUÂNTICO</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                  <span class="stat-value">10/10</span>
+                  <span class="stat-label">DESIGN</span>
+                </div>
+              </div>
+
+              <div class="hero-actions">
+                <button class="quantum-button hero-cta" id="exploreMultiverse">
+                  <span>EXPLORAR MULTIVERSO</span>
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="quantum-button hero-secondary" id="watchTrailer">
+                  <i class="fas fa-play"></i>
+                  TRAILER QUÂNTICO
+                </button>
+              </div>
             </div>
-            <div class="rating-text">DESIGN 13/10</div>
+
+            <!-- Coluna visual – Núcleo Quântico 3D -->
+            <div class="hero-visual">
+              <div class="quantum-core" id="quantumCore">
+                <canvas id="coreCanvas"></canvas>
+                <div class="core-ring"></div>
+                <div class="core-ring delay-1"></div>
+                <div class="core-ring delay-2"></div>
+              </div>
+              <div class="orbital-particles"></div>
+            </div>
+          </div>
+
+          <!-- Scroll indicator -->
+          <div class="hero-scroll">
+            <span>DESLIZAR</span>
+            <i class="fas fa-chevron-down"></i>
           </div>
         </header>
 
@@ -1915,7 +1794,7 @@
                 aria-label="Ver página de favoritos"
               >
                 <i class="fas fa-heart" aria-hidden="true"></i>
-                VER FAVORITOS 13/10
+                VER FAVORITOS 10/10
               </button>
 
               <!-- Botão para acessar Batalha -->
@@ -1942,7 +1821,7 @@
                 <div class="terminal-status">
                   <div>
                     > STATUS:
-                    <span class="status-active">OTIMIZADO 13/10</span>
+                    <span class="status-active">OTIMIZADO 10/10</span>
                   </div>
                   <div>> ENERGIA: <span class="status-active">100%</span></div>
                   <div>> 3D: <span class="status-active">PRONTO</span></div>
@@ -2031,7 +1910,7 @@
               </div>
               <h3 class="loading-text">ESTABILIZANDO REALIDADE...</h3>
               <p class="loading-subtext">
-                Preparando experiência visual quântica 13/10
+                Preparando experiência visual quântica 10/10
               </p>
             </div>
           </div>
@@ -2134,7 +2013,7 @@
               <div class="star-icon">
                 <i class="fas fa-star"></i>
               </div>
-              MEUS FAVORITOS 13/10
+              MEUS FAVORITOS 10/10
             </h2>
             <p>
               Gerencie sua coleção pessoal de personagens. Arraste para
@@ -2169,7 +2048,7 @@
               <p>
                 Sua coleção de favoritos está vazia. Clique no ícone de coração
                 nos personagens para adicioná-los aqui e criar sua coleção
-                personalizada 13/10.
+                personalizada 10/10.
               </p>
               <button class="quantum-button" id="browseCharacters">
                 <i class="fas fa-compass"></i>
@@ -2206,7 +2085,7 @@
       >
         <!-- Header da Batalha -->
         <header class="battle-header">
-          <h1 class="battle-title">SISTEMA DE BATALHA QUÂNTICA 13/10</h1>
+          <h1 class="battle-title">SISTEMA DE BATALHA QUÂNTICA 10/10</h1>
           <p class="battle-subtitle">
             SELECIONE DOIS PERSONAGENS E TESTE QUEM VENCERIA EM UMA BATALHA
             EPICA • SISTEMA DE CÁLCULO QUÂNTICO AVANÇADO
@@ -2829,6 +2708,7 @@
     </main>
 
     <!-- Scripts -->
+    <script src="Js/header.js"></script>
     <script src="Js/Temas.js"></script>
     <script src="Js/Favoritos.js"></script>
     <script src="Js/QuantumBattleSystem.js"></script>
@@ -3029,7 +2909,7 @@
 
       // ===== SISTEMA DE BATALHA MELHORADO =====
 
-      // ===== SISTEMA DE BATALHA MELHORADO COM TODAS AS CORREÇÕES =====
+      // ===== SISTEMA DE BATALHA =====
 
       // ===== SISTEMA DE HISTÓRIA E ESTADO =====
       class QuantumHistory {
