@@ -331,10 +331,11 @@
 }
 
 .quantum-button:hover {
-  color: #ffffff;
+  color: #000000;
   transform: translateY(-5px) translateZ(20px) rotateX(5deg);
   box-shadow: 0 15px 35px rgba(0, 255, 234, 0.3);
   border-color: transparent;
+  background: var(--quantum-gradient);
 }
 
 [data-theme="light"] .quantum-button:hover {

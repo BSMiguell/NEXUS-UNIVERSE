@@ -8563,4 +8563,257 @@ const charactersData = [
       habilidade: 88,
     },
   },
+
+  {
+    id: 343,
+    name: "ATOM EVE",
+    category: "Invencível",
+    image: "img/Invencível/Atom-Eve-1.png",
+    description:
+      "Heroína poderosa e interesse amoroso de Mark Grayson (Invencível). Possui a habilidade de manipular a matéria em nível molecular, podendo transmutar, reconstruir e reparar qualquer objeto inanimado. Seus poderes foram artificialmente implantados quando criança pelo GDA, e ela possui um limite psicológico que a impede de manipular matéria viva.",
+    details: {
+      universo: "Invincible",
+      poder: "Manipulação Molecular, Transmutação de Matéria, Reparo Molecular",
+      status: "Ativa - Guardiã Global",
+      estreia: 2003,
+      afiliacao: "Guardiões Globais",
+      caracteristica: "Manipulação molecular de matéria inanimada",
+      nivel: "S",
+    },
+    stats: {
+      forca: 70,
+      velocidade: 75,
+      defesa: 82,
+      energia: 94,
+      habilidade: 98,
+    },
+  },
+
+  {
+    id: 344,
+    name: "BLANKA",
+    category: "Street-Fighter",
+    image: "img/Street-Fighter/Blanka-1.png",
+    description:
+      "Guerreiro selvagem das florestas amazônicas, conhecido como a 'Besta Elétrica'. Sobreviveu a um acidente de avião quando criança e foi criado por animais na selva, desenvolvendo pele verde, força sobre-humana e capacidade de gerar eletricidade. Apesar da aparência feroz, possui coração gentil e busca encontrar sua mãe.",
+    details: {
+      universo: "Street Fighter",
+      poder: "Eletricidade, Força Selvagem, Agilidade na Selva",
+      status: "Ativo - Lutador Errante",
+      estreia: 1991,
+      tecnica: "Electric Thunder, Rolling Attack",
+      caracteristica: "A Besta Elétrica",
+      nivel: "A",
+    },
+    stats: {
+      forca: 86,
+      velocidade: 82,
+      defesa: 85,
+      energia: 88,
+      habilidade: 79,
+    },
+  },
+  {
+    id: 345,
+    name: "BARDO",
+    category: "League of Legend",
+    image: "img/lol/Bardo-1.png",
+    description:
+      "Guardião cósmico das runas e protetor do equilíbrio do universo. Viaja através do tempo e espaço com seu sino mágico, guiando almas perdidas e preservando artefatos de poder. Sua natureza é enigmática até mesmo para outros seres celestiais, e suas motivações transcendem a compreensão mortal.",
+    details: {
+      universo: "League of Legends",
+      poder: "Manipulação Cósmica, Viagem Dimensional, Magia do Sino",
+      status: "Ativo - Guardião Cósmico",
+      estreia: 2014,
+      titulo: "O Guardião Cósmico",
+      caracteristica: "Ser além da compreensão mortal",
+      nivel: "SS+",
+    },
+    stats: {
+      forca: 85,
+      velocidade: 88,
+      defesa: 92,
+      energia: 100,
+      habilidade: 99,
+    },
+  },
+
+  {
+    id: 346,
+    name: "ENVY",
+    category: "Fullmetal",
+    image: "img/Fullmetal-Alchemist/Envy-1.png",
+    description:
+      "Um dos Sete Homúnculos criados pelo Pai, personificando o pecado da Inveja. Possui a capacidade de transformar sua aparência em qualquer ser vivo, incluindo humanos e quimeras. Sua verdadeira forma é uma criatura reptiliana monstruosa que reflete seu ódio e inveja da humanidade. Guarda rancor profundo de Scar por matar seu irmão Lust.",
+    details: {
+      universo: "Fullmetal Alchemist",
+      poder: "Transformação Ilimitada, Regeneração, Forma Monstruosa",
+      status: "Derrotado/Falecido",
+      estreia: 2001,
+      afiliacao: "Pai (Dwarf in the Flask)",
+      caracteristica: "Inveja personificada",
+      nivel: "S",
+    },
+    stats: {
+      forca: 84,
+      velocidade: 86,
+      defesa: 82,
+      energia: 90,
+      habilidade: 95,
+    },
+  },
+
+  {
+    id: 347,
+    name: "BRUNHILDE",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Brunhilde-1.png",
+    description:
+      "Valquíria primogênita e principal estrategista do Ragnarok, determinada a salvar a humanidade da extinção. Diferente de suas irmãs, Brunhilde desafia a vontade dos deuses ao selecionar e recrutar os maiores guerreiros da história humana para enfrentar divindades. Possui conhecimento profundo sobre deuses e humanos, além de poder se fundir com almas guerreiras para criar armas divinas através do ritual Völundr.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder:
+        "Völundr (Fundição de Almas), Estratégia Divina, Conhecimento Ancestral",
+      status: "Ativa - Valquíria Primogênita",
+      estreia: 2017,
+      afiliacao: "Valquírias",
+      caracteristica: "Protetora da Humanidade",
+      nivel: "S",
+    },
+    stats: {
+      forca: 65,
+      velocidade: 70,
+      defesa: 68,
+      energia: 92,
+      habilidade: 98,
+    },
+  },
+
+  {
+    id: 348,
+    name: "HOMELESS EMPEROR",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Homeless-Emperor-1.png",
+    description:
+      "Membro da Associação de Monstros e um dos executivos mais poderosos, classificado como ameaça nível Dragão. Antes um homem comum sem-teto, recebeu poderes divinos de 'Deus' em troca de sua lealdade. Capaz de gerar e manipular energia pura destrutiva em forma de esferas e feixes, tornando-o um dos maiores perigos da associação. Apesar de seu poder imenso, mantém a personalidade humilde e sofrida de sua vida anterior.",
+    details: {
+      universo: "One Punch Man",
+      poder:
+        "Manipulação de Energia Divina, Esferas de Energia, Feixes Destrutivos",
+      status: "Falecido - Ex-executivo da Associação de Monstros",
+      estreia: 2015,
+      afiliacao: "Associação de Monstros",
+      caracteristica: "Servo de Deus",
+      nivel: "S+",
+    },
+    stats: {
+      forca: 80,
+      velocidade: 75,
+      defesa: 82,
+      energia: 98,
+      habilidade: 88,
+    },
+  },
+
+  {
+    id: 349,
+    name: "KEN SUDOU",
+    category: "Classroom of the Elite",
+    image: "img/classroom-of-the-elite/Ken-Sudou-1.png",
+    description:
+      "Estudante da Classe D da Advanced Nurturing High School e membro do grupo de Kiyotaka Ayanokoji. Inicialmente um valentão agressivo com temperamento explosivo e baixo rendimento acadêmico, Sudou é um gênio do basquete com potencial atlético excepcional. Ao longo da série, amadurece significativamente, aprendendo a controlar sua raiva e se tornar um jogador de equipe confiável, embora ainda lute com estudos.",
+    details: {
+      universo: "Classroom of the Elite",
+      poder: "Atletismo Excepcional, Gênio do Basquete, Resistência Física",
+      status: "Ativo - Membro da Classe D",
+      estreia: 2015,
+      afiliacao: "Advanced Nurturing High School - Classe D",
+      caracteristica: "Gênio do Basquete",
+      nivel: "B",
+    },
+    stats: {
+      forca: 82,
+      velocidade: 85,
+      defesa: 78,
+      energia: 84,
+      habilidade: 75,
+    },
+  },
+
+  {
+    id: 350,
+    name: "NORIAKI KAKYOIN",
+    category: "jojo",
+    image: "img/Jojo/Noriaki-Kakyoin-1.png",
+    description:
+      "Aliado leal de Jotaro Kujo e membro do grupo que viaja ao Egito para salvar Holly Kujo de DIO. Usuário do Stand Hierophant Green, um Stand de longo alcance com capacidade de possessão, teias de energia e disparo de projéteis. Inicialmente controlado pela carne de DIO, Kakyoin é libertado por Jotaro e se torna um dos amigos mais próximos e estrategistas do grupo, sacrificando-se heroicamente para revelar o segredo de DIO.",
+    details: {
+      universo: "JoJo's Bizarre Adventure",
+      poder:
+        "Stand: Hierophant Green, Controle de Fios de Energia, Posse, Esmeraldas Splash",
+      status: "Falecido - Herói de Stardust Crusaders",
+      estreia: 1989,
+      afiliacao: "Stardust Crusaders",
+      caracteristica: "Sacrifício heroico contra DIO",
+      nivel: "A+",
+    },
+    stats: {
+      forca: 72,
+      velocidade: 78,
+      defesa: 70,
+      energia: 82,
+      habilidade: 92,
+    },
+  },
+
+  {
+    id: 351,
+    name: "TAKASHI MITSUYA",
+    category: "tokyo",
+    image: "img/tokyo-revengers/Takashi-Mitsuya-1.png",
+    description:
+      "Vice-capitão fundador dos Tokyo Manji Gang e chefe da divisão de design de uniformes. Conhecido como o 'Louco da Agulha', Mitsuya é um lutador excepcionalmente habilidoso que equilibra sua vida como delinquente com a responsabilidade de criar suas irmãs mais novas após a morte de sua mãe. Seu estilo de luta é fluido e imprevisível, utilizando técnicas inspiradas em movimentos de costura.",
+    details: {
+      universo: "Tokyo Revengers",
+      poder: "Combate Corpo a Corpo, Agilidade Excepcional, Táticas de Grupo",
+      status: "Ativo - Vice-capitão Fundador do Toman",
+      estreia: 2017,
+      afiliacao: "Tokyo Manji Gang",
+      caracteristica: "Louco da Agulha",
+      nivel: "A",
+    },
+    stats: {
+      forca: 80,
+      velocidade: 88,
+      defesa: 75,
+      energia: 82,
+      habilidade: 90,
+    },
+  },
+
+  {
+    id: 352,
+    name: "ARTHUR PENDRAGON",
+    category: "Nanatsu",
+    image: "img/Taizai/Arthur-Pendragon-1.png",
+    description:
+      "Rei de Camelot e portador da lendária espada Excalibur. Inicialmente um jovem rei idealista que buscava proteger seu povo, Arthur sofre uma transformação monumental após os eventos da Guerra Santa, herdando o poder do Caos - a força primordial que criou o mundo. Como receptáculo do Caos, torna-se um ser além de deuses e demônios, capaz de manifestar qualquer realidade que imaginar.",
+    details: {
+      universo: "Nanatsu no Taizai",
+      poder:
+        "Excalibur, Manipulação do Caos, Criação de Realidade, Imortalidade",
+      status: "Ativo - Rei de Camelot / Receptáculo do Caos",
+      estreia: 2013,
+      titulo: "Rei Arthur e os Cavaleiros da Távola Redonda",
+      caracteristica: "Portador do Caos Primordial",
+      nivel: "SSS",
+    },
+    stats: {
+      forca: 99,
+      velocidade: 96,
+      defesa: 98,
+      energia: 100,
+      habilidade: 100,
+    },
+  },
 ];

@@ -7,7 +7,7 @@ class QuantumHeaderEffects {
     this.orbitalContainer = document.querySelector(".orbital-particles");
 
     this.textLines = [
-      "EXPERIÊNCIA VISUAL QUÂNTICA 13/10",
+      "EXPERIÊNCIA VISUAL QUÂNTICA 10/10",
       "IMERSÃO TOTAL • REALIDADE 3D",
       "SISTEMA DE BATALHA INTELIGENTE",
       "COMANDOS DE VOZ E CONQUISTAS",
