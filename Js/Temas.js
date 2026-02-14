@@ -19,6 +19,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#141425",
         },
       },
+
       cyberpunk: {
         name: "CYBERPUNK",
         colors: {
@@ -35,6 +36,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#1a1a2e",
         },
       },
+
       matrix: {
         name: "MATRIX",
         colors: {
@@ -51,6 +53,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#0a0a0f",
         },
       },
+
       sunset: {
         name: "PÔR DO SOL",
         colors: {
@@ -67,6 +70,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#2a1a3a",
         },
       },
+
       ocean: {
         name: "OCEANO",
         colors: {
@@ -83,6 +87,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#0077b6",
         },
       },
+
       fire: {
         name: "INFERNO",
         colors: {
@@ -99,6 +104,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#2a0a0a",
         },
       },
+
       light: {
         name: "MODO CLARO",
         colors: {
@@ -115,6 +121,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#ffffff",
         },
       },
+
       neon: {
         name: "NEON",
         colors: {
@@ -131,6 +138,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#1a0a2a",
         },
       },
+
       galactic: {
         name: "GALÁCTICO",
         colors: {
@@ -147,6 +155,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#1a1a2e",
         },
       },
+
       retro: {
         name: "RETRO",
         colors: {
@@ -163,6 +172,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#2a0a5e",
         },
       },
+
       ice: {
         name: "GELO",
         colors: {
@@ -179,6 +189,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#1a3a5a",
         },
       },
+
       midnight: {
         name: "MEIA-NOITE",
         colors: {
@@ -195,6 +206,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#1a1a3a",
         },
       },
+
       aurora: {
         name: "AURORA",
         colors: {
@@ -211,6 +223,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#1a0a3a",
         },
       },
+
       lava: {
         name: "LAVA",
         colors: {
@@ -227,6 +240,7 @@ class QuantumThemeSystem {
           backgroundSecondary: "#2a0a0a",
         },
       },
+
       highContrast: {
         name: "ALTO CONTRASTE",
         colors: {

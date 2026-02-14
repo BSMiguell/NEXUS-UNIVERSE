@@ -8012,7 +8012,7 @@ const charactersData = [
       status: "Príncipe do Submundo",
       estreia: 2015,
       afiliacao: "Submundo",
-      caracteristica: "Temperamento Explosivo",
+
       nivel: "A",
     },
     stats: {
@@ -8037,7 +8037,7 @@ const charactersData = [
         "Conhecimento das Terras Intermédias, Nivelamento de Runes, Magia de Chama Destinada",
       status: "Guia - Dedo do Tarnished",
       estreia: 2022,
-      caracteristica: "Conexão com a Árvore-sede",
+
       nivel: "S",
     },
     stats: {
@@ -8061,7 +8061,7 @@ const charactersData = [
       status: "Antagonista - Líder da Associação de Monstros",
       estreia: 2012,
       afiliacao: "Associação de Monstros",
-      caracteristica: "Ex-líder da Associação de Heróis",
+
       nivel: "S+",
     },
     stats: {
@@ -8085,7 +8085,7 @@ const charactersData = [
       status: "Ex-Almirante - Mercenário",
       estreia: 1999,
       recompensa: "N/A (ex-Almirante)",
-      caracteristica: "Justiça Flexível",
+
       nivel: "SS",
     },
     stats: {
@@ -8108,7 +8108,7 @@ const charactersData = [
       poder: "Stand Wonder of U, Ativação de Calamidades",
       status: "Antagonista Principal",
       estreia: 2019,
-      caracteristica: "Calamidade/Sorte Inversa",
+
       nivel: "SS+",
     },
     stats: {
@@ -8132,7 +8132,7 @@ const charactersData = [
       status: "Viltrumita - Conquistador",
       estreia: 2005,
       afiliacao: "Império Viltrumita",
-      caracteristica: "Filosofia de Conquista",
+
       nivel: "S+",
     },
     stats: {
@@ -8156,7 +8156,7 @@ const charactersData = [
       status: "Maldição de Grau Especial",
       estreia: 2018,
       afiliacao: "Desastres Amaldiçoados",
-      caracteristica: "Domínio: Coffin of the Iron Mountain",
+
       nivel: "S",
     },
     stats: {
@@ -8180,7 +8180,7 @@ const charactersData = [
       status: "Cavaleira - Protetora de Sansa Stark",
       estreia: 1998,
       afiliacao: "Casa Tarth, Protetora de Sansa Stark",
-      caracteristica: "Lealdade Absoluta",
+
       nivel: "A+",
     },
     stats: {
@@ -8204,7 +8204,7 @@ const charactersData = [
       status: "Membro dos Zoldyck - Portadora de Nanika",
       estreia: 2011,
       afiliacao: "Família Zoldyck",
-      caracteristica: "Irmã de Killua",
+
       nivel: "S+",
     },
     stats: {
@@ -8228,7 +8228,7 @@ const charactersData = [
       status: "Lutador Profissional - Herdeiro da Masters Foundation",
       estreia: 1987,
       tecnica: "Shoryuken, Hadouken, Tatsumaki Senpukyaku",
-      caracteristica: "Estilo Agressivo Americanizado",
+
       nivel: "S",
     },
     stats: {
@@ -8253,7 +8253,7 @@ const charactersData = [
       status: "Ativo - Rei das Fadas / Pecado da Preguiça",
       estreia: 2013,
       afiliacao: "Sete Pecados Capitais",
-      caracteristica: "Protetor da Floresta das Fadas",
+
       nivel: "S",
     },
     stats: {
@@ -8278,7 +8278,7 @@ const charactersData = [
       status: "Ativa - Defensora de Ionia",
       estreia: 2010,
       afiliacao: "Ionia",
-      caracteristica: "Dançarina das Lâminas",
+
       nivel: "S",
     },
     stats: {
@@ -8303,7 +8303,7 @@ const charactersData = [
       status: "Ativo - Líder da Zero Division",
       estreia: 2012,
       titulo: "Monk que Chama o Verdadeiro Nome",
-      caracteristica: "Shinigami mais antigo",
+
       nivel: "SS+",
     },
     stats: {
@@ -8328,7 +8328,7 @@ const charactersData = [
       status: "Ativo - Rei de Omashu",
       estreia: 2005,
       afiliacao: "Reino da Terra",
-      caracteristica: "Rei Louco de Omashu",
+
       nivel: "A+",
     },
     stats: {
@@ -8353,7 +8353,7 @@ const charactersData = [
       status: "Ativa - Líder da Classe A",
       estreia: 2015,
       afiliacao: "Advanced Nurturing High School",
-      caracteristica: "Filha do Diretor",
+
       nivel: "B+",
     },
     stats: {
@@ -8378,7 +8378,7 @@ const charactersData = [
       status: "Falecido - Ex-líder dos Black Dragons",
       estreia: 2017,
       afiliacao: "Black Dragons",
-      caracteristica: "Meio-irmão de Mikey",
+
       nivel: "A+",
     },
     stats: {
@@ -8403,7 +8403,7 @@ const charactersData = [
       status: "Ex-líder da Equipe Plasma",
       estreia: 2010,
       afiliacao: "Equipe Plasma (anteriormente)",
-      caracteristica: "Pode falar com Pokémon",
+
       nivel: "A",
     },
     stats: {
@@ -8428,7 +8428,7 @@ const charactersData = [
       status: "Ativo - Professor da U.A.",
       estreia: 2014,
       afiliacao: "U.A. High School",
-      caracteristica: "Mestre em táticas de grupo",
+
       nivel: "B+",
     },
     stats: {
@@ -8453,7 +8453,7 @@ const charactersData = [
       status: "Falecido - Ex-Rei dos Sete Reinos",
       estreia: 1996,
       afiliacao: "Casa Baratheon",
-      caracteristica: "O Usurpador",
+
       nivel: "B",
     },
     stats: {
@@ -8477,7 +8477,7 @@ const charactersData = [
       status: "Chefe Final - Vontade da Árvore-sede",
       estreia: 2022,
       titulo: "Vontade da Árvore-sede",
-      caracteristica: "Entidade Divina Cósmica",
+
       nivel: "SS+",
     },
     stats: {
@@ -8502,7 +8502,7 @@ const charactersData = [
       status: "Ativa - Feiticeira de Grau 3",
       estreia: 2018,
       afiliacao: "Escola de Feitiçaria de Tóquio",
-      caracteristica: "Especialista em ataques à alma",
+
       nivel: "B+",
     },
     stats: {
@@ -8527,7 +8527,7 @@ const charactersData = [
       status: "Ativo - Professor da U.A.",
       estreia: 2014,
       afiliacao: "U.A. High School",
-      caracteristica: "Especialista em controle de terreno",
+
       nivel: "B+",
     },
     stats: {
@@ -8552,7 +8552,7 @@ const charactersData = [
       status: "Ativa - Herói Classe B Rank 1",
       estreia: 2012,
       afiliacao: "Associação de Heróis",
-      caracteristica: "Líder do grupo Blizzard",
+
       nivel: "A",
     },
     stats: {
@@ -8577,7 +8577,7 @@ const charactersData = [
       status: "Ativa - Guardiã Global",
       estreia: 2003,
       afiliacao: "Guardiões Globais",
-      caracteristica: "Manipulação molecular de matéria inanimada",
+
       nivel: "S",
     },
     stats: {
@@ -8602,7 +8602,7 @@ const charactersData = [
       status: "Ativo - Lutador Errante",
       estreia: 1991,
       tecnica: "Electric Thunder, Rolling Attack",
-      caracteristica: "A Besta Elétrica",
+
       nivel: "A",
     },
     stats: {
@@ -8626,7 +8626,7 @@ const charactersData = [
       status: "Ativo - Guardião Cósmico",
       estreia: 2014,
       titulo: "O Guardião Cósmico",
-      caracteristica: "Ser além da compreensão mortal",
+
       nivel: "SS+",
     },
     stats: {
@@ -8651,7 +8651,7 @@ const charactersData = [
       status: "Derrotado/Falecido",
       estreia: 2001,
       afiliacao: "Pai (Dwarf in the Flask)",
-      caracteristica: "Inveja personificada",
+
       nivel: "S",
     },
     stats: {
@@ -8677,7 +8677,7 @@ const charactersData = [
       status: "Ativa - Valquíria Primogênita",
       estreia: 2017,
       afiliacao: "Valquírias",
-      caracteristica: "Protetora da Humanidade",
+
       nivel: "S",
     },
     stats: {
@@ -8703,7 +8703,7 @@ const charactersData = [
       status: "Falecido - Ex-executivo da Associação de Monstros",
       estreia: 2015,
       afiliacao: "Associação de Monstros",
-      caracteristica: "Servo de Deus",
+
       nivel: "S+",
     },
     stats: {
@@ -8728,7 +8728,7 @@ const charactersData = [
       status: "Ativo - Membro da Classe D",
       estreia: 2015,
       afiliacao: "Advanced Nurturing High School - Classe D",
-      caracteristica: "Gênio do Basquete",
+
       nivel: "B",
     },
     stats: {
@@ -8754,7 +8754,7 @@ const charactersData = [
       status: "Falecido - Herói de Stardust Crusaders",
       estreia: 1989,
       afiliacao: "Stardust Crusaders",
-      caracteristica: "Sacrifício heroico contra DIO",
+
       nivel: "A+",
     },
     stats: {
@@ -8779,7 +8779,7 @@ const charactersData = [
       status: "Ativo - Vice-capitão Fundador do Toman",
       estreia: 2017,
       afiliacao: "Tokyo Manji Gang",
-      caracteristica: "Louco da Agulha",
+
       nivel: "A",
     },
     stats: {
@@ -8805,7 +8805,7 @@ const charactersData = [
       status: "Ativo - Rei de Camelot / Receptáculo do Caos",
       estreia: 2013,
       titulo: "Rei Arthur e os Cavaleiros da Távola Redonda",
-      caracteristica: "Portador do Caos Primordial",
+
       nivel: "SSS",
     },
     stats: {
@@ -8814,6 +8814,159 @@ const charactersData = [
       defesa: 98,
       energia: 100,
       habilidade: 100,
+    },
+  },
+
+  {
+    id: 353,
+    name: "APPA",
+    category: "Avatar",
+    image: "img/Avatar/Appa-1.png",
+    description:
+      "O último bisão voador do mundo e fiel companheiro do Avatar Aang. Criatura mansa e leal, Appa é capaz de voar com sua cauda gigante e possui força imensa. Serve como principal meio de transporte do Grupo Avatar através das Quatro Nações. Apesar de sua natureza dócil, é ferozmente protetor quando seu grupo está ameaçado. Sua conexão com Aang é tão profunda que ambos sentem a dor um do outro através do tempo.",
+    details: {
+      universo: "Avatar: The Last Airbender",
+      poder: "Voo, Força Colossal, Conexão Espiritual com o Avatar",
+      status: "Ativo - Companheiro do Avatar",
+      estreia: 2005,
+      afiliacao: "Grupo Avatar",
+
+      nivel: "A",
+    },
+    stats: {
+      forca: 94,
+      velocidade: 75,
+      defesa: 92,
+      energia: 80,
+      habilidade: 70,
+    },
+  },
+
+  {
+    id: 354,
+    name: "TENGEN",
+    category: "jujutsu kaisen",
+    image: "img/Jujutsu/Tengen-1.png",
+    description:
+      "Feiticeiro imortal que transcendeu a humanidade, responsável por criar e manter as barreiras que protegem as escolas de Jujutsu em todo o Japão. Vive há mais de mil anos em evolução constante, atualmente em um estado semi-imortal que o aproxima perigosamente da humanidade. Sua existência é fundamental para o equilíbrio do Jujutsu, e sua fusão com Kenjaku representa uma ameaça catastrófica ao mundo. Possui conhecimento absoluto sobre a história das técnicas amaldiçoadas.",
+    details: {
+      universo: "Jujutsu Kaisen",
+      poder:
+        "Criação de Barreiras, Imortalidade, Conhecimento Ancestral, Manipulação Espacial",
+      status: "Ativo - Protetor das Escolas de Jujutsu",
+      estreia: 2018,
+      afiliacao: "Escolas de Jujutsu",
+
+      nivel: "SS+",
+    },
+    stats: {
+      forca: 70,
+      velocidade: 65,
+      defesa: 95,
+      energia: 98,
+      habilidade: 99,
+    },
+  },
+  {
+    id: 355,
+    name: "SHUNSUI KYORAKU",
+    category: "Bleach",
+    image: "img/Bleach/Syunsui-Kyoraku-1.png",
+    description:
+      "Capitão-Comandante da 13ª Divisão da Sociedade de Almas após a morte de Yamamoto. Herdeiro de uma das famílias nobres mais antigas, Kyoraku é um Shinigami poderoso que esconde sua natureza letal atrás de uma personalidade relaxada e brincalhona. Mestre em combate com duas lâminas e jogos infantis que se tornam armas mortais. Carrega o peso da liderança enquanto honra o legado de seu mentor.",
+    details: {
+      universo: "Bleach",
+      poder:
+        "Zanpakutō: Katen Kyōkotsu, Jogos Mortais, Manipulação de Cenários",
+      status: "Ativo - Capitão-Comandante da Gotei 13",
+      estreia: 2001,
+      afiliacao: "Sociedade de Almas - Gotei 13",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 92,
+      velocidade: 94,
+      defesa: 88,
+      energia: 96,
+      habilidade: 97,
+    },
+  },
+
+  {
+    id: 356,
+    name: "RENNA",
+    category: "souls",
+    image: "img/souls/Renna-1.png",
+    description:
+      "A Donzela da Lua Cheia e guardiã da Carruagem de Estudos Raya Lucaria. Filha de Radagon e Rennala, irmã gêmea de Radahn e Rykard. Mestra suprema das artes glintstone, Renna (também conhecida como Ranni) abandonou seu corpo físico e vive através de uma boneca, seguindo o caminho da Noite e da Lua Fria. Líder da rebelião contra a Vontade da Árvore-sede, busca libertar as Terras Intermédias do jugo dos deuses.",
+    details: {
+      universo: "Elden Ring",
+      poder:
+        "Magia Glintstone, Manipulação da Lua Fria, Almas Gêmeas, Imortalidade Fragmentada",
+      status: "Ativa - Bruxa Lunar / Portadora do Runar da Morte",
+      estreia: 2022,
+      titulo: "Donzela da Lua Cheia",
+
+      nivel: "SS",
+    },
+    stats: {
+      forca: 75,
+      velocidade: 82,
+      defesa: 84,
+      energia: 98,
+      habilidade: 99,
+    },
+  },
+
+  {
+    id: 357,
+    name: "SKARNER",
+    category: "League of Legend",
+    image: "img/lol/Skarner-1.png",
+    description:
+      "O Primeiro dos Brackern, uma antiga espécie elemental de cristal que existe há milênios em Runeterra. Skarner é um guardião de sua espécie, carregando em seu coração um cristal que contém as almas e memórias de seus ancestrais. Sua espécie foi quase exterminada por humanos que confundiram seus cristais com fontes inesgotáveis de energia. Atualmente, Skarner busca desesperadamente recuperar os cristais de seu povo espalhados pelo mundo.",
+    details: {
+      universo: "League of Legends",
+      poder:
+        "Força Elemental, Manipulação de Cristais, Conexão Ancestral, Imortalidade",
+      status: "Ativo - Protetor dos Brackern",
+      estreia: 2011,
+      titulo: "O Primeiro dos Brackern",
+
+      nivel: "S",
+    },
+    stats: {
+      forca: 94,
+      velocidade: 75,
+      defesa: 92,
+      energia: 95,
+      habilidade: 80,
+    },
+  },
+
+  {
+    id: 358,
+    name: "SOJI OKITA",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Soji-Okita-2.png",
+    description:
+      "O lendário capitão da primeira divisão do Shinsengumi, conhecido como o maior espadachim do fim do período Edo. Apesar de sua aparência jovial e delicada, frequentemente confundida com a de uma criança, Okita é um guerreiro implacável que domina o Tennen Rishin Ryu, um estilo de espada mortal. Consumido pela tuberculose durante seu tempo, foi escolhido por Brunhilde para representar a humanidade no Ragnarok, onde sua verdadeira fúria como espadachim pode finalmente ser liberada sem as limitações de seu corpo doente.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Tennen Rishin Ryu, Velocidade Suprema, Corte Instantâneo",
+      status: "Ativo - Lutador do Ragnarok",
+      estreia: 2019,
+      afiliacao: "Shinsengumi",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 88,
+      velocidade: 98,
+      defesa: 82,
+      energia: 90,
+      habilidade: 96,
     },
   },
 ];
