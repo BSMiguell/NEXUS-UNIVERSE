@@ -155,6 +155,7 @@ class QuantumGallery {
       quantumJump: document.getElementById("quantumJump"),
       soundToggle: document.getElementById("soundToggle"),
       soundIcon: document.getElementById("soundIcon"),
+      homeToggle: document.getElementById("homeToggle"),
       favoritesToggle: document.getElementById("favoritesToggle"),
       quantumUniverse: document.getElementById("quantumUniverse"),
       quantumFavoritesPage: document.getElementById("quantumFavoritesPage"),
@@ -284,6 +285,14 @@ class QuantumGallery {
         icon.className = enabled ? "fas fa-volume-up" : "fas fa-volume-mute";
         this.showToast(enabled ? "🔊 SONS ATIVADOS" : "🔇 SONS DESATIVADOS");
         if (enabled) this.audio.play("click");
+      });
+    }
+
+    // NOVO: Botão Início
+    if (this.elements.homeToggle) {
+      this.elements.homeToggle.addEventListener("click", () => {
+        this.showGalleryPage();
+        this.audio.play("click");
       });
     }
 
@@ -767,6 +776,8 @@ class QuantumGallery {
       e.stopPropagation();
       this.setCategory(character.category);
       this.audio.play("click");
+      // ===== ALTERAÇÃO 1: Rolar até a seção de cards após explorar =====
+      this.scrollToCardsSection();
     });
 
     favoriteBtn.addEventListener("click", (e) => {
@@ -943,7 +954,7 @@ class QuantumGallery {
             </div>
 
             <div class="modal-character-actions">
-              <button class="modal-explore-btn" onclick="window.gallery.setCategory('${character.category}')">
+              <button class="modal-explore-btn" onclick="window.gallery.setCategory('${character.category}'); window.gallery.scrollToCardsSection();">
                 <i class="fas fa-filter"></i>
                 EXPLORAR ${categoryNames[character.category]}
               </button>
@@ -1476,7 +1487,7 @@ class QuantumGallery {
     }
 
     setTimeout(() => {
-      if (typeof gsap !== "undefined" && !CONFIG.REDUCE_Motion) {
+      if (typeof gsap !== "undefined" && !CONFIG.REDUCE_MOTION) {
         gsap.to(toast, {
           y: 100,
           opacity: 0,

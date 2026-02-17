@@ -4277,7 +4277,7 @@ const charactersData = [
     id: 172,
     name: "GODFREY, FIRST ELDEN LORD",
     category: "souls",
-    image: "img/souls/Godfrey-First-Elden-Lord-1.png",
+    image: "img/souls/Godfrey-First-Elden-Lord-2.png",
     description:
       "Godfrey, o Primeiro Elden Lord, é um lendário guerreiro de Elden Ring.",
     details: {
@@ -5024,7 +5024,7 @@ const charactersData = [
     id: 202,
     name: "ROCKS D. XEBEC",
     category: "One-Piece",
-    image: "img/One-Piece/Rocks-D-Xebec-2.png",
+    image: "img/One-Piece/Rocks-D-Xebec-3.png",
     description:
       "Lendário capitão pirata da era anterior a Roger, líder dos Piratas Rocks. Tinha em sua tripulação futuros Yonko como Big Mom, Kaido e Barba Branca.",
     details: {
@@ -7021,7 +7021,7 @@ const charactersData = [
     id: 281,
     name: "HARALD",
     category: "One-Piece",
-    image: "img/One-Piece/Harald-1.png",
+    image: "img/One-Piece/Harald-3.png",
     description:
       "Personagem do universo de One Piece, envolvido nas aventuras e conflitos do mundo dos piratas.",
     details: {
@@ -8967,6 +8967,79 @@ const charactersData = [
       defesa: 82,
       energia: 90,
       habilidade: 96,
+    },
+  },
+
+  {
+    id: 359,
+    name: "AIOLOS DE SAGITÁRIO",
+    category: "Os Zavaleiros do Zodíaco",
+    image: "img/Os-Cavaleiros-do-Zodíaco/Aiolos-de-Sagitário-1.png",
+    description:
+      "Cavaleiro de Ouro de Sagitário e irmão mais velho de Aiolia de Leão. Considerado o modelo de cavaleiro ideal por sua sabedoria, força e lealdade à deusa Athena. Sacrificou-se para salvar a jovem Athena das mãos do Grande Mestre Saga, entregando-a a Mitsumasa Kido antes de morrer. Sua armadura de Sagitário é passada de geração em geração para aqueles que demonstram coragem e justiça, protegendo os cavaleiros em momentos críticos.",
+    details: {
+      universo: "Saint Seiya",
+      poder: "Flecha de Sagitário, Cosmo de Ouro, Justiça Divina",
+      status: "Falecido - Cavaleiro de Ouro de Sagitário",
+      estreia: 1986,
+      titulo: "O Cavaleiro Ideal",
+      caracteristica: "Protetor de Athena",
+      nivel: "S+",
+    },
+    stats: {
+      forca: 95,
+      velocidade: 93,
+      defesa: 92,
+      energia: 97,
+      habilidade: 94,
+    },
+  },
+  {
+    id: 360,
+    name: "REKKA HOSHIMIYA",
+    category: "Fire Force",
+    image: "img/Fire Force/Rekka-Hoshimiya-1.png",
+    description:
+      "Capitão da 1ª Companhia do Corpo de Bombeiros Especiais, conhecido como 'Rekka, o Fanático'. Apesar de sua aparência amigável e sorridente, é um devoto do Evangelho do Demônio que busca recrutar crianças com alto potencial para servirem como Pilares. Usuário da Chama de Segunda Geração capaz de manipular chamas existentes e criar explosões devastadoras. Traiu a Companhia ao sequestrar crianças, incluindo a irmã mais nova de Shinra.",
+    details: {
+      universo: "Fire Force",
+      poder: "Manipulação de Chamas (2ª Geração), Explosões, Fanatismo",
+      status: "Derrotado/Falecido",
+      estreia: 2015,
+      afiliacao: "Evangelho do Demônio (traidor)",
+      caracteristica: "O Fanático Traidor",
+      nivel: "A",
+    },
+    stats: {
+      forca: 78,
+      velocidade: 75,
+      defesa: 70,
+      energia: 85,
+      habilidade: 82,
+    },
+  },
+  {
+    id: 361,
+    name: "FU",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Fu.png",
+    description:
+      "Habilidoso e enigmático membro do submundo de Gachiakuta, especialista em combate ágil e furtivo. Conhecido por sua personalidade calma e calculista, Fu opera nas sombras da sociedade marginalizada, utilizando seus dons para sobreviver no ambiente hostil. Sua verdadeira lealdade e motivações permanecem um mistério, mas suas habilidades de combate e adaptação ao mundo decadente são inquestionáveis.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Agilidade Excepcional, Combate Furtivo, Sobrevivência Extrema",
+      status: "Ativo",
+      estreia: 2022,
+      afiliacao: "Desconhecida",
+      caracteristica: "Sombra de Gachiakuta",
+      nivel: "B+",
+    },
+    stats: {
+      forca: 75,
+      velocidade: 88,
+      defesa: 70,
+      energia: 78,
+      habilidade: 85,
     },
   },
 ];
