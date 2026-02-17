@@ -8983,7 +8983,7 @@ const charactersData = [
       status: "Falecido - Cavaleiro de Ouro de Sagitário",
       estreia: 1986,
       titulo: "O Cavaleiro Ideal",
-      caracteristica: "Protetor de Athena",
+
       nivel: "S+",
     },
     stats: {
@@ -9007,7 +9007,7 @@ const charactersData = [
       status: "Derrotado/Falecido",
       estreia: 2015,
       afiliacao: "Evangelho do Demônio (traidor)",
-      caracteristica: "O Fanático Traidor",
+
       nivel: "A",
     },
     stats: {
@@ -9031,7 +9031,7 @@ const charactersData = [
       status: "Ativo",
       estreia: 2022,
       afiliacao: "Desconhecida",
-      caracteristica: "Sombra de Gachiakuta",
+
       nivel: "B+",
     },
     stats: {
@@ -9040,6 +9040,590 @@ const charactersData = [
       defesa: 70,
       energia: 78,
       habilidade: 85,
+    },
+  },
+
+  {
+    id: 362,
+    name: "UROUGE",
+    category: "One-Piece",
+    image: "img/One-Piece/Urouge-1.png",
+    description:
+      "Um dos piores piratas da geração pior, capitão dos Piratas Fallen Monk. Originário das Ilhas no Céu de Skypiea, Urouge é um homem grande e sorridente que empunha uma enorme clava e possui uma Akuma no Mi que converte dano recebido em força física, tornando-se mais poderoso quanto mais é ferido. Conhecido por sua fé inabalável e hábito de rezar antes dos combates. Foi um dos poucos Supernovas a derrotar um dos Yonkou originais em combate individual.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Akuma no Mi (Conversão de Dano em Força), Força Bruta, Resistência",
+      status: "Ativo - Pirata Supernova",
+      estreia: 2009,
+      recompensa: "Desconhecida (pós-timeskip)",
+
+      nivel: "A+",
+    },
+    stats: {
+      forca: 89,
+      velocidade: 75,
+      defesa: 95,
+      energia: 92,
+      habilidade: 78,
+    },
+  },
+
+  {
+    id: 363,
+    name: "ZAMASU (FUSED)",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/Zamasu-(Fused)-1.png",
+    description:
+      "A fusão entre o Zamasu do Presente e o Zamasu do Futuro através dos Potara, resultando em um ser divino imortal com poder incomensurável. Como aprendiz de Supremo Kai, Zamasu nutria um ódio profundo pela humanidade, acreditando que os mortais eram um câncer no universo. Após obter o corpo de Goku e fundir-se consigo mesmo, tornou-se uma entidade transcendental que ameaçou todo o multiverso com sua 'Justiça Celestial'.",
+    details: {
+      universo: "Dragon Ball Super",
+      poder:
+        "Imortalidade, Raio Divino, Manipulação Temporal, Corpo de Goku (Saiyajin)",
+      status: "Erased do Multiverso",
+      estreia: 2016,
+      afiliacao: "Auto-proclamado Deus",
+
+      nivel: "SSS",
+    },
+    stats: {
+      forca: 98,
+      velocidade: 96,
+      defesa: 97,
+      energia: 100,
+      habilidade: 95,
+    },
+  },
+
+  {
+    id: 364,
+    name: "CAVALEIRO DE METAL",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Cavaleiro-de-Metal-1.png",
+    description:
+      "Herói Classe S Rank 6, um gênio cientista que controla remotamente múltiplos drones de batalha gigantescos a partir de seu laboratório secreto. Extremamente cauteloso e calculista, raramente expõe seu corpo real ao perigo, preferindo operar através de suas criações mecânicas. Possui o maior poder de fogo entre todos os heróis da Associação e está constantemente aprimorando sua tecnologia, incluindo planos para criar armas capazes de derrotar Saitama, a quem vê como uma anomalia a ser estudada.",
+    details: {
+      universo: "One Punch Man",
+      poder:
+        "Drones de Combate Avançados, Arsenal Tecnológico, Inteligência Genial",
+      status: "Ativo - Herói Classe S Rank 6",
+      estreia: 2012,
+      afiliacao: "Associação de Heróis",
+
+      nivel: "S",
+    },
+    stats: {
+      forca: 88,
+      velocidade: 82,
+      defesa: 94,
+      energia: 90,
+      habilidade: 85,
+    },
+  },
+
+  {
+    id: 365,
+    name: "BLAIDD",
+    category: "souls",
+    image: "img/souls/Blaidd-1.png",
+    description:
+      "Guerreiro lobo criado pela Carian Royal Family como meio-irmão e fiel protetor de Ranni, a Bruxa Lunar. Conhecido como 'Blaidd, o Flagelo dos Inimigos', é um dos guerreiros mais leais e formidáveis das Terras Intermédias. Combate com uma espada gigante em uma mão e uma adaga na outra, utilizando movimentos fluidos e bestiais. Amaldiçoado a enlouquecer caso traia sua mestra, Blaidd permanece ao lado de Ranni até o fim, mesmo quando o destino conspira contra ambos.",
+    details: {
+      universo: "Elden Ring",
+      poder:
+        "Força Sobre-humana, Agilidade Lupina, Duas Lâminas, Lealdade Amaldiçoada",
+      status: "Ativo/Falecido (depende da rota)",
+      estreia: 2022,
+      afiliacao: "Carian Royal Family",
+
+      nivel: "S",
+    },
+    stats: {
+      forca: 92,
+      velocidade: 89,
+      defesa: 86,
+      energia: 88,
+      habilidade: 90,
+    },
+  },
+
+  {
+    id: 366,
+    name: "YASUO",
+    category: "League of Legend",
+    image: "img/lol/Yasuo-1.png",
+    description:
+      "Um ioniano determinado que carrega o fardo de ser injustamente acusado pelo assassinato de seu mestre. Após passar anos como fugitivo, Yasuo tornou-se um espadachim lendário que domina o vento com sua lâmina. Seu estilo de luta é fluido e implacável, utilizando correntes de ar para devastar seus inimigos enquanto canaliza a culpa que carrega em cada golpe. Agora, busca redenção enquanto protege aqueles que não podem se proteger.",
+    details: {
+      universo: "League of Legends",
+      poder: "Lâmina do Vento, Tempestade de Aço, Muralha de Vento",
+      status: "Ativo - Espadachim Errante",
+      estreia: 2013,
+      titulo: "O Imperdoável",
+
+      nivel: "S",
+    },
+    stats: {
+      forca: 85,
+      velocidade: 94,
+      defesa: 80,
+      energia: 88,
+      habilidade: 96,
+    },
+  },
+
+  {
+    id: 367,
+    name: "DOHKO DE LIBRA",
+    category: "Os Zavaleiros do Zodíaco",
+    image: "img/Os-Cavaleiros-do-Zodíaco/Dohko-de-Libra-2.png",
+    description:
+      "O lendário Cavaleiro de Ouro de Libra e mestre do santuário na China. Único sobrevivente da Guerra Santa anterior contra Hades ao lado de seu amigo Máscara da Morte de Câncer, Dohko passou 243 anos vigiando o selo dos espectros no Monte Rozan. Mestre do Golpe dos Cem Dragões e tutor dos Cavaleiros de Bronze Shiryu de Dragão, representa a sabedoria e o poder acumulado por séculos de treinamento. Sua armadura de Libra contém as doze armas sagradas do santuário.",
+    details: {
+      universo: "Saint Seiya",
+      poder: "Golpe dos Cem Dragões, Rozan Rising Dragon, Sabedoria Milenar",
+      status: "Ativo - Mestre do Monte Rozan",
+      estreia: 1986,
+      titulo: "O Mestre dos Mestres",
+
+      nivel: "SS",
+    },
+    stats: {
+      forca: 96,
+      velocidade: 88,
+      defesa: 94,
+      energia: 99,
+      habilidade: 97,
+    },
+  },
+
+  {
+    id: 368,
+    name: "THOR",
+    category: "Shuumatsu",
+    image: "img/Shuumatsu/Thor-1.png",
+    description:
+      "O Deus do Trovão nórdico e filho primogênito de Odin, considerado o deus mais poderoso do céu. Conhecido como o maior guerreiro divino, Thor luta com seu martelo Mjolnir, uma arma capaz de destruir montanhas e criar tempestades devastadoras. Foi o primeiro lutador a representar os deuses no Ragnarok, enfrentando Lü Bu, o General Voador, em uma batalha histórica que abalou os céus. Apesar de sua natureza brutal, busca oponentes dignos que possam lhe proporcionar uma luta emocionante.",
+    details: {
+      universo: "Shuumatsu no Valkyrie",
+      poder: "Mjolnir (Martelo do Trovão), Raios Divinos, Força Titânica",
+      status: "Ativo - Lutador dos Deuses no Ragnarok",
+      estreia: 2017,
+      afiliacao: "Deuses Nórdicos",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 98,
+      velocidade: 85,
+      defesa: 94,
+      energia: 97,
+      habilidade: 88,
+    },
+  },
+
+  {
+    id: 369,
+    name: "SHŌ KUSAKABE",
+    category: "Fire Force",
+    image: "img/Fire Force/Shō-Kusakabe-1.png",
+    description:
+      "Irmão mais novo de Shinra Kusakabe e um dos Pilares do Evangelho do Demônio. Criado desde criança pela seita como o 'Filho de Deus', Shō possui poderes imensos como usuário de Chama de Terceira Geração, capaz de manipular chamas e congelar o tempo ao seu redor. Sua personalidade é fria e calculista, resultado da lavagem cerebral que sofreu, mas guarda memórias fragmentadas de seu irmão mais velho. Representa uma das maiores ameaças à humanidade caso o plano do Evangelho seja concluído.",
+    details: {
+      universo: "Fire Force",
+      poder:
+        "Manipulação de Chamas (3ª Geração), Paralisia Temporal, Pilar do Evangelho",
+      status: "Ativo - Filho de Deus (Evangelho do Demônio)",
+      estreia: 2015,
+      afiliacao: "Evangelho do Demônio",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 82,
+      velocidade: 90,
+      defesa: 80,
+      energia: 96,
+      habilidade: 94,
+    },
+  },
+
+  {
+    id: 370,
+    name: "ORNN",
+    category: "League of Legend",
+    image: "img/lol/Ornn-1.png",
+    description:
+      "O Ferreiro do Fogo primordial, um dos semideuses irmãos da mitologia freljordana. Ornn é o artesão divino que forjou as primeiras armas e ferramentas, preferindo a solidão de suas montanhas à companhia de mortais ou deuses. Diferente de seu irmão Volibear, que busca guerra e caos, Ornn valoriza a criação, o trabalho bem-feito e a tranquilidade. Vive na forja oculta sob o vulcão Hearth-Home, criando artefatos de poder inigualável e ignorando os conflitos do mundo, a menos que sua paz seja ameaçada.",
+    details: {
+      universo: "League of Legends",
+      poder:
+        "Forja Divina, Manipulação do Fogo Primordial, Criação de Artefatos",
+      status: "Ativo - Semideus Ferreiro",
+      estreia: 2017,
+      titulo: "O Ferreiro do Fogo",
+
+      nivel: "SS",
+    },
+    stats: {
+      forca: 96,
+      velocidade: 70,
+      defesa: 98,
+      energia: 97,
+      habilidade: 95,
+    },
+  },
+
+  {
+    id: 371,
+    name: "ZANKA",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Zanka-1.png",
+    description:
+      "Um dos mais habilidosos e perigosos habitantes do submundo de Gachiakuta, conhecido por sua natureza explosiva e imprevisível. Zanka sobrevive no ambiente hostil através de sua força bruta e instinto de luta apurado, não hesitando em eliminar qualquer ameaça ao seu território. Sua reputação de selvageria esconde uma mente estratégica que poucos conseguem perceber, tornando-o um oponente extremamente perigoso em qualquer confronto.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Força Bruta, Instinto de Luta, Resistência Extrema",
+      status: "Ativo",
+      estreia: 2022,
+      afiliacao: "Desconhecida",
+
+      nivel: "B+",
+    },
+    stats: {
+      forca: 88,
+      velocidade: 82,
+      defesa: 85,
+      energia: 84,
+      habilidade: 79,
+    },
+  },
+
+  {
+    id: 372,
+    name: "NICO ROBIN",
+    category: "One-Piece",
+    image: "img/One-Piece/Nico-Robin-1.png",
+    description:
+      "Arqueóloga dos Piratas do Chapéu de Palha e única pessoa viva capaz de ler os Poneglyphs. Sobrevivente do massacre de Ohara, Robin passou anos fugindo do Governo Mundial como uma criminosa antes de encontrar seu verdadeiro lar com Luffy e sua tripulação. Usuária da Hana Hana no Mi (Fruta Flor), que lhe permite criar e multiplicar partes de seu corpo em qualquer superfície. Sua inteligência e conhecimento histórico são fundamentais para a jornada rumo ao One Piece, enquanto seu passado trágico moldou uma mulher resiliente e protetora de seus companheiros.",
+    details: {
+      universo: "One Piece",
+      poder: "Hana Hana no Mi (Fruta Flor), Historiadora, Arqueóloga",
+      status: "Ativa - Arqueóloga dos Chapéus de Palha",
+      estreia: 1999,
+      recompensa: "฿930,000,000",
+
+      nivel: "S",
+    },
+    stats: {
+      forca: 75,
+      velocidade: 70,
+      defesa: 72,
+      energia: 78,
+      habilidade: 94,
+    },
+  },
+
+  {
+    id: 373,
+    name: "FLASHY FLASH",
+    category: "One Punch Man",
+    image: "img/One-Punch-Man/Flashy-Flash-2.png",
+    description:
+      "Herói Classe S Rank 13, conhecido como o velocista supremo da Associação de Heróis. Treinado desde a infância na misteriosa Vila da Espada, Flashy Flash é um mestre ninja cuja velocidade supera qualquer outro herói, capaz de desferir golpes tão rápidos que parecem múltiplas lâminas simultâneas. De personalidade arrogante e competitiva, busca constantemente adversários à sua altura e guarda um profundo ressentimento pelos ninjas da Vila do Som, seus rivais de infância.",
+    details: {
+      universo: "One Punch Man",
+      poder: "Velocidade Suprema, Técnicas Ninja, Lâminas Gêmeas",
+      status: "Ativo - Herói Classe S Rank 13",
+      estreia: 2012,
+      afiliacao: "Associação de Heróis",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 85,
+      velocidade: 99,
+      defesa: 80,
+      energia: 88,
+      habilidade: 93,
+    },
+  },
+
+  {
+    id: 374,
+    name: "SHION DE ÁRIES",
+    category: "Os Zavaleiros do Zodíaco",
+    image: "img/Os-Cavaleiros-do-Zodíaco/Shion-de-Áries-1.png",
+    description:
+      "O lendário Cavaleiro de Ouro de Áries e patriarca do santuário antes de sua morte nas mãos de Saga de Gêmeos. Único sobrevivente da Guerra Santa anterior ao lado de Dohko de Libra, Shion era conhecido por sua sabedoria incomparável e poderes telecinéticos supremos. Após ser revivido por Hades para liderar os espectros, mantém sua lealdade a Atena em segredo, preparando o caminho para os Cavaleiros de Bronze. Mestre da Revolução Estelar e tutor de Mu de Áries, representa a continuidade da vontade dos cavaleiros através das gerações.",
+    details: {
+      universo: "Saint Seiya",
+      poder: "Revolução Estelar, Telecinese, Muro de Cristal",
+      status: "Falecido/Revivido - Antigo Patriarca",
+      estreia: 1986,
+      titulo: "O Patriarca Lendário",
+
+      nivel: "SS",
+    },
+    stats: {
+      forca: 92,
+      velocidade: 88,
+      defesa: 94,
+      energia: 98,
+      habilidade: 97,
+    },
+  },
+
+  {
+    id: 375,
+    name: "CELL",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/Cell-1.png",
+    description:
+      "A criação definitiva do Dr. Gero, um bio-androide construído a partir das células dos maiores guerreiros da Terra: Goku, Vegeta, Piccolo, Freeza e os reis da Terra. Cell absorve seres vivos para aumentar seu poder e alcançar sua forma perfeita, na qual se torna um dos seres mais ameaçadores do universo. Em sua forma perfeita, possui uma combinação letal de técnicas como Kamehameha, Special Beam Cannon e o devastador Solar Kamehameha. Sua personalidade narcisista e fria esconde um prazer sádico em prolongar o sofrimento de seus oponentes, culminando no Cell Games, seu torneio para desafiar os guerreiros da Terra.",
+    details: {
+      universo: "Dragon Ball Z",
+      poder: "Células dos Guerreiros, Regeneração, Absorção",
+      status: "Derrotado/Falecido",
+      estreia: 1991,
+      transformacao: "Forma Perfeita",
+
+      nivel: "SS",
+    },
+    stats: {
+      forca: 96,
+      velocidade: 94,
+      defesa: 93,
+      energia: 97,
+      habilidade: 92,
+    },
+  },
+
+  {
+    id: 376,
+    name: "ARTHORIAS, O CAMINHANTE DO ABISMO",
+    category: "souls",
+    image: "img/souls/Artorias-the-Abysswalker-1.png",
+    description:
+      "Um dos quatro Cavaleiros de Gwyn, lendário herói de Lordran que jurou combater a escuridão do Abismo. Conhecido por sua bravura incomparável e por sua lealdade a Sif, sua companheira loba. Artorias adentrou o Abismo de Oolacile para salvar sua princesa, mas foi consumido pela escuridão que jurara destruir. Quando encontrado, não passa de uma casca corrompida, ainda empunhando sua grande espada com o braço quebrado, sua armadura distorcida e sua mente perdida.",
+    details: {
+      universo: "Dark Souls",
+      poder:
+        "Grande Espada do Abismo, Acrobacias Sombrias, Corrupção do Abismo",
+      status: "Corrompido pelo Abismo",
+      estreia: 2011,
+      titulo: "O Cavaleiro do Abismo",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 95,
+      velocidade: 91,
+      defesa: 89,
+      energia: 94,
+      habilidade: 93,
+    },
+  },
+
+  {
+    id: 377,
+    name: "ICHIGO KUROSAKI",
+    category: "Bleach",
+    image: "img/Bleach/Ichigo-Kurosaki-1.png",
+    description:
+      "Protagonista de Bleach, um humano capaz de ver espíritos que acidentalmente absorve os poderes de uma Shinigami, tornando-se um Shinigami substituto. Diferente de todos os outros Shinigami, Ichigo é uma anomalia genética que carrega sangue de Shinigami, Quincy, Hollow e humano puro em suas veias. Ao longo de sua jornada para proteger seus entes queridos, desperta formas únicas de poder como o Bankai Tensa Zangetsu, a máscara Hollow e, posteriormente, sua verdadeira forma como Shinigami/Quincy/Hollow fundidos. Sua determinação inabalável e instinto de proteger definem sua essência.",
+    details: {
+      universo: "Bleach",
+      poder:
+        "Zanpakutō: Zangetsu, Getsuga Tenshō, Bankai, Hollowficação, Blut Vene",
+      status: "Ativo - Shinigami Substituto",
+      estreia: 2001,
+      afiliacao: "Protetor de Karakura",
+
+      nivel: "SS+",
+    },
+    stats: {
+      forca: 97,
+      velocidade: 96,
+      defesa: 94,
+      energia: 99,
+      habilidade: 95,
+    },
+  },
+
+  {
+    id: 378,
+    name: "VANICA ZOGRATIS",
+    category: "Black Clover",
+    image: "img/Black Clover/Vanica-Zogratis-1.png",
+    description:
+      "Única mulher da Tríade Negra que governa o Reino Spade e hospedeira do demônio de alto escalão Megicula. Sádica, caótica e completamente obcecada por combates sangrentos, Vanica busca apenas seu próprio entretenimento através da luta contra oponentes poderosos. Despreza os fracos como 'lixo' e vê seus devotados seguidores como meras ferramentas descartáveis, matando-os sem hesitação quando perdem a utilidade. Sua magia de sangue combinada com as maldições de Megicula a tornam uma das ameaças mais formidáveis do continente, sendo responsável pela morte de Acier Silva e pela maldição lançada sobre a rainha Lolopechka.",
+    details: {
+      universo: "Black Clover",
+      poder:
+        "Magia de Sangue, Magia de Maldição (Megicula), Força Demoníaca (até 100%)",
+      status: "Falecida - Ex-membro da Tríade Negra",
+      estreia: 2017,
+      afiliacao: "Tríade Negra / Reino Spade",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 91,
+      velocidade: 88,
+      defesa: 85,
+      energia: 97,
+      habilidade: 93,
+    },
+  },
+
+  {
+    id: 379,
+    name: "SEMIU",
+    category: "Gachiakuta",
+    image: "img/Gachiakuta/Semiu-2.png",
+    description:
+      "Figura enigmática que habita as profundezas do submundo de Gachiakuta, conhecida por sua aparência bestial e comportamento imprevisível. Semiu é um sobrevivente das camadas mais hostis do mundo decaído, desenvolvendo habilidades únicas para caçar e se proteger. Sua natureza selvagem esconde lampejos de inteligência estratégica, tornando-o um oponente perigoso que combina instinto animal com táticas calculadas. Poucos conhecem sua verdadeira origem ou o que o levou a se tornar o que é hoje.",
+    details: {
+      universo: "Gachiakuta",
+      poder: "Força Bestial, Sentidos Aguçados, Instinto de Sobrevivência",
+      status: "Ativo",
+      estreia: 2022,
+      afiliacao: "Desconhecida",
+
+      nivel: "B",
+    },
+    stats: {
+      forca: 83,
+      velocidade: 79,
+      defesa: 81,
+      energia: 76,
+      habilidade: 72,
+    },
+  },
+
+  {
+    id: 380,
+    name: "ORGULHO",
+    category: "Fullmetal",
+    image: "img/Fullmetal-Alchemist/Orgulho-1.png",
+    description:
+      "O homúnculo primogênito criado pelo Pai, personificando o pecado do Orgulho. Diferente de seus irmãos, Orgulho não possui forma humana fixa - é uma massa amorfa de sombras que habita o corpo franzino de Selim Bradley, o filho adotivo do Führer. Como o primeiro e mais poderoso dos homúnculos, possui a habilidade de se manifestar através de qualquer sombra, criando lanças afiadas e olhos vigilantes para atacar e observar. Sua verdadeira natureza monstruosa contrasta brutalmente com a aparência inocente de criança que adota, representando a perfeita encarnação do orgulho que sente por ser a criação máxima do Pai.",
+    details: {
+      universo: "Fullmetal Alchemist",
+      poder: "Manipulação de Sombras, Lanças de Sombra, Onipresença Limitada",
+      status: "Derrotado/Selado",
+      estreia: 2004,
+      afiliacao: "Pai (Dwarf in the Flask)",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 88,
+      velocidade: 92,
+      defesa: 90,
+      energia: 96,
+      habilidade: 95,
+    },
+  },
+
+  {
+    id: 381,
+    name: "VERGO",
+    category: "One-Piece",
+    image: "img/One-Piece/Vergo-1.png",
+    description:
+      "Braço direito de Donquixote Doflamingo e chefe da base da Marinha em G-5, atuando como um infiltrado da família Donquixote. Mestre do Haki de Armadura ao ponto de cobrir completamente seu corpo com ele, Vergo é um lutador implacável que utiliza o bambu como arma principal em seu estilo de luta. Sua lealdade absoluta a Doflamingo o levou a se infiltrar na Marinha por anos, ascendendo ao posto de Vice-Almirante enquanto secretamente servia aos interesses de seu verdadeiro capitão. Usuário da arma de bambu, seus golpes são devastadores quando combinados com seu Haki ofensivo.",
+    details: {
+      universo: "One Piece",
+      poder: "Haki de Armadura Avançado, Estilo Bambu, Rokushiki",
+      status: "Falecido",
+      estreia: 2010,
+      recompensa: "Desconhecida (ex-Marinha)",
+
+      nivel: "A+",
+    },
+    stats: {
+      forca: 86,
+      velocidade: 82,
+      defesa: 94,
+      energia: 85,
+      habilidade: 88,
+    },
+  },
+
+  {
+    id: 382,
+    name: "SHINRA KUSAKABE",
+    category: "Fire Force",
+    image: "img/Fire Force/Shinra-Kusakabe-1.png",
+    description:
+      "Protagonista de Fire Force, um jovem usuário de Chama de Terceira Geração que ganhou o apelido de 'Pegadas do Diabo' por seu sorriso involuntário ao entrar em combate, fruto do trauma de seu passado. Shinra possui a habilidade única de acionar chamas em seus pés, permitindo-lhe voar e executar chutes em velocidades extremas, incluindo sua técnica mais avançada, a 'Chama de Extermínio'. Após perder sua mãe e irmão mais novo em um incêndio misterioso há 12 anos, juntou-se à Força Especial de Bombeiros para descobrir a verdade e se tornar um herói que salva pessoas com um sorriso genuíno.",
+    details: {
+      universo: "Fire Force",
+      poder: "Chama de Terceira Geração, Pegadas do Diabo, Chama de Extermínio",
+      status: "Ativo - Membro da 8ª Companhia",
+      estreia: 2015,
+      afiliacao: "Força Especial de Bombeiros - 8ª Companhia",
+
+      nivel: "S+",
+    },
+    stats: {
+      forca: 88,
+      velocidade: 97,
+      defesa: 82,
+      energia: 94,
+      habilidade: 90,
+    },
+  },
+
+  {
+    id: 383,
+    name: "VAN AUGUR",
+    category: "One-Piece",
+    image: "img/One-Piece/Van-Augur-2.png",
+    description:
+      "Atirador de elite dos Piratas do Barba Negra, conhecido como 'Supersonic' Van Augur. Considerado um dos melhores atiradores do mundo, possui precisão sobrenatural capaz de acertar alvos a quilômetros de distância com seu rifle de longo alcance. Frio, calculista e completamente leal a Teach, Augur foi um dos primeiros a reconhecer o potencial do futuro Yonkou, estando presente nos momentos cruciais da ascensão do bando. Usuário da Wapu Wapu no Mi, uma fruta do diabo que lhe permite teletransportar.",
+    details: {
+      universo: "One Piece",
+      poder:
+        "Wapu Wapu no Mi (Teletransporte), Pontaria Supersônica, Rifle de Longo Alcance",
+      status: "Ativo - Atirador dos Piratas do Barba Negra",
+      estreia: 2007,
+      recompensa: "Desconhecida",
+
+      nivel: "A+",
+    },
+    stats: {
+      forca: 75,
+      velocidade: 83,
+      defesa: 72,
+      energia: 80,
+      habilidade: 96,
+    },
+  },
+
+  {
+    id: 384,
+    name: "HIT",
+    category: "Dragon-Ball",
+    image: "img/Dragon-Ball/Hit-1.png",
+    description:
+      "O lendário assassino do Universo 6, conhecido como 'Never-Miss Hit' por nunca ter falhado uma missão em mais de 1000 anos de existência. Hit é um guerreiro frio, calmo e extremamente letal que desenvolveu a habilidade única de manipular o tempo através de seu Time-Skip, permitindo-lhe pular 0,1 segundo no futuro e desferir golpes em pontos vitais. Apesar de sua aparência intimidadora, possui um código de honra e respeita adversários que o desafiam, como Goku. No Torneio do Poder, demonstrou ser um dos poucos guerreiros capazes de ameaçar Jiren.",
+    details: {
+      universo: "Dragon Ball Super",
+      poder: "Time-Skip, Time-Lag, Pontos Vitais, Adaptação em Combate",
+      status: "Ativo - Assassino Lendário do Universo 6",
+      estreia: 2015,
+
+      nivel: "SS+",
+    },
+    stats: {
+      forca: 94,
+      velocidade: 98,
+      defesa: 90,
+      energia: 96,
+      habilidade: 99,
     },
   },
 ];
