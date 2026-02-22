@@ -40,10 +40,42 @@ class QuantumBattle2DSystem {
     this.playerImage = null;
     this.botImage = null;
     this.imagesLoaded = false;
+    this.attackAnimations = {
+      player: {
+        frames: [],
+        frameIndex: 0,
+        active: false,
+        lastFrameTime: 0,
+        frameDuration: 22,
+        frameStep: 1,
+        effectiveFrameCount: 0,
+        playbackDuration: 250,
+      },
+      bot: {
+        frames: [],
+        frameIndex: 0,
+        active: false,
+        lastFrameTime: 0,
+        frameDuration: 22,
+        frameStep: 1,
+        effectiveFrameCount: 0,
+        playbackDuration: 250,
+      },
+    };
 
     // Para controle de shake de tela
     this.shakeIntensity = 0;
-    this.shakeDecay = 0.9;
+    this.shakeDecay = 0.82;
+    this.maxShake = 4.5;
+    this.performance = {
+      maxParticles: 72,
+      maxEffects: 44,
+      maxBurstParticles: 2,
+      backgroundParticles: 5,
+      drawEnergyLines: false,
+      simpleFx: true,
+    };
+    this.effectDensity = 0.24;
 
     this.init();
   }
@@ -360,7 +392,9 @@ class QuantumBattle2DSystem {
     }
     const battlePage = document.getElementById("quantumBattlePage");
     if (this.gallery.setSectionVisibility) {
-      this.gallery.setSectionVisibility(battlePage, false, { activeClass: true });
+      this.gallery.setSectionVisibility(battlePage, false, {
+        activeClass: true,
+      });
     } else if (battlePage) {
       battlePage.style.display = "none";
       battlePage.classList.remove("active");
@@ -428,16 +462,202 @@ class QuantumBattle2DSystem {
     });
   }
 
+  loadImageAsset(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  isLokiCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 35 ||
+      normalizedName.includes("LOKI") ||
+      normalizedImage.includes("loki")
+    );
+  }
+
+  getLokiAttackFrameCandidates() {
+    const candidates = [];
+
+    // Novo padrÃ£o (mais fluido): loki_attack_01-00002.png ... 00035.png
+    // Mantemos tambÃ©m fallback para padrÃµes antigos.
+    candidates.push([
+      "img-animetion/Loki/loki_attack_01.png.png",
+      "img-animetion/Loki/loki_attack_01.png",
+    ]);
+
+    for (let i = 2; i <= 120; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      const basePath = `img-animetion/Loki/loki_attack_01-${frameNumber}.png`;
+      candidates.push([basePath]);
+    }
+
+    for (let i = 1; i <= 60; i++) {
+      const frameNumber = String(i).padStart(2, "0");
+      const basePath = `img-animetion/Loki/loki_attack_${frameNumber}.png`;
+      candidates.push([basePath, `${basePath}.png`]);
+    }
+
+    return candidates;
+  }
+
+  async loadAttackFramesForCharacter(character) {
+    if (!this.isLokiCharacter(character)) return [];
+
+    const frames = [];
+    const frameCandidates = this.getLokiAttackFrameCandidates();
+    let consecutiveMisses = 0;
+
+    for (const options of frameCandidates) {
+      let loaded = false;
+      for (const src of options) {
+        try {
+          const img = await this.loadImageAsset(src);
+          frames.push(img);
+          loaded = true;
+          break;
+        } catch {
+          // tenta caminho alternativo do mesmo frame
+        }
+      }
+
+      if (!loaded) {
+        consecutiveMisses++;
+        if (frames.length > 0 && consecutiveMisses >= 6) {
+          break;
+        }
+      } else {
+        consecutiveMisses = 0;
+      }
+    }
+
+    return frames;
+  }
+
+  resetAttackAnimationState() {
+    this.attackAnimations.player.active = false;
+    this.attackAnimations.player.frameIndex = 0;
+    this.attackAnimations.player.lastFrameTime = 0;
+    this.attackAnimations.player.frameStep = 1;
+    this.attackAnimations.player.effectiveFrameCount = 0;
+    this.attackAnimations.player.playbackDuration = 250;
+    this.attackAnimations.bot.active = false;
+    this.attackAnimations.bot.frameIndex = 0;
+    this.attackAnimations.bot.lastFrameTime = 0;
+    this.attackAnimations.bot.frameStep = 1;
+    this.attackAnimations.bot.effectiveFrameCount = 0;
+    this.attackAnimations.bot.playbackDuration = 250;
+  }
+
+  getAnimationRole(char) {
+    if (!char) return null;
+    if (char === this.player) return "player";
+    if (char === this.bot) return "bot";
+    return null;
+  }
+
+  getAttackPlaybackConfig(frameCount) {
+    const totalFrames = Math.max(1, frameCount || 1);
+
+    // Mantem o golpe rapido mesmo com muitos frames.
+    const targetDuration =
+      totalFrames > 90 ? 380 : totalFrames > 60 ? 420 : totalFrames > 36 ? 460 : 500;
+    const maxRenderedFrames =
+      totalFrames > 90 ? 24 : totalFrames > 60 ? 28 : 32;
+    const frameStep = Math.max(1, Math.ceil(totalFrames / maxRenderedFrames));
+    const effectiveFrameCount = Math.ceil(totalFrames / frameStep);
+    const frameDuration = Math.max(
+      12,
+      Math.min(20, Math.round(targetDuration / effectiveFrameCount)),
+    );
+
+    return {
+      frameStep,
+      effectiveFrameCount,
+      frameDuration,
+      playbackDuration: effectiveFrameCount * frameDuration,
+    };
+  }
+
+  getAttackExecutionDuration(char) {
+    const role = this.getAnimationRole(char);
+    const baseCooldown = char?.baseAttackCooldown || char?.attackCooldown || 250;
+    if (!role) return baseCooldown;
+
+    const animation = this.attackAnimations[role];
+    if (!animation || !animation.frames.length) return baseCooldown;
+
+    const playback = this.getAttackPlaybackConfig(animation.frames.length);
+    animation.frameDuration = playback.frameDuration;
+    animation.frameStep = playback.frameStep;
+    animation.effectiveFrameCount = playback.effectiveFrameCount;
+    animation.playbackDuration = playback.playbackDuration;
+    return playback.playbackDuration;
+  }
+
+  beginAttack(char) {
+    if (!char) return;
+    const attackDuration = this.getAttackExecutionDuration(char);
+    this.startAttackAnimation(char);
+
+    char.attacking = true;
+    char.lastAttack = Date.now();
+    char.attackCooldown = attackDuration;
+    char.cooldownTimer = attackDuration;
+    char.currentAttackDuration = attackDuration;
+    char.attackHitRegistered = false;
+  }
+
+  startAttackAnimation(char) {
+    const role = this.getAnimationRole(char);
+    if (!role) return;
+    const animation = this.attackAnimations[role];
+    if (!animation.frames.length) return;
+
+    if (!animation.playbackDuration || animation.playbackDuration <= 0) {
+      this.getAttackExecutionDuration(char);
+    }
+    animation.active = true;
+    animation.frameIndex = 0;
+    animation.lastFrameTime = 0;
+  }
+
+  getAnimatedAttackFrame(char) {
+    const role = this.getAnimationRole(char);
+    if (!role) return null;
+
+    const animation = this.attackAnimations[role];
+    if (!animation.active || !animation.frames.length) return null;
+
+    const now = performance.now();
+    if (!animation.lastFrameTime) {
+      animation.lastFrameTime = now;
+    } else if (now - animation.lastFrameTime >= animation.frameDuration) {
+      animation.frameIndex += animation.frameStep || 1;
+      animation.lastFrameTime = now;
+
+      if (animation.frameIndex >= animation.frames.length) {
+        animation.active = false;
+        animation.frameIndex = 0;
+        animation.lastFrameTime = 0;
+        return null;
+      }
+    }
+
+    return animation.frames[animation.frameIndex] || null;
+  }
+
   async loadCharacterImages() {
     this.imagesLoaded = false;
-    const loadImage = (src) => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = reject;
-        img.src = src;
-      });
-    };
+    this.attackAnimations.player.frames = [];
+    this.attackAnimations.bot.frames = [];
+    this.resetAttackAnimationState();
 
     try {
       const playerSrc = this.gallery.cache?.imageCache?.has(
@@ -459,9 +679,16 @@ class QuantumBattle2DSystem {
         : this.selectedCharacters.bot.image;
 
       [this.playerImage, this.botImage] = await Promise.all([
-        loadImage(playerSrc),
-        loadImage(botSrc),
+        this.loadImageAsset(playerSrc),
+        this.loadImageAsset(botSrc),
       ]);
+
+      const [playerAttackFrames, botAttackFrames] = await Promise.all([
+        this.loadAttackFramesForCharacter(this.selectedCharacters.player),
+        this.loadAttackFramesForCharacter(this.selectedCharacters.bot),
+      ]);
+      this.attackAnimations.player.frames = playerAttackFrames;
+      this.attackAnimations.bot.frames = botAttackFrames;
 
       this.imagesLoaded = true;
     } catch (error) {
@@ -474,21 +701,30 @@ class QuantumBattle2DSystem {
     this.stopGame();
     this.battleEnded = false;
     this.shakeIntensity = 0;
+    this.effectDensity = this.isLowPerformanceDevice() ? 0.2 : 0.24;
+    this.performance.backgroundParticles = this.isLowPerformanceDevice()
+      ? 3
+      : 5;
+    this.performance.maxParticles = this.isLowPerformanceDevice() ? 52 : 72;
+    this.performance.maxEffects = this.isLowPerformanceDevice() ? 30 : 44;
+    this.performance.drawEnergyLines = false;
+    this.performance.simpleFx = true;
+    const characterWidth = this.isLowPerformanceDevice() ? 72 : 82;
 
     // Cria os personagens com stats
     this.player = new BattleCharacter(
       this.selectedCharacters.player,
       100,
       this.groundY,
-      60,
+      characterWidth,
       100,
       true,
     );
     this.bot = new BattleCharacter(
       this.selectedCharacters.bot,
-      600,
+      580,
       this.groundY,
-      60,
+      characterWidth,
       100,
       false,
     );
@@ -504,6 +740,8 @@ class QuantumBattle2DSystem {
 
     this.canvas = this.elements.canvas;
     this.ctx = this.canvas.getContext("2d");
+    this.canvas.width = this.canvasWidth;
+    this.canvas.height = this.canvasHeight;
 
     this.keys = {};
 
@@ -525,16 +763,41 @@ class QuantumBattle2DSystem {
   // Novo: Gera partículas de fundo/estrelas
   generateBackgroundParticles() {
     this.backgroundParticles = [];
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < this.performance.backgroundParticles; i++) {
       this.backgroundParticles.push({
         x: Math.random() * this.canvasWidth,
         y: Math.random() * this.canvasHeight,
-        radius: Math.random() * 1.5,
-        opacity: Math.random() * 0.5 + 0.2,
+        radius: Math.random() * 1.2 + 0.3,
+        opacity: Math.random() * 0.35 + 0.2,
         speed: Math.random() * 0.3 + 0.1,
         color: Math.random() > 0.5 ? "#00ffea" : "#ff2a6d",
       });
     }
+  }
+
+  isLowPerformanceDevice() {
+    if (typeof window === "undefined") return false;
+    const lowCpu =
+      typeof navigator !== "undefined" &&
+      navigator.hardwareConcurrency &&
+      navigator.hardwareConcurrency <= 6;
+    const lowMemory =
+      typeof navigator !== "undefined" &&
+      navigator.deviceMemory &&
+      navigator.deviceMemory <= 4;
+    return window.innerWidth <= 768 || lowCpu || lowMemory;
+  }
+
+  getCharCenterX(char) {
+    return char.x + char.width / 2;
+  }
+
+  getCharTopY(char) {
+    return char.y - char.height;
+  }
+
+  getCharCenterY(char) {
+    return this.getCharTopY(char) + char.height / 2;
   }
 
   adjustBotDifficulty() {
@@ -587,12 +850,13 @@ class QuantumBattle2DSystem {
     // Habilidade afeta velocidade de ataque e crítico
     const hab = stats.habilidade || 50;
     char.attackCooldown = Math.max(250, 600 - hab * 4); // 250-600ms
+    char.baseAttackCooldown = char.attackCooldown;
     char.critChance = 0.05 + (hab / 100) * 0.25; // 5%-30% crítico
     char.critMultiplier = 1.8 + (hab / 100) * 0.4; // 1.8-2.2x dano crítico
 
     // Alcance de ataque com habilidade
     const defesa = stats.defesa || 50;
-    char.attackRange = 70 + (hab / 100) * 20; // 70-90 px
+    char.attackRange = 88 + (hab / 100) * 24; // 88-112 px
     char.defense = (defesa / 100) * 40; // 0-40% redução de dano
 
     // Stamina system (novo!)
@@ -625,6 +889,7 @@ class QuantumBattle2DSystem {
     this.effects = [];
     this.particles = [];
     this.backgroundParticles = [];
+    this.resetAttackAnimationState();
   }
 
   resetBattle() {
@@ -653,6 +918,22 @@ class QuantumBattle2DSystem {
     // Atualiza cooldown timers
     if (this.player.cooldownTimer > 0) this.player.cooldownTimer -= 16;
     if (this.bot.cooldownTimer > 0) this.bot.cooldownTimer -= 16;
+
+    // Mantém estado de ataque ativo apenas durante a execução do golpe/animação.
+    if (
+      this.player.attacking &&
+      Date.now() - this.player.lastAttack >=
+        (this.player.currentAttackDuration || this.player.attackCooldown || 250)
+    ) {
+      this.player.attacking = false;
+    }
+    if (
+      this.bot.attacking &&
+      Date.now() - this.bot.lastAttack >=
+        (this.bot.currentAttackDuration || this.bot.attackCooldown || 250)
+    ) {
+      this.bot.attacking = false;
+    }
 
     // Resetar combos se expirados
     if (
@@ -732,7 +1013,7 @@ class QuantumBattle2DSystem {
     ) {
       this.player.vy = this.player.jumpForce || -8.5;
       this.player.isJumping = true;
-      this.createDustEffect(this.player.x + 30, this.groundY);
+      this.createDustEffect(this.getCharCenterX(this.player), this.groundY);
       this.gallery.audio?.play("jump");
     }
 
@@ -752,11 +1033,9 @@ class QuantumBattle2DSystem {
         (this.player.attackCooldown || 250) &&
       this.player.stamina >= this.player.staminaCost
     ) {
-      this.player.attacking = true;
       this.player.attackPressed = true;
-      this.player.lastAttack = Date.now();
-      this.player.cooldownTimer = this.player.attackCooldown || 250;
       this.player.stamina -= this.player.staminaCost;
+      this.beginAttack(this.player);
 
       // Adiciona combo
       const now = Date.now();
@@ -771,20 +1050,16 @@ class QuantumBattle2DSystem {
       this.createAttackEffect(this.player);
       this.gallery.audio?.play("attack");
 
-      if (this.player.comboCount > 1) {
+      if (!this.performance.simpleFx && this.player.comboCount > 1) {
         this.createFloatingText(
-          this.player.x + 30,
-          this.player.y - 100,
+          this.getCharCenterX(this.player),
+          this.getCharTopY(this.player) - 20,
           `COMBO x${this.player.comboCount}`,
           "#ffdd00",
         );
       }
     } else if (!this.keys["KeyF"]) {
       this.player.attackPressed = false;
-    }
-
-    if (this.player.attacking && Date.now() - this.player.lastAttack > 150) {
-      this.player.attacking = false;
     }
   }
 
@@ -917,10 +1192,8 @@ class QuantumBattle2DSystem {
       }
 
       if (Math.random() < attackChance) {
-        this.bot.attacking = true;
-        this.bot.lastAttack = Date.now();
-        this.bot.cooldownTimer = this.bot.attackCooldown || 250;
         this.bot.stamina -= this.bot.staminaCost;
+        this.beginAttack(this.bot);
 
         // Combo do bot
         const now = Date.now();
@@ -935,20 +1208,16 @@ class QuantumBattle2DSystem {
         this.createAttackEffect(this.bot);
 
         // Efeito visual especial baseado em situação
-        if (this.bot.comboCount > 2) {
+        if (!this.performance.simpleFx && this.bot.comboCount > 2) {
           this.createSparkEffect(
-            this.bot.x + 30,
-            this.bot.y - 40,
+            this.getCharCenterX(this.bot),
+            this.getCharCenterY(this.bot),
             15,
             "#ff2a6d",
           );
         }
 
         this.gallery.audio?.play("attack");
-
-        setTimeout(() => {
-          if (this.bot) this.bot.attacking = false;
-        }, 150);
       }
     }
 
@@ -957,8 +1226,14 @@ class QuantumBattle2DSystem {
       this.bot.invincibilityFrames > 0 &&
       this.bot.invincibilityFrames % 5 === 0
     ) {
-      // Reage visualmente ao dano
-      this.createBloodEffect(this.bot.x + 30, this.bot.y - 20, 0.6);
+      // Reage visualmente ao dano (desligado no modo simples para performance)
+      if (!this.performance.simpleFx) {
+        this.createBloodEffect(
+          this.getCharCenterX(this.bot),
+          this.getCharCenterY(this.bot) + this.bot.height * 0.2,
+          0.6,
+        );
+      }
     }
   }
 
@@ -966,6 +1241,7 @@ class QuantumBattle2DSystem {
     // Ataque do jogador
     if (
       this.player.attacking &&
+      !this.player.attackHitRegistered &&
       this.bot.health > 0 &&
       this.bot.invincibilityFrames <= 0
     ) {
@@ -975,7 +1251,7 @@ class QuantumBattle2DSystem {
       if (distance < (this.player.attackRange || 90) && heightDiff < 70) {
         // Novo: Tenta bloquear o ataque
         if (this.attemptBlock(this.bot, this.player)) {
-          this.player.attacking = false;
+          this.player.attackHitRegistered = true;
           return; // Ataque bloqueado!
         }
 
@@ -989,23 +1265,25 @@ class QuantumBattle2DSystem {
         if (isCrit) {
           damage *= this.player.critMultiplier || 1.8;
           this.createFloatingText(
-            this.bot.x + 30,
-            this.bot.y - 80,
+            this.getCharCenterX(this.bot),
+            this.getCharTopY(this.bot) - 10,
             "⚡ CRÍTICO!",
             "#ffff00",
           );
           // Novo: Efeito de eletricidade para crítico
-          this.createElectricEffect(
-            this.player.x + 30,
-            this.player.y - 40,
-            this.bot.x + 30,
-            this.bot.y - 40,
-          );
+          if (!this.performance.simpleFx) {
+            this.createElectricEffect(
+              this.getCharCenterX(this.player),
+              this.getCharCenterY(this.player),
+              this.getCharCenterX(this.bot),
+              this.getCharCenterY(this.bot),
+            );
+          }
           // Novo: Sparks explosivos no crítico
           this.createSparkEffect(
-            this.bot.x + 30,
-            this.bot.y - 40,
-            20,
+            this.getCharCenterX(this.bot),
+            this.getCharCenterY(this.bot),
+            this.performance.simpleFx ? 2 : 20,
             "#ffff00",
           );
         }
@@ -1016,12 +1294,14 @@ class QuantumBattle2DSystem {
         this.createHitEffect(this.bot, true, damage, isCrit);
 
         // Sparkles normais no impacto
-        this.createSparkEffect(
-          this.bot.x + 30,
-          this.bot.y - 40,
-          12,
-          isCrit ? "#ffdd00" : "#00ffea",
-        );
+        if (!this.performance.simpleFx) {
+          this.createSparkEffect(
+            this.getCharCenterX(this.bot),
+            this.getCharCenterY(this.bot),
+            12,
+            isCrit ? "#ffdd00" : "#00ffea",
+          );
+        }
 
         // Knockback melhorado baseado no dano
         const knockbackForce = 10 + (damage / this.bot.maxHealth) * 15;
@@ -1031,9 +1311,9 @@ class QuantumBattle2DSystem {
           this.bot.vx -= knockbackForce * (this.player.comboMultiplier || 1);
         }
 
-        this.shakeScreen(6 + (damage / this.bot.maxHealth) * 4);
+        this.shakeScreen(2 + (damage / this.bot.maxHealth) * 1.5);
         this.bot.invincibilityFrames = 20;
-        this.player.attacking = false;
+        this.player.attackHitRegistered = true;
         this.gallery.audio?.play("hit");
       }
     }
@@ -1041,6 +1321,7 @@ class QuantumBattle2DSystem {
     // Ataque do bot
     if (
       this.bot.attacking &&
+      !this.bot.attackHitRegistered &&
       this.player.health > 0 &&
       this.player.invincibilityFrames <= 0
     ) {
@@ -1050,7 +1331,7 @@ class QuantumBattle2DSystem {
       if (distance < (this.bot.attackRange || 90) && heightDiff < 70) {
         // Novo: Tenta bloquear o ataque do bot
         if (this.attemptBlock(this.player, this.bot)) {
-          this.bot.attacking = false;
+          this.bot.attackHitRegistered = true;
           return; // Ataque bloqueado!
         }
 
@@ -1064,23 +1345,25 @@ class QuantumBattle2DSystem {
         if (isCrit) {
           damage *= this.bot.critMultiplier || 1.8;
           this.createFloatingText(
-            this.player.x + 30,
-            this.player.y - 80,
+            this.getCharCenterX(this.player),
+            this.getCharTopY(this.player) - 10,
             "⚡ CRÍTICO!",
             "#ffff00",
           );
           // Novo: Efeito de eletricidade para crítico do bot
-          this.createElectricEffect(
-            this.bot.x + 30,
-            this.bot.y - 40,
-            this.player.x + 30,
-            this.player.y - 40,
-          );
+          if (!this.performance.simpleFx) {
+            this.createElectricEffect(
+              this.getCharCenterX(this.bot),
+              this.getCharCenterY(this.bot),
+              this.getCharCenterX(this.player),
+              this.getCharCenterY(this.player),
+            );
+          }
           // Novo: Sparks explosivos no crítico
           this.createSparkEffect(
-            this.player.x + 30,
-            this.player.y - 40,
-            20,
+            this.getCharCenterX(this.player),
+            this.getCharCenterY(this.player),
+            this.performance.simpleFx ? 2 : 20,
             "#ff2a6d",
           );
         }
@@ -1091,12 +1374,14 @@ class QuantumBattle2DSystem {
         this.createHitEffect(this.player, false, damage, isCrit);
 
         // Sparkles normais no impacto (vermelho para bot)
-        this.createSparkEffect(
-          this.player.x + 30,
-          this.player.y - 40,
-          12,
-          isCrit ? "#ff5588" : "#ff2a6d",
-        );
+        if (!this.performance.simpleFx) {
+          this.createSparkEffect(
+            this.getCharCenterX(this.player),
+            this.getCharCenterY(this.player),
+            12,
+            isCrit ? "#ff5588" : "#ff2a6d",
+          );
+        }
 
         // Knockback melhorado baseado no dano
         const knockbackForce = 10 + (damage / this.player.maxHealth) * 15;
@@ -1106,9 +1391,9 @@ class QuantumBattle2DSystem {
           this.player.vx -= knockbackForce * (this.bot.comboMultiplier || 1);
         }
 
-        this.shakeScreen(6 + (damage / this.player.maxHealth) * 4);
+        this.shakeScreen(2 + (damage / this.player.maxHealth) * 1.5);
         this.player.invincibilityFrames = 20;
-        this.bot.attacking = false;
+        this.bot.attackHitRegistered = true;
         this.gallery.audio?.play("hit");
       }
     }
@@ -1118,7 +1403,10 @@ class QuantumBattle2DSystem {
   }
 
   createDustEffect(x, y) {
-    for (let i = 0; i < 12; i++) {
+    const count = this.performance.simpleFx
+      ? 2
+      : Math.max(3, Math.floor(8 * this.effectDensity));
+    for (let i = 0; i < count; i++) {
       this.particles.push({
         x: x + (Math.random() - 0.5) * 30,
         y: y,
@@ -1134,17 +1422,28 @@ class QuantumBattle2DSystem {
   }
 
   createSparkEffect(x, y, count = 15, color = "#00ffea") {
-    for (let i = 0; i < count; i++) {
-      const angle = (Math.PI * 2 * i) / count;
-      const speed = 3 + Math.random() * 5;
+    const scaledCount = Math.min(
+      this.performance.maxBurstParticles,
+      Math.max(
+        this.performance.simpleFx ? 1 : 2,
+        Math.floor(count * this.effectDensity),
+      ),
+    );
+    for (let i = 0; i < scaledCount; i++) {
+      const angle = (Math.PI * 2 * i) / scaledCount;
+      const speed = this.performance.simpleFx
+        ? 1.2 + Math.random() * 1.6
+        : 3 + Math.random() * 5;
       this.particles.push({
         x: x,
         y: y,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed - Math.random() * 2,
-        life: 0.6,
-        maxLife: 0.6,
-        size: 2 + Math.random() * 4,
+        life: this.performance.simpleFx ? 0.22 : 0.6,
+        maxLife: this.performance.simpleFx ? 0.22 : 0.6,
+        size: this.performance.simpleFx
+          ? 1.4 + Math.random() * 1.8
+          : 2 + Math.random() * 4,
         color: color,
         isSparkle: true,
       });
@@ -1152,7 +1451,8 @@ class QuantumBattle2DSystem {
   }
 
   createElectricEffect(fromX, fromY, toX, toY) {
-    const steps = 5 + Math.floor(Math.random() * 5);
+    if (this.performance.simpleFx) return;
+    const steps = Math.max(3, Math.floor(6 * this.effectDensity));
     for (let i = 0; i < steps; i++) {
       const t = i / steps;
       const x = fromX + (toX - fromX) * t + (Math.random() - 0.5) * 20;
@@ -1170,7 +1470,8 @@ class QuantumBattle2DSystem {
 
   // Novo: Efeito de explosão com partículas de onda de choque
   createExplosionEffect(x, y, intensity = 1) {
-    const count = Math.floor(20 * intensity);
+    if (this.performance.simpleFx) return;
+    const count = Math.max(8, Math.floor(20 * intensity * this.effectDensity));
     for (let i = 0; i < count; i++) {
       const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.4;
       const speed = 4 + Math.random() * 8;
@@ -1200,7 +1501,11 @@ class QuantumBattle2DSystem {
 
   // Novo: Efeito de cura com partículas luminosas
   createHealEffect(x, y, healAmount = 10) {
-    const count = 15 + Math.floor(healAmount / 5);
+    if (this.performance.simpleFx) return;
+    const count = Math.max(
+      8,
+      Math.floor((15 + healAmount / 5) * this.effectDensity),
+    );
     for (let i = 0; i < count; i++) {
       const angle = (Math.PI * 2 * i) / count;
       const speed = 2 + Math.random() * 4;
@@ -1230,7 +1535,11 @@ class QuantumBattle2DSystem {
 
   // Novo: Efeito de sangue com splatters
   createBloodEffect(x, y, intensity = 1) {
-    const count = 8 + Math.floor(intensity * 5);
+    if (this.performance.simpleFx) return;
+    const count = Math.max(
+      4,
+      Math.floor((8 + intensity * 5) * this.effectDensity),
+    );
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2;
       const speed = 2 + Math.random() * 6;
@@ -1248,22 +1557,29 @@ class QuantumBattle2DSystem {
   }
 
   createAttackEffect(char) {
-    const offset = char.direction === 1 ? 50 : -30;
+    const centerX = this.getCharCenterX(char);
+    const centerY = this.getCharCenterY(char);
+    const offset = char.direction === 1 ? char.width * 0.7 : -char.width * 0.7;
     // Efeito principal
     this.effects.push({
-      x: char.x + 30 + offset,
-      y: char.y - 40,
+      x: centerX + offset,
+      y: centerY,
       type: "attack",
-      life: 0.25,
-      maxLife: 0.25,
-      size: 50,
+      life: this.performance.simpleFx ? 0.1 : 0.25,
+      maxLife: this.performance.simpleFx ? 0.1 : 0.25,
+      size: this.performance.simpleFx
+        ? Math.max(24, char.width * 0.42)
+        : Math.max(45, char.width * 0.9),
     });
 
     // Efeito secundário de energia
-    for (let i = 0; i < 3; i++) {
+    const trailCount = this.performance.simpleFx
+      ? 0
+      : Math.max(2, Math.floor(4 * this.effectDensity));
+    for (let i = 0; i < trailCount; i++) {
       this.particles.push({
-        x: char.x + 30,
-        y: char.y - 30,
+        x: centerX,
+        y: centerY,
         vx: offset > 0 ? 6 + Math.random() * 4 : -6 - Math.random() * 4,
         vy: (Math.random() - 0.5) * 4,
         life: 0.4,
@@ -1277,16 +1593,26 @@ class QuantumBattle2DSystem {
   }
 
   createHitEffect(char, isPlayerHit, damage, isCrit) {
-    const particleCount = isCrit ? 20 : 15;
+    const particleCount = isCrit
+      ? this.performance.simpleFx
+        ? 2
+        : Math.floor(15 * this.effectDensity)
+      : this.performance.simpleFx
+        ? 1
+        : Math.floor(10 * this.effectDensity);
+    const centerX = this.getCharCenterX(char);
+    const centerY = this.getCharCenterY(char);
     for (let i = 0; i < particleCount; i++) {
       this.particles.push({
-        x: char.x + 30 + (Math.random() - 0.5) * 50,
-        y: char.y - 40 + (Math.random() - 0.5) * 50,
-        vx: (Math.random() - 0.5) * 12,
-        vy: -Math.random() * 10 - 2,
-        life: 1,
-        maxLife: 1,
-        size: 4 + Math.random() * 10,
+        x: centerX + (Math.random() - 0.5) * char.width * 0.9,
+        y: centerY + (Math.random() - 0.5) * char.height * 0.8,
+        vx: (Math.random() - 0.5) * (this.performance.simpleFx ? 5 : 12),
+        vy: -Math.random() * (this.performance.simpleFx ? 4 : 10) - 2,
+        life: this.performance.simpleFx ? 0.5 : 1,
+        maxLife: this.performance.simpleFx ? 0.5 : 1,
+        size: this.performance.simpleFx
+          ? 2 + Math.random() * 4
+          : 4 + Math.random() * 10,
         color: isCrit
           ? `rgba(255, 200, 50, ${0.8 + Math.random() * 0.2})`
           : isPlayerHit
@@ -1296,8 +1622,8 @@ class QuantumBattle2DSystem {
     }
 
     this.createDamageNumber(
-      char.x + 30,
-      char.y - 70,
+      centerX,
+      this.getCharTopY(char) + 12,
       damage,
       isPlayerHit,
       isCrit,
@@ -1305,12 +1631,14 @@ class QuantumBattle2DSystem {
 
     // Efeito de impacto
     this.effects.push({
-      x: char.x + 30,
-      y: char.y - 40,
+      x: centerX,
+      y: centerY,
       type: "hit",
-      life: 0.25,
-      maxLife: 0.25,
-      size: 60,
+      life: this.performance.simpleFx ? 0.18 : 0.25,
+      maxLife: this.performance.simpleFx ? 0.18 : 0.25,
+      size: this.performance.simpleFx
+        ? Math.max(24, char.width * 0.52)
+        : Math.max(50, char.width),
       isPlayer: isPlayerHit,
     });
   }
@@ -1321,8 +1649,8 @@ class QuantumBattle2DSystem {
       y: y,
       type: "damage",
       value: damage,
-      life: 1.2,
-      maxLife: 1.2,
+      life: this.performance.simpleFx ? 0.8 : 1.2,
+      maxLife: this.performance.simpleFx ? 0.8 : 1.2,
       isPlayer: isPlayerTaking,
       isCrit: isCrit,
       vx: (Math.random() - 0.5) * 3,
@@ -1336,16 +1664,16 @@ class QuantumBattle2DSystem {
       type: "floatingText",
       text: text,
       color: color,
-      life: 1.2,
-      maxLife: 1.2,
+      life: this.performance.simpleFx ? 0.8 : 1.2,
+      maxLife: this.performance.simpleFx ? 0.8 : 1.2,
       vx: (Math.random() - 0.5) * 2,
     });
   }
 
   createStaminaWarning(char) {
     this.createFloatingText(
-      char.x + 30,
-      char.y - 110,
+      this.getCharCenterX(char),
+      this.getCharTopY(char) - 24,
       "⚠ SEM STAMINA",
       "#ff5555",
     );
@@ -1362,29 +1690,49 @@ class QuantumBattle2DSystem {
     // Bloqueio bem-sucedido
     char.stamina -= 15; // Custa stamina
     this.createFloatingText(
-      char.x + 30,
-      char.y - 80,
+      this.getCharCenterX(char),
+      this.getCharTopY(char) - 8,
       "🛡 BLOQUEIO!",
       "#00aaff",
     );
-    this.createSparkEffect(char.x + 30, char.y - 20, 10, "#00aaff");
+    if (!this.performance.simpleFx) {
+      this.createSparkEffect(
+        this.getCharCenterX(char),
+        this.getCharCenterY(char) + char.height * 0.2,
+        10,
+        "#00aaff",
+      );
+    }
     this.shakeScreen(2); // Pequeno shake
 
     return true;
   }
 
   shakeScreen(intensity) {
-    this.shakeIntensity = Math.min(15, this.shakeIntensity + intensity);
+    this.shakeIntensity = Math.min(
+      this.maxShake,
+      this.shakeIntensity + intensity,
+    );
   }
 
   updateEffects() {
+    if (this.particles.length > this.performance.maxParticles) {
+      this.particles.splice(
+        0,
+        this.particles.length - this.performance.maxParticles,
+      );
+    }
+    if (this.effects.length > this.performance.maxEffects) {
+      this.effects.splice(0, this.effects.length - this.performance.maxEffects);
+    }
+
     for (let i = this.particles.length - 1; i >= 0; i--) {
       const p = this.particles[i];
       p.x += p.vx;
       p.y += p.vy;
       p.vy += 0.2; // Gravidade nas partículas
       p.vx *= 0.98; // Fricção de ar
-      p.life -= 0.012;
+      p.life -= this.performance.simpleFx ? 0.038 : 0.012;
 
       if (p.life <= 0 || p.y > this.canvasHeight + 50) {
         this.particles.splice(i, 1);
@@ -1393,7 +1741,7 @@ class QuantumBattle2DSystem {
 
     for (let i = this.effects.length - 1; i >= 0; i--) {
       const e = this.effects[i];
-      e.life -= 0.015;
+      e.life -= this.performance.simpleFx ? 0.045 : 0.015;
 
       if (e.type === "damage" || e.type === "floatingText") {
         e.y -= 1; // Movimento vertical
@@ -1508,33 +1856,16 @@ class QuantumBattle2DSystem {
     this.ctx.fillRect(0, this.groundY + 55, this.canvasWidth, 5);
     this.ctx.shadowBlur = 0;
 
-    // Renderiza partículas
-    for (const p of this.particles) {
-      this.ctx.globalAlpha = p.life / p.maxLife;
-      this.ctx.fillStyle = p.color;
-
-      // Rotação opcional para partículas
-      if (p.rotation) {
-        this.ctx.save();
-        this.ctx.translate(p.x, p.y);
-        this.ctx.rotate(p.rotation);
-        p.rotation += 0.1;
-      }
-
-      this.ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
-
-      if (p.rotation) {
-        this.ctx.restore();
-      }
-    }
-    this.ctx.globalAlpha = 1;
-
     // Renderiza personagens
     this.drawCharacter(this.player, true);
     this.drawCharacter(this.bot, false);
 
     // Novo: Linhas de energia entre personagens
-    if (this.player.health > 0 && this.bot.health > 0) {
+    if (
+      this.performance.drawEnergyLines &&
+      this.player.health > 0 &&
+      this.bot.health > 0
+    ) {
       this.drawEnergyLines();
     }
 
@@ -1571,14 +1902,14 @@ class QuantumBattle2DSystem {
       this.ctx.globalAlpha = particle.opacity;
       this.ctx.fillStyle = particle.color;
       this.ctx.shadowColor = particle.color;
-      this.ctx.shadowBlur = 8;
+      this.ctx.shadowBlur = 5;
       this.ctx.beginPath();
       this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
       this.ctx.fill();
 
       // Pulso de brilho
       const pulse = Math.sin(Date.now() * 0.005 + particle.x) * 0.5 + 0.5;
-      this.ctx.globalAlpha = particle.opacity * pulse * 0.5;
+      this.ctx.globalAlpha = particle.opacity * pulse * 0.35;
       this.ctx.beginPath();
       this.ctx.arc(particle.x, particle.y, particle.radius * 2, 0, Math.PI * 2);
       this.ctx.fill();
@@ -1589,10 +1920,10 @@ class QuantumBattle2DSystem {
 
   // Novo: Desenha grid de fundo da arena
   drawArenaGrid() {
-    const gridSize = 40;
+    const gridSize = 50;
     const time = Date.now() * 0.001; // Animação baseada em tempo
 
-    this.ctx.strokeStyle = `rgba(0, 255, 200, ${0.08 + Math.sin(time) * 0.02})`;
+    this.ctx.strokeStyle = `rgba(0, 255, 200, ${0.05 + Math.sin(time) * 0.015})`;
     this.ctx.lineWidth = 1;
 
     // Grid vertical
@@ -1623,15 +1954,15 @@ class QuantumBattle2DSystem {
       0,
       centerX,
       centerY,
-      400,
+      360,
     );
-    radialGradient.addColorStop(0, "rgba(0, 255, 200, 0.15)");
-    radialGradient.addColorStop(0.5, "rgba(0, 255, 200, 0.05)");
+    radialGradient.addColorStop(0, "rgba(0, 255, 200, 0.11)");
+    radialGradient.addColorStop(0.5, "rgba(0, 255, 200, 0.035)");
     radialGradient.addColorStop(1, "rgba(0, 255, 200, 0)");
 
     this.ctx.fillStyle = radialGradient;
     this.ctx.beginPath();
-    this.ctx.arc(centerX, centerY, 400, 0, Math.PI * 2);
+    this.ctx.arc(centerX, centerY, 360, 0, Math.PI * 2);
     this.ctx.fill();
   }
 
@@ -1640,17 +1971,17 @@ class QuantumBattle2DSystem {
     const distance = Math.abs(this.player.x - this.bot.x);
 
     // Só desenha se estão em combate próximos
-    if (distance > 500) return;
+    if (distance > 420) return;
 
-    const p1X = this.player.x + 30;
-    const p1Y = this.player.y - 40;
-    const p2X = this.bot.x + 30;
-    const p2Y = this.bot.y - 40;
+    const p1X = this.getCharCenterX(this.player);
+    const p1Y = this.getCharCenterY(this.player);
+    const p2X = this.getCharCenterX(this.bot);
+    const p2Y = this.getCharCenterY(this.bot);
 
     // Linha de energia principal
-    this.ctx.strokeStyle = "rgba(0, 255, 200, 0.3)";
-    this.ctx.lineWidth = 2;
-    this.ctx.setLineDash([5, 5]);
+    this.ctx.strokeStyle = "rgba(0, 255, 200, 0.2)";
+    this.ctx.lineWidth = 1.5;
+    this.ctx.setLineDash([4, 6]);
     this.ctx.beginPath();
     this.ctx.moveTo(p1X, p1Y);
     this.ctx.lineTo(p2X, p2Y);
@@ -1659,14 +1990,14 @@ class QuantumBattle2DSystem {
 
     // Pulsos de energia
     const time = Date.now() * 0.003;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 2; i++) {
       const offset = (time + i * 0.3) % 1;
       const x = p1X + (p2X - p1X) * offset;
       const y = p1Y + (p2Y - p1Y) * offset;
 
-      this.ctx.fillStyle = `rgba(0, 255, 200, ${0.6 - offset * 0.6})`;
+      this.ctx.fillStyle = `rgba(0, 255, 200, ${0.45 - offset * 0.45})`;
       this.ctx.beginPath();
-      this.ctx.arc(x, y, 4 - offset * 2, 0, Math.PI * 2);
+      this.ctx.arc(x, y, 3.2 - offset * 1.6, 0, Math.PI * 2);
       this.ctx.fill();
     }
   }
@@ -1675,38 +2006,48 @@ class QuantumBattle2DSystem {
     if (!char || !this.ctx) return;
 
     const x = char.x;
-    const y = char.y - 80;
-    const width = 60;
-    const height = 80;
+    const y = this.getCharTopY(char);
+    const width = char.width;
+    const height = char.height;
+    const centerX = this.getCharCenterX(char);
 
-    const image = isPlayer ? this.playerImage : this.botImage;
+    const baseImage = isPlayer ? this.playerImage : this.botImage;
+    const animatedFrame = this.getAnimatedAttackFrame(char);
+    const image = animatedFrame || baseImage;
+    const role = this.getAnimationRole(char);
+    const isAttackAnimationActive =
+      !!animatedFrame || (!!role && this.attackAnimations[role].active);
 
-    // Novo: Aura de brilho ao redor do personagem
     this.ctx.shadowColor = isPlayer
       ? "rgba(0, 255, 200, 0.4)"
       : "rgba(255, 42, 109, 0.4)";
-    this.ctx.shadowBlur = 25;
+    this.ctx.shadowBlur = 18;
     this.ctx.shadowOffsetX = 0;
     this.ctx.shadowOffsetY = 0;
 
-    // Sombra
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
     this.ctx.beginPath();
-    this.ctx.ellipse(x + 30, this.groundY + 15, 35, 12, 0, 0, Math.PI * 2);
+    this.ctx.ellipse(
+      centerX,
+      this.groundY + 15,
+      Math.max(34, width * 0.55),
+      13,
+      0,
+      0,
+      Math.PI * 2,
+    );
     this.ctx.fill();
 
     if (image && this.imagesLoaded) {
       this.ctx.save();
 
-      // Glow quando atacando (mais intenso)
-      if (char.attacking) {
+      if (char.attacking || isAttackAnimationActive) {
         this.ctx.shadowColor = isPlayer ? "#00ffea" : "#ff5588";
-        this.ctx.shadowBlur = 40;
+        this.ctx.shadowBlur = 28;
         this.ctx.shadowOffsetX = 0;
         this.ctx.shadowOffsetY = 0;
       }
 
-      // Flip para direção
       if (char.direction === -1) {
         this.ctx.translate(x + width, y);
         this.ctx.scale(-1, 1);
@@ -1717,8 +2058,7 @@ class QuantumBattle2DSystem {
 
       this.ctx.restore();
 
-      // Novo: Efeito de brilho no personagem ao atacar
-      if (char.attacking) {
+      if (char.attacking || isAttackAnimationActive) {
         this.ctx.save();
         this.ctx.globalAlpha = 0.2;
         this.ctx.fillStyle = isPlayer ? "#00ffea" : "#ff5588";
@@ -1726,7 +2066,6 @@ class QuantumBattle2DSystem {
         this.ctx.restore();
       }
 
-      // Efeito de dano (piscar vermelho)
       if (char.invincibilityFrames > 0) {
         this.ctx.save();
         this.ctx.globalAlpha = 0.3 * (char.invincibilityFrames / 20);
@@ -1735,34 +2074,31 @@ class QuantumBattle2DSystem {
         this.ctx.restore();
       }
     } else {
-      // Placeholder se imagem não carregou
       this.ctx.fillStyle = isPlayer ? "#00ffea" : "#ff5588";
       this.ctx.fillRect(x, y, width, height);
       this.ctx.beginPath();
-      this.ctx.arc(x + 30, y - 10, 15, 0, Math.PI * 2);
+      this.ctx.arc(centerX, y - 10, 15, 0, Math.PI * 2);
       this.ctx.fillStyle = isPlayer ? "#ffff00" : "#ffaa00";
       this.ctx.fill();
     }
 
     this.ctx.shadowBlur = 0;
 
-    // Novo: Nome do personagem com glow melhorado
-    this.ctx.font = "bold 14px 'Rajdhani', sans-serif";
+    this.ctx.font = "bold 16px 'Rajdhani', sans-serif";
     this.ctx.fillStyle = isPlayer ? "#00ffea" : "#ff5588";
     this.ctx.shadowColor = isPlayer ? "#00ffea" : "#ff5588";
-    this.ctx.shadowBlur = 12;
+    this.ctx.shadowBlur = 9;
     this.ctx.textAlign = "center";
-    this.ctx.fillText(char.name, x + 30, y - 28);
+    this.ctx.fillText(char.name, centerX, y - 28);
     this.ctx.shadowBlur = 0;
 
-    // Barra de vida
     const healthPercent = char.health / char.maxHealth;
-    const healthBarWidth = 80;
-    const healthBarX = x - 10;
+    const healthBarWidth = Math.max(108, width + 22);
+    const healthBarX = centerX - healthBarWidth / 2;
     const healthBarY = y - 22;
 
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
-    this.ctx.fillRect(healthBarX, healthBarY, healthBarWidth, 7);
+    this.ctx.fillRect(healthBarX, healthBarY, healthBarWidth, 9);
     this.ctx.fillStyle =
       healthPercent > 0.5
         ? "#00ff9d"
@@ -1773,59 +2109,53 @@ class QuantumBattle2DSystem {
       healthBarX,
       healthBarY,
       healthBarWidth * healthPercent,
-      7,
+      9,
     );
 
-    // Border da barra de vida
     this.ctx.strokeStyle = "#ffffff";
     this.ctx.lineWidth = 1;
-    this.ctx.strokeRect(healthBarX, healthBarY, healthBarWidth, 7);
+    this.ctx.strokeRect(healthBarX, healthBarY, healthBarWidth, 9);
 
-    // Mostrar vida numérica
-    this.ctx.font = "bold 10px 'Rajdhani', sans-serif";
+    this.ctx.font = "bold 11px 'Rajdhani', sans-serif";
     this.ctx.fillStyle = "#ffffff";
     this.ctx.textAlign = "center";
     this.ctx.fillText(
       Math.round(char.health) + "/" + char.maxHealth,
-      x + 30,
-      y - 10,
+      centerX,
+      y - 8,
     );
 
-    // Barra de stamina/energia
     if (char.stamina !== undefined) {
       const staminaPercent = char.stamina / char.maxStamina;
       const staminaBarY = y - 4;
 
       this.ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
-      this.ctx.fillRect(healthBarX, staminaBarY, healthBarWidth, 4);
+      this.ctx.fillRect(healthBarX, staminaBarY, healthBarWidth, 5);
       this.ctx.fillStyle = "#00aaff";
       this.ctx.fillRect(
         healthBarX,
         staminaBarY,
         healthBarWidth * staminaPercent,
-        4,
+        5,
       );
     }
 
-    // Cooldown do ataque
     if (char.cooldownTimer > 0) {
       const cooldownPercent = char.cooldownTimer / (char.attackCooldown || 250);
       this.ctx.fillStyle = "rgba(255, 100, 50, 0.6)";
-      this.ctx.fillRect(x, y - 30, 60 * cooldownPercent, 3);
+      this.ctx.fillRect(x, y - 32, width * cooldownPercent, 4);
     }
 
-    // Novo: Indicador de combo melhorado
-    if (char.comboCount > 1) {
+    if (!this.performance.simpleFx && char.comboCount > 1) {
       this.ctx.font = "bold 16px 'Orbitron', monospace";
       this.ctx.fillStyle = "#ffdd00";
       this.ctx.shadowColor = "#ffdd00";
       this.ctx.shadowBlur = 12;
       this.ctx.textAlign = "center";
 
-      // Efeito de brilho cascata
       const pulse = Math.sin(Date.now() * 0.01 * char.comboCount) * 0.3 + 0.7;
       this.ctx.globalAlpha = pulse;
-      this.ctx.fillText("✦ x" + char.comboCount + " ✦", x + 30, y - 55);
+      this.ctx.fillText("✦ x" + char.comboCount + " ✦", centerX, y - 56);
       this.ctx.globalAlpha = 1;
 
       this.ctx.shadowBlur = 0;
@@ -1837,14 +2167,18 @@ class QuantumBattle2DSystem {
       if (e.type === "attack") {
         this.ctx.globalAlpha = e.life / e.maxLife;
         this.ctx.strokeStyle = "#00ffff";
-        this.ctx.lineWidth = 5;
-        this.ctx.shadowColor = "#00ffff";
-        this.ctx.shadowBlur = 15;
+        this.ctx.lineWidth = this.performance.simpleFx ? 1.5 : 4;
+        this.ctx.shadowBlur = this.performance.simpleFx ? 0 : 10;
+        const slashSize = this.performance.simpleFx
+          ? Math.max(10, e.size * 0.45)
+          : 25;
         this.ctx.beginPath();
-        this.ctx.moveTo(e.x - 25, e.y - 25);
-        this.ctx.lineTo(e.x + 25, e.y + 25);
-        this.ctx.moveTo(e.x + 25, e.y - 25);
-        this.ctx.lineTo(e.x - 25, e.y + 25);
+        this.ctx.moveTo(e.x - slashSize, e.y - slashSize);
+        this.ctx.lineTo(e.x + slashSize, e.y + slashSize);
+        if (!this.performance.simpleFx) {
+          this.ctx.moveTo(e.x + slashSize, e.y - slashSize);
+          this.ctx.lineTo(e.x - slashSize, e.y + slashSize);
+        }
         this.ctx.stroke();
         this.ctx.shadowBlur = 0;
       } else if (e.type === "hit") {
@@ -1852,9 +2186,8 @@ class QuantumBattle2DSystem {
         const pulse = 1 - e.life / e.maxLife;
         const color = e.isPlayer ? "#00ffff" : "#ff0088";
         this.ctx.strokeStyle = color;
-        this.ctx.lineWidth = 4;
-        this.ctx.shadowColor = color;
-        this.ctx.shadowBlur = 20;
+        this.ctx.lineWidth = this.performance.simpleFx ? 1.6 : 3;
+        this.ctx.shadowBlur = this.performance.simpleFx ? 0 : 12;
         this.ctx.beginPath();
         this.ctx.arc(e.x, e.y, e.size * pulse, 0, Math.PI * 2);
         this.ctx.stroke();
@@ -1862,35 +2195,37 @@ class QuantumBattle2DSystem {
       } else if (e.type === "damage") {
         this.ctx.globalAlpha = e.life / e.maxLife;
         const scale = 1 + (1 - e.life / e.maxLife) * 0.5;
-        this.ctx.font = `bold ${Math.floor(20 * scale + (1 - e.life) * 15)}px 'Orbitron', monospace`;
+        this.ctx.font = this.performance.simpleFx
+          ? `bold ${Math.floor(17 * scale)}px 'Orbitron', monospace`
+          : `bold ${Math.floor(20 * scale + (1 - e.life) * 15)}px 'Orbitron', monospace`;
         this.ctx.textAlign = "center";
 
         if (e.isCrit) {
           this.ctx.fillStyle = "#ff00ff";
-          this.ctx.shadowColor = "#ff00ff";
-          this.ctx.shadowBlur = 20;
+          this.ctx.shadowBlur = this.performance.simpleFx ? 0 : 14;
           this.ctx.fillText("⚡ -" + e.value, e.x, e.y);
         } else {
           this.ctx.fillStyle = e.isPlayer ? "#ff2a6d" : "#ffaa00";
-          this.ctx.shadowColor = e.isPlayer ? "#ff2a6d" : "#ffaa00";
-          this.ctx.shadowBlur = 12;
+          this.ctx.shadowBlur = this.performance.simpleFx ? 0 : 8;
           this.ctx.fillText("-" + e.value, e.x, e.y);
         }
       } else if (e.type === "floatingText") {
         this.ctx.globalAlpha = e.life / e.maxLife;
-        this.ctx.font = "bold 20px 'Orbitron', monospace";
+        this.ctx.font = this.performance.simpleFx
+          ? "bold 16px 'Orbitron', monospace"
+          : "bold 20px 'Orbitron', monospace";
         this.ctx.fillStyle = e.color;
-        this.ctx.shadowColor = e.color;
-        this.ctx.shadowBlur = 15;
+        this.ctx.shadowBlur = this.performance.simpleFx ? 0 : 10;
         this.ctx.textAlign = "center";
         this.ctx.fillText(e.text, e.x, e.y);
       } else if (e.type === "electric") {
+        if (this.performance.simpleFx) continue;
         // Novo: Renderizar arco elétrico
         this.ctx.globalAlpha = e.life / e.maxLife;
         const radius = e.size + (1 - e.life / e.maxLife) * 3;
         this.ctx.fillStyle = "#00ffff";
         this.ctx.shadowColor = "#00ffff";
-        this.ctx.shadowBlur = 20;
+        this.ctx.shadowBlur = 11;
         this.ctx.beginPath();
         this.ctx.arc(e.x, e.y, radius, 0, Math.PI * 2);
         this.ctx.fill();
@@ -1902,23 +2237,25 @@ class QuantumBattle2DSystem {
         this.ctx.arc(e.x, e.y, radius * 0.7, 0, Math.PI * 2);
         this.ctx.fill();
       } else if (e.type === "shockwave") {
+        if (this.performance.simpleFx) continue;
         // Novo: Renderizar onda de choque
         this.ctx.globalAlpha = (e.life / e.maxLife) * 0.7;
         const expandedRadius = e.size + (1 - e.life / e.maxLife) * 50;
         this.ctx.strokeStyle = `rgba(255, 200, 0, ${0.6 * (e.life / e.maxLife)})`;
         this.ctx.lineWidth = 3;
         this.ctx.shadowColor = "rgba(255, 200, 0, 0.8)";
-        this.ctx.shadowBlur = 15;
+        this.ctx.shadowBlur = 9;
         this.ctx.beginPath();
         this.ctx.arc(e.x, e.y, expandedRadius, 0, Math.PI * 2);
         this.ctx.stroke();
       } else if (e.type === "heal") {
+        if (this.performance.simpleFx) continue;
         // Novo: Renderizar efeito de cura
         this.ctx.globalAlpha = e.life / e.maxLife;
         const radius = e.size * (1 - e.life / e.maxLife);
         this.ctx.fillStyle = `rgba(100, 255, 150, ${0.3 * (e.life / e.maxLife)})`;
         this.ctx.shadowColor = "#64ff96";
-        this.ctx.shadowBlur = 20;
+        this.ctx.shadowBlur = 10;
         this.ctx.beginPath();
         this.ctx.arc(e.x, e.y, radius, 0, Math.PI * 2);
         this.ctx.fill();
@@ -1935,28 +2272,35 @@ class QuantumBattle2DSystem {
 
     // Renderizar particles com suporte a sparkles
     for (const p of this.particles) {
+      if (this.performance.simpleFx) {
+        this.ctx.globalAlpha = Math.max(0, (p.life / p.maxLife) * 0.7);
+        this.ctx.fillStyle = p.color;
+        const pixel = Math.max(1, p.size * 0.45);
+        this.ctx.fillRect(p.x, p.y, pixel, pixel);
+        continue;
+      }
+
       if (p.isSparkle) {
         // Novo: Renderizar sparkles
         this.ctx.globalAlpha = p.life / p.maxLife;
         this.ctx.fillStyle = p.color;
-        this.ctx.shadowColor = p.color;
-        this.ctx.shadowBlur = 10;
+        this.ctx.shadowBlur = this.performance.simpleFx ? 0 : 6;
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         this.ctx.fill();
 
-        // Leve brilho extra
-        this.ctx.globalAlpha = (p.life / p.maxLife) * 0.5;
-        this.ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-        this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
-        this.ctx.fill();
+        if (!this.performance.simpleFx) {
+          this.ctx.globalAlpha = (p.life / p.maxLife) * 0.5;
+          this.ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+          this.ctx.beginPath();
+          this.ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
+          this.ctx.fill();
+        }
       } else {
         // Renderização padrão de partículas
         this.ctx.globalAlpha = Math.max(0, (p.life / p.maxLife) * 0.8);
         this.ctx.fillStyle = p.color;
-        this.ctx.shadowColor = p.color;
-        this.ctx.shadowBlur = 8;
+        this.ctx.shadowBlur = this.performance.simpleFx ? 0 : 5;
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         this.ctx.fill();
@@ -1978,7 +2322,7 @@ class BattleCharacter {
     this.x = x;
     this.y = groundY;
     this.width = width;
-    this.height = 80;
+    this.height = Math.round(width * 1.33);
     this.vy = 0;
     this.vx = 0;
     this.accel = 0.8;
@@ -1991,6 +2335,8 @@ class BattleCharacter {
     this.attackPressed = false;
     this.lastAttack = 0;
     this.cooldownTimer = 0;
+    this.currentAttackDuration = 250;
+    this.attackHitRegistered = false;
     this.isPlayer = isPlayer;
     this.direction = 1;
     this.invincibilityFrames = 0;
@@ -2002,6 +2348,7 @@ class BattleCharacter {
     this.attackDamage = 10;
     this.attackRange = 90;
     this.attackCooldown = 250;
+    this.baseAttackCooldown = 250;
     this.defense = 0;
     this.critChance = 0.1;
     this.critMultiplier = 1.8;
@@ -2019,3 +2366,4 @@ class BattleCharacter {
     this.comboMultiplier = 1;
   }
 }
+
