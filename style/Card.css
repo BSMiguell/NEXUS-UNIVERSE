@@ -263,7 +263,8 @@
 
 .quantum-actions {
   display: flex;
-  gap: 20px;
+  gap: 14px;
+  flex-wrap: wrap;
   opacity: 0;
   transform: translateY(30px) translateZ(10px);
   transition: var(--transition-smooth);
@@ -275,30 +276,46 @@
 }
 
 .quantum-button {
-  flex: 1;
-  background: rgba(0, 255, 234, 0.1);
+  flex: 1 1 150px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+  background:
+    linear-gradient(145deg, rgba(0, 255, 234, 0.18), rgba(0, 110, 140, 0.22)),
+    rgba(6, 18, 30, 0.9);
   border: 2px solid rgba(0, 255, 234, 0.3);
-  color: var(--text-primary);
-  padding: 18px;
-  border-radius: var(--border-radius-md);
+  color: #e9fcff;
+  padding: 14px 18px;
+  min-height: 56px;
+  border-radius: var(--border-radius-full);
   cursor: pointer;
   transition: var(--transition-smooth);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: clamp(0.88rem, 1vw + 0.45rem, 1rem);
+  font-weight: 700;
   font-family: "Rajdhani", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  line-height: 1;
   backdrop-filter: blur(20px);
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
   transform: translateZ(0);
+  text-shadow: 0 0 10px rgba(0, 255, 234, 0.25);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="light"] .quantum-button {
-  background: rgba(0, 119, 182, 0.1);
+  background:
+    linear-gradient(145deg, rgba(0, 119, 182, 0.12), rgba(0, 255, 234, 0.1)),
+    rgba(255, 255, 255, 0.92);
   border: 2px solid rgba(0, 119, 182, 0.3);
   color: #333333;
+  text-shadow: none;
 }
 
 .quantum-button::before {
@@ -331,15 +348,41 @@
 }
 
 .quantum-button:hover {
-  color: #000000;
+  color: #ffffff;
   transform: translateY(-5px) translateZ(20px) rotateX(5deg);
-  box-shadow: 0 15px 35px rgba(0, 255, 234, 0.3);
+  box-shadow:
+    0 16px 36px rgba(0, 255, 234, 0.35),
+    0 0 14px rgba(0, 255, 234, 0.35);
   border-color: transparent;
   background: var(--quantum-gradient);
 }
 
 [data-theme="light"] .quantum-button:hover {
   background: var(--quantum-gradient);
-  color: #000;
+  color: #001018;
   box-shadow: 0 15px 35px rgba(0, 119, 182, 0.3);
+}
+
+.view-quantum {
+  border-color: rgba(0, 255, 234, 0.45);
+}
+
+.explore-quantum {
+  border-color: rgba(171, 255, 82, 0.45);
+  background:
+    linear-gradient(145deg, rgba(143, 255, 0, 0.16), rgba(0, 130, 70, 0.2)),
+    rgba(7, 22, 18, 0.9);
+}
+
+@media (max-width: 768px) {
+  .quantum-actions {
+    gap: 10px;
+  }
+
+  .quantum-button {
+    flex: 1 1 100%;
+    min-height: 52px;
+    padding: 12px 16px;
+    letter-spacing: 0.8px;
+  }
 }

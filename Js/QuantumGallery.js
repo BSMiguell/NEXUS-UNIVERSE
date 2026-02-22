@@ -18,6 +18,7 @@ class QuantumGallery {
       isSearchModalOpen: false,
       showFavoritesPage: false,
       showBattlePage: false,
+      showBattle2dPage: false,
       modalOpenedFromFavorites: false,
       scrollPositionBeforeModal: 0,
     };
@@ -30,6 +31,7 @@ class QuantumGallery {
     this.favorites = new QuantumFavoritesSystem(this);
     this.searchSystem = new QuantumSearch(this);
     this.battleSystem = new QuantumBattleSystem(this);
+    this.battle2D = new QuantumBattle2DSystem(this);
 
     this.elements = {};
     this.init();
@@ -41,6 +43,7 @@ class QuantumGallery {
     await this.preloadFirstFourImages();
 
     this.cacheElements();
+    this.hideBattle2dPage();
     this.setupEventListeners();
     this.renderFilters();
     this.renderAllCharacters();
@@ -160,6 +163,7 @@ class QuantumGallery {
       quantumUniverse: document.getElementById("quantumUniverse"),
       quantumFavoritesPage: document.getElementById("quantumFavoritesPage"),
       quantumBattlePage: document.getElementById("quantumBattlePage"),
+      quantumBattle2dPage: document.getElementById("quantumBattle2dPage"),
       viewFavoritesBtn: document.getElementById("viewFavoritesBtn"),
       viewBattleBtn: document.getElementById("viewBattleBtn"),
       viewSearchBtn: document.getElementById("viewSearchBtn"),
@@ -171,7 +175,95 @@ class QuantumGallery {
       searchInput: document.getElementById("searchInput"),
       searchResults: document.getElementById("searchResults"),
       battleToggle: document.getElementById("battleToggle"),
+      menuToggle: document.getElementById("menuToggle"),
+      controlButtonsContainer: document.getElementById("controlButtonsContainer"),
     };
+  }
+
+  setSectionVisibility(element, visible, options = {}) {
+    if (!element) return;
+
+    const { display = "block", activeClass = false } = options;
+    element.style.display = visible ? display : "none";
+    element.setAttribute("aria-hidden", visible ? "false" : "true");
+
+    if (activeClass) {
+      element.classList.toggle("active", visible);
+    }
+
+    if (visible) {
+      element.removeAttribute("hidden");
+      return;
+    }
+
+    element.setAttribute("hidden", "");
+  }
+
+  closeControlMenu() {
+    const controlButtons = this.elements.controlButtonsContainer;
+    const menuToggle = this.elements.menuToggle;
+    if (!controlButtons || !menuToggle) return;
+
+    controlButtons.classList.remove("show");
+    menuToggle.setAttribute("aria-label", "Abrir menu de controles");
+    menuToggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+  }
+
+  preparePageTransition() {
+    if (this.state.isModalOpen) {
+      this.closeModal();
+    }
+
+    if (this.state.isSearchModalOpen) {
+      this.closeSearchModal();
+    }
+
+    const themeModal = document.getElementById("themeModal");
+    if (themeModal && themeModal.classList.contains("show")) {
+      this.themeSystem.closeThemeModal();
+    }
+
+    const characterSelector = document.getElementById("characterSelectorModal");
+    if (characterSelector && characterSelector.classList.contains("show")) {
+      this.battleSystem.closeCharacterSelector();
+    }
+
+    const battleAnimation = document.getElementById("battleAnimationContainer");
+    if (battleAnimation && battleAnimation.classList.contains("active")) {
+      this.battleSystem.skipAnimation();
+    }
+
+    const battleResultModal = document.getElementById("battleResultModal");
+    if (battleResultModal && battleResultModal.classList.contains("active")) {
+      this.battleSystem.closeResultModal();
+    }
+
+    const historyDetailModal = document.getElementById("historyDetailModal");
+    if (historyDetailModal && historyDetailModal.classList.contains("active")) {
+      this.battleSystem.closeHistoryDetail();
+    }
+
+    this.closeControlMenu();
+  }
+
+  hideBattle2dPage() {
+    const battle2dPage = this.elements.quantumBattle2dPage;
+    if (!battle2dPage) return;
+
+    this.setSectionVisibility(battle2dPage, false, { activeClass: true });
+    this.state.showBattle2dPage = false;
+
+    const battle2dControls = document.getElementById("battle2dControls");
+    if (battle2dControls) {
+      battle2dControls.style.display = "block";
+    }
+
+    const battle2dArena = document.getElementById("battle2dArena");
+    if (battle2dArena) {
+      battle2dArena.style.display = "none";
+    }
+
+    this.battle2D?.stopGame?.();
   }
 
   setupEventListeners() {
@@ -292,42 +384,30 @@ class QuantumGallery {
     if (this.elements.homeToggle) {
       this.elements.homeToggle.addEventListener("click", () => {
         this.showGalleryPage();
-        this.audio.play("click");
       });
     }
 
     if (this.elements.favoritesToggle) {
       this.elements.favoritesToggle.addEventListener("click", () => {
         this.showFavoritesPage();
-        this.audio.play("click");
       });
     }
 
     if (this.elements.viewFavoritesBtn) {
       this.elements.viewFavoritesBtn.addEventListener("click", () => {
         this.showFavoritesPage();
-        this.audio.play("click");
-      });
-    }
-
-    if (this.elements.viewBattleBtn) {
-      this.elements.viewBattleBtn.addEventListener("click", () => {
-        this.battleSystem.showBattlePage();
-        this.audio.play("click");
       });
     }
 
     if (this.elements.viewSearchBtn) {
       this.elements.viewSearchBtn.addEventListener("click", () => {
         this.openSearchModal();
-        this.audio.play("click");
       });
     }
 
     if (this.elements.searchToggle) {
       this.elements.searchToggle.addEventListener("click", () => {
         this.openSearchModal();
-        this.audio.play("click");
       });
     }
 
@@ -361,7 +441,6 @@ class QuantumGallery {
     if (this.elements.backToGallery) {
       this.elements.backToGallery.addEventListener("click", () => {
         this.showGalleryPage();
-        this.audio.play("click");
       });
     }
 
@@ -1513,24 +1592,21 @@ class QuantumGallery {
   }
 
   showFavoritesPage() {
+    this.preparePageTransition();
     this.state.showFavoritesPage = true;
     this.state.showBattlePage = false;
+    this.state.showBattle2dPage = false;
 
-    if (this.elements.quantumUniverse) {
-      this.elements.quantumUniverse.style.display = "none";
-    }
+    this.setSectionVisibility(this.elements.quantumUniverse, false);
+    this.setSectionVisibility(this.elements.quantumBattlePage, false, {
+      activeClass: true,
+    });
 
-    if (this.elements.quantumBattlePage) {
-      this.elements.quantumBattlePage.style.display = "none";
-      this.elements.quantumBattlePage.classList.remove("active");
-      this.elements.quantumBattlePage.setAttribute("hidden", "");
-    }
+    this.hideBattle2dPage();
 
-    if (this.elements.quantumFavoritesPage) {
-      this.elements.quantumFavoritesPage.style.display = "block";
-      this.elements.quantumFavoritesPage.classList.add("active");
-      this.elements.quantumFavoritesPage.removeAttribute("hidden");
-    }
+    this.setSectionVisibility(this.elements.quantumFavoritesPage, true, {
+      activeClass: true,
+    });
 
     const favoritesIcon = document.getElementById("favoritesIcon");
     if (favoritesIcon) {
@@ -1549,24 +1625,20 @@ class QuantumGallery {
   }
 
   showGalleryPage() {
+    this.preparePageTransition();
     this.state.showFavoritesPage = false;
     this.state.showBattlePage = false;
+    this.state.showBattle2dPage = false;
 
-    if (this.elements.quantumUniverse) {
-      this.elements.quantumUniverse.style.display = "block";
-    }
+    this.setSectionVisibility(this.elements.quantumUniverse, true);
+    this.setSectionVisibility(this.elements.quantumFavoritesPage, false, {
+      activeClass: true,
+    });
+    this.setSectionVisibility(this.elements.quantumBattlePage, false, {
+      activeClass: true,
+    });
 
-    if (this.elements.quantumFavoritesPage) {
-      this.elements.quantumFavoritesPage.style.display = "none";
-      this.elements.quantumFavoritesPage.classList.remove("active");
-      this.elements.quantumFavoritesPage.setAttribute("hidden", "");
-    }
-
-    if (this.elements.quantumBattlePage) {
-      this.elements.quantumBattlePage.style.display = "none";
-      this.elements.quantumBattlePage.classList.remove("active");
-      this.elements.quantumBattlePage.setAttribute("hidden", "");
-    }
+    this.hideBattle2dPage();
 
     const favoritesIcon = document.getElementById("favoritesIcon");
     if (favoritesIcon) {

@@ -9626,4 +9626,30 @@ const charactersData = [
       habilidade: 99,
     },
   },
+
+  {
+    id: 385,
+    name: "FATHER",
+    category: "Fullmetal",
+    image: "img/Fullmetal-Alchemist/Father-1.png",
+    description:
+      "O principal antagonista de Fullmetal Alchemist, originalmente um homúnculo minúsculo criado acidentalmente por Van Hohenheim dentro de um frasco, que posteriormente se autodenominou 'Pai'. Após absorver os deuses das sombras de Xerxes e sacrificar toda a população do reino para criar seu corpo imortal, Pai estabeleceu-se em Amestris e passou 400 anos manipulando nações inteiras como peças de xadrez. Seu objetivo final é absorver o próprio 'Deus' (A Verdade) através de um círculo de transmutação nacional gigante, tornando-se o ser supremo do universo. Representa a personificação máxima da gula, soberba e ambição desmedida.",
+    details: {
+      universo: "Fullmetal Alchemist",
+      poder:
+        "Filosofal Imortal, Absorção de Almas, Controle da Verdade, Alquimia Suprema",
+      status: "Derrotado/Absorvido pela Verdade",
+      estreia: 2003,
+      afiliacao: "Homúnculos (Criador)",
+
+      nivel: "SSS",
+    },
+    stats: {
+      forca: 98,
+      velocidade: 92,
+      defesa: 97,
+      energia: 100,
+      habilidade: 100,
+    },
+  },
 ];

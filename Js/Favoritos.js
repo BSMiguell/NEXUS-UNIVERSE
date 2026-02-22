@@ -110,28 +110,6 @@ class QuantumFavoritesSystem {
   }
 
   setupEventListeners() {
-    const favoritesToggle = document.getElementById("favoritesToggle");
-    if (favoritesToggle) {
-      // PRIMEIRA ALTERAÇÃO: Botão sempre leva para página de favoritos
-      favoritesToggle.addEventListener("click", () => {
-        this.gallery.showFavoritesPage();
-      });
-    }
-
-    const viewFavoritesBtn = document.getElementById("viewFavoritesBtn");
-    if (viewFavoritesBtn) {
-      viewFavoritesBtn.addEventListener("click", () => {
-        this.gallery.showFavoritesPage();
-      });
-    }
-
-    const backToGallery = document.getElementById("backToGallery");
-    if (backToGallery) {
-      backToGallery.addEventListener("click", () => {
-        this.gallery.showGalleryPage();
-      });
-    }
-
     const clearAllFavorites = document.getElementById("clearAllFavorites");
     if (clearAllFavorites) {
       clearAllFavorites.addEventListener("click", () => {

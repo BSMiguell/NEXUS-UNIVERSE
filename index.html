@@ -187,6 +187,10 @@
         border: 0;
       }
 
+      [hidden] {
+        display: none !important;
+      }
+
       :focus-visible {
         outline: 4px solid var(--quantum-primary);
         outline-offset: 6px;
@@ -978,9 +982,23 @@
         position: fixed;
         width: 80px;
         height: 80px;
-        background: var(--quantum-gradient);
-        color: #000;
-        border: none;
+        --control-accent: #00ffea;
+        --control-accent-2: #00b3ff;
+        background:
+          radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(255, 255, 255, 0.04) 35%,
+            transparent 60%
+          ),
+          linear-gradient(
+            145deg,
+            rgba(0, 255, 234, 0.24),
+            rgba(0, 179, 255, 0.2)
+          ),
+          rgba(6, 16, 26, 0.92);
+        color: #ebfcff;
+        border: 1px solid rgba(173, 255, 246, 0.58);
         border-radius: 50%;
         cursor: pointer;
         z-index: var(--z-controls);
@@ -988,7 +1006,9 @@
         align-items: center;
         justify-content: center;
         font-size: 2rem;
-        box-shadow: var(--quantum-glow);
+        box-shadow:
+          0 10px 24px rgba(0, 0, 0, 0.42),
+          0 0 18px rgba(0, 255, 234, 0.3);
         backdrop-filter: blur(30px);
         transition: var(--transition-smooth);
         right: 60px;
@@ -998,11 +1018,19 @@
       }
 
       .quantum-control-btn:hover {
-        transform: translateY(-15px) scale(1.15) translateZ(40px) rotateY(10deg);
+        transform: translateY(-8px) scale(1.08) translateZ(30px);
         animation: none;
         box-shadow:
-          0 0 80px rgba(0, 255, 234, 0.9),
-          0 0 160px rgba(255, 0, 255, 0.7);
+          0 16px 30px rgba(0, 0, 0, 0.45),
+          0 0 26px rgba(0, 255, 234, 0.45);
+      }
+
+      .quantum-control-btn:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.9);
+        outline-offset: 4px;
+        box-shadow:
+          0 0 0 6px rgba(0, 255, 234, 0.3),
+          0 14px 28px rgba(0, 0, 0, 0.42);
       }
 
       /* Botão Salto Quântico */
@@ -1058,7 +1086,8 @@
       /* Botões ocultos */
       .sound-toggle {
         bottom: 155px;
-        background: linear-gradient(135deg, #ff00ff, #ff2a6d);
+        --control-accent: #ff4fd8;
+        --control-accent-2: #ff2a6d;
         opacity: 0;
         transform: translateY(20px) scale(0.8);
         transition: all 0.3s ease;
@@ -1066,7 +1095,8 @@
 
       .home-toggle {
         bottom: 245px;
-        background: linear-gradient(135deg, #00ffea, #00b3ff);
+        --control-accent: #00ffea;
+        --control-accent-2: #00b3ff;
         opacity: 0;
         transform: translateY(20px) scale(0.8);
         transition: all 0.3s ease 0.05s;
@@ -1074,7 +1104,8 @@
 
       .favorites-toggle {
         bottom: 335px;
-        background: linear-gradient(135deg, #ffff00, #ffaa00);
+        --control-accent: #ffe861;
+        --control-accent-2: #ffaa00;
         opacity: 0;
         transform: translateY(20px) scale(0.8);
         transition: all 0.3s ease 0.1s;
@@ -1082,7 +1113,8 @@
 
       .theme-toggle {
         bottom: 425px;
-        background: linear-gradient(135deg, #ff2a6d, #9d00ff);
+        --control-accent: #ff2a6d;
+        --control-accent-2: #9d00ff;
         opacity: 0;
         transform: translateY(20px) scale(0.8);
         transition: all 0.3s ease 0.15s;
@@ -1090,7 +1122,8 @@
 
       .search-toggle {
         bottom: 515px;
-        background: linear-gradient(135deg, #00ff9d, #00b3ff);
+        --control-accent: #00ffd5;
+        --control-accent-2: #00b3ff;
         opacity: 0;
         transform: translateY(20px) scale(0.8);
         transition: all 0.3s ease 0.2s;
@@ -1098,10 +1131,83 @@
 
       .battle-toggle {
         bottom: 605px;
-        background: linear-gradient(135deg, #ff2a6d, #ff4500);
+        --control-accent: #ff2a6d;
+        --control-accent-2: #ff4500;
         opacity: 0;
         transform: translateY(20px) scale(0.8);
         transition: all 0.3s ease 0.25s;
+      }
+
+      .battle2d-toggle {
+        --control-accent: #00ff9d;
+        --control-accent-2: #00d4ff;
+      }
+
+      .sound-toggle,
+      .theme-toggle {
+        background:
+          radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.05) 35%,
+            transparent 60%
+          ),
+          linear-gradient(145deg, rgba(255, 42, 170, 0.3), rgba(157, 0, 255, 0.24)),
+          rgba(16, 8, 26, 0.92);
+        border-color: rgba(255, 128, 216, 0.58);
+      }
+
+      .home-toggle,
+      .search-toggle {
+        background:
+          radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.05) 35%,
+            transparent 60%
+          ),
+          linear-gradient(145deg, rgba(0, 255, 234, 0.3), rgba(0, 179, 255, 0.24)),
+          rgba(6, 16, 26, 0.92);
+        border-color: rgba(146, 248, 255, 0.58);
+      }
+
+      .favorites-toggle {
+        background:
+          radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.24) 0%,
+            rgba(255, 255, 255, 0.06) 35%,
+            transparent 60%
+          ),
+          linear-gradient(145deg, rgba(255, 241, 74, 0.34), rgba(255, 170, 0, 0.26)),
+          rgba(30, 20, 6, 0.92);
+        border-color: rgba(255, 232, 109, 0.62);
+      }
+
+      .battle-toggle {
+        background:
+          radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.05) 35%,
+            transparent 60%
+          ),
+          linear-gradient(145deg, rgba(255, 66, 109, 0.32), rgba(255, 69, 0, 0.24)),
+          rgba(30, 10, 10, 0.92);
+        border-color: rgba(255, 145, 145, 0.6);
+      }
+
+      .battle2d-toggle {
+        background:
+          radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.05) 35%,
+            transparent 60%
+          ),
+          linear-gradient(145deg, rgba(0, 255, 157, 0.32), rgba(0, 183, 255, 0.24)),
+          rgba(7, 20, 28, 0.92);
+        border-color: rgba(148, 255, 217, 0.62);
       }
 
       /* Animações quando visíveis */
@@ -1143,32 +1249,125 @@
       /* Quantum Modal */
 
       /* Botão na terminal para acessar favoritos */
-      #viewFavoritesBtn {
+      .terminal-action-btn {
         width: 100%;
-        background: linear-gradient(135deg, #ffff00, #ffaa00);
-        border: 2px solid rgba(255, 255, 0, 0.3);
-        color: #000;
-        padding: 20px;
-        border-radius: var(--border-radius-md);
+        min-height: 72px;
+        padding: 16px 22px;
+        border-radius: var(--border-radius-full);
         cursor: pointer;
         font-family: "Rajdhani", sans-serif;
-        font-size: 1.3rem;
-        font-weight: 600;
+        font-size: clamp(0.95rem, 1.1vw + 0.55rem, 1.12rem);
+        font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 1.4px;
+        line-height: 1.1;
         transition: var(--transition-smooth);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 15px;
+        gap: 11px;
         transform-style: preserve-3d;
         transform: translateZ(0);
+        color: #eafcff;
+        text-shadow: 0 0 12px rgba(0, 255, 234, 0.22);
+        border: 1px solid rgba(0, 255, 234, 0.35);
+        background:
+          linear-gradient(
+            135deg,
+            rgba(0, 255, 234, 0.14) 0%,
+            rgba(0, 102, 153, 0.2) 100%
+          ),
+          rgba(7, 16, 30, 0.85);
+        box-shadow:
+          0 8px 24px rgba(0, 0, 0, 0.35),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04);
       }
 
-      #viewFavoritesBtn:hover {
-        background: linear-gradient(135deg, #ffaa00, #ffff00);
-        transform: translateY(-5px) translateZ(20px) rotateX(5deg);
-        box-shadow: 0 10px 40px rgba(255, 255, 0, 0.3);
+      .terminal-action-btn i {
+        font-size: 1rem;
+        color: inherit;
+        flex-shrink: 0;
+      }
+
+      #viewFavoritesBtn.terminal-action-btn {
+        border-color: rgba(255, 196, 0, 0.45);
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255, 208, 0, 0.14) 0%,
+            rgba(128, 82, 0, 0.24) 100%
+          ),
+          rgba(20, 14, 4, 0.82);
+      }
+
+      #viewBattleBtn.terminal-action-btn {
+        border-color: rgba(255, 66, 109, 0.48);
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255, 42, 109, 0.16) 0%,
+            rgba(255, 84, 0, 0.2) 100%
+          ),
+          rgba(22, 8, 10, 0.84);
+      }
+
+      #viewSearchBtn.terminal-action-btn {
+        border-color: rgba(0, 255, 234, 0.45);
+        background:
+          linear-gradient(
+            135deg,
+            rgba(0, 255, 234, 0.15) 0%,
+            rgba(0, 119, 182, 0.22) 100%
+          ),
+          rgba(5, 15, 22, 0.84);
+      }
+
+      .terminal-action-btn:hover {
+        transform: translateY(-3px) translateZ(12px);
+        box-shadow:
+          0 14px 30px rgba(0, 0, 0, 0.4),
+          0 0 18px rgba(0, 255, 234, 0.25);
+      }
+
+      #viewFavoritesBtn.terminal-action-btn:hover {
+        box-shadow:
+          0 14px 30px rgba(0, 0, 0, 0.4),
+          0 0 18px rgba(255, 196, 0, 0.3);
+      }
+
+      #viewBattleBtn.terminal-action-btn:hover {
+        box-shadow:
+          0 14px 30px rgba(0, 0, 0, 0.4),
+          0 0 18px rgba(255, 66, 109, 0.32);
+      }
+
+      #viewSearchBtn.terminal-action-btn:hover {
+        box-shadow:
+          0 14px 30px rgba(0, 0, 0, 0.4),
+          0 0 18px rgba(0, 255, 234, 0.3);
+      }
+
+      [data-theme="light"] .terminal-action-btn {
+        color: #0f172a;
+        text-shadow: none;
+        border-color: rgba(0, 119, 182, 0.3);
+        background:
+          linear-gradient(
+            135deg,
+            rgba(0, 119, 182, 0.08) 0%,
+            rgba(0, 255, 234, 0.1) 100%
+          ),
+          rgba(255, 255, 255, 0.88);
+      }
+
+      @media (max-width: 768px) {
+        .terminal-action-btn {
+          min-height: 64px;
+          padding: 14px 16px;
+          font-size: 0.94rem;
+          letter-spacing: 1px;
+          gap: 8px;
+        }
       }
 
       /* Animações Novas */
@@ -1611,6 +1810,7 @@
     <link rel="stylesheet" href="style/modal-character.css" />
     <link rel="stylesheet" href="style/favorite.css" />
     <link rel="stylesheet" href="style/modal-search.css" />
+    <link rel="stylesheet" href="style/battleSystem2.css" />
     <link rel="stylesheet" href="style/battleSystem.css" />
     <link rel="stylesheet" href="style/footer.css" />
   </head>
@@ -1802,7 +2002,7 @@
 
               <!-- Botão para acessar Favoritos -->
               <button
-                class="quantum-button"
+                class="quantum-button terminal-action-btn"
                 id="viewFavoritesBtn"
                 aria-label="Ver página de favoritos"
               >
@@ -1812,7 +2012,7 @@
 
               <!-- Botão para acessar Batalha -->
               <button
-                class="quantum-button"
+                class="quantum-button terminal-action-btn"
                 id="viewBattleBtn"
                 aria-label="Acessar sistema de batalha"
               >
@@ -1822,7 +2022,7 @@
 
               <!-- Botão para acessar Pesquisa -->
               <button
-                class="quantum-button"
+                class="quantum-button terminal-action-btn"
                 id="viewSearchBtn"
                 aria-label="Abrir pesquisa quântica"
               >
@@ -2012,11 +2212,13 @@
         </nav>
       </div>
 
-      <!-- Página de Favoritos 13/10 -->
+      <!-- Página de Favoritos 10/10 -->
       <div
         class="quantum-favorites-page"
         id="quantumFavoritesPage"
-        role="main"
+        role="region"
+        aria-label="Página de favoritos"
+        aria-hidden="true"
         hidden
       >
         <div class="favorites-container">
@@ -2093,7 +2295,9 @@
       <div
         class="quantum-battle-page"
         id="quantumBattlePage"
-        role="main"
+        role="region"
+        aria-label="Página do sistema de batalha"
+        aria-hidden="true"
         hidden
       >
         <!-- Header da Batalha -->
@@ -2218,6 +2422,143 @@
         </div>
       </div>
 
+      <!-- Página de Batalha 2D -->
+      <div
+        class="quantum-battle2d-page"
+        id="quantumBattle2dPage"
+        role="region"
+        aria-label="Página de batalha 2D"
+        aria-hidden="true"
+        hidden
+      >
+        <!-- TELA DE SELEÇÃO DE PERSONAGENS -->
+        <div id="battle2dControls" class="battle2d-controls">
+          <div class="battle2d-header">
+            <h2>⚔️ BATALHA 2D: SELEÇÃO DE PERSONAGENS</h2>
+            <p>
+              Selecione seu personagem e o personagem do bot para iniciar a
+              batalha
+            </p>
+          </div>
+
+          <div class="character-selection-container">
+            <!-- Jogador -->
+            <div class="selection-column">
+              <h3 class="selection-title">VOCÊ</h3>
+              <div class="selected-card" id="playerSelectedDisplay">
+                <div class="selected-mini-card empty">
+                  <i class="fas fa-user-circle"></i>
+                  <span>Nenhum personagem selecionado</span>
+                </div>
+              </div>
+              <button id="selectPlayerBtn" class="quantum-button select-btn">
+                <i class="fas fa-user-plus"></i>
+                SELECIONAR PERSONAGEM
+              </button>
+            </div>
+
+            <!-- VS -->
+            <div class="vs-divider">
+              <div class="vs-circle">VS</div>
+            </div>
+
+            <!-- Bot -->
+            <div class="selection-column">
+              <h3 class="selection-title">BOT</h3>
+              <div class="selected-card" id="botSelectedDisplay">
+                <div class="selected-mini-card empty">
+                  <i class="fas fa-robot"></i>
+                  <span>Nenhum personagem selecionado</span>
+                </div>
+              </div>
+              <button id="selectBotBtn" class="quantum-button select-btn">
+                <i class="fas fa-robot"></i>
+                SELECIONAR PERSONAGEM
+              </button>
+            </div>
+          </div>
+
+          <div class="battle2d-actions">
+            <button
+              id="startBattle2dBtn"
+              class="quantum-button start-btn"
+              disabled
+            >
+              <i class="fas fa-play"></i>
+              INICIAR BATALHA
+            </button>
+            <button id="backToGalleryFromBattle2d" class="quantum-button">
+              <i class="fas fa-arrow-left"></i>
+              VOLTAR À GALERIA
+            </button>
+          </div>
+        </div>
+
+        <!-- ARENA DE BATALHA (inicialmente oculta) -->
+        <div
+          id="battle2dArena"
+          class="battle2d-arena-container"
+          style="display: none"
+        >
+          <div class="battle2d-header">
+            <h2>⚔️ BATALHA 2D: ARENA QUÂNTICA</h2>
+            <p>
+              Use as setas ou WASD para mover, ESPAÇO para pular, e F para
+              atacar
+            </p>
+          </div>
+
+          <div class="battle2d-arena">
+            <canvas id="battleCanvas" width="800" height="400"></canvas>
+          </div>
+
+          <div class="battle2d-controls">
+            <div class="health-bars">
+              <div class="health-bar-container">
+                <span id="playerHealthLabel">Jogador</span>
+                <div class="health-bar-bg">
+                  <div
+                    id="playerHealthFill"
+                    class="health-fill"
+                    style="width: 100%"
+                  ></div>
+                </div>
+              </div>
+              <div class="health-bar-container">
+                <span id="botHealthLabel">Bot</span>
+                <div class="health-bar-bg">
+                  <div
+                    id="botHealthFill"
+                    class="health-fill"
+                    style="width: 100%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="battle2d-actions">
+              <button id="resetBattle2dBtn" class="quantum-button">
+                <i class="fas fa-redo-alt"></i>
+                REINICIAR BATALHA
+              </button>
+              <button id="backToSelectionBtn" class="quantum-button">
+                <i class="fas fa-arrow-left"></i>
+                VOLTAR À SELEÇÃO
+              </button>
+            </div>
+
+            <div class="controls-info">
+              <span
+                ><i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-right"></i> ou A/D: Mover</span
+              >
+              <span><i class="fas fa-arrow-up"></i> ou W / Espaço: Pular</span>
+              <span><i class="fas fa-fist-raised"></i> F: Atacar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Footer Quântico -->
       <footer class="quantum-footer" role="contentinfo">
         <div class="footer-quantum">NEXUS QUANTUM 13/10</div>
@@ -2308,6 +2649,15 @@
           aria-label="Acessar sistema de batalha"
         >
           <i class="fas fa-fist-raised" aria-hidden="true"></i>
+        </button>
+
+        <!-- NOVO: Botão de Batalha 2D -->
+        <button
+          class="quantum-control-btn battle2d-toggle"
+          id="battle2dToggle"
+          aria-label="Acessar batalha 2D contra bot"
+        >
+          <i class="fas fa-gamepad" aria-hidden="true"></i>
         </button>
       </div>
 
@@ -2738,6 +3088,7 @@
     <script src="Js/Temas.js"></script>
     <script src="Js/Favoritos.js"></script>
     <script src="Js/QuantumBattleSystem.js"></script>
+    <script src="Js/QuantumBattle2System.js"></script>
     <script src="Js/modal-search.js"></script>
     <script src="Js/QuantumGallery.js"></script>
     <script src="charactersData.JS"></script>
@@ -2757,6 +3108,19 @@
         IMAGE_LOAD_TIMEOUT: 10000,
         LAZY_LOAD_THRESHOLD: 100,
         USE_VOICE_COMMANDS: false,
+      };
+
+      const scheduleIdleTask = (callback, options = {}) => {
+        if (typeof window.requestIdleCallback === "function") {
+          return window.requestIdleCallback(callback, options);
+        }
+        const timeout = options.timeout ?? 1;
+        return setTimeout(() => {
+          callback({
+            didTimeout: false,
+            timeRemaining: () => 0,
+          });
+        }, timeout);
       };
 
       // ===== SISTEMA DE TEMAS =====
@@ -3215,6 +3579,8 @@
 
       // ===== GALERIA QUÂNTICA OTIMIZADA =====
 
+      // SISTEMA DE BATALHA 2D CONTRA BOT
+
       // ===== PRÉ-LOADER OTIMIZADO =====
       class QuantumPreloader {
         constructor() {
@@ -3322,7 +3688,7 @@
 
         lazyLoadHeavySystems() {
           if (CONFIG.USE_THREE_JS && typeof THREE !== "undefined") {
-            requestIdleCallback(
+            scheduleIdleTask(
               () => {
                 this.initThreeJS();
               },
@@ -3331,7 +3697,7 @@
           }
 
           if (CONFIG.USE_PARTICLES && !CONFIG.IS_MOBILE) {
-            requestIdleCallback(
+            scheduleIdleTask(
               () => {
                 this.initParticles();
               },
