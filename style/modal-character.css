@@ -9,8 +9,8 @@
   overflow: visible;
   animation: modalEntrance 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 100px rgba(0, 255, 234, 0.1);
+    0 18px 46px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(0, 255, 234, 0.1);
   margin: clamp(10px, 2vw, 20px);
   max-width: 100%;
   box-sizing: border-box;
@@ -35,8 +35,8 @@
   background: var(--quantum-gradient);
   border-radius: calc(var(--border-radius-lg) + 4px);
   z-index: -1;
-  opacity: 0.3;
-  filter: blur(10px);
+  opacity: 0.2;
+  filter: blur(8px);
   animation: borderPulse 4s ease-in-out infinite;
 }
 
@@ -73,11 +73,11 @@
 }
 
 .modal-character-image:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 
   box-shadow:
-    0 25px 50px rgba(0, 255, 234, 0.2),
-    0 15px 35px rgba(0, 0, 0, 0.5);
+    0 18px 34px rgba(0, 255, 234, 0.16),
+    0 12px 28px rgba(0, 0, 0, 0.45);
 }
 
 /* Tags da Imagem */
@@ -188,9 +188,9 @@
 .modal-character-description {
   font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 1.7;
-  color: var(--quantum-primary);
+  color: #e7f9ff;
   padding: clamp(12px, 2vw, 15px);
-  background: rgba(20, 25, 45, 0.6);
+  background: rgba(16, 28, 44, 0.72);
   border-radius: var(--border-radius-md);
   border-left: 3px solid var(--quantum-primary);
   backdrop-filter: blur(10px);
@@ -240,18 +240,18 @@
 }
 
 .modal-spec-item {
-  background: rgba(35, 40, 65, 0.6);
+  background: rgba(22, 34, 52, 0.72);
   padding: clamp(15px, 3vw, 15px);
   border-radius: var(--border-radius-sm);
-  border: 1px solid rgba(0, 255, 234, 0.1);
+  border: 1px solid rgba(0, 255, 234, 0.2);
   transition: var(--transition-smooth);
 }
 
 .modal-spec-item:hover {
-  background: rgba(45, 50, 75, 0.8);
-  border-color: rgba(0, 255, 234, 0.3);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 255, 234, 0.2);
+  background: rgba(30, 45, 66, 0.84);
+  border-color: rgba(128, 238, 255, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 255, 234, 0.16);
 }
 
 .modal-spec-label {
@@ -295,7 +295,7 @@
   flex: 1;
   min-width: 200px;
   padding: clamp(14px, 3vw, 18px) clamp(20px, 4vw, 30px);
-  border-radius: var(--border-radius-sm);
+  border-radius: 16px;
   font-family: "Rajdhani", sans-serif;
   font-weight: 600;
   font-size: clamp(1rem, 2vw, 1.1rem);
@@ -307,50 +307,65 @@
   align-items: center;
   justify-content: center;
   gap: clamp(10px, 2vw, 15px);
-  border: none;
+  border: 1px solid transparent;
   backdrop-filter: blur(10px);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
 .modal-explore-btn {
-  background: rgba(0, 255, 234, 0.15);
-  color: var(--quantum-primary);
-  border: 1px solid rgba(0, 255, 234, 0.3);
+  background:
+    linear-gradient(135deg, rgba(47, 187, 255, 0.2), rgba(0, 98, 199, 0.24)),
+    rgba(7, 21, 34, 0.9);
+  color: #e9f8ff;
+  border-color: rgba(126, 224, 255, 0.5);
 }
 
 .modal-explore-btn:hover {
-  background: rgba(0, 255, 234, 0.25);
+  background:
+    linear-gradient(135deg, rgba(72, 206, 255, 0.28), rgba(0, 120, 222, 0.32)),
+    rgba(8, 24, 40, 0.92);
   transform: translateY(-3px);
   box-shadow:
-    0 15px 40px rgba(0, 255, 234, 0.3),
-    0 0 30px rgba(0, 255, 234, 0.2);
+    0 15px 34px rgba(22, 160, 255, 0.3),
+    0 0 22px rgba(74, 191, 255, 0.24);
 }
 
 .modal-battle-btn {
-  background: rgba(0, 255, 234, 0.15);
-  color: var(--quantum-primary);
-  border: 1px solid rgba(0, 255, 234, 0.3);
+  background:
+    linear-gradient(135deg, rgba(255, 125, 56, 0.22), rgba(207, 34, 80, 0.26)),
+    rgba(30, 10, 20, 0.9);
+  color: #fff1f5;
+  border-color: rgba(255, 168, 139, 0.52);
 }
 
 .modal-battle-btn:hover {
-  background: rgba(0, 255, 234, 0.25);
+  background:
+    linear-gradient(135deg, rgba(255, 140, 64, 0.3), rgba(233, 45, 96, 0.34)),
+    rgba(34, 12, 24, 0.92);
   transform: translateY(-3px);
   box-shadow:
-    0 15px 40px rgba(0, 255, 234, 0.3),
-    0 0 30px rgba(0, 255, 234, 0.2);
+    0 15px 34px rgba(255, 86, 86, 0.28),
+    0 0 24px rgba(255, 125, 107, 0.24);
 }
 
 .modal-close-btn {
-  background: rgba(255, 42, 109, 0.15);
-  color: var(--quantum-danger);
-  border: 1px solid rgba(255, 42, 109, 0.3);
+  background:
+    linear-gradient(135deg, rgba(255, 83, 125, 0.2), rgba(158, 20, 58, 0.24)),
+    rgba(28, 8, 14, 0.9);
+  color: #ffd9e4;
+  border-color: rgba(255, 141, 171, 0.52);
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 42, 109, 0.25);
+  background:
+    linear-gradient(135deg, rgba(255, 98, 145, 0.28), rgba(182, 28, 72, 0.32)),
+    rgba(34, 10, 18, 0.92);
   transform: translateY(-3px);
   box-shadow:
-    0 15px 40px rgba(255, 42, 109, 0.3),
-    0 0 30px rgba(255, 42, 109, 0.2);
+    0 15px 34px rgba(255, 62, 127, 0.28),
+    0 0 22px rgba(255, 92, 140, 0.24);
 }
 /* =============== RESPONSIVIDADE MELHORADA =============== */
 @media (max-width: 1200px) {

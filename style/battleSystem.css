@@ -1487,7 +1487,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background:
+    radial-gradient(circle at 20% 15%, rgba(0, 194, 255, 0.1), transparent 45%),
+    rgba(2, 6, 12, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1497,7 +1499,7 @@
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
 }
 
 .character-selector-modal.show {
@@ -1506,7 +1508,9 @@
 }
 
 .selector-container {
-  background: rgb(34, 33, 33);
+  background:
+    linear-gradient(145deg, rgba(12, 22, 34, 0.94), rgba(8, 14, 26, 0.96)),
+    rgb(34, 33, 33);
   border-radius: var(--border-radius-xl);
   padding: 40px;
   width: 100%;
@@ -1515,7 +1519,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 2px solid rgba(0, 255, 234, 0.3);
+  border: 1px solid rgba(0, 255, 234, 0.34);
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.48),
+    0 0 24px rgba(0, 255, 234, 0.14);
 }
 
 .selector-header {
@@ -1534,17 +1541,28 @@
 }
 
 .selector-close {
-  background: none;
-  border: none;
+  background:
+    linear-gradient(135deg, rgba(255, 96, 128, 0.88), rgba(176, 24, 62, 0.9)),
+    rgba(28, 10, 16, 0.9);
+  border: 1px solid rgba(255, 174, 194, 0.64);
   color: #fff;
-  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.36),
+    0 0 14px rgba(255, 88, 124, 0.28);
 }
 
 .selector-close:hover {
-  color: var(--quantum-primary);
-  transform: rotate(90deg);
+  color: #fff;
+  transform: translateY(-2px) rotate(8deg);
 }
 
 .selector-grid {
@@ -1557,13 +1575,13 @@
 }
 
 .selector-character {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(14, 28, 42, 0.82);
   border-radius: var(--border-radius-md);
   padding: 20px;
   text-align: center;
   cursor: pointer;
   transition: var(--transition-smooth);
-  border: 2px solid transparent;
+  border: 1px solid rgba(0, 255, 234, 0.18);
   height: 480px;
   position: relative;
   overflow: hidden;
@@ -1591,14 +1609,16 @@
 }
 
 .selector-character:hover {
-  transform: translateY(-10px);
-  border-color: var(--quantum-primary);
-  box-shadow: 0 10px 30px rgba(0, 255, 234, 0.3);
+  transform: translateY(-6px);
+  border-color: rgba(122, 233, 255, 0.65);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.34),
+    0 0 16px rgba(0, 255, 234, 0.24);
 }
 
 .selector-character.selected {
-  border-color: var(--quantum-success);
-  background: rgba(0, 255, 157, 0.1);
+  border-color: rgba(120, 255, 180, 0.78);
+  background: rgba(0, 255, 157, 0.16);
 }
 
 .selector-character-image {

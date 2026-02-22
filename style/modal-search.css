@@ -1,10 +1,16 @@
 /* Modal de Pesquisa */
 .modal-search {
   max-width: 850px;
-  background: var(--glass-bg);
+  background:
+    linear-gradient(145deg, rgba(8, 22, 38, 0.9), rgba(4, 14, 30, 0.95)),
+    var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   border-radius: var(--border-radius-lg);
   padding: 40px;
+  border: 1px solid rgba(0, 255, 234, 0.2);
+  box-shadow:
+    0 20px 46px rgba(0, 0, 0, 0.45),
+    0 0 22px rgba(0, 255, 234, 0.12);
 }
 
 .modal-search-content {
@@ -30,8 +36,8 @@
 
 .search-input-quantum {
   width: 100%;
-  background: rgba(10, 10, 20, 0.8);
-  border: 2px solid var(--quantum-primary);
+  background: rgba(6, 16, 28, 0.88);
+  border: 1px solid rgba(0, 255, 234, 0.45);
   border-radius: var(--border-radius-md);
   color: var(--text-primary);
   font-family: "Rajdhani", sans-serif;
@@ -47,7 +53,9 @@
 
 .search-input-quantum:focus {
   outline: none;
-  box-shadow: 0 0 40px rgba(0, 255, 234, 0.5);
+  box-shadow:
+    0 0 0 3px rgba(0, 255, 234, 0.2),
+    0 0 26px rgba(0, 255, 234, 0.28);
 }
 
 .search-icon {
@@ -71,7 +79,8 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background: rgba(20, 20, 40, 0.8);
+  background: rgba(14, 24, 40, 0.84);
+  border: 1px solid rgba(0, 255, 234, 0.16);
   border-radius: var(--border-radius-md);
   padding: 20px;
   cursor: pointer;
@@ -86,8 +95,8 @@
 
 .search-result-item:hover {
   border-color: var(--quantum-primary);
-  transform: translateY(-5px) translateZ(20px);
-  box-shadow: 0 10px 30px rgba(0, 255, 234, 0.3);
+  transform: translateY(-3px) translateZ(14px);
+  box-shadow: 0 12px 24px rgba(0, 255, 234, 0.2);
 }
 
 .search-result-image {
@@ -104,9 +113,11 @@
 
 #viewSearchBtn {
   width: 100%;
-  background: linear-gradient(135deg, #ffff00, #ffaa00);
-  border: 2px solid rgba(255, 255, 0, 0.3);
-  color: #000;
+  background:
+    linear-gradient(135deg, rgba(38, 201, 255, 0.92), rgba(0, 121, 206, 0.95)),
+    rgba(7, 20, 32, 0.9);
+  border: 1px solid rgba(150, 233, 255, 0.58);
+  color: #ecfbff;
   padding: 20px;
   border-radius: var(--border-radius-md);
   cursor: pointer;
@@ -122,6 +133,9 @@
   gap: 15px;
   transform-style: preserve-3d;
   transform: translateZ(0);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.34),
+    0 0 16px rgba(26, 201, 255, 0.26);
 }
 
 .search-result-name {
