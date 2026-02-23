@@ -1,0 +1,32 @@
+﻿{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "Projeto front-end estatico com galeria, modais e sistema de batalha.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "live-server --open=index.html --port=3000",
+    "dev": "live-server --open=index.html --port=3000",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "echo \"Sem testes configurados\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BSMiguell/NEXUS-UNIVERSE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/BSMiguell/NEXUS-UNIVERSE/issues"
+  },
+  "homepage": "https://github.com/BSMiguell/NEXUS-UNIVERSE#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "prettier": "^3.8.1"
+  }
+}

@@ -37,22 +37,22 @@ class QuantumGallery {
     this.battleSystem = new QuantumBattleSystem(this);
     this.battle2D = new QuantumBattle2DSystem(this);
     this.modalVideoByCharacterId = {
-      4: "video/MADARAUCHIHA-v-1.mp4",
-      9: "video/AATROX-v-1.mp4",
-      11: "video/GOLDEN-SPERM-v-1.mp4",
-      13: "video/RADAHN-v-1.mp4",
-      15: "video/RYOMEN-SUKUNA-v-1.mp4",
-      35: "video/Loki-v-1.mp4",
-      39: "video/Battl- Beast-v-1.mp4",
-      47: "video/Jirem.mp4",
-      58: "video/raiden-v-1.mp4",
-      69: "video/Maki.mp4",
-      78: "video/Kaido-v-1.mp4",
-      124: "video/BALERION-v-1.mp4",
-      161: "video/solaria-v-1.mp4",
-      218: "video/gowther-Original-v-1.mp4",
-      281: "video/HARALD-v-1.mp4",
-      322: "video/Psykos-v-1.mp4",
+      4: "assets/videos/MADARAUCHIHA-v-1.mp4",
+      9: "assets/videos/AATROX-v-1.mp4",
+      11: "assets/videos/GOLDEN-SPERM-v-1.mp4",
+      13: "assets/videos/RADAHN-v-1.mp4",
+      15: "assets/videos/RYOMEN-SUKUNA-v-1.mp4",
+      35: "assets/videos/Loki-v-1.mp4",
+      39: "assets/videos/Battl- Beast-v-1.mp4",
+      47: "assets/videos/Jirem.mp4",
+      58: "assets/videos/raiden-v-1.mp4",
+      69: "assets/videos/Maki.mp4",
+      78: "assets/videos/Kaido-v-1.mp4",
+      124: "assets/videos/BALERION-v-1.mp4",
+      161: "assets/videos/solaria-v-1.mp4",
+      218: "assets/videos/gowther-Original-v-1.mp4",
+      281: "assets/videos/HARALD-v-1.mp4",
+      322: "assets/videos/Psykos-v-1.mp4",
     };
 
     this.elements = {};
@@ -198,7 +198,9 @@ class QuantumGallery {
       searchResults: document.getElementById("searchResults"),
       battleToggle: document.getElementById("battleToggle"),
       menuToggle: document.getElementById("menuToggle"),
-      controlButtonsContainer: document.getElementById("controlButtonsContainer"),
+      controlButtonsContainer: document.getElementById(
+        "controlButtonsContainer",
+      ),
     };
   }
 
@@ -818,13 +820,16 @@ class QuantumGallery {
       const card = this.createCharacterCard(character, index);
       this.elements.quantumGrid.appendChild(card);
 
-      setTimeout(() => {
-        card.classList.add("entering");
+      setTimeout(
+        () => {
+          card.classList.add("entering");
 
-        if (!this.viewedCharacters.has(character.id)) {
-          this.viewedCharacters.add(character.id);
-        }
-      }, (index - start) * 40);
+          if (!this.viewedCharacters.has(character.id)) {
+            this.viewedCharacters.add(character.id);
+          }
+        },
+        (index - start) * 40,
+      );
 
       if (this.config.intersectionObserver && index >= 4) {
         this.config.intersectionObserver.observe(card);
@@ -1655,7 +1660,10 @@ class QuantumGallery {
       const rendered = this.state.renderedCardsCount || 0;
       const total =
         this.state.renderQueueCharacters?.length ||
-        Math.min(this.config.itemsPerPage, this.state.filteredCharacters.length);
+        Math.min(
+          this.config.itemsPerPage,
+          this.state.filteredCharacters.length,
+        );
       this.elements.visibleCharacters.textContent =
         total > rendered ? `${rendered}/${total}` : `${total}`;
     }

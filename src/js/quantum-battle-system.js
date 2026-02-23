@@ -2121,13 +2121,13 @@ class QuantumBattleSystem {
     if (Array.isArray(this.gallery?.charactersData)) {
       return this.gallery.charactersData;
     }
-    if (
-      typeof window !== "undefined" &&
-      Array.isArray(window.charactersData)
-    ) {
+    if (typeof window !== "undefined" && Array.isArray(window.charactersData)) {
       return window.charactersData;
     }
-    if (typeof charactersData !== "undefined" && Array.isArray(charactersData)) {
+    if (
+      typeof charactersData !== "undefined" &&
+      Array.isArray(charactersData)
+    ) {
       return charactersData;
     }
     return [];
@@ -2139,7 +2139,8 @@ class QuantumBattleSystem {
     const categoryMap =
       (typeof window !== "undefined" && window.categoryNames) ||
       (typeof categoryNames !== "undefined" ? categoryNames : {});
-    const categoryDisplay = categoryMap?.[character.category] || character.category;
+    const categoryDisplay =
+      categoryMap?.[character.category] || character.category;
 
     const haystack = [
       character.name || "",
@@ -2178,7 +2179,8 @@ class QuantumBattleSystem {
   }
 
   loadMoreSelectorCharacters() {
-    if (this.selectorVisibleCount >= this.selectorFilteredCharacters.length) return;
+    if (this.selectorVisibleCount >= this.selectorFilteredCharacters.length)
+      return;
 
     this.selectorVisibleCount = Math.min(
       this.selectorVisibleCount + this.selectorLoadStep,
@@ -2195,9 +2197,7 @@ class QuantumBattleSystem {
     const total = this.selectorFilteredCharacters.length;
     const shown = Math.min(this.selectorVisibleCount, total);
     this.elements.selectorResultCount.textContent =
-      total > 0
-        ? `Exibindo ${shown} de ${total}`
-        : "Nenhum personagem";
+      total > 0 ? `Exibindo ${shown} de ${total}` : "Nenhum personagem";
   }
 
   createSelectorCharacterElement(character) {
@@ -2216,7 +2216,8 @@ class QuantumBattleSystem {
     const categoryMap =
       (typeof window !== "undefined" && window.categoryNames) ||
       (typeof categoryNames !== "undefined" ? categoryNames : {});
-    const categoryDisplay = categoryMap?.[character.category] || character.category;
+    const categoryDisplay =
+      categoryMap?.[character.category] || character.category;
     const health = this.calculateHealth(character.stats);
     const placeholder = this.gallery.generatePlaceholderSVG
       ? this.gallery.generatePlaceholderSVG(character, true)
@@ -2518,7 +2519,8 @@ class QuantumBattleSystem {
       (result.loser.currentHealth / result.loser.health) * 100,
     );
 
-    const totalCritical = result.criticalHits.player1 + result.criticalHits.player2;
+    const totalCritical =
+      result.criticalHits.player1 + result.criticalHits.player2;
     const totalDodges = result.dodges.player1 + result.dodges.player2;
     const categoryMap =
       (typeof window !== "undefined" && window.categoryNames) ||
@@ -2651,7 +2653,10 @@ class QuantumBattleSystem {
     }
 
     const roundsTotal = this.tournamentBattleCount;
-    const opponents = this.getRandomTournamentOpponents(challenger.id, roundsTotal);
+    const opponents = this.getRandomTournamentOpponents(
+      challenger.id,
+      roundsTotal,
+    );
     if (opponents.length === 0) {
       this.gallery.showToast("NAO FOI POSSIVEL MONTAR O TORNEIO");
       return;

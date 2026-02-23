@@ -804,7 +804,12 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
   transform: translateX(-100%);
   animation: shine 4s linear infinite;
 }
@@ -1190,11 +1195,8 @@
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(0, 255, 234, 0.35);
-  background: linear-gradient(
-      135deg,
-      rgba(0, 255, 200, 0.12),
-      rgba(255, 42, 109, 0.08)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 255, 200, 0.12), rgba(255, 42, 109, 0.08)),
     rgba(6, 16, 24, 0.78);
   color: #e9ffff;
   font-size: 0.9rem;

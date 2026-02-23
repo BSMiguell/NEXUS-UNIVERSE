@@ -3,7 +3,7 @@ const charactersData = [
     id: 1,
     name: "MONKEY D. LUFFY",
     category: "One-Piece",
-    image: "img/One-Piece/Luffy-1.png",
+    image: "assets/images/One-Piece/Luffy-1.png",
     description:
       "Capitão dos Piratas do Chapéu de Palha, usuário da Akuma no Mi Gomu Gomu, futuro Rei dos Piratas. Destino: Encontrar o One Piece.",
     details: {
@@ -28,7 +28,7 @@ const charactersData = [
     id: 2,
     name: "SON GOKU",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/gokou-1.png",
+    image: "assets/images/Dragon-Ball/gokou-1.png",
     description:
       "O guerreiro Sayajin mais forte, protetor da Terra, mestre das Artes Marciais. Transformações: Super Saiyajin a Deus.",
     details: {
@@ -53,7 +53,7 @@ const charactersData = [
     id: 3,
     name: "GUTS",
     category: "Berserk",
-    image: "img/Berserk/Guts-1.png",
+    image: "assets/images/Berserk/Guts-1.png",
     description:
       "O Espadachim Negro, caçador de apóstolos, portador da Marca do Sacrifício. Armamento: Dragonslayer.",
     details: {
@@ -78,7 +78,7 @@ const charactersData = [
     id: 4,
     name: "MADARA UCHIHA",
     category: "Naruto",
-    image: "img/Naruto/Madara-1.png",
+    image: "assets/images/Naruto/Madara-1.png",
     description:
       "Lendário shinobi, co-fundador de Konoha, mestre do Sharingan e Rinnegan. Objetivo: Plano Olho da Lua.",
     details: {
@@ -103,7 +103,7 @@ const charactersData = [
     id: 5,
     name: "CHROLLO LUCILFER",
     category: "HXH",
-    image: "img/hxh/Chrollo.png",
+    image: "assets/images/hxh/Chrollo.png",
     description:
       "Líder da Tropa Fantasma, usuário de Nen com habilidade de roubar técnicas. Especialidade: Bandit's Secret.",
     details: {
@@ -128,7 +128,7 @@ const charactersData = [
     id: 6,
     name: "GYOMEI HIMEJIMA",
     category: "Kimetsu no Yaiba",
-    image: "img/kimetsu/gyomei himejima-2.png",
+    image: "assets/images/kimetsu/gyomei himejima-2.png",
     description:
       "Pilar da Pedra, o mais forte dos Pilares, mestre da Respiração da Pedra. Arma: Corrente com Machado.",
     details: {
@@ -152,7 +152,7 @@ const charactersData = [
     id: 7,
     name: "ALL MIGHT",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/all might-3.png",
+    image: "assets/images/Boku-no-Hero/all might-3.png",
     description:
       "O Símbolo da Paz, portador do One For All, professor de U.A. Frase: 'Sou eu que chego!'.",
     details: {
@@ -177,7 +177,7 @@ const charactersData = [
     id: 8,
     name: "ALUCARD",
     category: "Castlevania",
-    image: "img/castlevania/alucard-1.png",
+    image: "assets/images/castlevania/alucard-1.png",
     description:
       "Filho de Drácula, caçador de vampiros, guardião da humanidade. Habilidades: Magia Vampírica e Espadas.",
     details: {
@@ -202,7 +202,7 @@ const charactersData = [
     id: 9,
     name: "AATROX",
     category: "League of Legend",
-    image: "img/lol/Aatrox-2s.png",
+    image: "assets/images/lol/Aatrox-2s.png",
     description:
       "A Espada das Trevas, entidade celestial corrompida, destruidor de mundos. Objetivo: Aniquilar tudo.",
     details: {
@@ -227,7 +227,7 @@ const charactersData = [
     id: 10,
     name: "EDWARD ELRIC",
     category: "Fullmetal",
-    image: "img/Fullmetal-Alchemist/Edward elric-1.png",
+    image: "assets/images/Fullmetal-Alchemist/Edward elric-1.png",
     description:
       "O Alquimista de Aço, mais jovem alquimista estatal da história. Busca: A Pedra Filosofal.",
     details: {
@@ -252,7 +252,7 @@ const charactersData = [
     id: 11,
     name: "GOLDEN SPERM",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/golden-sperm-1s.png",
+    image: "assets/images/One-Punch-Man/golden-sperm-1s.png",
     description:
       "Monstro formado pela fusão de inúmeros espermatozoides monstruosos, uma das criações mais poderosas da Associação de Monstros.",
     details: {
@@ -277,7 +277,7 @@ const charactersData = [
     id: 12,
     name: "KENPACHI ZARAKI",
     category: "Bleach",
-    image: "img/Bleach/Zaraki-1.png",
+    image: "assets/images/Bleach/Zaraki-1.png",
     description:
       "Capitão da 11ª Divisão da Sociedade de Almas, conhecido por sua sede insaciável de batalha e força bruta incomparável.",
     details: {
@@ -302,7 +302,7 @@ const charactersData = [
     id: 13,
     name: "RADAHN",
     category: "souls",
-    image: "img/souls/radahn-8.png",
+    image: "assets/images/souls/radahn-8.png",
     description:
       "General Radahn, o Conquistador das Estrelas, um semideus que detém as estrelas em seu lugar com sua poderosa magia gravitacional.",
     details: {
@@ -327,7 +327,7 @@ const charactersData = [
     id: 14,
     name: "KEISUKE BAJI",
     category: "tokyo",
-    image: "img/tokyo-revengers/Baji-2.png",
+    image: "assets/images/tokyo-revengers/Baji-2.png",
     description:
       "Membro fundador dos Tokyo Manji Gang, conhecido por sua lealdade inabalável e habilidades de combate excepcionais.",
     details: {
@@ -352,7 +352,7 @@ const charactersData = [
     id: 15,
     name: "RYOMEN SUKUNA",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/sukana-4s.png",
+    image: "assets/images/Jujutsu/sukana-4s.png",
     description:
       "O Rei das Maldições, uma entidade de poder incomensurável que assombrou a Era de Ouro dos Feiticeiros Jujutsu.",
     details: {
@@ -377,7 +377,7 @@ const charactersData = [
     id: 16,
     name: "YORIICHI TSUGIKUNI",
     category: "Kimetsu no Yaiba",
-    image: "img/kimetsu/Yoriichi-2.png",
+    image: "assets/images/kimetsu/Yoriichi-2.png",
     description:
       "O caçador de demônios mais forte da história, criador da Respiração do Sol e único a quase derrotar Muzan Kibutsuji.",
     details: {
@@ -402,7 +402,7 @@ const charactersData = [
     id: 17,
     name: "ZELDRIS",
     category: "Nanatsu",
-    image: "img/Taizai/zeldris-1.png",
+    image: "assets/images/Taizai/zeldris-1.png",
     description:
       "Comandante dos Dez Mandamentos e Príncipe dos Demônios, portador do Mandamento da Piedade e servo do Rei Demônio.",
     details: {
@@ -427,7 +427,7 @@ const charactersData = [
     id: 18,
     name: "DEAR",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Dear-1.png",
+    image: "assets/images/Gachiakuta/Dear-1.png",
     description:
       "Personagem do mundo de Gachiakuta, envolvido nas complexas dinâmicas de poder e sobrevivência em um ambiente desolado.",
     details: {
@@ -452,7 +452,7 @@ const charactersData = [
     id: 19,
     name: "ACNOLOGIA",
     category: "Fairy Tail",
-    image: "img/Fairy-Taill/acnologia-1s.png",
+    image: "assets/images/Fairy-Taill/acnologia-1s.png",
     description:
       "O Dragão Rei, um dragão que se alimenta de outros dragões e é considerado a maior ameaça ao mundo de Fairy Tail.",
     details: {
@@ -477,7 +477,7 @@ const charactersData = [
     id: 20,
     name: "RORONOA ZORO",
     category: "One-Piece",
-    image: "img/One-Piece/zoro-1.png",
+    image: "assets/images/One-Piece/zoro-1.png",
     description:
       "Espadachim dos Piratas do Chapéu de Palha e futuro maior espadachim do mundo, mestre do estilo de três espadas.",
     details: {
@@ -502,7 +502,7 @@ const charactersData = [
     id: 21,
     name: "VLAD DRÁCULA",
     category: "Castlevania",
-    image: "img/castlevania/Vlad Drácula-1.png",
+    image: "assets/images/castlevania/Vlad Drácula-1.png",
     description:
       "O Lorde das Trevas, um vampiro imortal que governa o Castelo Drácula e é a encarnação do mal na série Castlevania.",
     details: {
@@ -527,7 +527,7 @@ const charactersData = [
     id: 22,
     name: "QIN SHI HUANG",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Qin Shi Huang-1.png",
+    image: "assets/images/Shuumatsu/Qin Shi Huang-1.png",
     description:
       "Primeiro Imperador da China, representante da humanidade no Ragnarok com habilidades baseadas em sua lenda histórica.",
     details: {
@@ -552,7 +552,7 @@ const charactersData = [
     id: 23,
     name: "JOTARO KUJO",
     category: "jojo",
-    image: "img/Jojo/Jotaro-1.png",
+    image: "assets/images/Jojo/Jotaro-1.png",
     description:
       "Usuário do Stand Star Platinum, protagonista da Parte 3: Stardust Crusaders, neto de Joseph Joestar.",
     details: {
@@ -577,7 +577,7 @@ const charactersData = [
     id: 24,
     name: "NOSFERATU ZODD",
     category: "Berserk",
-    image: "img/Berserk/Nosferatu Zodd-1.png",
+    image: "assets/images/Berserk/Nosferatu Zodd-1.png",
     description:
       "Apóstolo imortal que busca oponentes dignos em batalha, conhecido por sua forma monstruosa e habilidades de regeneração.",
     details: {
@@ -602,7 +602,7 @@ const charactersData = [
     id: 25,
     name: "ALPHONSE ELRIC",
     category: "Fullmetal",
-    image: "img/Fullmetal-Alchemist/Alphonse Elric-1.png",
+    image: "assets/images/Fullmetal-Alchemist/Alphonse Elric-1.png",
     description:
       "Irmão mais novo de Edward Elric, cuja alma está ligada a uma armadura de metal após um experimento de alquimia falho.",
     details: {
@@ -627,7 +627,7 @@ const charactersData = [
     id: 26,
     name: "DARIUS",
     category: "League of Legend",
-    image: "img/lol/Darius-1.png",
+    image: "assets/images/lol/Darius-1.png",
     description:
       "A Mão de Noxus, um comandante implacável cuja presença no campo de batalha inspira tanto terror quanto lealdade.",
     details: {
@@ -652,7 +652,7 @@ const charactersData = [
     id: 27,
     name: "KYOJURU RENGOKU",
     category: "Kimetsu no Yaiba",
-    image: "img/kimetsu/Rengoku-3.png",
+    image: "assets/images/kimetsu/Rengoku-3.png",
     description:
       "Pilar das Chamas, um caçador de demônios entusiasta e poderoso que vive pelo código de proteger os mais fracos.",
     details: {
@@ -677,7 +677,7 @@ const charactersData = [
     id: 28,
     name: "SATORU GOJO",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Gojo-1.png",
+    image: "assets/images/Jujutsu/Gojo-1.png",
     description:
       "Considerado o feiticeiro jujutsu mais forte da era atual, professor na Escola de Feitiçaria de Tóquio e membro do clã Gojo.",
     details: {
@@ -702,7 +702,7 @@ const charactersData = [
     id: 29,
     name: "GENRYUSAI SHIGEKUNI YAMAMOTO",
     category: "Bleach",
-    image: "img/Bleach/yamamoto-2.png",
+    image: "assets/images/Bleach/yamamoto-2.png",
     description:
       "Capitão-Comandante da Sociedade de Almas por mais de mil anos, detentor da Zanpakutō de fogo mais poderosa.",
     details: {
@@ -727,7 +727,7 @@ const charactersData = [
     id: 30,
     name: "NAMELESS KING",
     category: "souls",
-    image: "img/souls/Nameless King-1.png",
+    image: "assets/images/souls/Nameless King-1.png",
     description:
       "Deus da Guerra exilado, filho de Gwyn e mestre das tempestades, que se aliou aos dragões ancestrais.",
     details: {
@@ -752,7 +752,7 @@ const charactersData = [
     id: 31,
     name: "LAXUS DREYAR",
     category: "Fairy Tail",
-    image: "img/Fairy-Taill/Laxus-1.png",
+    image: "assets/images/Fairy-Taill/Laxus-1.png",
     description:
       "Mago do Trovão da Fairy Tail, neto do mestre Makarov, conhecido por seu poder eletrizante e personalidade orgulhosa.",
     details: {
@@ -777,7 +777,7 @@ const charactersData = [
     id: 32,
     name: "SAGA DE GÊMEOS",
     category: "Os Zavaleiros do Zodíaco",
-    image: "img/Os-Cavaleiros-do-Zodíaco/Saga-1.png",
+    image: "assets/images/Os-Cavaleiros-do-Zodíaco/Saga-1.png",
     description:
       "Cavaleiro de Ouro de Gêmeos, antigo patriarca do Santuário que possui o poder de manipular o espaço e a dimensão.",
     details: {
@@ -802,7 +802,7 @@ const charactersData = [
     id: 33,
     name: "SKULL KNIGHT",
     category: "Berserk",
-    image: "img/Berserk/Skull Knight-1.png",
+    image: "assets/images/Berserk/Skull Knight-1.png",
     description:
       "Entidade enigmática que vagueia pelo mundo, opondo-se à Mão de Deus e auxiliando Guts em sua jornada.",
     details: {
@@ -827,7 +827,7 @@ const charactersData = [
     id: 34,
     name: "ENJIN",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Enjin -1s.png",
+    image: "assets/images/Gachiakuta/Enjin -1s.png",
     description:
       "Personagem do mundo árido de Gachiakuta, com habilidades únicas adaptadas ao ambiente hostil em que vive.",
     details: {
@@ -852,7 +852,7 @@ const charactersData = [
     id: 35,
     name: "LOKI",
     category: "One-Piece",
-    image: "img/One-Piece/Loki-5.png",
+    image: "assets/images/One-Piece/Loki-5.png",
     description:
       "Deus da Trapaça da mitologia nórdica, que faz aparições no mundo de One Piece como uma figura divina.",
     details: {
@@ -877,7 +877,7 @@ const charactersData = [
     id: 36,
     name: "ESTAROSSA",
     category: "Nanatsu",
-    image: "img/Taizai/estarossa-1.png",
+    image: "assets/images/Taizai/estarossa-1.png",
     description:
       "Comandante dos Dez Mandamentos portador do Mandamento do Amor, cuja verdadeira identidade esconde um trágico destino.",
     details: {
@@ -902,7 +902,7 @@ const charactersData = [
     id: 37,
     name: "FEITAN PORTOR",
     category: "HXH",
-    image: "img/hxh/Feitan-1.png",
+    image: "assets/images/hxh/Feitan-1.png",
     description:
       "Membro da Tropa Fantasma, especialista em interrogatório e usuário da habilidade Pain Packer que converte dor em poder.",
     details: {
@@ -927,7 +927,7 @@ const charactersData = [
     id: 38,
     name: "KOKUSHIBO",
     category: "Kimetsu no Yaiba",
-    image: "img/kimetsu/Kokushibo-1.png",
+    image: "assets/images/kimetsu/Kokushibo-1.png",
     description:
       "Lua Superior 1, irmão de Yoriichi Tsugikuni que se tornou demônio em busca de superar seu próprio irmão.",
     details: {
@@ -952,7 +952,7 @@ const charactersData = [
     id: 39,
     name: "BATTLE BEAST",
     category: "Invencível",
-    image: "img/Invencível/Battle Beast-4.png",
+    image: "assets/images/Invencível/Battle Beast-4.png",
     description:
       "Guerreiro leão alienígena que busca oponentes dignos em batalha, considerado um dos lutadores mais habilidosos do universo.",
     details: {
@@ -977,7 +977,7 @@ const charactersData = [
     id: 40,
     name: "KAKUZU",
     category: "Naruto",
-    image: "img/Naruto/Kakuzu-1.png",
+    image: "assets/images/Naruto/Kakuzu-1.png",
     description:
       "Membro da Akatsuki imortal que possui cinco corações e pode utilizar múltiplas naturezas de chakra simultaneamente.",
     details: {
@@ -1002,7 +1002,7 @@ const charactersData = [
     id: 41,
     name: "BLAST",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/blast-1.png",
+    image: "assets/images/One-Punch-Man/blast-1.png",
     description:
       "Herói Classe S Rank 1, um enigmático herói que raramente aparece mas possui poder suficiente para enfrentar ameaças de nível divino.",
     details: {
@@ -1027,7 +1027,7 @@ const charactersData = [
     id: 42,
     name: "BENIMARU SHINMON",
     category: "Fire Force",
-    image: "img/Fire Force/benimaru-1.png",
+    image: "assets/images/Fire Force/benimaru-1.png",
     description:
       "Capitão da 7ª Companhia do Corpo de Bombeiros Especiais, conhecido como o 'Homem Mais Forte de Asakusa'.",
     details: {
@@ -1052,7 +1052,7 @@ const charactersData = [
     id: 43,
     name: "BROLY",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/Broly-3.png",
+    image: "assets/images/Dragon-Ball/Broly-3.png",
     description:
       "O Lendário Super Saiyajin, um guerreiro com poder de crescimento infinito cuja força aumenta exponencialmente durante a batalha.",
     details: {
@@ -1077,7 +1077,7 @@ const charactersData = [
     id: 44,
     name: "ERZA SCARLET",
     category: "Fairy Tail",
-    image: "img/Fairy-Taill/Erza Scarlet-1.png",
+    image: "assets/images/Fairy-Taill/Erza Scarlet-1.png",
     description:
       "Mago da Armadura da Fairy Tail, famosa por sua vasta coleção de armaduras mágicas e habilidades de requip.",
     details: {
@@ -1102,7 +1102,7 @@ const charactersData = [
     id: 45,
     name: "THRAGG",
     category: "Invencível",
-    image: "img/Invencível/Thragg-3.png",
+    image: "assets/images/Invencível/Thragg-3.png",
     description:
       "Líder supremo dos Viltrumitas e o guerreiro mais forte de sua espécie, determinado a restaurar o império Viltrumita.",
     details: {
@@ -1127,7 +1127,7 @@ const charactersData = [
     id: 46,
     name: "DIO BRANDO",
     category: "jojo",
-    image: "img/Jojo/Dio-1.png",
+    image: "assets/images/Jojo/Dio-1.png",
     description:
       "Vampiro imortal e usuário do Stand The World, principal antagonista das Partes 1 e 3 de JoJo's Bizarre Adventure.",
     details: {
@@ -1152,7 +1152,7 @@ const charactersData = [
     id: 47,
     name: "JIREN",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/Jiren-1.png",
+    image: "assets/images/Dragon-Ball/Jiren-1.png",
     description:
       "Guerreiro do Universo 11 e membro do Pride Troopers, considerado o lutador mais forte entre todos os universos.",
     details: {
@@ -1177,7 +1177,7 @@ const charactersData = [
     id: 48,
     name: "AKAINU",
     category: "One-Piece",
-    image: "img/One-Piece/akainu-1.png",
+    image: "assets/images/One-Piece/akainu-1.png",
     description:
       "Almirante da Marinha e posteriormente Almirante-da-Frota, usuário da Akuma no Mi Magu Magu no Mi.",
     details: {
@@ -1202,7 +1202,7 @@ const charactersData = [
     id: 49,
     name: "YHWACH",
     category: "Bleach",
-    image: "img/Bleach/yhwach-1.png",
+    image: "assets/images/Bleach/yhwach-1.png",
     description:
       "Rei dos Quincy e principal antagonista de Bleach, com a habilidade de ver e alterar todos os futuros possíveis.",
     details: {
@@ -1227,7 +1227,7 @@ const charactersData = [
     id: 50,
     name: "KANON DE GÊMEOS",
     category: "Os Zavaleiros do Zodíaco",
-    image: "img/Os-Cavaleiros-do-Zodíaco/kanon-1.png",
+    image: "assets/images/Os-Cavaleiros-do-Zodíaco/kanon-1.png",
     description:
       "Cavaleiro de Ouro de Gêmeos, irmão gêmeo de Saga que inicialmente serve como antagonista mas posteriormente se redime.",
     details: {
@@ -1252,7 +1252,7 @@ const charactersData = [
     id: 51,
     name: "MALENIA, A LÂMINA DE MIQUELLA",
     category: "souls",
-    image: "img/souls/Malenia-3.png",
+    image: "assets/images/souls/Malenia-3.png",
     description:
       "Guerreira mais poderosa de Elden Ring, irmã gêmea de Miquella e portadora da Podridão Escarlate.",
     details: {
@@ -1277,7 +1277,7 @@ const charactersData = [
     id: 52,
     name: "A - QUARTO RAIKAGE",
     category: "Naruto",
-    image: "img/Naruto/Raikage-1.png",
+    image: "assets/images/Naruto/Raikage-1.png",
     description:
       "Quarto Raikage da Vila da Nuvem, conhecido por sua velocidade e força incomparáveis, além de sua liderança firme.",
     details: {
@@ -1302,7 +1302,7 @@ const charactersData = [
     id: 53,
     name: "GAJEEL REDFOX",
     category: "Fairy Tail",
-    image: "img/Fairy-Taill/Gajeel-Redfox-1.png",
+    image: "assets/images/Fairy-Taill/Gajeel-Redfox-1.png",
     description:
       "Mago do Ferro Dragon Slayer da Fairy Tail, conhecido por sua personalidade rude e habilidades de manipulação de metal.",
     details: {
@@ -1327,7 +1327,7 @@ const charactersData = [
     id: 54,
     name: "CORVUS",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Corvus-1.png",
+    image: "assets/images/Gachiakuta/Corvus-1.png",
     description:
       "Personagem do universo de Gachiakuta, possuindo habilidades únicas adaptadas ao ambiente desolador do mundo da série.",
     details: {
@@ -1352,7 +1352,7 @@ const charactersData = [
     id: 55,
     name: "TOJI FUSHIGURO",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/fushiguro toji-2.png",
+    image: "assets/images/Jujutsu/fushiguro toji-2.png",
     description:
       "O Assassino Sem Energia Amaldiçoada, conhecido como 'O Exterminador de Feiticeiros'.",
     details: {
@@ -1377,7 +1377,7 @@ const charactersData = [
     id: 56,
     name: "GON FREECSS",
     category: "HXH",
-    image: "img/hxh/Gon-1.png",
+    image: "assets/images/hxh/Gon-1.png",
     description:
       "Protagonista de Hunter x Hunter, um jovem determinado a se tornar um Hunter como seu pai.",
     details: {
@@ -1402,7 +1402,7 @@ const charactersData = [
     id: 57,
     name: "OGUN MONTGOMERY",
     category: "Fire Force",
-    image: "img/Fire Force/Ogun Montgomery-1.png",
+    image: "assets/images/Fire Force/Ogun Montgomery-1.png",
     description:
       "Membro da 4ª Companhia do Corpo de Bombeiros Especiais, usuário da terceira geração de poderes pirocinéticos.",
     details: {
@@ -1427,7 +1427,7 @@ const charactersData = [
     id: 58,
     name: "RAIDEN TAMEEMON",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Raiden-1.png",
+    image: "assets/images/Shuumatsu/Raiden-1.png",
     description:
       "Lutador de sumô lendário representando a humanidade no Ragnarok, conhecido por sua força bruta.",
     details: {
@@ -1452,7 +1452,7 @@ const charactersData = [
     id: 59,
     name: "GAROU",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Garou-2.png",
+    image: "assets/images/One-Punch-Man/Garou-2.png",
     description:
       "O Herói Caçador, um discípulo das artes marciais que busca se tornar o monstro perfeito.",
     details: {
@@ -1477,7 +1477,7 @@ const charactersData = [
     id: 60,
     name: "OMNI-MAN",
     category: "Invencível",
-    image: "img/Invencível/omni man-1.png",
+    image: "assets/images/Invencível/omni man-1.png",
     description:
       "Pai de Mark Grayson, um Viltrumita enviado à Terra para preparar o planeta para a conquista Viltrumita.",
     details: {
@@ -1502,7 +1502,7 @@ const charactersData = [
     id: 61,
     name: "SOUL OF CINDER",
     category: "souls",
-    image: "img/souls/Soul of Cinder-1.png",
+    image: "assets/images/souls/Soul of Cinder-1.png",
     description:
       "Manifestação física de todos os Lordes das Cinzas que já ligaram a Primeira Chama, chefe final de Dark Souls III.",
     details: {
@@ -1527,7 +1527,7 @@ const charactersData = [
     id: 62,
     name: "ESCANOR",
     category: "Nanatsu",
-    image: "img/Taizai/escanor-2.png",
+    image: "assets/images/Taizai/escanor-2.png",
     description:
       "O Leão do Orgulho dos Sete Pecados Capitais, cujo poder aumenta drasticamente ao meio-dia.",
     details: {
@@ -1552,7 +1552,7 @@ const charactersData = [
     id: 63,
     name: "NARUTO UZUMAKI",
     category: "Naruto",
-    image: "img/Naruto/naruto-1.png",
+    image: "assets/images/Naruto/naruto-1.png",
     description:
       "Sétimo Hokage da Vila da Folha, portador do Chakra da Raposa de Nove Caudas e salvador do Mundo Shinobi.",
     details: {
@@ -1577,7 +1577,7 @@ const charactersData = [
     id: 64,
     name: "EDWARD NEWGATE - BARBA BRANCA",
     category: "One-Piece",
-    image: "img/One-Piece/barba branca-1.png",
+    image: "assets/images/One-Piece/barba branca-1.png",
     description:
       "Conhecido como 'O Homem Mais Forte do Mundo', capitão dos Piratas do Barba Branca.",
     details: {
@@ -1602,7 +1602,7 @@ const charactersData = [
     id: 65,
     name: "IRENE BELSERION",
     category: "Fairy Tail",
-    image: "img/Fairy-Taill/Irene Belserion-1.png",
+    image: "assets/images/Fairy-Taill/Irene Belserion-1.png",
     description:
       "Rainha das Dragões, uma das fundadoras da guilda Fairy Tail e mãe de Erza Scarlet.",
     details: {
@@ -1627,7 +1627,7 @@ const charactersData = [
     id: 66,
     name: "TOMURA SHIGARAKI",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Tomura Shigaraki-1.png",
+    image: "assets/images/Boku-no-Hero/Tomura Shigaraki-1.png",
     description:
       "Líder da Liga dos Vilões e sucessor de All For One, possuindo a capacidade de desintegrar qualquer coisa.",
     details: {
@@ -1652,7 +1652,7 @@ const charactersData = [
     id: 67,
     name: "JOHNNY JOESTAR",
     category: "jojo",
-    image: "img/Jojo/Johnny Joestar-1.png",
+    image: "assets/images/Jojo/Johnny Joestar-1.png",
     description:
       "Protagonista da Parte 7: Steel Ball Run, um jóquei paraplégico que desenvolve o Stand Tusk.",
     details: {
@@ -1677,7 +1677,7 @@ const charactersData = [
     id: 68,
     name: "GUITA",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Guita-1.png",
+    image: "assets/images/Gachiakuta/Guita-1.png",
     description:
       "Personagem do mundo distópico de Gachiakuta, possuindo habilidades adaptadas ao ambiente hostil.",
     details: {
@@ -1702,7 +1702,7 @@ const charactersData = [
     id: 69,
     name: "MAKI ZENIN",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Maki-1.png",
+    image: "assets/images/Jujutsu/Maki-1.png",
     description:
       "Feiticeira jujutsu que obtém um corpo celestial sem energia amaldiçoada, tornando-se igual a Toji Fushiguro.",
     details: {
@@ -1727,7 +1727,7 @@ const charactersData = [
     id: 70,
     name: "IKKI DE FÊNIX",
     category: "Os Zavaleiros do Zodíaco",
-    image: "img/Os-Cavaleiros-do-Zodíaco/Ikki-1.png",
+    image: "assets/images/Os-Cavaleiros-do-Zodíaco/Ikki-1.png",
     description:
       "Cavaleiro de Bronze de Fênix, conhecido por renascer mais forte após cada derrota.",
     details: {
@@ -1752,7 +1752,7 @@ const charactersData = [
     id: 71,
     name: "SAITAMA",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Saitama-1.png",
+    image: "assets/images/One-Punch-Man/Saitama-1.png",
     description:
       "Herói por Hobby da Classe B, capaz de derrotar qualquer oponente com um único soco.",
     details: {
@@ -1777,7 +1777,7 @@ const charactersData = [
     id: 72,
     name: "APOLO",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/apolo-1.png",
+    image: "assets/images/Shuumatsu/apolo-1.png",
     description:
       "Deus grego do sol, música, poesia e profecia, representante dos deuses no Ragnarok.",
     details: {
@@ -1802,7 +1802,7 @@ const charactersData = [
     id: 73,
     name: "AMBESSA MEDARDA",
     category: "League of Legend",
-    image: "img/lol/Ambessa-1.png",
+    image: "assets/images/lol/Ambessa-1.png",
     description:
       "Matriarca da casa Medarda e uma das figuras mais temidas de Noxus.",
     details: {
@@ -1827,7 +1827,7 @@ const charactersData = [
     id: 74,
     name: "PAIN/NAGATO",
     category: "Naruto",
-    image: "img/Naruto/Pain-1.png",
+    image: "assets/images/Naruto/Pain-1.png",
     description:
       "Líder da Akatsuki e usuário do Rinnegan, capaz de controlar seis corpos diferentes.",
     details: {
@@ -1852,7 +1852,7 @@ const charactersData = [
     id: 75,
     name: "KASHIMO HAJIME",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/hajime-1.png",
+    image: "assets/images/Jujutsu/hajime-1.png",
     description:
       "Feiticeiro jujutsu da Era de Ouro conhecido como 'Deus do Relâmpago'.",
     details: {
@@ -1877,7 +1877,7 @@ const charactersData = [
     id: 76,
     name: "MELIODAS",
     category: "Nanatsu",
-    image: "img/Taizai/Meliodas-1.png",
+    image: "assets/images/Taizai/Meliodas-1.png",
     description:
       "Líder dos Sete Pecados Capitais e portador do Pecado da Ira, filho do Rei Demônio.",
     details: {
@@ -1902,7 +1902,7 @@ const charactersData = [
     id: 77,
     name: "SHOTO TODOROKI",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Todoroki shoto-1.png",
+    image: "assets/images/Boku-no-Hero/Todoroki shoto-1.png",
     description:
       "Herói em treinamento da U.A., possuindo a habilidade Quirk de gerar gelo e fogo.",
     details: {
@@ -1927,7 +1927,7 @@ const charactersData = [
     id: 78,
     name: "KAIDO",
     category: "One-Piece",
-    image: "img/One-Piece/Kaido-4.png",
+    image: "assets/images/One-Piece/Kaido-4.png",
     description:
       "Governador-Geral das Feras e um dos Quatro Imperadores, conhecido como 'A Criatura Mais Forte do Mundo'.",
     details: {
@@ -1952,7 +1952,7 @@ const charactersData = [
     id: 79,
     name: "SATAN SOUL",
     category: "Fairy Tail",
-    image: "img/Fairy-Taill/Satan Soul-1.png",
+    image: "assets/images/Fairy-Taill/Satan Soul-1.png",
     description:
       "Forma de Take Over utilizada por Mirajane Strauss que lhe permite assumir características de demônios.",
     details: {
@@ -1977,7 +1977,7 @@ const charactersData = [
     id: 80,
     name: "DARKEATER MIDIR",
     category: "souls",
-    image: "img/souls/Darkeater Midir-1.png",
+    image: "assets/images/souls/Darkeater Midir-1.png",
     description:
       "Dragão ancestral que consome a escuridão, um dos últimos descendentes dos dragões imortais.",
     details: {
@@ -2002,7 +2002,7 @@ const charactersData = [
     id: 81,
     name: "KEN RYUGUJI (DRAKEN)",
     category: "tokyo",
-    image: "img/tokyo-revengers/draken-2.png",
+    image: "assets/images/tokyo-revengers/draken-2.png",
     description:
       "Vice-Líder dos Tokyo Manji Gang, conhecido por sua habilidade de combate e lealdade inabalável.",
     details: {
@@ -2027,7 +2027,7 @@ const charactersData = [
     id: 82,
     name: "HISOKA MOROW",
     category: "HXH",
-    image: "img/hxh/Hisoka-1.png",
+    image: "assets/images/hxh/Hisoka-1.png",
     description:
       "Mago e Hunter que vive para encontrar oponentes dignos, usuário das habilidades Bungee Gum.",
     details: {
@@ -2052,7 +2052,7 @@ const charactersData = [
     id: 83,
     name: "ZODYL",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Zodyl-1.png",
+    image: "assets/images/Gachiakuta/Zodyl-1.png",
     description:
       "Personagem do universo de Gachiakuta, envolvido nas complexas relações de poder e sobrevivência.",
     details: {
@@ -2077,7 +2077,7 @@ const charactersData = [
     id: 84,
     name: "KOJIRO SASAKI",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Kojiro Sasaki-1.png",
+    image: "assets/images/Shuumatsu/Kojiro Sasaki-1.png",
     description:
       "Conhecido como 'O Maior Espadachim', representa a humanidade no Ragnarok.",
     details: {
@@ -2102,7 +2102,7 @@ const charactersData = [
     id: 85,
     name: "SON GOHAN",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/gohan-1.png",
+    image: "assets/images/Dragon-Ball/gohan-1.png",
     description:
       "Filho mais velho de Goku, possuindo potencial latente maior que qualquer outro Saiyajin.",
     details: {
@@ -2127,7 +2127,7 @@ const charactersData = [
     id: 86,
     name: "ALLEN, O ALIENÍGENA",
     category: "Invencível",
-    image: "img/Invencível/allen-1.png",
+    image: "assets/images/Invencível/allen-1.png",
     description:
       "Alien da Coalizão que auxilia os Viltrumitas, conhecido por sua tecnologia avançada.",
     details: {
@@ -2152,7 +2152,7 @@ const charactersData = [
     id: 87,
     name: "GYRO ZEPPELI",
     category: "jojo",
-    image: "img/Jojo/gyro-zeppeli-1.png",
+    image: "assets/images/Jojo/gyro-zeppeli-1.png",
     description:
       "Cavaleiro de Steel Ball Run e mestre da Técnica da Roda, que compete na corrida para salvar seu país.",
     details: {
@@ -2177,7 +2177,7 @@ const charactersData = [
     id: 88,
     name: "SASORI",
     category: "Naruto",
-    image: "img/Naruto/Sasori-1.png",
+    image: "assets/images/Naruto/Sasori-1.png",
     description:
       "Membro da Akatsuki conhecido como 'Sasori da Areia Vermelha', mestre de marionetes.",
     details: {
@@ -2202,7 +2202,7 @@ const charactersData = [
     id: 89,
     name: "K'SANTE",
     category: "League of Legend",
-    image: "img/lol/k'sante-1.png",
+    image: "assets/images/lol/k'sante-1.png",
     description:
       "O Orgulho de Nazumah, um caçador determinado a proteger sua cidade dos monstros do deserto.",
     details: {
@@ -2227,7 +2227,7 @@ const charactersData = [
     id: 90,
     name: "SUGURU GETO",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/suguru geto-1.png",
+    image: "assets/images/Jujutsu/suguru geto-1.png",
     description:
       "Ex-feiticeiro de grau especial e antigo melhor amigo de Satoru Gojo.",
     details: {
@@ -2252,7 +2252,7 @@ const charactersData = [
     id: 91,
     name: "SHANKS",
     category: "One-Piece",
-    image: "img/One-Piece/Shaks-1.png",
+    image: "assets/images/One-Piece/Shaks-1.png",
     description:
       "Imperador do Mar e capitão dos Piratas do Ruivo, conhecido por sua influência no mundo.",
     details: {
@@ -2277,7 +2277,7 @@ const charactersData = [
     id: 92,
     name: "FUMIKAGE TOKOYAMI",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Fumikage Tokoyami-1.png",
+    image: "assets/images/Boku-no-Hero/Fumikage Tokoyami-1.png",
     description:
       "Herói em treinamento da U.A. com a Quirk Dark Shadow, uma sombra viva.",
     details: {
@@ -2302,7 +2302,7 @@ const charactersData = [
     id: 93,
     name: "MANJIRO SANO (MIKEY)",
     category: "tokyo",
-    image: "img/tokyo-revengers/Makey-2.png",
+    image: "assets/images/tokyo-revengers/Makey-2.png",
     description:
       "Líder dos Tokyo Manji Gang, conhecido por sua velocidade e poder de chutes devastadores.",
     details: {
@@ -2327,7 +2327,7 @@ const charactersData = [
     id: 94,
     name: "MERUEM",
     category: "HXH",
-    image: "img/hxh/Meruem-1.png",
+    image: "assets/images/hxh/Meruem-1.png",
     description:
       "Rei das Formigas Quimera, criatura com inteligência e poder incomparáveis.",
     details: {
@@ -2352,7 +2352,7 @@ const charactersData = [
     id: 95,
     name: "SIMO HÄYHÄ",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/simo häyhä-1.png",
+    image: "assets/images/Shuumatsu/simo häyhä-1.png",
     description:
       "Conhecido como 'A Morte Branca', atirador de elite finlandês no Ragnarok.",
     details: {
@@ -2377,7 +2377,7 @@ const charactersData = [
     id: 96,
     name: "AOI TODO",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Aoi todo-2.png",
+    image: "assets/images/Jujutsu/Aoi todo-2.png",
     description:
       "Feiticeiro de grau 1 semi que luta com seu irmão adotivo, possuindo a técnica Boogie Woogie.",
     details: {
@@ -2402,7 +2402,7 @@ const charactersData = [
     id: 97,
     name: "LEONARDO BURNS",
     category: "Fire Force",
-    image: "img/Fire Force/Leonardo Burns-1.png",
+    image: "assets/images/Fire Force/Leonardo Burns-1.png",
     description:
       "Capitão da 1ª Companhia do Corpo de Bombeiros Especiais, conhecido por suas chamas azuis.",
     details: {
@@ -2427,7 +2427,7 @@ const charactersData = [
     id: 98,
     name: "BARTHOLOMEW KUMA",
     category: "One-Piece",
-    image: "img/One-Piece/Kuma-1.png",
+    image: "assets/images/One-Piece/Kuma-1.png",
     description:
       "O Tirano, antigo Shichibukai e revolucionário transformado em ciborgue.",
     details: {
@@ -2452,7 +2452,7 @@ const charactersData = [
     id: 99,
     name: "KAZUTORA HANEMIYA",
     category: "tokyo",
-    image: "img/tokyo-revengers/Kazutora Hanemiya-1.png",
+    image: "assets/images/tokyo-revengers/Kazutora Hanemiya-1.png",
     description:
       "Membro dos Tokyo Manji Gang com um passado traumático e lealdade conflituosa.",
     details: {
@@ -2477,7 +2477,7 @@ const charactersData = [
     id: 100,
     name: "BABY",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/baby-1.png",
+    image: "assets/images/Dragon-Ball/baby-1.png",
     description:
       "Parasita Tuffle criado para vingar os Tuffles, capaz de possuir corpos e absorver energia.",
     details: {
@@ -2502,7 +2502,7 @@ const charactersData = [
     id: 101,
     name: "OVERHAUL (KAI CHISAKI)",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/overhaul-1.png",
+    image: "assets/images/Boku-no-Hero/overhaul-1.png",
     description:
       "Líder da yakuza Shie Hassaikai e portador da Quirk Overhaul, permitindo-lhe desmontar e reconstruir matéria com um toque.",
     details: {
@@ -2527,7 +2527,7 @@ const charactersData = [
     id: 102,
     name: "ODIN",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Odin-1.png",
+    image: "assets/images/Shuumatsu/Odin-1.png",
     description:
       "Pai dos deuses nórdicos e governante de Asgard, representante dos deuses no Ragnarok com poder sobre o destino e conhecimento.",
     details: {
@@ -2552,7 +2552,7 @@ const charactersData = [
     id: 103,
     name: "SHISUI UCHIHA",
     category: "Naruto",
-    image: "img/Naruto/Shisui-2.png",
+    image: "assets/images/Naruto/Shisui-2.png",
     description:
       "Conhecido como 'Shisui, o Telepata', membro do clã Uchiha com o Mangekyō Sharingan mais avançado e a técnica Kotoamatsukami.",
     details: {
@@ -2577,7 +2577,7 @@ const charactersData = [
     id: 104,
     name: "CHANDLER",
     category: "Nanatsu",
-    image: "img/Taizai/chandler-1.png",
+    image: "assets/images/Taizai/chandler-1.png",
     description:
       "O Mago Supremo e servo do Rei Demônio, mestre de magia negra e professor de Meliodas durante sua juventude.",
     details: {
@@ -2602,7 +2602,7 @@ const charactersData = [
     id: 105,
     name: "TAKASHI MITSUYA (ANGRY)",
     category: "tokyo",
-    image: "img/tokyo-revengers/Angry-1.png",
+    image: "assets/images/tokyo-revengers/Angry-1.png",
     description:
       "Membro dos Tokyo Manji Gang conhecido como 'Angry', irmão gêmeo de Smiley e vice-capitão da primeira divisão.",
     details: {
@@ -2627,7 +2627,7 @@ const charactersData = [
     id: 106,
     name: "MONKEY D. GARP",
     category: "One-Piece",
-    image: "img/One-Piece/Garp-1.png",
+    image: "assets/images/One-Piece/Garp-1.png",
     description:
       "O Herói da Marinha, avô de Luffy e pai de Dragon, conhecido por sua força lendária que rivaliza com a dos Piratas da Época de Ouro.",
     details: {
@@ -2652,7 +2652,7 @@ const charactersData = [
     id: 107,
     name: "DERIERI",
     category: "Nanatsu",
-    image: "img/Taizai/Derieri-1.png",
+    image: "assets/images/Taizai/Derieri-1.png",
     description:
       "Comandante dos Dez Mandamentos portadora do Mandamento da Piedade, especialista em combate corpo a corpo com ataques combinados.",
     details: {
@@ -2677,7 +2677,7 @@ const charactersData = [
     id: 108,
     name: "TENGEN UZUI",
     category: "Kimetsu no Yaiba",
-    image: "img/kimetsu/uzui tengen-1.png",
+    image: "assets/images/kimetsu/uzui tengen-1.png",
     description:
       "Pilar do Som e ex-ninja, conhecido por suas técnicas musicais de combate e por ser o mais 'extravagante' dos Pilares.",
     details: {
@@ -2702,7 +2702,7 @@ const charactersData = [
     id: 109,
     name: "DABI (TOYA TODOROKI)",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Dabi-1.png",
+    image: "assets/images/Boku-no-Hero/Dabi-1.png",
     description:
       "Vilão da Liga dos Vilões e filho mais velho de Endeavor, portador da Quirk Cremation que produz chamas azuis superiores.",
     details: {
@@ -2727,7 +2727,7 @@ const charactersData = [
     id: 110,
     name: "MESSMER, O EMPALADOR",
     category: "souls",
-    image: "img/souls/Messmer-1.png",
+    image: "assets/images/souls/Messmer-1.png",
     description:
       "Filho da Deusa Marika e comandante da Expedição ao continente sombrio, portador de chamas sombrias e habilidades de empalamento.",
     details: {
@@ -2752,7 +2752,7 @@ const charactersData = [
     id: 111,
     name: "NEFERPITOU",
     category: "HXH",
-    image: "img/hxh/Neferpitou-2.png",
+    image: "assets/images/hxh/Neferpitou-2.png",
     description:
       "Guarda Real das Formigas Quimera especializada em habilidades de médico e combate, possuindo o Nen mais refinado entre os Guardas.",
     details: {
@@ -2777,7 +2777,7 @@ const charactersData = [
     id: 112,
     name: "JIRAIYA",
     category: "Naruto",
-    image: "img/Naruto/jiraiya-1.png",
+    image: "assets/images/Naruto/jiraiya-1.png",
     description:
       "Um dos Três Sannin Lendários, mestre de Naruto e autor da série 'Icha Icha', especialista em invocações e técnicas de selamento.",
     details: {
@@ -2802,7 +2802,7 @@ const charactersData = [
     id: 113,
     name: "FRIEZA",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/Freeza-1.png",
+    image: "assets/images/Dragon-Ball/Freeza-1.png",
     description:
       "Imperador do universo e arqui-inimigo dos Saiyajins, possuindo múltiplas transformações e poderes cósmicos.",
     details: {
@@ -2827,7 +2827,7 @@ const charactersData = [
     id: 114,
     name: "ROY MUSTANG",
     category: "Fullmetal",
-    image: "img/Fullmetal-Alchemist/Roy Mustang-1.png",
+    image: "assets/images/Fullmetal-Alchemist/Roy Mustang-1.png",
     description:
       "Alquimista da Chama e coronel do exército de Amestris, capaz de criar explosões controladas com seus dedos estalados.",
     details: {
@@ -2852,7 +2852,7 @@ const charactersData = [
     id: 115,
     name: "SILVERS RAYLEIGH",
     category: "One-Piece",
-    image: "img/One-Piece/Rayleigh-1.png",
+    image: "assets/images/One-Piece/Rayleigh-1.png",
     description:
       "O Rei das Trevas e primeiro imediato dos Piratas do Roger, mentor de Luffy no uso do Haki e um dos homens mais fortes do mundo.",
     details: {
@@ -2877,7 +2877,7 @@ const charactersData = [
     id: 116,
     name: "ENDEAVOR (ENJI TODOROKI)",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Endeavor-1.png",
+    image: "assets/images/Boku-no-Hero/Endeavor-1.png",
     description:
       "Herói profissional Número 1 e pai de Shoto Todoroki, portador da poderosa Quirk Hellflame que produz chamas extremamente quentes.",
     details: {
@@ -2902,7 +2902,7 @@ const charactersData = [
     id: 117,
     name: "LEÔNIDAS I",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Leonidas-1.png",
+    image: "assets/images/Shuumatsu/Leonidas-1.png",
     description:
       "Rei de Esparta e representante da humanidade no Ragnarok, conhecido por sua bravura na Batalha das Termópilas e espírito indomável.",
     details: {
@@ -2927,7 +2927,7 @@ const charactersData = [
     id: 118,
     name: "MONSPIET",
     category: "Nanatsu",
-    image: "img/Taizai/Monspiet-1.png",
+    image: "assets/images/Taizai/Monspiet-1.png",
     description:
       "Comandante dos Dez Mandamentos portador do Mandamento da Fé, companheiro de Derieri e especialista em chamas mágicas.",
     details: {
@@ -2952,7 +2952,7 @@ const charactersData = [
     id: 119,
     name: "TAIJU SHIBA",
     category: "tokyo",
-    image: "img/tokyo-revengers/taiju shiba-2.png",
+    image: "assets/images/tokyo-revengers/taiju shiba-2.png",
     description:
       "Líder da Black Dragons e irmão mais velho de Yuzuha, conhecido por sua força sobre-humana e personalidade extremamente violenta.",
     details: {
@@ -2977,7 +2977,7 @@ const charactersData = [
     id: 120,
     name: "KAKASHI HATAKE",
     category: "Naruto",
-    image: "img/Naruto/kakashi-1.png",
+    image: "assets/images/Naruto/kakashi-1.png",
     description:
       "O Ninja Copiador, Sexto Hokage e líder do Time 7, famoso por seu Sharingan e pela técnica Chidori.",
     details: {
@@ -3002,7 +3002,7 @@ const charactersData = [
     id: 121,
     name: "DONQUIXOTE DOFLAMINGO",
     category: "One-Piece",
-    image: "img/One-Piece/Domflamingo-1.png",
+    image: "assets/images/One-Piece/Domflamingo-1.png",
     description:
       "Ex-Shichibukai conhecido como o Coringa do submundo, manipulador cruel e extremamente poderoso.",
     details: {
@@ -3027,7 +3027,7 @@ const charactersData = [
     id: 122,
     name: "MEREOLEONA VERMILLION",
     category: "Black Clover",
-    image: "img/Black Clover/Mereoleona-1.png",
+    image: "assets/images/Black Clover/Mereoleona-1.png",
     description:
       "Guerreira feroz e capitã lendária, conhecida por sua força absurda e domínio absoluto da magia de fogo.",
     details: {
@@ -3052,7 +3052,7 @@ const charactersData = [
     id: 123,
     name: "BUDDHA",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Buddha-1.png",
+    image: "assets/images/Shuumatsu/Buddha-1.png",
     description:
       "Deus imprevisível que desafia os céus e luta pela humanidade usando sua iluminação divina.",
     details: {
@@ -3077,7 +3077,7 @@ const charactersData = [
     id: 124,
     name: "BALERION",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/balerion-1.png",
+    image: "assets/images/Game-of-Thrones/balerion-1.png",
     description:
       "O maior e mais temido dragão da história de Westeros, montaria de Aegon, o Conquistador.",
     details: {
@@ -3102,7 +3102,7 @@ const charactersData = [
     id: 125,
     name: "KLED",
     category: "League of Legend",
-    image: "img/lol/Kled-1.png",
+    image: "assets/images/lol/Kled-1.png",
     description:
       "Yordle completamente insano, guerreiro de Noxus que luta montado em Skaarl, defendendo seu território com violência extrema.",
     details: {
@@ -3127,7 +3127,7 @@ const charactersData = [
     id: 126,
     name: "JASPER",
     category: "Steven Universo",
-    image: "img/Steven-Universo/Jasper-1.png",
+    image: "assets/images/Steven-Universo/Jasper-1.png",
     description:
       "Gema guerreira extremamente forte e orgulhosa, criada para combate e leal ao Império Gem.",
     details: {
@@ -3152,7 +3152,7 @@ const charactersData = [
     id: 127,
     name: "PORTGAS D. ACE",
     category: "One-Piece",
-    image: "img/One-Piece/Ace-1.png",
+    image: "assets/images/One-Piece/Ace-1.png",
     description:
       "Comandante da 2ª Divisão dos Piratas do Barba Branca, usuário do poder do fogo e irmão de Luffy.",
     details: {
@@ -3177,7 +3177,7 @@ const charactersData = [
     id: 128,
     name: "MAHORAGA",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/mahoraga-1.png",
+    image: "assets/images/Jujutsu/mahoraga-1.png",
     description:
       "Shikigami supremo da Técnica das Dez Sombras, capaz de se adaptar a qualquer ataque.",
     details: {
@@ -3202,7 +3202,7 @@ const charactersData = [
     id: 129,
     name: "ITACHI UCHIHA",
     category: "Naruto",
-    image: "img/Naruto/itachi-1.png",
+    image: "assets/images/Naruto/itachi-1.png",
     description:
       "Gênio do clã Uchiha que sacrificou tudo para proteger Konoha, mestre absoluto do Sharingan.",
     details: {
@@ -3227,7 +3227,7 @@ const charactersData = [
     id: 130,
     name: "DAENERYS TARGARYEN",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/daenerys-targaryen-1.png",
+    image: "assets/images/Game-of-Thrones/daenerys-targaryen-1.png",
     description:
       "A Mãe dos Dragões, herdeira da Casa Targaryen, determinada a reconquistar o Trono de Ferro.",
     details: {
@@ -3252,7 +3252,7 @@ const charactersData = [
     id: 131,
     name: "YAMI SUKEHIRO",
     category: "Black Clover",
-    image: "img/Black Clover/Yami-Sukehiro-1.png",
+    image: "assets/images/Black Clover/Yami-Sukehiro-1.png",
     description:
       "Capitão dos Touros Negros, conhecido por seu poder de Magia de Trevas e personalidade dura, mas justa.",
     details: {
@@ -3277,7 +3277,7 @@ const charactersData = [
     id: 132,
     name: "MIRIO TOGATA",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/mirio-togata-1.png",
+    image: "assets/images/Boku-no-Hero/mirio-togata-1.png",
     description:
       "Herói de Classe 1-A da U.A., conhecido como Lemillion, possui a Quirk de Passagem e espírito incansável.",
     details: {
@@ -3302,7 +3302,7 @@ const charactersData = [
     id: 133,
     name: "DENJI",
     category: "Chainsaw Man",
-    image: "img/Chainsaw-Man/denji-1.png",
+    image: "assets/images/Chainsaw-Man/denji-1.png",
     description:
       "Jovem caçador de demônios que se fundiu com Pochita, tornando-se o Chainsaw Man, lutando por sobrevivência e sonhos simples.",
     details: {
@@ -3327,7 +3327,7 @@ const charactersData = [
     id: 134,
     name: "ROSE QUARTZO",
     category: "Steven Universo",
-    image: "img/Steven-Universo/Rose-Quartzo-1.png",
+    image: "assets/images/Steven-Universo/Rose-Quartzo-1.png",
     description:
       "Líder das Crystal Gems, protetora da Terra, conhecida por sua compaixão e poder incomparável.",
     details: {
@@ -3352,7 +3352,7 @@ const charactersData = [
     id: 135,
     name: "JINBE",
     category: "One-Piece",
-    image: "img/One-Piece/jinbe-1.png",
+    image: "assets/images/One-Piece/jinbe-1.png",
     description:
       "Membro dos Piratas do Chapéu de Palha e mestre em Fish-Man Karate, leal e protetor de seus amigos.",
     details: {
@@ -3377,7 +3377,7 @@ const charactersData = [
     id: 136,
     name: "CHOSO",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Choso-1.png",
+    image: "assets/images/Jujutsu/Choso-1.png",
     description:
       "Irmão mais velho das Maldições Cursed Womb, especialista em manipulação de sangue e combate letal.",
     details: {
@@ -3402,7 +3402,7 @@ const charactersData = [
     id: 137,
     name: "SION",
     category: "League of Legend",
-    image: "img/lol/Sion.png",
+    image: "assets/images/lol/Sion.png",
     description:
       "Guerreiro morto-vivo de Noxus, um colosso de força bruta que avança sem medo da morte.",
     details: {
@@ -3427,7 +3427,7 @@ const charactersData = [
     id: 138,
     name: "SIMON BELMONT",
     category: "Castlevania",
-    image: "img/castlevania/simon-belmont-1.png",
+    image: "assets/images/castlevania/simon-belmont-1.png",
     description:
       "Caçador de vampiros do clã Belmont, lendário por enfrentar Drácula usando o chicote sagrado Vampire Killer.",
     details: {
@@ -3452,7 +3452,7 @@ const charactersData = [
     id: 139,
     name: "GRIMMJOW JAEGERJAQUEZ",
     category: "Bleach",
-    image: "img/Bleach/Grimmjow-Jaegerjaquez-1.png",
+    image: "assets/images/Bleach/Grimmjow-Jaegerjaquez-1.png",
     description:
       "Arrancar extremamente agressivo e orgulhoso, o Sexto Espada busca batalhas intensas para provar sua força absoluta.",
     details: {
@@ -3477,7 +3477,7 @@ const charactersData = [
     id: 140,
     name: "ZENON ZOGRATIS",
     category: "Black Clover",
-    image: "img/Black Clover/Zenon-Zogratis-1.png",
+    image: "assets/images/Black Clover/Zenon-Zogratis-1.png",
     description:
       "Membro da Tríade Negra e hospedeiro de um demônio de alto nível, Zenon luta com frieza absoluta usando magia de ossos e poder demoníaco.",
     details: {
@@ -3502,7 +3502,7 @@ const charactersData = [
     id: 141,
     name: "SAKATA KINTOKI",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Sakata-Kintoki-1.png",
+    image: "assets/images/Shuumatsu/Sakata-Kintoki-1.png",
     description:
       "Herói lendário do folclore japonês e um dos campeões da humanidade, possuidor de força sobre-humana e espírito indomável.",
     details: {
@@ -3527,7 +3527,7 @@ const charactersData = [
     id: 142,
     name: "SANEMI SHINAZUGAWA",
     category: "Kimetsu no Yaiba",
-    image: "img/kimetsu/Sanemi-Shinazugawa-1.png",
+    image: "assets/images/kimetsu/Sanemi-Shinazugawa-1.png",
     description:
       "Pilar do Vento da Corporação dos Caçadores de Demônios, conhecido por sua personalidade agressiva e técnica mortal com a Respiração do Vento.",
     details: {
@@ -3552,7 +3552,7 @@ const charactersData = [
     id: 143,
     name: "KOZUKI ODEN",
     category: "One-Piece",
-    image: "img/One-Piece/oden-1.png",
+    image: "assets/images/One-Piece/oden-1.png",
     description:
       "Samurai lendário de Wano, portador de uma força monstruosa e de uma vontade indomável capaz de ferir até imperadores dos mares.",
     details: {
@@ -3577,7 +3577,7 @@ const charactersData = [
     id: 144,
     name: "SANDOR CLEGANE",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/perdigueiro-1.png",
+    image: "assets/images/Game-of-Thrones/perdigueiro-1.png",
     description:
       "Conhecido como O Perdigueiro, Sandor Clegane é um guerreiro brutal e pragmático, temido por sua ferocidade e desprezo pela cavalaria.",
     details: {
@@ -3602,7 +3602,7 @@ const charactersData = [
     id: 145,
     name: "GRIFFITH",
     category: "Berserk",
-    image: "img/Berserk/Griffith-1.png",
+    image: "assets/images/Berserk/Griffith-1.png",
     description:
       "Antigo líder do Bando do Falcão, cuja ambição o levou a um sacrifício impiedoso e à ascensão como uma entidade demoníaca além da humanidade.",
     details: {
@@ -3627,7 +3627,7 @@ const charactersData = [
     id: 146,
     name: "GARNET",
     category: "Steven Universo",
-    image: "img/Steven-Universo/garnet-1.png",
+    image: "assets/images/Steven-Universo/garnet-1.png",
     description:
       "Líder calma e poderosa das Crystal Gems, Garnet combina força, visão futura e habilidades de fusão para proteger a Terra.",
     details: {
@@ -3652,7 +3652,7 @@ const charactersData = [
     id: 147,
     name: "ULQUIORRA CIFER",
     category: "Bleach",
-    image: "img/Bleach/Ulquiorra-Cifer-1.png",
+    image: "assets/images/Bleach/Ulquiorra-Cifer-1.png",
     description:
       "Quarta Espada do exército de Arrancares de Aizen, conhecido por sua frieza absoluta e força devastadora, capaz de regenerar ferimentos rapidamente.",
     details: {
@@ -3677,7 +3677,7 @@ const charactersData = [
     id: 148,
     name: "SHOTA AIZAWA",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Shota-Aizawa-1.png",
+    image: "assets/images/Boku-no-Hero/Shota-Aizawa-1.png",
     description:
       "Professor da U.A. e herói profissional conhecido como Eraser Head, capaz de anular os poderes de seus oponentes com um simples olhar.",
     details: {
@@ -3702,7 +3702,7 @@ const charactersData = [
     id: 149,
     name: "FUEGOLEON VERMILLION",
     category: "Black Clover",
-    image: "img/Black Clover/Fuegoleon-Vermillion-1.png",
+    image: "assets/images/Black Clover/Fuegoleon-Vermillion-1.png",
     description:
       "Capitão do Crimson Lion Kingdom e usuário de magia de fogo, Fuegoleon é um líder nobre e estrategista incansável que inspira seus aliados.",
     details: {
@@ -3727,7 +3727,7 @@ const charactersData = [
     id: 150,
     name: "GOL D. ROGER",
     category: "One-Piece",
-    image: "img/One-Piece/Roger-1.png",
+    image: "assets/images/One-Piece/Roger-1.png",
     description:
       "Conhecido como o Rei dos Piratas, Gol D. Roger conquistou todos os mares e deixou um legado lendário que inspirou gerações de aventureiros.",
     details: {
@@ -3752,7 +3752,7 @@ const charactersData = [
     id: 151,
     name: "MAKIMA",
     category: "Chainsaw Man",
-    image: "img/Chainsaw-Man/Makima-1.png",
+    image: "assets/images/Chainsaw-Man/Makima-1.png",
     description:
       "Enigmática e manipuladora, Makima é uma das figuras mais poderosas do mundo de Chainsaw Man, controlando demônios e humanos com inteligência e força devastadora.",
     details: {
@@ -3777,7 +3777,7 @@ const charactersData = [
     id: 152,
     name: "GODSPEED",
     category: "Flash",
-    image: "img/Flash/godspeed-1.png",
+    image: "assets/images/Flash/godspeed-1.png",
     description:
       "Godspeed é um dos velocistas mais perigosos do universo Flash. Obcecado por velocidade e justiça distorcida, ele utiliza a Força de Aceleração para alcançar níveis absurdos de rapidez.",
     details: {
@@ -3802,7 +3802,7 @@ const charactersData = [
     id: 153,
     name: "MOHG, LORD OF BLOOD",
     category: "souls",
-    image: "img/souls/Mohg-1.png",
+    image: "assets/images/souls/Mohg-1.png",
     description:
       "Mohg, Lord of Blood é um semideus corrompido pelo Sangue Amaldiçoado, governando nas sombras enquanto busca instaurar uma dinastia profana através de rituais sangrentos.",
     details: {
@@ -3827,7 +3827,7 @@ const charactersData = [
     id: 154,
     name: "AKUMA",
     category: "Street-Fighter",
-    image: "img/Street-Fighter/Akuma-1.png",
+    image: "assets/images/Street-Fighter/Akuma-1.png",
     description:
       "Akuma é um mestre supremo do Satsui no Hado, buscando apenas a força absoluta. Seu poder destrutivo e sua filosofia de combate o colocam além dos limites da humanidade.",
     details: {
@@ -3852,7 +3852,7 @@ const charactersData = [
     id: 155,
     name: "MAITO GAI",
     category: "Naruto",
-    image: "img/Naruto/Maito-gai-1.png",
+    image: "assets/images/Naruto/Maito-gai-1.png",
     description:
       "Maito Gai é um mestre do taijutsu e símbolo do esforço absoluto. Incapaz de usar ninjutsu ou genjutsu, ele supera todos os limites do corpo humano através de treino extremo.",
     details: {
@@ -3877,7 +3877,7 @@ const charactersData = [
     id: 156,
     name: "JOE YABUKI",
     category: "Ashita no Joe",
-    image: "img/Ashita-no-Joe/Joe-4.png",
+    image: "assets/images/Ashita-no-Joe/Joe-4.png",
     description:
       "Joe Yabuki é um boxeador indomável que luta movido por orgulho, liberdade e autodestruição.",
     details: {
@@ -3902,7 +3902,7 @@ const charactersData = [
     id: 157,
     name: "LEON",
     category: "Pokemon",
-    image: "img/Pokemon/Leon-1.png",
+    image: "assets/images/Pokemon/Leon-1.png",
     description:
       "Leon é o Campeão da região de Galar, conhecido por sua incrível habilidade em batalhas Pokémon e por nunca perder uma partida.",
     details: {
@@ -3927,7 +3927,7 @@ const charactersData = [
     id: 158,
     name: "MIYAMOTO MUSASHI",
     category: "Vagabond",
-    image: "img/Vagabond/miyamoto-3.png",
+    image: "assets/images/Vagabond/miyamoto-3.png",
     description:
       "Miyamoto Musashi é um lendário samurai em busca da perfeição na arte da espada. Determinado, introspectivo e implacável.",
     details: {
@@ -3952,7 +3952,7 @@ const charactersData = [
     id: 159,
     name: "CHARLOTTE KATAKURI",
     category: "One-Piece",
-    image: "img/One-Piece/Katakuri-1.png",
+    image: "assets/images/One-Piece/Katakuri-1.png",
     description:
       "Katakuri é o filho mais poderoso da família Charlotte, conhecido por sua força brutal, velocidade extrema e habilidade única de prever movimentos.",
     details: {
@@ -3977,7 +3977,7 @@ const charactersData = [
     id: 160,
     name: "KENSHIN HIMURA",
     category: "Samurai-X",
-    image: "img/Samurai-X/samurai x-1.png",
+    image: "assets/images/Samurai-X/samurai x-1.png",
     description:
       "Kenshin Himura é um lendário samurai errante, conhecido como Battousai, o Retalhador. Movido por redenção, ele busca proteger os inocentes.",
     details: {
@@ -4002,7 +4002,7 @@ const charactersData = [
     id: 161,
     name: "SOLARIA BUTTERFLY",
     category: "Star-vs.",
-    image: "img/star-vs/solaria-1.png",
+    image: "assets/images/star-vs/solaria-1.png",
     description:
       "Solaria Butterfly é uma princesa guerreira do reino mágico de Mewni, poderosa e estratégica.",
     details: {
@@ -4027,7 +4027,7 @@ const charactersData = [
     id: 162,
     name: "RADAGON OF THE GOLDEN ORDER",
     category: "souls",
-    image: "img/souls/Radagon of the Golden Order-1.png",
+    image: "assets/images/souls/Radagon of the Golden Order-1.png",
     description:
       "Radagon é um semideus lendário de Elden Ring, governando com força absoluta e domínio divino.",
     details: {
@@ -4052,7 +4052,7 @@ const charactersData = [
     id: 163,
     name: "TERCEIRO RAIKAGE",
     category: "Naruto",
-    image: "img/Naruto/Raikage-2.png",
+    image: "assets/images/Naruto/Raikage-2.png",
     description:
       "O Terceiro Raikage é conhecido por sua velocidade e força sobre-humanas, além de seu corpo extremamente resistente.",
     details: {
@@ -4077,7 +4077,7 @@ const charactersData = [
     id: 164,
     name: "TITÃ DE ATAQUE",
     category: "Shingeki-no-Kyojin",
-    image: "img/Shingeki-no-Kyojin/titan-de-ataque-1.png",
+    image: "assets/images/Shingeki-no-Kyojin/titan-de-ataque-1.png",
     description:
       "O Titã de Ataque é uma poderosa entidade capaz de lutar com agilidade e força sobre-humana.",
     details: {
@@ -4102,7 +4102,7 @@ const charactersData = [
     id: 165,
     name: "SHINSO",
     category: "Pokemon",
-    image: "img/Pokemon/Shinso-2.png",
+    image: "assets/images/Pokemon/Shinso-2.png",
     description:
       "Shinso é o principal vilão da hack room Pokémon Blue Stars 3 Forces, manipulador e estrategista.",
     details: {
@@ -4127,7 +4127,7 @@ const charactersData = [
     id: 166,
     name: "MARSHALL D. TEACH",
     category: "One-Piece",
-    image: "img/One-Piece/Marshall-D-Teach-1.png",
+    image: "assets/images/One-Piece/Marshall-D-Teach-1.png",
     description:
       "Marshall D. Teach, conhecido como Barba Negra, é um dos antagonistas mais perigosos de One Piece.",
     details: {
@@ -4152,7 +4152,7 @@ const charactersData = [
     id: 167,
     name: "RYU",
     category: "Street-Fighter",
-    image: "img/Street-Fighter/Ryu-1.png",
+    image: "assets/images/Street-Fighter/Ryu-1.png",
     description:
       "Ryu é um dos maiores guerreiros do mundo em Street Fighter, dedicado ao caminho do combate.",
     details: {
@@ -4177,7 +4177,7 @@ const charactersData = [
     id: 168,
     name: "KIM KAPHWAN",
     category: "The King of Fighters",
-    image: "img/The-King-of-Fighters/Kim.png",
+    image: "assets/images/The-King-of-Fighters/Kim.png",
     description:
       "Kim Kaphwan é um mestre de Taekwondo e um dos personagens mais respeitados de The King of Fighters.",
     details: {
@@ -4202,7 +4202,7 @@ const charactersData = [
     id: 169,
     name: "HADES",
     category: "Os Zavaleiros do Zodíaco",
-    image: "img/Os-Cavaleiros-do-Zodíaco/hades-2.png",
+    image: "assets/images/Os-Cavaleiros-do-Zodíaco/hades-2.png",
     description:
       "Hades é o deus do submundo em Os Cavaleiros do Zodíaco, governando o mundo dos mortos.",
     details: {
@@ -4227,7 +4227,7 @@ const charactersData = [
     id: 170,
     name: "TITÃ BLINDADO",
     category: "Shingeki-no-Kyojin",
-    image: "img/Shingeki-no-Kyojin/titan-blindado-1.png",
+    image: "assets/images/Shingeki-no-Kyojin/titan-blindado-1.png",
     description:
       "O Titã Blindado é uma das armas mais destrutivas do universo de Shingeki no Kyojin.",
     details: {
@@ -4252,7 +4252,7 @@ const charactersData = [
     id: 171,
     name: "MARCO DIAZ",
     category: "Star-vs.",
-    image: "img/star-vs/marco-diaz-1.png",
+    image: "assets/images/star-vs/marco-diaz-1.png",
     description:
       "Marco Diaz é o melhor amigo e aliado de Star Butterfly em Star vs. the Forces of Evil.",
     details: {
@@ -4277,7 +4277,7 @@ const charactersData = [
     id: 172,
     name: "GODFREY, FIRST ELDEN LORD",
     category: "souls",
-    image: "img/souls/Godfrey-First-Elden-Lord-2.png",
+    image: "assets/images/souls/Godfrey-First-Elden-Lord-2.png",
     description:
       "Godfrey, o Primeiro Elden Lord, é um lendário guerreiro de Elden Ring.",
     details: {
@@ -4302,7 +4302,7 @@ const charactersData = [
     id: 173,
     name: "SENGOKU",
     category: "One-Piece",
-    image: "img/One-Piece/Sengoku-1.png",
+    image: "assets/images/One-Piece/Sengoku-1.png",
     description:
       "Sengoku, o antigo Almirante de Frota da Marinha, é um estrategista brilhante.",
     details: {
@@ -4327,7 +4327,7 @@ const charactersData = [
     id: 174,
     name: "RUGAL BERNSTEIN",
     category: "The King of Fighters",
-    image: "img/The-King-of-Fighters/Rugal-2.png",
+    image: "assets/images/The-King-of-Fighters/Rugal-2.png",
     description:
       "Rugal Bernstein é um dos vilões mais icônicos da franquia The King of Fighters.",
     details: {
@@ -4352,7 +4352,7 @@ const charactersData = [
     id: 175,
     name: "GREGOR CLEGANE",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/montanha-1.png",
+    image: "assets/images/Game-of-Thrones/montanha-1.png",
     description:
       "Gregor Clegane, conhecido como A Montanha, é um dos guerreiros mais temidos de Game of Thrones.",
     details: {
@@ -4377,7 +4377,7 @@ const charactersData = [
     id: 176,
     name: "TITÃ BESTIAL",
     category: "Shingeki-no-Kyojin",
-    image: "img/Shingeki-no-Kyojin/titan-beast-1.png",
+    image: "assets/images/Shingeki-no-Kyojin/titan-beast-1.png",
     description:
       "O Titã Bestial é um dos Nove Titãs de Shingeki no Kyojin, conhecido por sua aparência animalesca.",
     details: {
@@ -4402,7 +4402,7 @@ const charactersData = [
     id: 177,
     name: "CHUN-LI",
     category: "Street-Fighter",
-    image: "img/Street-Fighter/chun-li-1.png",
+    image: "assets/images/Street-Fighter/chun-li-1.png",
     description:
       "Chun-Li é uma das lutadoras mais icônicas de Street Fighter, agente da Interpol.",
     details: {
@@ -4427,7 +4427,7 @@ const charactersData = [
     id: 178,
     name: "VEGETA",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/vegeta-1.png",
+    image: "assets/images/Dragon-Ball/vegeta-1.png",
     description:
       "Orgulhoso príncipe dos Saiyajins, Vegeta é um guerreiro extremamente poderoso.",
     details: {
@@ -4452,7 +4452,7 @@ const charactersData = [
     id: 179,
     name: "SASAKI KOJIRŌ",
     category: "Vagabond",
-    image: "img/Vagabond/sasaki-kojiro-1.png",
+    image: "assets/images/Vagabond/sasaki-kojiro-1.png",
     description:
       "Sasaki Kojirō é um dos espadachins mais talentosos e trágicos de Vagabond.",
     details: {
@@ -4477,7 +4477,7 @@ const charactersData = [
     id: 180,
     name: "ECLIPSA BUTTERFLY",
     category: "Star-vs.",
-    image: "img/star-vs/Eclipsa-Butterfly-1.png",
+    image: "assets/images/star-vs/Eclipsa-Butterfly-1.png",
     description:
       "Eclipsa Butterfly é uma das rainhas mais controversas do Reino de Mewni.",
     details: {
@@ -4502,7 +4502,7 @@ const charactersData = [
     id: 181,
     name: "MONKEY D. DRAGON",
     category: "One-Piece",
-    image: "img/One-Piece/dragon-2.png",
+    image: "assets/images/One-Piece/dragon-2.png",
     description:
       "Monkey D. Dragon é o líder do Exército Revolucionário e o homem mais procurado do mundo.",
     details: {
@@ -4527,7 +4527,7 @@ const charactersData = [
     id: 182,
     name: "KIYOTAKA AYANOKŌJI",
     category: "Classroom of the Elite",
-    image: "img/classroom-of-the-elite/Kiyotaka-Ayanokōji-1.png",
+    image: "assets/images/classroom-of-the-elite/Kiyotaka-Ayanokōji-1.png",
     description:
       "Kiyotaka Ayanokōji é um estudante que esconde uma mente genial moldada pelo White Room.",
     details: {
@@ -4552,7 +4552,7 @@ const charactersData = [
     id: 183,
     name: "GILGAMESH",
     category: "Fate",
-    image: "img/Fate/gilgamesh-1.png",
+    image: "assets/images/Fate/gilgamesh-1.png",
     description:
       "O Rei dos Heróis, possuidor do tesouro supremo Gate of Babylon e da poderosa espada Ea.",
     details: {
@@ -4577,7 +4577,7 @@ const charactersData = [
     id: 184,
     name: "HIKIGAYA HACHIMAN",
     category: "OreGairu",
-    image: "img/OreGairu/Hikigaya-Hachiman-1.png",
+    image: "assets/images/OreGairu/Hikigaya-Hachiman-1.png",
     description:
       "Protagonista cínico e observador de My Teen Romantic Comedy SNAFU.",
     details: {
@@ -4602,7 +4602,7 @@ const charactersData = [
     id: 185,
     name: "RED",
     category: "Pokemon",
-    image: "img/Pokemon/Red.png",
+    image: "assets/images/Pokemon/Red.png",
     description:
       "O lendário treinador Pokémon de Kanto, primeiro campeão da Liga Pokémon.",
     details: {
@@ -4627,7 +4627,7 @@ const charactersData = [
     id: 186,
     name: "HOBBY",
     category: "Marvel-Comics",
-    image: "img/Marvel-Comics/hobby-1.png",
+    image: "assets/images/Marvel-Comics/hobby-1.png",
     description: "Versão punk do Homem-Aranha de uma realidade alternativa.",
     details: {
       universo: "Marvel Comics",
@@ -4651,7 +4651,7 @@ const charactersData = [
     id: 187,
     name: "GUNMAR",
     category: "Trollhunters",
-    image: "img/Trollhunters/Gunmar-1.png",
+    image: "assets/images/Trollhunters/Gunmar-1.png",
     description:
       "O temível Troll Negro, antigo líder dos Gumm-Gumms e principal antagonista.",
     details: {
@@ -4676,7 +4676,7 @@ const charactersData = [
     id: 188,
     name: "RYUEN KAKERU",
     category: "Classroom of the Elite",
-    image: "img/classroom-of-the-elite/ryuen-kakeru-1.png",
+    image: "assets/images/classroom-of-the-elite/ryuen-kakeru-1.png",
     description:
       "Líder agressivo e impiedoso da Classe C da Advanced Nurturing High School.",
     details: {
@@ -4701,7 +4701,7 @@ const charactersData = [
     id: 189,
     name: "KORRA",
     category: "Avatar",
-    image: "img/Avatar/korra-1.png",
+    image: "assets/images/Avatar/korra-1.png",
     description: "A Avatar sucessora de Aang, nascida na Tribo da Água do Sul.",
     details: {
       universo: "Avatar: The Legend of Korra",
@@ -4725,7 +4725,7 @@ const charactersData = [
     id: 190,
     name: "ARTORIA PENDRAGON",
     category: "Fate",
-    image: "img/Fate/Artoria-Pendragon-1.png",
+    image: "assets/images/Fate/Artoria-Pendragon-1.png",
     description:
       "Servant da classe Saber, a lendária Rei Artoria Pendragon do reino de Camelot.",
     details: {
@@ -4750,7 +4750,7 @@ const charactersData = [
     id: 191,
     name: "YUKINO YUKINOSHITA",
     category: "OreGairu",
-    image: "img/OreGairu/Yukino-Yukinoshita-1.png",
+    image: "assets/images/OreGairu/Yukino-Yukinoshita-1.png",
     description:
       "Estudante modelo da escola Sobu High, conhecida por sua inteligência excepcional.",
     details: {
@@ -4775,7 +4775,7 @@ const charactersData = [
     id: 192,
     name: "JIM LAKE JR.",
     category: "Trollhunters",
-    image: "img/Trollhunters/Jim-Lake Jr.-1.png",
+    image: "assets/images/Trollhunters/Jim-Lake Jr.-1.png",
     description:
       "O primeiro Trollhunter humano, escolhido pelo Amuleto de Daylight.",
     details: {
@@ -4800,7 +4800,7 @@ const charactersData = [
     id: 193,
     name: "CHARLOTTE LINLIN",
     category: "One-Piece",
-    image: "img/One-Piece/Charlotte-Linlin-1.png",
+    image: "assets/images/One-Piece/Charlotte-Linlin-1.png",
     description:
       "Uma das Yonko (Quatro Imperadores) do mar, conhecida como Big Mom.",
     details: {
@@ -4825,7 +4825,7 @@ const charactersData = [
     id: 194,
     name: "TOPH BEIFONG",
     category: "Avatar",
-    image: "img/Avatar/Toph-Beifong-1.png",
+    image: "assets/images/Avatar/Toph-Beifong-1.png",
     description:
       "A maior dobradora de terra da história, apesar de ser cega desde o nascimento.",
     details: {
@@ -4850,7 +4850,7 @@ const charactersData = [
     id: 195,
     name: "SAVITAR",
     category: "Flash",
-    image: "img/Flash/savitar-1.png",
+    image: "assets/images/Flash/savitar-1.png",
     description:
       "O autoproclamado 'Deus da Velocidade', uma versão futura e corrompida de Barry Allen.",
     details: {
@@ -4875,7 +4875,7 @@ const charactersData = [
     id: 196,
     name: "ROCK LEE",
     category: "Naruto",
-    image: "img/Naruto/rock-lee -1.png",
+    image: "assets/images/Naruto/rock-lee -1.png",
     description:
       "Ninja especializado exclusivamente em taijutsu, incapaz de usar ninjutsu ou genjutsu.",
     details: {
@@ -4900,7 +4900,7 @@ const charactersData = [
     id: 197,
     name: "MAJIN BOO",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/majin-boo-1.png",
+    image: "assets/images/Dragon-Ball/majin-boo-1.png",
     description: "Entidade mágica criada pelo mago Bibidi há milhões de anos.",
     details: {
       universo: "Dragon Ball",
@@ -4924,7 +4924,7 @@ const charactersData = [
     id: 198,
     name: "KAFKA HIBINO",
     category: "Kaiju-No-8",
-    image: "img/Kaiju/kafka-1.png",
+    image: "assets/images/Kaiju/kafka-1.png",
     description:
       "Homem de 32 anos que trabalha em limpeza de kaijus e sonha em se juntar à Força de Defesa.",
     details: {
@@ -4949,7 +4949,7 @@ const charactersData = [
     id: 199,
     name: "CYNTHIA",
     category: "Pokemon",
-    image: "img/Pokemon/cynthia-1.png",
+    image: "assets/images/Pokemon/cynthia-1.png",
     description:
       "A campeã da região de Sinnoh, conhecida como uma das treinadoras mais fortes do mundo Pokémon.",
     details: {
@@ -4974,7 +4974,7 @@ const charactersData = [
     id: 200,
     name: "OTSU",
     category: "Vagabond",
-    image: "img/Vagabond/otsu-1.png",
+    image: "assets/images/Vagabond/otsu-1.png",
     description:
       "Mulher forte e determinada que trabalha em uma estalagem, conhecida por sua conexão com Takezo/Musashi. Representa a vida pacífica que Musashi poderia ter tido.",
     details: {
@@ -4999,7 +4999,7 @@ const charactersData = [
     id: 201,
     name: "EMIYA",
     category: "Fate",
-    image: "img/Fate/Emiya-1.png",
+    image: "assets/images/Fate/Emiya-1.png",
     description:
       "Servant da classe Archer, verdadeira identidade de Shirou Emiya do futuro. Conhecido como o 'Guardian', utiliza a realidade mágica Unlimited Blade Works.",
     details: {
@@ -5024,7 +5024,7 @@ const charactersData = [
     id: 202,
     name: "ROCKS D. XEBEC",
     category: "One-Piece",
-    image: "img/One-Piece/Rocks-D-Xebec-3.png",
+    image: "assets/images/One-Piece/Rocks-D-Xebec-3.png",
     description:
       "Lendário capitão pirata da era anterior a Roger, líder dos Piratas Rocks. Tinha em sua tripulação futuros Yonko como Big Mom, Kaido e Barba Branca.",
     details: {
@@ -5049,7 +5049,7 @@ const charactersData = [
     id: 203,
     name: "NIGHT KING",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/Night-King-1.png",
+    image: "assets/images/Game-of-Thrones/Night-King-1.png",
     description:
       "Líder supremo dos Caminhantes Brancos, uma antiga raça de seres mágicos que ameaçam extinguir toda a vida em Westeros.",
     details: {
@@ -5075,7 +5075,7 @@ const charactersData = [
     id: 204,
     name: "BULAR",
     category: "Trollhunters",
-    image: "img/Trollhunters/burlar-1.png",
+    image: "assets/images/Trollhunters/burlar-1.png",
     description:
       "Troll Gumm-Gumm feroz e leal a Gunmar, determinado a libertar seu mestre do Submundo. Conhecido por sua força brutal.",
     details: {
@@ -5100,7 +5100,7 @@ const charactersData = [
     id: 205,
     name: "GIORNO GIOVANNA",
     category: "jojo",
-    image: "img/Jojo/Giorno-Giovanna-1.png",
+    image: "assets/images/Jojo/Giorno-Giovanna-1.png",
     description:
       "Protagonista da Parte 5: Vento Aureo, filho de Dio Brando. Líder da Passione que busca se tornar um 'Gang-Star'.",
     details: {
@@ -5125,7 +5125,7 @@ const charactersData = [
     id: 206,
     name: "KUSHINA UZUMAKI",
     category: "Naruto",
-    image: "img/Naruto/Kushina.png",
+    image: "assets/images/Naruto/Kushina.png",
     description:
       "Mãe de Naruto Uzumaki e ex-jinchūriki do Nove-Caudas. Membro do clã Uzumaki conhecida por suas habilidades de selamento.",
     details: {
@@ -5151,7 +5151,7 @@ const charactersData = [
     id: 207,
     name: "STEVE",
     category: "Pokemon",
-    image: "img/Pokemon/steve-1.png",
+    image: "assets/images/Pokemon/steve-1.png",
     description:
       "Treinador Pokémon determinado em sua jornada para se tornar um Mestre Pokémon.",
     details: {
@@ -5176,7 +5176,7 @@ const charactersData = [
     id: 208,
     name: "GHOST",
     category: "Marvel-Comics",
-    image: "img/Marvel-Comics/Ghost-1.png",
+    image: "assets/images/Marvel-Comics/Ghost-1.png",
     description:
       "Hacker e sabotador corporativo que usa um traje tecnológico que concede intangibilidade e invisibilidade.",
     details: {
@@ -5201,7 +5201,7 @@ const charactersData = [
     id: 209,
     name: "HOZOIN INSHUN",
     category: "Vagabond",
-    image: "img/Vagabond/hozoin-inshun-1.png",
+    image: "assets/images/Vagabond/hozoin-inshun-1.png",
     description:
       "Monge guerreiro do templo Hozoin e mestre da lança (sōjutsu). Um dos oponentes mais formidáveis enfrentados por Miyamoto Musashi.",
     details: {
@@ -5226,7 +5226,7 @@ const charactersData = [
     id: 210,
     name: "YUTA OKKOTSU",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Yuta-Okkotsu-1.png",
+    image: "assets/images/Jujutsu/Yuta-Okkotsu-1.png",
     description:
       "Feiticeiro de grau especial e protagonista de Jujutsu Kaisen 0. Portador da poderosa maldição Rika.",
     details: {
@@ -5251,7 +5251,7 @@ const charactersData = [
     id: 211,
     name: "AZULA",
     category: "Avatar",
-    image: "img/Avatar/Azula-1.png",
+    image: "assets/images/Avatar/Azula-1.png",
     description:
       "Princesa da Nação do Fogo, irmã mais nova de Zuko. Gênio tático e prodígio na dobra de fogo, criadora do raro fogo azul.",
     details: {
@@ -5276,7 +5276,7 @@ const charactersData = [
     id: 212,
     name: "MORDEKAISER",
     category: "League of Legend",
-    image: "img/lol/Mordekaiser-1.png",
+    image: "assets/images/lol/Mordekaiser-1.png",
     description:
       "O Revenã de Ferro, um antigo imperador que retornou dos mortos através de necromancia. Constrói um reino dos mortos.",
     details: {
@@ -5301,7 +5301,7 @@ const charactersData = [
     id: 213,
     name: "KURAPIKA",
     category: "HXH",
-    image: "img/hxh/Kurapika-1.png",
+    image: "assets/images/hxh/Kurapika-1.png",
     description:
       "Último sobrevivente do clã Kurta, caçador especializado em recuperar os olhos escarlates de seu povo.",
     details: {
@@ -5326,7 +5326,7 @@ const charactersData = [
     id: 214,
     name: "AAARRRGGHH!!!",
     category: "Trollhunters",
-    image: "img/Trollhunters/AAARRRGGHH-2.png",
+    image: "assets/images/Trollhunters/AAARRRGGHH-2.png",
     description:
       "Troll Krubera gentil e pacífico, melhor amigo de Blinky. Apesar de seu tamanho, prefere a paz e protege seus amigos.",
     details: {
@@ -5351,7 +5351,7 @@ const charactersData = [
     id: 215,
     name: "ROB LUCCI",
     category: "One-Piece",
-    image: "img/One-Piece/Rob.png",
+    image: "assets/images/One-Piece/Rob.png",
     description:
       "Agente do CP9 e posteriormente CP0, considerado o assassino mais letal do Governo Mundial.",
     details: {
@@ -5376,7 +5376,7 @@ const charactersData = [
     id: 216,
     name: "KIKORU SHINOMIYA",
     category: "Kaiju-No-8",
-    image: "img/Kaiju/Kikoru-Shinomiya-1.png",
+    image: "assets/images/Kaiju/Kikoru-Shinomiya-1.png",
     description:
       "Oficial prodígio da Força de Defesa contra Kaijus, filha do comandante Isao Shinomiya.",
     details: {
@@ -5401,7 +5401,7 @@ const charactersData = [
     id: 217,
     name: "LANCE",
     category: "Pokemon",
-    image: "img/Pokemon/lance-1.png",
+    image: "assets/images/Pokemon/lance-1.png",
     description:
       "Membro da Elite Four das regiões Kanto e Johto, posteriormente promovido a Champion. Especialista em Pokémon Dragão.",
     details: {
@@ -5426,7 +5426,7 @@ const charactersData = [
     id: 218,
     name: "GOWTHER ORIGINAL",
     category: "Nanatsu",
-    image: "img/Taizai/gowther-Original-1.png",
+    image: "assets/images/Taizai/gowther-Original-1.png",
     description:
       "O grande mago que criou o autômato Gowther, mestre supremo da magia mental e emocional.",
     details: {
@@ -5451,7 +5451,7 @@ const charactersData = [
     id: 219,
     name: "GAARA",
     category: "Naruto",
-    image: "img/Naruto/Gaara-1.png",
+    image: "assets/images/Naruto/Gaara-1.png",
     description:
       "Quinto Kazekage da Vila Oculta da Areia e ex-jinchūriki da Shukaku (Uma-Cauda).",
     details: {
@@ -5477,7 +5477,7 @@ const charactersData = [
     id: 220,
     name: "TAMSY",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Tamsy-2.png",
+    image: "assets/images/Gachiakuta/Tamsy-2.png",
     description:
       "Personagem do mundo distópico de Gachiakuta, envolvido no complexo sistema de castas e sobrevivência.",
     details: {
@@ -5502,7 +5502,7 @@ const charactersData = [
     id: 221,
     name: "ZUKO",
     category: "Avatar",
-    image: "img/Avatar/Zuko-1.png",
+    image: "assets/images/Avatar/Zuko-1.png",
     description:
       "Príncipe herdeiro da Nação do Fogo que passa por uma jornada de redenção. Conhecido por sua busca por honra.",
     details: {
@@ -5527,7 +5527,7 @@ const charactersData = [
     id: 222,
     name: "GIYU TOMIOKA",
     category: "Kimetsu no Yaiba",
-    image: "img/kimetsu/Giyu-Tomioka-1.png",
+    image: "assets/images/kimetsu/Giyu-Tomioka-1.png",
     description:
       "Pilar da Água da Corporação de Caçadores de Demônios, conhecido por sua personalidade reservada.",
     details: {
@@ -5552,7 +5552,7 @@ const charactersData = [
     id: 223,
     name: "KAIJU NO. 9",
     category: "Kaiju-No-8",
-    image: "img/Kaiju/Kaiju-No-9-1.png",
+    image: "assets/images/Kaiju/Kaiju-No-9-1.png",
     description:
       "Kaiju humanoide inteligente e principal antagonista, capaz de absorver habilidades e evoluir constantemente.",
     details: {
@@ -5577,7 +5577,7 @@ const charactersData = [
     id: 224,
     name: "ILLAOI",
     category: "League of Legend",
-    image: "img/lol/illaoi-1.png",
+    image: "assets/images/lol/illaoi-1.png",
     description:
       "Sacerdotisa do Grande Kraken de Bilgewater, que testa o espírito dos mortais.",
     details: {
@@ -5602,7 +5602,7 @@ const charactersData = [
     id: 225,
     name: "GRUNBELD",
     category: "Berserk",
-    image: "img/Berserk/grunbeld-1.png",
+    image: "assets/images/Berserk/grunbeld-1.png",
     description:
       "Um dos apóstolos mais poderosos, comandante da nova Tropa do Falcão. Transforma-se em um dragão de cristal.",
     details: {
@@ -5628,7 +5628,7 @@ const charactersData = [
     id: 226,
     name: "SILVA ZOLDYCK",
     category: "HXH",
-    image: "img/hxh/silva-zoldyck-1.png",
+    image: "assets/images/hxh/silva-zoldyck-1.png",
     description:
       "Chefe da Família Zoldyck, uma das famílias de assassinos mais temidas do mundo. Pai de Killua.",
     details: {
@@ -5653,7 +5653,7 @@ const charactersData = [
     id: 227,
     name: "EDDARD STARK",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/Ned-Stark-1.png",
+    image: "assets/images/Game-of-Thrones/Ned-Stark-1.png",
     description:
       "Senhor de Winterfell, Protetor do Norte, conhecido por seu forte senso de honra e justiça.",
     details: {
@@ -5678,7 +5678,7 @@ const charactersData = [
     id: 228,
     name: "KALGARA",
     category: "One-Piece",
-    image: "img/One-Piece/Kalgara-1.png",
+    image: "assets/images/One-Piece/Kalgara-1.png",
     description:
       "Lendário guerreiro chefe da tribo Shandia de Shandora, conhecido como 'Kalgara do Sul'.",
     details: {
@@ -5703,7 +5703,7 @@ const charactersData = [
     id: 229,
     name: "FUNNY VALENTINE",
     category: "jojo",
-    image: "img/Jojo/Funny-Valentine-1.png",
+    image: "assets/images/Jojo/Funny-Valentine-1.png",
     description:
       "23º Presidente dos EUA e antagonista principal de Steel Ball Run. Portador do Stand D4C.",
     details: {
@@ -5728,7 +5728,7 @@ const charactersData = [
     id: 230,
     name: "TORU RIKIISHI",
     category: "Ashita no Joe",
-    image: "img/Ashita-no-Joe/TORU-RIKIISHI-2.png",
+    image: "assets/images/Ashita-no-Joe/TORU-RIKIISHI-2.png",
     description:
       "Boxeador profissional e primeiro grande rival de Joe Yabuki. Conhecido por seu estilo técnico e rigoroso.",
     details: {
@@ -5753,7 +5753,7 @@ const charactersData = [
     id: 231,
     name: "KINJI HAKARI",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Kinji-Hakari-1.png",
+    image: "assets/images/Jujutsu/Kinji-Hakari-1.png",
     description:
       "Feiticeiro de grau especial. Conhecido por sua técnica amaldiçoada baseada em cassino que concede imortalidade temporária.",
     details: {
@@ -5778,7 +5778,7 @@ const charactersData = [
     id: 232,
     name: "IROH",
     category: "Avatar",
-    image: "img/Avatar/Iroh-1.png",
+    image: "assets/images/Avatar/Iroh-1.png",
     description:
       "Conhecido como 'O Dragão do Oeste', ex-general da Nação do Fogo e tio de Zuko.",
     details: {
@@ -5803,7 +5803,7 @@ const charactersData = [
     id: 233,
     name: "IRIS",
     category: "Pokemon",
-    image: "img/Pokemon/Iris-1.png",
+    image: "assets/images/Pokemon/Iris-1.png",
     description:
       "Campeã da região de Unova e especialista em Pokémon do tipo Dragão.",
     details: {
@@ -5828,7 +5828,7 @@ const charactersData = [
     id: 234,
     name: "SETT",
     category: "League of Legend",
-    image: "img/lol/Sett-2.png",
+    image: "assets/images/lol/Sett-2.png",
     description:
       "Conhecido como 'O Chefe', meio-vastaya meio-humano que domina a cena underground de lutas de Ionia.",
     details: {
@@ -5853,7 +5853,7 @@ const charactersData = [
     id: 235,
     name: "HASHIRAMA SENJU",
     category: "Naruto",
-    image: "img/Naruto/Hashirama-1.png",
+    image: "assets/images/Naruto/Hashirama-1.png",
     description:
       "Primeiro Hokage da Vila Oculta da Folha, co-fundador de Konoha. Conhecido como 'Deus Shinobi'.",
     details: {
@@ -5878,7 +5878,7 @@ const charactersData = [
     id: 236,
     name: "KEI KARUIZAWA",
     category: "Classroom of the Elite",
-    image: "img/classroom-of-the-elite/Kei-Karuizawa-1.png",
+    image: "assets/images/classroom-of-the-elite/Kei-Karuizawa-1.png",
     description:
       "Estudante popular da Classe D, conhecida por seu estilo fashion e influência social.",
     details: {
@@ -5903,7 +5903,7 @@ const charactersData = [
     id: 237,
     name: "SCHIERKE",
     category: "Berserk",
-    image: "img/Berserk/Schierke-1.png",
+    image: "assets/images/Berserk/Schierke-1.png",
     description:
       "Jovem feiticeira aprendiz da maga Flora, que se junta ao grupo de Guts.",
     details: {
@@ -5928,7 +5928,7 @@ const charactersData = [
     id: 238,
     name: "FISHER TIGER",
     category: "One-Piece",
-    image: "img/One-Piece/Fisher-Tiger-1.png",
+    image: "assets/images/One-Piece/Fisher-Tiger-1.png",
     description:
       "Lendário fish-man que conquistou a liberdade sozinho. Fundador dos Piratas do Sol.",
     details: {
@@ -5953,7 +5953,7 @@ const charactersData = [
     id: 239,
     name: "YONG-BI KIM",
     category: "Ashita no Joe",
-    image: "img/Ashita-no-Joe/Yong-Bi-Kim-1.png",
+    image: "assets/images/Ashita-no-Joe/Yong-Bi-Kim-1.png",
     description:
       "Boxeador profissional coreano que enfrenta Joe Yabuki em uma luta internacional.",
     details: {
@@ -5978,7 +5978,7 @@ const charactersData = [
     id: 240,
     name: "KITE",
     category: "HXH",
-    image: "img/hxh/kite-1.png",
+    image: "assets/images/hxh/kite-1.png",
     description:
       "Hunter profissional e ex-aluno de Ging Freecss, que se torna mentor de Gon.",
     details: {
@@ -6003,7 +6003,7 @@ const charactersData = [
     id: 241,
     name: "TYRION LANNISTER",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/Tyrion-Lannister-1.png",
+    image: "assets/images/Game-of-Thrones/Tyrion-Lannister-1.png",
     description:
       "Membro da Casa Lannister, conhecido por sua inteligência afiada e habilidade política excepcional.",
     details: {
@@ -6028,7 +6028,7 @@ const charactersData = [
     id: 242,
     name: "YUKI TSUKUMO",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Yuki-Tsukumo-1.png",
+    image: "assets/images/Jujutsu/Yuki-Tsukumo-1.png",
     description:
       "Uma das quatro feiticeiras de grau especial do mundo, ao lado de Satoru Gojo.",
     details: {
@@ -6053,7 +6053,7 @@ const charactersData = [
     id: 243,
     name: "ROKUSUKE KOENJI",
     category: "Classroom of the Elite",
-    image: "img/classroom-of-the-elite/Rokusuke-Koenji-1.png",
+    image: "assets/images/classroom-of-the-elite/Rokusuke-Koenji-1.png",
     description:
       "Estudante extremamente confiante e excêntrico da Classe D, com habilidades físicas excepcionais.",
     details: {
@@ -6078,7 +6078,7 @@ const charactersData = [
     id: 244,
     name: "MARK GRAYSON",
     category: "Invencível",
-    image: "img/Invencível/Mark-Grayson-1.png",
+    image: "assets/images/Invencível/Mark-Grayson-1.png",
     description:
       "Protagonista da série Invincible, filho de Omni-Man e herdeiro dos poderes Viltrumitas.",
     details: {
@@ -6103,7 +6103,7 @@ const charactersData = [
     id: 245,
     name: "OZAI",
     category: "Avatar",
-    image: "img/Avatar/Ozai.png",
+    image: "assets/images/Avatar/Ozai.png",
     description:
       "Senhor do Fogo da Nação do Fogo durante a Guerra dos Cem Anos e principal antagonista.",
     details: {
@@ -6128,7 +6128,7 @@ const charactersData = [
     id: 246,
     name: "YRUL",
     category: "Black Clover",
-    image: "img/Black Clover/yrul-1.png",
+    image: "assets/images/Black Clover/yrul-1.png",
     description:
       "Personagem do universo de Black Clover, envolvido nas batalhas mágicas do Reino do Trifolium.",
     details: {
@@ -6153,7 +6153,7 @@ const charactersData = [
     id: 247,
     name: "IRVINE",
     category: "Berserk",
-    image: "img/Berserk/Irvine-1.png",
+    image: "assets/images/Berserk/Irvine-1.png",
     description:
       "Apóstolo que serve a Griffith na nova Tropa do Falcão, conhecido como o 'Arqueiro Silencioso'.",
     details: {
@@ -6178,7 +6178,7 @@ const charactersData = [
     id: 248,
     name: "DIEGO BRANDO",
     category: "jojo",
-    image: "img/Jojo/Diego-Brando-1.png",
+    image: "assets/images/Jojo/Diego-Brando-1.png",
     description:
       "Cavaleiro britânico que participa da Steel Ball Run, versão alternativa de Dio Brando.",
     details: {
@@ -6203,7 +6203,7 @@ const charactersData = [
     id: 249,
     name: "HIROMI HIGURUMA",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Hiromi-Higuruma-1.png",
+    image: "assets/images/Jujutsu/Hiromi-Higuruma-1.png",
     description:
       "Ex-advogado que se tornou um usuário de maldição. Conhecido como 'Juiz Amaldiçoado'.",
     details: {
@@ -6228,7 +6228,7 @@ const charactersData = [
     id: 250,
     name: "HARIMAU",
     category: "Ashita no Joe",
-    image: "img/Ashita-no-Joe/Harimau-1.png",
+    image: "assets/images/Ashita-no-Joe/Harimau-1.png",
     description:
       "Boxeador indonésio que enfrenta Joe Yabuki em uma luta internacional.",
     details: {
@@ -6253,7 +6253,7 @@ const charactersData = [
     id: 251,
     name: "KING",
     category: "One-Piece",
-    image: "img/One-Piece/king-1.png",
+    image: "assets/images/One-Piece/king-1.png",
     description:
       "Calamidade mais forte dos Piratas das Feras e braço direito de Kaido. Último sobrevivente da raça Lunarian, possui habilidades únicas como geração de fogo, durabilidade extrema e capacidade de voo.",
     details: {
@@ -6279,7 +6279,7 @@ const charactersData = [
     id: 252,
     name: "POWER",
     category: "Chainsaw Man",
-    image: "img/Chainsaw-Man/Power-1.png",
+    image: "assets/images/Chainsaw-Man/Power-1.png",
     description:
       "Demônio do Sangue que faz contrato com Denji. Conhecida por sua personalidade egoísta e obsessão por gatos, capaz de manipular sangue para criar armas.",
     details: {
@@ -6305,7 +6305,7 @@ const charactersData = [
     id: 253,
     name: "JULIUS NOVACHRONO",
     category: "Black Clover",
-    image: "img/Black Clover/Julius-Novachrono-1.png",
+    image: "assets/images/Black Clover/Julius-Novachrono-1.png",
     description:
       "28º Mago Imperador do Reino do Trifolium, conhecido como o mago mais forte do reino. Usuário da rara magia do tempo.",
     details: {
@@ -6331,7 +6331,7 @@ const charactersData = [
     id: 254,
     name: "RICHTER BELMONT",
     category: "Castlevania",
-    image: "img/castlevania/Richter-Belmont-1.png",
+    image: "assets/images/castlevania/Richter-Belmont-1.png",
     description:
       "Descendente da família Belmont e um dos caçadores de vampiros mais famosos da linhagem. Protagonista de Rondo of Blood e Symphony of the Night.",
     details: {
@@ -6356,7 +6356,7 @@ const charactersData = [
     id: 255,
     name: "LEVI ACKERMAN",
     category: "Shingeki-no-Kyojin",
-    image: "img/Shingeki-no-Kyojin/Levi-Ackerman-1.png",
+    image: "assets/images/Shingeki-no-Kyojin/Levi-Ackerman-1.png",
     description:
       "Capitão do Esquadrão de Operações Especiais e considerado o soldado mais forte da humanidade. Membro da família Ackerman.",
     details: {
@@ -6382,7 +6382,7 @@ const charactersData = [
     id: 256,
     name: "KHAL DROGO",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/Khal-Drogo-1.png",
+    image: "assets/images/Game-of-Thrones/Khal-Drogo-1.png",
     description:
       "Khal dos Dothraki, considerado o guerreiro mais forte entre seu povo. Marido de Daenerys Targaryen.",
     details: {
@@ -6407,7 +6407,7 @@ const charactersData = [
     id: 257,
     name: "SUZUNE HORIKITA",
     category: "Classroom of the Elite",
-    image: "img/classroom-of-the-elite/Suzune-Horikita-1.png",
+    image: "assets/images/classroom-of-the-elite/Suzune-Horikita-1.png",
     description:
       "Estudante da Classe D conhecida por sua personalidade fria, independente e altas habilidades acadêmicas.",
     details: {
@@ -6432,7 +6432,7 @@ const charactersData = [
     id: 258,
     name: "AANG",
     category: "Avatar",
-    image: "img/Avatar/Aang-1.png",
+    image: "assets/images/Avatar/Aang-1.png",
     description:
       "O Avatar e último mestre do ar sobrevivente. Deve dominar os quatro elementos e restaurar o equilíbrio ao mundo.",
     details: {
@@ -6457,7 +6457,7 @@ const charactersData = [
     id: 259,
     name: "JOSUKE HIGASHIKATA (JOJOLION)",
     category: "jojo",
-    image: "img/Jojo/josuke-higashikata-part-8.png",
+    image: "assets/images/Jojo/josuke-higashikata-part-8.png",
     description:
       "Protagonista de JoJo's Bizarre Adventure Part 8: JoJolion. Um amnésico encontrado enterrado em Morioh.",
     details: {
@@ -6482,7 +6482,7 @@ const charactersData = [
     id: 260,
     name: "UVOGIN",
     category: "HXH",
-    image: "img/hxh/Uvogin-1.png",
+    image: "assets/images/hxh/Uvogin-1.png",
     description:
       "Membro número 11 da Tropa Fantasma e especialista em Nen de Reforço. Conhecido por sua força física monstruosa.",
     details: {
@@ -6507,7 +6507,7 @@ const charactersData = [
     id: 261,
     name: "SOSUKE AIZEN",
     category: "Bleach",
-    image: "img/Bleach/Sosuke-Aizen-1.png",
+    image: "assets/images/Bleach/Sosuke-Aizen-1.png",
     description:
       "Antagonista principal de Bleach, ex-capitão da 5ª Divisão. Usuário da Zanpakutō Kyōka Suigetsu com habilidade de ilusão perfeita.",
     details: {
@@ -6533,7 +6533,7 @@ const charactersData = [
     id: 262,
     name: "JOSE MENDOZA",
     category: "Ashita no Joe",
-    image: "img/Ashita-no-Joe/Jose-Mendosa-1.png",
+    image: "assets/images/Ashita-no-Joe/Jose-Mendosa-1.png",
     description:
       "Campeão mundial de boxe dos pesos-médios e oponente final de Joe Yabuki. Conhecido como 'O Imperador'.",
     details: {
@@ -6558,7 +6558,7 @@ const charactersData = [
     id: 263,
     name: "SWAIN",
     category: "League of Legend",
-    image: "img/lol/Swain-1.png",
+    image: "assets/images/lol/Swain-1.png",
     description:
       "Grande General de Noxus e líder do Trifarix. Após derrotar o demônio Raum, ganhou poderes demoníacos.",
     details: {
@@ -6584,7 +6584,7 @@ const charactersData = [
     id: 264,
     name: "VOID",
     category: "Berserk",
-    image: "img/Berserk/Void-1.png",
+    image: "assets/images/Berserk/Void-1.png",
     description:
       "Membro mais antigo e líder intelectual da Mão de Deus, conhecido como 'O Sábio'. Responsável por criar os apóstolos.",
     details: {
@@ -6610,7 +6610,7 @@ const charactersData = [
     id: 265,
     name: "MAHITO",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Mahito-1.png",
+    image: "assets/images/Jujutsu/Mahito-1.png",
     description:
       "Maldição da Forma Humana nascida do ódio humano. Capaz de manipular a forma das almas, moldando corpos e transformando humanos.",
     details: {
@@ -6636,7 +6636,7 @@ const charactersData = [
     id: 266,
     name: "BOA HANCOCK",
     category: "One-Piece",
-    image: "img/One-Piece/Boa-Hancock-1.png",
+    image: "assets/images/One-Piece/Boa-Hancock-1.png",
     description:
       "Imperatriz das Amazonas Kuja, ex-Shichibukai e conhecida como a 'Mulher Mais Bela do Mundo'. Usuária da Mero Mero no Mi.",
     details: {
@@ -6662,7 +6662,7 @@ const charactersData = [
     id: 267,
     name: "HIMENO",
     category: "Chainsaw Man",
-    image: "img/Chainsaw-Man/Himeno-1.png",
+    image: "assets/images/Chainsaw-Man/Himeno-1.png",
     description:
       "Caçadora de demônios da Divisão de Demônios Especiais e parceira de Aki Hayakawa. Possui contrato com o Demônio do Fantasma.",
     details: {
@@ -6688,7 +6688,7 @@ const charactersData = [
     id: 268,
     name: "JESTER GARANDROS",
     category: "Black Clover",
-    image: "img/Black Clover/Jester-Garandros-1.png",
+    image: "assets/images/Black Clover/Jester-Garandros-1.png",
     description:
       "Mago do Reino do Trifolium com habilidades mágicas únicas no universo de Black Clover.",
     details: {
@@ -6713,7 +6713,7 @@ const charactersData = [
     id: 269,
     name: "BANG",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Bang-1.png",
+    image: "assets/images/One-Punch-Man/Bang-1.png",
     description:
       "Herói profissional Classe S Rank 3, conhecido como 'Silver Fang'. Mestre das artes marciais e fundador do dojo Bang.",
     details: {
@@ -6739,7 +6739,7 @@ const charactersData = [
     id: 270,
     name: "JAIME LANNISTER",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/Jaime-Lannister-1.png",
+    image: "assets/images/Game-of-Thrones/Jaime-Lannister-1.png",
     description:
       "Membro da Casa Lannister, conhecido como 'O Matador de Reis'. Considerado um dos melhores espadachins de Westeros.",
     details: {
@@ -6764,7 +6764,7 @@ const charactersData = [
     id: 271,
     name: "M. BISON",
     category: "Street-Fighter",
-    image: "img/Street-Fighter/M-Bison-1.png",
+    image: "assets/images/Street-Fighter/M-Bison-1.png",
     description:
       "Ditador e líder da organização criminosa Shadaloo, principal antagonista da série Street Fighter. Utiliza o Psycho Power.",
     details: {
@@ -6789,7 +6789,7 @@ const charactersData = [
     id: 272,
     name: "MIKASA ACKERMAN",
     category: "Shingeki-no-Kyojin",
-    image: "img/Shingeki-no-Kyojin/Mikasa-Ackerman-1.png",
+    image: "assets/images/Shingeki-no-Kyojin/Mikasa-Ackerman-1.png",
     description:
       "Membro do Esquadrão de Operações Especiais e considerada a soldada mais forte após Levi. Última descendente do clã Ackerman asiático.",
     details: {
@@ -6815,7 +6815,7 @@ const charactersData = [
     id: 273,
     name: "CASCA",
     category: "Berserk",
-    image: "img/Berserk/Casca-1.png",
+    image: "assets/images/Berserk/Casca-1.png",
     description:
       "Única mulher no Bando do Falcão original e uma das melhores espadachins do grupo. Noiva de Guts e segunda em comando após Griffith.",
     details: {
@@ -6840,7 +6840,7 @@ const charactersData = [
     id: 274,
     name: "KANICHI NISHI",
     category: "Ashita no Joe",
-    image: "img/Ashita-no-Joe/Kanichi-Nishi-1.png",
+    image: "assets/images/Ashita-no-Joe/Kanichi-Nishi-1.png",
     description:
       "Boxeador que faz parte do universo de Ashita no Joe, participando das competições e desafios do mundo do boxe.",
     details: {
@@ -6865,7 +6865,7 @@ const charactersData = [
     id: 275,
     name: "TREVOR BELMONT",
     category: "Castlevania",
-    image: "img/castlevania/Trevor-Belmont-1.png",
+    image: "assets/images/castlevania/Trevor-Belmont-1.png",
     description:
       "Caçador de vampiros da família Belmont que vive durante o século 15, protagonista de Dracula's Curse.",
     details: {
@@ -6891,7 +6891,7 @@ const charactersData = [
     id: 276,
     name: "GERARD VALKYRIE",
     category: "Bleach",
-    image: "img/Bleach/Gerard-Valkyrie-1.png",
+    image: "assets/images/Bleach/Gerard-Valkyrie-1.png",
     description:
       "Sternritter 'M' (The Miracle) do exército de Yhwach, conhecido como o 'Cavaleiro Milagroso'. Transforma fé e esperança em poder.",
     details: {
@@ -6917,7 +6917,7 @@ const charactersData = [
     id: 277,
     name: "KILLUA ZOLDYCK",
     category: "HXH",
-    image: "img/hxh/Killua-Zoldyck-1.png",
+    image: "assets/images/hxh/Killua-Zoldyck-1.png",
     description:
       "Herdeiro da família de assassinos Zoldyck e melhor amigo de Gon Freecss. Especialista em Nen com eletricidade.",
     details: {
@@ -6943,7 +6943,7 @@ const charactersData = [
     id: 278,
     name: "RYU ISHIGORI",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Ryu-Ishigori-1.png",
+    image: "assets/images/Jujutsu/Ryu-Ishigori-1.png",
     description:
       "Feiticeiro jujutsu da Era de Ouro reencarnado. Conhecido por possuir quantidade colossal de energia amaldiçoada.",
     details: {
@@ -6969,7 +6969,7 @@ const charactersData = [
     id: 279,
     name: "KATANA MAN",
     category: "Chainsaw Man",
-    image: "img/Chainsaw-Man/Katana-Man-1.png",
+    image: "assets/images/Chainsaw-Man/Katana-Man-1.png",
     description:
       "Demônio-humano que pode transformar partes de seu corpo em katanas afiadas. Neto do Demônio da Katana.",
     details: {
@@ -6995,7 +6995,7 @@ const charactersData = [
     id: 280,
     name: "VOLIBEAR",
     category: "League of Legend",
-    image: "img/lol/Volibear-1.png",
+    image: "assets/images/lol/Volibear-1.png",
     description:
       "O Trovão Implacável, um antigo demiurgo Freljordiano e deus da guerra, tempestade e trovão. Irmão de Ornn.",
     details: {
@@ -7021,7 +7021,7 @@ const charactersData = [
     id: 281,
     name: "HARALD",
     category: "One-Piece",
-    image: "img/One-Piece/Harald-3.png",
+    image: "assets/images/One-Piece/Harald-3.png",
     description:
       "Personagem do universo de One Piece, envolvido nas aventuras e conflitos do mundo dos piratas.",
     details: {
@@ -7046,7 +7046,7 @@ const charactersData = [
     id: 282,
     name: "OROCHI",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Orochi-1.png",
+    image: "assets/images/One-Punch-Man/Orochi-1.png",
     description:
       "Monstro Deus e líder da Associação de Monstros. Capaz de absorver outros monstros e adaptar suas habilidades.",
     details: {
@@ -7071,7 +7071,7 @@ const charactersData = [
     id: 283,
     name: "SOUTH TERANO",
     category: "tokyo",
-    image: "img/tokyo-revengers/South-Terano-1.png",
+    image: "assets/images/tokyo-revengers/South-Terano-1.png",
     description:
       "Líder da gangue Rokuhara Tandai e um dos antagonistas mais fortes de Tokyo Revengers.",
     details: {
@@ -7096,7 +7096,7 @@ const charactersData = [
     id: 284,
     name: "ZENO ZOLDYCK",
     category: "HXH",
-    image: "img/hxh/Zeno-Zoldyck-1.png",
+    image: "assets/images/hxh/Zeno-Zoldyck-1.png",
     description:
       "Patriarca da família Zoldyck e avô de Killua. Considerado um dos assassinos mais experientes e perigosos.",
     details: {
@@ -7122,7 +7122,7 @@ const charactersData = [
     id: 285,
     name: "AEGON TARGARYEN",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/Aegon-Targaryen-1.png",
+    image: "assets/images/Game-of-Thrones/Aegon-Targaryen-1.png",
     description:
       "Conhecido como Aegon, o Conquistador, fundador da Dinastia Targaryen e primeiro Rei dos Sete Reinos.",
     details: {
@@ -7147,7 +7147,7 @@ const charactersData = [
     id: 286,
     name: "MINA LOVEBERRY",
     category: "Star-vs.",
-    image: "img/star-vs/Mina-Loveberry-1.png",
+    image: "assets/images/star-vs/Mina-Loveberry-1.png",
     description:
       "Guerreira de Mewni e líder das Guerreras do Arco-Íris. Extremamente poderosa e leal à causa de exterminar monstros.",
     details: {
@@ -7172,7 +7172,7 @@ const charactersData = [
     id: 287,
     name: "SISTER FRIEDE",
     category: "souls",
-    image: "img/souls/Sister-Friede-1.png",
+    image: "assets/images/souls/Sister-Friede-1.png",
     description:
       "Chefe do DLC Ashes of Ariandel em Dark Souls III. Uma das Filhas das Cinzas que rejeitou ligar a Primeira Chama.",
     details: {
@@ -7198,7 +7198,7 @@ const charactersData = [
     id: 288,
     name: "CARLOS RIVERA",
     category: "Ashita no Joe",
-    image: "img/Ashita-no-Joe/Carlos-Rivera-2.png",
+    image: "assets/images/Ashita-no-Joe/Carlos-Rivera-2.png",
     description:
       "Boxeador profissional internacional que faz parte do universo competitivo de Ashita no Joe.",
     details: {
@@ -7223,7 +7223,7 @@ const charactersData = [
     id: 289,
     name: "GOD SERENA",
     category: "Fairy Tail",
-    image: "img/Fairy-Taill/God-Serena-1.png",
+    image: "assets/images/Fairy-Taill/God-Serena-1.png",
     description:
       "Ex-mago dos Dez Santos Sagrados e membro dos Spriggan 12. Conhecido como o 'Mago mais forte de Ishgar'.",
     details: {
@@ -7248,7 +7248,7 @@ const charactersData = [
     id: 290,
     name: "STRIGA",
     category: "Castlevania",
-    image: "img/castlevania/striga-1.png",
+    image: "assets/images/castlevania/striga-1.png",
     description:
       "Vampira poderosa da série Castlevania da Netflix, irmã de Morana e membro do conselho de vampiros.",
     details: {
@@ -7274,7 +7274,7 @@ const charactersData = [
     id: 291,
     name: "LUCIFERO",
     category: "Black Clover",
-    image: "img/Black Clover/Lucifero-1.png",
+    image: "assets/images/Black Clover/Lucifero-1.png",
     description:
       "Rei Demônio do mundo dos demônios e um dos seres mais poderosos do universo de Black Clover.",
     details: {
@@ -7300,7 +7300,7 @@ const charactersData = [
     id: 292,
     name: "SMOLDER",
     category: "League of Legend",
-    image: "img/lol/Smolder-1.png",
+    image: "assets/images/lol/Smolder-1.png",
     description:
       "Filhote de dragão ambicioso e filho de uma poderosa mãe dragão em Camavor.",
     details: {
@@ -7325,7 +7325,7 @@ const charactersData = [
     id: 293,
     name: "YORU",
     category: "Chainsaw Man",
-    image: "img/Chainsaw-Man/Yoru-1.png",
+    image: "assets/images/Chainsaw-Man/Yoru-1.png",
     description:
       "Demônio da Guerra que toma posse do corpo de Asa Mitaka. Busca recuperar seu poder completo roubado pelo Chainsaw Man.",
     details: {
@@ -7350,7 +7350,7 @@ const charactersData = [
     id: 294,
     name: "KUSANAGI",
     category: "The King of Fighters",
-    image: "img/The-King-of-Fighters/Kusanagi-1.png",
+    image: "assets/images/The-King-of-Fighters/Kusanagi-1.png",
     description:
       "Versão alternativa/corrompida de Kyo Kusanagi com poderes do Orochi e chamas vermelhas.",
     details: {
@@ -7375,7 +7375,7 @@ const charactersData = [
     id: 295,
     name: "HUGH",
     category: "Pokemon",
-    image: "img/Pokemon/Hugh-1.png",
+    image: "assets/images/Pokemon/Hugh-1.png",
     description:
       "Rival principal em Pokémon Black 2 e White 2, amigo de infância do protagonista.",
     details: {
@@ -7400,7 +7400,7 @@ const charactersData = [
     id: 296,
     name: "EMPORIO ALNINO",
     category: "jojo",
-    image: "img/Jojo/Emporio-Alnino-1.png",
+    image: "assets/images/Jojo/Emporio-Alnino-1.png",
     description:
       "Criança que vive na Prisão Green Dolphin Street e sobrevivente de Stone Ocean. Usuário do Stand Burning Down the House.",
     details: {
@@ -7425,7 +7425,7 @@ const charactersData = [
     id: 297,
     name: "BUNDUS",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Bundus-1.png",
+    image: "assets/images/Gachiakuta/Bundus-1.png",
     description:
       "Personagem do mundo distópico de Gachiakuta, envolvido no complexo sistema de sobrevivência.",
     details: {
@@ -7450,7 +7450,7 @@ const charactersData = [
     id: 298,
     name: "SCOPPER GABAN",
     category: "One-Piece",
-    image: "img/One-Piece/Scopper-Gaban-1.png",
+    image: "assets/images/One-Piece/Scopper-Gaban-1.png",
     description:
       "Terceiro imediato dos Piratas do Roger, conhecido como 'Gaban, o Demolidor'.",
     details: {
@@ -7475,7 +7475,7 @@ const charactersData = [
     id: 299,
     name: "TITAN COLOSSAL",
     category: "Shingeki-no-Kyojin",
-    image: "img/Shingeki-no-Kyojin/Titan-Colossal-1.png",
+    image: "assets/images/Shingeki-no-Kyojin/Titan-Colossal-1.png",
     description:
       "Um dos Nove Titãs, conhecido por seu tamanho massivo (60 metros) e liberação de vapor superaquecido.",
     details: {
@@ -7501,7 +7501,7 @@ const charactersData = [
     id: 300,
     name: "SUPERALLOY DARKSHINE",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Superalloy-Darkshine-1.png",
+    image: "assets/images/One-Punch-Man/Superalloy-Darkshine-1.png",
     description:
       "Herói profissional Classe S Rank 11, conhecido por seu corpo musculoso brilhante e resistência extrema.",
     details: {
@@ -7527,7 +7527,7 @@ const charactersData = [
     id: 301,
     name: "GUARDIAN APE",
     category: "souls",
-    image: "img/souls/guardian-ape-sekiro-1.png",
+    image: "assets/images/souls/guardian-ape-sekiro-1.png",
     description:
       "Chefe icônico de Sekiro: Shadows Die Twice, um macaco colossal e imortal que guarda a Flor Persimmon no Vale da Fonte.",
     details: {
@@ -7552,7 +7552,7 @@ const charactersData = [
     id: 302,
     name: "DANTE ZOGRATIS",
     category: "Black Clover",
-    image: "img/Black Clover/Dante-Zogratis-1.png",
+    image: "assets/images/Black Clover/Dante-Zogratis-1.png",
     description:
       "Membro mais velho da Tríade Negra, possui 100% de afinidade com um demônio que lhe concede manipulação de gravidade.",
     details: {
@@ -7577,7 +7577,7 @@ const charactersData = [
     id: 303,
     name: "GEKI",
     category: "Street-Fighter",
-    image: "img/Street-Fighter/Geki-1.png",
+    image: "assets/images/Street-Fighter/Geki-1.png",
     description:
       "Ninja mestre de Street Fighter que usa shurikens e técnicas de furtividade, originalmente concebido para o primeiro jogo.",
     details: {
@@ -7602,7 +7602,7 @@ const charactersData = [
     id: 304,
     name: "HEKAPOO",
     category: "Star-vs.",
-    image: "img/star-vs/Hekapoo-1.png",
+    image: "assets/images/star-vs/Hekapoo-1.png",
     description:
       "Membro da Comissão Mágica, especialista em portais e dimensional travel, criadora das tesouras dimensionais.",
     details: {
@@ -7627,7 +7627,7 @@ const charactersData = [
     id: 305,
     name: "MACHI KOMACINE",
     category: "HXH",
-    image: "img/hxh/Machi-Komacine.png",
+    image: "assets/images/hxh/Machi-Komacine.png",
     description:
       "Membro número 3 da Tropa Fantasma, especialista em Nen de Transmutação que cria fios extremamente resistentes.",
     details: {
@@ -7653,7 +7653,7 @@ const charactersData = [
     id: 306,
     name: "SENJU KAWARAGI",
     category: "tokyo",
-    image: "img/tokyo-revengers/Senju-Kawaragi-1.png",
+    image: "assets/images/tokyo-revengers/Senju-Kawaragi-1.png",
     description:
       "Líder da gangue Brahman e única líder feminina entre as grandes gangues de Tokyo Revengers.",
     details: {
@@ -7678,7 +7678,7 @@ const charactersData = [
     id: 307,
     name: "SHIZUKU MURASAKI",
     category: "HXH",
-    image: "img/hxh/Shizuku-Murasaki-1.png",
+    image: "assets/images/hxh/Shizuku-Murasaki-1.png",
     description:
       "Membro número 12 da Tropa Fantasma, especialista em Nen de Conjuração com o aspirador demoníaco 'Blinky'.",
     details: {
@@ -7703,7 +7703,7 @@ const charactersData = [
     id: 308,
     name: "IORI YAGAMI",
     category: "The King of Fighters",
-    image: "img/The-King-of-Fighters/Iori-Yagami-1.png",
+    image: "assets/images/The-King-of-Fighters/Iori-Yagami-1.png",
     description:
       "Membro do clã Yagami e rival de Kyo Kusanagi, portador das Chamas Roxas e sangue do Orochi.",
     details: {
@@ -7728,7 +7728,7 @@ const charactersData = [
     id: 309,
     name: "SYPHA BELNADES",
     category: "Castlevania",
-    image: "img/castlevania/Sypha-Belnades-1.png",
+    image: "assets/images/castlevania/Sypha-Belnades-1.png",
     description:
       "Maga da família Belnades, especialista em magia elemental e caçadora de vampiros, companheira de Trevor Belmont.",
     details: {
@@ -7753,7 +7753,7 @@ const charactersData = [
     id: 310,
     name: "RIN TOHSAKA",
     category: "Fate",
-    image: "img/Fate/Rin-Tohsaka-1.png",
+    image: "assets/images/Fate/Rin-Tohsaka-1.png",
     description:
       "Mestra de magia e herdeira da família Tohsaka, especialista em magia de pedras preciosas, participante da Guerra do Santo Graal.",
     details: {
@@ -7778,7 +7778,7 @@ const charactersData = [
     id: 311,
     name: "BRUNO BUCCIARATI",
     category: "jojo",
-    image: "img/Jojo/Bruno-Bucciarati-1.png",
+    image: "assets/images/Jojo/Bruno-Bucciarati-1.png",
     description:
       "Líder de um time da Passione, usuário do Stand Sticky Fingers que cria zíperes em qualquer superfície.",
     details: {
@@ -7803,7 +7803,7 @@ const charactersData = [
     id: 312,
     name: "ANGEL DEVIL",
     category: "Chainsaw Man",
-    image: "img/Chainsaw-Man/Angel-Devil-1.png",
+    image: "assets/images/Chainsaw-Man/Angel-Devil-1.png",
     description:
       "Demônio que trabalha como caçador de demônios, pode drenar a vida útil das pessoas e criar armas angelicais.",
     details: {
@@ -7828,7 +7828,7 @@ const charactersData = [
     id: 313,
     name: "DRACULE MIHAWK",
     category: "One-Piece",
-    image: "img/One-Piece/Mihawk-1.png",
+    image: "assets/images/One-Piece/Mihawk-1.png",
     description:
       "'Hawk Eyes', o maior espadachim do mundo e ex-Shichibukai, portador da espada negra Yoru.",
     details: {
@@ -7853,7 +7853,7 @@ const charactersData = [
     id: 314,
     name: "ALAIN",
     category: "Pokemon",
-    image: "img/Pokemon/Alain-1.png",
+    image: "assets/images/Pokemon/Alain-1.png",
     description:
       "Pesquisador de Mega Evolução e rival de Ash Ketchum, treinador de um poderoso Charizard com Mega Evolução.",
     details: {
@@ -7878,7 +7878,7 @@ const charactersData = [
     id: 315,
     name: "ANAN KUROSE",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Anan-Kurose-1.png",
+    image: "assets/images/Boku-no-Hero/Anan-Kurose-1.png",
     description:
       "Heroína profissional 'Ms. Joke', professora da Ketsubutsu Academy, possui a Quirk 'Outburst' de riso incontrolável.",
     details: {
@@ -7903,7 +7903,7 @@ const charactersData = [
     id: 316,
     name: "KING BRADLEY",
     category: "Fullmetal",
-    image: "img/Fullmetal-Alchemist/King-Bradley-1.png",
+    image: "assets/images/Fullmetal-Alchemist/King-Bradley-1.png",
     description:
       "'Wrath', Homúnculo e Führer presidente de Amestris, portador do Olho Último e espadachim mais forte.",
     details: {
@@ -7928,7 +7928,7 @@ const charactersData = [
     id: 317,
     name: "RIYO",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Riyo-1.png",
+    image: "assets/images/Gachiakuta/Riyo-1.png",
     description:
       "Personagem do mundo distópico de Gachiakuta, com habilidades adaptadas às condições extremas do ambiente hostil.",
     details: {
@@ -7953,7 +7953,7 @@ const charactersData = [
     id: 318,
     name: "KATARA",
     category: "Avatar",
-    image: "img/Avatar/Katara-1.png",
+    image: "assets/images/Avatar/Katara-1.png",
     description:
       "Última dobradora de água da Tribo da Água do Sul, aprende a dominar dobra de água, cura e dobra de sangue.",
     details: {
@@ -7978,7 +7978,7 @@ const charactersData = [
     id: 319,
     name: "BLUE MARY",
     category: "The King of Fighters",
-    image: "img/The-King-of-Fighters/Blue-Mary-1.png",
+    image: "assets/images/The-King-of-Fighters/Blue-Mary-1.png",
     description:
       "Agente especial e lutadora de KOF, especialista em artes marciais mistas, grappling e jiu-jitsu.",
     details: {
@@ -8003,7 +8003,7 @@ const charactersData = [
     id: 320,
     name: "TOM LUCITOR",
     category: "Star-vs.",
-    image: "img/star-vs/Tom-Lucitor-1.png",
+    image: "assets/images/star-vs/Tom-Lucitor-1.png",
     description:
       "Príncipe do Submundo e ex-namorado de Star Butterfly, conhecido por seu temperamento quente e coração nobre.",
     details: {
@@ -8028,7 +8028,7 @@ const charactersData = [
     id: 321,
     name: "MELINA",
     category: "souls",
-    image: "img/souls/Melina-1.png",
+    image: "assets/images/souls/Melina-1.png",
     description:
       "Figura misteriosa que auxilia o Tarnished em sua jornada através das Terras Intermédias. Oferece-se para ser a 'dedo' do jogador, permitindo nivelamento e conversão de Runes. Possui conexão com a Árvore-sede e conhecimento profundo sobre o mundo.",
     details: {
@@ -8052,7 +8052,7 @@ const charactersData = [
     id: 322,
     name: "PSYKOS",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Psykos-2.png",
+    image: "assets/images/One-Punch-Man/Psykos-2.png",
     description:
       "Ex-líder da Associação de Heróis que se tornou a líder da Associação de Monstros. Psíquica poderosa com habilidades telepáticas e telecinéticas extremas. Fundiu-se com Orochi para se tornar Psykos-Orochi, buscando criar um mundo onde os fortes governam os fracos.",
     details: {
@@ -8076,7 +8076,7 @@ const charactersData = [
     id: 323,
     name: "AOKIJI",
     category: "One-Piece",
-    image: "img/One-Piece/Aokiji-1.png",
+    image: "assets/images/One-Piece/Aokiji-1.png",
     description:
       "Ex-Almirante da Marinha conhecido como 'Aokiji', usuário da Hie Hie no Mi que lhe concede controle absoluto sobre gelo. Após perder para Akainu, deixou a Marinha e atualmente trabalha como mercenário aliado dos Piratas do Barba Negra.",
     details: {
@@ -8100,7 +8100,7 @@ const charactersData = [
     id: 324,
     name: "TORU",
     category: "jojo",
-    image: "img/Jojo/Toru-1.png",
+    image: "assets/images/Jojo/Toru-1.png",
     description:
       "Antagonista principal de JoJo's Bizarre Adventure Part 8: JoJolion, conhecido como 'Wonder of U'. Usuário do Stand mais perigoso que ativa calamidades sobre qualquer um que o persiga ou tenha intenções hostis.",
     details: {
@@ -8123,7 +8123,7 @@ const charactersData = [
     id: 325,
     name: "CONQUEST",
     category: "Invencível",
-    image: "img/Invencível/conquest-2.png",
+    image: "assets/images/Invencível/conquest-2.png",
     description:
       "Um dos Viltrumitas mais poderosos e brutais, conhecido por sua filosofia de conquista implacável e força sobre-humana. Representa o aspecto mais agressivo e expansionista da cultura Viltrumita.",
     details: {
@@ -8147,7 +8147,7 @@ const charactersData = [
     id: 326,
     name: "JOGO",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Jogo-1.png",
+    image: "assets/images/Jujutsu/Jogo-1.png",
     description:
       "Maldição especial de grau especial nascida do medo humano de desastres naturais, especificamente vulcões e terremotos. Um dos desastres amaldiçoados que serve a Geto/Pseudo-Geto.",
     details: {
@@ -8171,7 +8171,7 @@ const charactersData = [
     id: 327,
     name: "BRIENNE OF TARTH",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/Brienne-of-Tarth-1.png",
+    image: "assets/images/Game-of-Thrones/Brienne-of-Tarth-1.png",
     description:
       "Cavaleira de Tarth, conhecida como 'Brienne, a Bela'. Uma das melhores espadachinas de Westeros, jura lealdade à Catelyn Stark e posteriormente a Sansa Stark. Conhecida por seu senso de honra inabalável.",
     details: {
@@ -8195,7 +8195,7 @@ const charactersData = [
     id: 328,
     name: "ALLUKA ZOLDYCK",
     category: "HXH",
-    image: "img/hxh/Alluka-Zoldyck-1.png",
+    image: "assets/images/hxh/Alluka-Zoldyck-1.png",
     description:
       "Irmã mais nova de Killua Zoldyck e membro da família Zoldyck. Portadora da entidade misteriosa Nanika que concede desejos a um custo terrível. Considerada a mais perigosa dos Zoldyck.",
     details: {
@@ -8219,7 +8219,7 @@ const charactersData = [
     id: 329,
     name: "KEN MASTERS",
     category: "Street-Fighter",
-    image: "img/Street-Fighter/Ken-Masters-1.png",
+    image: "assets/images/Street-Fighter/Ken-Masters-1.png",
     description:
       "Rival e melhor amigo de Ryu, mestre do estilo Ansatsuken. Diferente de Ryu, Ken incorporou técnicas americanas e um estilo mais agressivo. Herdeiro da corporação Masters.",
     details: {
@@ -8244,7 +8244,7 @@ const charactersData = [
     id: 330,
     name: "KING",
     category: "Nanatsu",
-    image: "img/Taizai/King-2.png",
+    image: "assets/images/Taizai/King-2.png",
     description:
       "Rei das Fadas e membro dos Sete Pecados Capitais, representando o Pecado da Preguiça. Portador da lança sagrada Chastiefol que pode assumir diversas formas. Protetor da Floresta das Fadas e um dos seres mais antigos de Britannia.",
     details: {
@@ -8269,7 +8269,7 @@ const charactersData = [
     id: 331,
     name: "IRELIA",
     category: "League of Legend",
-    image: "img/lol/Irelia-1.png",
+    image: "assets/images/lol/Irelia-1.png",
     description:
       "A Dançarina das Lâminas de Ionia, mestra das lâminas flutuantes e defensora fervorosa de sua terra natal. Após a invasão noxiana, liderou a resistência ioniana utilizando suas lâminas familiares que controla telecineticamente.",
     details: {
@@ -8294,7 +8294,7 @@ const charactersData = [
     id: 332,
     name: "ICHIBE HYOSUBE",
     category: "Bleach",
-    image: "img/Bleach/Ichibe-Hyosube-1.png",
+    image: "assets/images/Bleach/Ichibe-Hyosube-1.png",
     description:
       "Líder dos Membros Reais (Zero Division) e o Shinigami mais antigo em existência. Conhecido como 'Monk que Chama o Verdadeiro Nome', possui autoridade sobre todos os nomes no mundo espiritual. Foi ele quem nomeou todas as coisas em Soul Society.",
     details: {
@@ -8319,7 +8319,7 @@ const charactersData = [
     id: 333,
     name: "KING BUMI",
     category: "Avatar",
-    image: "img/Avatar/king-bumi-1.png",
+    image: "assets/images/Avatar/king-bumi-1.png",
     description:
       "Rei excêntrico e louco de Omashu, um dos dobradores de terra mais poderosos do mundo e amigo de infância do Avatar Aang. Apesar de sua aparência e comportamento excêntricos, é um estrategista brilhante e mestre da Dobra de Terra com mais de 100 anos de experiência.",
     details: {
@@ -8344,7 +8344,7 @@ const charactersData = [
     id: 334,
     name: "ARISU SAKAYANAGI",
     category: "Classroom of the Elite",
-    image: "img/classroom-of-the-elite/Arisu-Sakayanagi-1.png",
+    image: "assets/images/classroom-of-the-elite/Arisu-Sakayanagi-1.png",
     description:
       "Líder da Classe A do 1º ano da Advanced Nurturing High School e presidente do conselho estudantil. Filha do diretor da escola, é uma gênio estratégica que valoriza a competição intelectual acima de tudo. Conhecida por sua postura elegante e mente calculista.",
     details: {
@@ -8369,7 +8369,7 @@ const charactersData = [
     id: 335,
     name: "IZANA KUROKAWA",
     category: "tokyo",
-    image: "img/tokyo-revengers/Izana-Kurokawa-1.png",
+    image: "assets/images/tokyo-revengers/Izana-Kurokawa-1.png",
     description:
       "Oitavo e mais forte líder dos Black Dragons, meio-irmão de Mikey (Manjiro Sano). Conhecido como 'O Rei Sem Coroa', é um lutador excepcional com velocidade sobre-humana e técnicas de combate refinadas. Sua história é marcada por solidão e busca por conexões familiares.",
     details: {
@@ -8394,7 +8394,7 @@ const charactersData = [
     id: 336,
     name: "N",
     category: "Pokemon",
-    image: "img/Pokemon/N-1.png",
+    image: "assets/images/Pokemon/N-1.png",
     description:
       "O misterioso e carismático líder da Equipe Plasma, que busca libertar os Pokémon dos humanos. Criado por Ghetsis para ser um rei idealista, N possui a habilidade única de compreender a fala dos Pokémon. Sua jornada é marcada por conflitos entre suas crenças e a realidade.",
     details: {
@@ -8419,7 +8419,7 @@ const charactersData = [
     id: 337,
     name: "ECTOPLASM",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Ectoplasm-1.png",
+    image: "assets/images/Boku-no-Hero/Ectoplasm-1.png",
     description:
       "Herói profissional e professor da U.A. High School, especializado em matemática. Seu Quirk 'Ectoplasm' permite criar clones de si mesmo a partir de sua boca, com cada clone possuindo suas próprias habilidades de combate. Os clones podem funcionar independentemente ou em coordenação perfeita.",
     details: {
@@ -8443,7 +8443,7 @@ const charactersData = [
     id: 338,
     name: "ROBERT BARATHEON",
     category: "Game of Thrones",
-    image: "img/Game-of-Thrones/Robert-Baratheon-1.png",
+    image: "assets/images/Game-of-Thrones/Robert-Baratheon-1.png",
     description:
       "Rei dos Sete Reinos durante a Rebelião de Robert, conhecido como 'O Usurpador'. Em sua juventude, foi um guerreiro formidável que derrotou Rhaegar Targaryen no Tridente. Como rei, tornou-se obeso e desinteressado pelos deveres do trono, levando Westeros à beira da bancarrota.",
     details: {
@@ -8468,7 +8468,7 @@ const charactersData = [
     id: 339,
     name: "ELDEN BEAST",
     category: "souls",
-    image: "img/souls/Elden-Beast-1.png",
+    image: "assets/images/souls/Elden-Beast-1.png",
     description:
       "Manifestação física da Vontade da Árvore-sede e chefe final de Elden Ring. Uma entidade divina e cósmica que habita as Erdtrees, representando as leis naturais das Terras Intermédias. Seu combate ocorre em um plano astral, utilizando ataques baseados em constelações e magia sagrada.",
     details: {
@@ -8493,7 +8493,7 @@ const charactersData = [
     id: 340,
     name: "NOBARA KUGISAKI",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Nobara-Kugisaki-1.png",
+    image: "assets/images/Jujutsu/Nobara-Kugisaki-1.png",
     description:
       "Feiticeira jujutsu do 1º ano da Escola de Feitiçaria de Tóquio e colega de Yuji Itadori e Megumi Fushiguro. Sua técnica amaldiçoada utiliza martelo, pregos e uma boneca vodu para atacar a alma dos oponentes. Proveniente do interior, possui personalidade direta e confiante.",
     details: {
@@ -8518,7 +8518,7 @@ const charactersData = [
     id: 341,
     name: "KEN ISHIYAMA",
     category: "Boku no Hero",
-    image: "img/Boku-no-Hero/Ken-Ishiyama-1.png",
+    image: "assets/images/Boku-no-Hero/Ken-Ishiyama-1.png",
     description:
       "Conhecido como o herói profissional 'Cimentooss', professor da U.A. High School especializado em arte moderna. Seu Quirk 'Cimento' permite criar e manipular cimento à vontade, tornando-o ideal para construção, contenção e combate defensivo. Mestre em controle de terreno e cenários de batalha.",
     details: {
@@ -8543,7 +8543,7 @@ const charactersData = [
     id: 342,
     name: "FUBUKI",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Fubuki-1.png",
+    image: "assets/images/One-Punch-Man/Fubuki-1.png",
     description:
       "Também conhecida como Hellish Blizzard, líder do grupo de heróis Blizzard e irmã mais nova de Tatsumaki. Herói de Classe B Rank 1 que intencionalmente mantém seu ranking para controlar outros heróis. Sua habilidade psíquica é poderosa, embora inferior à de sua irmã.",
     details: {
@@ -8568,7 +8568,7 @@ const charactersData = [
     id: 343,
     name: "ATOM EVE",
     category: "Invencível",
-    image: "img/Invencível/Atom-Eve-1.png",
+    image: "assets/images/Invencível/Atom-Eve-1.png",
     description:
       "Heroína poderosa e interesse amoroso de Mark Grayson (Invencível). Possui a habilidade de manipular a matéria em nível molecular, podendo transmutar, reconstruir e reparar qualquer objeto inanimado. Seus poderes foram artificialmente implantados quando criança pelo GDA, e ela possui um limite psicológico que a impede de manipular matéria viva.",
     details: {
@@ -8593,7 +8593,7 @@ const charactersData = [
     id: 344,
     name: "BLANKA",
     category: "Street-Fighter",
-    image: "img/Street-Fighter/Blanka-1.png",
+    image: "assets/images/Street-Fighter/Blanka-1.png",
     description:
       "Guerreiro selvagem das florestas amazônicas, conhecido como a 'Besta Elétrica'. Sobreviveu a um acidente de avião quando criança e foi criado por animais na selva, desenvolvendo pele verde, força sobre-humana e capacidade de gerar eletricidade. Apesar da aparência feroz, possui coração gentil e busca encontrar sua mãe.",
     details: {
@@ -8617,7 +8617,7 @@ const charactersData = [
     id: 345,
     name: "BARDO",
     category: "League of Legend",
-    image: "img/lol/Bardo-1.png",
+    image: "assets/images/lol/Bardo-1.png",
     description:
       "Guardião cósmico das runas e protetor do equilíbrio do universo. Viaja através do tempo e espaço com seu sino mágico, guiando almas perdidas e preservando artefatos de poder. Sua natureza é enigmática até mesmo para outros seres celestiais, e suas motivações transcendem a compreensão mortal.",
     details: {
@@ -8642,7 +8642,7 @@ const charactersData = [
     id: 346,
     name: "ENVY",
     category: "Fullmetal",
-    image: "img/Fullmetal-Alchemist/Envy-1.png",
+    image: "assets/images/Fullmetal-Alchemist/Envy-1.png",
     description:
       "Um dos Sete Homúnculos criados pelo Pai, personificando o pecado da Inveja. Possui a capacidade de transformar sua aparência em qualquer ser vivo, incluindo humanos e quimeras. Sua verdadeira forma é uma criatura reptiliana monstruosa que reflete seu ódio e inveja da humanidade. Guarda rancor profundo de Scar por matar seu irmão Lust.",
     details: {
@@ -8667,7 +8667,7 @@ const charactersData = [
     id: 347,
     name: "BRUNHILDE",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Brunhilde-1.png",
+    image: "assets/images/Shuumatsu/Brunhilde-1.png",
     description:
       "Valquíria primogênita e principal estrategista do Ragnarok, determinada a salvar a humanidade da extinção. Diferente de suas irmãs, Brunhilde desafia a vontade dos deuses ao selecionar e recrutar os maiores guerreiros da história humana para enfrentar divindades. Possui conhecimento profundo sobre deuses e humanos, além de poder se fundir com almas guerreiras para criar armas divinas através do ritual Völundr.",
     details: {
@@ -8693,7 +8693,7 @@ const charactersData = [
     id: 348,
     name: "HOMELESS EMPEROR",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Homeless-Emperor-1.png",
+    image: "assets/images/One-Punch-Man/Homeless-Emperor-1.png",
     description:
       "Membro da Associação de Monstros e um dos executivos mais poderosos, classificado como ameaça nível Dragão. Antes um homem comum sem-teto, recebeu poderes divinos de 'Deus' em troca de sua lealdade. Capaz de gerar e manipular energia pura destrutiva em forma de esferas e feixes, tornando-o um dos maiores perigos da associação. Apesar de seu poder imenso, mantém a personalidade humilde e sofrida de sua vida anterior.",
     details: {
@@ -8719,7 +8719,7 @@ const charactersData = [
     id: 349,
     name: "KEN SUDOU",
     category: "Classroom of the Elite",
-    image: "img/classroom-of-the-elite/Ken-Sudou-1.png",
+    image: "assets/images/classroom-of-the-elite/Ken-Sudou-1.png",
     description:
       "Estudante da Classe D da Advanced Nurturing High School e membro do grupo de Kiyotaka Ayanokoji. Inicialmente um valentão agressivo com temperamento explosivo e baixo rendimento acadêmico, Sudou é um gênio do basquete com potencial atlético excepcional. Ao longo da série, amadurece significativamente, aprendendo a controlar sua raiva e se tornar um jogador de equipe confiável, embora ainda lute com estudos.",
     details: {
@@ -8744,7 +8744,7 @@ const charactersData = [
     id: 350,
     name: "NORIAKI KAKYOIN",
     category: "jojo",
-    image: "img/Jojo/Noriaki-Kakyoin-1.png",
+    image: "assets/images/Jojo/Noriaki-Kakyoin-1.png",
     description:
       "Aliado leal de Jotaro Kujo e membro do grupo que viaja ao Egito para salvar Holly Kujo de DIO. Usuário do Stand Hierophant Green, um Stand de longo alcance com capacidade de possessão, teias de energia e disparo de projéteis. Inicialmente controlado pela carne de DIO, Kakyoin é libertado por Jotaro e se torna um dos amigos mais próximos e estrategistas do grupo, sacrificando-se heroicamente para revelar o segredo de DIO.",
     details: {
@@ -8770,7 +8770,7 @@ const charactersData = [
     id: 351,
     name: "TAKASHI MITSUYA",
     category: "tokyo",
-    image: "img/tokyo-revengers/Takashi-Mitsuya-1.png",
+    image: "assets/images/tokyo-revengers/Takashi-Mitsuya-1.png",
     description:
       "Vice-capitão fundador dos Tokyo Manji Gang e chefe da divisão de design de uniformes. Conhecido como o 'Louco da Agulha', Mitsuya é um lutador excepcionalmente habilidoso que equilibra sua vida como delinquente com a responsabilidade de criar suas irmãs mais novas após a morte de sua mãe. Seu estilo de luta é fluido e imprevisível, utilizando técnicas inspiradas em movimentos de costura.",
     details: {
@@ -8795,7 +8795,7 @@ const charactersData = [
     id: 352,
     name: "ARTHUR PENDRAGON",
     category: "Nanatsu",
-    image: "img/Taizai/Arthur-Pendragon-1.png",
+    image: "assets/images/Taizai/Arthur-Pendragon-1.png",
     description:
       "Rei de Camelot e portador da lendária espada Excalibur. Inicialmente um jovem rei idealista que buscava proteger seu povo, Arthur sofre uma transformação monumental após os eventos da Guerra Santa, herdando o poder do Caos - a força primordial que criou o mundo. Como receptáculo do Caos, torna-se um ser além de deuses e demônios, capaz de manifestar qualquer realidade que imaginar.",
     details: {
@@ -8821,7 +8821,7 @@ const charactersData = [
     id: 353,
     name: "APPA",
     category: "Avatar",
-    image: "img/Avatar/Appa-1.png",
+    image: "assets/images/Avatar/Appa-1.png",
     description:
       "O último bisão voador do mundo e fiel companheiro do Avatar Aang. Criatura mansa e leal, Appa é capaz de voar com sua cauda gigante e possui força imensa. Serve como principal meio de transporte do Grupo Avatar através das Quatro Nações. Apesar de sua natureza dócil, é ferozmente protetor quando seu grupo está ameaçado. Sua conexão com Aang é tão profunda que ambos sentem a dor um do outro através do tempo.",
     details: {
@@ -8846,7 +8846,7 @@ const charactersData = [
     id: 354,
     name: "TENGEN",
     category: "jujutsu kaisen",
-    image: "img/Jujutsu/Tengen-1.png",
+    image: "assets/images/Jujutsu/Tengen-1.png",
     description:
       "Feiticeiro imortal que transcendeu a humanidade, responsável por criar e manter as barreiras que protegem as escolas de Jujutsu em todo o Japão. Vive há mais de mil anos em evolução constante, atualmente em um estado semi-imortal que o aproxima perigosamente da humanidade. Sua existência é fundamental para o equilíbrio do Jujutsu, e sua fusão com Kenjaku representa uma ameaça catastrófica ao mundo. Possui conhecimento absoluto sobre a história das técnicas amaldiçoadas.",
     details: {
@@ -8871,7 +8871,7 @@ const charactersData = [
     id: 355,
     name: "SHUNSUI KYORAKU",
     category: "Bleach",
-    image: "img/Bleach/Syunsui-Kyoraku-1.png",
+    image: "assets/images/Bleach/Syunsui-Kyoraku-1.png",
     description:
       "Capitão-Comandante da 13ª Divisão da Sociedade de Almas após a morte de Yamamoto. Herdeiro de uma das famílias nobres mais antigas, Kyoraku é um Shinigami poderoso que esconde sua natureza letal atrás de uma personalidade relaxada e brincalhona. Mestre em combate com duas lâminas e jogos infantis que se tornam armas mortais. Carrega o peso da liderança enquanto honra o legado de seu mentor.",
     details: {
@@ -8897,7 +8897,7 @@ const charactersData = [
     id: 356,
     name: "RENNA",
     category: "souls",
-    image: "img/souls/Renna-1.png",
+    image: "assets/images/souls/Renna-1.png",
     description:
       "A Donzela da Lua Cheia e guardiã da Carruagem de Estudos Raya Lucaria. Filha de Radagon e Rennala, irmã gêmea de Radahn e Rykard. Mestra suprema das artes glintstone, Renna (também conhecida como Ranni) abandonou seu corpo físico e vive através de uma boneca, seguindo o caminho da Noite e da Lua Fria. Líder da rebelião contra a Vontade da Árvore-sede, busca libertar as Terras Intermédias do jugo dos deuses.",
     details: {
@@ -8923,7 +8923,7 @@ const charactersData = [
     id: 357,
     name: "SKARNER",
     category: "League of Legend",
-    image: "img/lol/Skarner-1.png",
+    image: "assets/images/lol/Skarner-1.png",
     description:
       "O Primeiro dos Brackern, uma antiga espécie elemental de cristal que existe há milênios em Runeterra. Skarner é um guardião de sua espécie, carregando em seu coração um cristal que contém as almas e memórias de seus ancestrais. Sua espécie foi quase exterminada por humanos que confundiram seus cristais com fontes inesgotáveis de energia. Atualmente, Skarner busca desesperadamente recuperar os cristais de seu povo espalhados pelo mundo.",
     details: {
@@ -8949,7 +8949,7 @@ const charactersData = [
     id: 358,
     name: "SOJI OKITA",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Soji-Okita-2.png",
+    image: "assets/images/Shuumatsu/Soji-Okita-2.png",
     description:
       "O lendário capitão da primeira divisão do Shinsengumi, conhecido como o maior espadachim do fim do período Edo. Apesar de sua aparência jovial e delicada, frequentemente confundida com a de uma criança, Okita é um guerreiro implacável que domina o Tennen Rishin Ryu, um estilo de espada mortal. Consumido pela tuberculose durante seu tempo, foi escolhido por Brunhilde para representar a humanidade no Ragnarok, onde sua verdadeira fúria como espadachim pode finalmente ser liberada sem as limitações de seu corpo doente.",
     details: {
@@ -8974,7 +8974,7 @@ const charactersData = [
     id: 359,
     name: "AIOLOS DE SAGITÁRIO",
     category: "Os Zavaleiros do Zodíaco",
-    image: "img/Os-Cavaleiros-do-Zodíaco/Aiolos-de-Sagitário-1.png",
+    image: "assets/images/Os-Cavaleiros-do-Zodíaco/Aiolos-de-Sagitário-1.png",
     description:
       "Cavaleiro de Ouro de Sagitário e irmão mais velho de Aiolia de Leão. Considerado o modelo de cavaleiro ideal por sua sabedoria, força e lealdade à deusa Athena. Sacrificou-se para salvar a jovem Athena das mãos do Grande Mestre Saga, entregando-a a Mitsumasa Kido antes de morrer. Sua armadura de Sagitário é passada de geração em geração para aqueles que demonstram coragem e justiça, protegendo os cavaleiros em momentos críticos.",
     details: {
@@ -8998,7 +8998,7 @@ const charactersData = [
     id: 360,
     name: "REKKA HOSHIMIYA",
     category: "Fire Force",
-    image: "img/Fire Force/Rekka-Hoshimiya-1.png",
+    image: "assets/images/Fire Force/Rekka-Hoshimiya-1.png",
     description:
       "Capitão da 1ª Companhia do Corpo de Bombeiros Especiais, conhecido como 'Rekka, o Fanático'. Apesar de sua aparência amigável e sorridente, é um devoto do Evangelho do Demônio que busca recrutar crianças com alto potencial para servirem como Pilares. Usuário da Chama de Segunda Geração capaz de manipular chamas existentes e criar explosões devastadoras. Traiu a Companhia ao sequestrar crianças, incluindo a irmã mais nova de Shinra.",
     details: {
@@ -9022,7 +9022,7 @@ const charactersData = [
     id: 361,
     name: "FU",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Fu.png",
+    image: "assets/images/Gachiakuta/Fu.png",
     description:
       "Habilidoso e enigmático membro do submundo de Gachiakuta, especialista em combate ágil e furtivo. Conhecido por sua personalidade calma e calculista, Fu opera nas sombras da sociedade marginalizada, utilizando seus dons para sobreviver no ambiente hostil. Sua verdadeira lealdade e motivações permanecem um mistério, mas suas habilidades de combate e adaptação ao mundo decadente são inquestionáveis.",
     details: {
@@ -9047,7 +9047,7 @@ const charactersData = [
     id: 362,
     name: "UROUGE",
     category: "One-Piece",
-    image: "img/One-Piece/Urouge-1.png",
+    image: "assets/images/One-Piece/Urouge-1.png",
     description:
       "Um dos piores piratas da geração pior, capitão dos Piratas Fallen Monk. Originário das Ilhas no Céu de Skypiea, Urouge é um homem grande e sorridente que empunha uma enorme clava e possui uma Akuma no Mi que converte dano recebido em força física, tornando-se mais poderoso quanto mais é ferido. Conhecido por sua fé inabalável e hábito de rezar antes dos combates. Foi um dos poucos Supernovas a derrotar um dos Yonkou originais em combate individual.",
     details: {
@@ -9073,7 +9073,7 @@ const charactersData = [
     id: 363,
     name: "ZAMASU (FUSED)",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/Zamasu-(Fused)-1.png",
+    image: "assets/images/Dragon-Ball/Zamasu-(Fused)-1.png",
     description:
       "A fusão entre o Zamasu do Presente e o Zamasu do Futuro através dos Potara, resultando em um ser divino imortal com poder incomensurável. Como aprendiz de Supremo Kai, Zamasu nutria um ódio profundo pela humanidade, acreditando que os mortais eram um câncer no universo. Após obter o corpo de Goku e fundir-se consigo mesmo, tornou-se uma entidade transcendental que ameaçou todo o multiverso com sua 'Justiça Celestial'.",
     details: {
@@ -9099,7 +9099,7 @@ const charactersData = [
     id: 364,
     name: "CAVALEIRO DE METAL",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Cavaleiro-de-Metal-1.png",
+    image: "assets/images/One-Punch-Man/Cavaleiro-de-Metal-1.png",
     description:
       "Herói Classe S Rank 6, um gênio cientista que controla remotamente múltiplos drones de batalha gigantescos a partir de seu laboratório secreto. Extremamente cauteloso e calculista, raramente expõe seu corpo real ao perigo, preferindo operar através de suas criações mecânicas. Possui o maior poder de fogo entre todos os heróis da Associação e está constantemente aprimorando sua tecnologia, incluindo planos para criar armas capazes de derrotar Saitama, a quem vê como uma anomalia a ser estudada.",
     details: {
@@ -9125,7 +9125,7 @@ const charactersData = [
     id: 365,
     name: "BLAIDD",
     category: "souls",
-    image: "img/souls/Blaidd-1.png",
+    image: "assets/images/souls/Blaidd-1.png",
     description:
       "Guerreiro lobo criado pela Carian Royal Family como meio-irmão e fiel protetor de Ranni, a Bruxa Lunar. Conhecido como 'Blaidd, o Flagelo dos Inimigos', é um dos guerreiros mais leais e formidáveis das Terras Intermédias. Combate com uma espada gigante em uma mão e uma adaga na outra, utilizando movimentos fluidos e bestiais. Amaldiçoado a enlouquecer caso traia sua mestra, Blaidd permanece ao lado de Ranni até o fim, mesmo quando o destino conspira contra ambos.",
     details: {
@@ -9151,7 +9151,7 @@ const charactersData = [
     id: 366,
     name: "YASUO",
     category: "League of Legend",
-    image: "img/lol/Yasuo-1.png",
+    image: "assets/images/lol/Yasuo-1.png",
     description:
       "Um ioniano determinado que carrega o fardo de ser injustamente acusado pelo assassinato de seu mestre. Após passar anos como fugitivo, Yasuo tornou-se um espadachim lendário que domina o vento com sua lâmina. Seu estilo de luta é fluido e implacável, utilizando correntes de ar para devastar seus inimigos enquanto canaliza a culpa que carrega em cada golpe. Agora, busca redenção enquanto protege aqueles que não podem se proteger.",
     details: {
@@ -9176,7 +9176,7 @@ const charactersData = [
     id: 367,
     name: "DOHKO DE LIBRA",
     category: "Os Zavaleiros do Zodíaco",
-    image: "img/Os-Cavaleiros-do-Zodíaco/Dohko-de-Libra-2.png",
+    image: "assets/images/Os-Cavaleiros-do-Zodíaco/Dohko-de-Libra-2.png",
     description:
       "O lendário Cavaleiro de Ouro de Libra e mestre do santuário na China. Único sobrevivente da Guerra Santa anterior contra Hades ao lado de seu amigo Máscara da Morte de Câncer, Dohko passou 243 anos vigiando o selo dos espectros no Monte Rozan. Mestre do Golpe dos Cem Dragões e tutor dos Cavaleiros de Bronze Shiryu de Dragão, representa a sabedoria e o poder acumulado por séculos de treinamento. Sua armadura de Libra contém as doze armas sagradas do santuário.",
     details: {
@@ -9201,7 +9201,7 @@ const charactersData = [
     id: 368,
     name: "THOR",
     category: "Shuumatsu",
-    image: "img/Shuumatsu/Thor-1.png",
+    image: "assets/images/Shuumatsu/Thor-1.png",
     description:
       "O Deus do Trovão nórdico e filho primogênito de Odin, considerado o deus mais poderoso do céu. Conhecido como o maior guerreiro divino, Thor luta com seu martelo Mjolnir, uma arma capaz de destruir montanhas e criar tempestades devastadoras. Foi o primeiro lutador a representar os deuses no Ragnarok, enfrentando Lü Bu, o General Voador, em uma batalha histórica que abalou os céus. Apesar de sua natureza brutal, busca oponentes dignos que possam lhe proporcionar uma luta emocionante.",
     details: {
@@ -9226,7 +9226,7 @@ const charactersData = [
     id: 369,
     name: "SHŌ KUSAKABE",
     category: "Fire Force",
-    image: "img/Fire Force/Shō-Kusakabe-1.png",
+    image: "assets/images/Fire Force/Shō-Kusakabe-1.png",
     description:
       "Irmão mais novo de Shinra Kusakabe e um dos Pilares do Evangelho do Demônio. Criado desde criança pela seita como o 'Filho de Deus', Shō possui poderes imensos como usuário de Chama de Terceira Geração, capaz de manipular chamas e congelar o tempo ao seu redor. Sua personalidade é fria e calculista, resultado da lavagem cerebral que sofreu, mas guarda memórias fragmentadas de seu irmão mais velho. Representa uma das maiores ameaças à humanidade caso o plano do Evangelho seja concluído.",
     details: {
@@ -9252,7 +9252,7 @@ const charactersData = [
     id: 370,
     name: "ORNN",
     category: "League of Legend",
-    image: "img/lol/Ornn-1.png",
+    image: "assets/images/lol/Ornn-1.png",
     description:
       "O Ferreiro do Fogo primordial, um dos semideuses irmãos da mitologia freljordana. Ornn é o artesão divino que forjou as primeiras armas e ferramentas, preferindo a solidão de suas montanhas à companhia de mortais ou deuses. Diferente de seu irmão Volibear, que busca guerra e caos, Ornn valoriza a criação, o trabalho bem-feito e a tranquilidade. Vive na forja oculta sob o vulcão Hearth-Home, criando artefatos de poder inigualável e ignorando os conflitos do mundo, a menos que sua paz seja ameaçada.",
     details: {
@@ -9278,7 +9278,7 @@ const charactersData = [
     id: 371,
     name: "ZANKA",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Zanka-1.png",
+    image: "assets/images/Gachiakuta/Zanka-1.png",
     description:
       "Um dos mais habilidosos e perigosos habitantes do submundo de Gachiakuta, conhecido por sua natureza explosiva e imprevisível. Zanka sobrevive no ambiente hostil através de sua força bruta e instinto de luta apurado, não hesitando em eliminar qualquer ameaça ao seu território. Sua reputação de selvageria esconde uma mente estratégica que poucos conseguem perceber, tornando-o um oponente extremamente perigoso em qualquer confronto.",
     details: {
@@ -9303,7 +9303,7 @@ const charactersData = [
     id: 372,
     name: "NICO ROBIN",
     category: "One-Piece",
-    image: "img/One-Piece/Nico-Robin-1.png",
+    image: "assets/images/One-Piece/Nico-Robin-1.png",
     description:
       "Arqueóloga dos Piratas do Chapéu de Palha e única pessoa viva capaz de ler os Poneglyphs. Sobrevivente do massacre de Ohara, Robin passou anos fugindo do Governo Mundial como uma criminosa antes de encontrar seu verdadeiro lar com Luffy e sua tripulação. Usuária da Hana Hana no Mi (Fruta Flor), que lhe permite criar e multiplicar partes de seu corpo em qualquer superfície. Sua inteligência e conhecimento histórico são fundamentais para a jornada rumo ao One Piece, enquanto seu passado trágico moldou uma mulher resiliente e protetora de seus companheiros.",
     details: {
@@ -9328,7 +9328,7 @@ const charactersData = [
     id: 373,
     name: "FLASHY FLASH",
     category: "One Punch Man",
-    image: "img/One-Punch-Man/Flashy-Flash-2.png",
+    image: "assets/images/One-Punch-Man/Flashy-Flash-2.png",
     description:
       "Herói Classe S Rank 13, conhecido como o velocista supremo da Associação de Heróis. Treinado desde a infância na misteriosa Vila da Espada, Flashy Flash é um mestre ninja cuja velocidade supera qualquer outro herói, capaz de desferir golpes tão rápidos que parecem múltiplas lâminas simultâneas. De personalidade arrogante e competitiva, busca constantemente adversários à sua altura e guarda um profundo ressentimento pelos ninjas da Vila do Som, seus rivais de infância.",
     details: {
@@ -9353,7 +9353,7 @@ const charactersData = [
     id: 374,
     name: "SHION DE ÁRIES",
     category: "Os Zavaleiros do Zodíaco",
-    image: "img/Os-Cavaleiros-do-Zodíaco/Shion-de-Áries-1.png",
+    image: "assets/images/Os-Cavaleiros-do-Zodíaco/Shion-de-Áries-1.png",
     description:
       "O lendário Cavaleiro de Ouro de Áries e patriarca do santuário antes de sua morte nas mãos de Saga de Gêmeos. Único sobrevivente da Guerra Santa anterior ao lado de Dohko de Libra, Shion era conhecido por sua sabedoria incomparável e poderes telecinéticos supremos. Após ser revivido por Hades para liderar os espectros, mantém sua lealdade a Atena em segredo, preparando o caminho para os Cavaleiros de Bronze. Mestre da Revolução Estelar e tutor de Mu de Áries, representa a continuidade da vontade dos cavaleiros através das gerações.",
     details: {
@@ -9378,7 +9378,7 @@ const charactersData = [
     id: 375,
     name: "CELL",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/Cell-1.png",
+    image: "assets/images/Dragon-Ball/Cell-1.png",
     description:
       "A criação definitiva do Dr. Gero, um bio-androide construído a partir das células dos maiores guerreiros da Terra: Goku, Vegeta, Piccolo, Freeza e os reis da Terra. Cell absorve seres vivos para aumentar seu poder e alcançar sua forma perfeita, na qual se torna um dos seres mais ameaçadores do universo. Em sua forma perfeita, possui uma combinação letal de técnicas como Kamehameha, Special Beam Cannon e o devastador Solar Kamehameha. Sua personalidade narcisista e fria esconde um prazer sádico em prolongar o sofrimento de seus oponentes, culminando no Cell Games, seu torneio para desafiar os guerreiros da Terra.",
     details: {
@@ -9403,7 +9403,7 @@ const charactersData = [
     id: 376,
     name: "ARTHORIAS, O CAMINHANTE DO ABISMO",
     category: "souls",
-    image: "img/souls/Artorias-the-Abysswalker-1.png",
+    image: "assets/images/souls/Artorias-the-Abysswalker-1.png",
     description:
       "Um dos quatro Cavaleiros de Gwyn, lendário herói de Lordran que jurou combater a escuridão do Abismo. Conhecido por sua bravura incomparável e por sua lealdade a Sif, sua companheira loba. Artorias adentrou o Abismo de Oolacile para salvar sua princesa, mas foi consumido pela escuridão que jurara destruir. Quando encontrado, não passa de uma casca corrompida, ainda empunhando sua grande espada com o braço quebrado, sua armadura distorcida e sua mente perdida.",
     details: {
@@ -9429,7 +9429,7 @@ const charactersData = [
     id: 377,
     name: "ICHIGO KUROSAKI",
     category: "Bleach",
-    image: "img/Bleach/Ichigo-Kurosaki-1.png",
+    image: "assets/images/Bleach/Ichigo-Kurosaki-1.png",
     description:
       "Protagonista de Bleach, um humano capaz de ver espíritos que acidentalmente absorve os poderes de uma Shinigami, tornando-se um Shinigami substituto. Diferente de todos os outros Shinigami, Ichigo é uma anomalia genética que carrega sangue de Shinigami, Quincy, Hollow e humano puro em suas veias. Ao longo de sua jornada para proteger seus entes queridos, desperta formas únicas de poder como o Bankai Tensa Zangetsu, a máscara Hollow e, posteriormente, sua verdadeira forma como Shinigami/Quincy/Hollow fundidos. Sua determinação inabalável e instinto de proteger definem sua essência.",
     details: {
@@ -9455,7 +9455,7 @@ const charactersData = [
     id: 378,
     name: "VANICA ZOGRATIS",
     category: "Black Clover",
-    image: "img/Black Clover/Vanica-Zogratis-1.png",
+    image: "assets/images/Black Clover/Vanica-Zogratis-1.png",
     description:
       "Única mulher da Tríade Negra que governa o Reino Spade e hospedeira do demônio de alto escalão Megicula. Sádica, caótica e completamente obcecada por combates sangrentos, Vanica busca apenas seu próprio entretenimento através da luta contra oponentes poderosos. Despreza os fracos como 'lixo' e vê seus devotados seguidores como meras ferramentas descartáveis, matando-os sem hesitação quando perdem a utilidade. Sua magia de sangue combinada com as maldições de Megicula a tornam uma das ameaças mais formidáveis do continente, sendo responsável pela morte de Acier Silva e pela maldição lançada sobre a rainha Lolopechka.",
     details: {
@@ -9481,7 +9481,7 @@ const charactersData = [
     id: 379,
     name: "SEMIU",
     category: "Gachiakuta",
-    image: "img/Gachiakuta/Semiu-2.png",
+    image: "assets/images/Gachiakuta/Semiu-2.png",
     description:
       "Figura enigmática que habita as profundezas do submundo de Gachiakuta, conhecida por sua aparência bestial e comportamento imprevisível. Semiu é um sobrevivente das camadas mais hostis do mundo decaído, desenvolvendo habilidades únicas para caçar e se proteger. Sua natureza selvagem esconde lampejos de inteligência estratégica, tornando-o um oponente perigoso que combina instinto animal com táticas calculadas. Poucos conhecem sua verdadeira origem ou o que o levou a se tornar o que é hoje.",
     details: {
@@ -9506,7 +9506,7 @@ const charactersData = [
     id: 380,
     name: "ORGULHO",
     category: "Fullmetal",
-    image: "img/Fullmetal-Alchemist/Orgulho-1.png",
+    image: "assets/images/Fullmetal-Alchemist/Orgulho-1.png",
     description:
       "O homúnculo primogênito criado pelo Pai, personificando o pecado do Orgulho. Diferente de seus irmãos, Orgulho não possui forma humana fixa - é uma massa amorfa de sombras que habita o corpo franzino de Selim Bradley, o filho adotivo do Führer. Como o primeiro e mais poderoso dos homúnculos, possui a habilidade de se manifestar através de qualquer sombra, criando lanças afiadas e olhos vigilantes para atacar e observar. Sua verdadeira natureza monstruosa contrasta brutalmente com a aparência inocente de criança que adota, representando a perfeita encarnação do orgulho que sente por ser a criação máxima do Pai.",
     details: {
@@ -9531,7 +9531,7 @@ const charactersData = [
     id: 381,
     name: "VERGO",
     category: "One-Piece",
-    image: "img/One-Piece/Vergo-1.png",
+    image: "assets/images/One-Piece/Vergo-1.png",
     description:
       "Braço direito de Donquixote Doflamingo e chefe da base da Marinha em G-5, atuando como um infiltrado da família Donquixote. Mestre do Haki de Armadura ao ponto de cobrir completamente seu corpo com ele, Vergo é um lutador implacável que utiliza o bambu como arma principal em seu estilo de luta. Sua lealdade absoluta a Doflamingo o levou a se infiltrar na Marinha por anos, ascendendo ao posto de Vice-Almirante enquanto secretamente servia aos interesses de seu verdadeiro capitão. Usuário da arma de bambu, seus golpes são devastadores quando combinados com seu Haki ofensivo.",
     details: {
@@ -9556,7 +9556,7 @@ const charactersData = [
     id: 382,
     name: "SHINRA KUSAKABE",
     category: "Fire Force",
-    image: "img/Fire Force/Shinra-Kusakabe-1.png",
+    image: "assets/images/Fire Force/Shinra-Kusakabe-1.png",
     description:
       "Protagonista de Fire Force, um jovem usuário de Chama de Terceira Geração que ganhou o apelido de 'Pegadas do Diabo' por seu sorriso involuntário ao entrar em combate, fruto do trauma de seu passado. Shinra possui a habilidade única de acionar chamas em seus pés, permitindo-lhe voar e executar chutes em velocidades extremas, incluindo sua técnica mais avançada, a 'Chama de Extermínio'. Após perder sua mãe e irmão mais novo em um incêndio misterioso há 12 anos, juntou-se à Força Especial de Bombeiros para descobrir a verdade e se tornar um herói que salva pessoas com um sorriso genuíno.",
     details: {
@@ -9581,7 +9581,7 @@ const charactersData = [
     id: 383,
     name: "VAN AUGUR",
     category: "One-Piece",
-    image: "img/One-Piece/Van-Augur-2.png",
+    image: "assets/images/One-Piece/Van-Augur-2.png",
     description:
       "Atirador de elite dos Piratas do Barba Negra, conhecido como 'Supersonic' Van Augur. Considerado um dos melhores atiradores do mundo, possui precisão sobrenatural capaz de acertar alvos a quilômetros de distância com seu rifle de longo alcance. Frio, calculista e completamente leal a Teach, Augur foi um dos primeiros a reconhecer o potencial do futuro Yonkou, estando presente nos momentos cruciais da ascensão do bando. Usuário da Wapu Wapu no Mi, uma fruta do diabo que lhe permite teletransportar.",
     details: {
@@ -9607,7 +9607,7 @@ const charactersData = [
     id: 384,
     name: "HIT",
     category: "Dragon-Ball",
-    image: "img/Dragon-Ball/Hit-1.png",
+    image: "assets/images/Dragon-Ball/Hit-1.png",
     description:
       "O lendário assassino do Universo 6, conhecido como 'Never-Miss Hit' por nunca ter falhado uma missão em mais de 1000 anos de existência. Hit é um guerreiro frio, calmo e extremamente letal que desenvolveu a habilidade única de manipular o tempo através de seu Time-Skip, permitindo-lhe pular 0,1 segundo no futuro e desferir golpes em pontos vitais. Apesar de sua aparência intimidadora, possui um código de honra e respeita adversários que o desafiam, como Goku. No Torneio do Poder, demonstrou ser um dos poucos guerreiros capazes de ameaçar Jiren.",
     details: {
@@ -9631,7 +9631,7 @@ const charactersData = [
     id: 385,
     name: "FATHER",
     category: "Fullmetal",
-    image: "img/Fullmetal-Alchemist/Father-1.png",
+    image: "assets/images/Fullmetal-Alchemist/Father-1.png",
     description:
       "O principal antagonista de Fullmetal Alchemist, originalmente um homúnculo minúsculo criado acidentalmente por Van Hohenheim dentro de um frasco, que posteriormente se autodenominou 'Pai'. Após absorver os deuses das sombras de Xerxes e sacrificar toda a população do reino para criar seu corpo imortal, Pai estabeleceu-se em Amestris e passou 400 anos manipulando nações inteiras como peças de xadrez. Seu objetivo final é absorver o próprio 'Deus' (A Verdade) através de um círculo de transmutação nacional gigante, tornando-se o ser supremo do universo. Representa a personificação máxima da gula, soberba e ambição desmedida.",
     details: {

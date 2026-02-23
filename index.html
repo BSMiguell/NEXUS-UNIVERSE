@@ -993,7 +993,11 @@
             rgba(255, 255, 255, 0.05) 36%,
             transparent 60%
           ),
-          linear-gradient(155deg, var(--control-color-1), var(--control-color-2)),
+          linear-gradient(
+            155deg,
+            var(--control-color-1),
+            var(--control-color-2)
+          ),
           rgba(6, 16, 26, 0.92);
         color: #effdff;
         border: 1px solid var(--control-ring);
@@ -1761,14 +1765,14 @@
       }
     </style>
 
-    <link rel="stylesheet" href="style/header.css" />
-    <link rel="stylesheet" href="style/Card.css" />
-    <link rel="stylesheet" href="style/modal-character.css" />
-    <link rel="stylesheet" href="style/favorite.css" />
-    <link rel="stylesheet" href="style/modal-search.css" />
-    <link rel="stylesheet" href="style/battleSystem2.css" />
-    <link rel="stylesheet" href="style/battleSystem.css" />
-    <link rel="stylesheet" href="style/footer.css" />
+    <link rel="stylesheet" href="src/css/header.css" />
+    <link rel="stylesheet" href="src/css/card.css" />
+    <link rel="stylesheet" href="src/css/modal-character.css" />
+    <link rel="stylesheet" href="src/css/favorites.css" />
+    <link rel="stylesheet" href="src/css/modal-search.css" />
+    <link rel="stylesheet" href="src/css/battle-system-2.css" />
+    <link rel="stylesheet" href="src/css/battle-system.css" />
+    <link rel="stylesheet" href="src/css/footer.css" />
   </head>
 
   <body>
@@ -2329,7 +2333,11 @@
               <i class="fas fa-play"></i>
               INICIAR BATALHA QUÂNTICA
             </button>
-            <button class="battle-tournament-btn" id="tournamentModeBtn" disabled>
+            <button
+              class="battle-tournament-btn"
+              id="tournamentModeBtn"
+              disabled
+            >
               <i class="fas fa-trophy"></i>
               MODO TORNEIO (5 BATALHAS)
             </button>
@@ -2710,7 +2718,9 @@
                 aria-label="Pesquisar personagem para batalha"
               />
             </div>
-            <div class="selector-count" id="selectorResultCount">0 personagens</div>
+            <div class="selector-count" id="selectorResultCount">
+              0 personagens
+            </div>
           </div>
           <div class="selector-grid" id="characterSelectorGrid">
             <!-- Personagens serão carregados aqui -->
@@ -3073,14 +3083,14 @@
     </main>
 
     <!-- Scripts -->
-    <script src="Js/header.js"></script>
-    <script src="Js/Temas.js"></script>
-    <script src="Js/Favoritos.js"></script>
-    <script src="Js/QuantumBattleSystem.js"></script>
-    <script src="Js/QuantumBattle2System.js"></script>
-    <script src="Js/modal-search.js"></script>
-    <script src="Js/QuantumGallery.js"></script>
-    <script src="charactersData.JS"></script>
+    <script src="src/js/header.js"></script>
+    <script src="src/js/themes.js"></script>
+    <script src="src/js/favorites.js"></script>
+    <script src="src/js/quantum-battle-system.js"></script>
+    <script src="src/js/quantum-battle-2-system.js"></script>
+    <script src="src/js/modal-search.js"></script>
+    <script src="src/js/quantum-gallery.js"></script>
+    <script src="src/data/characters-data.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -3218,14 +3228,17 @@
 
         normalizePath(path) {
           let normalized = path.replace(/\\/g, "/").replace(/\/+/g, "/").trim();
-          if (normalized.includes("img/img/")) {
-            normalized = normalized.replace("img/img/", "img/");
+          if (normalized.includes("assets/images/assets/images/")) {
+            normalized = normalized.replace(
+              "assets/images/assets/images/",
+              "assets/images/",
+            );
           }
           if (
-            !normalized.startsWith("img/") &&
+            !normalized.startsWith("assets/images/") &&
             !normalized.startsWith("http")
           ) {
-            normalized = "img/" + normalized;
+            normalized = "assets/images/" + normalized;
           }
           return normalized;
         }
@@ -3527,11 +3540,7 @@
               ) {
                 this.play("click", 0.2);
               }
-              if (
-                e.target.closest(
-                  ".quantum-favorite",
-                )
-              ) {
+              if (e.target.closest(".quantum-favorite")) {
                 this.play("favorite", 0.3);
               }
             },

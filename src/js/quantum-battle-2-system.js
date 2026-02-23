@@ -312,7 +312,8 @@ class QuantumBattle2DSystem {
   }
 
   loadMoreSelectorCharacters(grid, modal) {
-    if (this.selectorVisibleCount >= this.selectorFilteredCharacters.length) return;
+    if (this.selectorVisibleCount >= this.selectorFilteredCharacters.length)
+      return;
 
     this.selectorVisibleCount = Math.min(
       this.selectorVisibleCount + this.selectorLoadStep,
@@ -329,9 +330,7 @@ class QuantumBattle2DSystem {
     const total = this.selectorFilteredCharacters.length;
     const shown = Math.min(this.selectorVisibleCount, total);
     this.elements.selectorResultCount.textContent =
-      total > 0
-        ? `Exibindo ${shown} de ${total}`
-        : "Nenhum personagem";
+      total > 0 ? `Exibindo ${shown} de ${total}` : "Nenhum personagem";
   }
 
   createSelectorCharacterElement(character, modal) {
@@ -632,19 +631,19 @@ class QuantumBattle2DSystem {
     // Novo padrÃ£o (mais fluido): loki_attack_01-00002.png ... 00035.png
     // Mantemos tambÃ©m fallback para padrÃµes antigos.
     candidates.push([
-      "img-animetion/Loki/loki_attack_01.png.png",
-      "img-animetion/Loki/loki_attack_01.png",
+      "assets/animations/Loki/loki_attack_01.png.png",
+      "assets/animations/Loki/loki_attack_01.png",
     ]);
 
     for (let i = 2; i <= 120; i++) {
       const frameNumber = String(i).padStart(5, "0");
-      const basePath = `img-animetion/Loki/loki_attack_01-${frameNumber}.png`;
+      const basePath = `assets/animations/Loki/loki_attack_01-${frameNumber}.png`;
       candidates.push([basePath]);
     }
 
     for (let i = 1; i <= 60; i++) {
       const frameNumber = String(i).padStart(2, "0");
-      const basePath = `img-animetion/Loki/loki_attack_${frameNumber}.png`;
+      const basePath = `assets/animations/Loki/loki_attack_${frameNumber}.png`;
       candidates.push([basePath, `${basePath}.png`]);
     }
 
@@ -657,9 +656,9 @@ class QuantumBattle2DSystem {
     for (let i = 1; i <= 140; i++) {
       const frameNumber = String(i).padStart(5, "0");
       candidates.push([
-        `img-animetion/Madara/Madarai_attack_-${frameNumber}.png`,
-        `img-animetion/Madara/madarai_attack_-${frameNumber}.png`,
-        `img-animetion/Madara/madara_attack_-${frameNumber}.png`,
+        `assets/animations/Madara/Madarai_attack_-${frameNumber}.png`,
+        `assets/animations/Madara/madarai_attack_-${frameNumber}.png`,
+        `assets/animations/Madara/madara_attack_-${frameNumber}.png`,
       ]);
     }
 
@@ -672,9 +671,9 @@ class QuantumBattle2DSystem {
     for (let i = 1; i <= 140; i++) {
       const frameNumber = String(i).padStart(5, "0");
       candidates.push([
-        `img-animetion/Aatrox/Aatroxi_attack_-${frameNumber}.png`,
-        `img-animetion/Aatrox/aatroxi_attack_-${frameNumber}.png`,
-        `img-animetion/Aatrox/aatrox_attack_-${frameNumber}.png`,
+        `assets/animations/Aatrox/Aatroxi_attack_-${frameNumber}.png`,
+        `assets/animations/Aatrox/aatroxi_attack_-${frameNumber}.png`,
+        `assets/animations/Aatrox/aatrox_attack_-${frameNumber}.png`,
       ]);
     }
 
@@ -687,10 +686,10 @@ class QuantumBattle2DSystem {
     for (let i = 1; i <= 180; i++) {
       const frameNumber = String(i).padStart(5, "0");
       candidates.push([
-        `img-animetion/Battl- Beast/Battl- Beast-${frameNumber}.png`,
-        `img-animetion/Battl- Beast/Battl-Beast-${frameNumber}.png`,
-        `img-animetion/Battl- Beast/Battle Beast-${frameNumber}.png`,
-        `img-animetion/Battl- Beast/battl- beast-${frameNumber}.png`,
+        `assets/animations/Battl- Beast/Battl- Beast-${frameNumber}.png`,
+        `assets/animations/Battl- Beast/Battl-Beast-${frameNumber}.png`,
+        `assets/animations/Battl- Beast/Battle Beast-${frameNumber}.png`,
+        `assets/animations/Battl- Beast/battl- beast-${frameNumber}.png`,
       ]);
     }
 
@@ -768,7 +767,13 @@ class QuantumBattle2DSystem {
 
     // Mantem o golpe rapido mesmo com muitos frames.
     const targetDuration =
-      totalFrames > 90 ? 380 : totalFrames > 60 ? 420 : totalFrames > 36 ? 460 : 500;
+      totalFrames > 90
+        ? 380
+        : totalFrames > 60
+          ? 420
+          : totalFrames > 36
+            ? 460
+            : 500;
     const maxRenderedFrames =
       totalFrames > 90 ? 24 : totalFrames > 60 ? 28 : 32;
     const frameStep = Math.max(1, Math.ceil(totalFrames / maxRenderedFrames));
@@ -788,7 +793,8 @@ class QuantumBattle2DSystem {
 
   getAttackExecutionDuration(char) {
     const role = this.getAnimationRole(char);
-    const baseCooldown = char?.baseAttackCooldown || char?.attackCooldown || 250;
+    const baseCooldown =
+      char?.baseAttackCooldown || char?.attackCooldown || 250;
     if (!role) return baseCooldown;
 
     const animation = this.attackAnimations[role];
