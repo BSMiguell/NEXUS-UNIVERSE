@@ -5,6 +5,8 @@ class QuantumGallery {
 
     this.config = {
       itemsPerPage: 80,
+      initialCardsBatch: 20,
+      nextCardsBatch: 10,
       intersectionObserver: null,
       scrollDebounce: null,
     };
@@ -21,6 +23,8 @@ class QuantumGallery {
       showBattle2dPage: false,
       modalOpenedFromFavorites: false,
       scrollPositionBeforeModal: 0,
+      renderedCardsCount: 0,
+      renderQueueCharacters: [],
     };
 
     this.viewedCharacters = new Set();
@@ -32,6 +36,24 @@ class QuantumGallery {
     this.searchSystem = new QuantumSearch(this);
     this.battleSystem = new QuantumBattleSystem(this);
     this.battle2D = new QuantumBattle2DSystem(this);
+    this.modalVideoByCharacterId = {
+      4: "video/MADARAUCHIHA-v-1.mp4",
+      9: "video/AATROX-v-1.mp4",
+      11: "video/GOLDEN-SPERM-v-1.mp4",
+      13: "video/RADAHN-v-1.mp4",
+      15: "video/RYOMEN-SUKUNA-v-1.mp4",
+      35: "video/Loki-v-1.mp4",
+      39: "video/Battl- Beast-v-1.mp4",
+      47: "video/Jirem.mp4",
+      58: "video/raiden-v-1.mp4",
+      69: "video/Maki.mp4",
+      78: "video/Kaido-v-1.mp4",
+      124: "video/BALERION-v-1.mp4",
+      161: "video/solaria-v-1.mp4",
+      218: "video/gowther-Original-v-1.mp4",
+      281: "video/HARALD-v-1.mp4",
+      322: "video/Psykos-v-1.mp4",
+    };
 
     this.elements = {};
     this.init();
@@ -384,18 +406,21 @@ class QuantumGallery {
     if (this.elements.homeToggle) {
       this.elements.homeToggle.addEventListener("click", () => {
         this.showGalleryPage();
+        this.audio.play("click");
       });
     }
 
     if (this.elements.favoritesToggle) {
       this.elements.favoritesToggle.addEventListener("click", () => {
         this.showFavoritesPage();
+        this.audio.play("click");
       });
     }
 
     if (this.elements.viewFavoritesBtn) {
       this.elements.viewFavoritesBtn.addEventListener("click", () => {
         this.showFavoritesPage();
+        this.audio.play("click");
       });
     }
 
@@ -441,6 +466,7 @@ class QuantumGallery {
     if (this.elements.backToGallery) {
       this.elements.backToGallery.addEventListener("click", () => {
         this.showGalleryPage();
+        this.audio.play("click");
       });
     }
 
@@ -517,6 +543,7 @@ class QuantumGallery {
       debounce(() => {
         this.toggleQuantumJump();
         this.animateOnScroll();
+        this.maybeLoadMoreCardsOnScroll();
       }, 50),
     );
 
@@ -764,8 +791,30 @@ class QuantumGallery {
     );
 
     this.elements.quantumGrid.innerHTML = "";
+    this.state.renderQueueCharacters = charactersToShow;
+    this.state.renderedCardsCount = 0;
 
-    charactersToShow.forEach((character, index) => {
+    this.renderNextCardsBatch(this.config.initialCardsBatch);
+
+    this.maybeLoadMoreCardsOnScroll();
+
+    this.updatePagination(totalPages);
+    this.updateStats();
+
+    setTimeout(() => this.initScrollAnimations(), 100);
+  }
+
+  renderNextCardsBatch(batchSize = 10) {
+    if (!this.elements.quantumGrid) return;
+
+    const source = this.state.renderQueueCharacters || [];
+    if (!source.length) return;
+
+    const start = this.state.renderedCardsCount;
+    const target = Math.min(start + batchSize, source.length);
+
+    for (let index = start; index < target; index++) {
+      const character = source[index];
       const card = this.createCharacterCard(character, index);
       this.elements.quantumGrid.appendChild(card);
 
@@ -775,17 +824,31 @@ class QuantumGallery {
         if (!this.viewedCharacters.has(character.id)) {
           this.viewedCharacters.add(character.id);
         }
-      }, index * 50);
+      }, (index - start) * 40);
 
       if (this.config.intersectionObserver && index >= 4) {
         this.config.intersectionObserver.observe(card);
       }
-    });
+    }
 
-    this.updatePagination(totalPages);
-    this.updateStats();
+    this.state.renderedCardsCount = target;
+  }
 
-    setTimeout(() => this.initScrollAnimations(), 100);
+  maybeLoadMoreCardsOnScroll() {
+    if (!this.elements.quantumGrid) return;
+
+    const source = this.state.renderQueueCharacters || [];
+    if (!source.length) return;
+    let guard = 0;
+
+    while (this.state.renderedCardsCount < source.length && guard < 4) {
+      const gridRect = this.elements.quantumGrid.getBoundingClientRect();
+      const nearBottom = gridRect.bottom - window.innerHeight < 260;
+      if (!nearBottom) break;
+
+      this.renderNextCardsBatch(this.config.nextCardsBatch);
+      guard++;
+    }
   }
 
   createCharacterCard(character, index) {
@@ -958,6 +1021,119 @@ class QuantumGallery {
     `)}`;
   }
 
+  getModalVideoSource(characterId) {
+    return this.modalVideoByCharacterId[characterId] || null;
+  }
+
+  setupModalMediaControls() {
+    const modalBody = this.elements.modalContent;
+    if (!modalBody) return;
+
+    const imageEl = modalBody.querySelector(".modal-media-image");
+    const videoEl = modalBody.querySelector(".modal-character-video");
+    const videoToggleBtn = modalBody.querySelector(
+      '.modal-media-toggle[data-media="video"]',
+    );
+    const imageToggleBtn = modalBody.querySelector(
+      '.modal-media-toggle[data-media="image"]',
+    );
+    const playPauseBtn = modalBody.querySelector(
+      '[data-media-action="play-pause"]',
+    );
+    const muteBtn = modalBody.querySelector('[data-media-action="mute"]');
+
+    if (!imageEl || !videoEl || !videoToggleBtn || !imageToggleBtn) return;
+    const playClick = () => this.audio.play("click");
+
+    const setActiveMedia = (mediaType) => {
+      const isVideo = mediaType === "video";
+
+      imageEl.classList.toggle("is-hidden", isVideo);
+      videoEl.classList.toggle("is-hidden", !isVideo);
+
+      imageToggleBtn.classList.toggle("active", !isVideo);
+      videoToggleBtn.classList.toggle("active", isVideo);
+      imageToggleBtn.setAttribute("aria-pressed", String(!isVideo));
+      videoToggleBtn.setAttribute("aria-pressed", String(isVideo));
+
+      if (playPauseBtn) playPauseBtn.disabled = !isVideo;
+      if (muteBtn) muteBtn.disabled = !isVideo;
+
+      if (isVideo) {
+        const playPromise = videoEl.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {
+            if (playPauseBtn) {
+              playPauseBtn.innerHTML = '<i class="fas fa-play"></i> REPRODUZIR';
+            }
+          });
+        }
+      } else {
+        videoEl.pause();
+      }
+    };
+
+    const updateVideoButtons = () => {
+      if (playPauseBtn) {
+        playPauseBtn.innerHTML = videoEl.paused
+          ? '<i class="fas fa-play"></i> REPRODUZIR'
+          : '<i class="fas fa-pause"></i> PAUSAR';
+      }
+      if (muteBtn) {
+        muteBtn.innerHTML = videoEl.muted
+          ? '<i class="fas fa-volume-mute"></i> SEM SOM'
+          : '<i class="fas fa-volume-up"></i> COM SOM';
+      }
+    };
+
+    imageToggleBtn.addEventListener("click", () => {
+      setActiveMedia("image");
+      playClick();
+    });
+    videoToggleBtn.addEventListener("click", () => {
+      videoEl.currentTime = 0;
+      setActiveMedia("video");
+      updateVideoButtons();
+      playClick();
+    });
+
+    if (playPauseBtn) {
+      playPauseBtn.addEventListener("click", () => {
+        if (videoEl.paused) {
+          const playPromise = videoEl.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(() => {});
+          }
+        } else {
+          videoEl.pause();
+        }
+        updateVideoButtons();
+        playClick();
+      });
+    }
+
+    if (muteBtn) {
+      muteBtn.addEventListener("click", () => {
+        videoEl.muted = !videoEl.muted;
+        updateVideoButtons();
+        playClick();
+      });
+    }
+
+    videoEl.addEventListener("play", updateVideoButtons);
+    videoEl.addEventListener("pause", updateVideoButtons);
+    videoEl.addEventListener("volumechange", updateVideoButtons);
+
+    videoEl.addEventListener("error", () => {
+      videoToggleBtn.disabled = true;
+      setActiveMedia("image");
+    });
+
+    videoEl.muted = true;
+    setActiveMedia("video");
+    updateVideoButtons();
+  }
+
   openModal(character) {
     this.state.modalOpenedFromFavorites = false;
     this.openModalInternal(character);
@@ -989,15 +1165,56 @@ class QuantumGallery {
     const cachedImg = this.cache.imageCache.get(normalizedPath);
     const imgSrc = cachedImg ? cachedImg.src : character.image;
     const isFavorite = this.favorites.isFavorite(character.id);
+    const modalVideoSrc = this.getModalVideoSource(character.id);
+    const hasModalVideo = Boolean(modalVideoSrc);
 
     this.elements.modalContent.innerHTML = `
       <div class="modal-character-details">
         <div class="modal-character-grid">
           <div class="modal-character-image-container">
-            <img src="${imgSrc}"
-              alt="${character.name}"
-              class="modal-character-image"
-              onerror="this.onerror=null; this.src='${this.generatePlaceholderSVG(character, true)}';">
+            <div class="modal-media-shell">
+              <img src="${imgSrc}"
+                alt="${character.name}"
+                class="modal-character-image modal-media-image"
+                onerror="this.onerror=null; this.src='${this.generatePlaceholderSVG(character, true)}';">
+              ${
+                hasModalVideo
+                  ? `
+              <video class="modal-character-video is-hidden"
+                preload="metadata"
+                playsinline
+                muted
+                poster="${imgSrc}">
+                <source src="${modalVideoSrc}" type="video/mp4">
+              </video>
+              `
+                  : ""
+              }
+            </div>
+            ${
+              hasModalVideo
+                ? `
+            <div class="modal-media-controls">
+              <button class="modal-media-toggle active" data-media="image" aria-pressed="true">
+                <i class="fas fa-image"></i>
+                IMAGEM
+              </button>
+              <button class="modal-media-toggle" data-media="video" aria-pressed="false">
+                <i class="fas fa-video"></i>
+                VÍDEO
+              </button>
+              <button class="modal-media-action" data-media-action="play-pause" disabled>
+                <i class="fas fa-play"></i>
+                REPRODUZIR
+              </button>
+              <button class="modal-media-action" data-media-action="mute" disabled>
+                <i class="fas fa-volume-mute"></i>
+                SEM SOM
+              </button>
+            </div>
+            `
+                : ""
+            }
             <div class="modal-image-tags">
               <span class="modal-category-tag">
                 ${categoryNames[character.category] || character.category}
@@ -1071,10 +1288,13 @@ class QuantumGallery {
       });
     }
 
+    if (hasModalVideo) {
+      this.setupModalMediaControls();
+    }
+
     this.elements.quantumModal.classList.add("show");
     this.elements.quantumModal.removeAttribute("hidden");
     this.elements.quantumModal.setAttribute("aria-hidden", "false");
-
     document.body.classList.add("modal-open");
 
     this.elements.modalContent.scrollTop = 0;
@@ -1087,10 +1307,17 @@ class QuantumGallery {
   closeModal() {
     if (!this.state.isModalOpen || !this.elements.quantumModal) return;
 
+    const activeVideo = this.elements.modalContent?.querySelector(
+      ".modal-character-video",
+    );
+    if (activeVideo) {
+      activeVideo.pause();
+      activeVideo.currentTime = 0;
+    }
+
     this.elements.quantumModal.classList.remove("show");
     this.elements.quantumModal.setAttribute("hidden", "");
     this.elements.quantumModal.setAttribute("aria-hidden", "true");
-
     document.body.classList.remove("modal-open");
 
     document.documentElement.style.removeProperty("--scroll-top");
@@ -1425,8 +1652,12 @@ class QuantumGallery {
     }
 
     if (this.elements.visibleCharacters) {
+      const rendered = this.state.renderedCardsCount || 0;
+      const total =
+        this.state.renderQueueCharacters?.length ||
+        Math.min(this.config.itemsPerPage, this.state.filteredCharacters.length);
       this.elements.visibleCharacters.textContent =
-        this.state.filteredCharacters.length;
+        total > rendered ? `${rendered}/${total}` : `${total}`;
     }
     if (this.elements.currentPageDisplay) {
       this.elements.currentPageDisplay.textContent = this.state.currentPage;

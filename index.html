@@ -2329,6 +2329,10 @@
               <i class="fas fa-play"></i>
               INICIAR BATALHA QUÂNTICA
             </button>
+            <button class="battle-tournament-btn" id="tournamentModeBtn" disabled>
+              <i class="fas fa-trophy"></i>
+              MODO TORNEIO (5 BATALHAS)
+            </button>
             <button class="battle-reset-btn" id="resetBattleBtn">
               <i class="fas fa-redo"></i>
               REINICIAR BATALHA
@@ -2693,6 +2697,20 @@
             >
               <i class="fas fa-times"></i>
             </button>
+          </div>
+          <div class="selector-tools">
+            <div class="selector-search-wrap">
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <input
+                type="text"
+                id="characterSelectorSearch"
+                class="selector-search-input"
+                placeholder="Pesquisar personagem..."
+                autocomplete="off"
+                aria-label="Pesquisar personagem para batalha"
+              />
+            </div>
+            <div class="selector-count" id="selectorResultCount">0 personagens</div>
           </div>
           <div class="selector-grid" id="characterSelectorGrid">
             <!-- Personagens serão carregados aqui -->
@@ -3413,98 +3431,77 @@
           this.context = null;
           this.init();
         }
-
-        async init() {
+        init() {
           try {
             this.context = new (
               window.AudioContext || window.webkitAudioContext
             )();
-            await this.loadSound("hover", this.generateTone(523.25, 0.05));
-            await this.loadSound("click", this.generateTone(659.25, 0.1));
-            await this.loadSound("favorite", this.generateTone(1046.5, 0.3));
-            await this.loadSound("search", this.generateTone(880.0, 0.15));
-            await this.loadSound("battle", this.generateTone(349.23, 0.4));
-
+            this.loadSound("hover", this.generateTone(523.25, 0.05));
+            this.loadSound("click", this.generateTone(659.25, 0.1));
+            this.loadSound("favorite", this.generateTone(1046.5, 0.3));
+            this.loadSound("search", this.generateTone(880.0, 0.15));
+            this.loadSound("battle", this.generateTone(349.23, 0.4));
+            this.loadSound("jump", this.generateTone(587.33, 0.08));
+            this.loadSound("attack", this.generateTone(196.0, 0.16));
+            this.loadSound("hit", this.generateTone(246.94, 0.12));
+            this.loadSound("victory", this.generateTone(1174.66, 0.38));
+            this.loadSound("defeat", this.generateTone(130.81, 0.32));
             this.setupEventListeners();
           } catch (error) {
-            console.warn("Áudio não disponível:", error);
+            console.warn("Audio nao disponivel:", error);
             this.enabled = false;
           }
         }
-
         generateTone(frequency, duration) {
-          return new Promise((resolve) => {
-            try {
-              const context = new (
-                window.AudioContext || window.webkitAudioContext
-              )();
-              const oscillator = context.createOscillator();
-              const gainNode = context.createGain();
-
-              oscillator.connect(gainNode);
-              gainNode.connect(context.destination);
-
-              oscillator.frequency.setValueAtTime(
-                frequency,
-                context.currentTime,
-              );
-              gainNode.gain.setValueAtTime(0.3, context.currentTime);
-              gainNode.gain.exponentialRampToValueAtTime(
-                0.01,
-                context.currentTime + duration,
-              );
-
-              oscillator.start(context.currentTime);
-              oscillator.stop(context.currentTime + duration);
-
-              resolve({ oscillator, gainNode, frequency, duration });
-            } catch (error) {
-              resolve(null);
-            }
-          });
-        }
-
-        async loadSound(name, soundPromise) {
-          try {
-            const sound = await soundPromise;
-            if (sound) {
-              this.sounds.set(name, sound);
-            }
-          } catch (error) {
-            console.warn(`Som ${name} não carregado:`, error);
+          if (!Number.isFinite(frequency) || !Number.isFinite(duration)) {
+            return null;
           }
+          return { frequency, duration };
         }
-
+        loadSound(name, soundData) {
+          if (!soundData) return;
+          this.sounds.set(name, soundData);
+        }
+        resumeContextIfNeeded() {
+          if (!this.context) return;
+          if (this.context.state !== "suspended") return;
+          this.context.resume().catch(() => {});
+        }
+        playSound(sound, volume) {
+          if (!sound || !this.context) return;
+          if (this.context.state !== "running") return;
+          const oscillator = this.context.createOscillator();
+          const gainNode = this.context.createGain();
+          oscillator.connect(gainNode);
+          gainNode.connect(this.context.destination);
+          oscillator.frequency.setValueAtTime(
+            sound.frequency,
+            this.context.currentTime,
+          );
+          gainNode.gain.setValueAtTime(volume, this.context.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(
+            0.01,
+            this.context.currentTime + sound.duration,
+          );
+          oscillator.start(this.context.currentTime);
+          oscillator.stop(this.context.currentTime + sound.duration);
+        }
         play(name, volume = 0.3) {
-          if (!this.enabled || !this.sounds.has(name)) return;
-
+          if (!this.enabled || !this.sounds.has(name) || !this.context) return;
           try {
             const sound = this.sounds.get(name);
-            if (sound && this.context) {
-              const oscillator = this.context.createOscillator();
-              const gainNode = this.context.createGain();
-
-              oscillator.connect(gainNode);
-              gainNode.connect(this.context.destination);
-
-              oscillator.frequency.setValueAtTime(
-                sound.frequency,
-                this.context.currentTime,
-              );
-              gainNode.gain.setValueAtTime(volume, this.context.currentTime);
-              gainNode.gain.exponentialRampToValueAtTime(
-                0.01,
-                this.context.currentTime + sound.duration,
-              );
-
-              oscillator.start(this.context.currentTime);
-              oscillator.stop(this.context.currentTime + sound.duration);
+            if (this.context.state === "suspended") {
+              this.context
+                .resume()
+                .then(() => this.playSound(sound, volume))
+                .catch(() => {});
+              return;
             }
+            this.playSound(sound, volume);
           } catch (error) {
             console.warn("Erro ao tocar som:", error);
           }
         }
-
         setupEventListeners() {
           document.addEventListener(
             "mouseover",
@@ -3519,10 +3516,10 @@
             },
             true,
           );
-
           document.addEventListener(
             "click",
             (e) => {
+              this.resumeContextIfNeeded();
               if (
                 e.target.closest(
                   ".quantum-button, .filter-quantum, .pagination-quantum",
@@ -3530,22 +3527,23 @@
               ) {
                 this.play("click", 0.2);
               }
-              if (e.target.closest(".quantum-favorite")) {
+              if (
+                e.target.closest(
+                  ".quantum-favorite",
+                )
+              ) {
                 this.play("favorite", 0.3);
               }
             },
             true,
           );
         }
-
         toggle() {
           this.enabled = !this.enabled;
           return this.enabled;
         }
       }
-
       // ===== SISTEMA DE PESQUISA AVANÇADA =====
-
       // ===== SISTEMA DE DADOS DE PERSONAGENS COM ATRIBUTOS =====
 
       // ===== GALERIA QUÂNTICA OTIMIZADA =====

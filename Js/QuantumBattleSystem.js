@@ -14,6 +14,14 @@ class QuantumBattleSystem {
     this.particleSystems = [];
     this.frameCount = 0;
     this.animationId = null;
+    this.isTournamentRunning = false;
+    this.tournamentBattleCount = 5;
+    this.skipTournamentRequested = false;
+    this.selectorInitialLoad = 15;
+    this.selectorLoadStep = 10;
+    this.selectorVisibleCount = 0;
+    this.selectorRenderedCount = 0;
+    this.selectorFilteredCharacters = [];
 
     this.init();
   }
@@ -21,6 +29,7 @@ class QuantumBattleSystem {
   init() {
     this.cacheElements();
     this.setupEventListeners();
+    this.updateTournamentButtonState();
     this.loadHistory();
     this.addBattleStyles();
     this.initParticleSystem();
@@ -845,6 +854,7 @@ class QuantumBattleSystem {
       player1Display: document.getElementById("player1Display"),
       player2Display: document.getElementById("player2Display"),
       startBattleBtn: document.getElementById("startBattleBtn"),
+      tournamentModeBtn: document.getElementById("tournamentModeBtn"),
       resetBattleBtn: document.getElementById("resetBattleBtn"),
       battleResults: document.getElementById("battleResults"),
       resultsContent: document.getElementById("resultsContent"),
@@ -853,6 +863,8 @@ class QuantumBattleSystem {
       characterSelectorGrid: document.getElementById("characterSelectorGrid"),
       selectorTitle: document.getElementById("selectorTitle"),
       selectorClose: document.getElementById("selectorClose"),
+      selectorSearchInput: document.getElementById("characterSelectorSearch"),
+      selectorResultCount: document.getElementById("selectorResultCount"),
       backToGalleryFromBattle: document.getElementById(
         "backToGalleryFromBattle",
       ),
@@ -921,6 +933,13 @@ class QuantumBattleSystem {
     if (this.elements.startBattleBtn) {
       this.elements.startBattleBtn.addEventListener("click", () => {
         this.startBattle();
+        this.gallery.audio.play("click");
+      });
+    }
+
+    if (this.elements.tournamentModeBtn) {
+      this.elements.tournamentModeBtn.addEventListener("click", () => {
+        this.startTournamentMode();
         this.gallery.audio.play("click");
       });
     }
@@ -1974,10 +1993,20 @@ class QuantumBattleSystem {
   }
 
   skipAnimation() {
+    if (this.isTournamentRunning) {
+      this.skipTournamentRequested = true;
+      this.gallery.showToast("SKIP ATIVO: PULANDO O TORNEIO...");
+    }
+
     this.animationActive = false;
 
     // Efeito de transição
     this.createScreenEffect("screenFlash");
+
+    if (this.isTournamentRunning) {
+      this.endAnimation();
+      return;
+    }
 
     // Mostrar resultado imediatamente
     if (this.battleResult) {
@@ -2053,7 +2082,13 @@ class QuantumBattleSystem {
   openCharacterSelector(player) {
     this.currentPlayer = player;
     this.elements.selectorTitle.textContent = `SELECIONE PERSONAGEM ${player}`;
-    this.renderCharacterSelector();
+
+    if (this.elements.selectorSearchInput) {
+      this.elements.selectorSearchInput.value = "";
+    }
+    this.setupCharacterSelectorInteractions();
+    this.applySelectorFilter("");
+
     this.elements.characterSelectorModal.classList.add("show");
     document.body.style.overflow = "hidden";
   }
@@ -2063,39 +2098,145 @@ class QuantumBattleSystem {
     document.body.style.overflow = "";
   }
 
-  renderCharacterSelector() {
+  setupCharacterSelectorInteractions() {
     const grid = this.elements.characterSelectorGrid;
+    const searchInput = this.elements.selectorSearchInput;
     if (!grid) return;
 
-    grid.innerHTML = "";
+    grid.onscroll = () => {
+      const remaining = grid.scrollHeight - grid.scrollTop - grid.clientHeight;
+      if (remaining < 180) {
+        this.loadMoreSelectorCharacters();
+      }
+    };
 
-    charactersData.forEach((character) => {
-      const normalizedPath = this.gallery.cache.normalizePath(character.image);
-      const cachedImg = this.gallery.cache.imageCache.get(normalizedPath);
-      const imgSrc = cachedImg ? cachedImg.src : character.image;
-      const isSelected =
-        (this.currentPlayer === 1 &&
-          this.selectedCharacters.player1?.id === character.id) ||
-        (this.currentPlayer === 2 &&
-          this.selectedCharacters.player2?.id === character.id);
+    if (searchInput) {
+      searchInput.oninput = (e) => {
+        this.applySelectorFilter(e.target.value);
+      };
+    }
+  }
 
-      const health = this.calculateHealth(character.stats);
+  getCharacterSelectorSource() {
+    if (Array.isArray(this.gallery?.charactersData)) {
+      return this.gallery.charactersData;
+    }
+    if (
+      typeof window !== "undefined" &&
+      Array.isArray(window.charactersData)
+    ) {
+      return window.charactersData;
+    }
+    if (typeof charactersData !== "undefined" && Array.isArray(charactersData)) {
+      return charactersData;
+    }
+    return [];
+  }
 
-      const characterEl = document.createElement("div");
-      characterEl.className = `selector-character ${isSelected ? "selected" : ""}`;
-      characterEl.dataset.id = character.id;
-      characterEl.innerHTML = `
+  matchesSelectorSearch(character, normalizedQuery) {
+    if (!normalizedQuery) return true;
+
+    const categoryMap =
+      (typeof window !== "undefined" && window.categoryNames) ||
+      (typeof categoryNames !== "undefined" ? categoryNames : {});
+    const categoryDisplay = categoryMap?.[character.category] || character.category;
+
+    const haystack = [
+      character.name || "",
+      character.category || "",
+      categoryDisplay || "",
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return haystack.includes(normalizedQuery);
+  }
+
+  applySelectorFilter(query = "") {
+    const normalizedQuery = String(query || "")
+      .trim()
+      .toLowerCase();
+
+    const allCharacters = this.getCharacterSelectorSource();
+    this.selectorFilteredCharacters = allCharacters.filter((character) =>
+      this.matchesSelectorSearch(character, normalizedQuery),
+    );
+
+    this.selectorVisibleCount = Math.min(
+      this.selectorInitialLoad,
+      this.selectorFilteredCharacters.length,
+    );
+    this.selectorRenderedCount = 0;
+
+    if (this.elements.characterSelectorGrid) {
+      this.elements.characterSelectorGrid.innerHTML = "";
+      this.elements.characterSelectorGrid.scrollTop = 0;
+    }
+
+    this.renderCharacterSelector();
+    this.updateSelectorCount();
+  }
+
+  loadMoreSelectorCharacters() {
+    if (this.selectorVisibleCount >= this.selectorFilteredCharacters.length) return;
+
+    this.selectorVisibleCount = Math.min(
+      this.selectorVisibleCount + this.selectorLoadStep,
+      this.selectorFilteredCharacters.length,
+    );
+
+    this.renderCharacterSelector();
+    this.updateSelectorCount();
+  }
+
+  updateSelectorCount() {
+    if (!this.elements.selectorResultCount) return;
+
+    const total = this.selectorFilteredCharacters.length;
+    const shown = Math.min(this.selectorVisibleCount, total);
+    this.elements.selectorResultCount.textContent =
+      total > 0
+        ? `Exibindo ${shown} de ${total}`
+        : "Nenhum personagem";
+  }
+
+  createSelectorCharacterElement(character) {
+    const normalizedPath = this.gallery.cache?.normalizePath
+      ? this.gallery.cache.normalizePath(character.image)
+      : character.image;
+    const cachedImg = this.gallery.cache?.imageCache?.get(normalizedPath);
+    const imgSrc = cachedImg ? cachedImg.src : character.image;
+
+    const isSelected =
+      (this.currentPlayer === 1 &&
+        this.selectedCharacters.player1?.id === character.id) ||
+      (this.currentPlayer === 2 &&
+        this.selectedCharacters.player2?.id === character.id);
+
+    const categoryMap =
+      (typeof window !== "undefined" && window.categoryNames) ||
+      (typeof categoryNames !== "undefined" ? categoryNames : {});
+    const categoryDisplay = categoryMap?.[character.category] || character.category;
+    const health = this.calculateHealth(character.stats);
+    const placeholder = this.gallery.generatePlaceholderSVG
+      ? this.gallery.generatePlaceholderSVG(character, true)
+      : "";
+
+    const characterEl = document.createElement("div");
+    characterEl.className = `selector-character ${isSelected ? "selected" : ""}`;
+    characterEl.dataset.id = character.id;
+    characterEl.innerHTML = `
                 <img src="${imgSrc}" 
                      alt="${character.name}" 
                      class="selector-character-image"
-                     onerror="this.onerror=null; this.src='${this.gallery.generatePlaceholderSVG(character, true)}';">
+                     onerror="this.onerror=null; this.src='${placeholder}';">
                 <h4 class="selector-character-name">${character.name}</h4>
                 <div class="selector-character-category">
-                    ${categoryNames[character.category] || character.category}
+                    ${categoryDisplay}
                 </div>
                 <div class="character-health-container" style="margin-top: 10px;">
                     <div class="health-bar" style="width: ${health}%"></div>
-                    <div class="health-text">${Math.round(health)}% SAÚDE</div>
+                    <div class="health-text">${Math.round(health)}% SAUDE</div>
                 </div>
                 <div class="selector-character-stats" style="margin-top: 10px;">
                     <div class="stat-item">
@@ -2113,14 +2254,37 @@ class QuantumBattleSystem {
                 </div>
             `;
 
-      characterEl.addEventListener("click", () => {
-        this.selectCharacter(character);
-        this.closeCharacterSelector();
-        this.gallery.audio.play("click");
-      });
-
-      grid.appendChild(characterEl);
+    characterEl.addEventListener("click", () => {
+      this.selectCharacter(character);
+      this.closeCharacterSelector();
+      this.gallery.audio.play("click");
     });
+
+    return characterEl;
+  }
+
+  renderCharacterSelector() {
+    const grid = this.elements.characterSelectorGrid;
+    if (!grid) return;
+
+    if (!this.selectorFilteredCharacters.length) {
+      if (!grid.querySelector(".selector-empty")) {
+        grid.innerHTML = `<div class="selector-empty">Nenhum personagem encontrado.</div>`;
+      }
+      return;
+    }
+
+    const targetCount = Math.min(
+      this.selectorVisibleCount,
+      this.selectorFilteredCharacters.length,
+    );
+
+    for (let i = this.selectorRenderedCount; i < targetCount; i++) {
+      const character = this.selectorFilteredCharacters[i];
+      grid.appendChild(this.createSelectorCharacterElement(character));
+    }
+
+    this.selectorRenderedCount = targetCount;
   }
 
   calculateHealth(stats) {
@@ -2158,6 +2322,8 @@ class QuantumBattleSystem {
                 INICIAR BATALHA QUÂNTICA
             `;
     }
+
+    this.updateTournamentButtonState();
   }
 
   renderCharacterDisplay(character, player, healthPercent = null) {
@@ -2268,6 +2434,11 @@ class QuantumBattleSystem {
   }
 
   async startBattle() {
+    if (this.isTournamentRunning) {
+      this.gallery.showToast("TORNEIO EM ANDAMENTO...");
+      return;
+    }
+
     if (!this.selectedCharacters.player1 || !this.selectedCharacters.player2) {
       this.gallery.showToast("❌ SELECIONE AMBOS OS PERSONAGENS!");
       return;
@@ -2281,6 +2452,9 @@ class QuantumBattleSystem {
     }
 
     this.elements.startBattleBtn.disabled = true;
+    if (this.elements.tournamentModeBtn) {
+      this.elements.tournamentModeBtn.disabled = true;
+    }
     this.elements.startBattleBtn.innerHTML = `
             <i class="fas fa-spinner fa-spin"></i>
             BATALHA EM ANDAMENTO...
@@ -2304,6 +2478,7 @@ class QuantumBattleSystem {
 
     this.saveToHistory(this.battleResult);
 
+    this.renderInlineBattleResult(this.battleResult);
     this.showResultModalWithCharacterInfo(this.battleResult, stats1, stats2);
 
     this.elements.startBattleBtn.disabled = false;
@@ -2311,9 +2486,277 @@ class QuantumBattleSystem {
             <i class="fas fa-play"></i>
             INICIAR BATALHA QUÂNTICA
         `;
+    this.updateTournamentButtonState();
     this.animationActive = false;
 
     this.gallery.audio.play("favorite");
+  }
+
+  renderInlineBattleResult(result) {
+    if (!this.elements.resultsContent || !this.elements.battleResults) return;
+
+    const winnerImg = this.gallery.cache.imageCache.has(
+      this.gallery.cache.normalizePath(result.winner.character.image),
+    )
+      ? this.gallery.cache.imageCache.get(
+          this.gallery.cache.normalizePath(result.winner.character.image),
+        ).src
+      : result.winner.character.image;
+
+    const loserImg = this.gallery.cache.imageCache.has(
+      this.gallery.cache.normalizePath(result.loser.character.image),
+    )
+      ? this.gallery.cache.imageCache.get(
+          this.gallery.cache.normalizePath(result.loser.character.image),
+        ).src
+      : result.loser.character.image;
+
+    const winnerHealth = Math.round(
+      (result.winner.currentHealth / result.winner.health) * 100,
+    );
+    const loserHealth = Math.round(
+      (result.loser.currentHealth / result.loser.health) * 100,
+    );
+
+    const totalCritical = result.criticalHits.player1 + result.criticalHits.player2;
+    const totalDodges = result.dodges.player1 + result.dodges.player2;
+    const categoryMap =
+      (typeof window !== "undefined" && window.categoryNames) ||
+      (typeof categoryNames !== "undefined" ? categoryNames : {});
+    const winnerCategory =
+      categoryMap?.[result.winner.character.category] ||
+      result.winner.character.category;
+    const loserCategory =
+      categoryMap?.[result.loser.character.category] ||
+      result.loser.character.category;
+
+    this.elements.resultsContent.innerHTML = `
+      <div class="winner-display battle-result-card">
+        <div class="battle-result-card-label">VENCEDOR</div>
+        <img src="${winnerImg}" alt="${result.winnerName}" class="result-character-image">
+        <div class="result-character-name">${result.winnerName}</div>
+        <div class="battle-result-card-sub">${winnerCategory}</div>
+      </div>
+      <div class="loser-display battle-result-card">
+        <div class="battle-result-card-label">DERROTADO</div>
+        <img src="${loserImg}" alt="${result.loserName}" class="result-character-image">
+        <div class="result-character-name">${result.loserName}</div>
+        <div class="battle-result-card-sub">${loserCategory}</div>
+      </div>
+      <div class="battle-result-summary">
+        <div class="battle-result-chip">
+          <span class="battle-result-chip-label">ROUNDS</span>
+          <strong>${result.rounds}</strong>
+        </div>
+        <div class="battle-result-chip">
+          <span class="battle-result-chip-label">TIPO</span>
+          <strong>${result.winByPoints ? "PONTOS" : "NOCAUTE"}</strong>
+        </div>
+        <div class="battle-result-chip">
+          <span class="battle-result-chip-label">SAUDE FINAL</span>
+          <strong>${winnerHealth}% x ${loserHealth}%</strong>
+        </div>
+        <div class="battle-result-chip">
+          <span class="battle-result-chip-label">CRITICOS / ESQUIVAS</span>
+          <strong>${totalCritical} / ${totalDodges}</strong>
+        </div>
+      </div>
+    `;
+
+    this.elements.battleResults.classList.add("show");
+  }
+
+  getRandomTournamentOpponents(excludedCharacterId, count = 5) {
+    const source = this.getCharacterSelectorSource().filter(
+      (character) => character.id !== excludedCharacterId,
+    );
+    if (source.length === 0) return [];
+
+    const pool = [...source];
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+
+    if (pool.length >= count) {
+      return pool.slice(0, count);
+    }
+
+    const opponents = [];
+    while (opponents.length < count) {
+      opponents.push(source[Math.floor(Math.random() * source.length)]);
+    }
+    return opponents;
+  }
+
+  renderTournamentSummary(challenger, rounds, wins, losses) {
+    if (!this.elements.resultsContent || !this.elements.battleResults) return;
+
+    const roundsHtml = rounds
+      .map((round) => {
+        const resultLabel = round.challengerWon ? "VITORIA" : "DERROTA";
+        const resultColor = round.challengerWon
+          ? "var(--quantum-success)"
+          : "var(--quantum-danger)";
+
+        return `
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+            <div><strong>ROUND ${round.round}</strong> - ${challenger.name} vs ${round.opponentName}</div>
+            <div style="color:${resultColor};font-weight:700;">${resultLabel} (${round.rounds} rounds)</div>
+          </div>
+        `;
+      })
+      .join("");
+
+    this.elements.resultsContent.innerHTML = `
+      <div style="grid-column:1 / -1;background:rgba(0,0,0,0.35);border:2px solid rgba(255,212,71,0.45);border-radius:14px;padding:20px;">
+        <h4 style="margin:0 0 12px 0;color:#ffd447;font-size:1.35rem;letter-spacing:1px;">RESULTADO DO TORNEIO</h4>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+          <div style="padding:8px 12px;border-radius:999px;background:rgba(0,255,157,0.14);border:1px solid rgba(0,255,157,0.35);">VITORIAS: <strong>${wins}</strong></div>
+          <div style="padding:8px 12px;border-radius:999px;background:rgba(255,51,102,0.14);border:1px solid rgba(255,51,102,0.35);">DERROTAS: <strong>${losses}</strong></div>
+          <div style="padding:8px 12px;border-radius:999px;background:rgba(255,212,71,0.12);border:1px solid rgba(255,212,71,0.35);">APROVEITAMENTO: <strong>${Math.round((wins / Math.max(1, rounds.length)) * 100)}%</strong></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">${roundsHtml}</div>
+      </div>
+    `;
+
+    this.elements.battleResults.classList.add("show");
+  }
+
+  updateTournamentButtonState() {
+    if (!this.elements.tournamentModeBtn) return;
+
+    if (this.isTournamentRunning) {
+      this.elements.tournamentModeBtn.disabled = true;
+      return;
+    }
+
+    this.elements.tournamentModeBtn.disabled = !this.selectedCharacters.player1;
+    this.elements.tournamentModeBtn.innerHTML = `
+      <i class="fas fa-trophy"></i>
+      MODO TORNEIO (${this.tournamentBattleCount} BATALHAS)
+    `;
+  }
+
+  async startTournamentMode() {
+    if (this.isTournamentRunning || this.animationActive) {
+      this.gallery.showToast("AGUARDE A BATALHA ATUAL TERMINAR");
+      return;
+    }
+
+    const challenger = this.selectedCharacters.player1;
+    if (!challenger) {
+      this.gallery.showToast("SELECIONE O PERSONAGEM 1 PARA O TORNEIO");
+      return;
+    }
+
+    const roundsTotal = this.tournamentBattleCount;
+    const opponents = this.getRandomTournamentOpponents(challenger.id, roundsTotal);
+    if (opponents.length === 0) {
+      this.gallery.showToast("NAO FOI POSSIVEL MONTAR O TORNEIO");
+      return;
+    }
+
+    this.isTournamentRunning = true;
+    this.skipTournamentRequested = false;
+    this.animationActive = true;
+
+    this.elements.startBattleBtn.disabled = true;
+    this.elements.resetBattleBtn.disabled = true;
+    if (this.elements.tournamentModeBtn) {
+      this.elements.tournamentModeBtn.disabled = true;
+      this.elements.tournamentModeBtn.innerHTML = `
+        <i class="fas fa-spinner fa-spin"></i>
+        TORNEIO EM ANDAMENTO...
+      `;
+    }
+    if (this.elements.skipAnimationBtn) {
+      this.elements.skipAnimationBtn.innerHTML = `
+        <i class="fas fa-forward"></i>
+        SKIP TORNEIO (5)
+      `;
+    }
+
+    this.elements.battleLog.innerHTML =
+      "<h4 class='log-title'>REGISTRO DO TORNEIO</h4>";
+    this.addToLog(
+      `TORNEIO INICIADO: ${challenger.name} enfrentara ${roundsTotal} adversarios.`,
+      "start",
+    );
+
+    let wins = 0;
+    let losses = 0;
+    const rounds = [];
+
+    try {
+      for (let roundIndex = 0; roundIndex < roundsTotal; roundIndex++) {
+        const opponent = opponents[roundIndex];
+        this.selectedCharacters.player2 = opponent;
+        this.renderCharacterDisplay(opponent, 2);
+
+        this.addToLog(
+          `ROUND ${roundIndex + 1}: ${challenger.name} vs ${opponent.name}`,
+          "round",
+        );
+
+        const stats1 = this.calculateCharacterStats(challenger);
+        const stats2 = this.calculateCharacterStats(opponent);
+        const result = this.simulateBattle(stats1, stats2);
+
+        this.battleResult = result;
+        if (this.skipTournamentRequested) {
+          this.animationActive = false;
+        } else {
+          this.animationActive = true;
+          await this.startBattleAnimationWithRealResult(result);
+        }
+
+        this.updateCharacterHealthAfterBattle(result);
+        this.saveToHistory(result);
+
+        const challengerWon = result.winner.character.id === challenger.id;
+        if (challengerWon) {
+          wins++;
+        } else {
+          losses++;
+        }
+
+        rounds.push({
+          round: roundIndex + 1,
+          opponentName: opponent.name,
+          winnerName: result.winnerName,
+          challengerWon,
+          rounds: result.rounds,
+        });
+      }
+
+      this.renderTournamentSummary(challenger, rounds, wins, losses);
+      this.gallery.showToast(
+        `TORNEIO FINALIZADO: ${wins} VITORIAS / ${losses} DERROTAS`,
+      );
+      this.gallery.audio.play(
+        wins >= Math.ceil(roundsTotal / 2) ? "favorite" : "click",
+      );
+    } finally {
+      this.isTournamentRunning = false;
+      this.skipTournamentRequested = false;
+      this.animationActive = false;
+      if (this.elements.skipAnimationBtn) {
+        this.elements.skipAnimationBtn.innerHTML = `
+          <i class="fas fa-forward"></i>
+          PULAR ANIMAÇÃO
+        `;
+      }
+      this.elements.resetBattleBtn.disabled = false;
+      this.elements.startBattleBtn.disabled = !(
+        this.selectedCharacters.player1 && this.selectedCharacters.player2
+      );
+      this.elements.startBattleBtn.innerHTML = `
+        <i class="fas fa-play"></i>
+        INICIAR BATALHA QUANTICA
+      `;
+      this.updateTournamentButtonState();
+    }
   }
 
   calculateCharacterStats(character) {
@@ -3000,6 +3443,13 @@ class QuantumBattleSystem {
   closeResultModal() {
     this.elements.battleResultModal.classList.remove("active");
     document.body.style.overflow = "";
+
+    if (this.elements.battleResults?.classList.contains("show")) {
+      this.elements.battleResults.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   }
 
   rematch() {
@@ -3008,6 +3458,8 @@ class QuantumBattleSystem {
   }
 
   resetBattle() {
+    this.isTournamentRunning = false;
+    this.skipTournamentRequested = false;
     this.selectedCharacters.player1 = null;
     this.selectedCharacters.player2 = null;
     this.battleLog = [];
@@ -3032,9 +3484,13 @@ class QuantumBattleSystem {
         `;
 
     this.elements.startBattleBtn.disabled = true;
+    if (this.elements.resetBattleBtn) {
+      this.elements.resetBattleBtn.disabled = false;
+    }
     this.elements.battleResults.classList.remove("show");
     this.elements.battleLog.innerHTML =
       "<h4 class='log-title'>REGISTRO DA BATALHA</h4>";
+    this.updateTournamentButtonState();
 
     this.gallery.showToast(
       "🔄 BATALHA REINICIADA • SELECIONE NOVOS PERSONAGENS",

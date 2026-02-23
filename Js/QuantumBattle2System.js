@@ -35,6 +35,11 @@ class QuantumBattle2DSystem {
       player: null,
       bot: null,
     };
+    this.selectorInitialLoad = 15;
+    this.selectorLoadStep = 10;
+    this.selectorVisibleCount = 0;
+    this.selectorRenderedCount = 0;
+    this.selectorFilteredCharacters = [];
 
     // Imagens carregadas
     this.playerImage = null;
@@ -105,6 +110,8 @@ class QuantumBattle2DSystem {
       startBattle2dBtn: document.getElementById("startBattle2dBtn"),
       battle2dControls: document.getElementById("battle2dControls"),
       battle2dArena: document.getElementById("battle2dArena"),
+      selectorSearchInput: document.getElementById("characterSelectorSearch"),
+      selectorResultCount: document.getElementById("selectorResultCount"),
     };
   }
 
@@ -205,7 +212,6 @@ class QuantumBattle2DSystem {
       }
     });
   }
-
   openCharacterSelector(title) {
     const modal = document.getElementById("characterSelectorModal");
     const titleElement = document.getElementById("selectorTitle");
@@ -215,8 +221,11 @@ class QuantumBattle2DSystem {
 
     titleElement.textContent = title;
 
-    // Passa o modal como referência para o renderizador
-    this.renderCharacterSelector(grid, modal);
+    if (this.elements.selectorSearchInput) {
+      this.elements.selectorSearchInput.value = "";
+    }
+    this.setupCharacterSelectorInteractions(grid, modal);
+    this.applySelectorFilter("");
 
     modal.classList.add("show");
     document.body.style.overflow = "hidden";
@@ -237,30 +246,115 @@ class QuantumBattle2DSystem {
     };
   }
 
-  renderCharacterSelector(grid, modal) {
-    grid.innerHTML = "";
+  setupCharacterSelectorInteractions(grid, modal) {
+    if (!grid || !modal) return;
 
-    this.gallery.charactersData.forEach((character) => {
-      const normalizedPath =
-        this.gallery.cache?.normalizePath(character.image) || character.image;
-      const cachedImg = this.gallery.cache?.imageCache?.get(normalizedPath);
-      const imgSrc = cachedImg ? cachedImg.src : character.image;
+    grid.onscroll = () => {
+      const remaining = grid.scrollHeight - grid.scrollTop - grid.clientHeight;
+      if (remaining < 180) {
+        this.loadMoreSelectorCharacters(grid, modal);
+      }
+    };
 
-      const isSelected =
-        (this.currentPlayer === 1 &&
-          this.selectedCharacters.player?.id === character.id) ||
-        (this.currentPlayer === 2 &&
-          this.selectedCharacters.bot?.id === character.id);
+    if (this.elements.selectorSearchInput) {
+      this.elements.selectorSearchInput.oninput = (e) => {
+        this.applySelectorFilter(e.target.value);
+      };
+    }
+  }
 
-      const characterEl = document.createElement("div");
-      characterEl.className = `selector-character ${isSelected ? "selected" : ""}`;
-      characterEl.dataset.id = character.id;
+  matchesSelectorSearch(character, normalizedQuery) {
+    if (!normalizedQuery) return true;
 
-      const categoryDisplay = window.categoryNames
-        ? window.categoryNames[character.category] || character.category
-        : character.category;
+    const categoryDisplay = window.categoryNames
+      ? window.categoryNames[character.category] || character.category
+      : character.category;
 
-      characterEl.innerHTML = `
+    const haystack = [
+      character.name || "",
+      character.category || "",
+      categoryDisplay || "",
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return haystack.includes(normalizedQuery);
+  }
+
+  applySelectorFilter(query = "") {
+    const normalizedQuery = String(query || "")
+      .trim()
+      .toLowerCase();
+
+    const source = Array.isArray(this.gallery?.charactersData)
+      ? this.gallery.charactersData
+      : [];
+
+    this.selectorFilteredCharacters = source.filter((character) =>
+      this.matchesSelectorSearch(character, normalizedQuery),
+    );
+
+    this.selectorVisibleCount = Math.min(
+      this.selectorInitialLoad,
+      this.selectorFilteredCharacters.length,
+    );
+    this.selectorRenderedCount = 0;
+
+    const modal = document.getElementById("characterSelectorModal");
+    const grid = document.getElementById("characterSelectorGrid");
+    if (grid) {
+      grid.innerHTML = "";
+      grid.scrollTop = 0;
+      this.renderCharacterSelector(grid, modal);
+    }
+
+    this.updateSelectorCount();
+  }
+
+  loadMoreSelectorCharacters(grid, modal) {
+    if (this.selectorVisibleCount >= this.selectorFilteredCharacters.length) return;
+
+    this.selectorVisibleCount = Math.min(
+      this.selectorVisibleCount + this.selectorLoadStep,
+      this.selectorFilteredCharacters.length,
+    );
+
+    this.renderCharacterSelector(grid, modal);
+    this.updateSelectorCount();
+  }
+
+  updateSelectorCount() {
+    if (!this.elements.selectorResultCount) return;
+
+    const total = this.selectorFilteredCharacters.length;
+    const shown = Math.min(this.selectorVisibleCount, total);
+    this.elements.selectorResultCount.textContent =
+      total > 0
+        ? `Exibindo ${shown} de ${total}`
+        : "Nenhum personagem";
+  }
+
+  createSelectorCharacterElement(character, modal) {
+    const normalizedPath =
+      this.gallery.cache?.normalizePath(character.image) || character.image;
+    const cachedImg = this.gallery.cache?.imageCache?.get(normalizedPath);
+    const imgSrc = cachedImg ? cachedImg.src : character.image;
+
+    const isSelected =
+      (this.currentPlayer === 1 &&
+        this.selectedCharacters.player?.id === character.id) ||
+      (this.currentPlayer === 2 &&
+        this.selectedCharacters.bot?.id === character.id);
+
+    const characterEl = document.createElement("div");
+    characterEl.className = `selector-character ${isSelected ? "selected" : ""}`;
+    characterEl.dataset.id = character.id;
+
+    const categoryDisplay = window.categoryNames
+      ? window.categoryNames[character.category] || character.category
+      : character.category;
+
+    characterEl.innerHTML = `
                 <img src="${imgSrc}" 
                      alt="${character.name}" 
                      class="selector-character-image"
@@ -289,22 +383,37 @@ class QuantumBattle2DSystem {
                 </div>
             `;
 
-      // CORREÇÃO: Usar closure para capturar o modal corretamente
-      characterEl.addEventListener(
-        "click",
-        function (selectedModal) {
-          return function () {
-            this.selectCharacter(character);
-            // FECHA O MODAL CORRETAMENTE
-            selectedModal.classList.remove("show");
-            document.body.style.overflow = "";
-            this.gallery.audio?.play("click");
-          }.bind(this);
-        }.call(this, modal),
-      );
-
-      grid.appendChild(characterEl);
+    characterEl.addEventListener("click", () => {
+      this.selectCharacter(character);
+      if (modal) modal.classList.remove("show");
+      document.body.style.overflow = "";
+      this.gallery.audio?.play("click");
     });
+
+    return characterEl;
+  }
+
+  renderCharacterSelector(grid, modal) {
+    if (!grid) return;
+
+    if (!this.selectorFilteredCharacters.length) {
+      if (!grid.querySelector(".selector-empty")) {
+        grid.innerHTML = `<div class="selector-empty">Nenhum personagem encontrado.</div>`;
+      }
+      return;
+    }
+
+    const targetCount = Math.min(
+      this.selectorVisibleCount,
+      this.selectorFilteredCharacters.length,
+    );
+
+    for (let i = this.selectorRenderedCount; i < targetCount; i++) {
+      const character = this.selectorFilteredCharacters[i];
+      grid.appendChild(this.createSelectorCharacterElement(character, modal));
+    }
+
+    this.selectorRenderedCount = targetCount;
   }
 
   selectCharacter(character) {
@@ -482,6 +591,41 @@ class QuantumBattle2DSystem {
     );
   }
 
+  isMadaraCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 4 ||
+      normalizedName.includes("MADARA") ||
+      normalizedImage.includes("madara")
+    );
+  }
+
+  isAatroxCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 9 ||
+      normalizedName.includes("AATROX") ||
+      normalizedImage.includes("aatrox")
+    );
+  }
+
+  isBattleBeastCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const compactName = normalizedName.replace(/[^A-Z0-9]/g, "");
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 39 ||
+      compactName.includes("BATTLEBEAST") ||
+      normalizedImage.includes("battle beast") ||
+      normalizedImage.includes("battle-beast")
+    );
+  }
+
   getLokiAttackFrameCandidates() {
     const candidates = [];
 
@@ -507,11 +651,68 @@ class QuantumBattle2DSystem {
     return candidates;
   }
 
+  getMadaraAttackFrameCandidates() {
+    const candidates = [];
+
+    for (let i = 1; i <= 140; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `img-animetion/Madara/Madarai_attack_-${frameNumber}.png`,
+        `img-animetion/Madara/madarai_attack_-${frameNumber}.png`,
+        `img-animetion/Madara/madara_attack_-${frameNumber}.png`,
+      ]);
+    }
+
+    return candidates;
+  }
+
+  getAatroxAttackFrameCandidates() {
+    const candidates = [];
+
+    for (let i = 1; i <= 140; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `img-animetion/Aatrox/Aatroxi_attack_-${frameNumber}.png`,
+        `img-animetion/Aatrox/aatroxi_attack_-${frameNumber}.png`,
+        `img-animetion/Aatrox/aatrox_attack_-${frameNumber}.png`,
+      ]);
+    }
+
+    return candidates;
+  }
+
+  getBattleBeastAttackFrameCandidates() {
+    const candidates = [];
+
+    for (let i = 1; i <= 180; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `img-animetion/Battl- Beast/Battl- Beast-${frameNumber}.png`,
+        `img-animetion/Battl- Beast/Battl-Beast-${frameNumber}.png`,
+        `img-animetion/Battl- Beast/Battle Beast-${frameNumber}.png`,
+        `img-animetion/Battl- Beast/battl- beast-${frameNumber}.png`,
+      ]);
+    }
+
+    return candidates;
+  }
+
   async loadAttackFramesForCharacter(character) {
-    if (!this.isLokiCharacter(character)) return [];
+    let frameCandidates = [];
+
+    if (this.isLokiCharacter(character)) {
+      frameCandidates = this.getLokiAttackFrameCandidates();
+    } else if (this.isMadaraCharacter(character)) {
+      frameCandidates = this.getMadaraAttackFrameCandidates();
+    } else if (this.isAatroxCharacter(character)) {
+      frameCandidates = this.getAatroxAttackFrameCandidates();
+    } else if (this.isBattleBeastCharacter(character)) {
+      frameCandidates = this.getBattleBeastAttackFrameCandidates();
+    } else {
+      return [];
+    }
 
     const frames = [];
-    const frameCandidates = this.getLokiAttackFrameCandidates();
     let consecutiveMisses = 0;
 
     for (const options of frameCandidates) {
@@ -709,12 +910,14 @@ class QuantumBattle2DSystem {
     this.performance.maxEffects = this.isLowPerformanceDevice() ? 30 : 44;
     this.performance.drawEnergyLines = false;
     this.performance.simpleFx = true;
-    const characterWidth = this.isLowPerformanceDevice() ? 72 : 82;
+    const characterWidth = this.isLowPerformanceDevice() ? 92 : 108;
+    const playerSpawnX = 90;
+    const botSpawnX = this.canvasWidth - playerSpawnX - characterWidth;
 
     // Cria os personagens com stats
     this.player = new BattleCharacter(
       this.selectedCharacters.player,
-      100,
+      playerSpawnX,
       this.groundY,
       characterWidth,
       100,
@@ -722,7 +925,7 @@ class QuantumBattle2DSystem {
     );
     this.bot = new BattleCharacter(
       this.selectedCharacters.bot,
-      580,
+      botSpawnX,
       this.groundY,
       characterWidth,
       100,
@@ -2311,7 +2514,6 @@ class QuantumBattle2DSystem {
     this.ctx.shadowBlur = 0;
   }
 }
-
 // ============================================
 // CLASSE BATTLE CHARACTER - VERSÃO MELHORADA
 // ============================================
@@ -2366,4 +2568,3 @@ class BattleCharacter {
     this.comboMultiplier = 1;
   }
 }
-

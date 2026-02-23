@@ -202,7 +202,7 @@ const charactersData = [
     id: 9,
     name: "AATROX",
     category: "League of Legend",
-    image: "img/lol/Aatrox-1s.png",
+    image: "img/lol/Aatrox-2s.png",
     description:
       "A Espada das Trevas, entidade celestial corrompida, destruidor de mundos. Objetivo: Aniquilar tudo.",
     details: {
