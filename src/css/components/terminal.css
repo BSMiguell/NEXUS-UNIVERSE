@@ -1,0 +1,221 @@
+/* Quantum Terminal */
+.quantum-terminal {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.terminal-header {
+  font-family: "Orbitron", monospace;
+  color: var(--quantum-primary);
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transform: translateZ(30px);
+}
+
+.terminal-grid {
+  display: grid;
+  gap: 25px;
+}
+
+.terminal-control {
+  background: rgba(0, 20, 40, 0.8);
+  border: 2px solid rgba(0, 255, 234, 0.2);
+  border-radius: var(--border-radius-md);
+  padding: 25px;
+  transition: var(--transition-fast);
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+}
+
+[data-theme="light"] .terminal-control {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(0, 119, 182, 0.2);
+}
+
+.terminal-control:hover {
+  border-color: var(--quantum-primary);
+  box-shadow: 0 0 30px rgba(0, 255, 234, 0.2);
+  transform: translateZ(20px) rotateX(2deg);
+}
+
+.sort-quantum {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: "Orbitron", monospace;
+  font-size: 1.2rem;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform-style: preserve-3d;
+}
+
+.sort-options-quantum {
+  display: none;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 255, 234, 0.2);
+  transform-style: preserve-3d;
+}
+
+.sort-option-quantum {
+  padding: 15px;
+  margin: 10px 0;
+  background: rgba(0, 30, 60, 0.5);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+}
+
+[data-theme="light"] .sort-option-quantum {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.sort-option-quantum:hover {
+  background: rgba(0, 255, 234, 0.1);
+  transform: translateX(10px) translateZ(10px);
+}
+
+.reset-quantum {
+  width: 100%;
+  background: rgba(255, 42, 109, 0.1);
+  border: 2px solid rgba(255, 42, 109, 0.3);
+  color: var(--text-primary);
+  padding: 20px;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+}
+
+.reset-quantum:hover {
+  background: rgba(255, 42, 109, 0.2);
+  border-color: var(--quantum-danger);
+  transform: translateY(-5px) translateZ(20px) rotateX(5deg);
+  box-shadow: 0 10px 40px rgba(255, 42, 109, 0.3);
+}
+
+.terminal-action-btn {
+  width: 100%;
+  min-height: 72px;
+  padding: 16px 22px;
+  border-radius: var(--border-radius-full);
+  cursor: pointer;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(0.95rem, 1.1vw + 0.55rem, 1.12rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  line-height: 1.1;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  color: #eafcff;
+  text-shadow: 0 0 12px rgba(0, 255, 234, 0.22);
+  border: 1px solid rgba(0, 255, 234, 0.35);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 255, 234, 0.14) 0%,
+      rgba(0, 102, 153, 0.2) 100%
+    ),
+    rgba(7, 16, 30, 0.85);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.terminal-action-btn i {
+  font-size: 1rem;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+#viewFavoritesBtn.terminal-action-btn {
+  border-color: rgba(255, 196, 0, 0.45);
+  background: linear-gradient(
+      135deg,
+      rgba(255, 208, 0, 0.14) 0%,
+      rgba(128, 82, 0, 0.24) 100%
+    ),
+    rgba(20, 14, 4, 0.82);
+}
+
+#viewBattleBtn.terminal-action-btn {
+  border-color: rgba(255, 66, 109, 0.48);
+  background: linear-gradient(
+      135deg,
+      rgba(255, 42, 109, 0.16) 0%,
+      rgba(255, 84, 0, 0.2) 100%
+    ),
+    rgba(22, 8, 10, 0.84);
+}
+
+#viewSearchBtn.terminal-action-btn {
+  border-color: rgba(0, 255, 234, 0.45);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 255, 234, 0.15) 0%,
+      rgba(0, 119, 182, 0.22) 100%
+    ),
+    rgba(5, 15, 22, 0.84);
+}
+
+.terminal-action-btn:hover {
+  transform: translateY(-3px) translateZ(12px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4), 0 0 18px rgba(0, 255, 234, 0.25);
+}
+
+#viewFavoritesBtn.terminal-action-btn:hover {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4), 0 0 18px rgba(255, 196, 0, 0.3);
+}
+
+#viewBattleBtn.terminal-action-btn:hover {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4), 0 0 18px rgba(255, 66, 109, 0.32);
+}
+
+#viewSearchBtn.terminal-action-btn:hover {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4), 0 0 18px rgba(0, 255, 234, 0.3);
+}
+
+[data-theme="light"] .terminal-action-btn {
+  color: #0f172a;
+  text-shadow: none;
+  border-color: rgba(0, 119, 182, 0.3);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 119, 182, 0.08) 0%,
+      rgba(0, 255, 234, 0.1) 100%
+    ),
+    rgba(255, 255, 255, 0.88);
+}

@@ -29,7 +29,6 @@ class QuantumGallery {
 
     this.viewedCharacters = new Set();
     this.history = new QuantumHistory(this);
-    this.effects = new QuantumEffects();
     this.audio = new QuantumAudio();
     this.themeSystem = new QuantumThemeSystem();
     this.favorites = new QuantumFavoritesSystem(this);
