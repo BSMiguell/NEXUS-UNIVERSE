@@ -6,10 +6,22 @@
   --quantum-danger: #ff3860;
   --quantum-success: #00ff9d;
   --quantum-warning: #ffb86b;
+  --quantum-primary-rgb: 0, 255, 238;
+  --quantum-secondary-rgb: 160, 32, 240;
+  --quantum-danger-rgb: 255, 56, 96;
+  --quantum-success-rgb: 0, 255, 157;
   --quantum-gradient: linear-gradient(145deg, #00ffee, #a020f0, #ff44cc);
   --quantum-glow: 0 0 30px rgba(0, 255, 234, 0.6);
   --background-primary: #0a0a1a;
+  --background-secondary: #141425;
+  --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-accent: #00ffee;
+  --border-primary: rgba(0, 255, 234, 0.2);
+  --border-secondary: rgba(0, 255, 234, 0.28);
+  --overlay-background: rgba(10, 10, 15, 0.98);
+  --glass-background: rgba(15, 15, 30, 0.7);
+  --button-background: rgba(6, 18, 30, 0.9);
   --border-radius-full: 40px;
   --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   --font-display: "Audiowide", cursive;
@@ -23,10 +35,10 @@
   padding: 60px 20px;
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(0, 255, 234, 0.08),
+    var(--border-primary),
     transparent 80%
   );
-  border-bottom: 2px solid rgba(0, 255, 234, 0.2);
+  border-bottom: 2px solid var(--border-primary);
   margin-bottom: 40px;
 }
 
@@ -40,7 +52,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 20px rgba(0, 255, 234, 0.4);
+  text-shadow: 0 0 20px var(--quantum-primary);
   margin-bottom: 20px;
 }
 

@@ -474,84 +474,91 @@ class QuantumBattle2DSystem {
   }
 
   showBattlePage() {
-    this.gallery.preparePageTransition?.();
-    this.gallery.state.showFavoritesPage = false;
-    this.gallery.state.showBattlePage = false;
-    this.gallery.state.showBattle2dPage = true;
+    const openBattle2dPage = () => {
+      this.gallery.state.showFavoritesPage = false;
+      this.gallery.state.showBattlePage = false;
+      this.gallery.state.showBattle2dPage = true;
 
-    if (this.gallery.setSectionVisibility) {
-      this.gallery.setSectionVisibility(
-        this.gallery.elements?.quantumUniverse,
-        false,
-      );
-    } else if (this.gallery.elements?.quantumUniverse) {
-      this.gallery.elements.quantumUniverse.style.display = "none";
-    }
-    const favoritesPage = document.getElementById("quantumFavoritesPage");
-    if (this.gallery.setSectionVisibility) {
-      this.gallery.setSectionVisibility(favoritesPage, false, {
-        activeClass: true,
-      });
-    } else if (favoritesPage) {
-      favoritesPage.style.display = "none";
-      favoritesPage.classList.remove("active");
-      favoritesPage.setAttribute("hidden", "");
-      favoritesPage.setAttribute("aria-hidden", "true");
-    }
-    const battlePage = document.getElementById("quantumBattlePage");
-    if (this.gallery.setSectionVisibility) {
-      this.gallery.setSectionVisibility(battlePage, false, {
-        activeClass: true,
-      });
-    } else if (battlePage) {
-      battlePage.style.display = "none";
-      battlePage.classList.remove("active");
-      battlePage.setAttribute("hidden", "");
-      battlePage.setAttribute("aria-hidden", "true");
-    }
-
-    if (this.elements.page) {
       if (this.gallery.setSectionVisibility) {
-        this.gallery.setSectionVisibility(this.elements.page, true, {
+        this.gallery.setSectionVisibility(
+          this.gallery.elements?.quantumUniverse,
+          false,
+        );
+      } else if (this.gallery.elements?.quantumUniverse) {
+        this.gallery.elements.quantumUniverse.style.display = "none";
+      }
+      const favoritesPage = document.getElementById("quantumFavoritesPage");
+      if (this.gallery.setSectionVisibility) {
+        this.gallery.setSectionVisibility(favoritesPage, false, {
           activeClass: true,
         });
-      } else {
-        this.elements.page.style.display = "block";
-        this.elements.page.classList.add("active");
-        this.elements.page.removeAttribute("hidden");
-        this.elements.page.setAttribute("aria-hidden", "false");
+      } else if (favoritesPage) {
+        favoritesPage.style.display = "none";
+        favoritesPage.classList.remove("active");
+        favoritesPage.setAttribute("hidden", "");
+        favoritesPage.setAttribute("aria-hidden", "true");
       }
-      this.selectedCharacters = { player: null, bot: null };
+      const battlePage = document.getElementById("quantumBattlePage");
+      if (this.gallery.setSectionVisibility) {
+        this.gallery.setSectionVisibility(battlePage, false, {
+          activeClass: true,
+        });
+      } else if (battlePage) {
+        battlePage.style.display = "none";
+        battlePage.classList.remove("active");
+        battlePage.setAttribute("hidden", "");
+        battlePage.setAttribute("aria-hidden", "true");
+      }
 
-      // Resetar os displays
-      if (this.elements.playerSelectedDisplay) {
-        this.elements.playerSelectedDisplay.innerHTML = `
+      if (this.elements.page) {
+        if (this.gallery.setSectionVisibility) {
+          this.gallery.setSectionVisibility(this.elements.page, true, {
+            activeClass: true,
+          });
+        } else {
+          this.elements.page.style.display = "block";
+          this.elements.page.classList.add("active");
+          this.elements.page.removeAttribute("hidden");
+          this.elements.page.setAttribute("aria-hidden", "false");
+        }
+        this.selectedCharacters = { player: null, bot: null };
+
+        if (this.elements.playerSelectedDisplay) {
+          this.elements.playerSelectedDisplay.innerHTML = `
                     <div class="selected-mini-card empty">
                         <i class="fas fa-user-circle"></i>
                         <span>Nenhum personagem selecionado</span>
                     </div>
                 `;
-      }
-      if (this.elements.botSelectedDisplay) {
-        this.elements.botSelectedDisplay.innerHTML = `
+        }
+        if (this.elements.botSelectedDisplay) {
+          this.elements.botSelectedDisplay.innerHTML = `
                     <div class="selected-mini-card empty">
                         <i class="fas fa-robot"></i>
                         <span>Nenhum personagem selecionado</span>
                     </div>
                 `;
+        }
+
+        this.showSelectionScreen();
+        setTimeout(() => {
+          this.elements.page.style.opacity = "1";
+          this.elements.page.style.transform = "translateY(0)";
+        }, 50);
       }
 
-      this.showSelectionScreen();
-      setTimeout(() => {
-        this.elements.page.style.opacity = "1";
-        this.elements.page.style.transform = "translateY(0)";
-      }, 50);
-    }
+      document.title = "⚔️ BATALHA 2D | NEXUS UNIVERSE";
+      this.gallery.forceScrollTopImmediate?.();
+      this.gallery.audio?.play("click");
+      this.gallery.showToast("⚔️ ARENA QUÂNTICA CARREGADA");
+    };
 
-    document.title = "⚔️ BATALHA 2D | NEXUS UNIVERSE";
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    this.gallery.audio?.play("click");
-    this.gallery.showToast("⚔️ ARENA QUÂNTICA CARREGADA");
+    if (typeof this.gallery.runPageTransition === "function") {
+      this.gallery.runPageTransition(openBattle2dPage);
+    } else {
+      this.gallery.preparePageTransition?.();
+      openBattle2dPage();
+    }
   }
 
   startBattle() {

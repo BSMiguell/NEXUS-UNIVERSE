@@ -56,6 +56,7 @@ class QuantumGallery {
     };
 
     this.elements = {};
+    this.pageTransitionInProgress = false;
     this.init();
   }
 
@@ -82,10 +83,14 @@ class QuantumGallery {
   }
 
   handlePageRefresh() {
-    window.scrollTo(0, 0);
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    this.forceScrollTopImmediate();
 
     window.addEventListener("beforeunload", () => {
-      window.scrollTo(0, 0);
+      this.forceScrollTopImmediate();
     });
   }
 
@@ -221,6 +226,57 @@ class QuantumGallery {
     }
 
     element.setAttribute("hidden", "");
+  }
+
+  forceScrollTopImmediate() {
+    const html = document.documentElement;
+    const previousInlineScrollBehavior = html.style.scrollBehavior;
+
+    html.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    if (document.scrollingElement) {
+      document.scrollingElement.scrollTop = 0;
+    }
+    document.body.scrollTop = 0;
+    html.scrollTop = 0;
+
+    if (previousInlineScrollBehavior) {
+      html.style.scrollBehavior = previousInlineScrollBehavior;
+    } else {
+      html.style.removeProperty("scroll-behavior");
+    }
+  }
+
+  runPageTransition(switchPageCallback) {
+    if (typeof switchPageCallback !== "function") return;
+
+    this.preparePageTransition();
+
+    const reduceMotion =
+      (typeof CONFIG !== "undefined" && Boolean(CONFIG.REDUCE_MOTION)) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const overlay = document.getElementById("pageTransitionOverlay");
+
+    if (reduceMotion || !overlay || this.pageTransitionInProgress) {
+      switchPageCallback();
+      this.forceScrollTopImmediate();
+      return;
+    }
+
+    this.pageTransitionInProgress = true;
+    overlay.classList.add("active");
+
+    setTimeout(() => {
+      switchPageCallback();
+      this.forceScrollTopImmediate();
+
+      requestAnimationFrame(() => {
+        overlay.classList.remove("active");
+        setTimeout(() => {
+          this.pageTransitionInProgress = false;
+        }, 220);
+      });
+    }, 120);
   }
 
   closeControlMenu() {
@@ -1831,67 +1887,68 @@ class QuantumGallery {
   }
 
   showFavoritesPage() {
-    this.preparePageTransition();
-    this.state.showFavoritesPage = true;
-    this.state.showBattlePage = false;
-    this.state.showBattle2dPage = false;
+    const openFavoritesPage = () => {
+      this.state.showFavoritesPage = true;
+      this.state.showBattlePage = false;
+      this.state.showBattle2dPage = false;
 
-    this.setSectionVisibility(this.elements.quantumUniverse, false);
-    this.setSectionVisibility(this.elements.quantumBattlePage, false, {
-      activeClass: true,
-    });
+      this.setSectionVisibility(this.elements.quantumUniverse, false);
+      this.setSectionVisibility(this.elements.quantumBattlePage, false, {
+        activeClass: true,
+      });
 
-    this.hideBattle2dPage();
+      this.hideBattle2dPage();
 
-    this.setSectionVisibility(this.elements.quantumFavoritesPage, true, {
-      activeClass: true,
-    });
+      this.setSectionVisibility(this.elements.quantumFavoritesPage, true, {
+        activeClass: true,
+      });
 
-    const favoritesIcon = document.getElementById("favoritesIcon");
-    if (favoritesIcon) {
-      favoritesIcon.className = "fas fa-images";
-    }
+      const favoritesIcon = document.getElementById("favoritesIcon");
+      if (favoritesIcon) {
+        favoritesIcon.className = "fas fa-images";
+      }
 
-    document.title = "⭐ FAVORITOS 13/10 | NEXUS UNIVERSE";
+      document.title = "⭐ FAVORITOS 13/10 | NEXUS UNIVERSE";
 
-    this.favorites.renderFavoritesPage();
+      this.favorites.renderFavoritesPage();
+      this.forceScrollTopImmediate();
+      this.audio.play("click");
+      this.showToast("⭐ ACESSANDO COLEÇÃO PESSOAL 13/10");
+    };
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    this.audio.play("click");
-
-    this.showToast("⭐ ACESSANDO COLEÇÃO PESSOAL 13/10");
+    this.runPageTransition(openFavoritesPage);
   }
 
   showGalleryPage() {
-    this.preparePageTransition();
-    this.state.showFavoritesPage = false;
-    this.state.showBattlePage = false;
-    this.state.showBattle2dPage = false;
+    const openGalleryPage = () => {
+      this.state.showFavoritesPage = false;
+      this.state.showBattlePage = false;
+      this.state.showBattle2dPage = false;
 
-    this.setSectionVisibility(this.elements.quantumUniverse, true);
-    this.setSectionVisibility(this.elements.quantumFavoritesPage, false, {
-      activeClass: true,
-    });
-    this.setSectionVisibility(this.elements.quantumBattlePage, false, {
-      activeClass: true,
-    });
+      this.setSectionVisibility(this.elements.quantumUniverse, true);
+      this.setSectionVisibility(this.elements.quantumFavoritesPage, false, {
+        activeClass: true,
+      });
+      this.setSectionVisibility(this.elements.quantumBattlePage, false, {
+        activeClass: true,
+      });
 
-    this.hideBattle2dPage();
+      this.hideBattle2dPage();
 
-    const favoritesIcon = document.getElementById("favoritesIcon");
-    if (favoritesIcon) {
-      favoritesIcon.className = "fas fa-heart";
-    }
+      const favoritesIcon = document.getElementById("favoritesIcon");
+      if (favoritesIcon) {
+        favoritesIcon.className = "fas fa-heart";
+      }
 
-    document.title =
-      "🌌 NEXUS UNIVERSE 13/10 | Experiência Quântica Definitiva";
+      document.title =
+        "🌌 NEXUS UNIVERSE 13/10 | Experiência Quântica Definitiva";
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+      this.forceScrollTopImmediate();
+      this.audio.play("click");
+      this.showToast("🌌 RETORNANDO À GALERIA PRINCIPAL");
+    };
 
-    this.audio.play("click");
-
-    this.showToast("🌌 RETORNANDO À GALERIA PRINCIPAL");
+    this.runPageTransition(openGalleryPage);
   }
 
   cleanup() {

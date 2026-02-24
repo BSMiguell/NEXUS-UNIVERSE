@@ -11,6 +11,120 @@
     />
     <meta name="author" content="Nexus Quantum" />
 
+    <script>
+      (() => {
+        try {
+          const savedThemeRaw = localStorage.getItem("nexus_theme_13");
+          if (!savedThemeRaw) return;
+
+          const themeData = JSON.parse(savedThemeRaw);
+          const colors = themeData?.colors;
+          if (!colors || typeof colors !== "object") return;
+
+          const root = document.documentElement;
+          const cssVarMap = {
+            primary: "--quantum-primary",
+            secondary: "--quantum-secondary",
+            accent: "--quantum-accent",
+            danger: "--quantum-danger",
+            success: "--quantum-success",
+            warning: "--quantum-warning",
+            textPrimary: "--text-primary",
+            textSecondary: "--text-secondary",
+            textAccent: "--text-accent",
+            backgroundPrimary: "--background-primary",
+            backgroundSecondary: "--background-secondary",
+            borderPrimary: "--border-primary",
+            borderSecondary: "--border-secondary",
+            overlayBackground: "--overlay-background",
+            glassBackground: "--glass-background",
+            buttonBackground: "--button-background",
+            skeletonBackground: "--skeleton-background",
+          };
+
+          Object.entries(cssVarMap).forEach(([key, cssVar]) => {
+            const value = colors[key];
+            if (typeof value === "string" && value.trim()) {
+              root.style.setProperty(cssVar, value.trim());
+            }
+          });
+
+          const hexToRgb = (hex) => {
+            const normalized = String(hex || "").trim();
+            const match = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(
+              normalized,
+            );
+            if (!match) return { r: 0, g: 0, b: 0 };
+            return {
+              r: Number.parseInt(match[1], 16),
+              g: Number.parseInt(match[2], 16),
+              b: Number.parseInt(match[3], 16),
+            };
+          };
+
+          const rgbToHex = (r, g, b) => {
+            return `#${[r, g, b]
+              .map((channel) =>
+                Math.max(0, Math.min(255, channel))
+                  .toString(16)
+                  .padStart(2, "0"),
+              )
+              .join("")}`;
+          };
+
+          const mixColors = (colorA, colorB, percentage) => {
+            const rgbA = hexToRgb(colorA);
+            const rgbB = hexToRgb(colorB);
+            const ratio = percentage / 100;
+            return rgbToHex(
+              Math.round(rgbA.r + (rgbB.r - rgbA.r) * ratio),
+              Math.round(rgbA.g + (rgbB.g - rgbA.g) * ratio),
+              Math.round(rgbA.b + (rgbB.b - rgbA.b) * ratio),
+            );
+          };
+
+          if (
+            colors.primary &&
+            colors.secondary &&
+            colors.accent &&
+            colors.danger
+          ) {
+            root.style.setProperty(
+              "--quantum-gradient",
+              `linear-gradient(135deg, ${colors.primary} 0%, ${mixColors(colors.primary, colors.secondary, 25)} 25%, ${colors.secondary} 50%, ${colors.danger} 75%, ${colors.accent} 100%)`,
+            );
+          }
+
+          if (colors.backgroundPrimary && colors.backgroundSecondary) {
+            root.style.setProperty(
+              "--dark-gradient",
+              `linear-gradient(135deg, ${colors.backgroundPrimary} 0%, ${mixColors(colors.backgroundPrimary, colors.backgroundSecondary, 25)} 25%, ${colors.backgroundSecondary} 50%, ${mixColors(colors.backgroundSecondary, colors.backgroundPrimary, 75)} 75%, ${mixColors(colors.backgroundPrimary, colors.backgroundSecondary, 100)} 100%)`,
+            );
+          }
+
+          const isLightTheme = themeData.name === "MODO CLARO";
+          if (isLightTheme) {
+            root.setAttribute("data-theme", "light");
+          } else {
+            root.removeAttribute("data-theme");
+          }
+
+          const themeColorMeta = document.querySelector(
+            'meta[name="theme-color"]',
+          );
+          if (
+            themeColorMeta &&
+            typeof colors.backgroundPrimary === "string" &&
+            colors.backgroundPrimary.trim()
+          ) {
+            themeColorMeta.setAttribute("content", colors.backgroundPrimary);
+          }
+        } catch (error) {
+          // Nao bloqueia o carregamento se houver erro no localStorage.
+        }
+      })();
+    </script>
+
     <!-- Preconnect para recursos externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,6 +187,12 @@
         --text-accent: #00ffea;
         --background-primary: #0a0a0f;
         --background-secondary: #141425;
+        --border-primary: rgba(0, 255, 234, 0.2);
+        --border-secondary: rgba(0, 255, 234, 0.28);
+        --overlay-background: rgba(10, 10, 15, 0.98);
+        --glass-background: rgba(15, 15, 30, 0.7);
+        --button-background: rgba(6, 18, 30, 0.9);
+        --skeleton-background: rgba(30, 30, 60, 0.8);
         --border-radius-sm: 16px;
         --border-radius-md: 24px;
         --border-radius-lg: 32px;
@@ -191,6 +311,26 @@
         display: none !important;
       }
 
+      .page-transition-overlay {
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 50% 25%,
+            rgba(0, 255, 234, 0.08),
+            transparent 55%
+          ),
+          rgba(10, 10, 15, 0.72);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease;
+        z-index: 2500;
+      }
+
+      .page-transition-overlay.active {
+        opacity: 1;
+      }
+
       :focus-visible {
         outline: 4px solid var(--quantum-primary);
         outline-offset: 6px;
@@ -207,6 +347,10 @@
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
           scroll-behavior: auto !important;
+        }
+
+        .page-transition-overlay {
+          transition: none !important;
         }
       }
 
@@ -1766,6 +1910,7 @@
     </style>
 
     <link rel="stylesheet" href="src/css/header.css" />
+    <link rel="stylesheet" href="src/css/accessibility.css" />
     <link rel="stylesheet" href="src/css/card.css" />
     <link rel="stylesheet" href="src/css/modal-character.css" />
     <link rel="stylesheet" href="src/css/favorites.css" />
@@ -3079,6 +3224,12 @@
         aria-live="assertive"
         aria-atomic="true"
         hidden
+      ></div>
+
+      <div
+        id="pageTransitionOverlay"
+        class="page-transition-overlay"
+        aria-hidden="true"
       ></div>
     </main>
 

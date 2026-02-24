@@ -3811,65 +3811,70 @@ class QuantumBattleSystem {
   }
 
   showBattlePage() {
-    this.gallery.preparePageTransition?.();
-    this.gallery.state.showFavoritesPage = false;
-    this.gallery.state.showBattlePage = true;
-    this.gallery.state.showBattle2dPage = false;
+    const openBattlePage = () => {
+      this.gallery.state.showFavoritesPage = false;
+      this.gallery.state.showBattlePage = true;
+      this.gallery.state.showBattle2dPage = false;
 
-    if (this.gallery.setSectionVisibility) {
-      this.gallery.setSectionVisibility(
-        this.gallery.elements.quantumUniverse,
-        false,
-      );
-      this.gallery.setSectionVisibility(
-        this.gallery.elements.quantumFavoritesPage,
-        false,
-        { activeClass: true },
-      );
-    } else {
-      if (this.gallery.elements.quantumUniverse) {
-        this.gallery.elements.quantumUniverse.style.display = "none";
-      }
-      if (this.gallery.elements.quantumFavoritesPage) {
-        this.gallery.elements.quantumFavoritesPage.style.display = "none";
-        this.gallery.elements.quantumFavoritesPage.classList.remove("active");
-        this.gallery.elements.quantumFavoritesPage.setAttribute("hidden", "");
-      }
-    }
-
-    this.gallery.hideBattle2dPage?.();
-
-    if (this.elements.battlePage) {
       if (this.gallery.setSectionVisibility) {
-        this.gallery.setSectionVisibility(this.elements.battlePage, true, {
-          activeClass: true,
-        });
+        this.gallery.setSectionVisibility(
+          this.gallery.elements.quantumUniverse,
+          false,
+        );
+        this.gallery.setSectionVisibility(
+          this.gallery.elements.quantumFavoritesPage,
+          false,
+          { activeClass: true },
+        );
       } else {
-        this.elements.battlePage.style.display = "block";
-        this.elements.battlePage.classList.add("active");
-        this.elements.battlePage.removeAttribute("hidden");
-        this.elements.battlePage.setAttribute("aria-hidden", "false");
+        if (this.gallery.elements.quantumUniverse) {
+          this.gallery.elements.quantumUniverse.style.display = "none";
+        }
+        if (this.gallery.elements.quantumFavoritesPage) {
+          this.gallery.elements.quantumFavoritesPage.style.display = "none";
+          this.gallery.elements.quantumFavoritesPage.classList.remove("active");
+          this.gallery.elements.quantumFavoritesPage.setAttribute("hidden", "");
+        }
       }
 
-      setTimeout(() => {
-        this.elements.battlePage.style.opacity = "1";
-        this.elements.battlePage.style.transform = "translateY(0)";
-      }, 50);
+      this.gallery.hideBattle2dPage?.();
+
+      if (this.elements.battlePage) {
+        if (this.gallery.setSectionVisibility) {
+          this.gallery.setSectionVisibility(this.elements.battlePage, true, {
+            activeClass: true,
+          });
+        } else {
+          this.elements.battlePage.style.display = "block";
+          this.elements.battlePage.classList.add("active");
+          this.elements.battlePage.removeAttribute("hidden");
+          this.elements.battlePage.setAttribute("aria-hidden", "false");
+        }
+
+        setTimeout(() => {
+          this.elements.battlePage.style.opacity = "1";
+          this.elements.battlePage.style.transform = "translateY(0)";
+        }, 50);
+      }
+
+      const favoritesIcon = document.getElementById("favoritesIcon");
+      if (favoritesIcon) {
+        favoritesIcon.className = "fas fa-heart";
+      }
+
+      document.title = "⚔️ SISTEMA DE BATALHA | NEXUS UNIVERSE 13/10";
+
+      this.gallery.forceScrollTopImmediate?.();
+      this.gallery.audio.play("click");
+      this.gallery.showToast("⚔️ ACESSANDO SISTEMA DE BATALHA QUÂNTICA 13/10");
+      this.renderHistory();
+    };
+
+    if (typeof this.gallery.runPageTransition === "function") {
+      this.gallery.runPageTransition(openBattlePage);
+    } else {
+      this.gallery.preparePageTransition?.();
+      openBattlePage();
     }
-
-    const favoritesIcon = document.getElementById("favoritesIcon");
-    if (favoritesIcon) {
-      favoritesIcon.className = "fas fa-heart";
-    }
-
-    document.title = "⚔️ SISTEMA DE BATALHA | NEXUS UNIVERSE 13/10";
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    this.gallery.audio.play("click");
-
-    this.gallery.showToast("⚔️ ACESSANDO SISTEMA DE BATALHA QUÂNTICA 13/10");
-
-    this.renderHistory();
   }
 }

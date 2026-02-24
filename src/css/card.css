@@ -16,7 +16,7 @@
   overflow: hidden;
   transition: var(--transition-quantum);
   background: var(--card-gradient);
-  border: 1px solid rgba(0, 255, 234, 0.28);
+  border: 1px solid var(--border-secondary);
   opacity: 0;
   transform: translateY(100px) rotateX(15deg) scale(0.9);
   transform-style: preserve-3d;
@@ -55,7 +55,7 @@
   background: linear-gradient(
     45deg,
     transparent 40%,
-    rgba(0, 255, 234, 0.15) 50%,
+    var(--border-primary) 50%,
     transparent 60%
   );
   transform: translateX(-200%) skewX(-20deg);
@@ -72,8 +72,8 @@
     translateZ(18px);
   box-shadow:
     0 16px 38px rgba(0, 0, 0, 0.52),
-    0 0 28px rgba(0, 255, 234, 0.3);
-  border-color: rgba(0, 255, 234, 0.6);
+    0 0 28px var(--quantum-primary);
+  border-color: var(--quantum-primary);
 }
 
 .card-quantum-frame {
@@ -150,18 +150,18 @@
 }
 
 .quantum-favorite:hover {
-  background: rgba(255, 42, 109, 0.8);
+  background: var(--quantum-danger);
   transform: translateZ(100px) scale(1.2);
-  box-shadow: 0 0 30px rgba(255, 42, 109, 0.5);
+  box-shadow: 0 0 30px var(--quantum-danger);
 }
 
 .quantum-favorite.active {
-  color: #ff2a6d;
+  color: var(--quantum-danger);
   background: rgba(255, 42, 109, 0.3);
 }
 
 .quantum-favorite.active:hover {
-  background: rgba(255, 42, 109, 0.6);
+  background: var(--quantum-danger);
 }
 
 .quantum-image {
@@ -185,7 +185,7 @@
   right: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 10, 15, 0.98) 0%,
+    var(--overlay-background) 0%,
     rgba(10, 10, 15, 0.85) 30%,
     transparent 100%
   );
@@ -208,7 +208,7 @@
   transform: translateY(0) translateZ(40px);
   background: linear-gradient(
     to top,
-    rgba(10, 10, 15, 1) 0%,
+    var(--overlay-background) 0%,
     rgba(10, 10, 15, 0.9) 50%,
     transparent 100%
   );
@@ -283,9 +283,9 @@
   white-space: nowrap;
   background:
     linear-gradient(145deg, rgba(0, 255, 234, 0.18), rgba(0, 110, 140, 0.22)),
-    rgba(6, 18, 30, 0.9);
-  border: 2px solid rgba(0, 255, 234, 0.3);
-  color: #e9fcff;
+    var(--button-background);
+  border: 2px solid var(--border-primary);
+  color: var(--text-primary);
   padding: 14px 18px;
   min-height: 56px;
   border-radius: 18px;
@@ -302,7 +302,7 @@
   overflow: hidden;
   transform-style: preserve-3d;
   transform: translateZ(0);
-  text-shadow: 0 0 8px rgba(0, 255, 234, 0.2);
+  text-shadow: 0 0 8px var(--quantum-primary);
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.4),
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
@@ -327,7 +327,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 255, 234, 0.3),
+    var(--border-primary),
     transparent
   );
   transition: var(--transition-smooth);
@@ -347,15 +347,15 @@
 }
 
 .quantum-button:hover {
-  color: #ffffff;
+  color: var(--text-primary);
   transform: translateY(-3px) translateZ(12px);
   box-shadow:
-    0 14px 30px rgba(0, 255, 234, 0.28),
-    0 0 12px rgba(0, 255, 234, 0.24);
-  border-color: rgba(130, 245, 255, 0.5);
+    0 14px 30px var(--quantum-primary),
+    0 0 12px var(--quantum-primary);
+  border-color: var(--quantum-primary);
   background:
     linear-gradient(145deg, rgba(0, 255, 234, 0.24), rgba(0, 130, 160, 0.3)),
-    rgba(8, 25, 38, 0.92);
+    var(--button-background);
 }
 
 [data-theme="light"] .quantum-button:hover {
@@ -365,31 +365,31 @@
 }
 
 .view-quantum {
-  border-color: rgba(88, 224, 255, 0.5);
+  border-color: var(--quantum-secondary);
   background:
     linear-gradient(145deg, rgba(40, 183, 255, 0.22), rgba(0, 102, 190, 0.26)),
-    rgba(8, 24, 40, 0.9);
+    var(--button-background);
 }
 
 .view-quantum:hover {
-  border-color: rgba(155, 236, 255, 0.72);
+  border-color: var(--quantum-secondary);
   box-shadow:
-    0 14px 30px rgba(0, 157, 255, 0.34),
-    0 0 14px rgba(53, 191, 255, 0.32);
+    0 14px 30px var(--quantum-secondary),
+    0 0 14px var(--quantum-secondary);
 }
 
 .explore-quantum {
-  border-color: rgba(164, 255, 122, 0.52);
+  border-color: var(--quantum-success);
   background:
     linear-gradient(145deg, rgba(180, 255, 80, 0.2), rgba(0, 138, 82, 0.25)),
-    rgba(9, 28, 18, 0.9);
+    var(--button-background);
 }
 
 .explore-quantum:hover {
-  border-color: rgba(208, 255, 160, 0.76);
+  border-color: var(--quantum-success);
   box-shadow:
-    0 14px 30px rgba(123, 255, 76, 0.28),
-    0 0 14px rgba(152, 255, 108, 0.24);
+    0 14px 30px var(--quantum-success),
+    0 0 14px var(--quantum-success);
 }
 
 @media (max-width: 768px) {
