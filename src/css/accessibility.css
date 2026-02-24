@@ -7,7 +7,7 @@
 [data-theme="matrix"] li,
 [data-theme="matrix"] .battle-title,
 [data-theme="matrix"] .card-quantum-title {
-  text-shadow: 
+  text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.8),
     0 0 8px rgba(0, 255, 65, 0.3);
 }
@@ -15,8 +15,7 @@
 /* TEMA NEON - Verde com sombra para melhor legibilidade */
 [data-theme="neon"] .quantum-card,
 [data-theme="neon"] .battle-title {
-  text-shadow: 
-    0 2px 6px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
 /* TEMA MIDNIGHT - Violeta com fundo escuro */
@@ -24,7 +23,7 @@
 [data-theme="midnight"] span,
 [data-theme="midnight"] li,
 [data-theme="midnight"] .card-quantum-description {
-  text-shadow: 
+  text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.7),
     0 0 8px rgba(138, 43, 226, 0.2);
 }
@@ -81,7 +80,7 @@
     --quantum-secondary: #ffffff !important;
     --text-primary: #ffffff !important;
   }
-  
+
   * {
     border-width: 2px !important;
   }
@@ -177,7 +176,9 @@ label {
 }
 
 /* Espaçamento melhorado para melhor leitura */
-p, span, li {
+p,
+span,
+li {
   line-height: 1.6;
   word-spacing: 0.1em;
 }

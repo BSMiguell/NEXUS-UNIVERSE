@@ -632,6 +632,47 @@ class QuantumBattle2DSystem {
     );
   }
 
+  isAzulaCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return character.id === 211 || normalizedName.includes("AZULA");
+  }
+
+  isMakiCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return character.id === 69 || normalizedName.includes("MAKI");
+  }
+
+  isKaidoCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return character.id === 78 || normalizedName.includes("KAIDO");
+  }
+
+  isHaraldCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return character.id === 281 || normalizedName.includes("HARALD");
+  }
+
+  isBarbaBrancaCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return (
+      character.id === 64 ||
+      normalizedName.includes("BARBA BRANCA") ||
+      normalizedName.includes("WHITEBEARD") ||
+      normalizedName.includes("NEWGATE")
+    );
+  }
+
+  isKhalDrogoCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return character.id === 256 || normalizedName.includes("KHAL DROGO");
+  }
+
   getLokiAttackFrameCandidates() {
     const candidates = [];
 
@@ -703,6 +744,67 @@ class QuantumBattle2DSystem {
     return candidates;
   }
 
+  getAzulaAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Azula/Azula-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
+  getMakiAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Maki/Maki-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
+  getKaidoAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 2; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Kaido/Kaido-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
+  getHaraldAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `assets/animations/harald/harald-${frameNumber}.png`,
+        `assets/animations/HARALD/harald-${frameNumber}.png`,
+      ]);
+    }
+    return candidates;
+  }
+
+  getBarbaBrancaAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `assets/animations/Barba-Branca/Barba-Branca-${frameNumber}.png`,
+      ]);
+    }
+    return candidates;
+  }
+
+  getKhalDrogoAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `assets/animations/Khal-Drogo/KHAL DROGO-${frameNumber}.png`,
+      ]);
+    }
+    return candidates;
+  }
+
   async loadAttackFramesForCharacter(character) {
     let frameCandidates = [];
 
@@ -714,6 +816,18 @@ class QuantumBattle2DSystem {
       frameCandidates = this.getAatroxAttackFrameCandidates();
     } else if (this.isBattleBeastCharacter(character)) {
       frameCandidates = this.getBattleBeastAttackFrameCandidates();
+    } else if (this.isAzulaCharacter(character)) {
+      frameCandidates = this.getAzulaAttackFrameCandidates();
+    } else if (this.isMakiCharacter(character)) {
+      frameCandidates = this.getMakiAttackFrameCandidates();
+    } else if (this.isKaidoCharacter(character)) {
+      frameCandidates = this.getKaidoAttackFrameCandidates();
+    } else if (this.isHaraldCharacter(character)) {
+      frameCandidates = this.getHaraldAttackFrameCandidates();
+    } else if (this.isBarbaBrancaCharacter(character)) {
+      frameCandidates = this.getBarbaBrancaAttackFrameCandidates();
+    } else if (this.isKhalDrogoCharacter(character)) {
+      frameCandidates = this.getKhalDrogoAttackFrameCandidates();
     } else {
       return [];
     }

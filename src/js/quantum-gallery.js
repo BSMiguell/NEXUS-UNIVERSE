@@ -46,11 +46,14 @@ class QuantumGallery {
       39: "assets/videos/Battl- Beast-v-1.mp4",
       47: "assets/videos/Jirem.mp4",
       58: "assets/videos/raiden-v-1.mp4",
+      64: "assets/videos/Barba-branca-v-1.mp4",
       69: "assets/videos/Maki.mp4",
       78: "assets/videos/Kaido-v-1.mp4",
       124: "assets/videos/BALERION-v-1.mp4",
       161: "assets/videos/solaria-v-1.mp4",
+      211: "assets/videos/Azula-v-1.mp4",
       218: "assets/videos/gowther-Original-v-1.mp4",
+      256: "assets/videos/KHAL-DROGO-v-1.mp4",
       281: "assets/videos/HARALD-v-1.mp4",
       322: "assets/videos/Psykos-v-1.mp4",
     };
@@ -251,32 +254,15 @@ class QuantumGallery {
     if (typeof switchPageCallback !== "function") return;
 
     this.preparePageTransition();
+    switchPageCallback();
+    this.forceScrollTopImmediate();
+  }
 
-    const reduceMotion =
-      (typeof CONFIG !== "undefined" && Boolean(CONFIG.REDUCE_MOTION)) ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const overlay = document.getElementById("pageTransitionOverlay");
-
-    if (reduceMotion || !overlay || this.pageTransitionInProgress) {
-      switchPageCallback();
-      this.forceScrollTopImmediate();
-      return;
-    }
-
-    this.pageTransitionInProgress = true;
-    overlay.classList.add("active");
-
-    setTimeout(() => {
-      switchPageCallback();
-      this.forceScrollTopImmediate();
-
-      requestAnimationFrame(() => {
-        overlay.classList.remove("active");
-        setTimeout(() => {
-          this.pageTransitionInProgress = false;
-        }, 220);
-      });
-    }, 120);
+  getActivePageContainer() {
+    if (this.state.showFavoritesPage) return this.elements.quantumFavoritesPage;
+    if (this.state.showBattlePage) return this.elements.quantumBattlePage;
+    if (this.state.showBattle2dPage) return this.elements.quantumBattle2dPage;
+    return this.elements.quantumUniverse;
   }
 
   closeControlMenu() {

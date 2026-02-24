@@ -189,19 +189,31 @@
 }
 
 .footer-stat:nth-child(1) .footer-stat-icon {
-  background: linear-gradient(135deg, var(--quantum-danger), var(--quantum-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--quantum-danger),
+    var(--quantum-secondary)
+  );
   -webkit-background-clip: text;
   background-clip: text;
 }
 
 .footer-stat:nth-child(2) .footer-stat-icon {
-  background: linear-gradient(135deg, var(--quantum-primary), var(--quantum-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--quantum-primary),
+    var(--quantum-secondary)
+  );
   -webkit-background-clip: text;
   background-clip: text;
 }
 
 .footer-stat:nth-child(3) .footer-stat-icon {
-  background: linear-gradient(135deg, var(--quantum-accent), var(--quantum-warning));
+  background: linear-gradient(
+    135deg,
+    var(--quantum-accent),
+    var(--quantum-warning)
+  );
   -webkit-background-clip: text;
   background-clip: text;
 }

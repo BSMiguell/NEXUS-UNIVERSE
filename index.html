@@ -311,26 +311,6 @@
         display: none !important;
       }
 
-      .page-transition-overlay {
-        position: fixed;
-        inset: 0;
-        background:
-          radial-gradient(
-            circle at 50% 25%,
-            rgba(0, 255, 234, 0.08),
-            transparent 55%
-          ),
-          rgba(10, 10, 15, 0.72);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.22s ease;
-        z-index: 2500;
-      }
-
-      .page-transition-overlay.active {
-        opacity: 1;
-      }
-
       :focus-visible {
         outline: 4px solid var(--quantum-primary);
         outline-offset: 6px;
@@ -347,10 +327,6 @@
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
           scroll-behavior: auto !important;
-        }
-
-        .page-transition-overlay {
-          transition: none !important;
         }
       }
 
@@ -1123,9 +1099,8 @@
 
       /* Botões de Controle 13/10 */
       .quantum-control-btn {
-        position: fixed;
-        width: 74px;
-        height: 74px;
+        width: 60px;
+        height: 60px;
         --control-color-1: #0fbfff;
         --control-color-2: #11c88a;
         --control-ring: rgba(133, 245, 255, 0.62);
@@ -1147,27 +1122,25 @@
         border: 1px solid var(--control-ring);
         border-radius: 50%;
         cursor: pointer;
-        z-index: var(--z-controls);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         box-shadow:
-          0 10px 22px rgba(0, 0, 0, 0.4),
-          0 0 14px var(--control-glow);
-        backdrop-filter: blur(30px);
+          0 8px 16px rgba(0, 0, 0, 0.4),
+          0 0 12px var(--control-glow);
+        backdrop-filter: blur(20px);
         transition: var(--transition-smooth);
-        right: 60px;
         transform-style: preserve-3d;
         transform: translateZ(0);
-        z-index: 1000;
+        margin: 0;
+        flex-shrink: 0;
       }
 
       .quantum-control-btn:hover {
-        transform: translateY(-4px) scale(1.06) translateZ(24px);
-        animation: none;
+        transform: scale(1.1) translateZ(24px);
         box-shadow:
-          0 14px 28px rgba(0, 0, 0, 0.46),
+          0 12px 24px rgba(0, 0, 0, 0.46),
           0 0 18px var(--control-glow);
       }
 
@@ -1180,127 +1153,91 @@
       }
 
       .quantum-control-btn:active {
-        transform: translateY(-1px) scale(0.98);
+        transform: scale(0.95);
       }
 
-      /* Botão Salto Quântico */
-      .quantum-jump {
-        bottom: 60px;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(50px) scale(0.7);
-        animation: quantumPulse 4s ease-in-out infinite;
+      /* Container Global de Controles */
+      .quantum-controls-wrapper {
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 15px;
+        z-index: 2000;
       }
 
-      .quantum-jump.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1) translateZ(20px);
-      }
-
-      .footer-description {
-        color: var(--text-secondary);
-        margin-bottom: 40px;
-      }
-
-      /* Botão de Menu */
+      /* Botão de Menu Principal */
       .menu-toggle {
-        bottom: 165px;
-        right: 60px;
         --control-color-1: #ffe46b;
         --control-color-2: #ff4e2f;
         --control-ring: rgba(255, 240, 166, 0.78);
         --control-glow: rgba(255, 175, 79, 0.42);
-        z-index: calc(var(--z-controls) + 1);
+        z-index: 1001;
       }
 
-      /* Container dos botões ocultos */
+      /* Container dos botões secundários */
       .control-buttons-container {
-        position: fixed;
-        right: 24px;
-        bottom: 106px;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
-        gap: 14px;
-        z-index: var(--z-controls);
+        gap: 15px;
         opacity: 0;
         visibility: hidden;
         transform: translateY(20px) scale(0.8);
         transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        pointer-events: none;
       }
 
       .control-buttons-container.show {
         opacity: 1;
         visibility: visible;
         transform: translateY(0) scale(1);
+        pointer-events: all;
       }
 
-      /* Botões ocultos */
+      /* Estilização individual de cores */
       .sound-toggle {
-        bottom: 155px;
         --control-color-1: #c65cff;
         --control-color-2: #ff3f9f;
         --control-ring: rgba(236, 167, 255, 0.68);
         --control-glow: rgba(197, 92, 255, 0.4);
-        opacity: 0;
-        transform: translateY(20px) scale(0.8);
-        transition: all 0.3s ease;
       }
 
       .home-toggle {
-        bottom: 245px;
         --control-color-1: #00b9ff;
         --control-color-2: #00d48f;
         --control-ring: rgba(149, 245, 255, 0.66);
         --control-glow: rgba(0, 190, 255, 0.36);
-        opacity: 0;
-        transform: translateY(20px) scale(0.8);
-        transition: all 0.3s ease 0.05s;
       }
 
       .favorites-toggle {
-        bottom: 335px;
         --control-color-1: #f6dd4a;
         --control-color-2: #d38f00;
         --control-ring: rgba(255, 233, 132, 0.72);
         --control-glow: rgba(255, 204, 77, 0.34);
-        opacity: 0;
-        transform: translateY(20px) scale(0.8);
-        transition: all 0.3s ease 0.1s;
       }
 
       .theme-toggle {
-        bottom: 425px;
         --control-color-1: #ff4f86;
         --control-color-2: #7f43ff;
         --control-ring: rgba(255, 169, 210, 0.68);
         --control-glow: rgba(181, 94, 255, 0.36);
-        opacity: 0;
-        transform: translateY(20px) scale(0.8);
-        transition: all 0.3s ease 0.15s;
       }
 
       .search-toggle {
-        bottom: 515px;
         --control-color-1: #13d2ff;
         --control-color-2: #008ad8;
         --control-ring: rgba(145, 227, 255, 0.68);
         --control-glow: rgba(19, 180, 255, 0.36);
-        opacity: 0;
-        transform: translateY(20px) scale(0.8);
-        transition: all 0.3s ease 0.2s;
       }
 
       .battle-toggle {
-        bottom: 605px;
         --control-color-1: #e64f5a;
         --control-color-2: #b8311f;
         --control-ring: rgba(255, 169, 169, 0.68);
         --control-glow: rgba(232, 78, 88, 0.38);
-        opacity: 0;
-        transform: translateY(20px) scale(0.8);
-        transition: all 0.3s ease 0.25s;
       }
 
       .battle2d-toggle {
@@ -1310,39 +1247,39 @@
         --control-glow: rgba(34, 227, 162, 0.34);
       }
 
+      /* Botão Salto Quântico (Topo) */
+      .quantum-jump {
+        --control-color-1: #00ffea;
+        --control-color-2: #00b3ff;
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+        transform: scale(0.7);
+        transition: var(--transition-smooth);
+      }
+
+      .quantum-jump.show {
+        opacity: 1;
+        visibility: visible;
+        display: flex;
+        transform: scale(1);
+      }
+
       .quantum-control-btn i {
         filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.38));
       }
 
-      /* Animações quando visíveis */
-      .control-buttons-container.show .sound-toggle {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .control-buttons-container.show .home-toggle {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .control-buttons-container.show .favorites-toggle {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .control-buttons-container.show .theme-toggle {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .control-buttons-container.show .search-toggle {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .control-buttons-container.show .battle-toggle {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+      @media (max-width: 768px) {
+        .quantum-controls-wrapper {
+          right: 20px;
+          bottom: 20px;
+          gap: 10px;
+        }
+        .quantum-control-btn {
+          width: 54px;
+          height: 54px;
+          font-size: 1.3rem;
+        }
       }
 
       /* Efeito de Cursor Magnético */
@@ -1638,9 +1575,6 @@
         .quantum-card {
           height: 500px;
         }
-        .quantum-control-btn {
-          right: 40px;
-        }
       }
 
       @media (max-width: 1400px) {
@@ -1694,23 +1628,15 @@
           width: 100%;
           max-width: 350px;
         }
+        .quantum-controls-wrapper {
+          right: 30px;
+          bottom: 30px;
+          gap: 12px;
+        }
         .quantum-control-btn {
-          width: 70px;
-          height: 70px;
-          font-size: 1.5rem;
-          right: 30px;
-        }
-        .control-buttons-container {
-          right: 30px;
-          bottom: 120px;
-        }
-        .menu-toggle {
-          bottom: 40px;
-          right: 30px;
-        }
-        .quantum-jump {
-          bottom: 40px;
-          right: 30px;
+          width: 65px;
+          height: 65px;
+          font-size: 1.4rem;
         }
         .quantum-toast {
           min-width: 350px;
@@ -1776,19 +1702,15 @@
           max-width: 95%;
           padding: 20px;
         }
+        .quantum-controls-wrapper {
+          right: 20px;
+          bottom: 20px;
+          gap: 10px;
+        }
         .quantum-control-btn {
-          width: 60px;
-          height: 60px;
-          font-size: 1.3rem;
-          right: 20px;
-        }
-        .control-buttons-container {
-          right: 20px;
-          bottom: 100px;
-        }
-        .menu-toggle {
-          bottom: 30px;
-          right: 20px;
+          width: 55px;
+          height: 55px;
+          font-size: 1.25rem;
         }
         .favorites-header h2 {
           font-size: 2rem;
@@ -2728,84 +2650,87 @@
         </p>
       </footer>
 
-      <!-- Botões de Controle 10/10 -->
-      <div class="control-buttons-container" id="controlButtonsContainer">
+      <!-- Container Global de Controles -->
+      <div class="quantum-controls-wrapper">
+        <!-- Botão Salto Quântico (AZUL - FICA EMBAIXO) -->
         <button
-          class="quantum-control-btn sound-toggle"
-          id="soundToggle"
-          aria-label="Alternar sons"
+          class="quantum-control-btn quantum-jump"
+          id="quantumJump"
+          aria-label="Voltar ao topo da página"
         >
-          <i class="fas fa-volume-up" id="soundIcon" aria-hidden="true"></i>
+          <i class="fas fa-arrow-up" aria-hidden="true"></i>
         </button>
 
-        <!-- NOVO BOTÃO INÍCIO -->
+        <!-- Botão de Menu para Controles (LARANJA - FICA ACIMA DO AZUL) -->
         <button
-          class="quantum-control-btn home-toggle"
-          id="homeToggle"
-          aria-label="Voltar para a página inicial"
+          class="quantum-control-btn menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menu de controles"
         >
-          <i class="fas fa-home" aria-hidden="true"></i>
+          <i class="fas fa-bars" aria-hidden="true"></i>
         </button>
 
-        <button
-          class="quantum-control-btn favorites-toggle"
-          id="favoritesToggle"
-          aria-label="Alternar entre galeria e favoritos"
-        >
-          <i class="fas fa-heart" id="favoritesIcon" aria-hidden="true"></i>
-        </button>
+        <!-- Container dos botões secundários (ABRE PARA CIMA DO LARANJA) -->
+        <div class="control-buttons-container" id="controlButtonsContainer">
+          <button
+            class="quantum-control-btn sound-toggle"
+            id="soundToggle"
+            aria-label="Alternar sons"
+          >
+            <i class="fas fa-volume-up" id="soundIcon" aria-hidden="true"></i>
+          </button>
 
-        <button
-          class="quantum-control-btn theme-toggle"
-          id="themeToggle"
-          aria-label="Mudar tema/cores"
-        >
-          <i class="fas fa-palette" aria-hidden="true"></i>
-        </button>
+          <!-- NOVO BOTÃO INÍCIO -->
+          <button
+            class="quantum-control-btn home-toggle"
+            id="homeToggle"
+            aria-label="Voltar para a página inicial"
+          >
+            <i class="fas fa-home" aria-hidden="true"></i>
+          </button>
 
-        <button
-          class="quantum-control-btn search-toggle"
-          id="searchToggle"
-          aria-label="Abrir pesquisa quântica"
-        >
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </button>
+          <button
+            class="quantum-control-btn favorites-toggle"
+            id="favoritesToggle"
+            aria-label="Alternar entre galeria e favoritos"
+          >
+            <i class="fas fa-heart" id="favoritesIcon" aria-hidden="true"></i>
+          </button>
 
-        <button
-          class="quantum-control-btn battle-toggle"
-          id="battleToggle"
-          aria-label="Acessar sistema de batalha"
-        >
-          <i class="fas fa-fist-raised" aria-hidden="true"></i>
-        </button>
+          <button
+            class="quantum-control-btn theme-toggle"
+            id="themeToggle"
+            aria-label="Mudar tema/cores"
+          >
+            <i class="fas fa-palette" aria-hidden="true"></i>
+          </button>
 
-        <!-- NOVO: Botão de Batalha 2D -->
-        <button
-          class="quantum-control-btn battle2d-toggle"
-          id="battle2dToggle"
-          aria-label="Acessar batalha 2D contra bot"
-        >
-          <i class="fas fa-gamepad" aria-hidden="true"></i>
-        </button>
+          <button
+            class="quantum-control-btn search-toggle"
+            id="searchToggle"
+            aria-label="Abrir pesquisa quântica"
+          >
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+
+          <button
+            class="quantum-control-btn battle-toggle"
+            id="battleToggle"
+            aria-label="Acessar sistema de batalha"
+          >
+            <i class="fas fa-fist-raised" aria-hidden="true"></i>
+          </button>
+
+          <!-- NOVO: Botão de Batalha 2D -->
+          <button
+            class="quantum-control-btn battle2d-toggle"
+            id="battle2dToggle"
+            aria-label="Acessar batalha 2D contra bot"
+          >
+            <i class="fas fa-gamepad" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
-
-      <!-- Botão de Menu para Controles -->
-      <button
-        class="quantum-control-btn menu-toggle"
-        id="menuToggle"
-        aria-label="Abrir menu de controles"
-      >
-        <i class="fas fa-bars" aria-hidden="true"></i>
-      </button>
-
-      <!-- Botão Salto Quântico -->
-      <button
-        class="quantum-control-btn quantum-jump"
-        id="quantumJump"
-        aria-label="Voltar ao topo da página"
-      >
-        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-      </button>
 
       <!-- Modal Quântico -->
       <div
@@ -3224,12 +3149,6 @@
         aria-live="assertive"
         aria-atomic="true"
         hidden
-      ></div>
-
-      <div
-        id="pageTransitionOverlay"
-        class="page-transition-overlay"
-        aria-hidden="true"
       ></div>
     </main>
 

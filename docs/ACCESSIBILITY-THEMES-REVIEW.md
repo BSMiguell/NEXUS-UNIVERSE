@@ -5,6 +5,7 @@
 ### 🎨 Temas Principais com Avaliação de Contraste
 
 #### 1. **QUÂNTICO** (Tema Padrão) ✨
+
 - **Cores Principais:**
   - Texto Principal: `#ffffff` (branco)
   - Segundo Plano: `#00ffea` (ciano)
@@ -14,12 +15,12 @@
 - **Razão de Contraste (WCAG AA):**
   - Texto Branco (#ffffff) vs Fundo Escuro (#0a0a0f): **21:1** ✅ Excelente
   - Primário (#00ffea) vs Fundo Escuro: **15.5:1** ✅ Excelente
-  
 - **Status:** APROVADO para uso
 
 ---
 
 #### 2. **BLACK** (Novo Tema) 🖤
+
 - **Cores Principais:**
   - Texto Principal: `#ffffff` (branco puro)
   - Primário: `#ffffff` (branco - máximo contraste)
@@ -38,6 +39,7 @@
 ---
 
 #### 3. **MODO CLARO** (Light Mode)
+
 - **Cores Principais:**
   - Texto Principal: `#0a0a0f` (preto)
   - Fundo Primário: `#f8f9fa` (branco)
@@ -52,6 +54,7 @@
 ---
 
 #### 4. **CYBERPUNK**
+
 - **Cores Principais:**
   - Primário: `#ff00ff` (magenta)
   - Secundário: `#00ffea` (ciano)
@@ -66,6 +69,7 @@
 ---
 
 #### 5. **MATRIZ**
+
 - **Cores Principais:**
   - Primário: `#00ff41` (verde matriz)
   - Texto Secundário: `#00ff41` (mesmo)
@@ -73,7 +77,6 @@
 
 - **Razão de Contraste:**
   - Verde (#00ff41) vs Preto (#000000): **3.4:1** ⚠️ AVISO
-  
 - **Recomendação:** Usar com caracteres grandes (mínimo 24pt) para melhor legibilidade
 
 - **Status:** PARCIALMENTE APROVADO - Use com cuidado
@@ -81,6 +84,7 @@
 ---
 
 #### 6. **NEON** (Atualizado)
+
 - **Cores Principais:**
   - Primário: `#00ff00` (verde neon)
   - Secundário: `#ff00ff` (magenta)
@@ -95,6 +99,7 @@
 ---
 
 #### 7. **CRISTAL** (antes GELO)
+
 - **Cores Principais:**
   - Primário: `#00ccff` (ciano claro)
   - Fundo Primário: `#001a33` (azul escuro)
@@ -108,6 +113,7 @@
 ---
 
 #### 8. **AURORA** (Atualizado)
+
 - **Cores Principais:**
   - Primário: `#ff6b9d` (rosa)
   - Fundo Primário: `#1a0a2a` (roxo escuro)
@@ -120,6 +126,7 @@
 ---
 
 #### 9. **LAVA** (Atualizado)
+
 - **Cores Principais:**
   - Primário: `#ff5500` (laranja)
   - Fundo: `#1a0a05` (marrom escuro)
@@ -132,6 +139,7 @@
 ---
 
 #### 10. **GALÁCTICO** (Atualizado)
+
 - **Cores Principais:**
   - Primário: `#9d00ff` (púrpura)
   - Secundário: `#ff00ff` (magenta)
@@ -146,6 +154,7 @@
 ---
 
 #### 11. **MIDNIGHT**
+
 - **Cores Principais:**
   - Primário: `#8a2be2` (azul-violeta)
   - Secundário: `#0099ff` (azul)
@@ -163,6 +172,7 @@
 ### 📊 Recomendações Gerais de Acessibilidade
 
 #### ✅ Boas Práticas Implementadas:
+
 1. **Temas com Alto Contraste:** BLACK, CRISTAL, MODO CLARO
 2. **Variáveis CSS Dinâmicas:** Todas as cores agora usam variáveis, permitindo mudança em tempo real
 3. **Proteção contra Flashy:** Transições suaves com `cubic-bezier`
@@ -170,6 +180,7 @@
 5. **Estados Visuais Claros:** Hover, active, disabled bem definidos
 
 #### ⚠️ Itens a Verificar:
+
 1. **Temas com Contraste Baixo (< 4.5:1):**
    - MATRIX: Usar apenas para destaques rápidos
    - NEON: Primário com problemas, usar secundário para texto
@@ -192,16 +203,19 @@
 #### 🎯 Prioridades:
 
 **Alta:**
+
 - ✅ Manter contraste mínimo 4.5:1 para texto normal
 - ✅ 3:1 para ícones e gráficos grandes
 - ✅ Adicionar indicadores visuais claros de foco
 
 **Média:**
+
 - Testar com usuários com deficiência visual
 - Adicionar modo de contraste extra alto
 - Melhorar feedback auditivo para ações
 
 **Baixa:**
+
 - Estética vs Acessibilidade (manter balanço)
 - Themes adicionais com foco em acessibilidade
 
@@ -212,6 +226,7 @@
 **Status Geral: ✅ APROVADO COM RESSALVAS**
 
 O sistema de temas foi significativamente melhorado:
+
 - ✅ Novo tema BLACK com contraste máximo
 - ✅ Temas diferenciados entre si
 - ✅ Cores dinâmicas via CSS
@@ -225,6 +240,7 @@ O sistema de temas foi significativamente melhorado:
 ## 🔧 Como Testes de Acessibilidade
 
 ### Link de Ferramentas Recomendadas:
+
 - [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 - [WAVE Browser Extension](https://wave.webaim.org/extension/)
 - [Axe DevTools](https://www.deque.com/axe/devtools/)

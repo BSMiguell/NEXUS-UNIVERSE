@@ -229,7 +229,12 @@
   width: 116px;
   height: 116px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--quantum-danger), var(--quantum-primary), var(--quantum-success));
+  background: linear-gradient(
+    135deg,
+    var(--quantum-danger),
+    var(--quantum-primary),
+    var(--quantum-success)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -433,7 +438,12 @@
   width: 100%;
   height: auto;
   border-radius: 16px;
-  background: linear-gradient(180deg, var(--background-primary) 0%, var(--background-secondary) 50%, var(--background-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--background-primary) 0%,
+    var(--background-secondary) 50%,
+    var(--background-primary) 100%
+  );
   border: 3px solid var(--quantum-primary);
   display: block;
   box-shadow:
@@ -761,7 +771,11 @@
   flex-wrap: wrap;
   padding: 28px;
   background:
-    linear-gradient(135deg, rgba(var(--quantum-primary-rgb), 0.06), rgba(var(--quantum-danger-rgb), 0.05)),
+    linear-gradient(
+      135deg,
+      rgba(var(--quantum-primary-rgb), 0.06),
+      rgba(var(--quantum-danger-rgb), 0.05)
+    ),
     rgba(4, 14, 22, 0.7);
   border-radius: 18px;
   border: 1px solid rgba(var(--quantum-primary-rgb), 0.24);
