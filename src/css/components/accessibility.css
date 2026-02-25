@@ -155,7 +155,7 @@ label {
   top: -40px;
   left: 0;
   background: var(--quantum-primary);
-  color: #000;
+  color: var(--text-primary);
   padding: 10px 20px;
   text-decoration: none;
   z-index: 9999;
@@ -244,10 +244,10 @@ svg polygon {
 /* Melhorar contraste de seleção de texto */
 ::selection {
   background: var(--quantum-primary);
-  color: #000;
+  color: var(--text-primary);
 }
 
 ::-moz-selection {
   background: var(--quantum-primary);
-  color: #000;
+  color: var(--text-primary);
 }

@@ -1,33 +1,6 @@
 /* ===== SISTEMA DE BATALHA ATUALIZADO COM MELHORIAS ===== */
 
-/* Botão na terminal para acessar batalha */
-#viewBattleBtn {
-  width: 100%;
-  background: linear-gradient(135deg, #ff2a6d, #ff4500);
-  border: 2px solid rgba(255, 42, 109, 0.3);
-  color: #000;
-  padding: 20px;
-  border-radius: var(--border-radius-md);
-  cursor: pointer;
-  font-family: "Rajdhani", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: var(--transition-smooth);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  transform-style: preserve-3d;
-  transform: translateZ(0);
-}
-
-#viewBattleBtn:hover {
-  background: linear-gradient(135deg, #ff4500, #ff2a6d);
-  transform: translateY(-5px) translateZ(20px) rotateX(5deg);
-  box-shadow: 0 10px 40px rgba(255, 42, 109, 0.3);
-}
+/* Botão na terminal para acessar batalha (Estilos movidos para terminal.css) */
 
 /* ===== SISTEMA DE BATALHA ===== */
 .quantum-battle-page {
@@ -206,7 +179,7 @@
   font-family: "Orbitron", monospace;
   font-weight: bold;
   font-size: 0.9rem;
-  color: white;
+  color: var(--text-primary);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-top: 40px;
 }
@@ -314,7 +287,7 @@
 .battle-start-btn {
   background: linear-gradient(135deg, #ff2a6d, #ff4500);
   border: none;
-  color: #000;
+  color: var(--text-primary);
   padding: 25px 50px;
   border-radius: var(--border-radius-xl);
   cursor: pointer;
@@ -602,7 +575,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-family: "Orbitron", monospace;
   font-weight: bold;
   font-size: 0.9rem;
@@ -851,7 +824,7 @@
   font-weight: 900;
   text-align: center;
   margin: 30px 0;
-  color: white;
+  color: var(--text-primary);
   text-shadow: 0 0 20px currentColor;
   animation: textPulse 1s ease-in-out infinite;
 }
@@ -880,7 +853,7 @@
 .skip-animation-btn {
   background: rgba(255, 42, 109, 0.8);
   border: none;
-  color: white;
+  color: var(--text-primary);
   padding: 10px 20px;
   border-radius: var(--border-radius-md);
   cursor: pointer;
@@ -1052,7 +1025,7 @@
 .result-modal-close {
   background: var(--quantum-primary);
   border: none;
-  color: #000;
+  color: var(--text-primary);
   padding: 15px 30px;
   border-radius: var(--border-radius-md);
   cursor: pointer;
@@ -1094,7 +1067,7 @@
 .result-modal-rematch {
   background: var(--quantum-danger);
   border: none;
-  color: white;
+  color: var(--text-primary);
   padding: 15px 30px;
   border-radius: var(--border-radius-md);
   cursor: pointer;
@@ -1665,7 +1638,7 @@
     linear-gradient(135deg, rgba(255, 96, 128, 0.88), rgba(176, 24, 62, 0.9)),
     rgba(28, 10, 16, 0.9);
   border: 1px solid rgba(255, 174, 194, 0.64);
-  color: #fff;
+  color: var(--text-primary);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -1681,7 +1654,7 @@
 }
 
 .selector-close:hover {
-  color: #fff;
+  color: var(--text-primary);
   transform: translateY(-2px) rotate(8deg);
 }
 
@@ -1713,7 +1686,7 @@
   width: 100%;
   background: transparent;
   border: 0;
-  color: #eaffff;
+  color: var(--text-primary);
   font-size: 0.95rem;
   outline: none;
 }
@@ -1728,7 +1701,7 @@
   padding: 8px 12px;
   border: 1px solid rgba(0, 255, 234, 0.28);
   background: rgba(0, 255, 234, 0.08);
-  color: #bff9ff;
+  color: var(--text-secondary);
   font-size: 0.84rem;
   letter-spacing: 0.04em;
 }
@@ -1815,12 +1788,12 @@
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .selector-character-category {
   font-size: 0.9rem;
-  color: #fff;
+  color: var(--text-primary);
   background: rgba(0, 255, 234, 0.1);
   padding: 4px 10px;
   border-radius: var(--border-radius-full);
@@ -1859,7 +1832,7 @@
 .selector-character-stats {
   display: flex;
   gap: 10px;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 @media (max-width: 992px) {

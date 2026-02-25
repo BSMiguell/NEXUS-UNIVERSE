@@ -123,7 +123,7 @@
 }
 
 [data-theme="light"] .quantum-input {
-  background: #fff;
-  border-color: #0077b6;
-  color: #0077b6;
+  background: var(--background-secondary);
+  border-color: var(--border-primary);
+  color: var(--text-primary);
 }

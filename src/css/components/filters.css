@@ -42,13 +42,13 @@
 
 [data-theme="light"] .filter-quantum {
   background: rgba(255, 255, 255, 0.9);
-  color: #333333;
+  color: var(--text-primary);
 }
 
 [data-theme="light"] .filter-quantum:hover,
 [data-theme="light"] .filter-quantum.active {
   background: rgba(255, 255, 255, 1);
-  color: #000000;
+  color: var(--text-primary);
 }
 
 .filter-quantum::before {
@@ -58,7 +58,9 @@
   padding: 2px;
   background: var(--quantum-gradient);
   border-radius: var(--border-radius-md);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(var(--text-primary) 0 0) content-box,
+    linear-gradient(var(--text-primary) 0 0);
   mask-composite: exclude;
   opacity: 0;
   transition: var(--transition-smooth);
@@ -95,7 +97,7 @@
 
 .filter-quantum.active .filter-badge {
   background: var(--quantum-primary);
-  color: #000;
+  color: var(--text-primary);
   box-shadow: 0 0 30px rgba(0, 255, 234, 0.5);
 }
 

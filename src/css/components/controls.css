@@ -20,13 +20,15 @@
     var(--control-color-1) 0%,
     var(--control-color-2) 100%
   );
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.6rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 25px var(--control-glow), inset 0 0 0 2px var(--control-ring);
+  box-shadow:
+    0 8px 25px var(--control-glow),
+    inset 0 0 0 2px var(--control-ring);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
@@ -36,7 +38,8 @@
   transform: scale(1.15) rotate(8deg);
   outline: 2px solid rgba(255, 255, 255, 0.9);
   outline-offset: 4px;
-  box-shadow: 0 0 0 5px rgba(130, 240, 255, 0.24),
+  box-shadow:
+    0 0 0 5px rgba(130, 240, 255, 0.24),
     0 14px 28px rgba(0, 0, 0, 0.42);
 }
 
@@ -143,4 +146,50 @@
 
 .quantum-control-btn i {
   filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.38));
+}
+
+/* Effects Toggle in Theme Modal */
+.effects-toggle-container {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-primary);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.effects-toggle-btn {
+  width: 100%;
+  padding: 15px 25px;
+  background: var(--quantum-gradient);
+  border: none;
+  border-radius: var(--border-radius-full);
+  color: var(--text-primary);
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.effects-toggle-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--quantum-glow);
+}
+
+.effects-toggle-btn.effects-disabled {
+  background: #444;
+  opacity: 0.8;
+}
+
+.effects-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  line-height: 1.4;
 }

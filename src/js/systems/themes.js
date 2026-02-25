@@ -80,6 +80,8 @@ class QuantumThemeSystem {
           textAccent: "#ff6b6b",
           backgroundPrimary: "#1a0a2a",
           backgroundSecondary: "#2a1a3a",
+          glassBackground: "rgba(42, 26, 58, 0.75)",
+          buttonBackground: "rgba(58, 36, 74, 0.85)",
         },
       },
 
@@ -270,6 +272,47 @@ class QuantumThemeSystem {
         },
       },
 
+      solarized: {
+        name: "SOLARIZED",
+        colors: {
+          primary: "#268bd2",
+          secondary: "#2aa198",
+          accent: "#b58900",
+          danger: "#dc322f",
+          success: "#859900",
+          warning: "#cb4b16",
+          textPrimary: "#073642",
+          textSecondary: "#586e75",
+          textAccent: "#268bd2",
+          backgroundPrimary: "#fdf6e3",
+          backgroundSecondary: "#eee8d5",
+          borderPrimary: "rgba(38, 139, 210, 0.18)",
+          borderSecondary: "rgba(42, 161, 152, 0.14)",
+          glassBackground: "rgba(253, 246, 227, 0.75)",
+          buttonBackground: "rgba(237, 233, 214, 0.9)",
+        },
+      },
+
+      sepia: {
+        name: "SEPIA",
+        colors: {
+          primary: "#704214",
+          secondary: "#a67c52",
+          accent: "#d9b99b",
+          danger: "#b00020",
+          success: "#2e8b57",
+          warning: "#c08000",
+          textPrimary: "#3b2f2f",
+          textSecondary: "#5b4747",
+          textAccent: "#704214",
+          backgroundPrimary: "#f4ecd8",
+          backgroundSecondary: "#efe2c6",
+          borderPrimary: "rgba(112, 66, 20, 0.12)",
+          glassBackground: "rgba(244, 236, 216, 0.8)",
+          buttonBackground: "rgba(233, 219, 198, 0.95)",
+        },
+      },
+
       highContrast: {
         name: "ALTO CONTRASTE",
         colors: {
@@ -437,11 +480,39 @@ class QuantumThemeSystem {
 
   applyTheme(theme) {
     const root = document.documentElement;
+    const colors = { ...theme.colors };
 
-    Object.entries(theme.colors).forEach(([key, value]) => {
+    // Fallbacks para cores que podem estar faltando em temas antigos ou personalizados
+    if (!colors.glassBackground && colors.backgroundSecondary) {
+      const rgb = this.hexToRgb(colors.backgroundSecondary);
+      colors.glassBackground = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.75)`;
+    }
+    if (!colors.buttonBackground && colors.backgroundSecondary) {
+      const rgb = this.hexToRgb(colors.backgroundSecondary);
+      colors.buttonBackground = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.85)`;
+    }
+    if (!colors.borderPrimary && colors.primary) {
+      const rgb = this.hexToRgb(colors.primary);
+      colors.borderPrimary = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.3)`;
+    }
+    if (!colors.borderSecondary && colors.secondary) {
+      const rgb = this.hexToRgb(colors.secondary);
+      colors.borderSecondary = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.35)`;
+    }
+
+    Object.entries(colors).forEach(([key, value]) => {
       const cssVar = this.getCssVariableName(key);
       if (cssVar) {
         root.style.setProperty(cssVar, value);
+
+        // Adiciona versão RGB para permitir uso de rgba()
+        if (typeof value === "string" && value.startsWith("#")) {
+          const rgb = this.hexToRgb(value);
+          root.style.setProperty(
+            `${cssVar}-rgb`,
+            `${rgb.r}, ${rgb.g}, ${rgb.b}`,
+          );
+        }
       }
     });
 
@@ -451,7 +522,7 @@ class QuantumThemeSystem {
       document.documentElement.removeAttribute("data-theme");
     }
 
-    this.updateGradients(theme.colors);
+    this.updateGradients(colors);
     this.updateThemeStatus(theme.name);
     this.currentTheme = theme.name;
 
@@ -590,8 +661,24 @@ class QuantumThemeSystem {
     };
   }
 
-  adjustColor(color, hueShift) {
-    return color;
+  adjustColor(color, percent) {
+    if (!color.startsWith("#")) return color;
+    const num = parseInt(color.replace("#", ""), 16),
+      amt = Math.round(2.55 * percent),
+      R = (num >> 16) + amt,
+      G = ((num >> 8) & 0x00ff) + amt,
+      B = (num & 0x0000ff) + amt;
+    return (
+      "#" +
+      (
+        0x1000000 +
+        (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+        (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+        (B < 255 ? (B < 1 ? 0 : B) : 255)
+      )
+        .toString(16)
+        .slice(1)
+    );
   }
 
   updateThemeStatus(themeName) {
@@ -664,6 +751,32 @@ class QuantumThemeSystem {
       });
     }
 
+    const toggleEffectsBtn = document.getElementById("toggleEffectsBtn");
+    if (toggleEffectsBtn) {
+      this.updateEffectsButton();
+      toggleEffectsBtn.addEventListener("click", () => {
+        const newState = !CONFIG.SHOW_EFFECTS;
+        CONFIG.SHOW_EFFECTS = newState;
+        localStorage.setItem("nexus_show_effects", newState.toString());
+        this.updateEffectsButton();
+        this.showToast(
+          newState
+            ? "EFEITOS REATIVADOS! (Recarregue para ver)"
+            : "EFEITOS DESATIVADOS!",
+        );
+
+        if (!newState) {
+          // Remover elementos de efeitos se existirem
+          const canvas = document.getElementById("three-canvas");
+          const particles = document.getElementById("particles-container");
+          if (canvas) canvas.style.display = "none";
+          if (particles) particles.innerHTML = "";
+        } else {
+          window.location.reload(); // Recarregar para reinicializar sistemas
+        }
+      });
+    }
+
     const colorPickers = ["colorPrimary", "colorSecondary", "colorAccent"];
     colorPickers.forEach((id) => {
       const picker = document.getElementById(id);
@@ -673,6 +786,23 @@ class QuantumThemeSystem {
         });
       }
     });
+  }
+
+  updateEffectsButton() {
+    const btn = document.getElementById("toggleEffectsBtn");
+    if (btn) {
+      const span = btn.querySelector("span");
+      const icon = btn.querySelector("i");
+      if (CONFIG.SHOW_EFFECTS) {
+        span.textContent = "DESATIVAR EFEITOS DE ESPAÇO";
+        icon.className = "fas fa-eye-slash";
+        btn.classList.remove("effects-disabled");
+      } else {
+        span.textContent = "ATIVAR EFEITOS DE ESPAÇO";
+        icon.className = "fas fa-eye";
+        btn.classList.add("effects-disabled");
+      }
+    }
   }
 
   openThemeModal() {

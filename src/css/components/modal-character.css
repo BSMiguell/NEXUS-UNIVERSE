@@ -223,7 +223,7 @@
 .modal-favorite-btn.active {
   background: var(--quantum-danger);
   border-color: var(--quantum-danger);
-  color: white;
+  color: var(--text-primary);
   animation: heartPulse 2s infinite;
 }
 

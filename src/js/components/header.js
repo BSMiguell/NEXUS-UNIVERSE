@@ -181,14 +181,6 @@ class QuantumHeaderEffects {
         this.orbitalContainer.appendChild(particle);
       }
     }
-
-    // Efeito de mouse parallax
-    document.addEventListener("mousemove", (e) => {
-      if (!this.orbitalContainer) return;
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      this.orbitalContainer.style.transform = `translate(${x}px, ${y}px)`;
-    });
   }
 }
 
@@ -198,18 +190,3 @@ document.addEventListener("DOMContentLoaded", () => {
     window.quantumHeaderEffects = new QuantumHeaderEffects();
   }
 });
-
-// CSS adicional para as partículas orbitais (adicione ao seu arquivo de estilos)
-const style = document.createElement("style");
-style.textContent = `
-  .orbital-particle {
-    position: absolute;
-    pointer-events: none;
-    will-change: transform, left, top;
-  }
-  @keyframes floatParticle {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-200px) rotate(360deg); }
-  }
-`;
-document.head.appendChild(style);

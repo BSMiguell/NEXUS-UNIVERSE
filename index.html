@@ -89,8 +89,10 @@
         <header class="quantum-hero" role="banner">
           <!-- Background dinâmico (camadas de partículas) -->
           <div class="hero-background">
+            <div class="hero-noise"></div>
             <div class="hero-grid"></div>
             <div class="hero-glow"></div>
+            <div class="hero-lines"></div>
           </div>
 
           <div class="hero-container">
@@ -1090,6 +1092,21 @@
             <div class="theme-preview-container">
               <div class="color-preview-box" id="themePreview"></div>
               <div class="theme-preview-label">PRÉVIA DO TEMA ATUAL</div>
+            </div>
+
+            <!-- Temas Pré-definidos -->
+            <div class="theme-section">
+              <h3 class="theme-section-title">
+                <i class="fas fa-magic"></i>
+                EFEITOS VISUAIS
+              </h3>
+              <div class="effects-toggle-container">
+                <button class="effects-toggle-btn" id="toggleEffectsBtn">
+                  <i class="fas fa-eye"></i>
+                  <span>DESATIVAR EFEITOS DE ESPAÇO</span>
+                </button>
+                <p class="effects-note">Isso remove o fundo de estrelas e partículas para melhor performance.</p>
+              </div>
             </div>
 
             <!-- Temas Pré-definidos -->

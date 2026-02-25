@@ -2,6 +2,7 @@
 const CONFIG = {
   USE_THREE_JS: true,
   USE_PARTICLES: true,
+  SHOW_EFFECTS: localStorage.getItem("nexus_show_effects") !== "false",
   REDUCE_MOTION: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   IS_MOBILE: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent),
   IMAGE_LOAD_TIMEOUT: 10000,

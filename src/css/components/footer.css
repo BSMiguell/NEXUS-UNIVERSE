@@ -22,8 +22,8 @@
   background: var(--quantum-gradient);
   border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
   mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+    linear-gradient(var(--text-primary) 0 0) content-box,
+    linear-gradient(var(--text-primary) 0 0);
   mask-composite: exclude;
   animation: borderFlow 8s linear infinite;
   z-index: -1;
@@ -147,8 +147,8 @@
   background: var(--quantum-gradient);
   border-radius: var(--border-radius-lg);
   mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+    linear-gradient(var(--text-primary) 0 0) content-box,
+    linear-gradient(var(--text-primary) 0 0);
   mask-composite: exclude;
   opacity: 0.3;
   transition: var(--transition-smooth);
@@ -275,7 +275,7 @@
   background: var(--quantum-primary);
   border-radius: 50%;
   filter: blur(1px);
-  animation: particleFloat 6s ease-in-out infinite;
+  animation: particleQuantum 6s ease-in-out infinite;
 }
 
 .footer-particle:nth-child(2n) {

@@ -106,7 +106,7 @@
   top: 30px;
   right: 30px;
   background: var(--quantum-gradient);
-  color: #000;
+  color: var(--text-primary);
   padding: 15px 30px;
   border-radius: var(--border-radius-full);
   font-size: 1rem;
@@ -137,7 +137,7 @@
   background: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 50%;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 10;

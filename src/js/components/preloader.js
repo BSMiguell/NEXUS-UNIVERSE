@@ -104,7 +104,7 @@ class QuantumPreloader {
   }
 
   lazyLoadHeavySystems() {
-    if (CONFIG.USE_THREE_JS && typeof THREE !== "undefined") {
+    if (CONFIG.USE_THREE_JS && typeof THREE !== "undefined" && CONFIG.SHOW_EFFECTS) {
       scheduleIdleTask(
         () => {
           this.initThreeJS();
@@ -113,7 +113,7 @@ class QuantumPreloader {
       );
     }
 
-    if (CONFIG.USE_PARTICLES && !CONFIG.IS_MOBILE) {
+    if (CONFIG.USE_PARTICLES && !CONFIG.IS_MOBILE && CONFIG.SHOW_EFFECTS) {
       scheduleIdleTask(
         () => {
           this.initParticles();
@@ -143,39 +143,120 @@ class QuantumPreloader {
       });
 
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-      camera.position.z = 15;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      camera.position.z = 20;
 
-      const particlesCount = CONFIG.IS_MOBILE ? 500 : 1500;
-      const particlesGeometry = new THREE.BufferGeometry();
-      const posArray = new Float32Array(particlesCount * 3);
+      // Múltiplas camadas de estrelas para profundidade
+      const createStarLayer = (count, size, color, opacity, distance) => {
+        const geometry = new THREE.BufferGeometry();
+        const posArray = new Float32Array(count * 3);
+        const colorArray = new Float32Array(count * 3);
 
-      for (let i = 0; i < particlesCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 40;
-      }
+        const colors = [
+          new THREE.Color(0x00ffea), // Cyan
+          new THREE.Color(0xff00ff), // Magenta
+          new THREE.Color(0x00ff9d), // Green
+          new THREE.Color(0xffaa00), // Orange
+          new THREE.Color(0xffffff), // White
+        ];
 
-      particlesGeometry.setAttribute(
-        "position",
-        new THREE.BufferAttribute(posArray, 3),
-      );
+        for (let i = 0; i < count * 3; i += 3) {
+          // Posição
+          posArray[i] = (Math.random() - 0.5) * distance;
+          posArray[i + 1] = (Math.random() - 0.5) * distance;
+          posArray[i + 2] = (Math.random() - 0.5) * distance;
 
-      const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.08,
-        color: 0x00ffea,
+          // Cor aleatória do set
+          const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+          colorArray[i] = chosenColor.r;
+          colorArray[i + 1] = chosenColor.g;
+          colorArray[i + 2] = chosenColor.b;
+        }
+
+        geometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(posArray, 3),
+        );
+        geometry.setAttribute("color", new THREE.BufferAttribute(colorArray, 3));
+
+        const material = new THREE.PointsMaterial({
+          size: size,
+          vertexColors: true,
+          transparent: true,
+          opacity: opacity,
+          blending: THREE.AdditiveBlending,
+        });
+
+        return new THREE.Points(geometry, material);
+      };
+
+      const starLayers = [
+        createStarLayer(CONFIG.IS_MOBILE ? 400 : 1200, 0.08, 0x00ffea, 0.6, 50),
+        createStarLayer(CONFIG.IS_MOBILE ? 200 : 600, 0.15, 0xff00ff, 0.4, 40),
+        createStarLayer(CONFIG.IS_MOBILE ? 100 : 300, 0.25, 0xffffff, 0.2, 30),
+      ];
+
+      starLayers.forEach((layer) => scene.add(layer));
+
+      // Shooting Stars System
+      const shootingStarGeometry = new THREE.BufferGeometry();
+      const shootingStarMaterial = new THREE.PointsMaterial({
+        size: 0.1,
+        color: 0xffffff,
         transparent: true,
-        opacity: 0.4,
+        opacity: 1,
+        blending: THREE.AdditiveBlending,
       });
 
-      const particlesMesh = new THREE.Points(
-        particlesGeometry,
-        particlesMaterial,
-      );
-      scene.add(particlesMesh);
+      let shootingStar = null;
+      let shootingStarVelocity = new THREE.Vector3();
+
+      function createShootingStar() {
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(3);
+        positions[0] = (Math.random() - 0.5) * 60;
+        positions[1] = (Math.random() - 0.5) * 60;
+        positions[2] = -20;
+        geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+        const star = new THREE.Points(geometry, shootingStarMaterial.clone());
+        scene.add(star);
+
+        shootingStarVelocity.set(
+          (Math.random() - 0.5) * 0.5,
+          (Math.random() - 0.5) * 0.5,
+          0.5,
+        );
+
+        return star;
+      }
 
       function animate() {
         requestAnimationFrame(animate);
-        particlesMesh.rotation.x += 0.0003;
-        particlesMesh.rotation.y += 0.0007;
+
+        starLayers.forEach((layer, index) => {
+          const speed = (index + 1) * 0.0002;
+          layer.rotation.x += speed;
+          layer.rotation.y += speed * 1.5;
+        });
+
+        // Update shooting star
+        if (!shootingStar && Math.random() < 0.005) {
+          shootingStar = createShootingStar();
+        }
+
+        if (shootingStar) {
+          shootingStar.position.add(shootingStarVelocity);
+          shootingStar.material.opacity -= 0.01;
+
+          if (shootingStar.material.opacity <= 0) {
+            scene.remove(shootingStar);
+            shootingStar.geometry.dispose();
+            shootingStar.material.dispose();
+            shootingStar = null;
+          }
+        }
+
         renderer.render(scene, camera);
       }
 
@@ -199,7 +280,7 @@ class QuantumPreloader {
     const container = document.getElementById("particles-container");
     if (!container) return;
 
-    const particleCount = CONFIG.IS_MOBILE ? 60 : 120;
+    const particleCount = CONFIG.IS_MOBILE ? 40 : 100;
 
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement("div");
@@ -207,8 +288,8 @@ class QuantumPreloader {
 
       const x = Math.random() * 100;
       const y = Math.random() * 100;
-      const size = Math.random() * 4 + 1;
-      const duration = Math.random() * 4 + 2;
+      const size = Math.random() * 6 + 2;
+      const duration = Math.random() * 6 + 4;
       const delay = Math.random() * 5;
 
       particle.style.left = `${x}%`;
@@ -217,6 +298,10 @@ class QuantumPreloader {
       particle.style.height = `${size}px`;
       particle.style.animationDuration = `${duration}s`;
       particle.style.animationDelay = `${delay}s`;
+
+      // Adicionar brilho variável
+      const blur = Math.random() * 4 + 1;
+      particle.style.filter = `blur(${blur}px)`;
 
       const colors = [
         "var(--quantum-primary)",
@@ -227,7 +312,10 @@ class QuantumPreloader {
       ];
       const color = colors[Math.floor(Math.random() * colors.length)];
       particle.style.background = color;
-      particle.style.opacity = "0.3";
+      particle.style.opacity = (Math.random() * 0.4 + 0.1).toString();
+
+      // Atribuir uma profundidade para parallax CSS se necessário futuramente
+      particle.style.setProperty("--particle-z", `${Math.random() * 100 - 50}px`);
 
       container.appendChild(particle);
     }

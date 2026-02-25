@@ -48,7 +48,7 @@
 
 [data-theme="light"] .search-input-quantum {
   background: rgba(255, 255, 255, 0.9);
-  color: #333;
+  color: var(--text-primary);
 }
 
 .search-input-quantum:focus {
@@ -117,7 +117,7 @@
     linear-gradient(135deg, rgba(38, 201, 255, 0.92), rgba(0, 121, 206, 0.95)),
     rgba(7, 20, 32, 0.9);
   border: 1px solid rgba(150, 233, 255, 0.58);
-  color: #ecfbff;
+  color: var(--text-primary);
   padding: 20px;
   border-radius: var(--border-radius-md);
   cursor: pointer;
@@ -212,7 +212,7 @@
   background: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 50%;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 10;
