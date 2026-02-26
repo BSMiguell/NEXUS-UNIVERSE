@@ -60,6 +60,22 @@
   /* Não precisa de ajustes - contraste já é perfeito */
 }
 
+/* TEMA SEPIA - o texto padrão pode ser escuro demais para sobreposições
+   ou botões com fundo profundo. definir cores claras apenas para os
+   componentes que aparecem sobre fundos escuros (overlay, badges, botões).
+   com a introdução de data-theme para todos os temas, fica fácil segmentar. */
+[data-theme="sepia"] .card-quantum-overlay .card-quantum-description {
+  color: #ffffff;
+}
+[data-theme="sepia"] .quantum-badge,
+[data-theme="sepia"] .quantum-button {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+[data-theme="sepia"] a {
+  color: var(--quantum-primary);
+}
+
 /* MODO CLARO - Evitar problemas de reflexo */
 [data-theme="light"] {
   background-color: #f8f9fa;

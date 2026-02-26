@@ -21,7 +21,7 @@
 
 .filter-quantum {
   position: relative;
-  background: rgba(10, 10, 20, 0.8);
+  background: rgba(var(--overlay-background-rgb), 0.8);
   border: 2px solid transparent;
   background-clip: padding-box;
   color: var(--text-secondary);

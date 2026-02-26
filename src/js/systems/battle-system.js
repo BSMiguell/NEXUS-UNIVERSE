@@ -3349,50 +3349,52 @@ class QuantumBattleSystem {
     );
 
     const statsHTML = `
-      <div class="result-stat" style="animation: slideInLeft 0.4s ease-out;">
+      <div class="result-stat winner" style="animation: slideInLeft 0.4s ease-out;">
         <div class="result-stat-label">VENCEDOR</div>
-        <div class="result-stat-value" style="display: flex; align-items: center; gap: 10px;">
+        <div class="result-stat-value" style="gap: 15px;">
           <img src="${winnerImg}" alt="${result.winnerName}" 
-               style="height: 150px; border-radius: 10px; border: 3px solid ${result.underdogWin ? "#9b59b6" : "var(--quantum-success)"};
-                      animation: ${result.underdogWin ? "pulsePurple 0.8s infinite" : "pulseGreen 0.8s infinite"};">
-          <div>
-            <strong>${result.winnerName}</strong><br>
-            <small>${categoryNames[result.winner.character.category] || result.winner.character.category}</small>
-            ${result.underdogWin ? '<br><small style="color: #9b59b6;">🎲 Azarão Vitorioso!</small>' : ""}
+               style="height: 120px; width: 80px; object-fit: cover; border-radius: 8px; border: 2px solid var(--quantum-success);
+                      box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);">
+          <div style="text-align: left;">
+            <div style="font-size: 1.1rem; color: #fff;">${result.winnerName}</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); opacity: 0.8;">${(categoryNames[result.winner.character.category] || result.winner.character.category).toUpperCase()}</div>
+            ${result.underdogWin ? '<div style="font-size: 0.7rem; color: #9b59b6; margin-top: 4px;">🎲 VITÓRIA DO AZARÃO</div>' : ""}
           </div>
         </div>
       </div>
-      <div class="result-stat" style="animation: slideInRight 0.4s ease-out 0.1s both;">
+      <div class="result-stat loser" style="animation: slideInRight 0.4s ease-out 0.1s both;">
         <div class="result-stat-label">PERDEDOR</div>
-        <div class="result-stat-value" style="display: flex; align-items: center; gap: 10px;">
+        <div class="result-stat-value" style="gap: 15px;">
           <img src="${loserImg}" alt="${result.loserName}" 
-               style="height: 150px; border-radius: 10px; border: 3px solid var(--quantum-danger);">
-          <div>
-            <strong>${result.loserName}</strong><br>
-            <small>${categoryNames[result.loser.character.category] || result.loser.character.category}</small>
+               style="height: 120px; width: 80px; object-fit: cover; border-radius: 8px; border: 2px solid var(--quantum-danger);
+                      box-shadow: 0 0 15px rgba(255, 42, 109, 0.3);">
+          <div style="text-align: left;">
+            <div style="font-size: 1.1rem; color: #fff;">${result.loserName}</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); opacity: 0.8;">${(categoryNames[result.loser.character.category] || result.loser.character.category).toUpperCase()}</div>
           </div>
         </div>
       </div>
       <div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.2s both;">
         <div class="result-stat-label">ROUNDS</div>
-        <div class="result-stat-value">${result.rounds}</div>
+        <div class="result-stat-value" style="font-size: 1.8rem;">${result.rounds}</div>
       </div>
       <div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.3s both;">
         <div class="result-stat-label">SAÚDE RESTANTE</div>
         <div class="result-stat-value">
-          <span style="color: var(--quantum-success); font-weight: bold;">${winnerHealth}%</span> vs 
+          <span style="color: var(--quantum-success); font-weight: bold;">${winnerHealth}%</span>
+          <span style="margin: 0 10px; opacity: 0.5; font-size: 0.8rem;">vs</span> 
           <span style="color: var(--quantum-danger); font-weight: bold;">${loserHealth}%</span>
         </div>
       </div>
       <div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.4s both;">
         <div class="result-stat-label">CRÍTICOS</div>
-        <div class="result-stat-value" style="color: #ff9900; font-weight: bold;">
+        <div class="result-stat-value" style="color: #ff9900; font-weight: bold; font-size: 1.8rem;">
           ${result.criticalHits.player1 + result.criticalHits.player2}
         </div>
       </div>
       <div class="result-stat" style="animation: fadeIn 0.4s ease-out 0.5s both;">
         <div class="result-stat-label">ESQUIVAS</div>
-        <div class="result-stat-value" style="color: #33ccff; font-weight: bold;">
+        <div class="result-stat-value" style="color: #33ccff; font-weight: bold; font-size: 1.8rem;">
           ${result.dodges.player1 + result.dodges.player2}
         </div>
       </div>

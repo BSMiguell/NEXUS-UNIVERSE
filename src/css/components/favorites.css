@@ -503,8 +503,8 @@
   padding: 40px;
   background: linear-gradient(
     135deg,
-    rgba(0, 20, 40, 0.9) 0%,
-    rgba(10, 10, 30, 0.8) 100%
+    rgba(var(--overlay-background-rgb), 0.9) 0%,
+    rgba(var(--overlay-background-rgb), 0.8) 100%
   );
   border-radius: var(--border-radius-xl);
   border: 2px solid rgba(0, 255, 234, 0.3);
@@ -929,7 +929,7 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(10, 10, 20, 0.9) 30%
+    rgba(var(--overlay-background-rgb), 0.9) 30%
   );
 }
 
@@ -1095,8 +1095,8 @@
   justify-content: center;
   background: linear-gradient(
     135deg,
-    rgba(10, 10, 30, 0.9) 0%,
-    rgba(20, 20, 50, 0.7) 100%
+    rgba(var(--overlay-background-rgb), 0.9) 0%,
+    rgba(var(--overlay-background-rgb), 0.7) 100%
   );
   border-radius: var(--border-radius-xl);
   border: 3px solid transparent;

@@ -35,9 +35,36 @@
       }
     });
 
+    // Generate overlay background fallback and RGB helper, mirroring
+    // applyTheme behaviour so all components using the variable stay
+    // consistent when a saved theme lacks an explicit overlayBackground.
+    if (!colors.overlayBackground && colors.backgroundSecondary) {
+      const rgb = hexToRgb(colors.backgroundSecondary);
+      root.style.setProperty(
+        "--overlay-background",
+        `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.85)`,
+      );
+      root.style.setProperty(
+        "--overlay-background-rgb",
+        `${rgb.r}, ${rgb.g}, ${rgb.b}`,
+      );
+    } else if (colors.overlayBackground) {
+      const match = String(colors.overlayBackground).match(
+        /rgba?\((\d+),\s*(\d+),\s*(\d+)/,
+      );
+      if (match) {
+        root.style.setProperty(
+          "--overlay-background-rgb",
+          `${match[1]}, ${match[2]}, ${match[3]}`,
+        );
+      }
+    }
+
     const hexToRgb = (hex) => {
       const normalized = String(hex || "").trim();
-      const match = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(normalized);
+      const match = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(
+        normalized,
+      );
       if (!match) return { r: 0, g: 0, b: 0 };
       return {
         r: Number.parseInt(match[1], 16),
@@ -79,11 +106,18 @@
       );
     }
 
-    const isLightTheme = themeData.name === "MODO CLARO";
-    if (isLightTheme) {
-      root.setAttribute("data-theme", "light");
-    } else {
-      root.removeAttribute("data-theme");
+    // compute a simple slug from the stored name (spaces -> hyphens,
+    // lowercase) so CSS can target any theme by name.
+    const slug = String(themeData.name || "")
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+    if (slug) {
+      // preserve legacy behaviour for the "light" theme
+      if (slug === "modo-claro") {
+        root.setAttribute("data-theme", "light");
+      } else {
+        root.setAttribute("data-theme", slug);
+      }
     }
 
     const themeColorMeta = document.querySelector('meta[name="theme-color"]');

@@ -313,6 +313,66 @@ class QuantumThemeSystem {
         },
       },
 
+      ocean: {
+        name: "OCEAN",
+        colors: {
+          primary: "#0077b6",
+          secondary: "#00b4d8",
+          accent: "#90e0ef",
+          danger: "#e63946",
+          success: "#52b788",
+          warning: "#f4a261",
+          textPrimary: "#ffffff",
+          textSecondary: "#cfe8ff",
+          textAccent: "#00b4d8",
+          backgroundPrimary: "#012a4a",
+          backgroundSecondary: "#013a63",
+          borderPrimary: "rgba(0, 119, 182, 0.2)",
+          glassBackground: "rgba(1, 42, 74, 0.8)",
+          buttonBackground: "rgba(0, 119, 182, 0.85)",
+        },
+      },
+
+      forest: {
+        name: "FOREST",
+        colors: {
+          primary: "#1b4332",
+          secondary: "#2d6a4f",
+          accent: "#40916c",
+          danger: "#9d0208",
+          success: "#74c69d",
+          warning: "#fca311",
+          textPrimary: "#f1faee",
+          textSecondary: "#a8dadc",
+          textAccent: "#40916c",
+          backgroundPrimary: "#052b33",
+          backgroundSecondary: "#0a3935",
+          borderPrimary: "rgba(20, 100, 80, 0.3)",
+          glassBackground: "rgba(5, 43, 51, 0.8)",
+          buttonBackground: "rgba(20, 100, 80, 0.85)",
+        },
+      },
+
+      sunset: {
+        name: "SUNSET",
+        colors: {
+          primary: "#ff4500",
+          secondary: "#ff6347",
+          accent: "#ffa500",
+          danger: "#c1121f",
+          success: "#2a9d8f",
+          warning: "#e9c46a",
+          textPrimary: "#000000",
+          textSecondary: "#333333",
+          textAccent: "#ff4500",
+          backgroundPrimary: "#fff5f2",
+          backgroundSecondary: "#ffe5e0",
+          borderPrimary: "rgba(255, 69, 0, 0.2)",
+          glassBackground: "rgba(255, 245, 242, 0.8)",
+          buttonBackground: "rgba(255, 69, 0, 0.85)",
+        },
+      },
+
       highContrast: {
         name: "ALTO CONTRASTE",
         colors: {
@@ -482,7 +542,20 @@ class QuantumThemeSystem {
     const root = document.documentElement;
     const colors = { ...theme.colors };
 
-    // Fallbacks para cores que podem estar faltando em temas antigos ou personalizados
+    // compute slug safely; theme.name may be undefined if a custom theme
+    // object is malformed. default to empty string to avoid runtime errors.
+    const name = typeof theme.name === "string" ? theme.name : "";
+    const slug = name.toLowerCase().replace(/\s+/g, "-");
+    if (slug) {
+      // set attribute for all themes; light mode keeps the legacy value
+      root.setAttribute("data-theme", slug === "modo-claro" ? "light" : slug);
+    }
+
+    // prior to this change we only cared if the theme was explicitly light
+    // (MODO CLARO), but we now always set data-theme above so we no longer
+    // need a separate branch here.
+
+    // fallbacks para cores que podem estar faltando em temas antigos ou personalizados
     if (!colors.glassBackground && colors.backgroundSecondary) {
       const rgb = this.hexToRgb(colors.backgroundSecondary);
       colors.glassBackground = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.75)`;
@@ -499,6 +572,12 @@ class QuantumThemeSystem {
       const rgb = this.hexToRgb(colors.secondary);
       colors.borderSecondary = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.35)`;
     }
+    // overlayBackground is used heavily for semi‑transparent dark/light layers
+    // ensure it adapts when a theme only specifies backgrounds
+    if (!colors.overlayBackground && colors.backgroundSecondary) {
+      const rgb = this.hexToRgb(colors.backgroundSecondary);
+      colors.overlayBackground = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.85)`;
+    }
 
     Object.entries(colors).forEach(([key, value]) => {
       const cssVar = this.getCssVariableName(key);
@@ -506,12 +585,26 @@ class QuantumThemeSystem {
         root.style.setProperty(cssVar, value);
 
         // Adiciona versão RGB para permitir uso de rgba()
-        if (typeof value === "string" && value.startsWith("#")) {
-          const rgb = this.hexToRgb(value);
-          root.style.setProperty(
-            `${cssVar}-rgb`,
-            `${rgb.r}, ${rgb.g}, ${rgb.b}`,
-          );
+        if (typeof value === "string") {
+          if (value.startsWith("#")) {
+            const rgb = this.hexToRgb(value);
+            root.style.setProperty(
+              `${cssVar}-rgb`,
+              `${rgb.r}, ${rgb.g}, ${rgb.b}`,
+            );
+          } else if (
+            cssVar === "--overlay-background" &&
+            value.startsWith("rgba(")
+          ) {
+            // extraímos canais diretamente quando a cor já é rgba
+            const parts = value.match(/rgba\((\d+),\s*(\d+),\s*(\d+)/);
+            if (parts) {
+              root.style.setProperty(
+                `${cssVar}-rgb`,
+                `${parts[1]}, ${parts[2]}, ${parts[3]}`,
+              );
+            }
+          }
         }
       }
     });

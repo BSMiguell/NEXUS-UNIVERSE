@@ -186,7 +186,7 @@
   background: linear-gradient(
     to top,
     var(--overlay-background) 0%,
-    rgba(10, 10, 15, 0.85) 30%,
+    rgba(var(--overlay-background-rgb), 0.85) 30%,
     transparent 100%
   );
   padding: 60px 40px 40px;
@@ -209,7 +209,7 @@
   background: linear-gradient(
     to top,
     var(--overlay-background) 0%,
-    rgba(10, 10, 15, 0.9) 50%,
+    rgba(var(--overlay-background-rgb), 0.9) 50%,
     transparent 100%
   );
 }

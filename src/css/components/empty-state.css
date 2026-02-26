@@ -6,7 +6,7 @@
   justify-content: center;
   padding: 120px 40px;
   text-align: center;
-  background: rgba(10, 10, 20, 0.4);
+  background: rgba(var(--overlay-background-rgb), 0.4);
   border-radius: var(--border-radius-xl);
   border: 1px dashed var(--border-primary);
   margin: 60px 0;
@@ -14,8 +14,15 @@
 }
 
 @keyframes pulseEmpty {
-  0%, 100% { border-color: var(--border-primary); box-shadow: 0 0 20px rgba(0, 255, 234, 0.05); }
-  50% { border-color: var(--quantum-primary); box-shadow: 0 0 40px rgba(0, 255, 234, 0.15); }
+  0%,
+  100% {
+    border-color: var(--border-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 234, 0.05);
+  }
+  50% {
+    border-color: var(--quantum-primary);
+    box-shadow: 0 0 40px rgba(0, 255, 234, 0.15);
+  }
 }
 
 .empty-blackhole {
@@ -30,7 +37,9 @@
   inset: 20%;
   background: #000;
   border-radius: 50%;
-  box-shadow: 0 0 40px var(--quantum-primary), 0 0 80px var(--quantum-secondary);
+  box-shadow:
+    0 0 40px var(--quantum-primary),
+    0 0 80px var(--quantum-secondary);
   z-index: 2;
 }
 
@@ -45,7 +54,9 @@
 }
 
 @keyframes spinEmpty {
-  100% { transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .empty-title {

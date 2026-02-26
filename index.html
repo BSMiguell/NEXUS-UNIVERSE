@@ -756,7 +756,51 @@
           </div>
 
           <div class="battle2d-arena">
+            <div class="arena-top-actions">
+              <button id="toggleFullscreenBtn" class="arena-action-btn" title="Tela Cheia">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
             <canvas id="battleCanvas" width="800" height="400"></canvas>
+          </div>
+
+          <!-- Modal de Pausa interno para funcionar em Fullscreen -->
+          <div
+            class="quantum-modal pause-modal"
+            id="battlePauseModal"
+            role="dialog"
+            aria-modal="true"
+            aria-hidden="true"
+            tabindex="-1"
+            hidden
+          >
+            <div class="modal-quantum pause-content">
+              <h2 class="pause-title">
+                <i class="fas fa-pause-circle"></i>
+                JOGO PAUSADO
+              </h2>
+              <div class="pause-options">
+                <button id="resumeGameBtn" class="pause-btn resume">
+                  <i class="fas fa-play"></i>
+                  RETOMAR JOGO
+                </button>
+                <button id="pauseToggleFullscreenBtn" class="pause-btn fullscreen">
+                  <i class="fas fa-expand"></i>
+                  TELA CHEIA (ON/OFF)
+                </button>
+                <button id="resetGameBtn" class="pause-btn reset">
+                  <i class="fas fa-redo-alt"></i>
+                  REINICIAR BATALHA
+                </button>
+                <button id="exitGameBtn" class="pause-btn exit">
+                  <i class="fas fa-sign-out-alt"></i>
+                  SAIR DA BATALHA
+                </button>
+              </div>
+              <div class="pause-footer">
+                Pressione <strong>ESC</strong> para retomar
+              </div>
+            </div>
           </div>
 
           <div class="battle2d-controls">
@@ -770,6 +814,9 @@
                     style="width: 100%"
                   ></div>
                 </div>
+                <div class="energy-bar-bg">
+                  <div id="playerEnergyFill" class="energy-fill" style="width: 0%"></div>
+                </div>
               </div>
               <div class="health-bar-container">
                 <span id="botHealthLabel">Bot</span>
@@ -779,6 +826,9 @@
                     class="health-fill"
                     style="width: 100%"
                   ></div>
+                </div>
+                <div class="energy-bar-bg">
+                  <div id="botEnergyFill" class="energy-fill" style="width: 0%"></div>
                 </div>
               </div>
             </div>
@@ -808,43 +858,112 @@
 
       <!-- Footer Quântico -->
       <footer class="quantum-footer" role="contentinfo">
-        <div class="footer-quantum">NEXUS QUANTUM 13/10</div>
-        <p class="footer-description footer-description-class">
-          Uma experiência visual quântica 13/10 com comandos de voz, realidade
-          3D, sistema de conquistas, efeitos magnéticos, sistema de batalha e
-          inteligência artificial. Explore realidades alternativas como nunca
-          antes imaginado.
-        </p>
-        <div class="footer-stats-grid">
-          <div class="footer-stat">
-            <div class="footer-stat-icon">
-              <i class="fas fa-heart"></i>
+        <div class="footer-container">
+          <div class="footer-main">
+            <div class="footer-brand">
+              <div class="footer-quantum-logo">NEXUS <span>13/10</span></div>
+              <p class="footer-description">
+                Uma experiência visual quântica 13/10 que redefine os limites do
+                design digital com realidade 3D, comandos de voz e inteligência
+                artificial.
+              </p>
+              <div class="footer-socials">
+                <a href="#" class="social-link" aria-label="Discord">
+                  <i class="fab fa-discord" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                  <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div>
             </div>
-            <div class="footer-stat-label">FAVORITOS 13/10</div>
+
+            <div class="footer-nav">
+              <div class="footer-col">
+                <h4 class="footer-title">EXPLORAR</h4>
+                <ul class="footer-links">
+                  <li><a href="#quantumUniverse">Multiverso</a></li>
+                  <li><a href="#quantumGrid">Personagens</a></li>
+                  <li><a href="#filterMatrix">Dimensões</a></li>
+                  <li><a href="#quantumDashboard">Estatísticas</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-col">
+                <h4 class="footer-title">SISTEMA</h4>
+                <ul class="footer-links">
+                  <li><a href="#quantumLoader">Protocolos</a></li>
+                  <li><a href="#viewBattleBtn">Batalha 13/10</a></li>
+                  <li><a href="#viewFavoritesBtn">Favoritos</a></li>
+                  <li><a href="#viewSearchBtn">Pesquisa</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-col subscribe">
+                <h4 class="footer-title">ASSINAR FUXO</h4>
+                <p>Receba atualizações quânticas no seu terminal.</p>
+                <form class="subscribe-form" id="footerSubscribe">
+                  <div class="subscribe-input-wrapper">
+                    <input
+                      type="email"
+                      placeholder="SEU E-MAIL..."
+                      required
+                      aria-label="Assinar newsletter"
+                    />
+                    <button type="submit" aria-label="Enviar">
+                      <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-          <div class="footer-stat">
-            <div class="footer-stat-icon">
-              <i class="fas fa-robot"></i>
+
+          <div class="footer-stats-bar">
+            <div class="footer-stat-minimal">
+              <span class="stat-icon"><i class="fas fa-microchip"></i></span>
+              <span class="stat-text">CPU: 13.10GHz</span>
             </div>
-            <div class="footer-stat-label">INTELIGÊNCIA</div>
+            <div class="footer-stat-minimal">
+              <span class="stat-icon"><i class="fas fa-network-wired"></i></span>
+              <span class="stat-text">PING: 0ms</span>
+            </div>
+            <div class="footer-stat-minimal">
+              <span class="stat-icon"><i class="fas fa-shield-alt"></i></span>
+              <span class="stat-text">SECURITY: MAX</span>
+            </div>
+            <div class="footer-stat-minimal">
+              <span class="stat-icon"><i class="fas fa-atom"></i></span>
+              <span class="stat-text">CORES: 13/10</span>
+            </div>
           </div>
-          <div class="footer-stat">
-            <div class="footer-stat-icon">
-              <i class="fas fa-cube"></i>
+
+          <div class="footer-bottom">
+            <p class="copyright">
+              © <span id="currentYear">2026</span>
+              <strong>NEXUS QUANTUM UNIVERSE</strong> •
+              <span>TODAS AS REALIDADES RESERVADAS</span>
+            </p>
+            <div class="footer-status-light">
+              <span class="status-pulse"></span>
+              SISTEMA OTIMIZADO 13/10
             </div>
-            <div class="footer-stat-label">MODO 3D</div>
-          </div>
-          <div class="footer-stat">
-            <div class="footer-stat-icon">
-              <i class="fas fa-fist-raised"></i>
-            </div>
-            <div class="footer-stat-label">SISTEMA DE BATALHA</div>
           </div>
         </div>
-        <p class="copyright">
-          © <span id="currentYear">2024</span> NEXUS QUANTUM UNIVERSE 13/10 •
-          TODAS AS REALIDADES RESERVADAS
-        </p>
+
+        <!-- Partículas de Background -->
+        <div class="quantum-footer-particles" aria-hidden="true">
+          <div class="footer-particle"></div>
+          <div class="footer-particle"></div>
+          <div class="footer-particle"></div>
+          <div class="footer-particle"></div>
+          <div class="footer-particle"></div>
+        </div>
       </footer>
 
       <!-- Container Global de Controles -->

@@ -14,6 +14,9 @@ class QuantumBattle2DSystem {
     this.attackCooldown = 500;
     this.battleEnded = false;
     this.battleEndTimer = null;
+    this.isPaused = false;
+    this.hitStopTimer = 0;
+    this.fullscreenActive = false;
 
     // Parâmetros físicos MELHORADOS
     this.gravity = 0.6; // Queda mais natural
@@ -112,6 +115,14 @@ class QuantumBattle2DSystem {
       battle2dArena: document.getElementById("battle2dArena"),
       selectorSearchInput: document.getElementById("characterSelectorSearch"),
       selectorResultCount: document.getElementById("selectorResultCount"),
+      fullscreenBtn: document.getElementById("toggleFullscreenBtn"),
+      pauseModal: document.getElementById("battlePauseModal"),
+      resumeBtn: document.getElementById("resumeGameBtn"),
+      resetGameBtn: document.getElementById("resetGameBtn"),
+      exitGameBtn: document.getElementById("exitGameBtn"),
+      pauseFullscreenBtn: document.getElementById("pauseToggleFullscreenBtn"),
+      playerEnergyFill: document.getElementById("playerEnergyFill"),
+      botEnergyFill: document.getElementById("botEnergyFill"),
     };
   }
 
@@ -168,6 +179,43 @@ class QuantumBattle2DSystem {
       });
     }
 
+    if (this.elements.fullscreenBtn) {
+      this.elements.fullscreenBtn.addEventListener("click", () => {
+        this.toggleFullscreen();
+      });
+    }
+
+    if (this.elements.resumeBtn) {
+      this.elements.resumeBtn.addEventListener("click", () => {
+        this.togglePause();
+      });
+    }
+
+    if (this.elements.pauseFullscreenBtn) {
+      this.elements.pauseFullscreenBtn.addEventListener("click", () => {
+        this.toggleFullscreen();
+      });
+    }
+
+    if (this.elements.resetGameBtn) {
+      this.elements.resetGameBtn.addEventListener("click", () => {
+        this.togglePause();
+        this.resetBattle();
+      });
+    }
+
+    if (this.elements.exitGameBtn) {
+      this.elements.exitGameBtn.addEventListener("click", () => {
+        this.togglePause();
+        this.stopGame();
+        // Sai do Fullscreen ao sair manualmente
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          this.toggleFullscreen();
+        }
+        this.showSelectionScreen();
+      });
+    }
+
     // Prevenir rolagem com teclas de controle
     window.addEventListener("keydown", (e) => {
       if (
@@ -203,6 +251,21 @@ class QuantumBattle2DSystem {
   setupKeyboard() {
     window.addEventListener("keydown", (e) => {
       this.keys[e.code] = true;
+
+      // E para Pausar
+      if (e.code === "KeyE" && this.elements.battle2dArena && this.elements.battle2dArena.style.display === "block") {
+        this.togglePause();
+      }
+
+      // Dash (Shift)
+      if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
+        this.performDash(this.player);
+      }
+
+      // Especial (Q)
+      if (e.code === "KeyQ") {
+        this.performSpecialAttack(this.player);
+      }
     });
 
     window.addEventListener("keyup", (e) => {
@@ -211,6 +274,87 @@ class QuantumBattle2DSystem {
         this.player.attacking = false;
       }
     });
+  }
+
+  toggleFullscreen() {
+    const arena = this.elements.battle2dArena;
+    if (!arena) return;
+
+    const updateIcon = (isFullscreen) => {
+      this.fullscreenActive = isFullscreen;
+      const iconHtml = isFullscreen ? 
+          '<i class="fas fa-compress"></i>' : 
+          '<i class="fas fa-expand"></i>';
+      const textPrefix = isFullscreen ? 'SAIR DA TELA CHEIA' : 'TELA CHEIA (ON/OFF)';
+
+      if (this.elements.fullscreenBtn) {
+        this.elements.fullscreenBtn.innerHTML = iconHtml;
+      }
+      if (this.elements.pauseFullscreenBtn) {
+        this.elements.pauseFullscreenBtn.innerHTML = `${iconHtml} ${textPrefix}`;
+      }
+      
+      if (isFullscreen) {
+        arena.classList.add("is-fullscreen");
+      } else {
+        arena.classList.remove("is-fullscreen");
+      }
+    };
+
+    if (!document.fullscreenElement && 
+        !document.webkitFullscreenElement && 
+        !document.msFullscreenElement) {
+      if (arena.requestFullscreen) {
+        arena.requestFullscreen().then(() => updateIcon(true)).catch(err => console.error(err));
+      } else if (arena.webkitRequestFullscreen) {
+        arena.webkitRequestFullscreen();
+        updateIcon(true);
+      } else if (arena.msRequestFullscreen) {
+        arena.msRequestFullscreen();
+        updateIcon(true);
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().then(() => updateIcon(false)).catch(err => console.error(err));
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+        updateIcon(false);
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+        updateIcon(false);
+      }
+    }
+
+    // Escutar mudança de fullscreen (ex: usuário apertar Esc)
+    const onFullscreenChange = () => {
+      const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+      updateIcon(isFullscreen);
+    };
+
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+    document.addEventListener("mozfullscreenchange", onFullscreenChange);
+    document.addEventListener("MSFullscreenChange", onFullscreenChange);
+  }
+
+  togglePause() {
+    if (this.battleEnded) return;
+
+    this.isPaused = !this.isPaused;
+    
+    if (this.isPaused) {
+      if (this.elements.pauseModal) {
+        this.elements.pauseModal.removeAttribute("hidden");
+        this.elements.pauseModal.classList.add("show");
+      }
+      this.gallery.audio?.play("click");
+    } else {
+      if (this.elements.pauseModal) {
+        this.elements.pauseModal.setAttribute("hidden", "");
+        this.elements.pauseModal.classList.remove("show");
+      }
+      this.gallery.audio?.play("click");
+    }
   }
   openCharacterSelector(title) {
     const modal = document.getElementById("characterSelectorModal");
@@ -574,6 +718,11 @@ class QuantumBattle2DSystem {
         this.elements.battle2dArena.style.display = "block";
       this.startGame();
       this.gallery.showToast("⚔️ BATALHA INICIADA!");
+
+      // Entra em Fullscreen automaticamente (se suportado e não estiver)
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        this.toggleFullscreen();
+      }
     });
   }
 
@@ -1200,6 +1349,13 @@ class QuantumBattle2DSystem {
     char.maxHealth = 100;
     char.health = 100;
 
+    // Novos atributos 13/10
+    char.maxEnergy = 100;
+    char.energy = 0;
+    char.energyRegen = 0.15 + (hab / 100) * 0.1;
+    char.dashCost = 30;
+    char.specialCost = 60;
+
     // Combo system
     char.comboCount = 0;
     char.lastComboTime = 0;
@@ -1229,8 +1385,12 @@ class QuantumBattle2DSystem {
   }
 
   gameLoop() {
-    if (!this.battleEnded) {
-      this.update();
+    if (!this.battleEnded && !this.isPaused) {
+      if (this.hitStopTimer > 0) {
+        this.hitStopTimer -= 16;
+      } else {
+        this.update();
+      }
     }
     this.draw();
     this.gameLoopId = requestAnimationFrame(() => this.gameLoop());
@@ -1245,9 +1405,43 @@ class QuantumBattle2DSystem {
     this.checkAttacks();
     this.updateEffects();
 
-    // Atualiza cooldown timers
+    // Atualiza cooldown timers e regeneração
     if (this.player.cooldownTimer > 0) this.player.cooldownTimer -= 16;
     if (this.bot.cooldownTimer > 0) this.bot.cooldownTimer -= 16;
+
+    if (this.player.dashCooldown > 0) this.player.dashCooldown -= 16;
+    if (this.bot.dashCooldown > 0) this.bot.dashCooldown -= 16;
+
+    // Regeneração de Stamina e Energy
+    if (this.player.stamina < this.player.maxStamina) {
+      this.player.stamina += this.player.staminaRegen;
+    }
+    if (this.player.energy < this.player.maxEnergy) {
+      this.player.energy += this.player.energyRegen;
+    }
+
+    if (this.bot.stamina < this.bot.maxStamina) {
+      this.bot.stamina += this.bot.staminaRegen;
+    }
+    if (this.bot.energy < this.bot.maxEnergy) {
+      this.bot.energy += this.bot.energyRegen;
+    }
+
+    // Handle Dash duration
+    if (this.player.isDashing) {
+      this.player.dashTimer -= 16;
+      if (this.player.dashTimer <= 0) {
+        this.player.isDashing = false;
+        this.player.vx *= 0.5;
+      }
+    }
+    if (this.bot.isDashing) {
+      this.bot.dashTimer -= 16;
+      if (this.bot.dashTimer <= 0) {
+        this.bot.isDashing = false;
+        this.bot.vx *= 0.5;
+      }
+    }
 
     // Mantém estado de ataque ativo apenas durante a execução do golpe/animação.
     if (
@@ -1642,6 +1836,7 @@ class QuantumBattle2DSystem {
         }
 
         this.shakeScreen(2 + (damage / this.bot.maxHealth) * 1.5);
+        this.triggerHitStop(isCrit ? 100 : 50); // Novo: Hit stop para impacto
         this.bot.invincibilityFrames = 20;
         this.player.attackHitRegistered = true;
         this.gallery.audio?.play("hit");
@@ -1722,6 +1917,7 @@ class QuantumBattle2DSystem {
         }
 
         this.shakeScreen(2 + (damage / this.player.maxHealth) * 1.5);
+        this.triggerHitStop(isCrit ? 100 : 50); // Novo: Hit stop para impacto
         this.player.invincibilityFrames = 20;
         this.bot.attackHitRegistered = true;
         this.gallery.audio?.play("hit");
@@ -2102,6 +2298,10 @@ class QuantumBattle2DSystem {
     }
 
     this.battleEndTimer = setTimeout(() => {
+      // Sai do Fullscreen automaticamente ao terminar
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        this.toggleFullscreen();
+      }
       this.showSelectionScreen();
     }, 3000);
   }
@@ -2127,6 +2327,74 @@ class QuantumBattle2DSystem {
     if (this.elements.botHealthFill) {
       this.elements.botHealthFill.style.width = Math.max(0, botPercent) + "%";
     }
+
+    // Atualiza barras de energia (Novas)
+    if (this.elements.playerEnergyFill) {
+      const energyPercent = (this.player.energy / this.player.maxEnergy) * 100;
+      this.elements.playerEnergyFill.style.width = `${Math.min(100, energyPercent)}%`;
+      if (energyPercent >= 100) {
+        this.elements.playerEnergyFill.style.background = "linear-gradient(90deg, #ffff00, #ff8800)";
+        this.elements.playerEnergyFill.style.boxShadow = "0 0 15px #ffff00";
+      } else {
+        this.elements.playerEnergyFill.style.background = "linear-gradient(90deg, #00d2ff, #3a7bd5)";
+        this.elements.playerEnergyFill.style.boxShadow = "0 0 10px rgba(0, 210, 255, 0.5)";
+      }
+    }
+
+    if (this.elements.botEnergyFill) {
+      const energyPercent = (this.bot.energy / this.bot.maxEnergy) * 100;
+      this.elements.botEnergyFill.style.width = `${Math.min(100, energyPercent)}%`;
+      if (energyPercent >= 100) {
+        this.elements.botEnergyFill.style.background = "linear-gradient(90deg, #ffff00, #ff8800)";
+      } else {
+        this.elements.botEnergyFill.style.background = "linear-gradient(90deg, #00d2ff, #3a7bd5)";
+      }
+    }
+  }
+
+  performDash(char) {
+    if (char.dashCooldown > 0 || char.energy < (char.dashCost || 30) || char.isDashing || char.health <= 0) return;
+
+    char.energy -= (char.dashCost || 30);
+    char.isDashing = true;
+    char.dashTimer = 200; // 200ms de dash
+    char.dashCooldown = 600; // 600ms de cooldown
+
+    char.vx = char.direction * (char.speed * 3.5);
+    
+    // Efeito visual de dash
+    this.createImpactEffect(char.x + char.width/2, char.y - char.height/2, char.direction === 1 ? "right" : "left");
+    this.gallery.audio?.play("whoosh");
+  }
+
+  performSpecialAttack(char) {
+    if (char.energy < (char.specialCost || 60) || char.attacking || char.health <= 0) return;
+
+    char.energy -= (char.specialCost || 60);
+    this.beginAttack(char);
+    
+    // O especial dá mais dano e tem range maior temporariamente
+    const originalDamage = char.attackDamage;
+    const originalRange = char.attackRange;
+    
+    char.attackDamage *= 2.5;
+    char.attackRange *= 1.5;
+    
+    // Efeito visual especial
+    this.shakeIntensity = 8;
+    this.triggerHitStop(150);
+    
+    this.gallery.showToast(`🔥 ESPECIAL: ${char.name.toUpperCase()}!`);
+    
+    // Resetar após o ataque (usando timer compatível com o sistema)
+    setTimeout(() => {
+      char.attackDamage = originalDamage;
+      char.attackRange = originalRange;
+    }, 500);
+  }
+
+  triggerHitStop(duration) {
+    this.hitStopTimer = duration;
   }
 
   draw() {
@@ -2348,10 +2616,7 @@ class QuantumBattle2DSystem {
     const isAttackAnimationActive =
       !!animatedFrame || (!!role && this.attackAnimations[role].active);
 
-    this.ctx.shadowColor = isPlayer
-      ? "rgba(0, 255, 200, 0.4)"
-      : "rgba(255, 42, 109, 0.4)";
-    this.ctx.shadowBlur = 18;
+    this.ctx.shadowBlur = 0;
     this.ctx.shadowOffsetX = 0;
     this.ctx.shadowOffsetY = 0;
 
@@ -2372,10 +2637,7 @@ class QuantumBattle2DSystem {
       this.ctx.save();
 
       if (char.attacking || isAttackAnimationActive) {
-        this.ctx.shadowColor = isPlayer ? "#00ffea" : "#ff5588";
-        this.ctx.shadowBlur = 28;
-        this.ctx.shadowOffsetX = 0;
-        this.ctx.shadowOffsetY = 0;
+        this.ctx.shadowBlur = 0;
       }
 
       if (char.direction === -1) {
@@ -2389,11 +2651,7 @@ class QuantumBattle2DSystem {
       this.ctx.restore();
 
       if (char.attacking || isAttackAnimationActive) {
-        this.ctx.save();
-        this.ctx.globalAlpha = 0.2;
-        this.ctx.fillStyle = isPlayer ? "#00ffea" : "#ff5588";
-        this.ctx.fillRect(x, y, width, height);
-        this.ctx.restore();
+        // Overlay removido para PNG
       }
 
       if (char.invincibilityFrames > 0) {
@@ -2442,9 +2700,10 @@ class QuantumBattle2DSystem {
       9,
     );
 
-    this.ctx.strokeStyle = "#ffffff";
-    this.ctx.lineWidth = 1;
-    this.ctx.strokeRect(healthBarX, healthBarY, healthBarWidth, 9);
+    // Borda removida para visual mais limpo
+    // this.ctx.strokeStyle = "#ffffff";
+    // this.ctx.lineWidth = 1;
+    // this.ctx.strokeRect(healthBarX, healthBarY, healthBarWidth, 9);
 
     this.ctx.font = "bold 11px 'Rajdhani', sans-serif";
     this.ctx.fillStyle = "#ffffff";
@@ -2693,5 +2952,13 @@ class BattleCharacter {
     this.lastComboTime = 0;
     this.comboTimeout = 800;
     this.comboMultiplier = 1;
+
+    // Novos atributos 13/10
+    this.maxEnergy = 100;
+    this.energy = 0;
+    this.energyRegen = 0.2;
+    this.isDashing = false;
+    this.dashTimer = 0;
+    this.dashCooldown = 0;
   }
 }

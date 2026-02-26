@@ -229,11 +229,11 @@ themeSystem.applyTheme(themeSystem.themes.quantum);
 
 ### Temas Disponíveis
 
-- **Total:** 16 temas
-- **Novos:** 1 (BLACK)
-- **Melhorados:** 8
-- **Status AA (WCAG):** 12/16 ✅
-- **Status AAA (WCAG):** 8/16 ✅
+- **Total:** 19 temas
+- **Novos:** 4 (BLACK, OCEAN, FOREST, SUNSET)
+- **Melhorados:** 9 (incluindo correção para SEPIA)
+- **Status AA (WCAG):** 13/19 ✅
+- **Status AAA (WCAG):** 8/19 ✅
 
 ### Cores Dinâmicas
 
@@ -259,6 +259,7 @@ themeSystem.applyTheme(themeSystem.themes.quantum);
 - **MATRIX**: Usar para destaques rápidos, adicionar text-shadow para corpo de texto
 - **NEON**: Verde primário tem contraste baixo - usar branco para texto normal
 - **MIDNIGHT**: Púrpura vs azul escuro - verificar elemento com baixa visão
+- **SEPIA**: textos sobre overlays e botões estavam escuros em fundos escuros; aplicadas correções específicas
 
 ### Recomendações
 
