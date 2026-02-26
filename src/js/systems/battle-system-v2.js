@@ -81,6 +81,7 @@ class QuantumBattle2DSystem {
       maxBurstParticles: 2,
       backgroundParticles: 5,
       drawEnergyLines: false,
+      drawHitboxes: false, // novo: mostra caixas de colisão para depuração
       simpleFx: true,
     };
     this.effectDensity = 0.24;
@@ -253,7 +254,11 @@ class QuantumBattle2DSystem {
       this.keys[e.code] = true;
 
       // E para Pausar
-      if (e.code === "KeyE" && this.elements.battle2dArena && this.elements.battle2dArena.style.display === "block") {
+      if (
+        e.code === "KeyE" &&
+        this.elements.battle2dArena &&
+        this.elements.battle2dArena.style.display === "block"
+      ) {
         this.togglePause();
       }
 
@@ -265,6 +270,11 @@ class QuantumBattle2DSystem {
       // Especial (Q)
       if (e.code === "KeyQ") {
         this.performSpecialAttack(this.player);
+      }
+
+      // Depuração: alterna desenho de hitboxes com H
+      if (e.code === "KeyH") {
+        this.performance.drawHitboxes = !this.performance.drawHitboxes;
       }
     });
 
@@ -282,10 +292,12 @@ class QuantumBattle2DSystem {
 
     const updateIcon = (isFullscreen) => {
       this.fullscreenActive = isFullscreen;
-      const iconHtml = isFullscreen ? 
-          '<i class="fas fa-compress"></i>' : 
-          '<i class="fas fa-expand"></i>';
-      const textPrefix = isFullscreen ? 'SAIR DA TELA CHEIA' : 'TELA CHEIA (ON/OFF)';
+      const iconHtml = isFullscreen
+        ? '<i class="fas fa-compress"></i>'
+        : '<i class="fas fa-expand"></i>';
+      const textPrefix = isFullscreen
+        ? "SAIR DA TELA CHEIA"
+        : "TELA CHEIA (ON/OFF)";
 
       if (this.elements.fullscreenBtn) {
         this.elements.fullscreenBtn.innerHTML = iconHtml;
@@ -293,7 +305,7 @@ class QuantumBattle2DSystem {
       if (this.elements.pauseFullscreenBtn) {
         this.elements.pauseFullscreenBtn.innerHTML = `${iconHtml} ${textPrefix}`;
       }
-      
+
       if (isFullscreen) {
         arena.classList.add("is-fullscreen");
       } else {
@@ -301,11 +313,16 @@ class QuantumBattle2DSystem {
       }
     };
 
-    if (!document.fullscreenElement && 
-        !document.webkitFullscreenElement && 
-        !document.msFullscreenElement) {
+    if (
+      !document.fullscreenElement &&
+      !document.webkitFullscreenElement &&
+      !document.msFullscreenElement
+    ) {
       if (arena.requestFullscreen) {
-        arena.requestFullscreen().then(() => updateIcon(true)).catch(err => console.error(err));
+        arena
+          .requestFullscreen()
+          .then(() => updateIcon(true))
+          .catch((err) => console.error(err));
       } else if (arena.webkitRequestFullscreen) {
         arena.webkitRequestFullscreen();
         updateIcon(true);
@@ -315,7 +332,10 @@ class QuantumBattle2DSystem {
       }
     } else {
       if (document.exitFullscreen) {
-        document.exitFullscreen().then(() => updateIcon(false)).catch(err => console.error(err));
+        document
+          .exitFullscreen()
+          .then(() => updateIcon(false))
+          .catch((err) => console.error(err));
       } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
         updateIcon(false);
@@ -327,7 +347,11 @@ class QuantumBattle2DSystem {
 
     // Escutar mudança de fullscreen (ex: usuário apertar Esc)
     const onFullscreenChange = () => {
-      const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+      const isFullscreen = !!(
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement
+      );
       updateIcon(isFullscreen);
     };
 
@@ -341,7 +365,7 @@ class QuantumBattle2DSystem {
     if (this.battleEnded) return;
 
     this.isPaused = !this.isPaused;
-    
+
     if (this.isPaused) {
       if (this.elements.pauseModal) {
         this.elements.pauseModal.removeAttribute("hidden");
@@ -822,6 +846,41 @@ class QuantumBattle2DSystem {
     return character.id === 256 || normalizedName.includes("KHAL DROGO");
   }
 
+  isGokuCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 2 ||
+      normalizedName.includes("GOKU") ||
+      normalizedName.includes("SON GOKU") ||
+      normalizedImage.includes("goku") ||
+      normalizedImage.includes("gokou")
+    );
+  }
+
+  isLuffyCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 1 ||
+      normalizedName.includes("LUFFY") ||
+      normalizedImage.includes("luffy")
+    );
+  }
+
+  isGutsCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 3 ||
+      normalizedName.includes("GUTS") ||
+      normalizedImage.includes("guts")
+    );
+  }
+
   getLokiAttackFrameCandidates() {
     const candidates = [];
 
@@ -920,6 +979,33 @@ class QuantumBattle2DSystem {
     return candidates;
   }
 
+  getGokuAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Goku/Goku-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
+  getLuffyAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Luffy/Luffy-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
+  getGutsAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Guts/Guts-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
   getHaraldAttackFrameCandidates() {
     const candidates = [];
     for (let i = 1; i <= 40; i++) {
@@ -971,6 +1057,12 @@ class QuantumBattle2DSystem {
       frameCandidates = this.getMakiAttackFrameCandidates();
     } else if (this.isKaidoCharacter(character)) {
       frameCandidates = this.getKaidoAttackFrameCandidates();
+    } else if (this.isGokuCharacter(character)) {
+      frameCandidates = this.getGokuAttackFrameCandidates();
+    } else if (this.isLuffyCharacter(character)) {
+      frameCandidates = this.getLuffyAttackFrameCandidates();
+    } else if (this.isGutsCharacter(character)) {
+      frameCandidates = this.getGutsAttackFrameCandidates();
     } else if (this.isHaraldCharacter(character)) {
       frameCandidates = this.getHaraldAttackFrameCandidates();
     } else if (this.isBarbaBrancaCharacter(character)) {
@@ -1400,6 +1492,9 @@ class QuantumBattle2DSystem {
     this.applyPhysics(this.player);
     this.applyPhysics(this.bot);
 
+    // nova verificação de colisão física entre personagens
+    this.resolveCharacterCollision();
+
     this.handlePlayerControls();
     this.botAI();
     this.checkAttacks();
@@ -1511,6 +1606,50 @@ class QuantumBattle2DSystem {
 
     // Limites do mapa (com um pouco mais de espaço)
     char.x = Math.max(15, Math.min(this.canvasWidth - 15 - char.width, char.x));
+  }
+
+  // Resolve colisões físicas entre player e bot evitando que um atravesse o outro
+  resolveCharacterCollision() {
+    const p = this.player;
+    const b = this.bot;
+    if (!p || !b) return;
+
+    // só faz sentido enquanto ambos estão vivos
+    if (p.health <= 0 || b.health <= 0) return;
+
+    // verificação de sobreposição horizontal + vertical para evitar bloqueio indevido ao pular
+    const px1 = p.x;
+    const px2 = p.x + p.width;
+    const bx1 = b.x;
+    const bx2 = b.x + b.width;
+    const py1 = p.y;
+    const py2 = p.y + p.height;
+    const by1 = b.y;
+    const by2 = b.y + b.height;
+
+    // somente colidir se também houver sobreposição vertical
+    if (px2 > bx1 && px1 < bx2 && py2 > by1 && py1 < by2) {
+      let overlap = 0;
+      if (px1 < bx1) {
+        overlap = px2 - bx1;
+        const half = overlap / 2;
+        p.x -= half;
+        b.x += half;
+      } else {
+        overlap = bx2 - px1;
+        const half = overlap / 2;
+        b.x -= half;
+        p.x += half;
+      }
+
+      // anula a velocidade horizontal para evitar que continuem a se empurrar
+      p.vx = 0;
+      b.vx = 0;
+
+      // garante que não saiam dos limites após correção
+      p.x = Math.max(15, Math.min(this.canvasWidth - 15 - p.width, p.x));
+      b.x = Math.max(15, Math.min(this.canvasWidth - 15 - b.width, b.x));
+    }
   }
 
   handlePlayerControls() {
@@ -2333,11 +2472,14 @@ class QuantumBattle2DSystem {
       const energyPercent = (this.player.energy / this.player.maxEnergy) * 100;
       this.elements.playerEnergyFill.style.width = `${Math.min(100, energyPercent)}%`;
       if (energyPercent >= 100) {
-        this.elements.playerEnergyFill.style.background = "linear-gradient(90deg, #ffff00, #ff8800)";
+        this.elements.playerEnergyFill.style.background =
+          "linear-gradient(90deg, #ffff00, #ff8800)";
         this.elements.playerEnergyFill.style.boxShadow = "0 0 15px #ffff00";
       } else {
-        this.elements.playerEnergyFill.style.background = "linear-gradient(90deg, #00d2ff, #3a7bd5)";
-        this.elements.playerEnergyFill.style.boxShadow = "0 0 10px rgba(0, 210, 255, 0.5)";
+        this.elements.playerEnergyFill.style.background =
+          "linear-gradient(90deg, #00d2ff, #3a7bd5)";
+        this.elements.playerEnergyFill.style.boxShadow =
+          "0 0 10px rgba(0, 210, 255, 0.5)";
       }
     }
 
@@ -2345,47 +2487,64 @@ class QuantumBattle2DSystem {
       const energyPercent = (this.bot.energy / this.bot.maxEnergy) * 100;
       this.elements.botEnergyFill.style.width = `${Math.min(100, energyPercent)}%`;
       if (energyPercent >= 100) {
-        this.elements.botEnergyFill.style.background = "linear-gradient(90deg, #ffff00, #ff8800)";
+        this.elements.botEnergyFill.style.background =
+          "linear-gradient(90deg, #ffff00, #ff8800)";
       } else {
-        this.elements.botEnergyFill.style.background = "linear-gradient(90deg, #00d2ff, #3a7bd5)";
+        this.elements.botEnergyFill.style.background =
+          "linear-gradient(90deg, #00d2ff, #3a7bd5)";
       }
     }
   }
 
   performDash(char) {
-    if (char.dashCooldown > 0 || char.energy < (char.dashCost || 30) || char.isDashing || char.health <= 0) return;
+    if (
+      char.dashCooldown > 0 ||
+      char.energy < (char.dashCost || 30) ||
+      char.isDashing ||
+      char.health <= 0
+    )
+      return;
 
-    char.energy -= (char.dashCost || 30);
+    char.energy -= char.dashCost || 30;
     char.isDashing = true;
     char.dashTimer = 200; // 200ms de dash
     char.dashCooldown = 600; // 600ms de cooldown
 
     char.vx = char.direction * (char.speed * 3.5);
-    
+
     // Efeito visual de dash
-    this.createImpactEffect(char.x + char.width/2, char.y - char.height/2, char.direction === 1 ? "right" : "left");
+    this.createImpactEffect(
+      char.x + char.width / 2,
+      char.y - char.height / 2,
+      char.direction === 1 ? "right" : "left",
+    );
     this.gallery.audio?.play("whoosh");
   }
 
   performSpecialAttack(char) {
-    if (char.energy < (char.specialCost || 60) || char.attacking || char.health <= 0) return;
+    if (
+      char.energy < (char.specialCost || 60) ||
+      char.attacking ||
+      char.health <= 0
+    )
+      return;
 
-    char.energy -= (char.specialCost || 60);
+    char.energy -= char.specialCost || 60;
     this.beginAttack(char);
-    
+
     // O especial dá mais dano e tem range maior temporariamente
     const originalDamage = char.attackDamage;
     const originalRange = char.attackRange;
-    
+
     char.attackDamage *= 2.5;
     char.attackRange *= 1.5;
-    
+
     // Efeito visual especial
     this.shakeIntensity = 8;
     this.triggerHitStop(150);
-    
+
     this.gallery.showToast(`🔥 ESPECIAL: ${char.name.toUpperCase()}!`);
-    
+
     // Resetar após o ataque (usando timer compatível com o sistema)
     setTimeout(() => {
       char.attackDamage = originalDamage;
@@ -2670,13 +2829,14 @@ class QuantumBattle2DSystem {
       this.ctx.fill();
     }
 
-    this.ctx.shadowBlur = 0;
-
-    this.ctx.font = "bold 16px 'Rajdhani', sans-serif";
-    this.ctx.fillStyle = isPlayer ? "#00ffea" : "#ff5588";
-    this.ctx.shadowColor = isPlayer ? "#00ffea" : "#ff5588";
-    this.ctx.shadowBlur = 9;
-    this.ctx.textAlign = "center";
+    // desenhar hitbox se estiver no modo de depuração
+    if (this.performance.drawHitboxes) {
+      this.ctx.save();
+      this.ctx.strokeStyle = "rgba(255,0,0,0.6)";
+      this.ctx.lineWidth = 2;
+      this.ctx.strokeRect(x, y, width, height);
+      this.ctx.restore();
+    }
     this.ctx.fillText(char.name, centerX, y - 28);
     this.ctx.shadowBlur = 0;
 

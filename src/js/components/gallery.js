@@ -36,6 +36,8 @@ class QuantumGallery {
     this.battleSystem = new QuantumBattleSystem(this);
     this.battle2D = new QuantumBattle2DSystem(this);
     this.modalVideoByCharacterId = {
+      1: "assets/videos/Luffy-v-1.mp4",
+      2: "assets/videos/Goku-v-2.mp4",
       4: "assets/videos/MADARAUCHIHA-v-1.mp4",
       9: "assets/videos/AATROX-v-1.mp4",
       11: "assets/videos/GOLDEN-SPERM-v-1.mp4",
@@ -914,8 +916,11 @@ class QuantumGallery {
 
     const placeholderSVG = this.generatePlaceholderSVG(character, hasFailed);
 
+    const hasCardVideo = !!this.getModalVideoSource(character.id);
+
     card.innerHTML = `
       <div class="card-quantum-effect" aria-hidden="true"></div>
+      ${hasCardVideo ? '<div class="quantum-video-badge" aria-hidden="true"><i class="fas fa-video"></i></div>' : ''}
       <div class="card-quantum-frame" aria-hidden="true"></div>
       <button class="quantum-favorite ${isFavorite ? "active" : ""}" data-id="${character.id}" aria-label="${isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}">
         <i class="${isFavorite ? "fas" : "far"} fa-heart" aria-hidden="true"></i>

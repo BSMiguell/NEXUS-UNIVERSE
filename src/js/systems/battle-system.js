@@ -1488,6 +1488,14 @@ class QuantumBattleSystem {
       this.elements.battleAnimationContainer.classList.add("active");
       document.body.style.overflow = "hidden";
 
+      // Scroll suave para o container de animação apenas quando ela começa
+      if (this.elements.battleAnimationContainer) {
+        this.elements.battleAnimationContainer.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+
       let currentStep = 0;
       const totalSteps = 25; // Reduzido de 30
       let comboCount = 0;
@@ -3447,11 +3455,11 @@ class QuantumBattleSystem {
     }, 400);
   }
 
-  closeResultModal() {
+  closeResultModal(skipScroll = false) {
     this.elements.battleResultModal.classList.remove("active");
     document.body.style.overflow = "";
 
-    if (this.elements.battleResults?.classList.contains("show")) {
+    if (!skipScroll && this.elements.battleResults?.classList.contains("show")) {
       this.elements.battleResults.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -3460,8 +3468,19 @@ class QuantumBattleSystem {
   }
 
   rematch() {
-    this.closeResultModal();
-    this.resetBattle();
+    // Fecha o modal sem rolar para os resultados antigos (evita o scroll para baixo)
+    this.closeResultModal(true);
+
+    // Pequeno atraso apenas para o modal fechar suavemente antes do combate
+    setTimeout(() => {
+      // Iniciar a batalha novamente com os mesmos personagens
+      if (this.selectedCharacters.player1 && this.selectedCharacters.player2) {
+        this.startBattle();
+        this.gallery.showToast("🔄 REVANCHE INICIADA!");
+      } else {
+        this.resetBattle();
+      }
+    }, 300);
   }
 
   resetBattle() {

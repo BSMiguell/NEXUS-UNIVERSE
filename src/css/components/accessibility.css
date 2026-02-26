@@ -256,14 +256,3 @@ svg polygon {
   scrollbar-color: var(--quantum-primary) rgba(var(--quantum-primary-rgb), 0.05);
   scrollbar-width: thin;
 }
-
-/* Melhorar contraste de seleção de texto */
-::selection {
-  background: var(--quantum-primary);
-  color: var(--text-primary);
-}
-
-::-moz-selection {
-  background: var(--quantum-primary);
-  color: var(--text-primary);
-}

@@ -161,7 +161,7 @@
 }
 
 .quantum-favorite.active:hover {
-  background: var(--quantum-danger);
+  background: transparent;
 }
 
 .quantum-image {

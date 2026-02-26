@@ -1434,7 +1434,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  user-select: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(5px);
 }
