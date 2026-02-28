@@ -3459,7 +3459,10 @@ class QuantumBattleSystem {
     this.elements.battleResultModal.classList.remove("active");
     document.body.style.overflow = "";
 
-    if (!skipScroll && this.elements.battleResults?.classList.contains("show")) {
+    if (
+      !skipScroll &&
+      this.elements.battleResults?.classList.contains("show")
+    ) {
       this.elements.battleResults.scrollIntoView({
         behavior: "smooth",
         block: "start",

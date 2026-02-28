@@ -859,6 +859,40 @@ class QuantumBattle2DSystem {
     );
   }
 
+  isJirenCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return character.id === 47 || normalizedName.includes("JIREN");
+  }
+
+  isSolariaCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return character.id === 161 || normalizedName.includes("SOLARIA");
+  }
+
+  isSukunaCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 15 ||
+      normalizedName.includes("SUKUNA") ||
+      normalizedImage.includes("sukuna") ||
+      normalizedImage.includes("sukana")
+    );
+  }
+
+  isNedStarkCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    return (
+      character.id === 227 ||
+      normalizedName.includes("NED STARK") ||
+      normalizedName.includes("EDDARD STARK")
+    );
+  }
+
   isLuffyCharacter(character) {
     if (!character) return false;
     const normalizedName = (character.name || "").toUpperCase();
@@ -1040,6 +1074,44 @@ class QuantumBattle2DSystem {
     return candidates;
   }
 
+  getJirenAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Jirem/Jirem-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
+  getSolariaAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Solaria/Solaria-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
+  getSukunaAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Sukuna/Sukuna-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
+  getNedStarkAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 40; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `assets/animations/Ned-Stark/Ned-Stark-${frameNumber}.png`,
+      ]);
+    }
+    return candidates;
+  }
+
   async loadAttackFramesForCharacter(character) {
     let frameCandidates = [];
 
@@ -1069,6 +1141,14 @@ class QuantumBattle2DSystem {
       frameCandidates = this.getBarbaBrancaAttackFrameCandidates();
     } else if (this.isKhalDrogoCharacter(character)) {
       frameCandidates = this.getKhalDrogoAttackFrameCandidates();
+    } else if (this.isJirenCharacter(character)) {
+      frameCandidates = this.getJirenAttackFrameCandidates();
+    } else if (this.isSolariaCharacter(character)) {
+      frameCandidates = this.getSolariaAttackFrameCandidates();
+    } else if (this.isSukunaCharacter(character)) {
+      frameCandidates = this.getSukunaAttackFrameCandidates();
+    } else if (this.isNedStarkCharacter(character)) {
+      frameCandidates = this.getNedStarkAttackFrameCandidates();
     } else {
       return [];
     }

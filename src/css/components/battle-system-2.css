@@ -1510,7 +1510,11 @@
   max-width: 400px;
   text-align: center;
   padding: 40px;
-  background: linear-gradient(135deg, rgba(10, 10, 15, 0.95), rgba(20, 20, 30, 0.95));
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 15, 0.95),
+    rgba(20, 20, 30, 0.95)
+  );
   border: 2px solid var(--quantum-primary);
   box-shadow: 0 0 50px rgba(0, 255, 234, 0.2);
 }
@@ -1639,7 +1643,7 @@
   bottom: 30px;
   width: 90vw;
   max-width: 1200px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   border: none;
   padding: 20px;
   margin: 0;
@@ -1669,4 +1673,3 @@
   z-index: 9999;
   background: #0a0a0f;
 }
-

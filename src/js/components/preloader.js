@@ -104,7 +104,11 @@ class QuantumPreloader {
   }
 
   lazyLoadHeavySystems() {
-    if (CONFIG.USE_THREE_JS && typeof THREE !== "undefined" && CONFIG.SHOW_EFFECTS) {
+    if (
+      CONFIG.USE_THREE_JS &&
+      typeof THREE !== "undefined" &&
+      CONFIG.SHOW_EFFECTS
+    ) {
       scheduleIdleTask(
         () => {
           this.initThreeJS();
@@ -177,7 +181,10 @@ class QuantumPreloader {
           "position",
           new THREE.BufferAttribute(posArray, 3),
         );
-        geometry.setAttribute("color", new THREE.BufferAttribute(colorArray, 3));
+        geometry.setAttribute(
+          "color",
+          new THREE.BufferAttribute(colorArray, 3),
+        );
 
         const material = new THREE.PointsMaterial({
           size: size,
@@ -217,7 +224,10 @@ class QuantumPreloader {
         positions[0] = (Math.random() - 0.5) * 60;
         positions[1] = (Math.random() - 0.5) * 60;
         positions[2] = -20;
-        geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(positions, 3),
+        );
 
         const star = new THREE.Points(geometry, shootingStarMaterial.clone());
         scene.add(star);
@@ -315,7 +325,10 @@ class QuantumPreloader {
       particle.style.opacity = (Math.random() * 0.4 + 0.1).toString();
 
       // Atribuir uma profundidade para parallax CSS se necessário futuramente
-      particle.style.setProperty("--particle-z", `${Math.random() * 100 - 50}px`);
+      particle.style.setProperty(
+        "--particle-z",
+        `${Math.random() * 100 - 50}px`,
+      );
 
       container.appendChild(particle);
     }

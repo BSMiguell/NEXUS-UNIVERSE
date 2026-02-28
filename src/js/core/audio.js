@@ -47,7 +47,10 @@ class QuantumAudio {
     const gainNode = this.context.createGain();
     oscillator.connect(gainNode);
     gainNode.connect(this.context.destination);
-    oscillator.frequency.setValueAtTime(sound.frequency, this.context.currentTime);
+    oscillator.frequency.setValueAtTime(
+      sound.frequency,
+      this.context.currentTime,
+    );
     gainNode.gain.setValueAtTime(volume, this.context.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(
       0.01,
@@ -89,7 +92,9 @@ class QuantumAudio {
       (e) => {
         this.resumeContextIfNeeded();
         if (
-          e.target.closest(".quantum-button, .filter-quantum, .pagination-quantum")
+          e.target.closest(
+            ".quantum-button, .filter-quantum, .pagination-quantum",
+          )
         ) {
           this.play("click", 0.2);
         }

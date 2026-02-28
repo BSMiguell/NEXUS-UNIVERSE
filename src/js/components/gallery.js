@@ -57,6 +57,7 @@ class QuantumGallery {
       256: "assets/videos/KHAL-DROGO-v-1.mp4",
       281: "assets/videos/HARALD-v-1.mp4",
       322: "assets/videos/Psykos-v-1.mp4",
+      227: "assets/videos/Ned-Stark-v-1.mp4",
     };
 
     this.elements = {};
@@ -218,6 +219,8 @@ class QuantumGallery {
 
     const { display = "block", activeClass = false } = options;
     element.style.display = visible ? display : "none";
+    element.style.opacity = visible ? "1" : "0";
+    element.style.visibility = visible ? "visible" : "hidden";
     element.setAttribute("aria-hidden", visible ? "false" : "true");
 
     if (activeClass) {
@@ -920,7 +923,7 @@ class QuantumGallery {
 
     card.innerHTML = `
       <div class="card-quantum-effect" aria-hidden="true"></div>
-      ${hasCardVideo ? '<div class="quantum-video-badge" aria-hidden="true"><i class="fas fa-video"></i></div>' : ''}
+      ${hasCardVideo ? '<div class="quantum-video-badge" aria-hidden="true"><i class="fas fa-video"></i></div>' : ""}
       <div class="card-quantum-frame" aria-hidden="true"></div>
       <button class="quantum-favorite ${isFavorite ? "active" : ""}" data-id="${character.id}" aria-label="${isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}">
         <i class="${isFavorite ? "fas" : "far"} fa-heart" aria-hidden="true"></i>
@@ -1935,6 +1938,15 @@ class QuantumGallery {
 
       this.forceScrollTopImmediate();
       this.audio.play("click");
+
+      // Atualiza as animações do header se existirem
+      if (
+        window.quantumHeaderEffects &&
+        typeof window.quantumHeaderEffects.refresh === "function"
+      ) {
+        window.quantumHeaderEffects.refresh();
+      }
+
       this.showToast("🌌 RETORNANDO À GALERIA PRINCIPAL");
     };
 

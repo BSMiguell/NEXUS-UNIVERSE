@@ -1,4 +1,7 @@
 // ===== INICIALIZAÇÃO =====
+window.gallery = null;
+window.CONFIG = CONFIG;
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("🚀 DOM Carregado - Iniciando Nexus Universe 13/10");
 
@@ -19,7 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const input = footerSubscribe.querySelector("input");
       if (input && input.value) {
         if (window.gallery && typeof window.gallery.showToast === "function") {
-          window.gallery.showToast("FREQUÊNCIA SINCRONIZADA! BEM-VINDO AO MULTIVERSO.");
+          window.gallery.showToast(
+            "FREQUÊNCIA SINCRONIZADA! BEM-VINDO AO MULTIVERSO.",
+          );
         } else {
           alert("FREQUÊNCIA SINCRONIZADA!");
         }
@@ -31,17 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ Sistema 13/10 inicializado com sucesso");
 });
 
-if ("serviceWorker" in navigator && window.location.protocol === "https:") {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").catch(() => {});
-  });
-}
-
 window.addEventListener("beforeunload", () => {
   if (window.gallery) {
     window.gallery.cleanup();
   }
 });
-
-window.gallery = null;
-window.CONFIG = CONFIG;

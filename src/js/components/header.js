@@ -26,6 +26,17 @@ class QuantumHeaderEffects {
     this.initOrbitalParticles();
   }
 
+  // Método para atualizar animações quando volta para a página
+  refresh() {
+    if (this.resizeCanvas) {
+      this.resizeCanvas();
+    }
+    // Garante que o efeito de digitação não parou (embora o setTimeout deva continuar)
+    if (!this.typingElement.textContent && !this.isDeleting) {
+      this.typeEffect();
+    }
+  }
+
   // ----- EFEITO MÁQUINA DE ESCREVER -----
   typeEffect() {
     if (!this.typingElement) return;
@@ -85,15 +96,15 @@ class QuantumHeaderEffects {
     const ctx = this.coreCanvas.getContext("2d");
     let width, height;
 
-    const resize = () => {
+    this.resizeCanvas = () => {
       width = this.coreCanvas.clientWidth;
       height = this.coreCanvas.clientHeight;
       this.coreCanvas.width = width;
       this.coreCanvas.height = height;
     };
 
-    window.addEventListener("resize", resize);
-    resize();
+    window.addEventListener("resize", this.resizeCanvas);
+    this.resizeCanvas();
 
     let angle = 0;
 

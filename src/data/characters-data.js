@@ -9633,7 +9633,7 @@ const charactersData = [
     category: "Fullmetal",
     image: "assets/images/Fullmetal-Alchemist/Father-1.png",
     description:
-      "O principal antagonista de Fullmetal Alchemist, originalmente um homúnculo minúsculo criado acidentalmente por Van Hohenheim dentro de um frasco, que posteriormente se autodenominou 'Pai'. Após absorver os deuses das sombras de Xerxes e sacrificar toda a população do reino para criar seu corpo imortal, Pai estabeleceu-se em Amestris e passou 400 anos manipulando nações inteiras como peças de xadrez. Seu objetivo final é absorver o próprio 'Deus' (A Verdade) através de um círculo de transmutação nacional gigante, tornando-se o ser supremo do universo. Representa a personificação máxima da gula, soberba e ambição desmedida.",
+      "O principal antagonista de Fullmetal Alchemist, originalmente um homúnculo minúsculo criado acidentalmente por Van Hohenheim dentro de um frasco, que posteriormente se autodenominou 'Pai'. Após absorver os deuses das sombras de Xerxes e sacrificar toda a população do reino para criar seu corpo imortal, Pai estabeleceu-se em Amestris e passou 400 anos manipulando nações inteiras como peças de xadrez. Seu objetivo final é absorver o próprio 'Deus' (A Verdade) através de um círculo de transmutação nacional gigante, tornando-se o ser supremo do universo.",
     details: {
       universo: "Fullmetal Alchemist",
       poder:

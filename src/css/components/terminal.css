@@ -38,7 +38,7 @@
 }
 
 .terminal-status {
-  font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.8;
@@ -168,7 +168,8 @@
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border: 1px solid var(--border-primary);
   background: var(--button-background);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35),
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.35),
     inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
@@ -180,7 +181,8 @@
 
 #viewFavoritesBtn.terminal-action-btn {
   border-color: var(--quantum-warning);
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(255, 170, 0, 0.1) 0%,
       rgba(255, 170, 0, 0.05) 100%
@@ -190,7 +192,8 @@
 
 #viewBattleBtn.terminal-action-btn {
   border-color: var(--quantum-danger);
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(255, 42, 109, 0.1) 0%,
       rgba(255, 42, 109, 0.05) 100%
@@ -200,7 +203,8 @@
 
 #viewSearchBtn.terminal-action-btn {
   border-color: var(--quantum-primary);
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(0, 255, 234, 0.1) 0%,
       rgba(0, 255, 234, 0.05) 100%
@@ -210,22 +214,30 @@
 
 .terminal-action-btn:hover {
   transform: translateY(-5px) translateZ(15px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), 0 0 20px var(--quantum-primary);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.45),
+    0 0 20px var(--quantum-primary);
   border-color: var(--quantum-primary);
 }
 
 #viewFavoritesBtn.terminal-action-btn:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), 0 0 20px var(--quantum-warning);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.45),
+    0 0 20px var(--quantum-warning);
   border-color: var(--quantum-warning);
 }
 
 #viewBattleBtn.terminal-action-btn:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), 0 0 20px var(--quantum-danger);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.45),
+    0 0 20px var(--quantum-danger);
   border-color: var(--quantum-danger);
 }
 
 #viewSearchBtn.terminal-action-btn:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), 0 0 20px var(--quantum-primary);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.45),
+    0 0 20px var(--quantum-primary);
   border-color: var(--quantum-primary);
 }
 
@@ -233,7 +245,8 @@
   color: #0f172a;
   text-shadow: none;
   border-color: rgba(0, 119, 182, 0.3);
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(0, 119, 182, 0.08) 0%,
       rgba(0, 255, 234, 0.1) 100%
