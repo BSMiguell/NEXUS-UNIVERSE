@@ -33,6 +33,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
+    <!-- modelo 3d viewer -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+
     <!-- CSS Principal -->
     <link rel="stylesheet" href="src/css/main.css" />
   </head>
@@ -810,6 +816,162 @@
             </div>
           </div>
 
+          <!-- Painel de Configurações da Arena -->
+          <div class="arena-settings-panel" id="arenaSettingsPanel">
+            <button
+              class="settings-toggle-btn"
+              id="settingsToggleBtn"
+              title="Configurações da Arena"
+            >
+              <i class="fas fa-sliders-h"></i>
+              <span>CONFIGURAÇÕES</span>
+            </button>
+
+            <div class="settings-content" id="settingsContent" hidden>
+              <h3 class="settings-title">⚙️ PERSONALIZE A ARENA</h3>
+
+              <!-- Tab Navigation -->
+              <div class="settings-tabs">
+                <button class="settings-tab-btn active" data-tab="names">
+                  <i class="fas fa-user"></i> Nomes
+                </button>
+                <button class="settings-tab-btn" data-tab="health">
+                  <i class="fas fa-heart"></i> Vida
+                </button>
+                <button class="settings-tab-btn" data-tab="labels">
+                  <i class="fas fa-tag"></i> Labels
+                </button>
+              </div>
+
+              <!-- TAB: Nomes -->
+              <div class="settings-tab-content active" data-tab="names">
+                <div class="control-group">
+                  <label>Tamanho do Nome</label>
+                  <input
+                    type="range"
+                    id="nameSizeSlider"
+                    min="8"
+                    max="32"
+                    value="14"
+                    class="slider"
+                  />
+                  <span id="nameSizeValue">14px</span>
+                </div>
+
+                <div class="control-group">
+                  <label>Cor do Nome</label>
+                  <div class="color-options">
+                    <input
+                      type="color"
+                      id="nameColorPicker"
+                      value="#FFFFFF"
+                      class="color-picker"
+                    />
+                    <span id="nameColorValue">#FFFFFF</span>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label>Posição Vertical</label>
+                  <input
+                    type="range"
+                    id="nameOffsetSlider"
+                    min="-50"
+                    max="50"
+                    value="-28"
+                    class="slider"
+                  />
+                  <span id="nameOffsetValue">-28px</span>
+                </div>
+
+                <div class="control-group checkbox">
+                  <label>
+                    <input type="checkbox" id="nameShadowCheck" checked />
+                    Ativar Sombra de Texto
+                  </label>
+                </div>
+              </div>
+
+              <!-- TAB: Vida -->
+              <div class="settings-tab-content" data-tab="health">
+                <div class="control-group">
+                  <label>Altura da Barra</label>
+                  <input
+                    type="range"
+                    id="healthHeightSlider"
+                    min="8"
+                    max="48"
+                    value="32"
+                    class="slider"
+                  />
+                  <span id="healthHeightValue">32px</span>
+                </div>
+
+                <div class="control-group">
+                  <label>Tema de Cores</label>
+                  <select id="healthThemeSelect" class="theme-select">
+                    <option value="default">Padrão (Verde/Vermelho)</option>
+                    <option value="cyan">Ciano/Laranja</option>
+                    <option value="purple">Roxo/Rosa</option>
+                    <option value="yellow">Amarelo/Vermelho</option>
+                  </select>
+                </div>
+
+                <div class="control-group checkbox">
+                  <label>
+                    <input type="checkbox" id="healthAnimateCheck" checked />
+                    Animação de Pulso
+                  </label>
+                </div>
+
+                <div class="control-group checkbox">
+                  <label>
+                    <input type="checkbox" id="healthGlowCheck" checked />
+                    Efeito Brilho
+                  </label>
+                </div>
+              </div>
+
+              <!-- TAB: Labels -->
+              <div class="settings-tab-content" data-tab="labels">
+                <div class="control-group">
+                  <label>Texto Jogador</label>
+                  <input
+                    type="text"
+                    id="playerLabelInput"
+                    value="JOGADOR"
+                    maxlength="20"
+                    class="text-input"
+                  />
+                </div>
+
+                <div class="control-group">
+                  <label>Texto Bot</label>
+                  <input
+                    type="text"
+                    id="botLabelInput"
+                    value="BOT"
+                    maxlength="20"
+                    class="text-input"
+                  />
+                </div>
+
+                <div class="control-group checkbox">
+                  <label>
+                    <input type="checkbox" id="labelVisiblityCheck" checked />
+                    Mostrar Labels
+                  </label>
+                </div>
+              </div>
+
+              <div class="settings-actions">
+                <button id="resetSettingsBtn" class="settings-action-btn reset">
+                  <i class="fas fa-undo"></i> Restaurar Padrão
+                </button>
+              </div>
+            </div>
+          </div>
+
           <div class="battle2d-controls">
             <div class="health-bars">
               <div class="health-bar-container">
@@ -1521,6 +1683,7 @@
     <script src="src/js/systems/themes.js"></script>
     <script src="src/js/systems/battle-system.js"></script>
     <script src="src/js/systems/battle-system-v2.js"></script>
+    <script src="src/js/systems/arena-settings.js"></script>
 
     <!-- Components -->
     <script src="src/js/components/header.js"></script>

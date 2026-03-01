@@ -6,6 +6,7 @@ const charactersData = [
     image: "assets/images/One-Piece/Luffy-1.png",
     description:
       "Capitão dos Piratas do Chapéu de Palha, usuário da Akuma no Mi Gomu Gomu, futuro Rei dos Piratas. Destino: Encontrar o One Piece.",
+    model3d: "assets/Modelo3D/Luffy+3d+model.glb",
     details: {
       universo: "One Piece",
       poder: "Gomu Gomu no Mi (Fruta da Borracha)",
@@ -205,6 +206,7 @@ const charactersData = [
     image: "assets/images/lol/Aatrox-2s.png",
     description:
       "A Espada das Trevas, entidade celestial corrompida, destruidor de mundos. Objetivo: Aniquilar tudo.",
+    model3d: "assets/Modelo3D/Aatrox+3d+model.glb",
     details: {
       universo: "League of Legends",
       poder: "Espada das Trevas - Ascendente Corrompido",
@@ -255,6 +257,7 @@ const charactersData = [
     image: "assets/images/One-Punch-Man/golden-sperm-1s.png",
     description:
       "Monstro formado pela fusão de inúmeros espermatozoides monstruosos, uma das criações mais poderosas da Associação de Monstros.",
+    model3d: "assets/Modelo3D/GOLDEN-SPERM+3d+model.glb",
     details: {
       universo: "One Punch Man",
       poder: "Força e velocidade sobre-humanas, transformação corporal",
@@ -305,6 +308,7 @@ const charactersData = [
     image: "assets/images/souls/radahn-8.png",
     description:
       "General Radahn, o Conquistador das Estrelas, um semideus que detém as estrelas em seu lugar com sua poderosa magia gravitacional.",
+    model3d: "assets/Modelo3D/RADAHN+3d+model.glb",
     details: {
       universo: "Elden Ring",
       poder: "Magia Gravitacional, Combate Montado",
@@ -355,6 +359,7 @@ const charactersData = [
     image: "assets/images/Jujutsu/sukana-4s.png",
     description:
       "O Rei das Maldições, uma entidade de poder incomensurável que assombrou a Era de Ouro dos Feiticeiros Jujutsu.",
+    model3d: "assets/Modelo3D/Sukuna-3d+model.glb",
     details: {
       universo: "Jujutsu Kaisen",
       poder: "Técnicas Amaldiçoadas, Domínio Malevolente",
@@ -630,6 +635,7 @@ const charactersData = [
     image: "assets/images/lol/Darius-1.png",
     description:
       "A Mão de Noxus, um comandante implacável cuja presença no campo de batalha inspira tanto terror quanto lealdade.",
+    model3d: "assets/Modelo3D/Darius+3d+model.glb",
     details: {
       universo: "League of Legends",
       poder: "Machadão, Execuções",
@@ -855,6 +861,7 @@ const charactersData = [
     image: "assets/images/One-Piece/Loki-5.png",
     description:
       "Deus da Trapaça da mitologia nórdica, que faz aparições no mundo de One Piece como uma figura divina.",
+    model3d: "assets/Modelo3D/Loki+3d+model.glb",
     details: {
       universo: "One Piece",
       poder: "Poderes Divinos, Ilusão",
@@ -1155,6 +1162,7 @@ const charactersData = [
     image: "assets/images/Dragon-Ball/Jiren-1.png",
     description:
       "Guerreiro do Universo 11 e membro do Pride Troopers, considerado o lutador mais forte entre todos os universos.",
+    model3d: "assets/Modelo3D/Jiren+3d+model.glb",
     details: {
       universo: "Dragon Ball Super",
       poder: "Puro Poder, Meditação",
@@ -1705,6 +1713,7 @@ const charactersData = [
     image: "assets/images/Jujutsu/Maki-1.png",
     description:
       "Feiticeira jujutsu que obtém um corpo celestial sem energia amaldiçoada, tornando-se igual a Toji Fushiguro.",
+    model3d: "assets/Modelo3D/Maki+3d+model.glb",
     details: {
       universo: "Jujutsu Kaisen",
       poder: "Corpo Celestial, Percepção Aprimorada",
@@ -1930,6 +1939,7 @@ const charactersData = [
     image: "assets/images/One-Piece/Kaido-4.png",
     description:
       "Governador-Geral das Feras e um dos Quatro Imperadores, conhecido como 'A Criatura Mais Forte do Mundo'.",
+    model3d: "assets/Modelo3D/Kaido+3d+model.glb",
     details: {
       universo: "One Piece",
       poder: "Uo Uo no Mi, Modelo: Dragão Azul, Haki",
@@ -4015,10 +4025,10 @@ const charactersData = [
       nivel: "SS",
     },
     stats: {
-      forca: 85,
-      velocidade: 82,
-      defesa: 88,
-      energia: 92,
+      forca: 93,
+      velocidade: 90,
+      defesa: 92,
+      energia: 90,
       habilidade: 90,
     },
   },

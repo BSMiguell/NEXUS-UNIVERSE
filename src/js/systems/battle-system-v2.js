@@ -781,6 +781,17 @@ class QuantumBattle2DSystem {
     );
   }
 
+  isDariusCharacter(character) {
+    if (!character) return false;
+    const normalizedName = (character.name || "").toUpperCase();
+    const normalizedImage = (character.image || "").toLowerCase();
+    return (
+      character.id === 26 ||
+      normalizedName.includes("DARIUS") ||
+      normalizedImage.includes("darius")
+    );
+  }
+
   isAatroxCharacter(character) {
     if (!character) return false;
     const normalizedName = (character.name || "").toUpperCase();
@@ -970,6 +981,15 @@ class QuantumBattle2DSystem {
     return candidates;
   }
 
+  getDariusAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 35; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([`assets/animations/Darius/Darius-${frameNumber}.png`]);
+    }
+    return candidates;
+  }
+
   getBattleBeastAttackFrameCandidates() {
     const candidates = [];
 
@@ -1119,6 +1139,8 @@ class QuantumBattle2DSystem {
       frameCandidates = this.getLokiAttackFrameCandidates();
     } else if (this.isMadaraCharacter(character)) {
       frameCandidates = this.getMadaraAttackFrameCandidates();
+    } else if (this.isDariusCharacter(character)) {
+      frameCandidates = this.getDariusAttackFrameCandidates();
     } else if (this.isAatroxCharacter(character)) {
       frameCandidates = this.getAatroxAttackFrameCandidates();
     } else if (this.isBattleBeastCharacter(character)) {
@@ -1358,7 +1380,7 @@ class QuantumBattle2DSystem {
     this.performance.maxEffects = this.isLowPerformanceDevice() ? 30 : 44;
     this.performance.drawEnergyLines = false;
     this.performance.simpleFx = true;
-    const characterWidth = this.isLowPerformanceDevice() ? 92 : 108;
+    const characterWidth = this.isLowPerformanceDevice() ? 120 : 140;
     const playerSpawnX = 90;
     const botSpawnX = this.canvasWidth - playerSpawnX - characterWidth;
 
@@ -1403,6 +1425,11 @@ class QuantumBattle2DSystem {
     if (this.elements.botHealthLabel) {
       this.elements.botHealthLabel.textContent =
         this.selectedCharacters.bot.name;
+    }
+
+    // Inicializar o gerenciador de configurações da arena
+    if (!this.settingsManager) {
+      this.settingsManager = new ArenaSettingsManager(this);
     }
 
     // Novo: Gerar partículas de fundo para ambiente
@@ -1507,7 +1534,7 @@ class QuantumBattle2DSystem {
 
     // Alcance de ataque com habilidade
     const defesa = stats.defesa || 50;
-    char.attackRange = 88 + (hab / 100) * 24; // 88-112 px
+    char.attackRange = 150 + (hab / 100) * 30; // 150-180 px
     char.defense = (defesa / 100) * 40; // 0-40% redução de dano
 
     // Stamina system (novo!)
@@ -1988,10 +2015,12 @@ class QuantumBattle2DSystem {
       this.bot.health > 0 &&
       this.bot.invincibilityFrames <= 0
     ) {
-      const distance = Math.abs(this.player.x - this.bot.x);
+      const distance = Math.abs(
+        this.getCharCenterX(this.player) - this.getCharCenterX(this.bot),
+      );
       const heightDiff = Math.abs(this.player.y - this.bot.y);
 
-      if (distance < (this.player.attackRange || 90) && heightDiff < 70) {
+      if (distance < (this.player.attackRange || 160) && heightDiff < 100) {
         // Novo: Tenta bloquear o ataque
         if (this.attemptBlock(this.bot, this.player)) {
           this.player.attackHitRegistered = true;
@@ -2069,10 +2098,12 @@ class QuantumBattle2DSystem {
       this.player.health > 0 &&
       this.player.invincibilityFrames <= 0
     ) {
-      const distance = Math.abs(this.player.x - this.bot.x);
+      const distance = Math.abs(
+        this.getCharCenterX(this.player) - this.getCharCenterX(this.bot),
+      );
       const heightDiff = Math.abs(this.player.y - this.bot.y);
 
-      if (distance < (this.bot.attackRange || 90) && heightDiff < 70) {
+      if (distance < (this.bot.attackRange || 160) && heightDiff < 100) {
         // Novo: Tenta bloquear o ataque do bot
         if (this.attemptBlock(this.player, this.bot)) {
           this.bot.attackHitRegistered = true;
@@ -2917,7 +2948,9 @@ class QuantumBattle2DSystem {
       this.ctx.strokeRect(x, y, width, height);
       this.ctx.restore();
     }
-    this.ctx.fillText(char.name, centerX, y - 28);
+
+    // Renderizar nome do personagem com configurações customizadas
+    this.renderCharacterName(char, centerX, y, isPlayer);
     this.ctx.shadowBlur = 0;
 
     const healthPercent = char.health / char.maxHealth;
@@ -2989,6 +3022,36 @@ class QuantumBattle2DSystem {
 
       this.ctx.shadowBlur = 0;
     }
+  }
+
+  renderCharacterName(char, centerX, y, isPlayer) {
+    // Usar configurações do ArenaSettingsManager se disponível
+    const settings = this.settingsManager?.settings?.name || {};
+    const fontSize = settings.size || "14";
+    const nameColor = settings.color || "#FFFFFF";
+    const nameOffset = parseInt(settings.offset || "-28");
+    const nameShadow = settings.shadow !== false;
+
+    // Configurar fonte
+    this.ctx.font = `bold ${fontSize}px 'Orbitron', monospace`;
+    this.ctx.fillStyle = nameColor;
+    this.ctx.textAlign = "center";
+
+    // Adicionar sombra de texto se habilitada
+    if (nameShadow) {
+      this.ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
+      this.ctx.shadowBlur = 8;
+      this.ctx.shadowOffsetX = 2;
+      this.ctx.shadowOffsetY = 2;
+    }
+
+    // Renderizar nome
+    this.ctx.fillText(char.name, centerX, y + nameOffset);
+
+    // Limpar sombra
+    this.ctx.shadowBlur = 0;
+    this.ctx.shadowOffsetX = 0;
+    this.ctx.shadowOffsetY = 0;
   }
 
   drawEffects() {
@@ -3174,7 +3237,7 @@ class BattleCharacter {
     this.jumpForce = -8.5;
     this.jumpHeight = 8.5;
     this.attackDamage = 10;
-    this.attackRange = 90;
+    this.attackRange = 160;
     this.attackCooldown = 250;
     this.baseAttackCooldown = 250;
     this.defense = 0;

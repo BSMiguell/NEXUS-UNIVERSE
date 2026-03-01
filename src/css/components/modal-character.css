@@ -421,6 +421,23 @@
   border-color: var(--quantum-warning);
 }
 
+/* when the action button is actually a 3D viewer trigger */
+.modal-battle-btn.has-model3d {
+  background:
+    linear-gradient(135deg, rgba(76, 137, 255, 0.22), rgba(76, 213, 255, 0.26)),
+    var(--button-background);
+  border-color: var(--quantum-primary);
+}
+
+.modal-battle-btn.has-model3d:hover {
+  background:
+    linear-gradient(135deg, rgba(76, 137, 255, 0.3), rgba(76, 213, 255, 0.34)),
+    var(--button-background);
+  box-shadow:
+    0 15px 34px var(--quantum-primary),
+    0 0 24px var(--quantum-primary);
+}
+
 .modal-battle-btn:hover {
   background:
     linear-gradient(135deg, rgba(255, 140, 64, 0.3), rgba(233, 45, 96, 0.34)),
@@ -437,6 +454,44 @@
     var(--button-background);
   color: var(--text-primary);
   border-color: var(--quantum-danger);
+}
+
+/* overlay para visualização de modelos 3D */
+#threeDOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+#threeDOverlay model-viewer {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+#threeDOverlay .close-3d {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+#threeDOverlay .close-3d:hover {
+  color: var(--quantum-danger);
 }
 
 .modal-close-btn:hover {

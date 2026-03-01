@@ -43,6 +43,7 @@ class QuantumGallery {
       11: "assets/videos/GOLDEN-SPERM-v-1.mp4",
       13: "assets/videos/RADAHN-v-1.mp4",
       15: "assets/videos/RYOMEN-SUKUNA-v-1.mp4",
+      26: "assets/videos/Darius-v-1.mp4",
       35: "assets/videos/Loki-v-1.mp4",
       39: "assets/videos/Battl- Beast-v-1.mp4",
       47: "assets/videos/Jirem.mp4",
@@ -63,6 +64,35 @@ class QuantumGallery {
     this.elements = {};
     this.pageTransitionInProgress = false;
     this.init();
+  }
+
+  /* exibidor simples de modelo 3D sobreposto */
+  show3dModel(modelUrl) {
+    // cria overlay único se não existir
+    let overlay = document.getElementById("threeDOverlay");
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.id = "threeDOverlay";
+      overlay.innerHTML = `
+        <model-viewer src="${modelUrl}" alt="Modelo 3D" auto-rotate camera-controls style="width:80vw; height:80vh;"></model-viewer>
+        <button class="close-3d" aria-label="Fechar 3D">&times;</button>
+      `;
+      document.body.appendChild(overlay);
+      const btn = overlay.querySelector(".close-3d");
+      btn.addEventListener("click", () => overlay.remove());
+      // fechar com ESC
+      document.addEventListener(
+        "keydown",
+        (e) => {
+          if (e.key === "Escape") overlay.remove();
+        },
+        { once: true },
+      );
+    } else {
+      const viewer = overlay.querySelector("model-viewer");
+      if (viewer) viewer.setAttribute("src", modelUrl);
+      overlay.classList.remove("hidden");
+    }
   }
 
   async init() {
@@ -1308,9 +1338,9 @@ class QuantumGallery {
                 <i class="fas fa-filter"></i>
                 EXPLORAR ${categoryNames[character.category]}
               </button>
-              <button class="modal-battle-btn" onclick="window.gallery.battleSystem.openCharacterSelector(1); setTimeout(() => { const selectorGrid = document.getElementById('characterSelectorGrid'); const characterElement = selectorGrid.querySelector('[data-id=\\'${character.id}\\']'); if (characterElement) characterElement.click(); }, 100); window.gallery.closeModal();">
-                <i class="fas fa-fist-raised"></i>
-                SELECIONAR PARA BATALHA
+              <button class="modal-battle-btn ${character.model3d ? "has-model3d" : ""}" onclick="${character.model3d ? `window.gallery.show3dModel('${character.model3d}');` : `window.gallery.battleSystem.openCharacterSelector(1); setTimeout(() => { const selectorGrid = document.getElementById('characterSelectorGrid'); const characterElement = selectorGrid.querySelector('[data-id=\\'${character.id}\\']'); if (characterElement) characterElement.click(); }, 100); window.gallery.closeModal();`}">
+                <i class="fas ${character.model3d ? "fa-cube" : "fa-fist-raised"}"></i>
+                ${character.model3d ? "VER MODELO 3D" : "SELECIONAR PARA BATALHA"}
               </button>
               <button class="modal-close-btn" onclick="window.gallery.closeModal()">
                 <i class="fas fa-times"></i>
