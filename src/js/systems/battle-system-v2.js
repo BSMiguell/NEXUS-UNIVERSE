@@ -365,14 +365,25 @@ class QuantumBattle2DSystem {
     if (this.battleEnded) return;
 
     this.isPaused = !this.isPaused;
+    const arenaContainer = this.elements?.battle2dArena?.closest(
+      ".battle2d-arena-container"
+    );
 
     if (this.isPaused) {
+      if (arenaContainer) {
+        arenaContainer.classList.add("is-paused");
+      }
+      document.body.classList.add("battle2d-paused");
       if (this.elements.pauseModal) {
         this.elements.pauseModal.removeAttribute("hidden");
         this.elements.pauseModal.classList.add("show");
       }
       this.gallery.audio?.play("click");
     } else {
+      if (arenaContainer) {
+        arenaContainer.classList.remove("is-paused");
+      }
+      document.body.classList.remove("battle2d-paused");
       if (this.elements.pauseModal) {
         this.elements.pauseModal.setAttribute("hidden", "");
         this.elements.pauseModal.classList.remove("show");
