@@ -54,7 +54,8 @@ const charactersData = [
     id: 3,
     name: "GUTS",
     category: "Berserk",
-    image: "assets/images/Berserk/Guts-1.png",
+    image: "assets/images/Berserk/Guts-1.png",    model3d: "assets/Modelo3D/Guts+3d+model.glb",
+
     description:
       "O Espadachim Negro, caçador de apóstolos, portador da Marca do Sacrifício. Armamento: Dragonslayer.",
     details: {
@@ -79,7 +80,8 @@ const charactersData = [
     id: 4,
     name: "MADARA UCHIHA",
     category: "Naruto",
-    image: "assets/images/Naruto/Madara-1.png",
+    image: "assets/images/Naruto/Madara-1.png",    model3d: "assets/Modelo3D/Madara+Uchiha+3d+model.glb",
+
     description:
       "Lendário shinobi, co-fundador de Konoha, mestre do Sharingan e Rinnegan. Objetivo: Plano Olho da Lua.",
     details: {
@@ -959,7 +961,8 @@ const charactersData = [
     id: 39,
     name: "BATTLE BEAST",
     category: "Invencível",
-    image: "assets/images/Invencível/Battle Beast-4.png",
+    image: "assets/images/Invencível/Battle Beast-4.png",    model3d: "assets/Modelo3D/Battle+Beast+3d+model.glb",
+
     description:
       "Guerreiro leão alienígena que busca oponentes dignos em batalha, considerado um dos lutadores mais habilidosos do universo.",
     details: {
@@ -1585,7 +1588,8 @@ const charactersData = [
     id: 64,
     name: "EDWARD NEWGATE - BARBA BRANCA",
     category: "One-Piece",
-    image: "assets/images/One-Piece/barba branca-1.png",
+    image: "assets/images/One-Piece/barba branca-1.png",    model3d: "assets/Modelo3D/Barba+branca+3d+model.glb",
+
     description:
       "Conhecido como 'O Homem Mais Forte do Mundo', capitão dos Piratas do Barba Branca.",
     details: {
@@ -2387,7 +2391,8 @@ const charactersData = [
     id: 96,
     name: "AOI TODO",
     category: "jujutsu kaisen",
-    image: "assets/images/Jujutsu/Aoi todo-2.png",
+    image: "assets/images/Jujutsu/Aoi todo-2.png",    model3d: "assets/Modelo3D/Aoi+Todo+3d+model.glb",
+
     description:
       "Feiticeiro de grau 1 semi que luta com seu irmão adotivo, possuindo a técnica Boogie Woogie.",
     details: {
@@ -2437,7 +2442,8 @@ const charactersData = [
     id: 98,
     name: "BARTHOLOMEW KUMA",
     category: "One-Piece",
-    image: "assets/images/One-Piece/Kuma-1.png",
+    image: "assets/images/One-Piece/Kuma-1.png",    model3d: "assets/Modelo3D/Kuma+3d+model.glb",
+
     description:
       "O Tirano, antigo Shichibukai e revolucionário transformado em ciborgue.",
     details: {

@@ -63,36 +63,126 @@ class QuantumGallery {
 
     this.elements = {};
     this.pageTransitionInProgress = false;
+    this.on3dOverlayKeydown = (e) => {
+      if (e.key === "Escape") this.close3dOverlay();
+    };
     this.init();
   }
 
-  /* exibidor simples de modelo 3D sobreposto */
-  show3dModel(modelUrl) {
-    // cria overlay único se não existir
+  getModelVersionsForCharacter(character, fallbackModelUrl) {
+    const defaultVersion = [{ label: "Padrão", path: fallbackModelUrl }];
+    if (!character || !fallbackModelUrl) return defaultVersion;
+
+    const base = character.model3d || fallbackModelUrl;
+    const normalizedName = (character.name || "").toUpperCase();
+
+    if (normalizedName.includes("LUFFY")) {
+      return [
+        { label: "Padrão", path: base },
+        {
+          label: "Clássico",
+          path: "assets/Modelo3D/Luffy-Versions/Luffy+classic+3d+model.glb",
+        },
+        {
+          label: "Gear 4",
+          path: "assets/Modelo3D/Luffy-Versions/Luffy+gear+4+3d+model.glb",
+        },
+        {
+          label: "Gear 5",
+          path: "assets/Modelo3D/Luffy-Versions/Luffy+gear+5+3d+model.glb",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("LOKI")) {
+      return [
+        { label: "Padrão", path: base },
+        {
+          label: "Forma Dragão",
+          path: "assets/Modelo3D/Loki-Versions/Loki-dragon+3d+model.glb",
+        },
+      ];
+    }
+
+    return defaultVersion;
+  }
+
+  show3dModelByCharacterId(characterId) {
+    const character = this.charactersData.find((c) => c.id === characterId);
+    if (!character?.model3d) return;
+    this.show3dModel(character.model3d, character);
+  }
+
+  close3dOverlay() {
+    const overlay = document.getElementById("threeDOverlay");
+    if (overlay) overlay.remove();
+    document.removeEventListener("keydown", this.on3dOverlayKeydown);
+  }
+
+  /* exibidor de modelo 3D sobreposto com seleção de versões */
+  show3dModel(modelUrl, character = null) {
+    if (!modelUrl) return;
+    const versions = this.getModelVersionsForCharacter(character, modelUrl);
+    const title = character?.name || "MODELO 3D";
+    const safeModelUrl = encodeURI(modelUrl);
+
     let overlay = document.getElementById("threeDOverlay");
     if (!overlay) {
       overlay = document.createElement("div");
       overlay.id = "threeDOverlay";
       overlay.innerHTML = `
-        <model-viewer src="${modelUrl}" alt="Modelo 3D" auto-rotate camera-controls style="width:80vw; height:80vh;"></model-viewer>
-        <button class="close-3d" aria-label="Fechar 3D">&times;</button>
+        <div class="three-d-panel">
+          <div class="three-d-toolbar">
+            <h3 class="three-d-title">${title}</h3>
+            <div class="three-d-versions" id="threeDVersions"></div>
+          </div>
+          <model-viewer id="threeDViewer" src="${safeModelUrl}" alt="Modelo 3D" auto-rotate camera-controls style="width:80vw; height:80vh;"></model-viewer>
+          <button class="close-3d" aria-label="Fechar 3D">&times;</button>
+        </div>
       `;
       document.body.appendChild(overlay);
-      const btn = overlay.querySelector(".close-3d");
-      btn.addEventListener("click", () => overlay.remove());
-      // fechar com ESC
-      document.addEventListener(
-        "keydown",
-        (e) => {
-          if (e.key === "Escape") overlay.remove();
-        },
-        { once: true },
-      );
+      const closeBtn = overlay.querySelector(".close-3d");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => this.close3dOverlay());
+      }
+      document.addEventListener("keydown", this.on3dOverlayKeydown);
     } else {
-      const viewer = overlay.querySelector("model-viewer");
-      if (viewer) viewer.setAttribute("src", modelUrl);
+      const viewer = overlay.querySelector("#threeDViewer");
+      const titleEl = overlay.querySelector(".three-d-title");
+      if (viewer) viewer.setAttribute("src", safeModelUrl);
+      if (titleEl) titleEl.textContent = title;
       overlay.classList.remove("hidden");
     }
+
+    const viewer = overlay.querySelector("#threeDViewer");
+    const versionsContainer = overlay.querySelector("#threeDVersions");
+    if (!viewer || !versionsContainer) return;
+
+    versionsContainer.innerHTML = versions
+      .map(
+        (version, index) => `
+          <button
+            class="three-d-version-btn ${index === 0 ? "active" : ""}"
+            data-model-path="${version.path}"
+            type="button"
+          >
+            ${version.label}
+          </button>
+        `,
+      )
+      .join("");
+
+    versionsContainer
+      .querySelectorAll(".three-d-version-btn")
+      .forEach((btn, _idx, all) => {
+        btn.addEventListener("click", () => {
+          const nextPath = btn.dataset.modelPath;
+          if (!nextPath) return;
+          viewer.setAttribute("src", encodeURI(nextPath));
+          all.forEach((otherBtn) => otherBtn.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
   }
 
   async init() {
@@ -1338,7 +1428,7 @@ class QuantumGallery {
                 <i class="fas fa-filter"></i>
                 EXPLORAR ${categoryNames[character.category]}
               </button>
-              <button class="modal-battle-btn ${character.model3d ? "has-model3d" : ""}" onclick="${character.model3d ? `window.gallery.show3dModel('${character.model3d}');` : `window.gallery.battleSystem.openCharacterSelector(1); setTimeout(() => { const selectorGrid = document.getElementById('characterSelectorGrid'); const characterElement = selectorGrid.querySelector('[data-id=\\'${character.id}\\']'); if (characterElement) characterElement.click(); }, 100); window.gallery.closeModal();`}">
+              <button class="modal-battle-btn ${character.model3d ? "has-model3d" : ""}" onclick="${character.model3d ? `window.gallery.show3dModelByCharacterId(${character.id});` : `window.gallery.battleSystem.openCharacterSelector(1); setTimeout(() => { const selectorGrid = document.getElementById('characterSelectorGrid'); const characterElement = selectorGrid.querySelector('[data-id=\\'${character.id}\\']'); if (characterElement) characterElement.click(); }, 100); window.gallery.closeModal();`}">
                 <i class="fas ${character.model3d ? "fa-cube" : "fa-fist-raised"}"></i>
                 ${character.model3d ? "VER MODELO 3D" : "SELECIONAR PARA BATALHA"}
               </button>

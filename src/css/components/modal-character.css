@@ -470,9 +470,64 @@
   z-index: 10000;
 }
 
+#threeDOverlay .three-d-panel {
+  position: relative;
+  width: min(92vw, 1200px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#threeDOverlay .three-d-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#threeDOverlay .three-d-title {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#threeDOverlay .three-d-versions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#threeDOverlay .three-d-version-btn {
+  border: 1px solid var(--border-primary);
+  background: var(--button-background);
+  color: var(--text-primary);
+  border-radius: 999px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+#threeDOverlay .three-d-version-btn:hover {
+  border-color: var(--quantum-primary);
+}
+
+#threeDOverlay .three-d-version-btn.active {
+  border-color: var(--quantum-primary);
+  box-shadow: 0 0 18px var(--quantum-primary);
+}
+
 #threeDOverlay model-viewer {
-  max-width: 90%;
-  max-height: 90%;
+  width: 100% !important;
+  height: min(78vh, 800px) !important;
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
 }
