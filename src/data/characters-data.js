@@ -1439,6 +1439,7 @@ const charactersData = [
     name: "RAIDEN TAMEEMON",
     category: "Shuumatsu",
     image: "assets/images/Shuumatsu/Raiden-1.png",
+    model3d: "assets/Modelo3D/Raiden+Tameemon+3d+model.glb",
     description:
       "Lutador de sumô lendário representando a humanidade no Ragnarok, conhecido por sua força bruta.",
     details: {
@@ -3144,6 +3145,7 @@ const charactersData = [
     name: "JASPER",
     category: "Steven Universo",
     image: "assets/images/Steven-Universo/Jasper-1.png",
+    model3d: "assets/Modelo3D/Jasper+3d+model.glb",
     description:
       "Gema guerreira extremamente forte e orgulhosa, criada para combate e leal ao Império Gem.",
     details: {
@@ -4019,6 +4021,7 @@ const charactersData = [
     name: "SOLARIA BUTTERFLY",
     category: "Star-vs.",
     image: "assets/images/star-vs/solaria-1.png",
+    model3d: "assets/Modelo3D/Solaria+Butterfly+3d+model.glb",
     description:
       "Solaria Butterfly é uma princesa guerreira do reino mágico de Mewni, poderosa e estratégica.",
     details: {
@@ -9674,20 +9677,23 @@ const charactersData = [
     name: "PRINCIA FUNNYBUNNY",
     category: "Black Clover",
     image: "assets/images/Black Clover/Princia-Funnybunny-1.png",
-    description: "PRINCIA FUNNYBUNNY description.",
+    description:
+      "Uma das antigas Rainhas Magos do Reino Clover, Princia Funnybunny foi revivida durante o conflito no Reino Spade e mostrou porque seu nome entrou para a historia da magia militar. Especialista em Magia de Aco, ela cria armaduras e armamentos em larga escala para dominar o campo de batalha com pressao constante e ataque frontal. Princia luta com orgulho absoluto de guerreira e mentalidade de comandante, transformando cada combate em uma demonstracao de forca, disciplina e estrategia.",
     details: {
       universo: "Black Clover",
-      poder: "TBD",
-      status: "Ativo",
-      estreia: 0,
-      nivel: "A",
+      poder:
+        "Magia de Aco, Criacao de Armas, Controle de Armaduras, Combate Corpo a Corpo",
+      status: "Reencarnada - Ex-Rainha Mago do Reino Clover",
+      estreia: 2021,
+      afiliacao: "Reino Clover / Reis Magos Reencarnados",
+      nivel: "S",
     },
     stats: {
-      forca: 80,
-      velocidade: 80,
-      defesa: 80,
-      energia: 80,
-      habilidade: 80,
+      forca: 91,
+      velocidade: 84,
+      defesa: 90,
+      energia: 88,
+      habilidade: 86,
     },
   },
 
@@ -9696,20 +9702,23 @@ const charactersData = [
     name: "CHOJI",
     category: "Naruto",
     image: "assets/images/Naruto/choji-1.png",
-    description: "CHOJI description.",
+    description:
+      "Membro do Time Asuma e herdeiro do Cla Akimichi, Choji Akimichi e um ninja de Konoha que converte calorias em poder bruto atraves das tecnicas de expansao corporal. Apesar da personalidade gentil e sensivel, Choji se torna um combatente devastador quando protege seus companheiros, usando o Baika no Jutsu e o Modo Borboleta para multiplicar sua forca em niveis extremos. Sua evolucao ao longo da serie mostra um guerreiro leal, resiliente e cada vez mais confiante em seu proprio valor.",
     details: {
       universo: "Naruto",
-      poder: "TBD",
-      status: "Ativo",
-      estreia: 0,
-      nivel: "A",
+      poder:
+        "Baika no Jutsu, Cho Baika no Jutsu, Super Expansao Parcial, Modo Borboleta",
+      status: "Ativo - Jonin de Konoha",
+      estreia: 2002,
+      afiliacao: "Konohagakure / Clã Akimichi",
+      nivel: "S",
     },
     stats: {
-      forca: 80,
-      velocidade: 80,
-      defesa: 80,
-      energia: 80,
-      habilidade: 80,
+      forca: 89,
+      velocidade: 73,
+      defesa: 86,
+      energia: 79,
+      habilidade: 82,
     },
   },
 
@@ -9718,20 +9727,23 @@ const charactersData = [
     name: "SANJI",
     category: "One-Piece",
     image: "assets/images/One-Piece/Sanji-1.png",
-    description: "SANJI description.",
+    description:
+      "Sanji, o cozinheiro dos Piratas do Chapeu de Palha, e um lutador de elite que combina velocidade absurda, tecnica refinada e poder destrutivo no estilo Black Leg. Especialista em combate com as pernas, ele elevou suas tecnicas com Diable Jambe e Ifrit Jambe, alem de usar Kenbunshoku Haki para leitura precisa de movimento em batalha. Mesmo com postura elegante e atitude provocadora, Sanji e um dos pilares da tripulacao, atuando como estrategista, protetor e forca decisiva nos confrontos mais perigosos.",
     details: {
       universo: "One-Piece",
-      poder: "TBD",
-      status: "Ativo",
-      estreia: 0,
-      nivel: "A",
+      poder:
+        "Black Leg Style, Diable Jambe, Ifrit Jambe, Kenbunshoku Haki, Sky Walk",
+      status: "Ativo - Cozinheiro dos Piratas do Chapeu de Palha",
+      estreia: 1999,
+      afiliacao: "Piratas do Chapeu de Palha",
+      nivel: "SS",
     },
     stats: {
-      forca: 80,
-      velocidade: 80,
-      defesa: 80,
-      energia: 80,
-      habilidade: 80,
+      forca: 92,
+      velocidade: 95,
+      defesa: 88,
+      energia: 90,
+      habilidade: 94,
     },
   },
 
@@ -9740,20 +9752,22 @@ const charactersData = [
     name: "LÜ BU",
     category: "Shuumatsu",
     image: "assets/images/Shuumatsu/Lü-Bu-1.png",
-    description: "LÜ BU description.",
+    description:
+      "Conhecido como o General Voador, Lu Bu e retratado em Shuumatsu no Valkyrie como o guerreiro humano mais poderoso de sua era, um combatente que buscava apenas adversarios capazes de satisfazer sua sede por batalha. Empunhando sua alabarda com dominio absoluto e forca monstruosa, ele enfrentou Thor na primeira luta do Ragnarok, abrindo o torneio com um confronto brutal entre deuses e humanidade. Seu golpe Sky Eater simboliza sua natureza: poder puro, tecnica direta e vontade inabalavel.",
     details: {
       universo: "Shuumatsu",
-      poder: "TBD",
-      status: "Ativo",
-      estreia: 0,
-      nivel: "A",
+      poder: "Sky Eater, Halberd Mastery, Forca Sobre-Humana, Volundr com Randgriz",
+      status: "Morto - Primeiro representante da Humanidade no Ragnarok",
+      estreia: 2017,
+      afiliacao: "Humanidade / Ex-General de Zhao",
+      nivel: "SS",
     },
     stats: {
-      forca: 80,
-      velocidade: 80,
-      defesa: 80,
-      energia: 80,
-      habilidade: 80,
+      forca: 98,
+      velocidade: 85,
+      defesa: 91,
+      energia: 87,
+      habilidade: 90,
     },
   },
 
@@ -9762,20 +9776,23 @@ const charactersData = [
     name: "DIANE",
     category: "Nanatsu",
     image: "assets/images/Taizai/Diane-1.png",
-    description: "DIANE description.",
+    description:
+      "Diane, a Pecado da Inveja da Serpente dos Sete Pecados Capitais, e uma gigante de enorme poder fisico que controla a terra com a habilidade magica Creation. Mesmo com personalidade emotiva e carismatica, ela se torna uma das combatentes mais perigosas do grupo ao combinar forca colossal com tecnica aprimorada pela Drole's Dance, elevando progressivamente seu nivel de combate. Sua historia mistura crescimento emocional, lealdade ao time e uma presenca avassaladora em batalhas de larga escala.",
     details: {
       universo: "Taizai",
-      poder: "TBD",
-      status: "Ativo",
-      estreia: 0,
-      nivel: "A",
+      poder:
+        "Creation, Drole's Dance, Forca Gigante, Manipulacao da Terra, Forma de Guerra",
+      status: "Ativa - Pecado da Inveja da Serpente",
+      estreia: 2012,
+      afiliacao: "Os Sete Pecados Capitais / Clã dos Gigantes",
+      nivel: "SS",
     },
     stats: {
-      forca: 80,
-      velocidade: 80,
-      defesa: 80,
-      energia: 80,
-      habilidade: 80,
+      forca: 96,
+      velocidade: 70,
+      defesa: 94,
+      energia: 89,
+      habilidade: 83,
     },
   },
 ];
