@@ -3113,6 +3113,7 @@ const charactersData = [
       energia: 95,
       habilidade: 80,
     },
+    model3d: "assets/Modelo3D/BALERION+3d+modal.glb",
   },
 
   {
@@ -5446,6 +5447,7 @@ const charactersData = [
     name: "GOWTHER ORIGINAL",
     category: "Nanatsu",
     image: "assets/images/Taizai/gowther-Original-1.png",
+    model3d: "assets/Modelo3D/Gowther+Original+3d+model.glb",
     description:
       "O grande mago que criou o autômato Gowther, mestre supremo da magia mental e emocional.",
     details: {
@@ -7059,6 +7061,7 @@ const charactersData = [
       energia: 91,
       habilidade: 82,
     },
+    model3d: "assets/Modelo3D/HARALD+3d+model.glb",
   },
 
   {

@@ -463,11 +463,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
+  background:
+    radial-gradient(circle at 20% 15%, rgba(var(--quantum-primary-rgb), 0.16), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(var(--quantum-secondary-rgb), 0.14), transparent 45%),
+    rgba(0, 0, 0, 0.88);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10000;
+  backdrop-filter: blur(8px);
 }
 
 #threeDOverlay .three-d-panel {
@@ -475,7 +479,14 @@
   width: min(92vw, 1200px);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(10, 10, 16, 0.9), rgba(6, 6, 10, 0.92));
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 #threeDOverlay .three-d-toolbar {
@@ -483,70 +494,309 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  flex-wrap: wrap;
+}
+
+#threeDOverlay .three-d-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
 #threeDOverlay .three-d-title {
   margin: 0;
   font-size: 1rem;
   color: var(--text-primary);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-#threeDOverlay .three-d-versions {
+#threeDOverlay .three-d-subtitle {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+#threeDOverlay .three-d-versions-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#threeDOverlay .three-d-discovery {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#threeDOverlay .three-d-search-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  padding: 0 12px;
+  min-width: 220px;
+  height: 36px;
+}
+
+#threeDOverlay .three-d-search-wrap i {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+#threeDOverlay .three-d-version-search {
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.86rem;
+  width: 100%;
+  outline: none;
+}
+
+#threeDOverlay .three-d-version-search::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+#threeDOverlay .three-d-filter-group {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
 
+#threeDOverlay .three-d-filter-btn {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  padding: 5px 11px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+#threeDOverlay .three-d-filter-btn:hover {
+  color: var(--text-primary);
+  border-color: rgba(var(--quantum-primary-rgb), 0.4);
+}
+
+#threeDOverlay .three-d-filter-btn.active {
+  color: var(--text-primary);
+  border-color: rgba(var(--quantum-primary-rgb), 0.6);
+  background: rgba(var(--quantum-primary-rgb), 0.15);
+  box-shadow: 0 0 10px rgba(var(--quantum-primary-rgb), 0.22);
+}
+
+#threeDOverlay .three-d-versions-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#threeDOverlay .three-d-meta-chip {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+#threeDOverlay .three-d-meta-chip.is-active {
+  color: var(--text-primary);
+  border-color: rgba(var(--quantum-primary-rgb), 0.35);
+}
+
+#threeDOverlay .three-d-meta-chip.is-animated {
+  color: #d9ffd0;
+  border-color: rgba(108, 255, 130, 0.45);
+  background: rgba(89, 245, 118, 0.08);
+}
+
+#threeDOverlay .three-d-versions-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--quantum-primary-rgb), 0.45) transparent;
+  padding-bottom: 6px;
+}
+
+#threeDOverlay .three-d-versions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  min-width: 100%;
+}
+
 #threeDOverlay .three-d-version-btn {
   border: 1px solid var(--border-primary);
-  background: var(--button-background);
+  background: linear-gradient(160deg, rgba(20, 20, 27, 0.95), rgba(8, 8, 12, 0.95));
   color: var(--text-primary);
   border-radius: 999px;
   padding: 7px 12px;
   cursor: pointer;
   font-family: "Rajdhani", sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+#threeDOverlay .three-d-version-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+#threeDOverlay .three-d-version-tag {
+  border: 1px solid rgba(108, 255, 130, 0.45);
+  background: rgba(89, 245, 118, 0.08);
+  color: #d9ffd0;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
 }
 
 #threeDOverlay .three-d-version-btn:hover {
   border-color: var(--quantum-primary);
+  transform: translateY(-1px);
 }
 
 #threeDOverlay .three-d-version-btn.active {
   border-color: var(--quantum-primary);
-  box-shadow: 0 0 18px var(--quantum-primary);
+  box-shadow: 0 0 18px rgba(var(--quantum-primary-rgb), 0.45);
+  background: linear-gradient(160deg, rgba(26, 26, 35, 0.96), rgba(12, 12, 18, 0.96));
+}
+
+#threeDOverlay .three-d-version-btn.active .three-d-version-dot {
+  background: var(--quantum-primary);
+  box-shadow: 0 0 8px var(--quantum-primary);
+}
+
+#threeDOverlay .three-d-empty {
+  margin: 2px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+}
+
+#threeDOverlay .three-d-empty.is-hidden {
+  display: none;
 }
 
 #threeDOverlay model-viewer {
   width: 100% !important;
-  height: min(78vh, 800px) !important;
+  height: min(74vh, 780px) !important;
   border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(var(--quantum-primary-rgb), 0.08), transparent 45%),
+    #050508;
 }
 
 #threeDOverlay .close-3d {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #fff;
+  font-size: 1.6rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  color: var(--text-primary);
   cursor: pointer;
-  padding: 0;
+  width: 42px;
+  height: 42px;
   line-height: 1;
+  flex: 0 0 auto;
+  transition: var(--transition-fast);
 }
 
 #threeDOverlay .close-3d:hover {
-  color: var(--quantum-danger);
+  color: #fff;
+  background: rgba(220, 60, 90, 0.28);
+  border-color: rgba(255, 120, 145, 0.45);
+  transform: scale(1.04);
+}
+
+@media (max-width: 768px) {
+  #threeDOverlay .three-d-panel {
+    width: min(96vw, 1200px);
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  #threeDOverlay .three-d-toolbar {
+    align-items: flex-start;
+  }
+
+  #threeDOverlay .three-d-title {
+    font-size: 0.92rem;
+    max-width: 74vw;
+  }
+
+  #threeDOverlay .three-d-subtitle {
+    font-size: 0.68rem;
+  }
+
+  #threeDOverlay .three-d-versions-meta {
+    gap: 6px;
+  }
+
+  #threeDOverlay .three-d-meta-chip {
+    font-size: 0.64rem;
+    padding: 3px 8px;
+  }
+
+  #threeDOverlay .three-d-version-btn {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  #threeDOverlay .three-d-search-wrap {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  #threeDOverlay .three-d-filter-group {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+  }
+
+  #threeDOverlay .three-d-filter-btn {
+    flex: 0 0 auto;
+  }
+
+  #threeDOverlay model-viewer {
+    height: min(70vh, 640px) !important;
+  }
 }
 
 .modal-close-btn:hover {

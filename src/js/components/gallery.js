@@ -1,4 +1,4 @@
-class QuantumGallery {
+﻿class QuantumGallery {
   constructor(cache) {
     this.cache = cache;
     this.charactersData = charactersData;
@@ -70,7 +70,9 @@ class QuantumGallery {
   }
 
   getModelVersionsForCharacter(character, fallbackModelUrl) {
-    const defaultVersion = [{ label: "Padrão", path: fallbackModelUrl }];
+    const defaultVersion = [
+      { label: "Padrao", path: fallbackModelUrl, isAnimated: false, type: "static" },
+    ];
     if (!character || !fallbackModelUrl) return defaultVersion;
 
     const base = character.model3d || fallbackModelUrl;
@@ -78,35 +80,66 @@ class QuantumGallery {
 
     if (normalizedName.includes("LUFFY")) {
       return [
-        { label: "Padrão", path: base },
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
         {
-          label: "Clássico",
+          label: "Classico",
           path: "assets/Modelo3D/Luffy-Versions/Luffy+classic+3d+model.glb",
+          isAnimated: false,
+          type: "skin",
         },
         {
           label: "Gear 4",
           path: "assets/Modelo3D/Luffy-Versions/Luffy+gear+4+3d+model.glb",
+          isAnimated: false,
+          type: "combat",
         },
         {
           label: "Gear 5",
           path: "assets/Modelo3D/Luffy-Versions/Luffy+gear+5+3d+model.glb",
+          isAnimated: false,
+          type: "combat",
         },
       ];
     }
 
     if (normalizedName.includes("LOKI")) {
       return [
-        { label: "Padrão", path: base },
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
         {
-          label: "Forma Dragão",
+          label: "Forma Dragao",
           path: "assets/Modelo3D/Loki-Versions/Loki-dragon+3d+model.glb",
+          isAnimated: false,
+          type: "combat",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("AATROX")) {
+      return [
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
+        {
+          label: "Versao 2",
+          path: "assets/Modelo3D/Aatrox-Versions/Aatrox-2+3d+model.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Versao 3",
+          path: "assets/Modelo3D/Aatrox-Versions/Aatrox-3+3d+model.glb.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Animado",
+          path: "assets/Modelo3D/Aatrox-Versions/Aatrox-Animated/Animation_Aatrox_Walking_withSkin.glb",
+          isAnimated: true,
+          type: "animated",
         },
       ];
     }
 
     return defaultVersion;
   }
-
   show3dModelByCharacterId(characterId) {
     const character = this.charactersData.find((c) => c.id === characterId);
     if (!character?.model3d) return;
@@ -119,12 +152,95 @@ class QuantumGallery {
     document.removeEventListener("keydown", this.on3dOverlayKeydown);
   }
 
-  /* exibidor de modelo 3D sobreposto com seleção de versões */
+  encodeModelAssetPath(assetPath) {
+    if (!assetPath) return assetPath;
+    return assetPath
+      .split("/")
+      .map((segment) => encodeURIComponent(segment))
+      .join("/");
+  }
+
+  setViewerAnimationState(viewer, isAnimated) {
+    if (!viewer) return;
+    if (isAnimated) {
+      viewer.setAttribute("autoplay", "");
+      viewer.setAttribute("loop", "");
+      viewer.setAttribute("animation-name", "*");
+      return;
+    }
+
+    viewer.removeAttribute("autoplay");
+    viewer.removeAttribute("loop");
+    viewer.removeAttribute("animation-name");
+  }
+
+  updateThreeDModelStatus(
+    overlay,
+    activeLabel,
+    isAnimated,
+    totalVersions,
+    totalAvailableVersions = totalVersions,
+  ) {
+    if (!overlay) return;
+
+    const countEl = overlay.querySelector("#threeDVersionCount");
+    const activeEl = overlay.querySelector("#threeDActiveVersion");
+    const animEl = overlay.querySelector("#threeDAnimationState");
+
+    if (countEl) {
+      if (totalAvailableVersions > totalVersions) {
+        countEl.textContent = `${totalVersions}/${totalAvailableVersions} versoes`;
+      } else {
+        countEl.textContent = `${totalVersions} ${totalVersions === 1 ? "versao" : "versoes"}`;
+      }
+    }
+
+    if (activeEl) {
+      activeEl.textContent = activeLabel || "Padrao";
+    }
+
+    if (animEl) {
+      animEl.textContent = isAnimated ? "Animacao ativa" : "Modelo estatico";
+      animEl.classList.toggle("is-animated", Boolean(isAnimated));
+    }
+  }
+
+  /* exibidor de modelo 3D sobreposto com selecao de versoes */
   show3dModel(modelUrl, character = null) {
     if (!modelUrl) return;
-    const versions = this.getModelVersionsForCharacter(character, modelUrl);
+
+    const rawVersions = this.getModelVersionsForCharacter(character, modelUrl);
+    const versions = (rawVersions || []).map((version, index) => {
+      const label = version?.label || `Versao ${index + 1}`;
+      const path = version?.path || modelUrl;
+      const isAnimated = Boolean(version?.isAnimated);
+      const normalizedType = String(version?.type || (isAnimated ? "animated" : "static"))
+        .toLowerCase()
+        .trim();
+
+      return {
+        id: `version-${index}`,
+        label,
+        path,
+        isAnimated,
+        type: normalizedType || "static",
+        searchText: `${label} ${normalizedType}`.toLowerCase(),
+      };
+    });
+
+    const defaultVersion =
+      versions[0] ||
+      {
+        id: "version-0",
+        label: "Padrao",
+        path: modelUrl,
+        isAnimated: false,
+        type: "static",
+        searchText: "padrao static",
+      };
+
     const title = character?.name || "MODELO 3D";
-    const safeModelUrl = encodeURI(modelUrl);
+    const safeModelUrl = this.encodeModelAssetPath(defaultVersion.path || modelUrl);
 
     let overlay = document.getElementById("threeDOverlay");
     if (!overlay) {
@@ -133,11 +249,45 @@ class QuantumGallery {
       overlay.innerHTML = `
         <div class="three-d-panel">
           <div class="three-d-toolbar">
-            <h3 class="three-d-title">${title}</h3>
-            <div class="three-d-versions" id="threeDVersions"></div>
+            <div class="three-d-heading">
+              <h3 class="three-d-title">${title}</h3>
+              <p class="three-d-subtitle">Selecione a versao do modelo 3D</p>
+            </div>
+            <button class="close-3d" aria-label="Fechar 3D">&times;</button>
+          </div>
+          <div class="three-d-versions-block">
+            <div class="three-d-versions-meta">
+              <span class="three-d-meta-chip" id="threeDVersionCount"></span>
+              <span class="three-d-meta-chip is-active" id="threeDActiveVersion"></span>
+              <span class="three-d-meta-chip" id="threeDAnimationState"></span>
+            </div>
+            <div class="three-d-discovery">
+              <label class="three-d-search-wrap" for="threeDVersionSearch">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input
+                  id="threeDVersionSearch"
+                  class="three-d-version-search"
+                  type="search"
+                  placeholder="Buscar versao..."
+                  autocomplete="off"
+                />
+              </label>
+              <div class="three-d-filter-group" id="threeDFilterGroup" role="tablist" aria-label="Filtros de versao">
+                <button class="three-d-filter-btn active" data-filter="all" type="button">Todos</button>
+                <button class="three-d-filter-btn" data-filter="static" type="button">Estatico</button>
+                <button class="three-d-filter-btn" data-filter="animated" type="button">Animado</button>
+                <button class="three-d-filter-btn" data-filter="skin" type="button">Skin</button>
+                <button class="three-d-filter-btn" data-filter="combat" type="button">Combate</button>
+              </div>
+            </div>
+            <div class="three-d-versions-scroll">
+              <div class="three-d-versions" id="threeDVersions"></div>
+            </div>
+            <p class="three-d-empty is-hidden" id="threeDEmptyState">
+              Nenhuma versao encontrada para esse filtro.
+            </p>
           </div>
           <model-viewer id="threeDViewer" src="${safeModelUrl}" alt="Modelo 3D" auto-rotate camera-controls style="width:80vw; height:80vh;"></model-viewer>
-          <button class="close-3d" aria-label="Fechar 3D">&times;</button>
         </div>
       `;
       document.body.appendChild(overlay);
@@ -156,37 +306,102 @@ class QuantumGallery {
 
     const viewer = overlay.querySelector("#threeDViewer");
     const versionsContainer = overlay.querySelector("#threeDVersions");
-    if (!viewer || !versionsContainer) return;
+    const searchInput = overlay.querySelector("#threeDVersionSearch");
+    const filterGroup = overlay.querySelector("#threeDFilterGroup");
+    const emptyState = overlay.querySelector("#threeDEmptyState");
+    if (!viewer || !versionsContainer || !searchInput || !filterGroup || !emptyState) return;
 
-    versionsContainer.innerHTML = versions
-      .map(
-        (version, index) => `
-          <button
-            class="three-d-version-btn ${index === 0 ? "active" : ""}"
-            data-model-path="${version.path}"
-            type="button"
-          >
-            ${version.label}
-          </button>
-        `,
-      )
-      .join("");
+    let activeModelPath = defaultVersion.path;
+    let activeFilter = "all";
+    let searchTerm = "";
 
-    versionsContainer
-      .querySelectorAll(".three-d-version-btn")
-      .forEach((btn, _idx, all) => {
+    const applyVersionToViewer = (version, visibleCount) => {
+      if (!version) return;
+      activeModelPath = version.path;
+      this.setViewerAnimationState(viewer, Boolean(version.isAnimated));
+      viewer.setAttribute("src", this.encodeModelAssetPath(version.path));
+      this.updateThreeDModelStatus(
+        overlay,
+        version.label || "Padrao",
+        Boolean(version.isAnimated),
+        visibleCount,
+        versions.length,
+      );
+    };
+
+    const getVisibleVersions = () => {
+      return versions.filter((version) => {
+        const matchesFilter = activeFilter === "all" || version.type === activeFilter;
+        const normalizedSearch = searchTerm.toLowerCase().trim();
+        const matchesSearch = !normalizedSearch || version.searchText.includes(normalizedSearch);
+        return matchesFilter && matchesSearch;
+      });
+    };
+
+    const renderVersionButtons = () => {
+      const visibleVersions = getVisibleVersions();
+      const nextSelected =
+        visibleVersions.find((version) => version.path === activeModelPath) ||
+        visibleVersions[0] ||
+        null;
+
+      versionsContainer.innerHTML = visibleVersions
+        .map(
+          (version) => `
+            <button
+              class="three-d-version-btn ${version.path === (nextSelected && nextSelected.path) ? "active" : ""} ${version.isAnimated ? "is-animated" : ""}"
+              data-model-id="${version.id}"
+              type="button"
+            >
+              <span class="three-d-version-dot" aria-hidden="true"></span>
+              ${version.label}
+              ${version.isAnimated ? '<span class="three-d-version-tag">animado</span>' : ""}
+            </button>
+          `,
+        )
+        .join("");
+
+      emptyState.classList.toggle("is-hidden", visibleVersions.length > 0);
+
+      if (!nextSelected) {
+        this.updateThreeDModelStatus(overlay, "Sem resultado", false, 0, versions.length);
+        return;
+      }
+
+      applyVersionToViewer(nextSelected, visibleVersions.length);
+
+      versionsContainer.querySelectorAll(".three-d-version-btn").forEach((btn, _idx, all) => {
         btn.addEventListener("click", () => {
-          const nextPath = btn.dataset.modelPath;
-          if (!nextPath) return;
-          viewer.setAttribute("src", encodeURI(nextPath));
+          const versionId = btn.dataset.modelId;
+          const selectedVersion = versions.find((version) => version.id === versionId);
+          if (!selectedVersion) return;
+          applyVersionToViewer(selectedVersion, visibleVersions.length);
           all.forEach((otherBtn) => otherBtn.classList.remove("active"));
           btn.classList.add("active");
         });
       });
-  }
+    };
 
+    filterGroup.querySelectorAll(".three-d-filter-btn").forEach((filterBtn) => {
+      filterBtn.addEventListener("click", () => {
+        activeFilter = filterBtn.dataset.filter || "all";
+        filterGroup
+          .querySelectorAll(".three-d-filter-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        filterBtn.classList.add("active");
+        renderVersionButtons();
+      });
+    });
+
+    searchInput.addEventListener("input", () => {
+      searchTerm = searchInput.value || "";
+      renderVersionButtons();
+    });
+
+    renderVersionButtons();
+  }
   async init() {
-    console.log("🚀 Inicializando Nexus Universe 13/10...");
+    console.log("ðŸš€ Inicializando Nexus Universe 13/10...");
 
     await this.preloadFirstFourImages();
 
@@ -204,7 +419,7 @@ class QuantumGallery {
 
     this.handlePageRefresh();
 
-    console.log("✅ Nexus Universe 13/10 inicializado!");
+    console.log("âœ… Nexus Universe 13/10 inicializado!");
   }
 
   handlePageRefresh() {
@@ -242,7 +457,7 @@ class QuantumGallery {
         this.audio.play("click");
       });
 
-      // Fechar menu ao clicar em qualquer botão de controle
+      // Fechar menu ao clicar em qualquer botÃ£o de controle
       document
         .querySelectorAll(".control-buttons-container .quantum-control-btn")
         .forEach((btn) => {
@@ -257,18 +472,18 @@ class QuantumGallery {
   }
 
   async preloadFirstFourImages() {
-    console.log("🔥 Pré-carregando as primeiras 4 imagens...");
+    console.log("ðŸ”¥ PrÃ©-carregando as primeiras 4 imagens...");
     const firstFour = charactersData.slice(0, 4);
     const promises = firstFour.map(async (character) => {
       try {
         const startTime = performance.now();
         await this.cache.cacheImage(character.image);
         const loadTime = performance.now() - startTime;
-        console.log(`✅ ${character.name}: ${loadTime.toFixed(0)}ms`);
+        console.log(`âœ… ${character.name}: ${loadTime.toFixed(0)}ms`);
         return true;
       } catch (error) {
         console.warn(
-          `⚠️ Falha ao pré-carregar ${character.name}: ${character.image}`,
+          `âš ï¸ Falha ao prÃ©-carregar ${character.name}: ${character.image}`,
         );
         return false;
       }
@@ -278,7 +493,7 @@ class QuantumGallery {
     const successCount = results.filter(
       (r) => r.status === "fulfilled" && r.value,
     ).length;
-    console.log(`📊 ${successCount}/4 imagens pré-carregadas com sucesso`);
+    console.log(`ðŸ“Š ${successCount}/4 imagens prÃ©-carregadas com sucesso`);
   }
 
   cacheElements() {
@@ -548,7 +763,7 @@ class QuantumGallery {
           this.goToPage(page);
         } else {
           this.elements.quantumInput.value = this.state.currentPage;
-          this.showToast("FREQUÊNCIA INVÁLIDA");
+          this.showToast("FREQUÃŠNCIA INVÃLIDA");
         }
       });
     }
@@ -565,12 +780,12 @@ class QuantumGallery {
         const enabled = this.audio.toggle();
         const icon = this.elements.soundIcon;
         icon.className = enabled ? "fas fa-volume-up" : "fas fa-volume-mute";
-        this.showToast(enabled ? "🔊 SONS ATIVADOS" : "🔇 SONS DESATIVADOS");
+        this.showToast(enabled ? "ðŸ”Š SONS ATIVADOS" : "ðŸ”‡ SONS DESATIVADOS");
         if (enabled) this.audio.play("click");
       });
     }
 
-    // NOVO: Botão Início
+    // NOVO: BotÃ£o InÃ­cio
     if (this.elements.homeToggle) {
       this.elements.homeToggle.addEventListener("click", () => {
         this.showGalleryPage();
@@ -773,7 +988,7 @@ class QuantumGallery {
         imgElement.classList.add("loaded");
       }
     } catch (error) {
-      console.warn(`Não foi possível carregar: ${src}`);
+      console.warn(`NÃ£o foi possÃ­vel carregar: ${src}`);
       imgElement.classList.add("error");
     }
   }
@@ -1092,7 +1307,7 @@ class QuantumGallery {
       e.stopPropagation();
       this.setCategory(character.category);
       this.audio.play("click");
-      // ===== ALTERAÇÃO 1: Rolar até a seção de cards após explorar =====
+      // ===== ALTERAÃ‡ÃƒO 1: Rolar atÃ© a seÃ§Ã£o de cards apÃ³s explorar =====
       this.scrollToCardsSection();
     });
 
@@ -1177,7 +1392,7 @@ class QuantumGallery {
         </g>
 
         <text x="200" y="380" text-anchor="middle" fill="var(--text-secondary)" font-family="Arial" font-size="14" opacity="0.7">
-          ${hasFailed ? "IMAGEM NÃO ENCONTRADA" : "CARREGANDO..."}
+          ${hasFailed ? "IMAGEM NÃƒO ENCONTRADA" : "CARREGANDO..."}
         </text>
 
         ${
@@ -1375,7 +1590,7 @@ class QuantumGallery {
               </button>
               <button class="modal-media-toggle" data-media="video" aria-pressed="false">
                 <i class="fas fa-video"></i>
-                VÍDEO
+                VÃDEO
               </button>
               <button class="modal-media-action" data-media-action="play-pause" disabled>
                 <i class="fas fa-play"></i>
@@ -1407,7 +1622,7 @@ class QuantumGallery {
             <div class="modal-character-specs">
               <h3 class="modal-specs-title">
                 <i class="fas fa-chart-network"></i>
-                ESPECIFICAÇÕES QUÂNTICAS
+                ESPECIFICAÃ‡Ã•ES QUÃ‚NTICAS
               </h3>
               <div class="modal-specs-grid">
                 ${Object.entries(character.details || {})
@@ -1434,7 +1649,7 @@ class QuantumGallery {
               </button>
               <button class="modal-close-btn" onclick="window.gallery.closeModal()">
                 <i class="fas fa-times"></i>
-                FECHAR ANÁLISE
+                FECHAR ANÃLISE
               </button>
             </div>
           </div>
@@ -1546,7 +1761,7 @@ class QuantumGallery {
         <div class="search-no-results">
           <i class="fas fa-search"></i>
           <h3>DIGITE PARA PESQUISAR</h3>
-          <p>Digite o nome de um personagem para iniciar a busca quântica.</p>
+          <p>Digite o nome de um personagem para iniciar a busca quÃ¢ntica.</p>
         </div>
       `;
       return;
@@ -1555,8 +1770,8 @@ class QuantumGallery {
     resultsContainer.innerHTML = `
       <div class="search-no-results">
         <div class="loading-ring" style="width: 60px; height: 60px; margin: 0 auto 20px;"></div>
-        <h3>ANALISANDO REALIDADE QUÂNTICA...</h3>
-        <p>Buscando correspondências na base de dados.</p>
+        <h3>ANALISANDO REALIDADE QUÃ‚NTICA...</h3>
+        <p>Buscando correspondÃªncias na base de dados.</p>
       </div>
     `;
 
@@ -1569,7 +1784,7 @@ class QuantumGallery {
         <div class="search-no-results">
           <i class="fas fa-search-minus"></i>
           <h3>NENHUM PERSONAGEM ENCONTRADO</h3>
-          <p>Tente digitar o nome de forma diferente ou usar termos mais genéricos.</p>
+          <p>Tente digitar o nome de forma diferente ou usar termos mais genÃ©ricos.</p>
       </div>
       `;
       return;
@@ -1602,8 +1817,8 @@ class QuantumGallery {
                 }"></i>
                 ${
                   character.matchType === "exact"
-                    ? "Correspondência exata"
-                    : "Correspondência aproximada"
+                    ? "CorrespondÃªncia exata"
+                    : "CorrespondÃªncia aproximada"
                 }
               </div>
             </div>
@@ -1671,8 +1886,8 @@ class QuantumGallery {
     this.filterAndSort();
     this.showToast(
       category === "all"
-        ? "🌌 EXPLORANDO TODO O MULTIVERSO NEXUS 13/10!"
-        : `🔍 FILTRO QUÂNTICO: ${categoryNames[category] || category}`,
+        ? "ðŸŒŒ EXPLORANDO TODO O MULTIVERSO NEXUS 13/10!"
+        : `ðŸ” FILTRO QUÃ‚NTICO: ${categoryNames[category] || category}`,
     );
 
     this.closeModal();
@@ -1686,12 +1901,12 @@ class QuantumGallery {
   setSort(sortType, silent = false) {
     this.state.currentSort = sortType;
     const labels = {
-      original: "ORDEM QUÂNTICA",
+      original: "ORDEM QUÃ‚NTICA",
       "name-asc": "NOME (A-Z)",
       "name-desc": "NOME (Z-A)",
       "category-asc": "CATEGORIA (A-Z)",
       "category-desc": "CATEGORIA (Z-A)",
-      random: "ALEATÓRIO QUÂNTICO",
+      random: "ALEATÃ“RIO QUÃ‚NTICO",
     };
 
     if (this.elements.sortText) {
@@ -1711,7 +1926,7 @@ class QuantumGallery {
     });
 
     this.filterAndSort();
-    this.showToast(`📊 ORDENAÇÃO: ${labels[sortType]}`);
+    this.showToast(`ðŸ“Š ORDENAÃ‡ÃƒO: ${labels[sortType]}`);
 
     if (!silent) {
       localStorage.setItem("nexus_last_sort_13", sortType);
@@ -1724,7 +1939,7 @@ class QuantumGallery {
     this.state.currentPage = 1;
 
     if (this.elements.sortText) {
-      this.elements.sortText.textContent = "ORDEM QUÂNTICA";
+      this.elements.sortText.textContent = "ORDEM QUÃ‚NTICA";
     }
 
     if (this.elements.sortOptionsQuantum) {
@@ -1745,7 +1960,7 @@ class QuantumGallery {
 
     this.filterAndSort();
     this.showToast(
-      "🔄 REALIDADE REINICIADA • FILTROS QUÂNTICOS RESETADOS 13/10",
+      "ðŸ”„ REALIDADE REINICIADA â€¢ FILTROS QUÃ‚NTICOS RESETADOS 13/10",
     );
     this.closeModal();
 
@@ -1771,7 +1986,7 @@ class QuantumGallery {
     this.renderCharacters();
     this.scrollToCardsSection();
 
-    this.showToast(`🚀 SALTO QUÂNTICO: FREQUÊNCIA ${page} DE ${totalPages}`);
+    this.showToast(`ðŸš€ SALTO QUÃ‚NTICO: FREQUÃŠNCIA ${page} DE ${totalPages}`);
 
     if (!silent) {
       localStorage.setItem("nexus_last_page_13", page.toString());
@@ -1865,30 +2080,30 @@ class QuantumGallery {
     const sortOptions = [
       {
         value: "original",
-        label: "ORDEM QUÂNTICA ORIGINAL",
+        label: "ORDEM QUÃ‚NTICA ORIGINAL",
         icon: "fa-atom",
       },
       {
         value: "name-asc",
-        label: "NOME (A → Z)",
+        label: "NOME (A â†’ Z)",
         icon: "fa-sort-alpha-down",
       },
       {
         value: "name-desc",
-        label: "NOME (Z → A)",
+        label: "NOME (Z â†’ A)",
         icon: "fa-sort-alpha-up",
       },
       {
         value: "category-asc",
-        label: "CATEGORIA (A → Z)",
+        label: "CATEGORIA (A â†’ Z)",
         icon: "fa-layer-group",
       },
       {
         value: "category-desc",
-        label: "CATEGORIA (Z → A)",
+        label: "CATEGORIA (Z â†’ A)",
         icon: "fa-layer-group fa-rotate-180",
       },
-      { value: "random", label: "ALEATÓRIO QUÂNTICO", icon: "fa-random" },
+      { value: "random", label: "ALEATÃ“RIO QUÃ‚NTICO", icon: "fa-random" },
     ];
 
     this.elements.sortOptionsQuantum.innerHTML = sortOptions
@@ -2021,12 +2236,12 @@ class QuantumGallery {
         favoritesIcon.className = "fas fa-images";
       }
 
-      document.title = "⭐ FAVORITOS 13/10 | NEXUS UNIVERSE";
+      document.title = "â­ FAVORITOS 13/10 | NEXUS UNIVERSE";
 
       this.favorites.renderFavoritesPage();
       this.forceScrollTopImmediate();
       this.audio.play("click");
-      this.showToast("⭐ ACESSANDO COLEÇÃO PESSOAL 13/10");
+      this.showToast("â­ ACESSANDO COLEÃ‡ÃƒO PESSOAL 13/10");
     };
 
     this.runPageTransition(openFavoritesPage);
@@ -2054,12 +2269,12 @@ class QuantumGallery {
       }
 
       document.title =
-        "🌌 NEXUS UNIVERSE 13/10 | Experiência Quântica Definitiva";
+        "ðŸŒŒ NEXUS UNIVERSE 13/10 | ExperiÃªncia QuÃ¢ntica Definitiva";
 
       this.forceScrollTopImmediate();
       this.audio.play("click");
 
-      // Atualiza as animações do header se existirem
+      // Atualiza as animaÃ§Ãµes do header se existirem
       if (
         window.quantumHeaderEffects &&
         typeof window.quantumHeaderEffects.refresh === "function"
@@ -2067,7 +2282,7 @@ class QuantumGallery {
         window.quantumHeaderEffects.refresh();
       }
 
-      this.showToast("🌌 RETORNANDO À GALERIA PRINCIPAL");
+      this.showToast("ðŸŒŒ RETORNANDO Ã€ GALERIA PRINCIPAL");
     };
 
     this.runPageTransition(openGalleryPage);
@@ -2080,3 +2295,5 @@ class QuantumGallery {
     clearTimeout(this.config.scrollDebounce);
   }
 }
+
+

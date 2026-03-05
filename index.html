@@ -33,6 +33,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
+    <!-- decoder para modelos GLB com compressao meshopt -->
+    <script>
+      window.ModelViewerElement = window.ModelViewerElement || {};
+      window.ModelViewerElement.meshoptDecoderLocation =
+        "https://unpkg.com/meshoptimizer@0.22.0/meshopt_decoder.js";
+    </script>
+
     <!-- modelo 3d viewer -->
     <script
       type="module"
