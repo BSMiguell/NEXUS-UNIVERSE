@@ -655,6 +655,7 @@ class QuantumBattle2DSystem {
   showBattlePage() {
     const openBattle2dPage = () => {
       this.gallery.state.showFavoritesPage = false;
+      this.gallery.state.showModelsPage = false;
       this.gallery.state.showBattlePage = false;
       this.gallery.state.showBattle2dPage = true;
 
@@ -676,6 +677,17 @@ class QuantumBattle2DSystem {
         favoritesPage.classList.remove("active");
         favoritesPage.setAttribute("hidden", "");
         favoritesPage.setAttribute("aria-hidden", "true");
+      }
+      const modelsPage = document.getElementById("quantumModelsPage");
+      if (this.gallery.setSectionVisibility) {
+        this.gallery.setSectionVisibility(modelsPage, false, {
+          activeClass: true,
+        });
+      } else if (modelsPage) {
+        modelsPage.style.display = "none";
+        modelsPage.classList.remove("active");
+        modelsPage.setAttribute("hidden", "");
+        modelsPage.setAttribute("aria-hidden", "true");
       }
       const battlePage = document.getElementById("quantumBattlePage");
       if (this.gallery.setSectionVisibility) {

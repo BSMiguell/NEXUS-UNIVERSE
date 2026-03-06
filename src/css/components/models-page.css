@@ -1,0 +1,165 @@
+.quantum-models-page {
+  display: none;
+  min-height: 100vh;
+  padding: 24px 0 60px;
+}
+
+.quantum-models-page.active {
+  display: block;
+}
+
+.models-page-container {
+  width: min(1280px, 94%);
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.models-page-header {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 28px;
+}
+
+.models-page-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Orbitron", monospace;
+  color: var(--quantum-primary);
+  margin-bottom: 10px;
+}
+
+.models-page-header p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.models-page-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.models-stat-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+}
+
+.models-stat-label {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+.models-stat-value {
+  font-family: "Orbitron", monospace;
+  color: var(--text-primary);
+  font-size: 1.45rem;
+}
+
+.models-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.model-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  display: grid;
+}
+
+.model-card-thumb {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--background-secondary);
+}
+
+.model-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.model-card-badge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: rgba(0, 255, 234, 0.16);
+  border: 1px solid rgba(0, 255, 234, 0.35);
+  color: var(--quantum-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.model-card-body {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.model-card-name {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.model-card-meta {
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+}
+
+.model-card-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.model-card-actions .quantum-button {
+  width: 100%;
+  justify-content: center;
+}
+
+.models-empty {
+  background: var(--glass-bg);
+  border: 1px dashed var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 36px 20px;
+}
+
+.models-empty i {
+  font-size: 2rem;
+  color: var(--quantum-primary);
+  margin-bottom: 10px;
+}
+
+.models-page-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+  .models-page-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .models-page-footer {
+    justify-content: stretch;
+  }
+
+  .models-page-footer .quantum-button {
+    width: 100%;
+  }
+}

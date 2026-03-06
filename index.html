@@ -247,6 +247,16 @@
                 VER FAVORITOS 10/10
               </button>
 
+              <!-- Botao para acessar Modelos 3D -->
+              <button
+                class="quantum-button terminal-action-btn"
+                id="viewModelsBtn"
+                aria-label="Ver todos os modelos 3D"
+              >
+                <i class="fas fa-cubes" aria-hidden="true"></i>
+                TODOS OS MODELOS 3D
+              </button>
+
               <!-- Botão para acessar Batalha -->
               <button
                 class="quantum-button terminal-action-btn"
@@ -285,6 +295,10 @@
                     <span id="favoritesCountTerminal" class="status-active"
                       >0</span
                     >
+                  </div>
+                  <div>
+                    > MODELOS 3D:
+                    <span id="modelsCountTerminal" class="status-active">0</span>
                   </div>
                   <div>
                     > BATALHA:
@@ -527,7 +541,57 @@
           </div>
         </div>
       </div>
+      <!-- Pagina de Modelos 3D -->
+      <div
+        class="quantum-models-page"
+        id="quantumModelsPage"
+        role="region"
+        aria-label="Pagina de modelos 3D"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="models-page-container">
+          <div class="models-page-header">
+            <h2>
+              <i class="fas fa-cubes" aria-hidden="true"></i>
+              TODOS OS MODELOS 3D
+            </h2>
+            <p>
+              Veja todos os personagens que possuem modelo 3D no site e abra a
+              visualizacao completa com um clique.
+            </p>
+          </div>
 
+          <div class="models-page-stats">
+            <article class="models-stat-card">
+              <span class="models-stat-label">MODELOS DISPONIVEIS</span>
+              <strong class="models-stat-value" id="modelsTotalCount">0</strong>
+            </article>
+            <article class="models-stat-card">
+              <span class="models-stat-label">VERSOES 3D</span>
+              <strong class="models-stat-value" id="modelsVersionsCount">0</strong>
+            </article>
+            <article class="models-stat-card">
+              <span class="models-stat-label">UNIVERSOS</span>
+              <strong class="models-stat-value" id="modelsCategoriesCount">0</strong>
+            </article>
+          </div>
+
+          <div class="models-grid" id="modelsGrid"></div>
+
+          <div class="models-empty" id="modelsEmpty" hidden>
+            <i class="fas fa-cube" aria-hidden="true"></i>
+            <h3>NENHUM MODELO ENCONTRADO</h3>
+            <p>Nenhum personagem com modelo 3D foi encontrado no momento.</p>
+          </div>
+
+          <div class="models-page-footer">
+            <button class="quantum-button" id="backToGalleryFromModels">
+              VOLTAR A GALERIA
+            </button>
+          </div>
+        </div>
+      </div>
       <!-- Página de Batalha Quântica -->
       <div
         class="quantum-battle-page"
@@ -1084,6 +1148,7 @@
                   <li><a href="#quantumLoader">Protocolos</a></li>
                   <li><a href="#viewBattleBtn">Batalha 13/10</a></li>
                   <li><a href="#viewFavoritesBtn">Favoritos</a></li>
+                  <li><a href="#viewModelsBtn">Modelos 3D</a></li>
                   <li><a href="#viewSearchBtn">Pesquisa</a></li>
                 </ul>
               </div>

@@ -19,6 +19,7 @@
       isModalOpen: false,
       isSearchModalOpen: false,
       showFavoritesPage: false,
+      showModelsPage: false,
       showBattlePage: false,
       showBattle2dPage: false,
       modalOpenedFromFavorites: false,
@@ -131,6 +132,12 @@
           isAnimated: false,
           type: "skin",
         },
+        {
+          label: "Crianca",
+          path: "assets/Modelo3D/Loki-Versions/Loki-Criança.glb",
+          isAnimated: false,
+          type: "skin",
+        },
       ];
     }
 
@@ -190,6 +197,30 @@
           path: "assets/Modelo3D/Garou-Versions/Gaoru-Cosmico.glb",
           isAnimated: false,
           type: "combat",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("GUTS")) {
+      return [
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
+        {
+          label: "Versao 2",
+          path: "assets/Modelo3D/Guts-Versions/Guts-1.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("OROCHI")) {
+      return [
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
+        {
+          label: "Base",
+          path: "assets/Modelo3D/Orochi-Versions/Orochi-Base.glb",
+          isAnimated: false,
+          type: "skin",
         },
       ];
     }
@@ -736,13 +767,24 @@
       favoritesToggle: document.getElementById("favoritesToggle"),
       quantumUniverse: document.getElementById("quantumUniverse"),
       quantumFavoritesPage: document.getElementById("quantumFavoritesPage"),
+      quantumModelsPage: document.getElementById("quantumModelsPage"),
       quantumBattlePage: document.getElementById("quantumBattlePage"),
       quantumBattle2dPage: document.getElementById("quantumBattle2dPage"),
       viewFavoritesBtn: document.getElementById("viewFavoritesBtn"),
+      viewModelsBtn: document.getElementById("viewModelsBtn"),
       viewBattleBtn: document.getElementById("viewBattleBtn"),
       viewSearchBtn: document.getElementById("viewSearchBtn"),
       backToGallery: document.getElementById("backToGallery"),
+      backToGalleryFromModels: document.getElementById(
+        "backToGalleryFromModels",
+      ),
       favoritesCountTerminal: document.getElementById("favoritesCountTerminal"),
+      modelsCountTerminal: document.getElementById("modelsCountTerminal"),
+      modelsGrid: document.getElementById("modelsGrid"),
+      modelsEmpty: document.getElementById("modelsEmpty"),
+      modelsTotalCount: document.getElementById("modelsTotalCount"),
+      modelsVersionsCount: document.getElementById("modelsVersionsCount"),
+      modelsCategoriesCount: document.getElementById("modelsCategoriesCount"),
       searchModal: document.getElementById("searchModal"),
       searchToggle: document.getElementById("searchToggle"),
       searchClose: document.getElementById("searchClose"),
@@ -806,6 +848,7 @@
 
   getActivePageContainer() {
     if (this.state.showFavoritesPage) return this.elements.quantumFavoritesPage;
+    if (this.state.showModelsPage) return this.elements.quantumModelsPage;
     if (this.state.showBattlePage) return this.elements.quantumBattlePage;
     if (this.state.showBattle2dPage) return this.elements.quantumBattle2dPage;
     return this.elements.quantumUniverse;
@@ -1014,6 +1057,13 @@
       });
     }
 
+    if (this.elements.viewModelsBtn) {
+      this.elements.viewModelsBtn.addEventListener("click", () => {
+        this.showModelsPage();
+        this.audio.play("click");
+      });
+    }
+
     if (this.elements.viewSearchBtn) {
       this.elements.viewSearchBtn.addEventListener("click", () => {
         this.openSearchModal();
@@ -1055,6 +1105,13 @@
 
     if (this.elements.backToGallery) {
       this.elements.backToGallery.addEventListener("click", () => {
+        this.showGalleryPage();
+        this.audio.play("click");
+      });
+    }
+
+    if (this.elements.backToGalleryFromModels) {
+      this.elements.backToGalleryFromModels.addEventListener("click", () => {
         this.showGalleryPage();
         this.audio.play("click");
       });
@@ -2279,6 +2336,116 @@
 
     this.favorites.updateFavoritesCount();
     this.favorites.updateTerminalCount();
+    this.updateModelsCountTerminal();
+  }
+
+  getCharactersWith3DModels() {
+    return this.charactersData
+      .filter(
+        (character) =>
+          typeof character.model3d === "string" && character.model3d.trim(),
+      )
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  updateModelsCountTerminal() {
+    const countEl = this.elements.modelsCountTerminal;
+    if (!countEl) return;
+    countEl.textContent = this.getCharactersWith3DModels().length;
+  }
+
+  renderModelsPage() {
+    const grid = this.elements.modelsGrid;
+    const empty = this.elements.modelsEmpty;
+    if (!grid || !empty) return;
+
+    const charactersWithModel = this.getCharactersWith3DModels();
+    const totalModels = charactersWithModel.length;
+    const totalVersions = charactersWithModel.reduce((sum, character) => {
+      const versions = this.getModelVersionsForCharacter(
+        character,
+        character.model3d,
+      );
+      return sum + (versions?.length || 0);
+    }, 0);
+    const totalCategories = new Set(
+      charactersWithModel.map((character) => character.category),
+    ).size;
+
+    if (this.elements.modelsTotalCount) {
+      this.elements.modelsTotalCount.textContent = String(totalModels);
+    }
+    if (this.elements.modelsVersionsCount) {
+      this.elements.modelsVersionsCount.textContent = String(totalVersions);
+    }
+    if (this.elements.modelsCategoriesCount) {
+      this.elements.modelsCategoriesCount.textContent = String(totalCategories);
+    }
+
+    if (!totalModels) {
+      grid.innerHTML = "";
+      grid.style.display = "none";
+      empty.removeAttribute("hidden");
+      return;
+    }
+
+    grid.style.display = "grid";
+    empty.setAttribute("hidden", "");
+    grid.innerHTML = "";
+
+    charactersWithModel.forEach((character) => {
+      const card = this.createModelCard(character);
+      grid.appendChild(card);
+    });
+  }
+
+  createModelCard(character) {
+    const card = document.createElement("article");
+    card.className = "model-card";
+    card.dataset.id = character.id;
+
+    const normalizedPath = this.cache.normalizePath(character.image);
+    const cachedImg = this.cache.imageCache.get(normalizedPath);
+    const imgSrc = cachedImg ? cachedImg.src : character.image;
+    const versions = this.getModelVersionsForCharacter(character, character.model3d);
+    const versionsCount = versions?.length || 1;
+    const categoryLabel = categoryNames[character.category] || character.category;
+
+    card.innerHTML = `
+      <div class="model-card-thumb">
+        <img src="${imgSrc}" alt="${character.name}" loading="lazy" />
+        <span class="model-card-badge">${categoryLabel}</span>
+      </div>
+      <div class="model-card-body">
+        <h3 class="model-card-name">${character.name}</h3>
+        <div class="model-card-meta">${versionsCount} ${versionsCount === 1 ? "versao" : "versoes"} 3D</div>
+        <div class="model-card-actions">
+          <button class="quantum-button model-open-3d">
+            <i class="fas fa-cube" aria-hidden="true"></i>
+            ABRIR MODELO 3D
+          </button>
+          <button class="quantum-button model-open-details">
+            <i class="fas fa-expand" aria-hidden="true"></i>
+            VER DETALHES
+          </button>
+        </div>
+      </div>
+    `;
+
+    const open3dBtn = card.querySelector(".model-open-3d");
+    const detailsBtn = card.querySelector(".model-open-details");
+
+    open3dBtn?.addEventListener("click", () => {
+      this.show3dModelByCharacterId(character.id);
+      this.audio.play("click");
+    });
+
+    detailsBtn?.addEventListener("click", () => {
+      this.openModal(character);
+      this.audio.play("click");
+    });
+
+    return card;
   }
 
   setupSortOptions() {
@@ -2424,10 +2591,14 @@
   showFavoritesPage() {
     const openFavoritesPage = () => {
       this.state.showFavoritesPage = true;
+      this.state.showModelsPage = false;
       this.state.showBattlePage = false;
       this.state.showBattle2dPage = false;
 
       this.setSectionVisibility(this.elements.quantumUniverse, false);
+      this.setSectionVisibility(this.elements.quantumModelsPage, false, {
+        activeClass: true,
+      });
       this.setSectionVisibility(this.elements.quantumBattlePage, false, {
         activeClass: true,
       });
@@ -2454,14 +2625,54 @@
     this.runPageTransition(openFavoritesPage);
   }
 
+  showModelsPage() {
+    const openModelsPage = () => {
+      this.state.showFavoritesPage = false;
+      this.state.showModelsPage = true;
+      this.state.showBattlePage = false;
+      this.state.showBattle2dPage = false;
+
+      this.setSectionVisibility(this.elements.quantumUniverse, false);
+      this.setSectionVisibility(this.elements.quantumFavoritesPage, false, {
+        activeClass: true,
+      });
+      this.setSectionVisibility(this.elements.quantumBattlePage, false, {
+        activeClass: true,
+      });
+
+      this.hideBattle2dPage();
+
+      this.setSectionVisibility(this.elements.quantumModelsPage, true, {
+        activeClass: true,
+      });
+
+      const favoritesIcon = document.getElementById("favoritesIcon");
+      if (favoritesIcon) {
+        favoritesIcon.className = "fas fa-heart";
+      }
+
+      document.title = "CUBOS 3D | NEXUS UNIVERSE";
+      this.renderModelsPage();
+      this.forceScrollTopImmediate();
+      this.audio.play("click");
+      this.showToast("CUBOS 3D CARREGADOS");
+    };
+
+    this.runPageTransition(openModelsPage);
+  }
+
   showGalleryPage() {
     const openGalleryPage = () => {
       this.state.showFavoritesPage = false;
+      this.state.showModelsPage = false;
       this.state.showBattlePage = false;
       this.state.showBattle2dPage = false;
 
       this.setSectionVisibility(this.elements.quantumUniverse, true);
       this.setSectionVisibility(this.elements.quantumFavoritesPage, false, {
+        activeClass: true,
+      });
+      this.setSectionVisibility(this.elements.quantumModelsPage, false, {
         activeClass: true,
       });
       this.setSectionVisibility(this.elements.quantumBattlePage, false, {

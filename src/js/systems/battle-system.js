@@ -3837,6 +3837,7 @@ class QuantumBattleSystem {
   showBattlePage() {
     const openBattlePage = () => {
       this.gallery.state.showFavoritesPage = false;
+      this.gallery.state.showModelsPage = false;
       this.gallery.state.showBattlePage = true;
       this.gallery.state.showBattle2dPage = false;
 
@@ -3850,6 +3851,11 @@ class QuantumBattleSystem {
           false,
           { activeClass: true },
         );
+        this.gallery.setSectionVisibility(
+          this.gallery.elements.quantumModelsPage,
+          false,
+          { activeClass: true },
+        );
       } else {
         if (this.gallery.elements.quantumUniverse) {
           this.gallery.elements.quantumUniverse.style.display = "none";
@@ -3858,6 +3864,11 @@ class QuantumBattleSystem {
           this.gallery.elements.quantumFavoritesPage.style.display = "none";
           this.gallery.elements.quantumFavoritesPage.classList.remove("active");
           this.gallery.elements.quantumFavoritesPage.setAttribute("hidden", "");
+        }
+        if (this.gallery.elements.quantumModelsPage) {
+          this.gallery.elements.quantumModelsPage.style.display = "none";
+          this.gallery.elements.quantumModelsPage.classList.remove("active");
+          this.gallery.elements.quantumModelsPage.setAttribute("hidden", "");
         }
       }
 

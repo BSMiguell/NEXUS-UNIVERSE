@@ -201,6 +201,17 @@
     var(--background-secondary);
 }
 
+#viewModelsBtn.terminal-action-btn {
+  border-color: var(--quantum-success);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 255, 157, 0.1) 0%,
+      rgba(0, 255, 157, 0.05) 100%
+    ),
+    var(--background-secondary);
+}
+
 #viewSearchBtn.terminal-action-btn {
   border-color: var(--quantum-primary);
   background:
@@ -232,6 +243,13 @@
     0 15px 35px rgba(0, 0, 0, 0.45),
     0 0 20px var(--quantum-danger);
   border-color: var(--quantum-danger);
+}
+
+#viewModelsBtn.terminal-action-btn:hover {
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.45),
+    0 0 20px var(--quantum-success);
+  border-color: var(--quantum-success);
 }
 
 #viewSearchBtn.terminal-action-btn:hover {

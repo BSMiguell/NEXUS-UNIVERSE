@@ -585,6 +585,7 @@ const charactersData = [
     name: "NOSFERATU ZODD",
     category: "Berserk",
     image: "assets/images/Berserk/Nosferatu Zodd-1.png",
+    model3d: "assets/Modelo3D/nosferatu-zodd-base.glb",
     description:
       "Apóstolo imortal que busca oponentes dignos em batalha, conhecido por sua forma monstruosa e habilidades de regeneração.",
     details: {
@@ -8085,6 +8086,7 @@ const charactersData = [
     name: "PSYKOS",
     category: "One Punch Man",
     image: "assets/images/One-Punch-Man/Psykos-2.png",
+    model3d: "assets/Modelo3D/PSYKOS.glb",
     description:
       "Ex-líder da Associação de Heróis que se tornou a líder da Associação de Monstros. Psíquica poderosa com habilidades telepáticas e telecinéticas extremas. Fundiu-se com Orochi para se tornar Psykos-Orochi, buscando criar um mundo onde os fortes governam os fracos.",
     details: {
@@ -9810,6 +9812,7 @@ const charactersData = [
     },
   },
 ];
+
 
 
 
