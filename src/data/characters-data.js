@@ -836,6 +836,7 @@ const charactersData = [
     name: "ENJIN",
     category: "Gachiakuta",
     image: "assets/images/Gachiakuta/Enjin -1s.png",
+    model3d: "assets/Modelo3D/Enjin+classic+3d+model.glb",
     description:
       "Personagem do mundo árido de Gachiakuta, com habilidades únicas adaptadas ao ambiente hostil em que vive.",
     details: {
@@ -1189,6 +1190,7 @@ const charactersData = [
     name: "AKAINU",
     category: "One-Piece",
     image: "assets/images/One-Piece/akainu-1.png",
+    model3d: "assets/Modelo3D/Akainu.glb",
     description:
       "Almirante da Marinha e posteriormente Almirante-da-Frota, usuário da Akuma no Mi Magu Magu no Mi.",
     details: {
@@ -1465,6 +1467,7 @@ const charactersData = [
     name: "GAROU",
     category: "One Punch Man",
     image: "assets/images/One-Punch-Man/Garou-2.png",
+    model3d: "assets/Modelo3D/Garou.glb",
     description:
       "O Herói Caçador, um discípulo das artes marciais que busca se tornar o monstro perfeito.",
     details: {
@@ -1817,6 +1820,7 @@ const charactersData = [
     name: "AMBESSA MEDARDA",
     category: "League of Legend",
     image: "assets/images/lol/Ambessa-1.png",
+    model3d: "assets/Modelo3D/Ambessa-Medarda.glb",
     description:
       "Matriarca da casa Medarda e uma das figuras mais temidas de Noxus.",
     details: {
@@ -1867,6 +1871,7 @@ const charactersData = [
     name: "KASHIMO HAJIME",
     category: "jujutsu kaisen",
     image: "assets/images/Jujutsu/hajime-1.png",
+    model3d: "assets/Modelo3D/Hajime+3d+model.glb.glb",
     description:
       "Feiticeiro jujutsu da Era de Ouro conhecido como 'Deus do Relâmpago'.",
     details: {
@@ -3197,6 +3202,7 @@ const charactersData = [
     name: "MAHORAGA",
     category: "jujutsu kaisen",
     image: "assets/images/Jujutsu/mahoraga-1.png",
+    model3d: "assets/Modelo3D/Mahoraga.glb",
     description:
       "Shikigami supremo da Técnica das Dez Sombras, capaz de se adaptar a qualquer ataque.",
     details: {
@@ -5045,6 +5051,7 @@ const charactersData = [
     name: "ROCKS D. XEBEC",
     category: "One-Piece",
     image: "assets/images/One-Piece/Rocks-D-Xebec-3.png",
+    model3d: "assets/Modelo3D/Rocks+Xebec+classic+3d+model.glb",
     description:
       "Lendário capitão pirata da era anterior a Roger, líder dos Piratas Rocks. Tinha em sua tripulação futuros Yonko como Big Mom, Kaido e Barba Branca.",
     details: {
@@ -5272,6 +5279,7 @@ const charactersData = [
     name: "AZULA",
     category: "Avatar",
     image: "assets/images/Avatar/Azula-1.png",
+    model3d: "assets/Modelo3D/Azula.glb",
     description:
       "Princesa da Nação do Fogo, irmã mais nova de Zuko. Gênio tático e prodígio na dobra de fogo, criadora do raro fogo azul.",
     details: {
@@ -7069,6 +7077,7 @@ const charactersData = [
     name: "OROCHI",
     category: "One Punch Man",
     image: "assets/images/One-Punch-Man/Orochi-1.png",
+    model3d: "assets/Modelo3D/OROCHI-One-Punch-Man.glb",
     description:
       "Monstro Deus e líder da Associação de Monstros. Capaz de absorver outros monstros e adaptar suas habilidades.",
     details: {
@@ -7524,6 +7533,7 @@ const charactersData = [
     name: "SUPERALLOY DARKSHINE",
     category: "One Punch Man",
     image: "assets/images/One-Punch-Man/Superalloy-Darkshine-1.png",
+    model3d: "assets/Modelo3D/Superalloy-Darkshine.glb",
     description:
       "Herói profissional Classe S Rank 11, conhecido por seu corpo musculoso brilhante e resistência extrema.",
     details: {
@@ -8292,6 +8302,7 @@ const charactersData = [
     name: "IRELIA",
     category: "League of Legend",
     image: "assets/images/lol/Irelia-1.png",
+    model3d: "assets/Modelo3D/Irelia.glb",
     description:
       "A Dançarina das Lâminas de Ionia, mestra das lâminas flutuantes e defensora fervorosa de sua terra natal. Após a invasão noxiana, liderou a resistência ioniana utilizando suas lâminas familiares que controla telecineticamente.",
     details: {
@@ -9799,3 +9810,7 @@ const charactersData = [
     },
   },
 ];
+
+
+
+

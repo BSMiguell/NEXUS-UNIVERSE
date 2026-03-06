@@ -63,8 +63,16 @@
 
     this.elements = {};
     this.pageTransitionInProgress = false;
+    this.previousFocusedElementBefore3d = null;
+    this.trap3dFocus = null;
     this.on3dOverlayKeydown = (e) => {
-      if (e.key === "Escape") this.close3dOverlay();
+      if (e.key === "Escape") {
+        this.close3dOverlay();
+        return;
+      }
+      if (e.key === "Tab" && typeof this.trap3dFocus === "function") {
+        this.trap3dFocus(e);
+      }
     };
     this.init();
   }
@@ -111,6 +119,18 @@
           isAnimated: false,
           type: "combat",
         },
+        {
+          label: "Forma Harald",
+          path: "assets/Modelo3D/Loki-Versions/Loki-Harald.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Preso",
+          path: "assets/Modelo3D/Loki-Versions/Loki-Preso.glb",
+          isAnimated: false,
+          type: "skin",
+        },
       ];
     }
 
@@ -130,10 +150,46 @@
           type: "skin",
         },
         {
+          label: "Versao 4",
+          path: "assets/Modelo3D/Aatrox-Versions/Aatrox-4+3d+model.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
           label: "Animado",
           path: "assets/Modelo3D/Aatrox-Versions/Aatrox-Animated/Animation_Aatrox_Walking_withSkin.glb",
           isAnimated: true,
           type: "animated",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("KAIDO")) {
+      return [
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
+        {
+          label: "Forma Hibrida",
+          path: "assets/Modelo3D/Kaido-Versions/kaido-forma-hibrida.glb",
+          isAnimated: false,
+          type: "combat",
+        },
+        {
+          label: "Forma Dragao",
+          path: "assets/Modelo3D/Kaido-Versions/Kaido-Foma-Dragão.glb",
+          isAnimated: false,
+          type: "combat",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("GAROU")) {
+      return [
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
+        {
+          label: "Cosmico",
+          path: "assets/Modelo3D/Garou-Versions/Gaoru-Cosmico.glb",
+          isAnimated: false,
+          type: "combat",
         },
       ];
     }
@@ -149,7 +205,17 @@
   close3dOverlay() {
     const overlay = document.getElementById("threeDOverlay");
     if (overlay) overlay.remove();
+    this.trap3dFocus = null;
+    document.body.classList.remove("modal-open");
     document.removeEventListener("keydown", this.on3dOverlayKeydown);
+    if (
+      this.previousFocusedElementBefore3d &&
+      document.contains(this.previousFocusedElementBefore3d) &&
+      typeof this.previousFocusedElementBefore3d.focus === "function"
+    ) {
+      this.previousFocusedElementBefore3d.focus();
+    }
+    this.previousFocusedElementBefore3d = null;
   }
 
   encodeModelAssetPath(assetPath) {
@@ -214,6 +280,7 @@
       const label = version?.label || `Versao ${index + 1}`;
       const path = version?.path || modelUrl;
       const isAnimated = Boolean(version?.isAnimated);
+      const thumbnail = version?.thumbnail || version?.thumb || character?.image || "";
       const normalizedType = String(version?.type || (isAnimated ? "animated" : "static"))
         .toLowerCase()
         .trim();
@@ -222,6 +289,7 @@
         id: `version-${index}`,
         label,
         path,
+        thumbnail,
         isAnimated,
         type: normalizedType || "static",
         searchText: `${label} ${normalizedType}`.toLowerCase(),
@@ -234,6 +302,7 @@
         id: "version-0",
         label: "Padrao",
         path: modelUrl,
+        thumbnail: character?.image || "",
         isAnimated: false,
         type: "static",
         searchText: "padrao static",
@@ -242,20 +311,38 @@
     const title = character?.name || "MODELO 3D";
     const safeModelUrl = this.encodeModelAssetPath(defaultVersion.path || modelUrl);
 
+    this.previousFocusedElementBefore3d = document.activeElement;
+
     let overlay = document.getElementById("threeDOverlay");
-    if (!overlay) {
-      overlay = document.createElement("div");
-      overlay.id = "threeDOverlay";
-      overlay.innerHTML = `
-        <div class="three-d-panel">
-          <div class="three-d-toolbar">
-            <div class="three-d-heading">
-              <h3 class="three-d-title">${title}</h3>
-              <p class="three-d-subtitle">Selecione a versao do modelo 3D</p>
-            </div>
-            <button class="close-3d" aria-label="Fechar 3D">&times;</button>
+    if (overlay) overlay.remove();
+
+    const isTouchPrimary = window.matchMedia("(pointer: coarse)").matches;
+    const touchHint = "1 dedo gira. 2 dedos para zoom e mover.";
+    const desktopHint = "Arraste para girar, scroll para zoom e botao direito para mover.";
+
+    overlay = document.createElement("div");
+    overlay.id = "threeDOverlay";
+    overlay.innerHTML = `
+      <div class="three-d-panel" role="dialog" aria-modal="true" aria-labelledby="threeDTitle" aria-describedby="threeDHint" tabindex="-1">
+        <div class="three-d-toolbar">
+          <div class="three-d-heading">
+            <h3 class="three-d-title" id="threeDTitle">${title}</h3>
+            <p class="three-d-subtitle">Selecione a versao do modelo 3D</p>
           </div>
-          <div class="three-d-versions-block">
+          <div class="three-d-toolbar-actions">
+            <button class="three-d-action-btn three-d-toggle-rotate" type="button" aria-pressed="true" aria-label="Alternar auto-rotacao">
+              <i class="fas fa-sync-alt" aria-hidden="true"></i>
+              Auto-rotacao
+            </button>
+            <button class="three-d-action-btn three-d-reset-view" type="button" aria-label="Resetar camera">
+              <i class="fas fa-crosshairs" aria-hidden="true"></i>
+              Resetar camera
+            </button>
+            <button class="close-3d" aria-label="Fechar visualizador 3D">&times;</button>
+          </div>
+        </div>
+        <div class="three-d-layout">
+          <aside class="three-d-versions-block">
             <div class="three-d-versions-meta">
               <span class="three-d-meta-chip" id="threeDVersionCount"></span>
               <span class="three-d-meta-chip is-active" id="threeDActiveVersion"></span>
@@ -286,30 +373,139 @@
             <p class="three-d-empty is-hidden" id="threeDEmptyState">
               Nenhuma versao encontrada para esse filtro.
             </p>
-          </div>
-          <model-viewer id="threeDViewer" src="${safeModelUrl}" alt="Modelo 3D" auto-rotate camera-controls style="width:80vw; height:80vh;"></model-viewer>
+          </aside>
+          <section class="three-d-stage">
+            <div class="three-d-stage-hint" id="threeDHint">
+              <i class="fas fa-hand-paper" aria-hidden="true"></i>
+              ${isTouchPrimary ? touchHint : desktopHint}
+            </div>
+            <div class="three-d-viewer-shell is-loading" aria-busy="true">
+              <div class="three-d-status-overlay three-d-loading" id="threeDLoading" role="status" aria-live="polite">
+                <div class="three-d-spinner" aria-hidden="true"></div>
+                <p>Carregando modelo 3D...</p>
+              </div>
+              <div class="three-d-status-overlay three-d-error is-hidden" id="threeDErrorState" role="alert">
+                <p>Falha ao carregar o modelo.</p>
+                <button class="three-d-retry-btn" id="threeDRetryBtn" type="button">Tentar novamente</button>
+              </div>
+              <model-viewer
+                id="threeDViewer"
+                src="${safeModelUrl}"
+                alt="Modelo 3D"
+                auto-rotate
+                camera-controls
+                interaction-prompt="auto">
+              </model-viewer>
+            </div>
+          </section>
         </div>
-      `;
-      document.body.appendChild(overlay);
-      const closeBtn = overlay.querySelector(".close-3d");
-      if (closeBtn) {
-        closeBtn.addEventListener("click", () => this.close3dOverlay());
-      }
-      document.addEventListener("keydown", this.on3dOverlayKeydown);
-    } else {
-      const viewer = overlay.querySelector("#threeDViewer");
-      const titleEl = overlay.querySelector(".three-d-title");
-      if (viewer) viewer.setAttribute("src", safeModelUrl);
-      if (titleEl) titleEl.textContent = title;
-      overlay.classList.remove("hidden");
-    }
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    document.body.classList.add("modal-open");
 
     const viewer = overlay.querySelector("#threeDViewer");
+    const viewerShell = overlay.querySelector(".three-d-viewer-shell");
+    const loadingState = overlay.querySelector("#threeDLoading");
+    const errorState = overlay.querySelector("#threeDErrorState");
+    const retryBtn = overlay.querySelector("#threeDRetryBtn");
     const versionsContainer = overlay.querySelector("#threeDVersions");
     const searchInput = overlay.querySelector("#threeDVersionSearch");
     const filterGroup = overlay.querySelector("#threeDFilterGroup");
     const emptyState = overlay.querySelector("#threeDEmptyState");
-    if (!viewer || !versionsContainer || !searchInput || !filterGroup || !emptyState) return;
+    const closeBtn = overlay.querySelector(".close-3d");
+    const resetViewBtn = overlay.querySelector(".three-d-reset-view");
+    const autoRotateBtn = overlay.querySelector(".three-d-toggle-rotate");
+    const panel = overlay.querySelector(".three-d-panel");
+    if (
+      !viewer ||
+      !viewerShell ||
+      !loadingState ||
+      !errorState ||
+      !retryBtn ||
+      !versionsContainer ||
+      !searchInput ||
+      !filterGroup ||
+      !emptyState ||
+      !closeBtn ||
+      !resetViewBtn ||
+      !autoRotateBtn ||
+      !panel
+    ) {
+      return;
+    }
+
+    const showViewerLoading = () => {
+      viewerShell.classList.add("is-loading");
+      viewerShell.setAttribute("aria-busy", "true");
+      loadingState.classList.remove("is-hidden");
+      errorState.classList.add("is-hidden");
+    };
+
+    const hideViewerLoading = () => {
+      viewerShell.classList.remove("is-loading");
+      viewerShell.setAttribute("aria-busy", "false");
+      loadingState.classList.add("is-hidden");
+    };
+
+    const showViewerError = () => {
+      hideViewerLoading();
+      errorState.classList.remove("is-hidden");
+    };
+
+    closeBtn.addEventListener("click", () => this.close3dOverlay());
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) this.close3dOverlay();
+    });
+    resetViewBtn.addEventListener("click", () => {
+      viewer.setAttribute("camera-orbit", "0deg 75deg auto");
+      viewer.setAttribute("camera-target", "auto auto auto");
+      viewer.setAttribute("field-of-view", "30deg");
+    });
+    autoRotateBtn.addEventListener("click", () => {
+      const isEnabled = viewer.hasAttribute("auto-rotate");
+      if (isEnabled) {
+        viewer.removeAttribute("auto-rotate");
+      } else {
+        viewer.setAttribute("auto-rotate", "");
+      }
+      autoRotateBtn.setAttribute("aria-pressed", String(!isEnabled));
+    });
+    retryBtn.addEventListener("click", () => {
+      showViewerLoading();
+      const currentSrc = viewer.getAttribute("src") || "";
+      viewer.setAttribute("src", "");
+      requestAnimationFrame(() => {
+        viewer.setAttribute("src", currentSrc);
+      });
+    });
+
+    viewer.addEventListener("load", hideViewerLoading);
+    viewer.addEventListener("error", showViewerError);
+
+    const focusableSelector =
+      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    this.trap3dFocus = (event) => {
+      const focusables = Array.from(overlay.querySelectorAll(focusableSelector));
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+
+      if (!overlay.contains(active)) {
+        event.preventDefault();
+        first.focus();
+      } else if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", this.on3dOverlayKeydown);
+    panel.focus();
 
     let activeModelPath = defaultVersion.path;
     let activeFilter = "all";
@@ -319,6 +515,7 @@
       if (!version) return;
       activeModelPath = version.path;
       this.setViewerAnimationState(viewer, Boolean(version.isAnimated));
+      showViewerLoading();
       viewer.setAttribute("src", this.encodeModelAssetPath(version.path));
       this.updateThreeDModelStatus(
         overlay,
@@ -353,8 +550,17 @@
               data-model-id="${version.id}"
               type="button"
             >
-              <span class="three-d-version-dot" aria-hidden="true"></span>
-              ${version.label}
+              <span class="three-d-version-thumb" aria-hidden="true">
+                ${
+                  version.thumbnail
+                    ? `<img src="${version.thumbnail}" alt="" loading="lazy" decoding="async" />`
+                    : '<span class="three-d-version-thumb-fallback"></span>'
+                }
+              </span>
+              <span class="three-d-version-content">
+                <span class="three-d-version-label">${version.label}</span>
+                <span class="three-d-version-kind">${version.type}</span>
+              </span>
               ${version.isAnimated ? '<span class="three-d-version-tag">animado</span>' : ""}
             </button>
           `,
@@ -398,6 +604,7 @@
       renderVersionButtons();
     });
 
+    showViewerLoading();
     renderVersionButtons();
   }
   async init() {
@@ -1519,7 +1726,7 @@
     });
 
     videoEl.muted = true;
-    setActiveMedia("video");
+    setActiveMedia("image");
     updateVideoButtons();
   }
 

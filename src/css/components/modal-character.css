@@ -472,11 +472,14 @@
   justify-content: center;
   z-index: 10000;
   backdrop-filter: blur(8px);
+  padding: 12px;
+  box-sizing: border-box;
 }
 
 #threeDOverlay .three-d-panel {
   position: relative;
-  width: min(92vw, 1200px);
+  width: min(94vw, 1280px);
+  max-height: 94vh;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -487,6 +490,8 @@
   box-shadow:
     0 20px 70px rgba(0, 0, 0, 0.65),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  animation: modal3dEnter 0.32s ease-out;
 }
 
 #threeDOverlay .three-d-toolbar {
@@ -494,6 +499,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+#threeDOverlay .three-d-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 #threeDOverlay .three-d-heading {
@@ -505,9 +518,11 @@
 
 #threeDOverlay .three-d-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.08rem;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
@@ -516,10 +531,46 @@
 
 #threeDOverlay .three-d-subtitle {
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+#threeDOverlay .three-d-action-btn {
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+#threeDOverlay .three-d-action-btn:hover {
+  border-color: rgba(var(--quantum-primary-rgb), 0.55);
+  background: rgba(var(--quantum-primary-rgb), 0.18);
+}
+
+#threeDOverlay .three-d-action-btn[aria-pressed="false"] {
+  opacity: 0.72;
+}
+
+#threeDOverlay .three-d-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
 }
 
 #threeDOverlay .three-d-versions-block {
@@ -578,26 +629,28 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--text-secondary);
-  padding: 5px 11px;
+  min-height: 36px;
+  padding: 0 12px;
   font-family: "Rajdhani", sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: all 0.22s ease;
 }
 
 #threeDOverlay .three-d-filter-btn:hover {
   color: var(--text-primary);
   border-color: rgba(var(--quantum-primary-rgb), 0.4);
+  transform: translateY(-1px);
 }
 
 #threeDOverlay .three-d-filter-btn.active {
   color: var(--text-primary);
   border-color: rgba(var(--quantum-primary-rgb), 0.6);
   background: rgba(var(--quantum-primary-rgb), 0.15);
-  box-shadow: 0 0 10px rgba(var(--quantum-primary-rgb), 0.22);
+  box-shadow: 0 8px 18px rgba(var(--quantum-primary-rgb), 0.26);
 }
 
 #threeDOverlay .three-d-versions-meta {
@@ -617,7 +670,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
 }
 
 #threeDOverlay .three-d-meta-chip.is-active {
@@ -648,30 +701,73 @@
 }
 
 #threeDOverlay .three-d-version-btn {
-  border: 1px solid var(--border-primary);
-  background: linear-gradient(160deg, rgba(20, 20, 27, 0.95), rgba(8, 8, 12, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(160deg, rgba(24, 24, 32, 0.94), rgba(8, 8, 12, 0.94));
   color: var(--text-primary);
-  border-radius: 999px;
-  padding: 7px 12px;
+  border-radius: 14px;
+  min-height: 52px;
+  padding: 6px 10px 6px 8px;
   cursor: pointer;
   font-family: "Rajdhani", sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  transition: var(--transition-fast);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex: 0 0 auto;
   white-space: nowrap;
+  transform-origin: center;
 }
 
-#threeDOverlay .three-d-version-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.35);
+#threeDOverlay .three-d-version-thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#threeDOverlay .three-d-version-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#threeDOverlay .three-d-version-thumb-fallback {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--quantum-primary-rgb), 0.9), rgba(var(--quantum-primary-rgb), 0.2));
+}
+
+#threeDOverlay .three-d-version-content {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1px;
+  min-width: 0;
+}
+
+#threeDOverlay .three-d-version-label {
+  line-height: 1.05;
+  font-size: 0.75rem;
+}
+
+#threeDOverlay .three-d-version-kind {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
 }
 
 #threeDOverlay .three-d-version-tag {
@@ -686,18 +782,23 @@
 
 #threeDOverlay .three-d-version-btn:hover {
   border-color: var(--quantum-primary);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.36);
 }
 
 #threeDOverlay .three-d-version-btn.active {
   border-color: var(--quantum-primary);
-  box-shadow: 0 0 18px rgba(var(--quantum-primary-rgb), 0.45);
-  background: linear-gradient(160deg, rgba(26, 26, 35, 0.96), rgba(12, 12, 18, 0.96));
+  box-shadow: 0 0 0 1px rgba(var(--quantum-primary-rgb), 0.5), 0 12px 26px rgba(var(--quantum-primary-rgb), 0.22);
+  background: linear-gradient(160deg, rgba(30, 30, 42, 0.96), rgba(12, 12, 18, 0.96));
 }
 
-#threeDOverlay .three-d-version-btn.active .three-d-version-dot {
-  background: var(--quantum-primary);
-  box-shadow: 0 0 8px var(--quantum-primary);
+#threeDOverlay .three-d-version-btn.active .three-d-version-thumb {
+  border-color: rgba(var(--quantum-primary-rgb), 0.8);
+  box-shadow: 0 0 0 1px rgba(var(--quantum-primary-rgb), 0.45), 0 0 16px rgba(var(--quantum-primary-rgb), 0.25);
+}
+
+#threeDOverlay .three-d-version-btn.active .three-d-version-kind {
+  color: rgba(var(--quantum-primary-rgb), 0.95);
 }
 
 #threeDOverlay .three-d-empty {
@@ -711,11 +812,73 @@
   display: none;
 }
 
-#threeDOverlay model-viewer {
-  width: 100% !important;
-  height: min(74vh, 780px) !important;
+#threeDOverlay .three-d-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+#threeDOverlay .three-d-stage-hint {
+  margin: 0;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.74);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+#threeDOverlay .three-d-viewer-shell {
+  position: relative;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  min-height: min(66vh, 760px);
+}
+
+#threeDOverlay .three-d-status-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 2;
+  background: rgba(5, 5, 8, 0.84);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+#threeDOverlay .three-d-status-overlay.is-hidden {
+  display: none;
+}
+
+#threeDOverlay .three-d-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--quantum-primary);
+  border-radius: 50%;
+  animation: spin3d 0.8s linear infinite;
+}
+
+#threeDOverlay .three-d-retry-btn {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--quantum-primary-rgb), 0.55);
+  background: rgba(var(--quantum-primary-rgb), 0.16);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+}
+
+#threeDOverlay model-viewer {
+  width: 100% !important;
+  height: min(66vh, 760px) !important;
+  border-radius: 0;
+  border: none;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   background:
     radial-gradient(circle at 30% 20%, rgba(var(--quantum-primary-rgb), 0.08), transparent 45%),
@@ -723,14 +886,14 @@
 }
 
 #threeDOverlay .close-3d {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 12px;
   color: var(--text-primary);
   cursor: pointer;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   line-height: 1;
   flex: 0 0 auto;
   transition: var(--transition-fast);
@@ -744,23 +907,36 @@
 }
 
 @media (max-width: 768px) {
+  #threeDOverlay {
+    padding: 0;
+  }
+
   #threeDOverlay .three-d-panel {
-    width: min(96vw, 1200px);
-    padding: 12px;
-    border-radius: 14px;
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    padding: 10px;
+    border-radius: 0;
+    border: none;
   }
 
   #threeDOverlay .three-d-toolbar {
-    align-items: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #threeDOverlay .three-d-toolbar-actions {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   #threeDOverlay .three-d-title {
-    font-size: 0.92rem;
-    max-width: 74vw;
+    font-size: 0.8rem;
+    max-width: 96vw;
   }
 
   #threeDOverlay .three-d-subtitle {
-    font-size: 0.68rem;
+    font-size: 0.64rem;
   }
 
   #threeDOverlay .three-d-versions-meta {
@@ -773,9 +949,22 @@
   }
 
   #threeDOverlay .three-d-version-btn {
-    font-size: 0.7rem;
-    padding: 6px 10px;
+    min-height: 48px;
+    padding: 5px 8px;
     gap: 6px;
+  }
+
+  #threeDOverlay .three-d-version-thumb {
+    width: 34px;
+    height: 34px;
+  }
+
+  #threeDOverlay .three-d-version-label {
+    font-size: 0.7rem;
+  }
+
+  #threeDOverlay .three-d-version-kind {
+    font-size: 0.56rem;
   }
 
   #threeDOverlay .three-d-search-wrap {
@@ -794,8 +983,29 @@
     flex: 0 0 auto;
   }
 
+  #threeDOverlay .three-d-viewer-shell {
+    min-height: min(58dvh, 640px);
+  }
+
   #threeDOverlay model-viewer {
-    height: min(70vh, 640px) !important;
+    height: min(58dvh, 640px) !important;
+  }
+}
+
+@keyframes spin3d {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes modal3dEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
