@@ -22,6 +22,11 @@
       showModelsPage: false,
       showBattlePage: false,
       showBattle2dPage: false,
+      isSpaceMode: false,
+      modelsSearchTerm: "",
+      modelsCategory: "all",
+      modelsSort: "versions-desc",
+      modelsOnlyAnimated: false,
       modalOpenedFromFavorites: false,
       scrollPositionBeforeModal: 0,
       renderedCardsCount: 0,
@@ -80,7 +85,12 @@
 
   getModelVersionsForCharacter(character, fallbackModelUrl) {
     const defaultVersion = [
-      { label: "Padrao", path: fallbackModelUrl, isAnimated: false, type: "static" },
+      {
+        label: "Padrao",
+        path: fallbackModelUrl,
+        isAnimated: false,
+        type: "static",
+      },
     ];
     if (!character || !fallbackModelUrl) return defaultVersion;
 
@@ -210,6 +220,48 @@
           isAnimated: false,
           type: "skin",
         },
+        {
+          label: "Versao 3",
+          path: "assets/Modelo3D/Guts-Versions/Guts-3.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Animado",
+          path: "assets/Modelo3D/Guts-Versions/Guts-Animated/Guts-Andando.glb",
+          isAnimated: true,
+          type: "animated",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("DARIUS")) {
+      return [
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
+        {
+          label: "Mestre da Enterrada",
+          path: "assets/Modelo3D/Darius-Versions/Darius-Mestre-da-Enterrada.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Florescer Espiritual",
+          path: "assets/Modelo3D/Darius-Versions/Darius-Florescer-Espiritual.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Deus Rei",
+          path: "assets/Modelo3D/Darius-Versions/Deus-Rei Darius.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Deus Rei Divino",
+          path: "assets/Modelo3D/Darius-Versions/Deus-Rei Darius-Divino.glb",
+          isAnimated: false,
+          type: "skin",
+        },
       ];
     }
 
@@ -219,6 +271,42 @@
         {
           label: "Base",
           path: "assets/Modelo3D/Orochi-Versions/Orochi-Base.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("GOLDEN SPERM")) {
+      return [
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
+        {
+          label: "Platinum",
+          path: "assets/Modelo3D/Golden-Sperm/platinum-sperm.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+      ];
+    }
+
+    if (normalizedName.includes("SOLARIA")) {
+      return [
+        { label: "Padrao", path: base, isAnimated: false, type: "static" },
+        {
+          label: "Versao 2",
+          path: "assets/Modelo3D/Solaria+Butterfly/Solaria-Butterfly-2.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Versao 3",
+          path: "assets/Modelo3D/Solaria+Butterfly/Solaria-Butterfly-3.glb",
+          isAnimated: false,
+          type: "skin",
+        },
+        {
+          label: "Versao 4",
+          path: "assets/Modelo3D/Solaria+Butterfly/Solaria-Butterfly-4.glb",
           isAnimated: false,
           type: "skin",
         },
@@ -311,8 +399,11 @@
       const label = version?.label || `Versao ${index + 1}`;
       const path = version?.path || modelUrl;
       const isAnimated = Boolean(version?.isAnimated);
-      const thumbnail = version?.thumbnail || version?.thumb || character?.image || "";
-      const normalizedType = String(version?.type || (isAnimated ? "animated" : "static"))
+      const thumbnail =
+        version?.thumbnail || version?.thumb || character?.image || "";
+      const normalizedType = String(
+        version?.type || (isAnimated ? "animated" : "static"),
+      )
         .toLowerCase()
         .trim();
 
@@ -327,20 +418,20 @@
       };
     });
 
-    const defaultVersion =
-      versions[0] ||
-      {
-        id: "version-0",
-        label: "Padrao",
-        path: modelUrl,
-        thumbnail: character?.image || "",
-        isAnimated: false,
-        type: "static",
-        searchText: "padrao static",
-      };
+    const defaultVersion = versions[0] || {
+      id: "version-0",
+      label: "Padrao",
+      path: modelUrl,
+      thumbnail: character?.image || "",
+      isAnimated: false,
+      type: "static",
+      searchText: "padrao static",
+    };
 
     const title = character?.name || "MODELO 3D";
-    const safeModelUrl = this.encodeModelAssetPath(defaultVersion.path || modelUrl);
+    const safeModelUrl = this.encodeModelAssetPath(
+      defaultVersion.path || modelUrl,
+    );
 
     this.previousFocusedElementBefore3d = document.activeElement;
 
@@ -349,7 +440,8 @@
 
     const isTouchPrimary = window.matchMedia("(pointer: coarse)").matches;
     const touchHint = "1 dedo gira. 2 dedos para zoom e mover.";
-    const desktopHint = "Arraste para girar, scroll para zoom e botao direito para mover.";
+    const desktopHint =
+      "Arraste para girar, scroll para zoom e botao direito para mover.";
 
     overlay = document.createElement("div");
     overlay.id = "threeDOverlay";
@@ -517,7 +609,9 @@
     const focusableSelector =
       'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
     this.trap3dFocus = (event) => {
-      const focusables = Array.from(overlay.querySelectorAll(focusableSelector));
+      const focusables = Array.from(
+        overlay.querySelectorAll(focusableSelector),
+      );
       if (!focusables.length) return;
 
       const first = focusables[0];
@@ -559,9 +653,11 @@
 
     const getVisibleVersions = () => {
       return versions.filter((version) => {
-        const matchesFilter = activeFilter === "all" || version.type === activeFilter;
+        const matchesFilter =
+          activeFilter === "all" || version.type === activeFilter;
         const normalizedSearch = searchTerm.toLowerCase().trim();
-        const matchesSearch = !normalizedSearch || version.searchText.includes(normalizedSearch);
+        const matchesSearch =
+          !normalizedSearch || version.searchText.includes(normalizedSearch);
         return matchesFilter && matchesSearch;
       });
     };
@@ -601,22 +697,32 @@
       emptyState.classList.toggle("is-hidden", visibleVersions.length > 0);
 
       if (!nextSelected) {
-        this.updateThreeDModelStatus(overlay, "Sem resultado", false, 0, versions.length);
+        this.updateThreeDModelStatus(
+          overlay,
+          "Sem resultado",
+          false,
+          0,
+          versions.length,
+        );
         return;
       }
 
       applyVersionToViewer(nextSelected, visibleVersions.length);
 
-      versionsContainer.querySelectorAll(".three-d-version-btn").forEach((btn, _idx, all) => {
-        btn.addEventListener("click", () => {
-          const versionId = btn.dataset.modelId;
-          const selectedVersion = versions.find((version) => version.id === versionId);
-          if (!selectedVersion) return;
-          applyVersionToViewer(selectedVersion, visibleVersions.length);
-          all.forEach((otherBtn) => otherBtn.classList.remove("active"));
-          btn.classList.add("active");
+      versionsContainer
+        .querySelectorAll(".three-d-version-btn")
+        .forEach((btn, _idx, all) => {
+          btn.addEventListener("click", () => {
+            const versionId = btn.dataset.modelId;
+            const selectedVersion = versions.find(
+              (version) => version.id === versionId,
+            );
+            if (!selectedVersion) return;
+            applyVersionToViewer(selectedVersion, visibleVersions.length);
+            all.forEach((otherBtn) => otherBtn.classList.remove("active"));
+            btn.classList.add("active");
+          });
         });
-      });
     };
 
     filterGroup.querySelectorAll(".three-d-filter-btn").forEach((filterBtn) => {
@@ -639,11 +745,12 @@
     renderVersionButtons();
   }
   async init() {
-    console.log("ðŸš€ Inicializando Nexus Universe 13/10...");
+    console.log("🚀 Inicializando Nexus Universe 13/10...");
 
     await this.preloadFirstFourImages();
 
     this.cacheElements();
+    this.applySpaceModeState();
     this.hideBattle2dPage();
     this.setupEventListeners();
     this.renderFilters();
@@ -657,7 +764,7 @@
 
     this.handlePageRefresh();
 
-    console.log("âœ… Nexus Universe 13/10 inicializado!");
+    console.log("✅ Nexus Universe 13/10 inicializado!");
   }
 
   handlePageRefresh() {
@@ -695,7 +802,7 @@
         this.audio.play("click");
       });
 
-      // Fechar menu ao clicar em qualquer botÃ£o de controle
+      // Fechar menu ao clicar em qualquer botão de controle
       document
         .querySelectorAll(".control-buttons-container .quantum-control-btn")
         .forEach((btn) => {
@@ -710,18 +817,18 @@
   }
 
   async preloadFirstFourImages() {
-    console.log("ðŸ”¥ PrÃ©-carregando as primeiras 4 imagens...");
+    console.log("🔥 Pré-carregando as primeiras 4 imagens...");
     const firstFour = charactersData.slice(0, 4);
     const promises = firstFour.map(async (character) => {
       try {
         const startTime = performance.now();
         await this.cache.cacheImage(character.image);
         const loadTime = performance.now() - startTime;
-        console.log(`âœ… ${character.name}: ${loadTime.toFixed(0)}ms`);
+        console.log(`✅ ${character.name}: ${loadTime.toFixed(0)}ms`);
         return true;
       } catch (error) {
         console.warn(
-          `âš ï¸ Falha ao prÃ©-carregar ${character.name}: ${character.image}`,
+          `⚠️ Falha ao pré-carregar ${character.name}: ${character.image}`,
         );
         return false;
       }
@@ -731,7 +838,7 @@
     const successCount = results.filter(
       (r) => r.status === "fulfilled" && r.value,
     ).length;
-    console.log(`ðŸ“Š ${successCount}/4 imagens prÃ©-carregadas com sucesso`);
+    console.log(`📊 ${successCount}/4 imagens pré-carregadas com sucesso`);
   }
 
   cacheElements() {
@@ -785,11 +892,17 @@
       modelsTotalCount: document.getElementById("modelsTotalCount"),
       modelsVersionsCount: document.getElementById("modelsVersionsCount"),
       modelsCategoriesCount: document.getElementById("modelsCategoriesCount"),
+      modelsResultCount: document.getElementById("modelsResultCount"),
+      modelsSearchInput: document.getElementById("modelsSearchInput"),
+      modelsCategoryFilter: document.getElementById("modelsCategoryFilter"),
+      modelsSortSelect: document.getElementById("modelsSortSelect"),
+      modelsOnlyAnimated: document.getElementById("modelsOnlyAnimated"),
       searchModal: document.getElementById("searchModal"),
       searchToggle: document.getElementById("searchToggle"),
       searchClose: document.getElementById("searchClose"),
       searchInput: document.getElementById("searchInput"),
       searchResults: document.getElementById("searchResults"),
+      spaceToggle: document.getElementById("spaceToggle"),
       battleToggle: document.getElementById("battleToggle"),
       menuToggle: document.getElementById("menuToggle"),
       controlButtonsContainer: document.getElementById(
@@ -862,6 +975,35 @@
     controlButtons.classList.remove("show");
     menuToggle.setAttribute("aria-label", "Abrir menu de controles");
     menuToggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+  }
+
+  applySpaceModeState() {
+    const spaceToggle = this.elements.spaceToggle;
+    document.body.classList.toggle("space-only-mode", this.state.isSpaceMode);
+
+    if (!spaceToggle) return;
+
+    const iconClass = this.state.isSpaceMode ? "fa-eye-slash" : "fa-star";
+    spaceToggle.classList.toggle("active", this.state.isSpaceMode);
+    spaceToggle.setAttribute("aria-pressed", String(this.state.isSpaceMode));
+    spaceToggle.setAttribute(
+      "aria-label",
+      this.state.isSpaceMode
+        ? "Sair do modo visualizacao do espaco"
+        : "Visualizar apenas o espaco",
+    );
+    spaceToggle.innerHTML = `<i class="fas ${iconClass}" aria-hidden="true"></i>`;
+  }
+
+  toggleSpaceMode() {
+    this.state.isSpaceMode = !this.state.isSpaceMode;
+
+    if (this.state.isSpaceMode) {
+      this.preparePageTransition();
+      this.closeControlMenu();
+    }
+
+    this.applySpaceModeState();
   }
 
   preparePageTransition() {
@@ -1013,7 +1155,7 @@
           this.goToPage(page);
         } else {
           this.elements.quantumInput.value = this.state.currentPage;
-          this.showToast("FREQUÃŠNCIA INVÃLIDA");
+          this.showToast("FREQUÊNCIA INVÁLIDA");
         }
       });
     }
@@ -1030,12 +1172,14 @@
         const enabled = this.audio.toggle();
         const icon = this.elements.soundIcon;
         icon.className = enabled ? "fas fa-volume-up" : "fas fa-volume-mute";
-        this.showToast(enabled ? "ðŸ”Š SONS ATIVADOS" : "ðŸ”‡ SONS DESATIVADOS");
+        this.showToast(
+          enabled ? "🔊 SONS ATIVADOS" : "🔇 SONS DESATIVADOS",
+        );
         if (enabled) this.audio.play("click");
       });
     }
 
-    // NOVO: BotÃ£o InÃ­cio
+    // NOVO: Botão Início
     if (this.elements.homeToggle) {
       this.elements.homeToggle.addEventListener("click", () => {
         this.showGalleryPage();
@@ -1073,6 +1217,13 @@
     if (this.elements.searchToggle) {
       this.elements.searchToggle.addEventListener("click", () => {
         this.openSearchModal();
+      });
+    }
+
+    if (this.elements.spaceToggle) {
+      this.elements.spaceToggle.addEventListener("click", () => {
+        this.toggleSpaceMode();
+        this.audio.play("click");
       });
     }
 
@@ -1114,6 +1265,37 @@
       this.elements.backToGalleryFromModels.addEventListener("click", () => {
         this.showGalleryPage();
         this.audio.play("click");
+      });
+    }
+
+    if (this.elements.modelsSearchInput) {
+      this.elements.modelsSearchInput.addEventListener(
+        "input",
+        debounce((event) => {
+          this.state.modelsSearchTerm = event.target.value || "";
+          if (this.state.showModelsPage) this.renderModelsPage();
+        }, 180),
+      );
+    }
+
+    if (this.elements.modelsCategoryFilter) {
+      this.elements.modelsCategoryFilter.addEventListener("change", (event) => {
+        this.state.modelsCategory = event.target.value || "all";
+        if (this.state.showModelsPage) this.renderModelsPage();
+      });
+    }
+
+    if (this.elements.modelsSortSelect) {
+      this.elements.modelsSortSelect.addEventListener("change", (event) => {
+        this.state.modelsSort = event.target.value || "versions-desc";
+        if (this.state.showModelsPage) this.renderModelsPage();
+      });
+    }
+
+    if (this.elements.modelsOnlyAnimated) {
+      this.elements.modelsOnlyAnimated.addEventListener("change", (event) => {
+        this.state.modelsOnlyAnimated = Boolean(event.target.checked);
+        if (this.state.showModelsPage) this.renderModelsPage();
       });
     }
 
@@ -1252,7 +1434,7 @@
         imgElement.classList.add("loaded");
       }
     } catch (error) {
-      console.warn(`NÃ£o foi possÃ­vel carregar: ${src}`);
+      console.warn(`Não foi possível carregar: ${src}`);
       imgElement.classList.add("error");
     }
   }
@@ -1273,7 +1455,7 @@
     );
     this.elements.filterMatrix.appendChild(allButton);
 
-    const maxVisibleFilters = 12;
+    const maxVisibleFilters = 16;
     const maxCategories = maxVisibleFilters - 1;
 
     categories.forEach((category, index) => {
@@ -1571,7 +1753,7 @@
       e.stopPropagation();
       this.setCategory(character.category);
       this.audio.play("click");
-      // ===== ALTERAÃ‡ÃƒO 1: Rolar atÃ© a seÃ§Ã£o de cards apÃ³s explorar =====
+      // ===== ALTERAÇÃO 1: Rolar até a seção de cards após explorar =====
       this.scrollToCardsSection();
     });
 
@@ -1656,7 +1838,7 @@
         </g>
 
         <text x="200" y="380" text-anchor="middle" fill="var(--text-secondary)" font-family="Arial" font-size="14" opacity="0.7">
-          ${hasFailed ? "IMAGEM NÃƒO ENCONTRADA" : "CARREGANDO..."}
+          ${hasFailed ? "IMAGEM NÃO ENCONTRADA" : "CARREGANDO..."}
         </text>
 
         ${
@@ -1854,7 +2036,7 @@
               </button>
               <button class="modal-media-toggle" data-media="video" aria-pressed="false">
                 <i class="fas fa-video"></i>
-                VÃDEO
+                VÍDEO
               </button>
               <button class="modal-media-action" data-media-action="play-pause" disabled>
                 <i class="fas fa-play"></i>
@@ -1886,7 +2068,7 @@
             <div class="modal-character-specs">
               <h3 class="modal-specs-title">
                 <i class="fas fa-chart-network"></i>
-                ESPECIFICAÃ‡Ã•ES QUÃ‚NTICAS
+                ESPECIFICAÇÕES QUÂNTICAS
               </h3>
               <div class="modal-specs-grid">
                 ${Object.entries(character.details || {})
@@ -1913,7 +2095,7 @@
               </button>
               <button class="modal-close-btn" onclick="window.gallery.closeModal()">
                 <i class="fas fa-times"></i>
-                FECHAR ANÃLISE
+                FECHAR ANÁLISE
               </button>
             </div>
           </div>
@@ -2025,7 +2207,7 @@
         <div class="search-no-results">
           <i class="fas fa-search"></i>
           <h3>DIGITE PARA PESQUISAR</h3>
-          <p>Digite o nome de um personagem para iniciar a busca quÃ¢ntica.</p>
+          <p>Digite o nome de um personagem para iniciar a busca quântica.</p>
         </div>
       `;
       return;
@@ -2034,8 +2216,8 @@
     resultsContainer.innerHTML = `
       <div class="search-no-results">
         <div class="loading-ring" style="width: 60px; height: 60px; margin: 0 auto 20px;"></div>
-        <h3>ANALISANDO REALIDADE QUÃ‚NTICA...</h3>
-        <p>Buscando correspondÃªncias na base de dados.</p>
+        <h3>ANALISANDO REALIDADE QUÂNTICA...</h3>
+        <p>Buscando correspondências na base de dados.</p>
       </div>
     `;
 
@@ -2048,7 +2230,7 @@
         <div class="search-no-results">
           <i class="fas fa-search-minus"></i>
           <h3>NENHUM PERSONAGEM ENCONTRADO</h3>
-          <p>Tente digitar o nome de forma diferente ou usar termos mais genÃ©ricos.</p>
+          <p>Tente digitar o nome de forma diferente ou usar termos mais genéricos.</p>
       </div>
       `;
       return;
@@ -2081,8 +2263,8 @@
                 }"></i>
                 ${
                   character.matchType === "exact"
-                    ? "CorrespondÃªncia exata"
-                    : "CorrespondÃªncia aproximada"
+                    ? "Correspondência exata"
+                    : "Correspondência aproximada"
                 }
               </div>
             </div>
@@ -2150,8 +2332,8 @@
     this.filterAndSort();
     this.showToast(
       category === "all"
-        ? "ðŸŒŒ EXPLORANDO TODO O MULTIVERSO NEXUS 13/10!"
-        : `ðŸ” FILTRO QUÃ‚NTICO: ${categoryNames[category] || category}`,
+        ? "🌌 EXPLORANDO TODO O MULTIVERSO NEXUS 13/10!"
+        : `🔍 FILTRO QUÂNTICO: ${categoryNames[category] || category}`,
     );
 
     this.closeModal();
@@ -2165,12 +2347,12 @@
   setSort(sortType, silent = false) {
     this.state.currentSort = sortType;
     const labels = {
-      original: "ORDEM QUÃ‚NTICA",
+      original: "ORDEM QUÂNTICA",
       "name-asc": "NOME (A-Z)",
       "name-desc": "NOME (Z-A)",
       "category-asc": "CATEGORIA (A-Z)",
       "category-desc": "CATEGORIA (Z-A)",
-      random: "ALEATÃ“RIO QUÃ‚NTICO",
+      random: "ALEATÓRIO QUÂNTICO",
     };
 
     if (this.elements.sortText) {
@@ -2190,7 +2372,7 @@
     });
 
     this.filterAndSort();
-    this.showToast(`ðŸ“Š ORDENAÃ‡ÃƒO: ${labels[sortType]}`);
+    this.showToast(`📊 ORDENAÇÃO: ${labels[sortType]}`);
 
     if (!silent) {
       localStorage.setItem("nexus_last_sort_13", sortType);
@@ -2203,7 +2385,7 @@
     this.state.currentPage = 1;
 
     if (this.elements.sortText) {
-      this.elements.sortText.textContent = "ORDEM QUÃ‚NTICA";
+      this.elements.sortText.textContent = "ORDEM QUÂNTICA";
     }
 
     if (this.elements.sortOptionsQuantum) {
@@ -2224,7 +2406,7 @@
 
     this.filterAndSort();
     this.showToast(
-      "ðŸ”„ REALIDADE REINICIADA â€¢ FILTROS QUÃ‚NTICOS RESETADOS 13/10",
+      "🔄 REALIDADE REINICIADA • FILTROS QUÂNTICOS RESETADOS 13/10",
     );
     this.closeModal();
 
@@ -2250,7 +2432,9 @@
     this.renderCharacters();
     this.scrollToCardsSection();
 
-    this.showToast(`ðŸš€ SALTO QUÃ‚NTICO: FREQUÃŠNCIA ${page} DE ${totalPages}`);
+    this.showToast(
+      `🚀 SALTO QUÂNTICO: FREQUÊNCIA ${page} DE ${totalPages}`,
+    );
 
     if (!silent) {
       localStorage.setItem("nexus_last_page_13", page.toString());
@@ -2348,6 +2532,118 @@
       .sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  getModelMetricsForCharacter(character) {
+    const versions =
+      this.getModelVersionsForCharacter(character, character.model3d) || [];
+    const versionsCount = versions.length || 1;
+    const animatedCount = versions.filter((version) =>
+      Boolean(version?.isAnimated),
+    ).length;
+    const categoryLabel =
+      categoryNames[character.category] || character.category;
+
+    return {
+      versionsCount,
+      animatedCount,
+      categoryLabel,
+    };
+  }
+
+  populateModelsCategoryFilter(charactersWithModel) {
+    const categoryFilter = this.elements.modelsCategoryFilter;
+    if (!categoryFilter) return;
+
+    const categories = Array.from(
+      new Set(
+        charactersWithModel
+          .map((character) => character.category)
+          .filter(Boolean),
+      ),
+    ).sort((a, b) => {
+      const labelA = categoryNames[a] || a;
+      const labelB = categoryNames[b] || b;
+      return labelA.localeCompare(labelB);
+    });
+
+    const currentValue = this.state.modelsCategory || "all";
+    const options = ['<option value="all">Todos os universos</option>'].concat(
+      categories.map((category) => {
+        const label = categoryNames[category] || category;
+        return `<option value="${category}">${label}</option>`;
+      }),
+    );
+
+    categoryFilter.innerHTML = options.join("");
+
+    const hasCurrentValue =
+      categories.includes(currentValue) || currentValue === "all";
+    this.state.modelsCategory = hasCurrentValue ? currentValue : "all";
+    categoryFilter.value = this.state.modelsCategory;
+  }
+
+  getFilteredModelsForPage(charactersWithModel) {
+    const normalizedSearch = String(this.state.modelsSearchTerm || "")
+      .toLowerCase()
+      .trim();
+    const selectedCategory = this.state.modelsCategory || "all";
+    const onlyAnimated = Boolean(this.state.modelsOnlyAnimated);
+    const sortMode = this.state.modelsSort || "versions-desc";
+
+    const mapped = charactersWithModel.map((character) => {
+      const metrics = this.getModelMetricsForCharacter(character);
+      const versionLabels = (
+        this.getModelVersionsForCharacter(character, character.model3d) || []
+      )
+        .map((version) => String(version?.label || ""))
+        .join(" ");
+
+      return {
+        character,
+        ...metrics,
+        searchableText:
+          `${character.name} ${metrics.categoryLabel} ${versionLabels}`.toLowerCase(),
+      };
+    });
+
+    const filtered = mapped.filter((entry) => {
+      const matchesSearch =
+        !normalizedSearch || entry.searchableText.includes(normalizedSearch);
+      const matchesCategory =
+        selectedCategory === "all" ||
+        entry.character.category === selectedCategory;
+      const matchesAnimated = !onlyAnimated || entry.animatedCount > 0;
+
+      return matchesSearch && matchesCategory && matchesAnimated;
+    });
+
+    filtered.sort((a, b) => {
+      switch (sortMode) {
+        case "name-asc":
+          return a.character.name.localeCompare(b.character.name);
+        case "name-desc":
+          return b.character.name.localeCompare(a.character.name);
+        case "category-asc":
+          return a.categoryLabel.localeCompare(b.categoryLabel);
+        case "animated-first":
+          if (b.animatedCount !== a.animatedCount) {
+            return b.animatedCount - a.animatedCount;
+          }
+          if (b.versionsCount !== a.versionsCount) {
+            return b.versionsCount - a.versionsCount;
+          }
+          return a.character.name.localeCompare(b.character.name);
+        case "versions-desc":
+        default:
+          if (b.versionsCount !== a.versionsCount) {
+            return b.versionsCount - a.versionsCount;
+          }
+          return a.character.name.localeCompare(b.character.name);
+      }
+    });
+
+    return filtered;
+  }
+
   updateModelsCountTerminal() {
     const countEl = this.elements.modelsCountTerminal;
     if (!countEl) return;
@@ -2360,13 +2656,13 @@
     if (!grid || !empty) return;
 
     const charactersWithModel = this.getCharactersWith3DModels();
+    this.populateModelsCategoryFilter(charactersWithModel);
+
+    const filteredModels = this.getFilteredModelsForPage(charactersWithModel);
     const totalModels = charactersWithModel.length;
     const totalVersions = charactersWithModel.reduce((sum, character) => {
-      const versions = this.getModelVersionsForCharacter(
-        character,
-        character.model3d,
-      );
-      return sum + (versions?.length || 0);
+      const metrics = this.getModelMetricsForCharacter(character);
+      return sum + metrics.versionsCount;
     }, 0);
     const totalCategories = new Set(
       charactersWithModel.map((character) => character.category),
@@ -2381,8 +2677,24 @@
     if (this.elements.modelsCategoriesCount) {
       this.elements.modelsCategoriesCount.textContent = String(totalCategories);
     }
+    if (this.elements.modelsResultCount) {
+      const visible = filteredModels.length;
+      this.elements.modelsResultCount.textContent = `${visible} ${visible === 1 ? "item" : "itens"}`;
+    }
+    if (this.elements.modelsSortSelect) {
+      this.elements.modelsSortSelect.value =
+        this.state.modelsSort || "versions-desc";
+    }
+    if (this.elements.modelsOnlyAnimated) {
+      this.elements.modelsOnlyAnimated.checked = Boolean(
+        this.state.modelsOnlyAnimated,
+      );
+    }
+    if (this.elements.modelsSearchInput) {
+      this.elements.modelsSearchInput.value = this.state.modelsSearchTerm || "";
+    }
 
-    if (!totalModels) {
+    if (!filteredModels.length) {
       grid.innerHTML = "";
       grid.style.display = "none";
       empty.removeAttribute("hidden");
@@ -2393,13 +2705,14 @@
     empty.setAttribute("hidden", "");
     grid.innerHTML = "";
 
-    charactersWithModel.forEach((character) => {
-      const card = this.createModelCard(character);
+    filteredModels.forEach((modelEntry) => {
+      const card = this.createModelCard(modelEntry);
       grid.appendChild(card);
     });
   }
 
-  createModelCard(character) {
+  createModelCard(modelEntry) {
+    const character = modelEntry.character;
     const card = document.createElement("article");
     card.className = "model-card";
     card.dataset.id = character.id;
@@ -2407,18 +2720,23 @@
     const normalizedPath = this.cache.normalizePath(character.image);
     const cachedImg = this.cache.imageCache.get(normalizedPath);
     const imgSrc = cachedImg ? cachedImg.src : character.image;
-    const versions = this.getModelVersionsForCharacter(character, character.model3d);
-    const versionsCount = versions?.length || 1;
-    const categoryLabel = categoryNames[character.category] || character.category;
+    const versionsCount = modelEntry.versionsCount;
+    const animatedCount = modelEntry.animatedCount;
+    const categoryLabel = modelEntry.categoryLabel;
+    const badgeTypeLabel = animatedCount > 0 ? "ANIMADO" : "ESTATICO";
 
     card.innerHTML = `
       <div class="model-card-thumb">
         <img src="${imgSrc}" alt="${character.name}" loading="lazy" />
         <span class="model-card-badge">${categoryLabel}</span>
+        <span class="model-card-quality">${badgeTypeLabel}</span>
       </div>
       <div class="model-card-body">
         <h3 class="model-card-name">${character.name}</h3>
-        <div class="model-card-meta">${versionsCount} ${versionsCount === 1 ? "versao" : "versoes"} 3D</div>
+        <div class="model-card-meta">
+          <span>${versionsCount} ${versionsCount === 1 ? "versao" : "versoes"} 3D</span>
+          <span>${animatedCount} ${animatedCount === 1 ? "animada" : "animadas"}</span>
+        </div>
         <div class="model-card-actions">
           <button class="quantum-button model-open-3d">
             <i class="fas fa-cube" aria-hidden="true"></i>
@@ -2454,30 +2772,30 @@
     const sortOptions = [
       {
         value: "original",
-        label: "ORDEM QUÃ‚NTICA ORIGINAL",
+        label: "ORDEM QUÂNTICA ORIGINAL",
         icon: "fa-atom",
       },
       {
         value: "name-asc",
-        label: "NOME (A â†’ Z)",
+        label: "NOME (A → Z)",
         icon: "fa-sort-alpha-down",
       },
       {
         value: "name-desc",
-        label: "NOME (Z â†’ A)",
+        label: "NOME (Z → A)",
         icon: "fa-sort-alpha-up",
       },
       {
         value: "category-asc",
-        label: "CATEGORIA (A â†’ Z)",
+        label: "CATEGORIA (A → Z)",
         icon: "fa-layer-group",
       },
       {
         value: "category-desc",
-        label: "CATEGORIA (Z â†’ A)",
+        label: "CATEGORIA (Z → A)",
         icon: "fa-layer-group fa-rotate-180",
       },
-      { value: "random", label: "ALEATÃ“RIO QUÃ‚NTICO", icon: "fa-random" },
+      { value: "random", label: "ALEATÓRIO QUÂNTICO", icon: "fa-random" },
     ];
 
     this.elements.sortOptionsQuantum.innerHTML = sortOptions
@@ -2614,12 +2932,12 @@
         favoritesIcon.className = "fas fa-images";
       }
 
-      document.title = "â­ FAVORITOS 13/10 | NEXUS UNIVERSE";
+      document.title = "⭐ FAVORITOS 13/10 | NEXUS UNIVERSE";
 
       this.favorites.renderFavoritesPage();
       this.forceScrollTopImmediate();
       this.audio.play("click");
-      this.showToast("â­ ACESSANDO COLEÃ‡ÃƒO PESSOAL 13/10");
+      this.showToast("⭐ ACESSANDO COLEÇÃO PESSOAL 13/10");
     };
 
     this.runPageTransition(openFavoritesPage);
@@ -2687,12 +3005,12 @@
       }
 
       document.title =
-        "ðŸŒŒ NEXUS UNIVERSE 13/10 | ExperiÃªncia QuÃ¢ntica Definitiva";
+        "🌌 NEXUS UNIVERSE 13/10 | Experiência Quântica Definitiva";
 
       this.forceScrollTopImmediate();
       this.audio.play("click");
 
-      // Atualiza as animaÃ§Ãµes do header se existirem
+      // Atualiza as animações do header se existirem
       if (
         window.quantumHeaderEffects &&
         typeof window.quantumHeaderEffects.refresh === "function"
@@ -2700,7 +3018,7 @@
         window.quantumHeaderEffects.refresh();
       }
 
-      this.showToast("ðŸŒŒ RETORNANDO Ã€ GALERIA PRINCIPAL");
+      this.showToast("🌌 RETORNANDO À GALERIA PRINCIPAL");
     };
 
     this.runPageTransition(openGalleryPage);
@@ -2713,5 +3031,3 @@
     clearTimeout(this.config.scrollDebounce);
   }
 }
-
-

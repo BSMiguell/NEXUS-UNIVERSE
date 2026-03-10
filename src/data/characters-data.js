@@ -737,6 +737,7 @@ const charactersData = [
     name: "NAMELESS KING",
     category: "souls",
     image: "assets/images/souls/Nameless King-1.png",
+    model3d: "assets/Modelo3D/Nameless-King.glb",
     description:
       "Deus da Guerra exilado, filho de Gwyn e mestre das tempestades, que se aliou aos dragões ancestrais.",
     details: {
@@ -9811,7 +9812,33 @@ const charactersData = [
       habilidade: 83,
     },
   },
+  {
+    id: 391,
+    name: "RATATOSKR",
+    category: "One-Piece",
+    image: "assets/images/One-Piece/ratatoskr-1.png",
+    model3d: "assets/Modelo3D/Ratatoskr.glb",
+    description:
+      "Ratatoskr, em One Piece, é a forma assumida pelo martelo de guerra de Loki, Ragnir, inspirado no Mjölnir. Este martelo tem a capacidade de se transformar em um esquilo de gelo (氷リス, kōri risu). Essa transformação é resultado de uma Akuma no Mi do tipo Zoan, baseada no esquilo mensageiro da mitologia nórdica.",
+    details: {
+      universo: "One Piece",
+      poder: "Nao informado",
+      status: "Ativo",
+      estreia: 2026,
+      afiliacao: "Nao informado",
+      nivel: "A",
+    },
+    stats: {
+      forca: 80,
+      velocidade: 82,
+      defesa: 78,
+      energia: 79,
+      habilidade: 81,
+    },
+  },
 ];
+
+
 
 
 

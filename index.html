@@ -298,7 +298,9 @@
                   </div>
                   <div>
                     > MODELOS 3D:
-                    <span id="modelsCountTerminal" class="status-active">0</span>
+                    <span id="modelsCountTerminal" class="status-active"
+                      >0</span
+                    >
                   </div>
                   <div>
                     > BATALHA:
@@ -552,14 +554,71 @@
       >
         <div class="models-page-container">
           <div class="models-page-header">
+            <div class="models-header-topline">
+              <span class="models-title-chip">
+                <i class="fas fa-gem" aria-hidden="true"></i>
+                CURADORIA 3D
+              </span>
+              <span class="models-title-status">ATUALIZADO</span>
+            </div>
             <h2>
               <i class="fas fa-cubes" aria-hidden="true"></i>
-              TODOS OS MODELOS 3D
+              GALERIA PROFISSIONAL DE MODELOS 3D
             </h2>
             <p>
-              Veja todos os personagens que possuem modelo 3D no site e abra a
-              visualizacao completa com um clique.
+              Explore todos os personagens com visualizacao 3D em uma interface
+              de curadoria: busca rapida, filtro de universos, prioridade para
+              animacoes e acesso instantaneo ao viewer.
             </p>
+            <div class="models-hero-highlights">
+              <div class="models-highlight-item">
+                <span>CATALOGO</span>
+                <strong id="modelsResultCount">0 itens</strong>
+              </div>
+              <div class="models-highlight-item">
+                <span>QUALIDADE</span>
+                <strong>Premium Render</strong>
+              </div>
+              <div class="models-highlight-item">
+                <span>CONTROLE</span>
+                <strong>Busca + Filtros</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="models-toolbar" role="search">
+            <label class="models-toolbar-search" for="modelsSearchInput">
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <input
+                id="modelsSearchInput"
+                type="search"
+                placeholder="Buscar personagem ou universo..."
+                autocomplete="off"
+              />
+            </label>
+            <label
+              class="models-toolbar-select-wrap"
+              for="modelsCategoryFilter"
+            >
+              <span>Universo</span>
+              <select id="modelsCategoryFilter">
+                <option value="all">Todos os universos</option>
+              </select>
+            </label>
+            <label class="models-toolbar-select-wrap" for="modelsSortSelect">
+              <span>Ordenacao</span>
+              <select id="modelsSortSelect">
+                <option value="versions-desc">Mais versoes 3D</option>
+                <option value="animated-first">Animados primeiro</option>
+                <option value="name-asc">Nome (A-Z)</option>
+                <option value="name-desc">Nome (Z-A)</option>
+                <option value="category-asc">Universo (A-Z)</option>
+              </select>
+            </label>
+            <label class="models-toolbar-check" for="modelsOnlyAnimated">
+              <input id="modelsOnlyAnimated" type="checkbox" />
+              <span>Somente com animacao</span>
+            </label>
           </div>
 
           <div class="models-page-stats">
@@ -569,11 +628,15 @@
             </article>
             <article class="models-stat-card">
               <span class="models-stat-label">VERSOES 3D</span>
-              <strong class="models-stat-value" id="modelsVersionsCount">0</strong>
+              <strong class="models-stat-value" id="modelsVersionsCount"
+                >0</strong
+              >
             </article>
             <article class="models-stat-card">
               <span class="models-stat-label">UNIVERSOS</span>
-              <strong class="models-stat-value" id="modelsCategoriesCount">0</strong>
+              <strong class="models-stat-value" id="modelsCategoriesCount"
+                >0</strong
+              >
             </article>
           </div>
 
@@ -1281,6 +1344,15 @@
           </button>
 
           <button
+            class="quantum-control-btn space-toggle"
+            id="spaceToggle"
+            aria-label="Visualizar apenas o espaco"
+            aria-pressed="false"
+          >
+            <i class="fas fa-star" aria-hidden="true"></i>
+          </button>
+
+          <button
             class="quantum-control-btn battle-toggle"
             id="battleToggle"
             aria-label="Acessar sistema de batalha"
@@ -1739,6 +1811,9 @@
 
     <!-- Bibliotecas Externas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meshoptimizer@0.20.0/meshopt_decoder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
@@ -1768,3 +1843,4 @@
     <script src="src/js/main.js"></script>
   </body>
 </html>
+

@@ -119,6 +119,20 @@ body.battle2d-paused .quantum-controls-wrapper {
   --control-glow: rgba(19, 180, 255, 0.36);
 }
 
+.space-toggle {
+  --control-color-1: #0b0f2a;
+  --control-color-2: #1c2f63;
+  --control-ring: rgba(174, 205, 255, 0.64);
+  --control-glow: rgba(109, 156, 255, 0.34);
+}
+
+.space-toggle.active {
+  --control-color-1: #27d6a7;
+  --control-color-2: #0f97dc;
+  --control-ring: rgba(162, 255, 233, 0.82);
+  --control-glow: rgba(39, 214, 167, 0.42);
+}
+
 .battle-toggle {
   --control-color-1: #e64f5a;
   --control-color-2: #b8311f;
@@ -199,4 +213,24 @@ body.battle2d-paused .quantum-controls-wrapper {
   color: var(--text-secondary);
   margin-top: 10px;
   line-height: 1.4;
+}
+
+body.space-only-mode main > *:not(#three-canvas):not(#particles-container):not(.quantum-controls-wrapper) {
+  display: none !important;
+}
+
+body.space-only-mode #menuToggle,
+body.space-only-mode #quantumJump {
+  display: none !important;
+}
+
+body.space-only-mode .control-buttons-container {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: all !important;
+}
+
+body.space-only-mode .control-buttons-container .quantum-control-btn:not(.space-toggle) {
+  display: none !important;
 }

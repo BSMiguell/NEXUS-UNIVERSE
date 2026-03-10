@@ -24,6 +24,9 @@ class QuantumBattle2DSystem {
     this.canvasWidth = 800;
     this.canvasHeight = 400;
     this.airResistance = 0.98;
+    this.lastCanvasClientWidth = 0;
+    this.lastCanvasClientHeight = 0;
+    this.lastCanvasDpr = 1;
 
     // Efeitos visuais
     this.effects = [];
@@ -782,6 +785,47 @@ class QuantumBattle2DSystem {
     });
   }
 
+  updateCanvasResolution(force = false) {
+    if (!this.canvas || !this.ctx) return;
+
+    const cssWidth = Math.max(
+      1,
+      Math.round(this.canvas.clientWidth || this.canvasWidth),
+    );
+    const cssHeight = Math.max(
+      1,
+      Math.round((cssWidth * this.canvasHeight) / this.canvasWidth),
+    );
+    const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+
+    if (
+      !force &&
+      cssWidth === this.lastCanvasClientWidth &&
+      cssHeight === this.lastCanvasClientHeight &&
+      dpr === this.lastCanvasDpr
+    ) {
+      return;
+    }
+
+    this.lastCanvasClientWidth = cssWidth;
+    this.lastCanvasClientHeight = cssHeight;
+    this.lastCanvasDpr = dpr;
+
+    const renderWidth = Math.max(1, Math.round(cssWidth * dpr));
+    const renderHeight = Math.max(1, Math.round(cssHeight * dpr));
+
+    if (this.canvas.width !== renderWidth || this.canvas.height !== renderHeight) {
+      this.canvas.width = renderWidth;
+      this.canvas.height = renderHeight;
+    }
+
+    const scaleX = renderWidth / this.canvasWidth;
+    const scaleY = renderHeight / this.canvasHeight;
+    this.ctx.setTransform(scaleX, 0, 0, scaleY, 0, 0);
+    this.ctx.imageSmoothingEnabled = true;
+    this.ctx.imageSmoothingQuality = "high";
+  }
+
   isLokiCharacter(character) {
     if (!character) return false;
     const normalizedName = (character.name || "").toUpperCase();
@@ -952,8 +996,8 @@ class QuantumBattle2DSystem {
   getLokiAttackFrameCandidates() {
     const candidates = [];
 
-    // Novo padrÃ£o (mais fluido): loki_attack_01-00002.png ... 00035.png
-    // Mantemos tambÃ©m fallback para padrÃµes antigos.
+    // Novo padrão (mais fluido): loki_attack_01-00002.png ... 00035.png
+    // Mantemos também fallback para padrões antigos.
     candidates.push([
       "assets/animations/Loki/loki_attack_01.png.png",
       "assets/animations/Loki/loki_attack_01.png",
@@ -1438,6 +1482,7 @@ class QuantumBattle2DSystem {
     this.ctx = this.canvas.getContext("2d");
     this.canvas.width = this.canvasWidth;
     this.canvas.height = this.canvasHeight;
+    this.updateCanvasResolution(true);
 
     this.keys = {};
 
@@ -2692,6 +2737,7 @@ class QuantumBattle2DSystem {
 
   draw() {
     if (!this.ctx) return;
+    this.updateCanvasResolution();
 
     // Efeito de shake de tela
     let shakeX = 0,
