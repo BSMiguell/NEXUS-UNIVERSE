@@ -1437,6 +1437,64 @@
         </div>
       </div>
 
+      <!-- Modal de Seleção de Skin (Batalha 2D) -->
+      <div
+        class="skin-selector-modal"
+        id="skinSelectorModal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        tabindex="-1"
+        hidden
+      >
+        <div class="skin-selector-card">
+          <div class="skin-selector-header">
+            <div>
+              <h2 class="skin-selector-title" id="skinSelectorTitle">
+                SKINS
+              </h2>
+              <span class="skin-selector-count" id="skinSelectorCount">
+                0 skins
+              </span>
+            </div>
+            <button
+              class="skin-selector-close"
+              id="skinSelectorClose"
+              aria-label="Fechar"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+          <div class="skin-selector-body">
+            <div class="skin-preview">
+              <img
+                id="skinPreviewImage"
+                class="skin-preview-image"
+                alt="Preview da skin"
+              />
+              <div class="skin-preview-name" id="skinPreviewName">
+                Skin
+              </div>
+              <div class="skin-preview-tag" id="skinPreviewTag">Padrão</div>
+            </div>
+
+            <div class="skin-grid-wrap">
+              <div class="skin-grid" id="skinSelectorGrid"></div>
+            </div>
+          </div>
+
+          <div class="skin-selector-footer">
+            <span class="skin-selector-hint">
+              Selecione uma skin e clique em "Equipar".
+            </span>
+            <button class="skin-selector-apply" id="skinSelectorApply">
+              EQUIPAR SKIN
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- Animação de Batalha -->
       <div class="battle-animation-container" id="battleAnimationContainer">
         <div class="animation-controls">

@@ -41,6 +41,16 @@ class QuantumBattle2DSystem {
       player: null,
       bot: null,
     };
+    this.selectedSkins = {
+      player: null,
+      bot: null,
+    };
+    this.skinLibrary = this.buildSkinLibrary();
+    this.skinSelectorState = {
+      side: null,
+      character: null,
+      pendingSkin: null,
+    };
     this.selectorInitialLoad = 15;
     this.selectorLoadStep = 10;
     this.selectorVisibleCount = 0;
@@ -115,10 +125,27 @@ class QuantumBattle2DSystem {
       playerSelectedDisplay: document.getElementById("playerSelectedDisplay"),
       botSelectedDisplay: document.getElementById("botSelectedDisplay"),
       startBattle2dBtn: document.getElementById("startBattle2dBtn"),
-      battle2dControls: document.getElementById("battle2dControls"),
       battle2dArena: document.getElementById("battle2dArena"),
+      battle2dControls: document.getElementById("battle2dControls"),
+      battle2dSelectionView: document.getElementById("battle2dSelectionView"),
+      battle2dArenaView: document.getElementById("battle2dArenaView"),
+      battle2dTitle: document.getElementById("battle2dTitle"),
+      battle2dSubtitle: document.getElementById("battle2dSubtitle"),
+      battle2dModeChip: document.getElementById("battle2dModeChip"),
+      battle2dSelectionSummary: document.getElementById(
+        "battle2dSelectionSummary",
+      ),
       selectorSearchInput: document.getElementById("characterSelectorSearch"),
       selectorResultCount: document.getElementById("selectorResultCount"),
+      skinSelectorModal: document.getElementById("skinSelectorModal"),
+      skinSelectorTitle: document.getElementById("skinSelectorTitle"),
+      skinSelectorCount: document.getElementById("skinSelectorCount"),
+      skinSelectorGrid: document.getElementById("skinSelectorGrid"),
+      skinPreviewImage: document.getElementById("skinPreviewImage"),
+      skinPreviewName: document.getElementById("skinPreviewName"),
+      skinPreviewTag: document.getElementById("skinPreviewTag"),
+      skinSelectorClose: document.getElementById("skinSelectorClose"),
+      skinSelectorApply: document.getElementById("skinSelectorApply"),
       fullscreenBtn: document.getElementById("toggleFullscreenBtn"),
       pauseModal: document.getElementById("battlePauseModal"),
       resumeBtn: document.getElementById("resumeGameBtn"),
@@ -220,14 +247,37 @@ class QuantumBattle2DSystem {
       });
     }
 
+    if (this.elements.skinSelectorClose) {
+      this.elements.skinSelectorClose.addEventListener("click", () => {
+        this.closeSkinSelector();
+        this.gallery.audio?.play("click");
+      });
+    }
+
+    if (this.elements.skinSelectorApply) {
+      this.elements.skinSelectorApply.addEventListener("click", () => {
+        this.applySkinSelection();
+        this.gallery.audio?.play("click");
+      });
+    }
+
+    if (this.elements.skinSelectorModal) {
+      this.elements.skinSelectorModal.addEventListener("click", (e) => {
+        if (e.target === this.elements.skinSelectorModal) {
+          this.closeSkinSelector();
+        }
+      });
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && this.isSkinSelectorOpen()) {
+        this.closeSkinSelector();
+      }
+    });
+
     // Prevenir rolagem com teclas de controle
     window.addEventListener("keydown", (e) => {
-      if (
-        this.elements.page &&
-        this.elements.page.style.display === "block" &&
-        this.elements.battle2dArena &&
-        this.elements.battle2dArena.style.display === "block"
-      ) {
+      if (this.isArenaActive()) {
         if (
           [
             "Space",
@@ -257,11 +307,7 @@ class QuantumBattle2DSystem {
       this.keys[e.code] = true;
 
       // E para Pausar
-      if (
-        e.code === "KeyE" &&
-        this.elements.battle2dArena &&
-        this.elements.battle2dArena.style.display === "block"
-      ) {
+      if (e.code === "KeyE" && this.isArenaActive()) {
         this.togglePause();
       }
 
@@ -395,6 +441,7 @@ class QuantumBattle2DSystem {
     }
   }
   openCharacterSelector(title) {
+    this.closeSkinSelector();
     const modal = document.getElementById("characterSelectorModal");
     const titleElement = document.getElementById("selectorTitle");
     const grid = document.getElementById("characterSelectorGrid");
@@ -515,6 +562,267 @@ class QuantumBattle2DSystem {
       total > 0 ? `Exibindo ${shown} de ${total}` : "Nenhum personagem";
   }
 
+  buildSkinLibrary() {
+    return {
+      [this.normalizeCharacterKey("DARIUS")]: [
+        {
+          label: "Mestre da Enterrada",
+          image: "assets/Skins/Darius/Darius-Mestre-da-Enterrada.png",
+        },
+        {
+          label: "Florescer Espiritual",
+          image: "assets/Skins/Darius/Darius-Florescer-Espiritual.png",
+        },
+        {
+          label: "Deus Rei",
+          image: "assets/Skins/Darius/Deus-Rei-Darius.png",
+        },
+        {
+          label: "Deus Rei Divino",
+          image: "assets/Skins/Darius/Deus-Rei-Darius-Divino.png",
+        },
+      ],
+      [this.normalizeCharacterKey("AATROX")]: [
+        {
+          label: "Mecha",
+          image: "assets/Skins/Aatrox/Mech-Aatrox.png",
+        },
+        {
+          label: "Lua Sangrenta de Prestígio",
+          image: "assets/Skins/Aatrox/Aatrox-Lua-Sangrenta-de-Prestígio.png",
+        },
+        {
+          label: "DRX",
+          image: "assets/Skins/Aatrox/Aatrox-DRX.png",
+        },
+      ],
+      [this.normalizeCharacterKey("GOLDEN SPERM")]: [
+        {
+          label: "Platinum Sperm",
+          image: "assets/Skins/Golden-Sperm/Platinum-Sperm.png",
+        },
+      ],
+    };
+  }
+
+  normalizeCharacterKey(value) {
+    return String(value || "")
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^A-Z0-9]/g, "");
+  }
+
+  resolveImageSrc(path) {
+    if (!path) return "";
+    const normalizedPath = this.gallery.cache?.normalizePath(path) || path;
+    const cachedImg = this.gallery.cache?.imageCache?.get(normalizedPath);
+    return cachedImg ? cachedImg.src : path;
+  }
+
+  getSkinOptionsForCharacter(character) {
+    if (!character) return [];
+
+    const key = this.normalizeCharacterKey(character.name);
+    const customSkins = this.skinLibrary[key] || [];
+    const options = [
+      {
+        id: "default",
+        label: "Padrão",
+        image: character.image,
+        isDefault: true,
+      },
+    ];
+
+    customSkins.forEach((skin, index) => {
+      options.push({
+        id: skin.id || `skin-${index + 1}`,
+        label: skin.label || `Skin ${index + 1}`,
+        image: skin.image,
+        isDefault: false,
+      });
+    });
+
+    return options;
+  }
+
+  getSelectedSkinForSide(side, character) {
+    const options = this.getSkinOptionsForCharacter(character);
+    if (!options.length) return null;
+
+    const current = this.selectedSkins?.[side];
+    if (current) {
+      const stillValid = options.some(
+        (option) => option.image === current.image,
+      );
+      if (stillValid) {
+        return current;
+      }
+    }
+
+    const fallback = options[0];
+    this.selectedSkins[side] = fallback;
+    return fallback;
+  }
+
+  setSelectedSkinForSide(side, skinOption) {
+    this.selectedSkins[side] = skinOption;
+  }
+
+  getSelectedCharacterImagePath(side) {
+    const character = this.selectedCharacters?.[side];
+    if (!character) return "";
+
+    const selectedSkin = this.getSelectedSkinForSide(side, character);
+    return selectedSkin?.image || character.image;
+  }
+
+  isSkinSelectorOpen() {
+    return !!this.elements?.skinSelectorModal?.classList.contains("show");
+  }
+
+  openSkinSelector(side) {
+    const character = this.selectedCharacters?.[side];
+    if (!character) return;
+
+    const options = this.getSkinOptionsForCharacter(character);
+    if (options.length <= 1) {
+      this.gallery.showToast("❌ ESTE PERSONAGEM NÃO TEM SKINS");
+      return;
+    }
+
+    const selectedSkin = this.getSelectedSkinForSide(side, character);
+    this.skinSelectorState = {
+      side,
+      character,
+      pendingSkin: selectedSkin,
+    };
+
+    this.renderSkinSelector(options, selectedSkin);
+
+    if (this.elements.skinSelectorModal) {
+      this.elements.skinSelectorModal.removeAttribute("hidden");
+      this.elements.skinSelectorModal.setAttribute("aria-hidden", "false");
+      this.elements.skinSelectorModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  closeSkinSelector() {
+    if (this.elements.skinSelectorModal) {
+      this.elements.skinSelectorModal.classList.remove("show");
+      this.elements.skinSelectorModal.setAttribute("aria-hidden", "true");
+      this.elements.skinSelectorModal.setAttribute("hidden", "");
+    }
+    document.body.style.overflow = "";
+    this.skinSelectorState = {
+      side: null,
+      character: null,
+      pendingSkin: null,
+    };
+  }
+
+  renderSkinSelector(options, selectedSkin) {
+    const { character } = this.skinSelectorState;
+    if (!character) return;
+
+    if (this.elements.skinSelectorTitle) {
+      this.elements.skinSelectorTitle.textContent = `SKINS • ${character.name}`;
+    }
+    if (this.elements.skinSelectorCount) {
+      this.elements.skinSelectorCount.textContent = `${options.length} skins`;
+    }
+
+    const placeholder = this.gallery.generatePlaceholderSVG
+      ? this.gallery.generatePlaceholderSVG(character, true)
+      : "";
+    const fallbackSrc = this.resolveImageSrc(character.image) || placeholder || "";
+
+    const optionsById = new Map();
+    const gridHtml = options
+      .map((option) => {
+        optionsById.set(option.id, option);
+        const optionSrc = this.resolveImageSrc(option.image || character.image);
+        const isActive = selectedSkin?.id === option.id;
+        const tagLabel = option.isDefault ? "Padrão" : option.tag || "Skin";
+        return `
+          <button
+            type="button"
+            class="skin-option ${isActive ? "active" : ""}"
+            data-skin-id="${option.id}"
+            aria-pressed="${isActive ? "true" : "false"}"
+          >
+            <div class="skin-option-thumb">
+              <img
+                src="${optionSrc}"
+                alt="${option.label}"
+                class="skin-option-image"
+                onerror="this.onerror=null; this.src='${fallbackSrc}';"
+              />
+              <span class="skin-option-tag">${tagLabel}</span>
+            </div>
+            <span class="skin-option-label">${option.label}</span>
+          </button>
+        `;
+      })
+      .join("");
+
+    if (this.elements.skinSelectorGrid) {
+      this.elements.skinSelectorGrid.innerHTML = gridHtml;
+      const buttons = this.elements.skinSelectorGrid.querySelectorAll(
+        ".skin-option",
+      );
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const skinId = button.dataset.skinId;
+          const option = optionsById.get(skinId);
+          if (!option) return;
+
+          this.skinSelectorState.pendingSkin = option;
+          buttons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+          this.updateSkinPreview(option, fallbackSrc);
+        });
+      });
+    }
+
+    this.updateSkinPreview(selectedSkin, fallbackSrc);
+  }
+
+  updateSkinPreview(option, fallbackSrc) {
+    if (!option) return;
+
+    if (this.elements.skinPreviewImage) {
+      this.elements.skinPreviewImage.src = this.resolveImageSrc(option.image);
+      this.elements.skinPreviewImage.onerror = () => {
+        this.elements.skinPreviewImage.onerror = null;
+        this.elements.skinPreviewImage.src = fallbackSrc || "";
+      };
+    }
+
+    if (this.elements.skinPreviewName) {
+      this.elements.skinPreviewName.textContent = option.label;
+    }
+
+    if (this.elements.skinPreviewTag) {
+      this.elements.skinPreviewTag.textContent = option.isDefault
+        ? "Padrão"
+        : option.tag || "Skin";
+    }
+  }
+
+  applySkinSelection() {
+    const { side, character, pendingSkin } = this.skinSelectorState;
+    if (!side || !character || !pendingSkin) {
+      this.closeSkinSelector();
+      return;
+    }
+
+    this.setSelectedSkinForSide(side, pendingSkin);
+    this.updateSelectedDisplay(side === "player" ? 1 : 2, character);
+    this.closeSkinSelector();
+  }
+
   createSelectorCharacterElement(character, modal) {
     const normalizedPath =
       this.gallery.cache?.normalizePath(character.image) || character.image;
@@ -600,11 +908,15 @@ class QuantumBattle2DSystem {
   selectCharacter(character) {
     if (this.currentPlayer === 1) {
       this.selectedCharacters.player = character;
+      this.selectedSkins.player = null;
       this.updateSelectedDisplay(1, character);
     } else {
       this.selectedCharacters.bot = character;
+      this.selectedSkins.bot = null;
       this.updateSelectedDisplay(2, character);
     }
+
+    this.closeSkinSelector();
 
     if (this.elements.startBattle2dBtn) {
       this.elements.startBattle2dBtn.disabled = !(
@@ -618,23 +930,75 @@ class QuantumBattle2DSystem {
       player === 1
         ? this.elements.playerSelectedDisplay
         : this.elements.botSelectedDisplay;
-    if (!display) return;
+    if (!display || !character) return;
 
-    const normalizedPath =
-      this.gallery.cache?.normalizePath(character.image) || character.image;
-    const cachedImg = this.gallery.cache?.imageCache?.get(normalizedPath);
-    const imgSrc = cachedImg ? cachedImg.src : character.image;
+    const sideKey = player === 1 ? "player" : "bot";
+    const skinOptions = this.getSkinOptionsForCharacter(character);
+    const selectedSkin = this.getSelectedSkinForSide(sideKey, character);
+    const hasSkins = skinOptions.length > 1;
 
     const categoryDisplay = window.categoryNames
       ? window.categoryNames[character.category] || character.category
       : character.category;
 
+    const placeholder = this.gallery.generatePlaceholderSVG
+      ? this.gallery.generatePlaceholderSVG(character, true)
+      : "";
+
+    const defaultSrc = this.resolveImageSrc(character.image);
+    const selectedSkinSrc = this.resolveImageSrc(
+      selectedSkin?.image || character.image,
+    );
+    const fallbackSrc = defaultSrc || placeholder || "";
+    const skinLabel = selectedSkin?.label || "Padrão";
+    const skinCountLabel = hasSkins
+      ? `${skinOptions.length} skins`
+      : "Padrão";
+
+    const imageWrapper = hasSkins
+      ? `
+          <button
+            type="button"
+            class="skin-trigger"
+            aria-label="Escolher skin de ${character.name}"
+          >
+            <img
+              src="${selectedSkinSrc}"
+              alt="${character.name}"
+              class="selected-mini-image"
+              onerror="this.onerror=null; this.src='${fallbackSrc}';"
+            />
+            <span class="skin-badge">${skinLabel}</span>
+            <span class="skin-cta">VER SKINS</span>
+          </button>
+        `
+      : `
+          <div class="skin-trigger is-static">
+            <img
+              src="${selectedSkinSrc}"
+              alt="${character.name}"
+              class="selected-mini-image"
+              onerror="this.onerror=null; this.src='${fallbackSrc}';"
+            />
+          </div>
+        `;
+
     display.innerHTML = `
             <div class="selected-mini-card">
-                <img src="${imgSrc}" alt="${character.name}" class="selected-mini-image">
+                ${imageWrapper}
                 <div class="selected-mini-info">
                     <strong>${character.name}</strong>
                     <small>${categoryDisplay}</small>
+                    ${
+                      hasSkins
+                        ? `<span class="selected-mini-skin">Skin atual: ${skinLabel}</span>`
+                        : `<span class="selected-mini-skin">Skin atual: Padrão</span>`
+                    }
+                    ${
+                      hasSkins
+                        ? `<span class="selected-mini-skin-count">${skinCountLabel}</span>`
+                        : ""
+                    }
                     <div class="selected-mini-stats">
                         <span>FOR ${character.stats.forca}</span>
                         <span>VEL ${character.stats.velocidade}</span>
@@ -644,14 +1008,120 @@ class QuantumBattle2DSystem {
                 </div>
             </div>
         `;
+
+    if (hasSkins) {
+      const trigger = display.querySelector(".skin-trigger");
+
+      if (trigger) {
+        trigger.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openSkinSelector(sideKey);
+          this.gallery.audio?.play("click");
+        });
+
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            this.openSkinSelector(sideKey);
+            this.gallery.audio?.play("click");
+          }
+        });
+      }
+    }
+
+    this.updateBattle2dSummary();
+  }
+
+  updateBattle2dSummary() {
+    if (!this.elements.battle2dSelectionSummary) return;
+
+    const playerName = this.selectedCharacters.player?.name || "";
+    const botName = this.selectedCharacters.bot?.name || "";
+
+    if (playerName && botName) {
+      this.elements.battle2dSelectionSummary.textContent = `${playerName} vs ${botName}`;
+      return;
+    }
+
+    if (playerName || botName) {
+      const selectedCount = (playerName ? 1 : 0) + (botName ? 1 : 0);
+      const label = playerName
+        ? `Jogador: ${playerName}`
+        : `Bot: ${botName}`;
+      this.elements.battle2dSelectionSummary.textContent = `${selectedCount}/2 selecionados • ${label}`;
+      return;
+    }
+
+    this.elements.battle2dSelectionSummary.textContent = "0/2 selecionados";
+  }
+
+  setBattleMode(mode) {
+    const arena = this.elements.battle2dArena;
+    if (!arena) return;
+
+    const normalizedMode = mode === "arena" ? "arena" : "selection";
+    arena.dataset.mode = normalizedMode;
+
+    const selectionView =
+      this.elements.battle2dSelectionView || this.elements.battle2dControls;
+    const arenaView = this.elements.battle2dArenaView || arena;
+
+    if (selectionView) {
+      if (normalizedMode === "selection") {
+        selectionView.removeAttribute("hidden");
+        selectionView.style.display = "";
+      } else {
+        selectionView.setAttribute("hidden", "");
+        selectionView.style.display = "none";
+      }
+    }
+
+    if (arenaView) {
+      if (normalizedMode === "arena") {
+        arenaView.removeAttribute("hidden");
+        arenaView.style.display = "";
+      } else {
+        arenaView.setAttribute("hidden", "");
+        arenaView.style.display = "none";
+      }
+    }
+
+    if (this.elements.battle2dTitle) {
+      this.elements.battle2dTitle.textContent =
+        normalizedMode === "arena"
+          ? "⚔️ BATALHA 2D: ARENA QUÂNTICA"
+          : "⚔️ BATALHA 2D: SELEÇÃO DE PERSONAGENS";
+    }
+
+    if (this.elements.battle2dSubtitle) {
+      this.elements.battle2dSubtitle.textContent =
+        normalizedMode === "arena"
+          ? "Use as setas ou WASD para mover, ESPAÇO para pular, e F para atacar"
+          : "Selecione seu personagem e o personagem do bot para iniciar a batalha";
+    }
+
+    if (this.elements.battle2dModeChip) {
+      this.elements.battle2dModeChip.textContent =
+        normalizedMode === "arena" ? "ARENA" : "SELEÇÃO";
+    }
+
+    this.updateBattle2dSummary();
+  }
+
+  isArenaActive() {
+    const page = this.elements.page;
+    const pageVisible =
+      !!page &&
+      !page.hasAttribute("hidden") &&
+      page.getAttribute("aria-hidden") !== "true";
+
+    return pageVisible && this.elements.battle2dArena?.dataset.mode === "arena";
   }
 
   showSelectionScreen() {
     this.stopGame();
-    if (this.elements.battle2dControls)
-      this.elements.battle2dControls.style.display = "block";
-    if (this.elements.battle2dArena)
-      this.elements.battle2dArena.style.display = "none";
+    this.setBattleMode("selection");
     this.gallery.showToast("🔙 VOLTANDO À SELEÇÃO");
   }
 
@@ -716,6 +1186,8 @@ class QuantumBattle2DSystem {
           this.elements.page.setAttribute("aria-hidden", "false");
         }
         this.selectedCharacters = { player: null, bot: null };
+        this.selectedSkins = { player: null, bot: null };
+        this.closeSkinSelector();
 
         if (this.elements.playerSelectedDisplay) {
           this.elements.playerSelectedDisplay.innerHTML = `
@@ -734,7 +1206,12 @@ class QuantumBattle2DSystem {
                 `;
         }
 
-        this.showSelectionScreen();
+        this.stopGame();
+        this.setBattleMode("selection");
+        this.updateBattle2dSummary();
+        if (this.elements.startBattle2dBtn) {
+          this.elements.startBattle2dBtn.disabled = true;
+        }
         setTimeout(() => {
           this.elements.page.style.opacity = "1";
           this.elements.page.style.transform = "translateY(0)";
@@ -762,10 +1239,7 @@ class QuantumBattle2DSystem {
     }
 
     this.loadCharacterImages().then(() => {
-      if (this.elements.battle2dControls)
-        this.elements.battle2dControls.style.display = "none";
-      if (this.elements.battle2dArena)
-        this.elements.battle2dArena.style.display = "block";
+      this.setBattleMode("arena");
       this.startGame();
       this.gallery.showToast("⚔️ BATALHA INICIADA!");
 
@@ -1048,6 +1522,39 @@ class QuantumBattle2DSystem {
     return candidates;
   }
 
+  getMechAatroxAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 35; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `assets/animations-Skins/Mech-Aatrox/Mech-Aatrox-${frameNumber}.png`,
+      ]);
+    }
+    return candidates;
+  }
+
+  getPrestigeBloodMoonAatroxAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 34; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `assets/animations-Skins/Aatrox-Lua-Sangrenta-de-Prestígio/Aatrox-Lua-Sangrenta-de-Prestígio-${frameNumber}.png`,
+      ]);
+    }
+    return candidates;
+  }
+
+  getDrxAatroxAttackFrameCandidates() {
+    const candidates = [];
+    for (let i = 1; i <= 34; i++) {
+      const frameNumber = String(i).padStart(5, "0");
+      candidates.push([
+        `assets/animations-Skins/Aatrox-DRX/Aatrox-DRX-${frameNumber}.png`,
+      ]);
+    }
+    return candidates;
+  }
+
   getDariusAttackFrameCandidates() {
     const candidates = [];
     for (let i = 1; i <= 35; i++) {
@@ -1199,10 +1706,71 @@ class QuantumBattle2DSystem {
     return candidates;
   }
 
-  async loadAttackFramesForCharacter(character) {
+  isMechAatroxSkin(character, selectedSkin) {
+    if (!character || !selectedSkin) return false;
+    if (!this.isAatroxCharacter(character)) return false;
+
+    const skinImage = (selectedSkin.image || "").toLowerCase();
+    const skinLabel = (selectedSkin.label || "").toLowerCase();
+    return skinImage.includes("mech-aatrox") || skinLabel.includes("mecha");
+  }
+
+  isPrestigeBloodMoonAatroxSkin(character, selectedSkin) {
+    if (!character || !selectedSkin) return false;
+    if (!this.isAatroxCharacter(character)) return false;
+
+    const skinImage = (selectedSkin.image || "").toLowerCase();
+    const skinLabel = (selectedSkin.label || "").toLowerCase();
+    return (
+      skinImage.includes("lua-sangrenta") ||
+      skinImage.includes("prest") ||
+      skinLabel.includes("lua sangrenta") ||
+      skinLabel.includes("prest")
+    );
+  }
+
+  isDrxAatroxSkin(character, selectedSkin) {
+    if (!character || !selectedSkin) return false;
+    if (!this.isAatroxCharacter(character)) return false;
+
+    const skinImage = (selectedSkin.image || "").toLowerCase();
+    const skinLabel = (selectedSkin.label || "").toLowerCase();
+    return skinImage.includes("drx") || skinLabel.includes("drx");
+  }
+
+  getSkinSpecificAttackFrameCandidates(character, sideOverride = null) {
+    if (!character) return null;
+    const side =
+      sideOverride ||
+      (character === this.selectedCharacters?.player
+        ? "player"
+        : character === this.selectedCharacters?.bot
+          ? "bot"
+          : null);
+    if (!side) return null;
+
+    const selectedSkin = this.getSelectedSkinForSide(side, character);
+    if (this.isMechAatroxSkin(character, selectedSkin)) {
+      return this.getMechAatroxAttackFrameCandidates();
+    }
+    if (this.isPrestigeBloodMoonAatroxSkin(character, selectedSkin)) {
+      return this.getPrestigeBloodMoonAatroxAttackFrameCandidates();
+    }
+    if (this.isDrxAatroxSkin(character, selectedSkin)) {
+      return this.getDrxAatroxAttackFrameCandidates();
+    }
+
+    return null;
+  }
+
+  async loadAttackFramesForCharacter(character, sideOverride = null) {
     let frameCandidates = [];
 
-    if (this.isLokiCharacter(character)) {
+    const skinSpecificCandidates =
+      this.getSkinSpecificAttackFrameCandidates(character, sideOverride);
+    if (skinSpecificCandidates && skinSpecificCandidates.length) {
+      frameCandidates = skinSpecificCandidates;
+    } else if (this.isLokiCharacter(character)) {
       frameCandidates = this.getLokiAttackFrameCandidates();
     } else if (this.isMadaraCharacter(character)) {
       frameCandidates = this.getMadaraAttackFrameCandidates();
@@ -1398,23 +1966,24 @@ class QuantumBattle2DSystem {
     this.resetAttackAnimationState();
 
     try {
+      const playerImagePath = this.getSelectedCharacterImagePath("player");
+      const botImagePath = this.getSelectedCharacterImagePath("bot");
+
       const playerSrc = this.gallery.cache?.imageCache?.has(
-        this.gallery.cache.normalizePath(this.selectedCharacters.player.image),
+        this.gallery.cache.normalizePath(playerImagePath),
       )
         ? this.gallery.cache.imageCache.get(
-            this.gallery.cache.normalizePath(
-              this.selectedCharacters.player.image,
-            ),
+            this.gallery.cache.normalizePath(playerImagePath),
           ).src
-        : this.selectedCharacters.player.image;
+        : playerImagePath;
 
       const botSrc = this.gallery.cache?.imageCache?.has(
-        this.gallery.cache.normalizePath(this.selectedCharacters.bot.image),
+        this.gallery.cache.normalizePath(botImagePath),
       )
         ? this.gallery.cache.imageCache.get(
-            this.gallery.cache.normalizePath(this.selectedCharacters.bot.image),
+            this.gallery.cache.normalizePath(botImagePath),
           ).src
-        : this.selectedCharacters.bot.image;
+        : botImagePath;
 
       [this.playerImage, this.botImage] = await Promise.all([
         this.loadImageAsset(playerSrc),
@@ -1422,8 +1991,8 @@ class QuantumBattle2DSystem {
       ]);
 
       const [playerAttackFrames, botAttackFrames] = await Promise.all([
-        this.loadAttackFramesForCharacter(this.selectedCharacters.player),
-        this.loadAttackFramesForCharacter(this.selectedCharacters.bot),
+        this.loadAttackFramesForCharacter(this.selectedCharacters.player, "player"),
+        this.loadAttackFramesForCharacter(this.selectedCharacters.bot, "bot"),
       ]);
       this.attackAnimations.player.frames = playerAttackFrames;
       this.attackAnimations.bot.frames = botAttackFrames;
